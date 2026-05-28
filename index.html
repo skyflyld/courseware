@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skyflyld · 课件馆</title>
+<style>
+:root {
+  --bg: #faf8f3; --card: #fffef9; --border: #d4c5a9;
+  --text: #2c2416; --muted: #8b7e67; --accent: #b87333;
+  --blue: #3a6b8c; --gold: #8b6914; --light: #fef3e4;
+  --red: #c0392b; --green: #5a8f4a;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', Georgia, serif;
+  background:var(--bg); color:var(--text); line-height:1.7;
+}
+
+/* Hero */
+.hero {
+  text-align:center; padding:60px 28px 48px;
+  background:linear-gradient(180deg, var(--light) 0%, var(--bg) 100%);
+  border-bottom:1px solid var(--border);
+}
+.hero h1 { font-size:2em; color:var(--accent); margin-bottom:8px; }
+.hero .sub { color:var(--muted); font-size:1em; max-width:560px; margin:0 auto; line-height:1.7; }
+.hero .stats { display:flex; gap:32px; justify-content:center; margin-top:24px; flex-wrap:wrap; }
+.hero .stat { text-align:center; }
+.hero .stat .n { font-size:1.8em; font-weight:700; color:var(--accent); }
+.hero .stat .l { font-size:.78em; color:var(--muted); }
+
+/* Filter */
+.filter-bar {
+  display:flex; gap:8px; flex-wrap:wrap; justify-content:center; padding:28px 20px 8px;
+  max-width:800px; margin:0 auto;
+}
+.filter-bar button {
+  background:var(--card); border:1px solid var(--border);
+  color:var(--text); padding:7px 18px; border-radius:20px;
+  cursor:pointer; font-size:.85em; font-family:inherit; transition:all .2s;
+}
+.filter-bar button:hover, .filter-bar button.active {
+  background:var(--accent); color:#fff; border-color:var(--accent);
+}
+
+/* Grid */
+.grid {
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
+  gap:22px; max-width:1100px; margin:24px auto; padding:0 28px 60px;
+}
+
+.card {
+  background:var(--card); border:1px solid var(--border); border-radius:14px;
+  padding:28px; transition:all .35s; cursor:pointer; position:relative;
+  overflow:hidden; text-decoration:none; color:inherit; display:block;
+}
+.card:hover { border-color:var(--accent); transform:translateY(-3px); box-shadow:0 8px 28px rgba(183,115,51,.1); }
+.card.hidden { display:none; }
+
+.card .badge {
+  display:inline-block; font-size:.7em; padding:3px 10px; border-radius:10px;
+  font-weight:600; margin-bottom:12px; letter-spacing:.5px;
+}
+.badge-phil { background:#fef3e4; color:var(--accent); }
+.badge-tech { background:#e8f0f8; color:var(--blue); }
+.badge-paper { background:#f0ebe0; color:var(--gold); }
+.badge-ref  { background:#eaf5e4; color:var(--green); }
+
+.card h2 { font-size:1.15em; margin-bottom:8px; line-height:1.4; }
+.card .desc { font-size:.88em; color:var(--muted); line-height:1.7; margin-bottom:14px; }
+.card .meta-row { display:flex; gap:16px; font-size:.78em; color:var(--muted); flex-wrap:wrap; }
+.card .meta-row span { display:flex; align-items:center; gap:4px; }
+
+.card .arrow {
+  position:absolute; bottom:24px; right:28px; font-size:1.2em;
+  color:var(--border); transition:all .3s;
+}
+.card:hover .arrow { color:var(--accent); transform:translateX(4px); }
+
+/* Quick view panel */
+.quickview {
+  display:none; position:fixed; inset:0; background:rgba(0,0,0,.5);
+  z-index:100; justify-content:center; align-items:center; padding:20px;
+}
+.quickview.open { display:flex; }
+.quickview .qv-card {
+  background:var(--card); border-radius:16px; max-width:600px; width:100%;
+  max-height:80vh; overflow-y:auto; padding:36px; position:relative;
+  box-shadow:0 20px 60px rgba(0,0,0,.2);
+}
+.quickview .close-btn {
+  position:absolute; top:16px; right:20px; background:none; border:none;
+  font-size:1.5em; cursor:pointer; color:var(--muted); line-height:1;
+}
+.quickview .close-btn:hover { color:var(--accent); }
+.quickview h2 { font-size:1.3em; margin-bottom:12px; color:var(--accent); }
+.quickview .qv-meta { font-size:.82em; color:var(--muted); margin-bottom:16px; }
+.quickview .qv-desc { line-height:1.8; margin-bottom:16px; }
+.quickview .qv-features { list-style:none; }
+.quickview .qv-features li { padding:6px 0; font-size:.9em; border-bottom:1px dashed var(--border); }
+.quickview .qv-features li:last-child { border:none; }
+.quickview .qv-link {
+  display:inline-block; margin-top:16px; padding:10px 22px;
+  background:var(--accent); color:#fff; border-radius:8px; text-decoration:none;
+  font-size:.9em; transition:all .2s;
+}
+.quickview .qv-link:hover { opacity:.85; }
+
+footer {
+  text-align:center; padding:32px 20px; color:var(--muted); font-size:.78em;
+  border-top:1px solid var(--border);
+}
+footer a { color:var(--accent); text-decoration:none; }
+footer a:hover { text-decoration:underline; }
+
+@media(max-width:640px) {
+  .hero { padding:40px 18px 32px; }
+  .hero h1 { font-size:1.5em; }
+  .grid { grid-template-columns:1fr; padding:0 14px 40px; }
+  .hero .stats { gap:18px; }
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>📚 Skyflyld · 课件馆</h1>
+  <p class="sub">可直接用于课堂讲授、研讨会和自学的交互式课件。点击卡片预览，点击链接打开。</p>
+  <div class="stats">
+    <div class="stat"><div class="n" id="statCount">6</div><div class="l">课件</div></div>
+    <div class="stat"><div class="n">14d</div><div class="l">论文写作框架</div></div>
+    <div class="stat"><div class="n">280</div><div class="l">词会议摘要</div></div>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <button class="active" onclick="filter('all')">全部</button>
+  <button onclick="filter('phil')">🧠 哲学思辨</button>
+  <button onclick="filter('tech')">💻 技术解析</button>
+  <button onclick="filter('paper')">📝 论文写作</button>
+  <button onclick="filter('ref')">📖 参考资料</button>
+</div>
+
+<div class="grid" id="grid">
+
+  <!-- Card 1 -->
+  <div class="card" data-tags="phil" onclick="openQV('qv1')">
+    <span class="badge badge-phil">哲学思辨</span>
+    <h2>意识如何拼出世界 · Attention 与康德的对话</h2>
+    <p class="desc">通识版课件。以一杯咖啡的体验为起点，走过康德、走过 Transformer，探索意识的结构与人造智能的边界。10 页交互幻灯片，含 4 个课堂讨论题。</p>
+    <div class="meta-row">
+      <span>📄 10 页</span><span>⏱ 45 min</span><span>🎯 通识课</span>
+    </div>
+    <span class="arrow">→</span>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="card" data-tags="tech phil" onclick="openQV('qv2')">
+    <span class="badge badge-tech">技术解析</span>
+    <h2>Attention × 康德 · 先验统觉的数学实现</h2>
+    <p class="desc">技术版课件。完整的数学对应、五列结构同构表、费曼追问。适合哲学×AI 交叉课程或读书会。9 页交互幻灯片，14 个点击展开卡片。</p>
+    <div class="meta-row">
+      <span>📄 9 页</span><span>⏱ 50 min</span><span>🎯 交叉学科</span>
+    </div>
+    <span class="arrow">→</span>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="card" data-tags="ref paper" onclick="openQV('qv3')">
+    <span class="badge badge-ref">参考资料</span>
+    <h2>费曼速查词表 · 黑塞论文核心术语</h2>
+    <p class="desc">10 个核心术语，每个包含一句话费曼定义、德文原文、来源和在论文中的角色。顶部有分类筛选按钮（Krämer 系、思想史谱系、Pasquinelli 系等）。</p>
+    <div class="meta-row">
+      <span>📄 10 词条</span><span>🔍 可筛选</span><span>🇩🇪 中德双语</span>
+    </div>
+    <span class="arrow">→</span>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="card" data-tags="paper" onclick="openQV('qv4')">
+    <span class="badge badge-paper">论文写作</span>
+    <h2>精简框架 · 玻璃球游戏论文结构</h2>
+    <p class="desc">文本驱动的五节论文框架。理论全部降级到脚注（&lt;200 词），释放空间给 Knecht 觉醒弧线的逐幕细读。含 14 天写作时间线和修改前后对比。</p>
+    <div class="meta-row">
+      <span>📄 5 节</span><span>📝 ~6000 词</span><span>⏱ 14 天</span>
+    </div>
+    <span class="arrow">→</span>
+  </div>
+
+  <!-- Card 5 -->
+  <div class="card" data-tags="paper" onclick="openQV('qv5')">
+    <span class="badge badge-paper">论文写作</span>
+    <h2>2026 文学之路 · 会议投稿摘要</h2>
+    <p class="desc">投稿 Literaturstraße 2026 国际研讨会的德语摘要（~280 词）。文本驱动路线：摘要中不出现任何理论家名字，以 Knecht 致 Castalia 的信为核心文本锚点。</p>
+    <div class="meta-row">
+      <span>📄 ~280 词</span><span>🇩🇪 德语</span><span>🎯 会议投稿</span>
+    </div>
+    <span class="arrow">→</span>
+  </div>
+
+  <!-- Card 6: Index itself -->
+  <div class="card" data-tags="ref" onclick="openQV('qv6')">
+    <span class="badge badge-ref">关于本站</span>
+    <h2>关于 Skyflyld 课件馆</h2>
+    <p class="desc">所有课件均为交互式 HTML，无需安装任何软件，浏览器打开即可使用。支持键盘翻页、点击展开、分类筛选。持续更新中。</p>
+    <div class="meta-row">
+      <span>🌐 GitHub Pages</span><span>📱 响应式</span><span>🆓 完全免费</span>
+    </div>
+    <span class="arrow">→</span>
+  </div>
+
+</div>
+
+<!-- Quick View Panels -->
+<div class="quickview" id="qv1" onclick="if(event.target===this) closeQV('qv1')">
+  <div class="qv-card">
+    <button class="close-btn" onclick="closeQV('qv1')">✕</button>
+    <span class="badge badge-phil">哲学思辨</span>
+    <h2>意识如何拼出世界 · Attention 与康德的对话</h2>
+    <p class="qv-meta">10 页交互幻灯片 · 45 分钟课时 · 4 个课堂讨论题</p>
+    <p class="qv-desc">通识版课件。不从「Attention 是什么」开始——从一杯咖啡的视觉/触觉/嗅觉/听觉碎片开始。全程用日常意象驱动：咖啡、猫/垫子、玫瑰花、沉默、空椅子。哲学思辨优先于技术公式，玻璃球游戏只出场一次作为文学佐证。</p>
+    <ul class="qv-features">
+      <li>✅ 14 个点击展开卡片</li>
+      <li>✅ 键盘左右键翻页</li>
+      <li>✅ 暖色纸质感设计</li>
+      <li>✅ 移动端响应式</li>
+      <li>✅ 每个讨论题含展开引导</li>
+    </ul>
+    <a class="qv-link" href="attention-kant-classroom.html" target="_blank">打开课件 →</a>
+  </div>
+</div>
+
+<div class="quickview" id="qv2" onclick="if(event.target===this) closeQV('qv2')">
+  <div class="qv-card">
+    <button class="close-btn" onclick="closeQV('qv2')">✕</button>
+    <span class="badge badge-tech">技术解析</span>
+    <h2>Attention × 康德 · 先验统觉的数学实现</h2>
+    <p class="qv-meta">9 页交互幻灯片 · 50 分钟课时 · 14 个点击展开卡片</p>
+    <p class="qv-desc">技术版课件。包含完整的数学对应（Q·K 点积、加权求和）、五列结构同构对照表、费曼追问关键差异、论文延伸（玻璃球游戏=人工统觉系统）。暗色学术风格，蓝金配色。</p>
+    <ul class="qv-features">
+      <li>✅ 康德三层架构 → Transformer 可视化对应</li>
+      <li>✅ 五列精确对照表（每行带课堂提问）</li>
+      <li>✅ 先天 vs 学习的核心分歧双栏对比</li>
+      <li>✅ 三个深度讨论题（含正反论点）</li>
+      <li>✅ 论文延伸：GBG/Attention/Knecht 的离开</li>
+    </ul>
+    <a class="qv-link" href="attention-kant-courseware.html" target="_blank">打开课件 →</a>
+  </div>
+</div>
+
+<div class="quickview" id="qv3" onclick="if(event.target===this) closeQV('qv3')">
+  <div class="qv-card">
+    <button class="close-btn" onclick="closeQV('qv3')">✕</button>
+    <span class="badge badge-ref">参考资料</span>
+    <h2>费曼速查词表 · 黑塞论文核心术语</h2>
+    <p class="qv-meta">10 个核心术语 · 中德双语 · 可分类筛选</p>
+    <p class="qv-desc">基于费曼学习法整理的黑塞论文核心术语速查手册。每个词条包含一句话费曼定义、德文原文、学术来源和在论文论证链中的精确角色。顶部 5 个分类筛选按钮。</p>
+    <ul class="qv-features">
+      <li>✅ Krämer 系：操作性图像性、图表学、符号机器、形式化的文化技术</li>
+      <li>✅ 思想史谱系：组合艺术 (Llull)、普遍特征 (Leibniz)</li>
+      <li>✅ Pasquinelli 系：算法认识论批判</li>
+      <li>✅ 论文分析工具：脱语境化+形式化、组合+模式识别</li>
+      <li>✅ 批判对象：形式化世界观解释系统</li>
+    </ul>
+    <a class="qv-link" href="feynman-glossary.html" target="_blank">打开词表 →</a>
+  </div>
+</div>
+
+<div class="quickview" id="qv4" onclick="if(event.target===this) closeQV('qv4')">
+  <div class="qv-card">
+    <button class="close-btn" onclick="closeQV('qv4')">✕</button>
+    <span class="badge badge-paper">论文写作</span>
+    <h2>精简框架 · 玻璃球游戏论文结构</h2>
+    <p class="qv-meta">5 节结构 · ~6000 德语词 · 14 天写作时间线</p>
+    <p class="qv-desc">文本驱动的论文框架。核心原则：Hesse 的文本是主菜，理论是脚注里的盐。理论引用从 ~1500 词压缩至 &lt;200 词（全部在脚注），释放的空间给了 Knecht 觉醒弧线的逐幕细读。</p>
+    <ul class="qv-features">
+      <li>✅ 引言 → 游戏逻辑 → Knecht 觉醒（1800 词重心）→ AI 平行 → 结论</li>
+      <li>✅ 四个关键场景逐幕细读（音乐大师→Designori→致 Castalia 的信→水中死亡）</li>
+      <li>✅ 理论引用精确位置附录（哪个脚注、多少词）</li>
+      <li>✅ 14 天写作时间线（按天拆分）</li>
+      <li>✅ 修改前后对比表</li>
+    </ul>
+    <a class="qv-link" href="paper-slim-framework.html" target="_blank">打开框架 →</a>
+  </div>
+</div>
+
+<div class="quickview" id="qv5" onclick="if(event.target===this) closeQV('qv5')">
+  <div class="qv-card">
+    <button class="close-btn" onclick="closeQV('qv5')">✕</button>
+    <span class="badge badge-paper">论文写作</span>
+    <h2>2026 文学之路 · 会议投稿摘要</h2>
+    <p class="qv-meta">~280 德语词 · Literaturstraße 2026 国际研讨会</p>
+    <p class="qv-desc">投稿用德语摘要。文本驱动路线：摘要中不出现任何理论家名字（Krämer/Pasquinelli 全部移除），核心论证从「用理论分析文本」变成「从文本中发现结构」。Knecht 致 Castalia 的信被点名为核心文本锚点。</p>
+    <ul class="qv-features">
+      <li>✅ 三自然段：定位空白 → 文本发现 → AI 回响</li>
+      <li>✅ 结构同构（strukturelle Isomorphie）替代通俗类比</li>
+      <li>✅ 与上一版摘要的逐项差异对照</li>
+      <li>✅ 设计决策说明（5 条为什么）</li>
+      <li>✅ 投稿前确认清单</li>
+    </ul>
+    <a class="qv-link" href="tagungsabstract.html" target="_blank">打开摘要 →</a>
+  </div>
+</div>
+
+<div class="quickview" id="qv6" onclick="if(event.target===this) closeQV('qv6')">
+  <div class="qv-card">
+    <button class="close-btn" onclick="closeQV('qv6')">✕</button>
+    <span class="badge badge-ref">关于本站</span>
+    <h2>关于 Skyflyld 课件馆</h2>
+    <p class="qv-meta">交互式课件集合 · GitHub Pages 托管 · 持续更新</p>
+    <p class="qv-desc">所有课件均为纯 HTML 交互式页面——无需安装任何软件，浏览器打开即可使用。支持键盘翻页、点击展开、分类筛选、移动端响应式。内容涵盖哲学思辨、技术解析、论文写作辅助和学术参考资料。</p>
+    <ul class="qv-features">
+      <li>✅ 完全免费，GitHub Pages 托管</li>
+      <li>✅ 暗色/暖色双主题（按课件定位选择）</li>
+      <li>✅ 键盘导航 + 点击交互</li>
+      <li>✅ 手机/平板/桌面全适配</li>
+      <li>📬 新课件自动同步至此页面</li>
+    </ul>
+    <a class="qv-link" href="https://github.com/skyflyld/courseware" target="_blank">GitHub 仓库 →</a>
+  </div>
+</div>
+
+<footer>
+  <p>Skyflyld 课件馆 · <a href="https://github.com/skyflyld/courseware">github.com/skyflyld/courseware</a></p>
+  <p style="margin-top:4px;">所有内容采用交互式 HTML 格式 · 浏览器打开即用 · 无需安装</p>
+</footer>
+
+<script>
+function filter(tag) {
+  document.querySelectorAll('.filter-bar button').forEach(b => b.classList.remove('active'));
+  document.querySelector('.filter-bar button[onclick*="'+tag+'"]').classList.add('active');
+  
+  let visible = 0;
+  document.querySelectorAll('.card').forEach(c => {
+    if (tag === 'all') { c.classList.remove('hidden'); visible++; return; }
+    var tags = (c.dataset.tags || '').split(' ');
+    var show = tags.includes(tag);
+    c.classList.toggle('hidden', !show);
+    if (show) visible++;
+  });
+  document.getElementById('statCount').textContent = visible;
+}
+
+function openQV(id) {
+  document.getElementById(id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeQV(id) {
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.quickview.open').forEach(q => q.classList.remove('open'));
+    document.body.style.overflow = '';
+  }
+});
+</script>
+
+</body>
+</html>

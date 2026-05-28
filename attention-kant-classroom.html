@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>意识如何拼出世界 · Attention与康德的对话</title>
+<style>
+:root {
+  --bg: #f5f0e8;
+  --card: #fffef9;
+  --border: #d4c5a9;
+  --text: #2c2416;
+  --muted: #8b7e67;
+  --accent: #b87333;
+  --gold: #8b6914;
+  --blue: #3a6b8c;
+  --warm: #c17d4f;
+  --light-accent: #fef3e4;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', Georgia, 'PingFang SC', serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow: hidden;
+  height: 100vh;
+}
+
+.slides { height:100vh; position:relative; }
+.slide {
+  position:absolute; inset:0;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  padding: 60px 80px;
+  opacity:0; transform:translateY(30px);
+  transition: opacity .6s, transform .6s;
+  pointer-events:none; overflow-y:auto;
+}
+.slide.active { opacity:1; transform:translateY(0); pointer-events:all; }
+
+h1 { font-size:2.4em; font-weight:700; text-align:center; line-height:1.4; margin-bottom:.4em; }
+h2 { font-size:1.6em; color:var(--accent); margin-bottom:.5em; font-weight:600; }
+h3 { font-size:1.15em; color:var(--gold); margin-bottom:.3em; font-weight:600; }
+.subtitle { font-size:1em; color:var(--muted); margin-bottom:1.2em; text-align:center; line-height:1.6; }
+
+/* Story blocks */
+.story-block {
+  background:var(--card); border:1px solid var(--border); border-radius:12px;
+  padding:28px 34px; max-width:720px; margin:16px 0; line-height:1.8;
+  box-shadow:0 2px 12px rgba(0,0,0,.04);
+}
+.story-block .label {
+  font-size:.75em; text-transform:uppercase; letter-spacing:2px;
+  color:var(--accent); margin-bottom:8px; font-weight:600;
+}
+
+/* Experience cards */
+.exp-grid { display:grid; gap:20px; width:100%; max-width:960px; }
+.exp-grid.cols-2 { grid-template-columns:1fr 1fr; }
+.exp-grid.cols-3 { grid-template-columns:repeat(3,1fr); }
+
+.exp-card {
+  background:var(--card); border:1px solid var(--border); border-radius:14px;
+  padding:26px; cursor:pointer; transition:all .35s;
+  position:relative;
+}
+.exp-card:hover { border-color:var(--accent); transform:translateY(-3px); box-shadow:0 6px 24px rgba(183,115,51,.12); }
+.exp-card .icon { font-size:2em; margin-bottom:10px; }
+.exp-card h3 { margin-bottom:6px; font-size:1.1em; }
+.exp-card .surface { color:var(--muted); font-size:.92em; line-height:1.6; }
+.exp-card .deep { display:none; margin-top:14px; padding-top:14px; border-top:1px dashed var(--border); font-size:.9em; line-height:1.7; color:var(--text); }
+.exp-card.revealed .deep { display:block; }
+.exp-card.revealed .surface { display:none; }
+.exp-card .tap { font-size:.7em; color:var(--muted); margin-top:8px; font-style:italic; }
+
+/* Thought experiment */
+.thought-box {
+  background:linear-gradient(135deg, #fef9f0, #fdf3e0);
+  border:2px solid var(--accent); border-radius:14px;
+  padding:28px; max-width:700px; margin:20px 0; line-height:1.9;
+}
+.thought-box .tag { font-size:.8em; color:var(--accent); font-weight:700; letter-spacing:1px; margin-bottom:8px; }
+
+/* Quote */
+.pull-quote {
+  font-size:1.25em; font-style:italic; color:var(--gold);
+  border-left:4px solid var(--accent); padding:8px 0 8px 24px;
+  margin:16px 0; max-width:680px; line-height:1.7;
+}
+
+/* Step flow */
+.flow { display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:center; margin:20px 0; }
+.flow-item {
+  background:var(--card); border:1px solid var(--border); border-radius:10px;
+  padding:14px 20px; text-align:center; font-size:.9em; line-height:1.5;
+  transition:all .3s; cursor:pointer;
+}
+.flow-item:hover { border-color:var(--accent); background:var(--light-accent); }
+.flow-arrow { color:var(--accent); font-size:1.4em; font-weight:300; }
+
+/* Discussion */
+.discuss-grid { display:grid; gap:14px; width:100%; max-width:800px; }
+.discuss-item {
+  background:var(--card); border:1px solid var(--border); border-radius:10px;
+  padding:18px 22px; cursor:pointer; transition:all .3s;
+}
+.discuss-item:hover { border-color:var(--blue); }
+.discuss-item .q { font-weight:600; color:var(--text); }
+.discuss-item .hint { font-size:.8em; color:var(--muted); margin-top:4px; }
+.discuss-item .reveal { display:none; margin-top:12px; padding-top:12px; border-top:1px solid var(--border); font-size:.9em; line-height:1.7; }
+.discuss-item.revealed .hint { display:none; }
+.discuss-item.revealed .reveal { display:block; }
+
+/* Summary table */
+.summary-table {
+  width:100%; max-width:800px; border-collapse:collapse; margin:16px 0; font-size:.92em;
+}
+.summary-table th { background:var(--light-accent); color:var(--accent); padding:12px 16px; text-align:left; border-bottom:2px solid var(--border); font-weight:600; }
+.summary-table td { padding:10px 16px; border-bottom:1px solid var(--border); line-height:1.6; }
+.summary-table tr:hover td { background:rgba(183,115,51,.04); }
+
+/* Navigation */
+.nav {
+  position:fixed; bottom:28px; left:50%; transform:translateX(-50%);
+  display:flex; gap:14px; align-items:center; z-index:100;
+}
+.nav button {
+  background:var(--card); border:1px solid var(--border); color:var(--text);
+  padding:10px 22px; border-radius:8px; cursor:pointer; font-size:.9em;
+  font-family:inherit; transition:all .2s;
+}
+.nav button:hover { border-color:var(--accent); color:var(--accent); }
+.nav button:disabled { opacity:.25; cursor:default; }
+.nav .indicator { color:var(--muted); font-size:.85em; min-width:56px; text-align:center; }
+
+/* GBG subtle ref */
+.gbg-note {
+  font-size:.82em; color:var(--muted); font-style:italic; margin-top:12px;
+  border-top:1px dotted var(--border); padding-top:10px;
+}
+
+/* Responsive */
+@media(max-width:768px) {
+  .slide { padding:30px 22px; }
+  h1 { font-size:1.6em; }
+  h2 { font-size:1.25em; }
+  .exp-grid.cols-3, .exp-grid.cols-2 { grid-template-columns:1fr; }
+  .flow { flex-direction:column; }
+  .flow-arrow { transform:rotate(90deg); }
+}
+</style>
+</head>
+<body>
+
+<div class="slides">
+
+<!-- S0: Title -->
+<div class="slide active" id="s0">
+  <div style="text-align:center; max-width:700px;">
+    <div style="font-size:.85em; color:var(--accent); letter-spacing:3px; margin-bottom:20px;">通识课件 · 哲学与科技</div>
+    <h1>你的大脑<br>怎样把碎片<br><span style="color:var(--accent);">拼成一个世界？</span></h1>
+    <p class="subtitle" style="margin-top:24px;">
+      从一杯咖啡的体验出发<br>
+      走过康德、走过 Transformer<br>
+      看看意识的结构 — 和人造智能的边界
+    </p>
+    <p style="margin-top:30px; color:var(--muted); font-size:.85em;">
+      适合：大学通识课 · 读书会 · 好奇心的下午<br>
+      时长：40–50 分钟（含讨论）
+    </p>
+  </div>
+</div>
+
+<!-- S1: The Coffee -->
+<div class="slide" id="s1">
+  <h2>先别想哲学。喝一杯咖啡。</h2>
+
+  <div class="story-block">
+    <div class="label">☕ 现在</div>
+    <p>你坐在窗边，手里捧着一杯热咖啡。</p>
+    <p style="margin-top:6px;">你同时感受到——</p>
+    <p style="margin-top:8px;">
+      <span style="color:var(--accent);">深褐色的液体</span>在白色杯子里晃动的<span style="color:var(--blue);">视觉</span>⋯⋯
+      掌心传来的<span style="color:var(--accent);">温热</span>（<span style="color:var(--blue);">触觉</span>）⋯⋯
+      空气里<span style="color:var(--accent);">焦苦中带着一丝果酸</span>的<span style="color:var(--blue);">嗅觉</span>⋯⋯
+      窗外<span style="color:var(--accent);">雨声</span>和咖啡馆里隐约的<span style="color:var(--blue);">爵士乐</span>（<span style="color:var(--blue);">听觉</span>）⋯⋯
+    </p>
+    <p style="margin-top:14px; font-weight:600;">
+      但这些碎片——颜色、温度、气味、声音——是怎么<strong>一起</strong>变成「我在喝咖啡」<strong>这一个</strong>体验的？
+    </p>
+  </div>
+
+  <p style="margin-top:12px; color:var(--muted); max-width:640px; text-align:center; line-height:1.7;">
+    你的大脑每秒接收海量零散感觉。它们不自动组成一个「世界」。<br>
+    <strong>一定有什么东西在把它们粘起来。</strong><br>
+    这个问题，康德在 1781 年问过。Transformer 在 2017 年用数学回答了一部分。
+  </p>
+</div>
+
+<!-- S2: Kant's insight -->
+<div class="slide" id="s2">
+  <h2>康德的直觉：意识是一个「粘合」动作</h2>
+
+  <div class="story-block">
+    <div class="label">📖 回到那杯咖啡</div>
+    <p>假设你此刻只有——</p>
+    <p style="margin:10px 0; line-height:2;">
+      一团<span style="color:var(--accent);">深褐色</span>（视觉碎片）<br>
+      一点<span style="color:var(--accent);">温度</span>（触觉碎片）<br>
+      一缕<span style="color:var(--accent);">焦香</span>（嗅觉碎片）<br>
+      一段<span style="color:var(--accent);">旋律</span>（听觉碎片）
+    </p>
+    <p>如果它们只是<span style="color:var(--accent); font-weight:600;">并列存在</span>——那世界上就没有「喝咖啡的人」，只有一堆孤立的感官数据。</p>
+    <p style="margin-top:10px;"><strong>但你不是一堆数据。你是一个「我」。</strong></p>
+  </div>
+
+  <p class="subtitle" style="margin-top:16px;">康德说：把它们粘起来的，是三层东西——</p>
+
+  <div class="flow">
+    <div class="flow-item" onclick="this.classList.toggle('expanded')" style="cursor:pointer;">
+      <strong>① 接收</strong><br>
+      <span style="font-size:.8em; color:var(--muted);">感性</span>
+      <div style="display:none; margin-top:6px; font-size:.8em; color:var(--accent);">
+        接收已「有形状」<br>深褐色是「在杯子里」的<br>不是一团无位置的色块
+      </div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item" onclick="this.classList.toggle('expanded')" style="cursor:pointer;">
+      <strong>② 关联</strong><br>
+      <span style="font-size:.8em; color:var(--muted);">想象力</span>
+      <div style="display:none; margin-top:6px; font-size:.8em; color:var(--accent);">
+        把温度和颜色「放在一起」<br>把焦香和液体「联系起来」
+      </div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item" onclick="this.classList.toggle('expanded')" style="cursor:pointer;">
+      <strong>③ 归属</strong><br>
+      <span style="font-size:.8em; color:var(--muted);">统觉</span>
+      <div style="display:none; margin-top:6px; font-size:.8em; color:var(--accent);">
+        所有这些，<strong>都是「我的」</strong><br>不是漂浮的感觉<br>是「我在喝咖啡」
+      </div>
+    </div>
+  </div>
+  <p style="font-size:.75em; color:var(--muted); margin-top:8px;">👆 点击每个步骤</p>
+</div>
+
+<!-- S3: Kant's famous line -->
+<div class="slide" id="s3">
+  <h2>「这个是我的」— 一句改变哲学的话</h2>
+
+  <div class="pull-quote" style="font-size:1.35em;">
+    「我思必须能够伴随我的一切表象。」
+  </div>
+  <p style="color:var(--muted); font-size:.85em; margin-bottom:24px;">— 康德，《纯粹理性批判》B132</p>
+
+  <div class="thought-box">
+    <div class="tag">🧠 思想实验</div>
+    <p>想象你看到一朵玫瑰花。</p>
+    <p style="margin-top:10px;">如果「红色」「花瓣的形状」「淡淡的香气」这些感觉进入了你的大脑，但<strong>没有任何东西把它们标记为「我的」</strong>——</p>
+    <p style="margin-top:10px;">那么世界上就只是「有红色」「有形状」「有香气」<strong>在发生</strong>。</p>
+    <p style="margin-top:10px;">不存在一个<strong>正在看花的你</strong>。</p>
+    <p style="margin-top:16px; color:var(--accent); font-weight:600;">
+      那个让所有感知都成为「我的感知」的东西——康德叫它「统觉」。
+    </p>
+  </div>
+</div>
+
+<!-- S4: Enter Attention -->
+<div class="slide" id="s4">
+  <h2>两百多年后，一台机器做了同样的事</h2>
+
+  <p class="subtitle">不过它不喝咖啡——它「读」句子。</p>
+
+  <div class="exp-grid cols-2">
+    <div class="exp-card" onclick="this.classList.toggle('revealed')">
+      <div class="icon">📖</div>
+      <h3>它看到一个句子</h3>
+      <div class="surface">
+        「猫坐在垫子上。」——五个词，各自是孤立的符号。
+      </div>
+      <div class="deep">
+        就像你的感官碎片——「猫」只是一个 token，和「温暖」只是一个感觉一样。它们彼此无关，只是并排存在。
+      </div>
+      <div class="tap">点击 →</div>
+    </div>
+
+    <div class="exp-card" onclick="this.classList.toggle('revealed')">
+      <div class="icon">🔗</div>
+      <h3>它让每个词「看向」其他词</h3>
+      <div class="surface">
+        猫看垫子。垫子看猫。坐看猫，坐看垫子……
+      </div>
+      <div class="deep">
+        这和你的「想象力」做的事一样——把碎片联系起来。「坐」和「猫」有关系（谁坐？），「坐」和「垫子」也有关系（坐哪？）。机器同时计算所有这些关系。
+      </div>
+      <div class="tap">点击 →</div>
+    </div>
+
+    <div class="exp-card" onclick="this.classList.toggle('revealed')">
+      <div class="icon">⚖️</div>
+      <h3>它判断：哪些关系更重要？</h3>
+      <div class="surface">
+        「猫-坐」的关系权重很高。「猫-垫子」也高。「垫子-的」就没那么高……
+      </div>
+      <div class="deep">
+        康德问：什么把感觉粘在一起？<strong>关系</strong>。因果、相似、对比——这些关系决定了哪些感觉更有「粘性」。Transformer 用点积算出了同样的东西：两个词在「意义空间」里越接近，权重越高。
+      </div>
+      <div class="tap">点击 →</div>
+    </div>
+
+    <div class="exp-card" onclick="this.classList.toggle('revealed')">
+      <div class="icon">🧩</div>
+      <h3>它综合：每个词都吸收了全句</h3>
+      <div class="surface">
+        「猫」不再只是猫——它现在是「坐在垫子上的那只猫」。
+      </div>
+      <div class="deep">
+        这是康德式「综合」的数学版本：每个 token 最终的意义，是所有相关 token 按关系加权的混合。就和「深褐色 + 温热 + 焦香」综合成了「我的咖啡」一样。
+      </div>
+      <div class="tap">点击 →</div>
+    </div>
+  </div>
+</div>
+
+<!-- S5: The structural parallel -->
+<div class="slide" id="s5">
+  <h2>一张图看懂：你的意识 &amp; 机器的注意力</h2>
+
+  <table class="summary-table">
+    <thead>
+      <tr>
+        <th style="width:7%;"></th>
+        <th style="width:38%;">🧍 你的意识<br><span style="font-weight:400; font-size:.85em;">（康德 1781）</span></th>
+        <th style="width:38%;">🤖 机器的注意力<br><span style="font-weight:400; font-size:.85em;">（Vaswani 等 2017）</span></th>
+        <th style="width:17%;">共同点</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="color:var(--accent); font-weight:700;">1</td>
+        <td>感官接收碎片——但接收已「有形状」<br><span style="font-size:.82em; color:var(--muted);">咖啡的褐色不是一块无位置的色斑——它在杯子里，在桌子上，在窗边</span></td>
+        <td>Embedding：把词变成向量——但已编码了位置<br><span style="font-size:.82em; color:var(--muted);">「猫」不只是「猫」——它是「第 1 个位置的猫」</span></td>
+        <td style="color:var(--accent);">输入即结构</td>
+      </tr>
+      <tr>
+        <td style="color:var(--accent); font-weight:700;">2</td>
+        <td>想象力：把碎片拉在一起，让它们彼此照亮<br><span style="font-size:.82em; color:var(--muted);">温度和颜色不是两件事——是同一杯咖啡的两面</span></td>
+        <td>Attention 矩阵：每个词计算它与所有其他词的关系<br><span style="font-size:.82em; color:var(--muted);">n 个词 → n×n 的关系网络</span></td>
+        <td style="color:var(--accent);">全域关联</td>
+      </tr>
+      <tr>
+        <td style="color:var(--accent); font-weight:700;">3</td>
+        <td>统觉：所有感知归属到「我」<br><span style="font-size:.82em; color:var(--muted);">「我在喝咖啡」——不是一堆感觉在发生</span></td>
+        <td>加权求和：每个 token 从全句吸收信息<br><span style="font-size:.82em; color:var(--muted);">「猫」出来后带着「坐」和「垫子」的痕迹</span></td>
+        <td style="color:var(--accent);">综合统一</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="margin-top:16px; color:var(--muted); max-width:680px; text-align:center; line-height:1.7;">
+    这不是比喻。<strong>是结构同构。</strong>两个系统——一个生物的，一个硅基的——都在做同一件事：<span style="color:var(--accent);">把孤立碎片粘合成有意义的整体。</span>
+  </p>
+</div>
+
+<!-- S6: The crucial difference -->
+<div class="slide" id="s6">
+  <h2>但那关键的一步，机器没有做</h2>
+
+  <div class="story-block">
+    <div class="label">🔑 核心分歧</div>
+    <p style="line-height:1.9;">
+      <strong>康德说：</strong>把碎片粘起来的「关系规则」——因果、实体、交互——是<span style="color:var(--accent); font-weight:600;">先天的</span>。你天生就知道「一件事导致另一件事」是什么意思。你先有了因果这个框架，然后才用它去理解「杯子摔了→咖啡洒了」。
+    </p>
+    <p style="margin-top:16px; line-height:1.9;">
+      <strong>Transformer 说：</strong>这些规则是从数据里<span style="color:var(--blue); font-weight:600;">学来的</span>。它没见过因果——它只见过十亿个「因为……所以……」同时出现的句子。
+    </p>
+  </div>
+
+  <div class="thought-box">
+    <div class="tag">🤔 课堂上可以这样问</div>
+    <p>一个从未见过光的人，能理解「光明」和「黑暗」的对比吗？</p>
+    <p style="margin-top:8px;">一个从未碰过热水的人，看到「烫」这个字——他知道那是什么吗？</p>
+    <p style="margin-top:12px; color:var(--accent); font-weight:600;">
+      康德说不能——经验之前已有框架。<br>
+      Transformer 说——如果训练数据足够大，也许能。
+    </p>
+  </div>
+</div>
+
+<!-- S7: What Attention Cannot See -->
+<div class="slide" id="s7">
+  <h2>意识的盲区：有什么是粘不起来的？</h2>
+
+  <div class="thought-box">
+    <div class="tag">💡 更深的一问</div>
+    <p style="line-height:1.9;">
+      康德式的综合——无论是人脑的统觉还是机器的 Attention——都有一个前提：<strong>被综合的东西必须是可形式化的</strong>。必须是能被编码成「碎片」的。
+    </p>
+    <p style="margin-top:12px; line-height:1.9;">
+      但生活中有些东西，<strong>拒绝被编码</strong>。
+    </p>
+  </div>
+
+  <div class="exp-grid cols-3" style="margin-top:16px;">
+    <div class="exp-card" onclick="this.classList.toggle('revealed')" style="cursor:pointer;">
+      <div class="icon">🤲</div>
+      <h3>具身体验</h3>
+      <div class="surface">「痛」这个字 ≠ 真正的痛</div>
+      <div class="deep">一个人从未痛过，读完一万本关于「痛」的书——他还是不知道痛是什么。Attention 处理的只是「痛」这个 token 的统计特征，不是痛本身。</div>
+      <div class="tap">点击展开</div>
+    </div>
+
+    <div class="exp-card" onclick="this.classList.toggle('revealed')" style="cursor:pointer;">
+      <div class="icon">🤫</div>
+      <h3>沉默</h3>
+      <div class="surface">Attention 只处理 token。<br>沉默没有 token。</div>
+      <div class="deep">两个人之间的沉默——那个「没说出口但比什么都说出来更有分量」的东西——Attention 完全看不到。因为它没有东西可「注意」。</div>
+      <div class="tap">点击展开</div>
+    </div>
+
+    <div class="exp-card" onclick="this.classList.toggle('revealed')" style="cursor:pointer;">
+      <div class="icon">🌌</div>
+      <h3>否定性的空隙</h3>
+      <div class="surface">有些东西的意义<br>恰恰在于它们的「不在场」</div>
+      <div class="deep">一首诗的留白。音乐中的休止符。一个人离开后空出的那把椅子。这些「不在」定义了「在」，但 Attention 只能注意存在的东西。</div>
+      <div class="tap">点击展开</div>
+    </div>
+  </div>
+
+  <div class="gbg-note" style="max-width:680px; text-align:center; margin-top:20px;">
+    📖 赫塞在《玻璃球游戏》中让主角 Knecht 离开那个试图综合一切知识的精英王国——不是因为知识不重要，而是因为「不是所有东西都可以被综合」。某种意义上，他预见了 Attention 的认识论边界。
+  </div>
+</div>
+
+<!-- S8: Classroom discussion -->
+<div class="slide" id="s8">
+  <h2>课堂讨论 · 从经验出发</h2>
+  <p class="subtitle">5–8 分钟小组讨论，选一个最触动你的问题</p>
+
+  <div class="discuss-grid">
+    <div class="discuss-item" onclick="this.classList.toggle('revealed')">
+      <div class="q">💬 你最近一次「感受到的东西说不出」是什么时候？</div>
+      <div class="hint">点击展开讨论引导</div>
+      <div class="reveal">
+        <strong>引导方向：</strong>这是 Attention/统觉的盲区——那些拒绝被编码成语言的经验（一种气氛、一个眼神、一段音乐带来的身体反应）。问问同学：如果这些东西不能被「综合」进语言，它们还算知识吗？<br><br>
+        <strong>延伸：</strong>这和 AI 无法「理解」具身体验是同一个问题。
+      </div>
+    </div>
+
+    <div class="discuss-item" onclick="this.classList.toggle('revealed')">
+      <div class="q">💬 如果一台机器能完美模拟「理解」——它算真的理解吗？</div>
+      <div class="hint">点击展开讨论引导</div>
+      <div class="reveal">
+        <strong>引导方向：</strong>回到咖啡的例子——如果你读到的所有关于咖啡的描述都是另一个人写的，而那个人从未真正喝过咖啡，你能分辨吗？<br><br>
+        <strong>哲学锚点：</strong>中文房间（Searle）——操作符号和「理解意义」是同一件事吗？这和康德的「统觉归属」有什么关系？
+      </div>
+    </div>
+
+    <div class="discuss-item" onclick="this.classList.toggle('revealed')">
+      <div class="q">💬 康德说范畴是先天的。你怎么看？</div>
+      <div class="hint">点击展开讨论引导</div>
+      <div class="reveal">
+        <strong>引导方向：</strong>让同学回到自己的生活——你是「先知道因果关系」再去看世界，还是「先看到世界上的事情」再发现因果？<br><br>
+        <strong>现代视角：</strong>发展心理学——婴儿几个月大就对因果有预期（ Baillargeon 的魔术实验）。但这是「先天的」还是「快速学习的」？这是康德 vs Transformer 的战场。
+      </div>
+    </div>
+
+    <div class="discuss-item" onclick="this.classList.toggle('revealed')">
+      <div class="q">💬 Attention 不能处理沉默——这有关系吗？</div>
+      <div class="hint">点击展开讨论引导</div>
+      <div class="reveal">
+        <strong>引导方向：</strong>人类交流中，沉默和空白占多大比例？如果 AI 只理解 token（能说的东西），它错过的是什么？<br><br>
+        <strong>生活例子：</strong>你和最好的朋友之间，有多少东西是不需要说出口的？这些东西能「训练」进 AI 吗？
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S9: Summary -->
+<div class="slide" id="s9">
+  <h2>一个下午的旅程 · 你带走了什么</h2>
+
+  <div style="max-width:700px; text-align:center;">
+    <div class="story-block" style="text-align:left;">
+      <p style="line-height:2;">
+        ☕ <strong>从一杯咖啡出发</strong>——发现感官碎片需要被「粘」起来<br>
+        📖 <strong>康德说</strong>——是统觉在做这件事，它让所有感知都成为「我的」<br>
+        🤖 <strong>两百多年后</strong>——Transformer 的 Attention 机制，用数学实现了同一件事<br>
+        ⚡ <strong>但关键一步不同</strong>——康德说框架是先天的，机器说框架是学来的<br>
+        🌑 <strong>更深的追问</strong>——总有些东西，拒绝被编码、拒绝被综合<br>
+      </p>
+    </div>
+
+    <h3 style="margin-top:28px; color:var(--accent);">三条核心收获</h3>
+
+    <table class="summary-table" style="margin-top:12px;">
+      <tbody>
+        <tr>
+          <td style="font-weight:700; color:var(--accent); width:30%;">哲学不是古董</td>
+          <td>康德 1781 年问的问题——意识如何统一碎片——在 2017 年的 AI 论文里找到了数学对应物。好问题不会过时，只会换一种语言被重新回答。</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700; color:var(--accent);">结构同构 ≠ 比喻</td>
+          <td>不是「有点像」——是「操作逻辑完全一致」。两者都在做「接收→关联→综合→归属」这四步。</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700; color:var(--accent);">知道边界，才知道价值</td>
+          <td>AI 最深刻的限制不是算力或数据——是它只能处理<span style="color:var(--accent);">可形式化的东西</span>。而那些不可编码的（身体的痛、沉默的重量、一首诗的空行）——恰恰是我们最人性的部分。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="margin-top:24px; color:var(--muted); font-size:.82em;">
+      推荐课后阅读：康德《纯粹理性批判》导言 · Vaswani et al. "Attention Is All You Need" (2017)
+    </p>
+  </div>
+</div>
+
+</div><!-- /slides -->
+
+<div class="nav">
+  <button onclick="prevSlide()" id="prevBtn">← 上一页</button>
+  <span class="indicator" id="indicator">1 / 10</span>
+  <button onclick="nextSlide()" id="nextBtn">下一页 →</button>
+</div>
+
+<script>
+let current = 0;
+const total = 10;
+
+function showSlide(n) {
+  document.querySelectorAll('.slide').forEach((s,i) => s.classList.toggle('active', i===n));
+  document.getElementById('indicator').textContent = (n+1) + ' / ' + total;
+  document.getElementById('prevBtn').disabled = n === 0;
+  document.getElementById('nextBtn').disabled = n === total - 1;
+}
+function nextSlide() { if(current < total-1) { current++; showSlide(current); } }
+function prevSlide() { if(current > 0) { current--; showSlide(current); } }
+document.addEventListener('keydown', e => {
+  if(e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextSlide(); }
+  if(e.key === 'ArrowLeft') { e.preventDefault(); prevSlide(); }
+});
+
+// Toggle for flow items
+document.querySelectorAll('.flow-item').forEach(el => {
+  el.addEventListener('click', function() {
+    const div = this.querySelector('div');
+    if(div) div.style.display = div.style.display === 'none' ? 'block' : 'none';
+  });
+});
+
+showSlide(0);
+</script>
+
+</body>
+</html>

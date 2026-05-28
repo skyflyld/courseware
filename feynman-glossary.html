@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>黑塞论文 · 费曼速查词表</title>
+<style>
+:root {
+  --bg: #faf8f3;
+  --card: #fffef9;
+  --border: #d4c5a9;
+  --text: #2c2416;
+  --muted: #8b7e67;
+  --accent: #b87333;
+  --blue: #3a6b8c;
+  --gold: #8b6914;
+  --tag-bg: #fef3e4;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', Georgia, serif;
+  background: var(--bg); color: var(--text);
+  max-width: 860px; margin: 0 auto; padding: 48px 32px 80px;
+  line-height: 1.7;
+}
+
+header {
+  text-align:center; margin-bottom:48px;
+  padding-bottom:28px; border-bottom:1px solid var(--border);
+}
+header h1 { font-size:1.7em; color:var(--accent); margin-bottom:6px; }
+header .meta { font-size:.85em; color:var(--muted); }
+
+.filter-bar {
+  display:flex; gap:8px; flex-wrap:wrap; margin-bottom:36px;
+}
+.filter-bar button {
+  background:var(--card); border:1px solid var(--border);
+  color:var(--text); padding:6px 16px; border-radius:20px;
+  cursor:pointer; font-size:.85em; font-family:inherit;
+  transition:all .2s;
+}
+.filter-bar button:hover, .filter-bar button.active {
+  background:var(--accent); color:#fff; border-color:var(--accent);
+}
+
+.entry {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:12px; padding:28px 32px; margin-bottom:20px;
+  transition:all .3s;
+}
+.entry:hover { border-color:var(--accent); box-shadow:0 3px 18px rgba(183,115,51,.08); }
+.entry.hidden { display:none; }
+
+.entry-header { display:flex; align-items:baseline; gap:12px; margin-bottom:10px; flex-wrap:wrap; }
+.entry-header .num { font-size:.75em; color:var(--muted); font-weight:400; }
+.entry-header .term { font-size:1.2em; font-weight:700; color:var(--accent); }
+.entry-header .german { font-size:.9em; color:var(--muted); font-style:italic; }
+
+.entry .source { display:inline-block; background:var(--tag-bg); color:var(--accent); 
+  font-size:.75em; padding:2px 10px; border-radius:10px; margin-left:auto; }
+
+.entry .oneliner { font-size:1.05em; line-height:1.7; color:var(--text); margin:8px 0 6px; }
+.entry .oneliner::before { content:'💡 '; }
+
+.entry .context { font-size:.88em; color:var(--muted); line-height:1.7; 
+  border-top:1px dashed var(--border); margin-top:12px; padding-top:12px; }
+
+.entry .context strong { color:var(--text); }
+
+footer {
+  text-align:center; margin-top:48px; padding-top:24px;
+  border-top:1px solid var(--border); color:var(--muted); font-size:.8em;
+}
+
+a { color:var(--accent); text-decoration:none; }
+a:hover { text-decoration:underline; }
+
+@media(max-width:640px) {
+  body { padding:24px 16px; }
+  .entry { padding:20px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>📖 费曼速查词表</h1>
+  <p class="meta">
+    黑塞论文 × AI 认识论批判 · 10 个核心术语<br>
+    写作时随时查阅，每个词条包含：一句话定义 + 来源 + 在论文中的角色
+  </p>
+</header>
+
+<div class="filter-bar">
+  <button class="active" onclick="filter('all')">全部</button>
+  <button onclick="filter('kramer')">Krämer 系</button>
+  <button onclick="filter('lineage')">思想史谱系</button>
+  <button onclick="filter('pasquinelli')">Pasquinelli 系</button>
+  <button onclick="filter('tool')">论文分析工具</button>
+  <button onclick="filter('target')">批判对象</button>
+</div>
+
+<div class="entry" data-tags="kramer">
+  <div class="entry-header">
+    <span class="num">01</span>
+    <span class="term">操作性图像性</span>
+    <span class="german">Operative Bildlichkeit</span>
+    <span class="source">Krämer</span>
+  </div>
+  <p class="oneliner">不只是画出来给人看的图像——是用了之后会改变东西的图像。</p>
+  <div class="context">
+    <strong>在论文中的角色：</strong>解释玻璃球游戏的符号不是静态的「标记」，而是<strong>可操作的</strong>——一旦被放置在游戏棋盘上并按规则移动，它们就<em>生成</em>新的意义。这和 AI 中的 token 运算逻辑是同构的：符号不是被「理解」的，是被「执行」的。<br>
+    <strong>出处：</strong>Krämer, Sybille (2016/2024). <em>Figuration, Anschauung, Erkenntnis</em> 及相关图式学论文。
+  </div>
+</div>
+
+<div class="entry" data-tags="kramer">
+  <div class="entry-header">
+    <span class="num">02</span>
+    <span class="term">图表学</span>
+    <span class="german">Diagrammatologie</span>
+    <span class="source">Krämer</span>
+  </div>
+  <p class="oneliner">研究图表、地图、符号系统怎么帮助我们思考的学问——不是研究「图上有什么」，是研究「图让我们怎么想」。</p>
+  <div class="context">
+    <strong>在论文中的角色：</strong>提供分析玻璃球游戏的<strong>方法论框架</strong>——把游戏棋盘看作一种「图式装置」，分析它如何通过空间排列、符号操作和规则系统来生产知识，而非仅仅记录知识。<br>
+    <strong>出处：</strong>Krämer, Sybille. <em>Operative Bildlichkeit</em> 及相关图式学著作。
+  </div>
+</div>
+
+<div class="entry" data-tags="lineage">
+  <div class="entry-header">
+    <span class="num">03</span>
+    <span class="term">组合艺术</span>
+    <span class="german">Ars Combinatoria</span>
+    <span class="source">Llull (13c)</span>
+  </div>
+  <p class="oneliner">13 世纪 Llull 的发明——用有限几个基本概念，通过旋转同心圆盘来机械地组合出无限知识。</p>
+  <div class="context">
+    <strong>在论文中的角色：</strong>形式化知识系统的<strong>思想史起点</strong>。Llull 的装置是最早的「用机器加工符号」的尝试——它的逻辑（有限原子→规则组合→无限产出）和玻璃球游戏、和今天的生成式 AI，共享同一条血脉。<br>
+    <strong>出处：</strong>Llull, Ramon (约 1275). <em>Ars Magna</em>.
+  </div>
+</div>
+
+<div class="entry" data-tags="lineage">
+  <div class="entry-header">
+    <span class="num">04</span>
+    <span class="term">普遍特征</span>
+    <span class="german">Characteristica Universalis</span>
+    <span class="source">Leibniz (17c)</span>
+  </div>
+  <p class="oneliner">Leibniz 的梦想：把所有人类思考变成一套通用符号系统——「来，别吵了，让我们坐下来算一算。」</p>
+  <div class="context">
+    <strong>在论文中的角色：</strong>形式化谱系的<strong>第二站</strong>——从 Llull 的机械轮盘到 Leibniz 的逻辑演算，形式化从「组合」进化为「推理」。玻璃球游戏中的「普遍语言」理想直接继承了 Leibniz 的愿景。<br>
+    <strong>出处：</strong>Leibniz, G.W. (约 1679). <em>De Characteristica Universali</em>.
+  </div>
+</div>
+
+<div class="entry" data-tags="kramer lineage">
+  <div class="entry-header">
+    <span class="num">05</span>
+    <span class="term">符号机器</span>
+    <span class="german">Symbolmaschine</span>
+    <span class="source">Krämer</span>
+  </div>
+  <p class="oneliner">加工符号的机器——不是加工钢铁的，也不是加工数字的。它的原材料和产品都是符号。</p>
+  <div class="context">
+    <strong>在论文中的角色：</strong>把 Llull 的圆盘、Leibniz 的演算、Hesse 的玻璃球游戏和今天的 Transformer 统一在一个概念下——它们<strong>都是符号机器</strong>，区别只在于复杂度和媒介。这个概念是论文论证「玻璃球游戏→AI」连续性的理论桥梁。<br>
+    <strong>出处：</strong>Krämer, Sybille. 「Symbolmaschine」概念散布于其形式化批评著作中。
+  </div>
+</div>
+
+<div class="entry" data-tags="kramer">
+  <div class="entry-header">
+    <span class="num">06</span>
+    <span class="term">形式化的文化技术</span>
+    <span class="german">Kulturtechniken der Formalisierung</span>
+    <span class="source">Krämer</span>
+  </div>
+  <p class="oneliner">人类花了几千年，一直在学一件事：把世界变成规则系统——这就是形式化的文化技术。</p>
+  <div class="context">
+    <strong>在论文中的角色：</strong>给形式化谱系一个<strong>文化史框架</strong>——不是个别天才的偶然发明，而是人类文明一以贯之的认知策略。玻璃球游戏是这一策略的文学化极致，AI 是其当前的技术化极致。<br>
+    <strong>出处：</strong>Krämer, Sybille. 散布于其文化技术（Kulturtechnik）相关论文中。
+  </div>
+</div>
+
+<div class="entry" data-tags="pasquinelli">
+  <div class="entry-header">
+    <span class="num">07</span>
+    <span class="term">算法认识论批判</span>
+    <span class="german">Algorithmische Erkenntniskritik</span>
+    <span class="source">Pasquinelli</span>
+  </div>
+  <p class="oneliner">不是问「AI 算得对不对」，是问「AI 这种『知道』方式有什么天生的盲区」。</p>
+  <div class="context">
+    <strong>在论文中的角色：</strong>论文的<strong>批判性引擎</strong>——用 Pasquinelli 的框架揭示玻璃球游戏（以及当代 AI）在处理非西方知识时的结构性偏见：算法不是中性的数学工具，而是一种编码了特定认识论等级制度的「知识政治」。<br>
+    <strong>出处：</strong>Pasquinelli, Matteo (2023). <em>The Eye of the Master: A Social History of Artificial Intelligence</em>.
+  </div>
+</div>
+
+<div class="entry" data-tags="tool">
+  <div class="entry-header">
+    <span class="num">08</span>
+    <span class="term">脱语境化 + 形式化</span>
+    <span class="german">Entkontextualisierung + Formalisierung</span>
+    <span class="source">论文分析工具</span>
+  </div>
+  <p class="oneliner">先拔出来，再塞进系统——这是玻璃球游戏和 AI 处理非西方知识的同一套手法。</p>
+  <div class="context">
+    <strong>在论文中的角色：</strong>论文的<strong>核心分析概念</strong>——描述玻璃球游戏如何「消化」东方知识（《易经》、道家哲学）的两步操作：① 从原来的文化和身体实践中<strong>拔出来</strong>（脱语境化），② 编码成游戏可操作的符号单元（形式化）。论证这一步操作和当代 AI 处理非西方语料的方式是<strong>结构同构</strong>的。<br>
+    <strong>出处：</strong>论文自身的分析框架，受 Pasquinelli 启发。
+  </div>
+</div>
+
+<div class="entry" data-tags="tool">
+  <div class="entry-header">
+    <span class="num">09</span>
+    <span class="term">组合 + 模式识别</span>
+    <span class="german">Kombinatorik + Mustererkennung</span>
+    <span class="source">论文分析工具</span>
+  </div>
+  <p class="oneliner">符号系统只会两招——把零件拼起来（组合），和从数据里找规律（模式识别）。</p>
+  <div class="context">
+    <strong>在论文中的角色：</strong>定义玻璃球游戏和 AI 的<strong>共同操作逻辑</strong>——它们都通过这两个基本操作来「理解」世界。论文论证的张力来自：这两种操作<strong>能覆盖多少知识</strong>？东方思想中那些依赖具身体验、沉默、直觉、语境嵌入的部分——能通过组合和模式识别被捕获吗？不能的，就是 Knecht 离开的原因。<br>
+    <strong>出处：</strong>论文自身的分析框架。
+  </div>
+</div>
+
+<div class="entry" data-tags="target">
+  <div class="entry-header">
+    <span class="num">10</span>
+    <span class="term">形式化世界观解释系统</span>
+    <span class="german">Formale Weltdeutungssysteme</span>
+    <span class="source">论文批判对象</span>
+  </div>
+  <p class="oneliner">那些声称「给足规则，世界就是可计算的」的系统——Llull、Leibniz、玻璃球游戏、ChatGPT，全是这个家族的。</p>
+  <div class="context">
+    <strong>在论文中的角色：</strong>论文的<strong>总批判靶子</strong>——不是批判某一个系统，而是批判<strong>这一类承诺</strong>。这个术语把 Llull 的圆盘、Leibniz 的演算、Castalia 的玻璃球游戏和今天的生成式 AI 拴在同一个概念链条上，让论文的批判从「文学研究」上升到「认识论批判」。<br>
+    <strong>出处：</strong>论文提出的统一概念。
+  </div>
+</div>
+
+<footer>
+  <p>基于费曼学习法整理 · 配合论文写作使用 · 最后更新 2026-05-28</p>
+  <p style="margin-top:4px;">论文工作标题：<em>Das Glasperlenspiel als algorithmische Weltdeutung</em></p>
+</footer>
+
+<script>
+function filter(tag) {
+  document.querySelectorAll('.filter-bar button').forEach(b => b.classList.remove('active'));
+  document.querySelector('.filter-bar button[onclick*="'+tag+'"]').classList.add('active');
+  
+  document.querySelectorAll('.entry').forEach(e => {
+    if (tag === 'all') { e.classList.remove('hidden'); return; }
+    var tags = e.dataset.tags || '';
+    e.classList.toggle('hidden', !tags.split(' ').includes(tag));
+  });
+}
+</script>
+
+</body>
+</html>

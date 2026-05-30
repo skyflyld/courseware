@@ -241,7 +241,7 @@ footer a:hover { text-decoration:underline; }
   <h1>📚 Skyflyld · 课件馆</h1>
   <p class="sub">可直接用于课堂讲授、研讨会和自学的交互式课件。点击卡片预览，点击链接打开。</p>
   <div class="stats">
-    <div class="stat"><div class="n" id="statCount">6</div><div class="l">课件</div></div>
+    <div class="stat"><div class="n" id="statCount">7</div><div class="l">课件</div></div>
     <div class="stat"><div class="n">14d</div><div class="l">论文写作框架</div></div>
     <div class="stat"><div class="n">280</div><div class="l">词会议摘要</div></div>
   </div>
@@ -256,6 +256,18 @@ footer a:hover { text-decoration:underline; }
 </div>
 
 <div class="grid" id="grid">
+  <!-- Card 0: Gödel -->
+  <div class="card" data-tags="phil ref" onclick="openQV('qv0')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')openQV('qv0')">
+    <span class="badge badge-phil">哲学思辨</span>
+    <h2>哥德尔 · 不完备之美</h2>
+    <p class="desc">交互式叙事。走过 Herr Warum 的童年、希尔伯特的梦碎、柯尼斯堡的暗杀、爱因斯坦的散步，直到黑塞玻璃球游戏的共鸣。8 章叙事 + 5 个交互元件。</p>
+    <div class="meta-row">
+      <span>📄 8 章</span><span>🎮 5 个交互</span><span>🔗 哥德尔×黑塞</span>
+    </div>
+    <span class="arrow">→</span>
+  </div>
+
+  <!-- Card 0 -->
 
   <!-- Card 1 -->
   <div class="card" data-tags="phil" onclick="openQV('qv1')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')openQV('qv1')">
@@ -312,7 +324,7 @@ footer a:hover { text-decoration:underline; }
     <span class="arrow">→</span>
   </div>
 
-  <!-- Card 6: Index itself -->
+  <!-- Card 7: Index itself -->
   <div class="card" data-tags="ref" onclick="openQV('qv6')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')openQV('qv6')">
     <span class="badge badge-ref">关于本站</span>
     <h2>关于 Skyflyld 课件馆</h2>
@@ -326,6 +338,28 @@ footer a:hover { text-decoration:underline; }
 </div>
 
 <!-- Quick View Panels -->
+<!-- QV 0: Gödel -->
+<div class="quickview" id="qv0" onclick="if(event.target===this) closeQV('qv0')" role="dialog" aria-modal="true">
+  <div class="qv-card">
+    <button class="close-btn" onclick="closeQV('qv0')" aria-label="关闭预览">✕</button>
+    <span class="badge badge-phil">哲学思辨</span>
+    <h2>哥德尔 · 不完备之美</h2>
+    <p class="qv-meta">8 章叙事 · 5 个交互元件 · 暗底金文 · 响应式</p>
+    <p class="qv-desc">一个交互式叙事页面。讲述库尔特·哥德尔的一生和他的不完备定理，最终连通到黑塞《玻璃球游戏》。从"为什么先生"的少年到希尔伯特纲领的崩塌，从柯尼斯堡的暗杀到爱因斯坦的散步，从说谎者悖论到形式系统的裂缝。</p>
+    <ul class="qv-features">
+      <li>✅ 希尔伯特三根支柱的交互式崩塌</li>
+      <li>✅ 柯尼斯堡场景：可点击的席间人物（冯·诺依曼彩蛋）</li>
+      <li>✅ 说谎者悖论交互检验器</li>
+      <li>✅ 极简形式系统推导器（"真但不可证"）</li>
+      <li>✅ 爱因斯坦×哥德尔散步场景</li>
+      <li>✅ 时间线点击展开</li>
+    </ul>
+    <a class="qv-link" href="godel.html" target="_blank">打开页面 →</a>
+  </div>
+</div>
+
+<!-- Quick View Panels -->
+
 <div class="quickview" id="qv1" onclick="if(event.target===this) closeQV('qv1')" role="dialog" aria-modal="true">
   <div class="qv-card">
     <button class="close-btn" onclick="closeQV('qv1')" aria-label="关闭预览">✕</button>

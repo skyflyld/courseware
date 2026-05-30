@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>哥德尔 · 不完备之美</title>
+<style>
+:root {
+  --bg: #0a0a0f;
+  --surface: #12121a;
+  --gold: #d4a853;
+  --gold-dim: #8a7038;
+  --text: #c8c8d4;
+  --text-dim: #6a6a7a;
+  --accent: #b8860b;
+  --danger: #c0392b;
+  --math: #5b9bd5;
+  --hilbert: #e8d5b7;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: var(--bg); color: var(--text);
+  font-family: 'Georgia', 'Noto Serif SC', 'STSong', serif;
+  line-height: 1.8; overflow-x: hidden;
+}
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 2px; }
+
+/* ── Hero ── */
+.hero {
+  min-height: 100vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 2rem;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(180,130,30,0.08) 0%, transparent 70%);
+  z-index: 0;
+}
+.hero-symbol {
+  font-size: 6rem; line-height: 1; z-index: 1;
+  animation: pulse 4s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: normal; z-index: 1; margin: 1rem 0 0.5rem;
+  background: linear-gradient(180deg, var(--gold) 0%, #e8c860 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero .sub {
+  color: var(--text-dim); font-size: 1.1rem; z-index: 1;
+  max-width: 500px;
+}
+.hero .scroll-hint {
+  position: absolute; bottom: 2rem; z-index: 1;
+  color: var(--text-dim); font-size: 0.85rem;
+  animation: fadeInOut 3s ease-in-out infinite;
+}
+@keyframes fadeInOut {
+  0%,100% { opacity: 0.3; } 50% { opacity: 1; }
+}
+
+/* ── Sections ── */
+.section {
+  max-width: 700px; margin: 0 auto; padding: 5rem 1.5rem;
+  position: relative;
+}
+.section h2 {
+  font-size: 1.8rem; font-weight: normal; color: var(--gold);
+  margin-bottom: 1.5rem; letter-spacing: 0.05em;
+}
+.section p { margin-bottom: 1.2rem; color: var(--text); }
+.section .note {
+  color: var(--text-dim); font-size: 0.9rem; font-style: italic;
+}
+
+/* ── Divider ── */
+.divider {
+  text-align: center; padding: 2rem 0; color: var(--gold-dim);
+  font-size: 1.5rem; letter-spacing: 0.5em;
+}
+
+/* ── Timeline ── */
+.timeline {
+  position: relative; padding-left: 2rem;
+}
+.timeline::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 1px; background: linear-gradient(to bottom, var(--gold), transparent);
+}
+.timeline-item {
+  position: relative; margin-bottom: 2.5rem; padding-left: 1.5rem;
+  cursor: pointer; transition: all 0.3s;
+}
+.timeline-item::before {
+  content: ''; position: absolute; left: -2rem; top: 0.5rem;
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--gold-dim); border: 2px solid var(--bg);
+  transition: all 0.3s;
+}
+.timeline-item:hover::before, .timeline-item.active::before {
+  background: var(--gold); box-shadow: 0 0 12px var(--gold);
+}
+.timeline-item .year {
+  color: var(--gold); font-size: 0.9rem; letter-spacing: 0.1em;
+}
+.timeline-item .detail {
+  max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+  color: var(--text-dim); font-size: 0.95rem;
+}
+.timeline-item.active .detail { max-height: 300px; margin-top: 0.5rem; }
+
+/* ── Hilbert's Pillars ── */
+.pillars {
+  display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+  margin: 2rem 0;
+}
+.pillar {
+  background: var(--surface); border: 1px solid #2a2a35;
+  border-radius: 8px; padding: 1.5rem; width: 180px; text-align: center;
+  cursor: pointer; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative; overflow: hidden;
+}
+.pillar h3 { color: var(--hilbert); font-size: 1rem; margin-bottom: 0.5rem; }
+.pillar p { font-size: 0.8rem; color: var(--text-dim); }
+.pillar.shattered {
+  border-color: var(--danger);
+  transform: translateY(8px) rotate(var(--rot, 0deg));
+  opacity: 0.5;
+}
+.pillar.shattered::after {
+  content: '✕'; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%); font-size: 2rem; color: var(--danger);
+  opacity: 0.6;
+}
+.pillar .crack {
+  position: absolute; top: 0; left: 30%; width: 1px; height: 0;
+  background: var(--danger); transition: height 0.8s 0.3s ease;
+}
+.pillar.shattered .crack { height: 100%; }
+#shatter-btn {
+  display: block; margin: 1.5rem auto;
+  background: transparent; border: 1px solid var(--danger);
+  color: var(--danger); padding: 0.6rem 1.5rem; border-radius: 4px;
+  cursor: pointer; font-family: inherit; font-size: 0.9rem;
+  transition: all 0.3s;
+}
+#shatter-btn:hover { background: rgba(192,57,43,0.1); }
+#shatter-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+/* ── Liar's Paradox ── */
+.paradox-box {
+  background: var(--surface); border: 1px solid #2a2a35;
+  border-radius: 12px; padding: 2rem; margin: 2rem 0;
+}
+.paradox-box .statement {
+  font-size: 1.3rem; text-align: center; padding: 1rem;
+  color: var(--gold); font-style: italic;
+  min-height: 3rem; transition: all 0.5s;
+}
+.paradox-box .verdict {
+  text-align: center; font-size: 1rem; min-height: 1.5rem;
+  transition: all 0.3s;
+}
+.paradox-box .verdict.true { color: #4caf50; }
+.paradox-box .verdict.false { color: var(--danger); }
+.paradox-box .verdict.paradox { color: var(--gold); }
+#paradox-input {
+  width: 100%; background: #1a1a25; border: 1px solid #333;
+  color: var(--text); padding: 0.8rem; border-radius: 6px;
+  font-family: inherit; font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+#paradox-check {
+  background: var(--gold-dim); color: var(--bg); border: none;
+  padding: 0.5rem 1.5rem; border-radius: 4px; cursor: pointer;
+  font-family: inherit;
+}
+#paradox-check:hover { background: var(--gold); }
+
+/* ── Königsberg Scene ── */
+.scene {
+  background: var(--surface); border-radius: 12px; padding: 2rem;
+  margin: 2rem 0; position: relative; overflow: hidden;
+  border: 1px solid #2a2a35;
+}
+.scene .audience {
+  display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center;
+  margin: 1rem 0;
+}
+.scene .person {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: #1a1a28; border: 1px solid #333;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem; color: var(--text-dim);
+  transition: all 0.5s; cursor: pointer; position: relative;
+}
+.scene .person:hover { border-color: var(--gold); }
+.scene .person.noticed {
+  border-color: var(--gold); background: rgba(212,168,83,0.15);
+  box-shadow: 0 0 8px rgba(212,168,83,0.3);
+}
+.scene .person.neumann {
+  border-color: #5b9bd5; background: rgba(91,155,213,0.15);
+  animation: neumannPulse 1s ease-in-out 3;
+}
+@keyframes neumannPulse {
+  0%,100% { box-shadow: 0 0 0 rgba(91,155,213,0); }
+  50% { box-shadow: 0 0 16px rgba(91,155,213,0.5); }
+}
+.scene-caption {
+  text-align: center; color: var(--text-dim); font-size: 0.85rem;
+  min-height: 2rem; transition: all 0.3s;
+}
+
+/* ── Walking Scene ── */
+.walk-scene {
+  display: flex; align-items: center; justify-content: center;
+  gap: 2rem; margin: 2rem 0; position: relative;
+}
+.walker {
+  text-align: center; transition: all 0.5s;
+}
+.walker .icon { font-size: 3rem; }
+.walker .name { font-size: 0.9rem; color: var(--gold); margin-top: 0.5rem; }
+.walker .quote {
+  font-size: 0.8rem; color: var(--text-dim); font-style: italic;
+  max-width: 200px; margin-top: 0.5rem; opacity: 0;
+  transition: opacity 0.5s;
+}
+.walk-scene:hover .walker .quote { opacity: 1; }
+
+/* ── Theorem Visual ── */
+.theorem-viz {
+  position: relative; height: 200px; margin: 2rem 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.circle-system {
+  width: 180px; height: 180px; border: 2px solid var(--gold-dim);
+  border-radius: 50%; position: relative;
+  display: flex; align-items: center; justify-content: center;
+}
+.circle-system .label {
+  position: absolute; top: -30px; color: var(--text-dim); font-size: 0.8rem;
+}
+.circle-system .provable {
+  position: absolute; inset: 20px; border: 1px dashed var(--math);
+  border-radius: 50%;
+}
+.circle-system .truth {
+  position: absolute; right: -30px; top: 50%; transform: translateY(-50%);
+  color: var(--gold); font-size: 0.85rem; opacity: 0;
+  transition: opacity 0.8s 0.5s;
+}
+.circle-system.show-truth .truth { opacity: 1; }
+.circle-system .gap {
+  position: absolute; width: 8px; height: 8px; background: var(--gold);
+  border-radius: 50%; top: 40%; right: 28%;
+  opacity: 0; transition: opacity 0.5s;
+}
+.circle-system.show-truth .gap { opacity: 1; animation: glow 2s ease-in-out infinite; }
+@keyframes glow {
+  0%,100% { box-shadow: 0 0 4px var(--gold); }
+  50% { box-shadow: 0 0 20px var(--gold), 0 0 40px rgba(212,168,83,0.4); }
+}
+
+/* ── Interactive: Counter ── */
+.counter-demo {
+  background: var(--surface); border-radius: 12px; padding: 2rem;
+  margin: 2rem 0; text-align: center; border: 1px solid #2a2a35;
+}
+.counter-demo .axiom-box {
+  background: #1a1a25; border-radius: 8px; padding: 1rem; margin: 1rem 0;
+  font-family: 'Courier New', monospace; font-size: 0.85rem;
+  color: var(--math); text-align: left;
+  white-space: pre-line; line-height: 1.6;
+}
+.counter-demo .result-box {
+  background: #1a1a25; border-radius: 8px; padding: 1rem; margin: 1rem 0;
+  min-height: 4rem; color: var(--text-dim); font-family: 'Courier New', monospace;
+  font-size: 0.85rem; text-align: left; white-space: pre-line;
+}
+.counter-demo button {
+  background: transparent; border: 1px solid var(--math); color: var(--math);
+  padding: 0.5rem 1.5rem; border-radius: 4px; cursor: pointer;
+  font-family: inherit; margin: 0.25rem;
+  transition: all 0.3s;
+}
+.counter-demo button:hover { background: rgba(91,155,213,0.1); }
+
+/* ── Epilogue ── */
+.epilogue {
+  text-align: center; padding: 6rem 1.5rem;
+  background: radial-gradient(ellipse at center, rgba(180,130,30,0.06) 0%, transparent 70%);
+}
+.epilogue blockquote {
+  font-size: 1.4rem; color: var(--gold); font-style: italic;
+  max-width: 600px; margin: 0 auto 1.5rem; line-height: 1.6;
+}
+.epilogue .attr { color: var(--text-dim); font-size: 0.9rem; }
+.epilogue .german {
+  color: var(--text-dim); font-size: 0.9rem; margin-top: 0.5rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .section { padding: 3rem 1rem; }
+  .pillars { flex-direction: column; align-items: center; }
+  .pillar { width: 100%; max-width: 250px; }
+  .walk-scene { flex-direction: column; gap: 1rem; }
+  .scene .person { width: 30px; height: 30px; font-size: 0.6rem; }
+}
+
+/* ── Fade-in animation ── */
+.fade-in {
+  opacity: 0; transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ── Tooltip ── */
+.tooltip {
+  position: absolute; background: var(--surface); border: 1px solid var(--gold);
+  padding: 0.3rem 0.6rem; border-radius: 4px; font-size: 0.75rem;
+  color: var(--gold); pointer-events: none; z-index: 10;
+  opacity: 0; transition: opacity 0.2s;
+}
+</style>
+</head>
+<body>
+
+<!-- ════════ HERO ════════ -->
+<section class="hero">
+  <div class="hero-symbol">∀</div>
+  <h1>库尔特·哥德尔</h1>
+  <p class="sub">一个用数学证明"数学不能证明一切"的人。<br>一个25岁时，用一句话终结了人类理性最狂妄的梦想。</p>
+  <div class="scroll-hint">↓ 开始探索</div>
+</section>
+
+<!-- ════════ 1. Herr Warum ════════ -->
+<section class="section fade-in">
+  <h2>① "为什么先生"</h2>
+  <p>1906年，布尔诺。一个男孩出生在奥匈帝国的纺织业家庭。家里人叫他 <em style="color:var(--gold)">Herr Warum</em>——「为什么先生」。</p>
+  <p>他每件事都要追问到底。9岁时得了风湿热，自己查医书读到风湿热可能导致心脏问题——<strong>此后一辈子，他相信自己心脏有病。</strong></p>
+  <p class="note">这种近乎偏执的严谨，后来成了他摧毁整个数学纲领的武器。</p>
+</section>
+
+<div class="divider">◆</div>
+
+<!-- ════════ 2. Hilbert's Dream ════════ -->
+<section class="section fade-in">
+  <h2>② 希尔伯特的梦</h2>
+  <p>1928年，数学教皇大卫·希尔伯特在博洛尼亚国际数学家大会上，提出了一个令人窒息的纲领：</p>
+  <p>数学应该是<strong>一致的</strong>、<strong>完备的</strong>、<strong>可判定的</strong>。不存在"我们不知道"——只存在"我们还没找到证明"。</p>
+
+  <div class="pillars" id="pillars-container">
+    <div class="pillar" data-pillar="1" style="--rot:-3deg">
+      <div class="crack"></div>
+      <h3>一致性</h3>
+      <p>不会推出矛盾</p>
+    </div>
+    <div class="pillar" data-pillar="2" style="--rot:2deg">
+      <div class="crack"></div>
+      <h3>完备性</h3>
+      <p>所有真命题都能被证明</p>
+    </div>
+    <div class="pillar" data-pillar="3" style="--rot:-2deg">
+      <div class="crack"></div>
+      <h3>可判定性</h3>
+      <p>存在机械方法判断任一命题真假</p>
+    </div>
+  </div>
+
+  <button id="shatter-btn" onclick="shatterPillars()">点击：见证哥德尔的证明</button>
+  <p style="text-align:center;color:var(--text-dim);font-size:0.85rem;margin-top:0.5rem;" id="shatter-hint">
+    一个25岁的年轻人，用一篇论文击碎了这三根柱子
+  </p>
+</section>
+
+<div class="divider">◆</div>
+
+<!-- ════════ 3. Königsberg 1930 ════════ -->
+<section class="section fade-in">
+  <h2>③ 柯尼斯堡，1930年9月</h2>
+  <p>"精确科学认识论"会议。希尔伯特本人发表了演讲，结尾是那句著名的话：</p>
+  <blockquote style="font-size:1.2rem;color:var(--gold);font-style:italic;text-align:center;padding:1rem;">
+    Wir müssen wissen, wir werden wissen.<br>
+    <span style="font-size:0.9rem;color:var(--text-dim);">我们必须知道，我们终将知道。</span>
+  </blockquote>
+  <p>这不是一个猜想——这是一个<strong>宣言</strong>。数学的完备性不是待证明的对象，是已经相信的结论。</p>
+
+  <!-- Interactive scene -->
+  <div class="scene" id="konigsberg-scene">
+    <p style="text-align:center;color:var(--text-dim);font-size:0.85rem;margin-bottom:1rem;">
+      第二天，关于数学基础的圆桌讨论。哥德尔坐在下面。点击席间的人们——
+    </p>
+    <div class="audience" id="audience">
+      <!-- JS fills -->
+    </div>
+    <div class="scene-caption" id="scene-caption">
+      希尔伯特刚说完"我们终将知道"。全场掌声。
+    </div>
+  </div>
+</section>
+
+<div class="divider">◆</div>
+
+<!-- ════════ 4. The Liar ════════ -->
+<section class="section fade-in">
+  <h2>④ 说谎者</h2>
+  <p>哥德尔证明的核心，是一个古老的悖论穿上数学的外衣。</p>
+  <p>两千年前，克里特人埃庇米尼得斯说：<em style="color:var(--gold)">「所有克里特人都说谎。」</em></p>
+  <p>如果他说的是真的——那他作为克里特人也在说谎，所以这句话是假的。如果他说的是假的——那克里特人不都说谎，但这句话本身就是反例。循环无解。</p>
+  <p>哥德尔做的事：<strong>把这个悖论编码成了数学语句</strong>。他构造了一个数学命题 G，G 说："G 在这个系统内不可证明。"</p>
+
+  <div class="paradox-box">
+    <p style="color:var(--text-dim);font-size:0.85rem;margin-bottom:0.5rem;">试试看：输入一个自指语句</p>
+    <input type="text" id="paradox-input"
+      placeholder='试试："这句话是假的" 或 "这句话是真的"'
+      value="这句话是假的">
+    <button id="paradox-check" onclick="checkParadox()">检验</button>
+    <div class="statement" id="paradox-statement"></div>
+    <div class="verdict" id="paradox-verdict"></div>
+  </div>
+</section>
+
+<div class="divider">◆</div>
+
+<!-- ════════ 5. The Theorem ════════ -->
+<section class="section fade-in">
+  <h2>⑤ 定理</h2>
+  <p>第一不完备定理：任何<strong>一致的、能表达基本算术</strong>的形式系统，必然存在<strong>真但不可证明</strong>的命题。</p>
+  <p>第二不完备定理：这样的系统<strong>无法证明自身的一致性</strong>。</p>
+
+  <div class="theorem-viz" id="theorem-viz">
+    <div class="circle-system" id="circle-system">
+      <span class="label">形式系统</span>
+      <div class="provable"></div>
+      <span style="position:absolute;color:var(--math);font-size:0.75rem;">可证命题</span>
+      <span class="truth">真命题</span>
+      <div class="gap"></div>
+    </div>
+  </div>
+  <p style="text-align:center;margin-top:1rem;">滚动到此处时，注意系统外的那个亮点——<strong>真，但永远无法被系统证明。</strong></p>
+
+  <div class="counter-demo">
+    <p style="color:var(--text-dim);font-size:0.85rem;margin-bottom:0.5rem;">
+      一个极简的形式系统——感受 "可证" 与 "为真" 之间的裂缝
+    </p>
+    <div class="axiom-box">
+公理 1: 0 是一个数
+公理 2: 如果 n 是一个数, 那么 S(n) 也是一个数（后继）
+公理 3: 对于任何数 n, S(n) ≠ 0
+    </div>
+    <button onclick="runSystem()">推导</button>
+    <button onclick="runIncompleteness()" style="border-color:var(--gold-dim);color:var(--gold-dim);">寻找不可证的真命题</button>
+    <div class="result-box" id="system-result">
+      点击「推导」看看这个系统能证明什么……
+    </div>
+  </div>
+</section>
+
+<div class="divider">◆</div>
+
+<!-- ════════ 6. Einstein ════════ -->
+<section class="section fade-in">
+  <h2>⑥ 最好的朋友</h2>
+  <p>普林斯顿高等研究院。每天下午，两个人一起走回家。</p>
+  <p>一个是世界上最著名的科学家。一个是数学界的隐士。</p>
+
+  <div class="walk-scene">
+    <div class="walker">
+      <div class="icon">🧠</div>
+      <div class="name">阿尔伯特·爱因斯坦</div>
+      <div class="quote">
+        「我自己的工作没什么意思了，我来研究院主要是为了有荣幸和哥德尔一起走回家。」
+      </div>
+    </div>
+    <div style="color:var(--gold-dim);font-size:2rem;">⇄</div>
+    <div class="walker">
+      <div class="icon">∀</div>
+      <div class="name">库尔特·哥德尔</div>
+      <div class="quote">
+        「我不相信经验科学。我们是在没有事实的情况下进行哲学思考。」
+      </div>
+    </div>
+  </div>
+
+  <p>爱因斯坦晚年说出那句话时，你能感受到什么？不是谦逊——是<strong>真正理解了哥德尔的分量</strong>。</p>
+  <p>不是"他很有才华"。是"和他相比，我做的东西没什么意思"。</p>
+</section>
+
+<div class="divider">◆</div>
+
+<!-- ════════ 7. Hesse Connection ════════ -->
+<section class="section fade-in">
+  <h2>⑦ 黑塞的共鸣</h2>
+  <p>赫尔曼·黑塞写《玻璃球游戏》是 1931-1942 年。哥德尔的论文是 1931 年。</p>
+  <p>黑塞可能没有读过哥德尔。但克内希特的离开和哥德尔的证明共享同一个洞见：</p>
+
+  <blockquote style="font-size:1.1rem;color:var(--gold);font-style:italic;text-align:center;padding:1.5rem;border-left:3px solid var(--gold-dim);margin:1.5rem 0;background:var(--surface);">
+    不是我们还没找到完美的形式化方法。<br>
+    是<strong>"完美的形式化"这个概念本身就包含矛盾。</strong>
+  </blockquote>
+
+  <p>希尔伯特和克内希特站在同一个位置上——试图用形式系统统摄全部人类知识。哥德尔的定理是数学内部的证词：这个系统从第一天就注定不完整。</p>
+
+  <p>你在黑塞论文中那个说法——<em style="color:var(--gold)">「文学反图灵测试」</em>——哥德尔的不完备性定理就是它的数学前传。</p>
+
+  <p class="note">哥德尔用数学证明了：当你试图用系统囊括所有真理时，系统会反噬自己。黑塞用文学证明了：当一个人试图用符号统摄全部人类经验时，他的灵魂会反噬他。</p>
+</section>
+
+<div class="divider">◆</div>
+
+<!-- ════════ 8. Timeline ════════ -->
+<section class="section fade-in">
+  <h2>⑧ 时间线</h2>
+  <div class="timeline" id="timeline">
+    <div class="timeline-item">
+      <div class="year">1906</div>
+      <p>生于布尔诺。"为什么先生"</p>
+      <div class="detail">德语家庭，富裕的纺织厂主之子。从小展现出对"为什么"的执着——这种追问不是出于好奇，是出于一种必须找到最终答案的饥渴。</div>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1924</div>
+      <p>进入维也纳大学，先学物理，后转向哲学和数学</p>
+      <div class="detail">参加维也纳小组讨论，几乎从不发言。他不是在讨论中输出的人——他是在安静中想通所有人没想通的问题的人。</div>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1930 · 9月</div>
+      <p>柯尼斯堡会议。一句话改变一切。</p>
+      <div class="detail">「在形式主义观点下，可以给出一些例子，说明存在被认定为真的命题但在这个系统内不可判定。」全场几乎没人注意。只有冯·诺依曼立刻明白了这句话的分量。</div>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1931</div>
+      <p>《论〈数学原理〉及其相关系统的形式不可判定命题 I》发表</p>
+      <div class="detail">注意那个"I"——他本打算写续篇。续篇从未出现。第一篇就够了。冯·诺依曼几乎同时独立导出了第二定理，但他写信给哥德尔说：这是你的发现，我绝不会发表。</div>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1933-1939</div>
+      <p>多次访问普林斯顿，与爱因斯坦建立友谊</p>
+      <div class="detail">两人每天一起走路回家。性格截然相反——一个外向幽默，一个内向严苛——但智识上彼此是唯一能对话的人。</div>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1940</div>
+      <p>移居美国，加入普林斯顿高等研究院</p>
+      <div class="detail">为逃避纳粹征兵，经西伯利亚铁路→日本→船到美国。这条路线是他自己选的——他需要确认每一个环节的安全。</div>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1978</div>
+      <p>死于营养不良，体重约30公斤</p>
+      <div class="detail">迫害妄想症。担心食物被下毒，只吃妻子做的饭。妻子住院后，拒绝进食。这不是一个幸福的人。但这可能是唯一一个能摧毁希尔伯特纲领的人。</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider">◆</div>
+
+<!-- ════════ EPILOGUE ════════ -->
+<section class="epilogue">
+  <blockquote>
+    「这不是数学家的失败。<br>这是人类智识最伟大的时刻——<br>我们终于理解了自身的界限。」
+  </blockquote>
+  <p class="attr">— 以费曼的口吻</p>
+  <p class="german">Wir müssen wissen, wir werden wissen.</p>
+  <p style="color:var(--text-dim);font-size:0.85rem;margin-top:1rem;">
+    不是"我们必须知道"——是"我们必须接受有些事我们永远不能知道"。
+  </p>
+  <p style="color:var(--gold-dim);font-size:0.8rem;margin-top:2rem;">🦞 Ariste · 2026-05-30</p>
+</section>
+
+<script>
+// ── Scroll reveal ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('visible');
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// ── Theorem viz reveal ──
+const vizObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) document.getElementById('circle-system').classList.add('show-truth');
+  });
+}, { threshold: 0.5 });
+const tv = document.getElementById('theorem-viz');
+if (tv) vizObserver.observe(tv);
+
+// ── Hilbert pillars ──
+let shattered = false;
+function shatterPillars() {
+  if (shattered) return;
+  shattered = true;
+  const pillars = document.querySelectorAll('.pillar');
+  pillars.forEach((p, i) => {
+    setTimeout(() => p.classList.add('shattered'), i * 200);
+  });
+  document.getElementById('shatter-btn').disabled = true;
+  document.getElementById('shatter-btn').textContent = '三根柱子，全部崩塌';
+  document.getElementById('shatter-hint').textContent = '哥德尔1931：一致、完备、可判定——不可能同时成立';
+}
+
+// ── Königsberg scene ──
+const people = [
+  { id:'hilbert', label:'希尔伯特', type:'speaker' },
+  { id:'godel', label:'哥德尔', type:'hero' },
+  { id:'neumann', label:'冯·诺依曼', type:'genius' },
+  { id:'carnap', label:'卡尔纳普', type:'other' },
+  { id:'heyting', label:'海廷', type:'other' },
+  { id:'berneys', label:'贝尔奈斯', type:'other' },
+  { id:'ackermann', label:'阿克曼', type:'other' },
+  { id:'weyl', label:'外尔', type:'other' },
+  { id:'skolem', label:'斯科伦', type:'other' },
+  { id:'tarski', label:'塔尔斯基', type:'other' },
+];
+let godelClicked = false, neumannNoticed = false;
+const audienceEl = document.getElementById('audience');
+const captionEl = document.getElementById('scene-caption');
+
+people.forEach(p => {
+  const el = document.createElement('div');
+  el.className = 'person';
+  el.textContent = p.label.charAt(0);
+  el.title = p.label;
+  el.dataset.id = p.id;
+  el.addEventListener('click', () => handleClick(p, el));
+  audienceEl.appendChild(el);
+});
+
+function handleClick(person, el) {
+  if (person.id === 'godel' && !godelClicked) {
+    godelClicked = true;
+    el.classList.add('noticed');
+    captionEl.innerHTML = '「在形式主义观点下，可以给出一些例子，说明存在被认定为真的命题但在这个系统内不可判定。」<br><span style="color:var(--text-dim)">——全场几乎没人注意到。</span>';
+  } else if (person.id === 'neumann' && godelClicked && !neumannNoticed) {
+    neumannNoticed = true;
+    el.classList.add('neumann');
+    captionEl.innerHTML = '冯·诺依曼猛地抬起头。<br><span style="color:var(--math)">全场只有他，在这一秒理解了这句话的分量。</span>';
+    setTimeout(() => {
+      captionEl.innerHTML = '一个月后，冯·诺依曼独立导出了第二不完备定理。<br>但他写信给哥德尔：「这是你的发现，我绝不会发表。」';
+    }, 3000);
+  } else if (person.id === 'hilbert') {
+    captionEl.innerHTML = '希尔伯特正在演讲。他还不知道，他的纲领即将被台下这个年轻人终结。<br><span style="color:var(--text-dim)">「我们必须知道，我们终将知道。」</span>';
+  } else if (person.id === 'godel' && godelClicked) {
+    captionEl.innerHTML = '哥德尔说完就安静了。他从来不是那种在讨论中输出的人。<br><span style="color:var(--text-dim)">他是那种在安静中想通所有人没想通的问题的人。</span>';
+  }
+}
+
+// ── Liar's paradox checker ──
+function checkParadox() {
+  const input = document.getElementById('paradox-input').value.trim();
+  const stmtEl = document.getElementById('paradox-statement');
+  const verdictEl = document.getElementById('paradox-verdict');
+  stmtEl.textContent = `「${input}」`;
+  verdictEl.className = 'verdict';
+
+  // Simple heuristic detection
+  const lower = input.toLowerCase();
+  const selfRefPatterns = [
+    /这句话/, /这个句子/, /这个命题/, /本句/, /this sentence/, /this statement/
+  ];
+  const falsityPatterns = /假的|错误的|不对|不是真的|false|wrong|not true|谎/;
+  const truthPatterns = /真的|对的|正确|是对的|true|correct/;
+
+  const isSelfRef = selfRefPatterns.some(r => r.test(lower));
+  const claimsFalse = falsityPatterns.test(lower);
+  const claimsTrue = truthPatterns.test(lower);
+
+  if (isSelfRef && claimsFalse && !claimsTrue) {
+    verdictEl.textContent = '⚠️ 悖论！如果它为真，则它为假；如果它为假，则它为真。这就是哥德尔编码的核心——自指 + 否定 = 不可判定。';
+    verdictEl.classList.add('paradox');
+  } else if (isSelfRef && claimsTrue && !claimsFalse) {
+    verdictEl.textContent = '✓ 自洽，但不产生悖论。它为真 → 它为真，无矛盾。哥德尔的巧妙在于他加上了否定。';
+    verdictEl.classList.add('true');
+  } else if (isSelfRef) {
+    verdictEl.textContent = '🤔 自指但语义模糊。试试更明确的自指否定句。';
+    verdictEl.classList.add('paradox');
+  } else {
+    verdictEl.textContent = '这不是自指语句，不构成悖论。但记住——哥德尔把"这句话不可证"用算术编码，才是真正的魔法。';
+    verdictEl.classList.add('true');
+  }
+}
+
+// ── Simple formal system demo ──
+let systemState = { derived: new Set(), step: 0 };
+function runSystem() {
+  systemState = { derived: new Set(['0']), step: 0 };
+  const res = document.getElementById('system-result');
+  let out = '推导过程：\n';
+  out += '第0步: {0}  ← 公理1\n';
+
+  let current = ['0'];
+  for (let i = 1; i <= 5; i++) {
+    const next = current.map(n => `S(${n})`);
+    next.forEach(n => {
+      if (!systemState.derived.has(n)) {
+        systemState.derived.add(n);
+        out += `第${i}步: 从 ${current.join(', ')} 推出 ${next.join(', ')}  ← 公理2\n`;
+      }
+    });
+    current = next;
+  }
+  out += `\n可证的命题: {${[...systemState.derived].join(', ')}}`;
+  res.textContent = out;
+}
+
+function runIncompleteness() {
+  const res = document.getElementById('system-result');
+  let out = '寻找"真但不可证"的命题……\n\n';
+  out += '考察命题 G: 「S(S(0)) ≠ 0」\n';
+  out += '这是公理3的特例。它是真的（S(S(0)) 确实 ≠ 0），\n';
+  out += '但它需要公理3 + 替换才能证明。\n\n';
+  out += '在这个极简系统中，所有可证命题都是 "某个数是数"\n';
+  out += '但「S(S(…S(0)…)) ≠ 0」这类命题虽然为真，\n';
+  out += '却不在可证集合中。\n\n';
+  out += '⟶ 系统不完备。\n';
+  out += '⟶ 这就是微缩版的哥德尔不完备定理。\n\n';
+  out += '真正的哥德尔证明将这个逻辑放大到整个算术：\n';
+  out += '他构造了命题 G，G 说："G 不可证明"。\n';
+  out += '如果 G 可证 → G 为假 → 系统不一致（矛盾）\n';
+  out += '如果 G 不可证 → G 为真 → 系统不完备（有真但不可证的命题）\n';
+  out += '所以：一致则不完备。完 备则不一致。\n';
+  out += '没有第三种可能。';
+  res.textContent = out;
+}
+
+// ── Timeline click ──
+document.querySelectorAll('.timeline-item').forEach(item => {
+  item.addEventListener('click', function() {
+    const wasActive = this.classList.contains('active');
+    document.querySelectorAll('.timeline-item').forEach(i => i.classList.remove('active'));
+    if (!wasActive) this.classList.add('active');
+  });
+});
+
+// ── Initial paradox check ──
+checkParadox();
+</script>
+
+</body>
+</html>

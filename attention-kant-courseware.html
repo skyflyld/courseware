@@ -563,45 +563,62 @@ score(i, j) = Q(tokenᵢ) · K(tokenⱼ)
         • <strong>具身体验</strong>——「痛」这个词的统计模式 ≠ 真正的痛<br>
         • <strong>沉默</strong>——只能处理 token，不能处理「没有 token」的意义<br>
         • <strong>否定性的空隙</strong>——那些「不在场」但定义了在场的东西<br><br>
-        <strong>🔑 这恰好是赫塞《玻璃球游戏》的核心洞见</strong>——下页展开。
+        <strong>🔑 那「人和 AI 到底是什么关系」？——下页展开讨论</strong>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Slide 6: Hesse Connection -->
+<!-- Slide 6: Human vs AI → Interactive Discussion -->
 <div class="slide" id="s6">
-  <h2 style="text-align:center;">延伸：赫塞的预见</h2>
-  <p class="subtitle">1943 年，Hesse 描述了一个「人工统觉系统」——74 年后，它变成了代码</p>
+  <h2 style="text-align:center;">🤝 人和AI的关系</h2>
+  <p class="subtitle">角色扮演：三组立场，任选一组讨论 5 分钟后上台</p>
 
-  <div class="card-grid cols-2">
-    <div class="card" onclick="this.classList.toggle('revealed')">
-      <h3>🏰 玻璃球游戏 = 人工统觉系统</h3>
-      <p>Kastalien 试图把人类全部知识综合到统一的符号关联中</p>
+  <div class="card-grid cols-3">
+    <div class="card" onclick="this.classList.toggle('revealed')" style="border-color:#4a90d9">
+      <h3>🔧 工具派</h3>
+      <p><em>"AI 就是高级计算器，所有输出本质上来自人的输入。"</em></p>
       <div class="hidden">
-        <p>这几乎就是 Transformer 要做的事：<strong>在万物之间建立联系</strong>。</p>
-        <p style="margin-top:8px; color:var(--gold);">Hesse 不是在 1943 年「预见了 AI」——他预见了 Attention 的认识论边界。</p>
+        <p><strong>核心论点：</strong>AI 没有意图，没有意识，没有「理解」。它的一切输出都是统计概率的结果——就像计算器不会「理解」数字一样，AI 不会「理解」语言。</p>
+        <p style="margin-top:8px; color:#4a90d9; font-weight:600;">口头禅：「AI 只是匹配统计模式。创作者永远是使用工具的人。」</p>
+        <p style="margin-top:6px; font-size:.9em; color:var(--muted);">🌰 类比：锤子不会决定钉子钉在哪。用 AI 写作文的人，负责任的还是那个人的名字。</p>
       </div>
-      <div class="click-hint">点击展开</div>
+      <div class="click-hint">点击展开论点</div>
     </div>
 
-    <div class="card" onclick="this.classList.toggle('revealed')">
-      <h3>🚪 Knecht 的离开</h3>
-      <p>不是所有东西都可以被综合</p>
+    <div class="card" onclick="this.classList.toggle('revealed')" style="border-color:#e8a838">
+      <h3>🤝 协同派</h3>
+      <p><em>"人和 AI 是互补的认知搭档，1+1 > 2。"</em></p>
       <div class="hidden">
-        <p>Knecht 离开 Kastalien 不是因为统一不重要——而是因为<strong>有些东西在综合之前、之外、之下</strong>。</p>
-        <p style="margin-top:8px; color:var(--accent); font-weight:600;">
-          Attention 看不到它们，正如 Kastalien 看不到 Knecht 需要的东西。
-        </p>
+        <p><strong>核心论点：</strong>使用 AI 不是替代，而是增强。就像用显微镜看到肉眼看不到的东西，AI 帮我们看到人类认知模式中隐藏的结构——Attention 本身就是康德的统觉的数学实现，不是吗？</p>
+        <p style="margin-top:8px; color:#e8a838; font-weight:600;">口头禅：「人和 AI 的关系不是主人和奴隶——是舞伴。」</p>
+        <p style="margin-top:6px; font-size:.9em; color:var(--muted);">🌰 类比：程序员用 Copilot 写代码——不是 AI 写了他全部的代码，而是他在 AI 的辅助下写得更快更好。</p>
       </div>
-      <div class="click-hint">点击展开</div>
+      <div class="click-hint">点击展开论点</div>
+    </div>
+
+    <div class="card" onclick="this.classList.toggle('revealed')" style="border-color:#e07b5a">
+      <h3>🔮 反思派</h3>
+      <p><em>"AI 是一面镜子——照出人类自己是怎么认知的。"</em></p>
+      <div class="hidden">
+        <p><strong>核心论点：</strong>研究 AI 本质上是研究自己。Attention 的结构和康德先验统觉同构——这不偶然。AI 暴露了人类认知的边界、模式、偏见。人和 AI 的关系，是人通过技术重新理解自己的过程。</p>
+        <p style="margin-top:8px; color:#e07b5a; font-weight:600;">口头禅：「AI 是我们打在自己思想上的光——照出了我们是怎么思考的。」</p>
+        <p style="margin-top:6px; font-size:.9em; color:var(--muted);">🌰 类比：画自画像的时候你不只是在画脸，你是在看自己怎么看自己。</p>
+      </div>
+      <div class="click-hint">点击展开论点</div>
     </div>
   </div>
 
-  <div style="max-width:750px; margin-top:clamp(16px,2.5vh,28px); text-align:center;">
-    <p style="font-size:clamp(1rem,1.8vw,1.4rem); font-weight:600; color:var(--text);">
-      这篇论文的核心论点不是「赫塞预见了 AI」——<br>
-      而是 <span class="gold">赫塞预见了「所有东西都能被综合」这个信念本身的边界</span>。
+  <div style="max-width:750px; margin-top:clamp(20px,3vh,32px); text-align:center; background:var(--accent-light); border-radius:16px; padding:clamp(14px,2vw,24px);">
+    <p style="font-size:clamp(1.05rem,1.8vw,1.4rem); font-weight:600;">
+      💡 <strong>终极问题（教师引导讨论）：</strong>
+    </p>
+    <p style="font-size:clamp(.95rem,1.4vw,1.2rem); margin-top:6px;">
+      如果 AI 写了一首让你流眼泪的诗——<span class="gold">创作者是谁？</span>
+    </p>
+    <p style="font-size:clamp(.85rem,1.2vw,1rem); margin-top:10px; color:var(--muted);">
+      是写 prompt 的人？是训练数据的原作者们？是 Transformer 架构？还是——<br>
+      这首诗本身就独立存在了？
     </p>
   </div>
 </div>
@@ -635,8 +652,8 @@ score(i, j) = Q(tokenᵢ) · K(tokenⱼ)
         <span style="font-size:clamp(.9rem,1.4vw,1.15rem);">核心差异：<strong>规则先天</strong> vs <strong>规则从数据涌现</strong></span>
       </div>
       <div style="display:flex; gap:12px; align-items:flex-start;">
-        <span style="font-size:1.5em;">🔮</span>
-        <span style="font-size:clamp(.9rem,1.4vw,1.15rem);">赫塞的警告：<strong>不是所有东西都可以被综合</strong></span>
+        <span style="font-size:1.5em;">🤝</span>
+        <span style="font-size:clamp(.9rem,1.4vw,1.15rem);">人和 AI 的关系：<strong>工具？舞伴？还是镜子？</strong></span>
       </div>
     </div>
 

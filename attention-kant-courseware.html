@@ -6,167 +6,313 @@
 <title>Attention × 康德：先验统觉的数学实现</title>
 <style>
 :root {
-  --bg: #0d1117;
-  --card: #161b22;
-  --border: #30363d;
-  --text: #e6edf3;
-  --muted: #8b949e;
-  --accent: #58a6ff;
-  --gold: #d4a562;
-  --red: #f85149;
-  --green: #3fb950;
-  --purple: #a371f7;
-  --orange: #d2991d;
+  --bg: #fefdfb;
+  --card: #ffffff;
+  --border: #e2e0dd;
+  --text: #1a1a2e;
+  --muted: #6b7280;
+  --accent: #2563eb;
+  --accent-light: #eff6ff;
+  --gold: #92400e;
+  --gold-light: #fffbeb;
+  --red: #dc2626;
+  --purple: #7c3aed;
+  --purple-light: #f5f3ff;
+  --green: #059669;
+  --shadow: 0 4px 24px rgba(0,0,0,.06);
+  --shadow-hover: 0 8px 32px rgba(0,0,0,.1);
 }
 
 * { margin:0; padding:0; box-sizing:border-box; }
 
 body {
-  font-family: -apple-system, 'Noto Sans SC', 'PingFang SC', sans-serif;
+  font-family: -apple-system, 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
   background: var(--bg);
   color: var(--text);
   overflow: hidden;
   height: 100vh;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Slide Container */
 .slides { height:100vh; position:relative; }
 
 .slide {
   position:absolute; inset:0;
   display:flex; flex-direction:column; align-items:center; justify-content:center;
-  padding: 60px 80px;
-  opacity:0; transform:translateY(30px);
-  transition: opacity .5s, transform .5s;
+  padding: 5vh 6vw;
+  opacity:0; transform:translateY(40px);
+  transition: opacity .45s ease, transform .45s ease;
   pointer-events:none;
   overflow-y:auto;
 }
 .slide.active { opacity:1; transform:translateY(0); pointer-events:all; }
 
-/* Typography */
-h1 { font-size:2.6em; margin-bottom:.3em; line-height:1.3; text-align:center; }
-h2 { font-size:1.8em; margin-bottom:.6em; color:var(--accent); }
-h3 { font-size:1.3em; margin-bottom:.4em; color:var(--gold); }
-.subtitle { font-size:1.1em; color:var(--muted); margin-bottom:1em; text-align:center; }
-.big-quote { font-size:1.3em; font-style:italic; color:var(--gold); border-left:4px solid var(--gold); padding-left:20px; margin:20px 0; max-width:700px; line-height:1.6; }
-.accent { color:var(--accent); }
-.gold { color:var(--gold); }
+/* ===== TYPOGRAPHY: PROJECTOR-SCALE ===== */
+h1 {
+  font-size:clamp(2.4rem, 5.5vw, 5rem);
+  margin-bottom:.25em;
+  line-height:1.2;
+  text-align:center;
+  font-weight:800;
+  letter-spacing:-.02em;
+}
+h2 {
+  font-size:clamp(1.6rem, 3.5vw, 2.8rem);
+  margin-bottom:.4em;
+  line-height:1.25;
+  font-weight:700;
+}
+h3 {
+  font-size:clamp(1.2rem, 2.2vw, 1.8rem);
+  margin-bottom:.3em;
+  font-weight:600;
+}
+p, li {
+  font-size:clamp(1rem, 1.8vw, 1.45rem);
+  line-height:1.65;
+}
+.subtitle {
+  font-size:clamp(1rem, 1.6vw, 1.3rem);
+  color:var(--muted);
+  margin-bottom:.8em;
+  text-align:center;
+  max-width:800px;
+}
+
+/* Colors */
+.accent { color:var(--accent); font-weight:700; }
+.gold { color:var(--gold); font-weight:700; }
 .red { color:var(--red); }
 .purple { color:var(--purple); }
 .muted { color:var(--muted); }
 
+/* Big Quote */
+.big-quote {
+  font-size:clamp(1.2rem, 2.2vw, 1.8rem);
+  font-weight:600;
+  color:var(--text);
+  border-left:5px solid var(--gold);
+  padding:.6em 1em;
+  margin:.6em 0;
+  max-width:850px;
+  line-height:1.5;
+  background:var(--gold-light);
+  border-radius:0 8px 8px 0;
+}
+
 /* Cards */
-.card-grid { display:grid; gap:20px; width:100%; max-width:1000px; }
+.card-grid { display:grid; gap:clamp(16px,2vw,28px); width:100%; max-width:1100px; }
 .card-grid.cols-3 { grid-template-columns:repeat(3,1fr); }
 .card-grid.cols-2 { grid-template-columns:repeat(2,1fr); }
 
 .card {
-  background:var(--card); border:1px solid var(--border); border-radius:12px;
-  padding:28px; cursor:pointer; transition:all .3s;
+  background:var(--card); border:2px solid var(--border);
+  border-radius:16px; padding:clamp(18px,2.5vw,32px);
+  cursor:pointer; transition:all .25s;
   position:relative; overflow:hidden;
+  box-shadow:var(--shadow);
 }
-.card:hover { border-color:var(--accent); transform:translateY(-2px); box-shadow:0 8px 30px rgba(88,166,255,.1); }
+.card:hover {
+  border-color:var(--accent);
+  transform:translateY(-3px);
+  box-shadow:var(--shadow-hover);
+}
 .card.revealed .hidden { display:block; }
-.card h3 { margin-bottom:8px; }
-.card p { line-height:1.6; color:var(--muted); }
-.card .hidden { display:none; margin-top:12px; padding-top:12px; border-top:1px solid var(--border); }
-.card .hidden p { color:var(--text); line-height:1.7; }
+.card h3 { font-size:clamp(1.1rem,1.8vw,1.5rem); margin-bottom:6px; color:var(--text); }
+.card > p { color:var(--muted); font-size:clamp(.9rem,1.4vw,1.15rem); }
+.card .hidden { display:none; margin-top:14px; padding-top:14px; border-top:1px solid var(--border); }
+.card .hidden p { font-size:clamp(.9rem,1.4vw,1.15rem); line-height:1.7; }
 .card .badge {
-  position:absolute; top:14px; right:14px;
-  background:var(--accent); color:#000; font-size:.75em; padding:3px 10px; border-radius:10px;
-  font-weight:600;
+  position:absolute; top:16px; right:16px;
+  background:var(--accent); color:#fff;
+  font-size:.8em; padding:4px 14px; border-radius:20px;
+  font-weight:700;
+  letter-spacing:.5px;
 }
 
-/* Tables */
-.comparison-table {
-  width:100%; max-width:900px; border-collapse:collapse; margin:20px 0;
-  font-size:.95em;
+/* Two Column */
+.two-col {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:clamp(20px,3vw,36px);
+  width:100%; max-width:1000px; margin-top:1em;
 }
-.comparison-table th {
-  background:var(--card); color:var(--accent); padding:14px 16px; text-align:left;
-  border-bottom:2px solid var(--border); font-size:.9em; text-transform:uppercase; letter-spacing:.5px;
+.two-col .col {
+  background:var(--card); border:2px solid var(--border);
+  border-radius:16px; padding:clamp(20px,3vw,32px);
+  box-shadow:var(--shadow);
 }
-.comparison-table td {
-  padding:12px 16px; border-bottom:1px solid var(--border); line-height:1.5;
+.two-col .col h3 { margin-bottom:12px; }
+
+/* Layer Visualization */
+.layer-viz {
+  display:flex; gap:clamp(12px,2vw,20px);
+  align-items:center; margin:1em 0;
+  flex-wrap:wrap; justify-content:center;
 }
-.comparison-table tr:hover td { background:rgba(88,166,255,.04); }
-.comparison-table .math { font-family:'SF Mono','Fira Code',monospace; font-size:.85em; color:var(--purple); }
+.layer-box {
+  background:var(--card); border:2px solid var(--border);
+  border-radius:16px; padding:clamp(16px,2.5vw,28px) clamp(18px,3vw,32px);
+  text-align:center; min-width:clamp(130px,18vw,200px);
+  transition:all .25s; box-shadow:var(--shadow);
+  cursor:pointer;
+}
+.layer-box:hover { border-color:var(--accent); transform:scale(1.04); }
+.layer-box .num {
+  font-size:clamp(1.8rem,3.5vw,2.8rem);
+  font-weight:800; color:var(--accent);
+}
+.layer-box .name {
+  font-size:clamp(1.1rem,1.8vw,1.5rem);
+  font-weight:700; margin:6px 0;
+}
+.layer-box .kant {
+  font-size:clamp(.75rem,1.1vw,.95rem);
+  color:var(--gold); font-style:italic;
+}
+.layer-box .transform {
+  font-size:clamp(.75rem,1.1vw,.95rem);
+  color:var(--purple); font-weight:600;
+}
+.layer-box .hidden { display:none; }
+.layer-box.revealed .hidden { display:block; margin-top:10px; }
+.layer-arrow {
+  font-size:clamp(1.4rem,2.5vw,2rem);
+  color:var(--muted); font-weight:300;
+}
 
 /* Feynman Box */
 .feynman-box {
-  background:linear-gradient(135deg, rgba(212,165,98,.1), rgba(212,165,98,.03));
-  border:1px solid rgba(212,165,98,.3); border-radius:12px;
-  padding:24px 30px; max-width:700px; margin:20px 0;
+  background:var(--gold-light);
+  border:2px solid rgba(146,64,14,.2);
+  border-radius:16px; padding:clamp(16px,2.5vw,28px) clamp(18px,3vw,32px);
+  max-width:850px; margin:.8em 0;
 }
-.feynman-box .label { font-size:.8em; color:var(--gold); text-transform:uppercase; letter-spacing:2px; margin-bottom:8px; }
+.feynman-box .label {
+  font-size:.8em; color:var(--gold);
+  text-transform:uppercase; letter-spacing:2px;
+  margin-bottom:8px; font-weight:700;
+}
+.feynman-box ul { margin-top:10px; }
+.feynman-box li {
+  font-size:clamp(.9rem,1.4vw,1.2rem);
+  line-height:1.9; color:#4b3a1a;
+  font-weight:500;
+}
 
-/* Discussion Prompts */
-.prompt-grid { display:grid; gap:16px; width:100%; max-width:900px; margin-top:16px; }
+/* Prompts */
+.prompt-grid { display:grid; gap:clamp(12px,2vw,20px); width:100%; max-width:900px; margin-top:.8em; }
 .prompt {
-  background:var(--card); border:1px solid var(--border); border-radius:10px;
-  padding:18px 22px; cursor:pointer; transition:all .3s;
+  background:var(--card); border:2px solid var(--border);
+  border-radius:14px; padding:clamp(14px,2vw,22px) clamp(16px,2.5vw,28px);
+  cursor:pointer; transition:all .25s; box-shadow:var(--shadow);
 }
-.prompt:hover { border-color:var(--purple); }
-.prompt .q { font-weight:600; color:var(--text); margin-bottom:4px; }
-.prompt .hint { font-size:.85em; color:var(--muted); }
+.prompt:hover { border-color:var(--purple); box-shadow:var(--shadow-hover); }
+.prompt .q {
+  font-size:clamp(1rem,1.7vw,1.35rem);
+  font-weight:700; color:var(--text);
+}
+.prompt .hint { font-size:.85em; color:var(--muted); margin-top:4px; }
 .prompt.revealed .hint { display:none; }
 .prompt.revealed .guide { display:block; }
-.prompt .guide { display:none; margin-top:10px; padding-top:10px; border-top:1px solid var(--border); font-size:.9em; line-height:1.6; color:var(--text); }
-
-/* Navigation */
-.nav { position:fixed; bottom:24px; left:50%; transform:translateX(-50%); display:flex; gap:12px; align-items:center; z-index:100; }
-.nav button {
-  background:var(--card); border:1px solid var(--border); color:var(--text);
-  padding:10px 20px; border-radius:8px; cursor:pointer; font-size:.9em; transition:all .2s;
+.prompt .guide {
+  display:none; margin-top:12px; padding-top:12px;
+  border-top:1px solid var(--border);
+  font-size:clamp(.85rem,1.3vw,1.1rem);
+  line-height:1.7; color:var(--text);
 }
-.nav button:hover { border-color:var(--accent); }
-.nav button:disabled { opacity:.3; cursor:default; }
-.nav .indicator { color:var(--muted); font-size:.85em; min-width:60px; text-align:center; }
-
-/* Layer visualization */
-.layer-viz { display:flex; gap:16px; align-items:center; margin:30px 0; flex-wrap:wrap; justify-content:center; }
-.layer-box {
-  background:var(--card); border:2px solid var(--border); border-radius:12px;
-  padding:20px 24px; text-align:center; min-width:160px; transition:all .3s;
-}
-.layer-box:hover { border-color:var(--accent); transform:scale(1.05); }
-.layer-box .num { font-size:2em; font-weight:700; color:var(--accent); }
-.layer-box .name { font-weight:600; margin:6px 0; }
-.layer-box .kant { font-size:.8em; color:var(--gold); }
-.layer-box .transform { font-size:.8em; color:var(--purple); }
-.layer-arrow { font-size:1.5em; color:var(--border); }
-
-/* Arrows between items */
-.flow-row { display:flex; gap:12px; align-items:center; flex-wrap:wrap; justify-content:center; margin:16px 0; }
-.flow-item { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:10px 16px; font-size:.9em; }
-.flow-arrow { color:var(--accent); font-size:1.2em; }
 
 /* Code block */
 .code-block {
-  background:#0d1117; border:1px solid var(--border); border-radius:8px;
-  padding:16px 20px; font-family:'SF Mono','Fira Code',monospace; font-size:.85em;
-  color:var(--green); max-width:700px; overflow-x:auto; margin:12px 0; line-height:1.5;
+  background:#1e293b; border-radius:8px;
+  padding:clamp(10px,1.5vw,16px) clamp(14px,2vw,20px);
+  font-family:'SF Mono','Fira Code','Consolas',monospace;
+  font-size:clamp(.8rem,1.2vw,1rem);
+  color:#4ade80; max-width:700px; overflow-x:auto;
+  margin:10px 0; line-height:1.5;
 }
 
-/* Two column */
-.two-col { display:grid; grid-template-columns:1fr 1fr; gap:30px; width:100%; max-width:1000px; margin-top:20px; }
-.two-col .col { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:24px; }
-.two-col .col h3 { margin-bottom:12px; }
+/* Comparison Table */
+.comparison-table {
+  width:100%; max-width:1000px; border-collapse:collapse;
+  margin:.8em 0; font-size:clamp(.8rem,1.3vw,1.05rem);
+}
+.comparison-table th {
+  background:var(--accent-light); color:var(--accent);
+  padding:clamp(10px,1.5vw,16px) clamp(10px,1.5vw,16px);
+  text-align:left; border-bottom:2px solid var(--accent);
+  font-size:.85em; text-transform:uppercase; letter-spacing:.5px;
+}
+.comparison-table td {
+  padding:clamp(8px,1.2vw,14px) clamp(10px,1.5vw,16px);
+  border-bottom:1px solid var(--border); line-height:1.55;
+}
+.comparison-table tr:hover td { background:var(--accent-light); }
 
-/* Responsive */
+/* Rhythm grid */
+.rhythm-grid { display:grid; gap:clamp(8px,1vw,12px); width:100%; max-width:700px; text-align:left; }
+.rhythm-row {
+  display:flex; gap:clamp(10px,1.5vw,16px); align-items:baseline;
+  padding:6px 12px; border-radius:8px;
+}
+.rhythm-row:hover { background:var(--accent-light); }
+.rhythm-row .time {
+  color:var(--accent); font-weight:800; min-width:80px;
+  font-size:clamp(.85rem,1.3vw,1.1rem);
+}
+.rhythm-row .desc { font-size:clamp(.85rem,1.3vw,1.1rem); }
+
+/* Navigation */
+.nav {
+  position:fixed; bottom:clamp(16px,3vh,28px);
+  left:50%; transform:translateX(-50%);
+  display:flex; gap:clamp(8px,1.5vw,16px);
+  align-items:center; z-index:100;
+}
+.nav button {
+  background:var(--card); border:2px solid var(--border);
+  color:var(--text); padding:clamp(10px,1.5vw,14px) clamp(18px,2.5vw,28px);
+  border-radius:10px; cursor:pointer;
+  font-size:clamp(.9rem,1.3vw,1.1rem);
+  font-weight:600; transition:all .2s;
+  box-shadow:var(--shadow);
+}
+.nav button:hover { border-color:var(--accent); background:var(--accent-light); }
+.nav button:disabled { opacity:.25; cursor:default; background:var(--card); }
+.nav .indicator {
+  color:var(--muted); font-size:clamp(.85rem,1.2vw,1rem);
+  font-weight:600; min-width:60px; text-align:center;
+}
+
+/* Click hint */
+.click-hint {
+  font-size:.8em; color:var(--muted);
+  margin-top:10px; font-style:italic;
+  font-weight:500;
+}
+
+/* Tagline */
+.tagline {
+  font-size:clamp(1.5rem,3.5vw,2.8rem);
+  font-weight:800; text-align:center;
+  line-height:1.35; max-width:900px;
+}
+
+/* Highlight strip */
+.highlight-strip {
+  display:inline-block;
+  background:linear-gradient(180deg, transparent 60%, rgba(37,99,235,.15) 60%);
+  padding:0 4px;
+}
+
+/* ===== RESPONSIVE ===== */
 @media(max-width:768px) {
-  .slide { padding:30px 24px; }
-  h1 { font-size:1.8em; }
-  h2 { font-size:1.3em; }
+  .slide { padding:4vh 5vw; }
   .card-grid.cols-3 { grid-template-columns:1fr; }
   .card-grid.cols-2 { grid-template-columns:1fr; }
   .two-col { grid-template-columns:1fr; }
   .layer-viz { flex-direction:column; }
   .layer-arrow { transform:rotate(90deg); }
 }
-
-/* Click hint */
-.click-hint { font-size:.8em; color:var(--muted); margin-top:8px; font-style:italic; }
 </style>
 </head>
 <body>
@@ -175,397 +321,319 @@ h3 { font-size:1.3em; margin-bottom:.4em; color:var(--gold); }
 
 <!-- Slide 0: Title -->
 <div class="slide active" id="s0">
-  <div style="text-align:center; max-width:800px;">
-    <div style="font-size:.9em; color:var(--gold); letter-spacing:3px; text-transform:uppercase; margin-bottom:16px;">Lecture Courseware</div>
-    <h1><span class="accent">Attention</span> × <span class="gold">康德</span></h1>
-    <h2 style="color:var(--muted); font-weight:400; margin-top:8px;">Transformer 注意力机制是<br>"先验统觉"理论的两百年后数学实现</h2>
-    <div style="margin-top:40px; color:var(--muted); font-size:.9em; line-height:1.6;">
-      适合：大学通识课 · 哲学×AI 交叉课程 · 读书会<br>
-      时长：45-60 分钟（含互动讨论）<br>
-      互动设计：点击卡片揭晓答案 / 讨论题逐层展开
+  <div style="text-align:center; max-width:900px;">
+    <div style="font-size:clamp(.8rem,1.2vw,1rem); color:var(--gold); letter-spacing:4px; font-weight:700; margin-bottom:clamp(12px,2vh,24px);">
+      大学通识课 · 哲学 × 人工智能
+    </div>
+    <h1><span class="accent">Attention</span> <span style="font-weight:300; color:var(--muted);">&</span> <span class="gold">康德</span></h1>
+    <div class="tagline" style="color:var(--muted); font-weight:500; margin-top:.5em;">
+      Transformer 的注意力机制，<br>是康德「先验统觉」理论的<br><span style="color:var(--text); font-weight:700;">两百年后数学实现</span>
+    </div>
+    <div style="margin-top:clamp(24px,4vh,48px); color:var(--muted); font-size:.9em; line-height:1.6;">
+      时长约 35-40 分钟（含互动） · 键盘 ← → 翻页<br>
+      <span style="font-size:.8em;">点击卡片可展开详情</span>
     </div>
   </div>
 </div>
 
-<!-- Slide 1: 核心论断 — 不止是类比 -->
+<!-- Slide 1: The Hook -->
 <div class="slide" id="s1">
-  <h2>第一层  ·  核心论断</h2>
-  <div style="max-width:700px; margin:20px 0;">
-    <div class="big-quote">
-      "不是「相近」——Transformer 的 Attention 机制是康德《纯粹理性批判》中'先验统觉'理论的两百年后数学实现。"
-    </div>
-    <p style="margin-top:20px; line-height:1.7; color:var(--muted);">
-      这不是一个哲学比喻，而是<span class="accent">结构同构（structural isomorphism）</span>。
-      康德在 1781 年用哲学语言描述的意识运作方式，在 2017 年被 Transformer 用矩阵乘法精确实现了。
-    </p>
+  <h2 style="color:var(--accent); text-align:center;">这不是一个比喻</h2>
+
+  <div class="big-quote" style="font-size:clamp(1.4rem,3vw,2.2rem);">
+    "Attention 不是「类似」康德的统觉——<br>它是同一个结构，用数学重新写了一遍。"
   </div>
 
-  <h3 style="margin-top:30px;">课堂互动 ① — 热身（2分钟）</h3>
-  <div class="prompt-grid">
-    <div class="prompt" onclick="this.classList.toggle('revealed')">
-      <div class="q">🤔 当你读到「蓝色的球在温暖的阳光下弹跳」这句话时，你的大脑做了什么？</div>
-      <div class="hint click-hint">点击展开引导</div>
-      <div class="guide">引导方向：大脑同时处理了颜色（蓝色）、触觉（温暖）、物体（球）、动作（弹跳）和空间关系（阳光下）——这些信息来自不同的感官经验，但在你的意识中被统一成了一个场景。<strong>这就是康德说的「统觉」。</strong></div>
+  <p style="max-width:750px; text-align:center; margin-top:1em; color:var(--muted);">
+    康德在 <strong style="color:var(--text);">1781 年</strong> 用哲学语言描述的意识运作方式，
+    在 <strong style="color:var(--accent);">2017 年</strong> 被 Transformer 用矩阵乘法精确实现了。<br>
+    这叫 <span class="gold">结构同构（structural isomorphism）</span>——每一条都可以在数学上验证。
+  </p>
+
+  <div style="margin-top:clamp(20px,3vh,40px); max-width:750px; width:100%;">
+    <h3 style="color:var(--purple);">🤔 先想想（30秒）</h3>
+    <div class="prompt" onclick="this.classList.toggle('revealed')" style="max-width:100%;">
+      <div class="q">当你读到「蓝色的球在温暖的阳光下弹跳」这句话时，你的大脑做了什么？</div>
+      <div class="hint click-hint">点击看分析</div>
+      <div class="guide">
+        你同时处理了<strong>颜色</strong>（蓝色）、<strong>触感</strong>（温暖）、<strong>物体</strong>（球）、<strong>动作</strong>（弹跳）、<strong>空间</strong>（阳光下）。<br><br>
+        这些信息来自不同感官——但你的意识把它们<strong>统一成了一个场景</strong>。<br>
+        <span style="color:var(--gold); font-weight:700;">这就是康德说的「统觉」——你每时每刻都在做的事。</span>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- Slide 2: 康德的三层架构 -->
+<!-- Slide 2: Kant's Three Layers -->
 <div class="slide" id="s2">
-  <h2>第二层  ·  康德在说什么</h2>
-  <p class="subtitle">康德《纯粹理性批判》的核心问题：零散的感觉碎片，是怎样组成一个统一的「世界」的？</p>
+  <h2 style="text-align:center;">康德在说什么？</h2>
+  <p class="subtitle">核心问题：零散的感觉碎片，是怎样组成一个统一的「世界」的？</p>
 
   <div class="layer-viz">
-    <div class="layer-box" onclick="this.classList.toggle('revealed')" style="cursor:pointer;">
+    <div class="layer-box" onclick="this.classList.toggle('revealed')">
       <div class="num">①</div>
       <div class="name">感性</div>
       <div class="kant">Rezeptivität</div>
-      <div class="transform hidden" style="margin-top:8px; font-size:.8em; color:var(--purple);">→ Embedding 层<br>被动接收，但接收已有形状<br>（时空作为直觉形式）</div>
+      <div class="transform hidden">→ <strong>Embedding 层</strong><br>接收已有形状<br>（时空是直觉形式）</div>
     </div>
-    <div class="layer-arrow">→</div>
-    <div class="layer-box" onclick="this.classList.toggle('revealed')" style="cursor:pointer;">
+    <div class="layer-arrow">⟶</div>
+    <div class="layer-box" onclick="this.classList.toggle('revealed')">
       <div class="num">②</div>
       <div class="name">想象力</div>
       <div class="kant">Einbildungskraft</div>
-      <div class="transform hidden" style="margin-top:8px; font-size:.8em; color:var(--purple);">→ Attention 矩阵<br>把分散的感觉碎片<br>"联系在一起"</div>
+      <div class="transform hidden">→ <strong>Attention 矩阵</strong><br>把碎片联系<br>在一起</div>
     </div>
-    <div class="layer-arrow">→</div>
-    <div class="layer-box" onclick="this.classList.toggle('revealed')" style="cursor:pointer;">
+    <div class="layer-arrow">⟶</div>
+    <div class="layer-box" onclick="this.classList.toggle('revealed')">
       <div class="num">③</div>
       <div class="name">统觉</div>
       <div class="kant">Apperzeption</div>
-      <div class="transform hidden" style="margin-top:8px; font-size:.8em; color:var(--purple);">→ Weighted Sum<br>所有感知归属到<br>单一自我意识</div>
+      <div class="transform hidden">→ <strong>Weighted Sum</strong><br>所有感知归属<br>到单一自我</div>
     </div>
   </div>
-  <div class="click-hint">🖱️ 点击每个盒子看 Transformer 对应</div>
+  <div class="click-hint" style="margin-top:12px;">点击每个盒子看 Transformer 对应 →</div>
 
-  <div style="max-width:700px; margin-top:24px;">
-    <div class="big-quote" style="font-size:1.1em;">
+  <div style="max-width:750px; margin-top:clamp(16px,2.5vh,28px);">
+    <div class="big-quote" style="font-size:clamp(1rem,1.8vw,1.4rem);">
       "我思必须能够伴随我的一切表象。"<br>
-      <span style="font-size:.8em; color:var(--muted);">— 康德，《纯粹理性批判》B132</span>
+      <span style="font-size:.75em; color:var(--muted);">— 康德，《纯粹理性批判》B132</span>
     </div>
-    <p style="margin-top:12px; color:var(--muted); line-height:1.6;">
-      这句话的意思是：对于任何进入我意识的感知，我必须能够说<strong>「这个是我的」</strong>。
-      这个可归属性是统一意识的前提。
+    <p style="text-align:center; color:var(--muted); margin-top:8px;">
+      翻译成人话：<strong style="color:var(--text);">进入我意识的任何东西，我必须能说「这个是我的」。</strong><br>
+      这个「可归属性」是统一意识的前提。
     </p>
   </div>
 </div>
 
-<!-- Slide 3: Attention 的康德结构 — 三个精确对应 -->
+<!-- Slide 3: Three Precise Correspondences -->
 <div class="slide" id="s3">
-  <h2>第三层  ·  Attention 的「康德结构」</h2>
-  <p class="subtitle">三个精确对应 — 每一条都可以在数学上验证</p>
+  <h2 style="text-align:center;">三个精确对应 <span style="font-weight:400; color:var(--muted); font-size:.7em;">· 每一条都可数学验证</span></h2>
 
   <div class="card-grid cols-3">
     <div class="card" onclick="this.classList.toggle('revealed')">
       <div class="badge">对应 ①</div>
-      <h3>「拿」= 综合</h3>
-      <p>Weighted Sum = Synthesis</p>
+      <h3>综合 = Weighted Sum</h3>
+      <p>不是拼在一起，是综合成整体</p>
       <div class="hidden">
-        <p>康德说：意识不是把碎片<strong>拼</strong>在一起，而是<strong>综合</strong>成一个整体——每个碎片既保持身份，又获得整体意义。</p>
-        <div class="code-block" style="margin-top:8px;">
-输出(tokenᵢ) = Σⱼ [权重(tokenᵢ, tokenⱼ) × 值(tokenⱼ)]
+        <p>康德：意识把碎片<strong>综合</strong>成一个整体——每个碎片既保持身份，又获得整体意义。</p>
+        <div class="code-block" style="margin-top:10px;">
+输出(tokenᵢ) = Σⱼ [权重ᵢⱼ × 值(tokenⱼ)]
         </div>
-        <p style="margin-top:8px;">每个 token 的最终表示不是「它自己」，而是所有相关 token 的加权混合。</p>
+        <p style="margin-top:8px; font-size:.9em;">每个 token 的最终表示，是<span style="color:var(--accent);">所有相关 token 的加权混合</span>。</p>
       </div>
       <div class="click-hint">点击展开</div>
     </div>
 
     <div class="card" onclick="this.classList.toggle('revealed')">
       <div class="badge">对应 ②</div>
-      <h3>「权重」= 关联性判断</h3>
-      <p>Attention Score = Relation</p>
+      <h3>关联 = Attention Score</h3>
+      <p>按关系强度连接</p>
       <div class="hidden">
-        <p>康德用 <strong>Relation（关系）</strong>——统觉不仅是「放在一起」，而是按某种关系连接。因果、相似、对比……</p>
-        <div class="code-block" style="margin-top:8px;">
+        <p>康德用<strong>Relation（关系）</strong>——统觉不仅是「放一起」，而是按某种关系连接。</p>
+        <div class="code-block" style="margin-top:10px;">
 score(i, j) = Q(tokenᵢ) · K(tokenⱼ)
         </div>
-        <p style="margin-top:8px;">点积大 → 意义空间中方向接近 → Attention 权重高。这是<strong>关系强度的数学定义</strong>。</p>
+        <p style="margin-top:8px; font-size:.9em;">点积大 → 意义接近 → 权重高。<br><span style="color:var(--accent);">关系强度的数学定义。</span></p>
       </div>
       <div class="click-hint">点击展开</div>
     </div>
 
     <div class="card" onclick="this.classList.toggle('revealed')">
       <div class="badge">对应 ③</div>
-      <h3>「所有其他词」= 统觉的统一</h3>
-      <p>Parallel Attention = Unity of Apperception</p>
+      <h3>统一 = Parallel Attention</h3>
+      <p>一瞬间看到全部</p>
       <div class="hidden">
         <p>传统 RNN：从左到右读，读到第 10 个词时第 1 个已快忘——<strong>离散时间意识</strong>。</p>
-        <p style="margin-top:8px;">Transformer 的并行 Attention：</p>
-        <p style="font-style:italic; color:var(--accent);">「我不需要从左到右读——我一瞬间看到了句子的全部词，并且知道它们之间的所有关系。」</p>
-        <p style="margin-top:8px;">这和康德「在每一刻同时把握所有感知的先验统一体」——同构。</p>
+        <p style="margin-top:8px; color:var(--accent); font-weight:600;">
+          Transformer：我一瞬间看到了句子的全部词，并且知道它们之间的所有关系。
+        </p>
+        <p style="margin-top:8px; font-size:.9em;">
+          康德：在每一刻同时把握所有感知的<strong>先验统一体</strong>——同构。
+        </p>
       </div>
       <div class="click-hint">点击展开</div>
     </div>
   </div>
 </div>
 
-<!-- Slide 4: 结构同构对照表 -->
+<!-- Slide 4: The Critical Difference -->
 <div class="slide" id="s4">
-  <h2>第四层  ·  完整对照表</h2>
-  <p class="subtitle">每一项都不是比喻，是结构同构</p>
-
-  <table class="comparison-table">
-    <thead>
-      <tr><th style="width:22%;">康德的先验统觉</th><th style="width:28%;">Transformer Self-Attention</th><th style="width:25%;">精确对应</th><th style="width:25%;">互动提问</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>感性接受<br><span class="muted">被动接收感觉</span></td>
-        <td class="math">Embedding 层<br>将 token 转为向量</td>
-        <td>输入阶段</td>
-        <td class="muted">问：为什么 Embedding 不是「原始字符」？<br>→ 因为已编码位置信息——康德说接收本身就是「有形状的」</td>
-      </tr>
-      <tr>
-        <td>想象力综合<br><span class="muted">主动将碎片联系在一起</span></td>
-        <td class="math">Attention 矩阵<br>计算所有 token 对之间的权重</td>
-        <td>建立关系</td>
-        <td class="muted">问：Attention 矩阵的大小是多少？<br>→ n×n，每个词都与其他所有词有关系</td>
-      </tr>
-      <tr>
-        <td>统觉的统一<br><span class="muted">所有感知归属同一自我</span></td>
-        <td class="math">Self-Attention 加权求和<br>每个 token 从所有 token 获取信息</td>
-        <td>综合</td>
-        <td class="muted">问：这和 RNN 的根本区别？<br>→ 并行 vs 串行；全局 vs 局部衰减</td>
-      </tr>
-      <tr>
-        <td>范畴<br><span class="muted">因果/实体/交互等先天规则</span></td>
-        <td class="math">学习到的 Attention 模式<br>从海量数据中发现「哪些词应该互相关注」</td>
-        <td>关系规则</td>
-        <td class="muted">问：模型学会了哪些「范畴」？<br>→ 因果、实体-修饰、主谓宾——见下页</td>
-      </tr>
-      <tr>
-        <td>杂多的综合统一<br><span class="muted">感性碎片→统一经验</span></td>
-        <td class="math">上下文表示<br>分散的 token→有语境的完整含义</td>
-        <td>产出</td>
-        <td class="muted">问：一个词离开上下文有意义吗？<br>→ 「bank」是银行还是河岸？只有 Attention 后的上下文表示知道</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<!-- Slide 5: 致命差异 — 费曼追问 -->
-<div class="slide" id="s5">
-  <h2>第五层  ·  费曼追问：关键差异在哪？</h2>
+  <h2 style="text-align:center;">最关键的分歧</h2>
+  <p class="subtitle">这个分歧，决定了我们对「智能」的根本理解</p>
 
   <div class="two-col">
-    <div class="col">
-      <h3 style="color:var(--gold);">康德说</h3>
-      <p style="font-size:1.1em; line-height:1.7;">
-        把这些碎片粘在一起的「关系规则」（范畴）是<strong>先天的（a priori）</strong>——它们在<strong>任何经验之前</strong>就已经存在。
+    <div class="col" style="border-left:4px solid var(--gold);">
+      <h3 style="color:var(--gold);">康德</h3>
+      <p style="font-size:clamp(1.1rem,1.8vw,1.5rem); font-weight:700; line-height:1.5;">
+        关系规则是<strong>先天的（a priori）</strong>
       </p>
-      <p style="margin-top:12px; color:var(--muted);">
-        因果律不是你从经验中学到的——你是<strong>带着因果律去组织经验的</strong>。
+      <p style="margin-top:10px; color:var(--muted);">
+        因果律不是你从经验中学到的——<br>
+        你是<strong style="color:var(--text);">带着因果律去组织经验</strong>的。
       </p>
-      <div style="margin-top:16px; font-size:.9em; color:var(--gold);">演绎的 → 规则先于经验</div>
+      <p style="margin-top:16px; font-size:.9em; color:var(--gold); font-weight:600;">
+        规则先于经验
+      </p>
     </div>
-    <div class="col">
-      <h3 style="color:var(--accent);">Transformer 说</h3>
-      <p style="font-size:1.1em; line-height:1.7;">
-        这些关系规则是<strong>从数据中学习的</strong>——Attention 模式不是预设的，是模型在 10 万亿个词中「发现」的。
+    <div class="col" style="border-left:4px solid var(--accent);">
+      <h3 style="color:var(--accent);">Transformer</h3>
+      <p style="font-size:clamp(1.1rem,1.8vw,1.5rem); font-weight:700; line-height:1.5;">
+        关系规则是<strong>从数据中学的</strong>
       </p>
-      <p style="margin-top:12px; color:var(--muted);">
-        模型不知道「因果」是什么——它只知道哪些词在数据中总是同时出现。
+      <p style="margin-top:10px; color:var(--muted);">
+        模型不知道「因果」是什么——<br>
+        它只知道哪些词在数据中<strong style="color:var(--text);">总是同时出现</strong>。
       </p>
-      <div style="margin-top:16px; font-size:.9em; color:var(--accent);">归纳的 → 规则从经验中涌现</div>
+      <p style="margin-top:16px; font-size:.9em; color:var(--accent); font-weight:600;">
+        规则从经验中涌现
+      </p>
     </div>
   </div>
 
-  <div class="feynman-box" style="margin-top:30px;">
+  <div class="feynman-box" style="margin-top:clamp(16px,2.5vh,28px);">
     <div class="label">⚡ 康德的回旋</div>
-    <p style="line-height:1.7;">
-      Transformer 在训练中「发现」的 Attention 模式，和康德预设的先天范畴<span class="gold">高度重合</span>：
+    <p style="font-size:clamp(.95rem,1.5vw,1.2rem); line-height:1.7; color:#3d2a0a; font-weight:500;">
+      Transformer 在训练中「发现」的 Attention 模式，和康德预设的先天范畴<strong style="color:#92400e;">高度重合</strong>：
     </p>
-    <ul style="margin-top:12px; line-height:2; color:var(--muted);">
-      <li>模型学会了<strong style="color:var(--text);">「因果」</strong>——「因为→所以」之间 Attention 权重很高</li>
-      <li>模型学会了<strong style="color:var(--text);">「实体」</strong>——名词和它的修饰词之间权重很高</li>
-      <li>模型学会了<strong style="color:var(--text);">「交互」</strong>——动词和它的主宾语之间权重很高</li>
+    <ul>
+      <li>模型学会了<strong style="color:var(--text);">「因果」</strong>——「因为→所以」之间权重很高</li>
+      <li>模型学会了<strong style="color:var(--text);">「实体」</strong>——名词和修饰词之间权重很高</li>
+      <li>模型学会了<strong style="color:var(--text);">「交互」</strong>——动词和主宾语之间权重很高</li>
     </ul>
-    <p style="margin-top:12px; line-height:1.7; color:var(--accent);">
-      也就是说：康德说「你先天地就带着这些规则」，但模型说「我从经验中重新发现了它们」。
+    <p style="margin-top:10px; font-size:clamp(.95rem,1.5vw,1.2rem); color:var(--accent); font-weight:600;">
+      康德说「你先天就带着这些规则」→ 模型说「我从经验中重新发现了它们」。
     </p>
   </div>
 </div>
 
-<!-- Slide 6: 课堂讨论 -->
-<div class="slide" id="s6">
-  <h2>课堂讨论 · 三个深度问题</h2>
-  <p class="subtitle">5-8 分钟小组讨论，每组选一个问题 → 3 分钟分享</p>
+<!-- Slide 5: Discussion -->
+<div class="slide" id="s5">
+  <h2 style="text-align:center;">课堂讨论</h2>
+  <p class="subtitle">任选一个问题，5 分钟小组讨论 → 3 分钟分享</p>
 
   <div class="prompt-grid">
     <div class="prompt" onclick="this.classList.toggle('revealed')">
-      <div class="q">💬 讨论一：如果因果律可以从数据中「学会」，那康德说的「先天范畴」还有什么意义？</div>
-      <div class="hint click-hint">点击展开讨论引导</div>
+      <div class="q">💬 如果因果律可以从数据中「学会」，那康德说的「先天范畴」还有什么意义？</div>
+      <div class="hint click-hint">点击展开引导</div>
       <div class="guide">
-        <strong>引导方向：</strong>这是当代认知科学的核心辩论。<br><br>
-        <strong>正方（康德）：</strong>模型从数据中「发现」因果，恰恰证明了因果是数据中自带的——数据之所以呈现因果结构，是因为生成数据的人类已经用因果组织经验了。模型学到的是<strong>人类认知结构的投影</strong>。<br><br>
-        <strong>反方（经验主义）：</strong>如果规则可以从经验中涌现，那就不需要假设「先天」——奥卡姆剃刀。<br><br>
-        <strong>深层追问：</strong>有没有可能，某些范畴（如「实体恒存性」）是连数据中都学不到的——因为数据本身已经被预结构化过了？
+        <strong>正方（康德派）：</strong>模型从数据中学到因果，恰恰证明了因果<strong>已经在数据里了</strong>——因为生成数据的人类，本身就带着因果组织经验。模型学到的，是人类认知结构的投影。<br><br>
+        <strong>反方（经验派）：</strong>如果规则可以从经验中涌现，那就不需要假设「先天」——奥卡姆剃刀。<br><br>
+        <strong>🔑 关键追问：</strong>有没有某些范畴，是连数据中都学不到的——因为数据本身已经被预结构化过了？
       </div>
     </div>
 
     <div class="prompt" onclick="this.classList.toggle('revealed')">
-      <div class="q">💬 讨论二：如果 Attention = 统觉的数学实现，那「意识」可以被还原为矩阵乘法吗？</div>
-      <div class="hint click-hint">点击展开讨论引导</div>
+      <div class="q">💬 如果 Attention = 统觉的数学实现，那「意识」可以被还原为矩阵乘法吗？</div>
+      <div class="hint click-hint">点击展开引导</div>
       <div class="guide">
-        <strong>引导方向：</strong>这是「强 AI」vs「弱 AI」的分水岭。<br><br>
-        <strong>Argument A（否定）：</strong>统觉只是意识的一个层面——还有感受质（qualia）、意向性、具身体验。矩阵乘法可以模拟「关系」，但不能模拟「红色看起来是什么样的」。<br><br>
-        <strong>Argument B（可能）：</strong>如果意识的核心是信息整合（Integrated Information Theory），而 Attention 恰好实现了信息整合……<br><br>
-        <strong>方法论提示：</strong>注意区分「功能等价」和「本体同一」——计算器算 2+2 和我算 2+2，功能等价，但我不等于计算器。统觉的功能等价物 = Attention，不意味着 Attention 就是意识。
+        <strong>不能（弱 AI 立场）：</strong>统觉只是意识的一个层面。还有感受质（qualia）——「红色看起来是什么样的」，矩阵乘法无法捕捉。<br><br>
+        <strong>可能（强 AI 立场）：</strong>如果意识的核心是信息整合（Integrated Information Theory），而 Attention 恰好实现了信息整合……<br><br>
+        <strong>🔑 方法论提示：</strong>区分「<span style="color:var(--accent);">功能等价</span>」和「<span style="color:var(--gold);">本体同一</span>」——计算器算 2+2 和我算 2+2，功能等价，但计算器 ≠ 我。
       </div>
     </div>
 
     <div class="prompt" onclick="this.classList.toggle('revealed')">
-      <div class="q">💬 讨论三：Attention 有什么是「看不到」的？——康德式认识论盲区</div>
-      <div class="hint click-hint">点击展开讨论引导</div>
+      <div class="q">💬 Attention 有什么是「看不到」的？——康德式认识论盲区</div>
+      <div class="hint click-hint">点击展开引导</div>
       <div class="guide">
-        <strong>引导方向：</strong>Kant 式的综合只处理已经「可形式化」的东西。<br><br>
-        Attention 看不到的：<br>
-        • <strong>具身体验</strong>——「痛」这个词在数据中的统计模式 ≠ 真正的痛<br>
-        • <strong>沉默</strong>——Attention 只能处理 token，不能处理「没有 token」的意义<br>
-        • <strong>直觉</strong>——无法形式化的判断<br>
+        Kant 式的综合只能处理已经<strong>可形式化</strong>的东西。Attention 看不到的：<br>
+        • <strong>具身体验</strong>——「痛」这个词的统计模式 ≠ 真正的痛<br>
+        • <strong>沉默</strong>——只能处理 token，不能处理「没有 token」的意义<br>
         • <strong>否定性的空隙</strong>——那些「不在场」但定义了在场的东西<br><br>
-        <strong>延伸：</strong>这和赫塞《玻璃球游戏》中 Knecht 离开 Kastalien 的原因完全一致——「不是所有东西都可以被综合」。
+        <strong>🔑 这恰好是赫塞《玻璃球游戏》的核心洞见</strong>——下页展开。
       </div>
     </div>
   </div>
 </div>
 
-<!-- Slide 7: 论文连接 -->
-<div class="slide" id="s7">
-  <h2>延伸  ·  Attention → 赫塞 → 你的论文</h2>
+<!-- Slide 6: Hesse Connection -->
+<div class="slide" id="s6">
+  <h2 style="text-align:center;">延伸：赫塞的预见</h2>
+  <p class="subtitle">1943 年，Hesse 描述了一个「人工统觉系统」——74 年后，它变成了代码</p>
 
   <div class="card-grid cols-2">
     <div class="card" onclick="this.classList.toggle('revealed')">
-      <div class="badge">连接 1</div>
-      <h3>玻璃球游戏 = 人工统觉系统</h3>
-      <p>Hesse 的 Kastalien 在创造什么？</p>
+      <h3>🏰 玻璃球游戏 = 人工统觉系统</h3>
+      <p>Kastalien 试图把人类全部知识综合到统一的符号关联中</p>
       <div class="hidden">
-        <p>Kastalien 本质上试图创造一个<strong>人工的、形式化的统觉系统</strong>：把人类全部知识综合到统一的符号关联中。</p>
-        <p style="margin-top:8px;">这几乎就是 Transformer 的 Attention 要做的事——在万物之间建立联系。</p>
+        <p>这几乎就是 Transformer 要做的事：<strong>在万物之间建立联系</strong>。</p>
+        <p style="margin-top:8px; color:var(--gold);">Hesse 不是在 1943 年「预见了 AI」——他预见了 Attention 的认识论边界。</p>
       </div>
       <div class="click-hint">点击展开</div>
     </div>
 
     <div class="card" onclick="this.classList.toggle('revealed')">
-      <div class="badge">连接 2</div>
-      <h3>Attention = 关联机制的数学实现</h3>
-      <p>Hesse 1943 年想象的，2017 年变成了代码</p>
-      <div class="hidden">
-        <p>当 Hesse 在 1943 年想象一个系统能「在万物之间建立联系」时，他描述的几乎就是 Attention 机制要做的事。</p>
-        <p style="margin-top:8px; color:var(--gold);">赫塞不是「预见了 AI」——他预见了 Attention 的认识论边界。</p>
-      </div>
-      <div class="click-hint">点击展开</div>
-    </div>
-
-    <div class="card" onclick="this.classList.toggle('revealed')">
-      <div class="badge">连接 3</div>
-      <h3>Kastalien 的盲区 = Attention 的盲区</h3>
-      <p>不能被编码的东西，Attention 看不到</p>
-      <div class="hidden">
-        <p>Kant 式的综合只能处理已经「可形式化」的东西。那些不能被编码成符号 token 的东西——具身体验、沉默、直觉、否定性的空隙——Attention 看不到它们，正如 Kastalien 看不到 Knecht 需要的东西。</p>
-      </div>
-      <div class="click-hint">点击展开</div>
-    </div>
-
-    <div class="card" onclick="this.classList.toggle('revealed')">
-      <div class="badge">连接 4</div>
-      <h3>Knecht 的离开 = 对统觉的拒绝</h3>
+      <h3>🚪 Knecht 的离开</h3>
       <p>不是所有东西都可以被综合</p>
       <div class="hidden">
-        <p>Knecht 离开 Kastalien 不是因为统一意识不重要——而是因为<strong>不是所有东西都可以被综合</strong>。</p>
-        <p style="margin-top:8px;">有些知识存在于综合之前、综合之外、综合之下。</p>
-        <p style="margin-top:8px; color:var(--gold);">这篇论文不只是「赫塞预见了 AI」——而是：赫塞预见了 Attention 的认识论边界。</p>
+        <p>Knecht 离开 Kastalien 不是因为统一不重要——而是因为<strong>有些东西在综合之前、之外、之下</strong>。</p>
+        <p style="margin-top:8px; color:var(--accent); font-weight:600;">
+          Attention 看不到它们，正如 Kastalien 看不到 Knecht 需要的东西。
+        </p>
       </div>
       <div class="click-hint">点击展开</div>
     </div>
+  </div>
+
+  <div style="max-width:750px; margin-top:clamp(16px,2.5vh,28px); text-align:center;">
+    <p style="font-size:clamp(1rem,1.8vw,1.4rem); font-weight:600; color:var(--text);">
+      这篇论文的核心论点不是「赫塞预见了 AI」——<br>
+      而是 <span class="gold">赫塞预见了「所有东西都能被综合」这个信念本身的边界</span>。
+    </p>
   </div>
 </div>
 
-<!-- Slide 8: Summary + Teaching Notes -->
-<div class="slide" id="s8">
-  <h2>总结  ·  教学备忘</h2>
+<!-- Slide 7: One Big Takeaway -->
+<div class="slide" id="s7">
+  <h2 style="text-align:center;">一句话带走</h2>
 
-  <table class="comparison-table">
-    <thead>
-      <tr><th>问题</th><th>答案</th><th style="width:30%;">教学关键点</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Attention 是什么？</td>
-        <td>每个词拿所有其他词按权重混合</td>
-        <td class="muted">用直观例子：让同学扮演 token，互相「注意」</td>
-      </tr>
-      <tr>
-        <td>康德说了什么？</td>
-        <td>所有感知必须被统一到一个自我意识中</td>
-        <td class="muted">用「蓝色的球在温暖的阳光下弹跳」演示</td>
-      </tr>
-      <tr>
-        <td>两者什么关系？</td>
-        <td>Attention 是康德「先验统觉」的数学实现</td>
-        <td class="muted">强调「结构同构」而非「比喻」</td>
-      </tr>
-      <tr>
-        <td>区别是什么？</td>
-        <td>康德：规则先天 / Attention：规则从数据中学习</td>
-        <td class="muted">这是课堂讨论的核心分歧点</td>
-      </tr>
-      <tr>
-        <td>对论文的意义？</td>
-        <td>GBG=人工统觉系统，Knecht 的离开=对「所有东西都能被综合」的拒绝</td>
-        <td class="muted">这是论文 argument 的哲学锚点</td>
-      </tr>
-    </tbody>
-  </table>
+  <div style="max-width:800px; text-align:center;">
+    <div style="font-size:clamp(1.6rem,3.5vw,2.8rem); font-weight:800; line-height:1.4; margin:clamp(16px,3vh,32px) 0;">
+      <span class="gold">康德 1781</span><br>
+      <span style="font-weight:300; color:var(--muted); font-size:.6em;">↓ 结构同构 ↓</span><br>
+      <span class="accent">Transformer 2017</span>
+    </div>
 
-  <div style="margin-top:30px; max-width:700px; text-align:center;">
-    <h3 style="color:var(--gold); margin-bottom:12px;">建议的课堂节奏</h3>
-    <div style="display:grid; gap:8px; text-align:left;">
-      <div style="display:flex; gap:12px; align-items:center;">
-        <span style="color:var(--accent); font-weight:700; min-width:70px;">0-5 min</span>
-        <span>热身问题：你的大脑如何统一感官碎片？</span>
+    <div style="background:var(--accent-light); border-radius:16px; padding:clamp(16px,2.5vw,28px); margin:clamp(12px,2vh,20px) 0;">
+      <p style="font-size:clamp(1.1rem,2vw,1.6rem); font-weight:700; line-height:1.6;">
+        当康德说「我思必须能够伴随我的一切表象」时，<br>
+        他描述了一个算法——<br>
+        只是当时没有计算机。
+      </p>
+    </div>
+
+    <div style="display:grid; gap:clamp(8px,1.2vw,14px); margin-top:clamp(16px,2.5vh,28px); text-align:left; max-width:600px; margin-left:auto; margin-right:auto;">
+      <div style="display:flex; gap:12px; align-items:flex-start;">
+        <span style="font-size:1.5em;">🧠</span>
+        <span style="font-size:clamp(.9rem,1.4vw,1.15rem);">Attention 不是「像」统觉——它是统觉的<strong>数学实现</strong></span>
       </div>
-      <div style="display:flex; gap:12px; align-items:center;">
-        <span style="color:var(--accent); font-weight:700; min-width:70px;">5-15 min</span>
-        <span>康德三层架构 + Attention 三个精确对应（幻灯片 2-3）</span>
+      <div style="display:flex; gap:12px; align-items:flex-start;">
+        <span style="font-size:1.5em;">⚡</span>
+        <span style="font-size:clamp(.9rem,1.4vw,1.15rem);">核心差异：<strong>规则先天</strong> vs <strong>规则从数据涌现</strong></span>
       </div>
-      <div style="display:flex; gap:12px; align-items:center;">
-        <span style="color:var(--accent); font-weight:700; min-width:70px;">15-20 min</span>
-        <span>完整对照表（幻灯片 4）+ 关键差异（幻灯片 5）</span>
-      </div>
-      <div style="display:flex; gap:12px; align-items:center;">
-        <span style="color:var(--accent); font-weight:700; min-width:70px;">20-30 min</span>
-        <span>小组讨论（幻灯片 6：三个深度问题）</span>
-      </div>
-      <div style="display:flex; gap:12px; align-items:center;">
-        <span style="color:var(--accent); font-weight:700; min-width:70px;">30-35 min</span>
-        <span>分享 + 论文延伸（幻灯片 7）</span>
-      </div>
-      <div style="display:flex; gap:12px; align-items:center;">
-        <span style="color:var(--accent); font-weight:700; min-width:70px;">35-40 min</span>
-        <span>总结（本页）+ Q&A</span>
+      <div style="display:flex; gap:12px; align-items:flex-start;">
+        <span style="font-size:1.5em;">🔮</span>
+        <span style="font-size:clamp(.9rem,1.4vw,1.15rem);">赫塞的警告：<strong>不是所有东西都可以被综合</strong></span>
       </div>
     </div>
-  </div>
 
-  <p style="margin-top:30px; color:var(--muted); font-size:.85em; text-align:center;">
-    基于 Transformer "Attention Is All You Need" (Vaswani et al., 2017) 与 康德《纯粹理性批判》(1781/1787) 的跨学科对比分析
-  </p>
+    <p style="margin-top:clamp(16px,2.5vh,28px); color:var(--muted); font-size:.8em;">
+      基于 Transformer "Attention Is All You Need" (Vaswani et al., 2017) 与 康德《纯粹理性批判》(1781/1787)
+    </p>
+  </div>
 </div>
 
 </div><!-- /slides -->
 
-<!-- Navigation -->
 <div class="nav">
   <button onclick="prevSlide()" id="prevBtn">← 上一页</button>
-  <span class="indicator" id="indicator">1 / 9</span>
+  <span class="indicator" id="indicator">1 / 8</span>
   <button onclick="nextSlide()" id="nextBtn">下一页 →</button>
 </div>
 
 <script>
 let current = 0;
-const total = 9;
+const total = 8;
 
 function showSlide(n) {
   document.querySelectorAll('.slide').forEach((s,i) => s.classList.toggle('active', i===n));
@@ -582,7 +650,10 @@ document.addEventListener('keydown', e => {
   if(e.key === 'ArrowLeft') { e.preventDefault(); prevSlide(); }
 });
 
-showSlide(0);
+// URL hash support for screenshot capture
+const hashSlide = parseInt(new URLSearchParams(location.search).get('slide'));
+showSlide(isNaN(hashSlide) ? 0 : Math.min(hashSlide, total-1));
+if (!isNaN(hashSlide)) current = Math.min(hashSlide, total-1);
 </script>
 
 </body>

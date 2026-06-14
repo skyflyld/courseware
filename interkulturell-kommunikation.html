@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=5">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#1a3a4a"><meta name="color-scheme" content="light">
+<title>Interkulturelle Kommunikation — China trifft Deutschland</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--blau:#1a3a4a;--rot:#c1121f;--gold:#d4a348;--gold-light:#fdf6e3;--sand:#f4efe6;--papier:#f7f3eb;--weiß:#fdfdfc;--grau:#4a4a4a;--grau-light:#7a7a7a;--linie:#ccc0ad;--linie-fein:#e0d8cc;--china-red:#b83030;--shadow-sm:0 1px 3px rgba(0,0,0,.06);--shadow:0 4px 16px rgba(0,0,0,.08);--shadow-lg:0 12px 40px rgba(0,0,0,.12);--radius:6px;--radius-lg:12px;--ease:cubic-bezier(.4,0,.2,1);--ease-bounce:cubic-bezier(.34,1.56,.64,1);--safe-top:env(safe-area-inset-top,0px);--safe-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;font-size:clamp(15px,1.4vw,19px);background:var(--sand)}
+body{font-family:'Inter','Noto Sans SC',system-ui,-apple-system,sans-serif;color:var(--blau);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;text-size-adjust:100%}
+h1,h2,h3{font-family:'Playfair Display','Noto Sans SC',Georgia,serif;line-height:1.2;letter-spacing:-0.01em}
+.de{font-style:normal}.zh{font-size:.82em;color:var(--grau-light);font-weight:400;font-family:'Noto Sans SC',sans-serif}.accent{color:var(--rot)}.gold{color:var(--gold)}.china{color:var(--china-red)}
+#progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--blau),var(--china-red),var(--gold));z-index:1000;transition:width .5s var(--ease)}
+#progress-dots{position:fixed;top:14px;right:24px;display:flex;gap:6px;z-index:999}
+#progress-dots .dot{width:8px;height:8px;border-radius:50%;background:var(--linie);cursor:pointer;transition:all .3s var(--ease)}
+#progress-dots .dot.active{background:var(--china-red);transform:scale(1.4);box-shadow:0 0 8px rgba(184,48,48,.4)}
+#progress-dots .dot.done{background:var(--gold)}
+.section{min-height:100vh;display:none;align-items:center;justify-content:center;padding:60px 20px;position:relative;overflow:hidden}
+.section.active{display:flex}
+.section-inner{max-width:960px;width:100%;background:var(--weiß);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);padding:56px 48px;position:relative;z-index:1;border:1px solid var(--linie-fein)}
+.section-tag{position:absolute;top:-14px;left:28px;font-family:'Inter','Noto Sans SC',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;padding:5px 16px;border-radius:20px}
+.section-tag.dark{background:var(--blau);color:var(--weiß)}.section-tag.red{background:var(--china-red);color:var(--weiß)}.section-tag.gold{background:var(--gold);color:var(--blau)}
+.nav-row{display:flex;justify-content:space-between;align-items:center;margin-top:36px;padding-top:20px;border-top:1px solid var(--linie-fein)}
+.nav-btn{font-family:'Inter','Noto Sans SC',sans-serif;background:var(--blau);color:var(--weiß);border:none;padding:11px 28px;border-radius:var(--radius);cursor:pointer;font-size:.9rem;font-weight:500;letter-spacing:.3px;transition:all .25s var(--ease)}
+.nav-btn:hover{background:var(--china-red);transform:translateY(-1px);box-shadow:var(--shadow)}
+.nav-btn:active{transform:translateY(0)}
+.nav-btn.prev{background:transparent;color:var(--grau);border:1px solid var(--linie);font-weight:400}
+.nav-btn.prev:hover{background:var(--sand);border-color:var(--grau);color:var(--blau)}
+.nav-btn.outline{background:transparent;color:var(--blau);border:1px solid var(--linie);font-weight:400;font-size:.85rem;padding:8px 18px}
+.nav-btn.outline:hover{border-color:var(--china-red);color:var(--china-red)}
+/* S1 COVER */#s1{background:var(--sand)}#s1 .section-inner{text-align:center;padding:64px 48px;max-width:800px}
+#s1 .masthead{font-family:'Inter','Noto Sans SC',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:32px;border:1px solid rgba(212,163,72,.3);padding:8px 28px;display:inline-block}
+#s1 .headline{font-family:'Playfair Display','Noto Sans SC',Georgia,serif;font-size:clamp(2.2rem,5.5vw,4.2rem);font-weight:900;line-height:1.15;margin-bottom:12px}
+#s1 .headline .hl-china{color:var(--china-red);position:relative}#s1 .headline .hl-germany{color:var(--blau)}
+#s1 .subhead{font-family:'EB Garamond',Georgia,serif;font-size:1.3rem;font-style:italic;color:var(--grau);margin-bottom:24px}
+#s1 .dek{font-size:.9rem;color:var(--grau-light);max-width:520px;margin:0 auto 40px;line-height:1.7}
+#s1 .culture-strip{display:flex;justify-content:center;align-items:center;gap:12px;margin-top:40px}
+#s1 .culture-strip span{width:36px;height:3px}#s1 .culture-strip .black{background:var(--blau)}#s1 .culture-strip .red{background:var(--china-red)}#s1 .culture-strip .gold{background:var(--gold)}
+/* S2 TEXT MANFRED */.text-block{padding:20px 24px;background:var(--sand);border-radius:var(--radius-lg);border-left:4px solid var(--gold);font-family:'EB Garamond',Georgia,serif;font-size:1.05rem;line-height:2;margin-top:16px}
+.text-block .vocab-word{color:var(--china-red);font-weight:600;cursor:pointer;border-bottom:2px dashed var(--gold);padding:0 2px;transition:all .2s}
+.text-block .vocab-word:hover{background:var(--gold-light);border-radius:3px}
+.text-zh{font-family:'Noto Sans SC',sans-serif;font-size:.88rem;color:var(--grau-light);margin-top:16px;padding:16px 20px;background:var(--weiß);border-radius:var(--radius);border:1px solid var(--linie-fein);line-height:1.8;display:none}
+.text-zh.show{display:block;animation:slideIn .4s var(--ease)}
+@keyframes slideIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+/* S3 TEXT GABRIELA */.text-tabs{display:flex;gap:0;margin-bottom:16px;border-bottom:2px solid var(--linie-fein)}
+.text-tab{padding:10px 24px;cursor:pointer;border:none;background:transparent;font-size:.88rem;font-weight:500;color:var(--grau-light);font-family:'Inter',sans-serif;transition:all .25s;border-bottom:2px solid transparent;margin-bottom:-2px}
+.text-tab.active{color:var(--china-red);border-bottom-color:var(--china-red);font-weight:600}
+.text-tab:hover{color:var(--blau)}
+.text-person{display:none;animation:slideIn .35s var(--ease)}
+.text-person.active{display:block}
+/* VOCAB PANEL */.vocab-panel{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--weiß);border-radius:20px 20px 0 0;box-shadow:0 -8px 40px rgba(0,0,0,.15);padding:28px 24px 32px;z-index:2000;max-height:45vh;overflow-y:auto;animation:slideUp .35s var(--ease)}
+.vocab-panel.show{display:block}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:none}}
+.vocab-panel .vp-word{font-size:1.3rem;font-weight:700;color:var(--blau);margin-bottom:4px}
+.vocab-panel .vp-zh{font-size:1rem;color:var(--china-red);font-weight:600;margin-bottom:8px;font-family:'Noto Sans SC',sans-serif}
+.vocab-panel .vp-example{font-size:.9rem;color:var(--grau);padding:10px 14px;background:var(--sand);border-radius:var(--radius);margin-top:6px;line-height:1.6}
+.vocab-panel .vp-close{position:absolute;top:12px;right:16px;font-size:1.4rem;cursor:pointer;color:var(--grau-light);background:none;border:none;padding:4px 8px}
+.vocab-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:1999}
+.vocab-overlay.show{display:block}
+/* S4 WORD CLOUD CATEGORIES */.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-top:20px}
+.cat-card{background:var(--sand);border-radius:var(--radius-lg);padding:20px;border:1px solid var(--linie-fein);transition:all .3s var(--ease)}
+.cat-card:hover{border-color:var(--gold);box-shadow:var(--shadow-sm)}
+.cat-card h4{font-family:'Playfair Display','Noto Sans SC',Georgia,serif;font-size:.95rem;margin-bottom:10px;color:var(--blau)}
+.cat-card .cat-word{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--linie-fein);font-size:.85rem;cursor:pointer;transition:all .2s}
+.cat-card .cat-word:last-child{border-bottom:none}
+.cat-card .cat-word:hover{color:var(--china-red)}
+.cat-card .cat-word .cw-de{font-weight:500}.cat-card .cat-word .cw-zh{color:var(--grau-light);font-size:.8rem}
+/* S5 GRAMMAR */.grammar-card{background:var(--weiß);border:1px solid var(--linie-fein);border-radius:var(--radius-lg);padding:24px;margin-top:14px;transition:all .3s var(--ease);cursor:pointer}
+.grammar-card:hover{box-shadow:var(--shadow);border-color:var(--gold)}
+.grammar-card .gc-title{font-family:'Playfair Display','Noto Sans SC',Georgia,serif;font-size:1.1rem;font-weight:700;color:var(--blau);margin-bottom:6px}
+.grammar-card .gc-marker{font-size:.78rem;color:var(--grau-light);font-weight:500;text-transform:uppercase;letter-spacing:1px}
+.grammar-card .gc-example{font-family:'EB Garamond',Georgia,serif;font-size:.95rem;padding:12px 16px;background:var(--sand);border-radius:var(--radius);margin-top:10px;line-height:1.7;display:none}
+.grammar-card .gc-example.show{display:block;animation:slideIn .3s var(--ease)}
+/* S6 FLIP CARDS */.flip-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:12px;margin-top:20px}
+.flip-card{perspective:900px;height:145px}
+.flip-card-inner{position:relative;width:100%;height:100%;transition:transform .5s var(--ease);transform-style:preserve-3d;cursor:pointer}
+.flip-card.flipped .flip-card-inner{transform:rotateY(180deg)}
+.flip-card-front,.flip-card-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:var(--radius-lg);display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'EB Garamond',Georgia,serif;border:1px solid var(--linie-fein);padding:8px;text-align:center}
+.flip-card-front{background:linear-gradient(160deg,var(--weiß),#f0f4f8);gap:4px}
+.flip-card-front .fc-de{font-size:1.05rem;font-weight:700;color:var(--blau)}
+.flip-card-back{background:linear-gradient(160deg,var(--china-red),#8a2020);color:var(--weiß);transform:rotateY(180deg);border:none}
+.flip-card-back .fc-zh{font-size:1.1rem;font-weight:600;font-family:'Noto Sans SC',sans-serif}
+.flip-card-back .fc-hint{font-size:.7rem;opacity:.7;margin-top:4px;font-family:'Inter',sans-serif}
+/* S7 STRATEGIES MATCH */.strategy-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:20px}
+.strat-left,.strat-right{padding:8px}
+.strat-left .sl-item,.strat-right .sr-item{padding:10px 14px;margin:4px 0;border-radius:var(--radius);font-size:.85rem;cursor:pointer;transition:all .25s;border:2px solid transparent}
+.strat-left .sl-item{background:var(--sand);border-color:var(--linie-fein)}
+.strat-left .sl-item:hover{border-color:var(--gold)}
+.strat-left .sl-item.selected{background:var(--gold-light);border-color:var(--gold)}
+.strat-left .sl-item.matched{background:#d4edda;border-color:#28a745;opacity:.7}
+.strat-right .sr-item{background:var(--weiß);border-color:var(--linie-fein);text-align:center}
+.strat-right .sr-item:hover{background:#f0f4f8}
+.strat-right .sr-item.matched{background:#d4edda;border-color:#28a745;opacity:.7}
+.strat-match-status{text-align:center;margin-top:16px;font-size:.9rem;color:var(--grau-light)}
+/* S8 TYPICAL */.trait-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:16px}
+.trait-col{padding:20px;border-radius:var(--radius-lg);background:var(--sand)}
+.trait-col h4{font-family:'Playfair Display','Noto Sans SC',Georgia,serif;margin-bottom:12px;font-size:1rem;text-align:center}
+.trait-col .trait-tag{display:inline-block;padding:5px 14px;margin:4px;border-radius:20px;font-size:.82rem;background:var(--weiß);border:1px solid var(--linie-fein);cursor:pointer;transition:all .25s}
+.trait-col .trait-tag:hover{background:var(--gold-light);border-color:var(--gold)}
+.trait-col .trait-tag.tagged{background:var(--blau);color:var(--weiß);border-color:var(--blau)}
+.trait-col.china h4{color:var(--china-red)}.trait-col.germany h4{color:var(--blau)}
+/* S9 TRANSLATION */.trans-card{padding:20px 24px;background:var(--sand);border-radius:var(--radius-lg);margin-top:12px;cursor:pointer;transition:all .3s;border:2px solid var(--linie-fein)}
+.trans-card:hover{border-color:var(--gold);box-shadow:var(--shadow-sm)}
+.trans-card .tc-cn{font-family:'Noto Sans SC',sans-serif;font-size:.95rem;color:var(--blau);font-weight:500}
+.trans-card .tc-de{display:none;font-family:'EB Garamond',Georgia,serif;font-size:.95rem;color:var(--china-red);margin-top:8px;padding:10px 14px;background:var(--weiß);border-radius:var(--radius);line-height:1.7}
+.trans-card .tc-de.show{display:block;animation:slideIn .35s var(--ease)}
+.trans-card .tc-hint{font-size:.75rem;color:var(--grau-light);margin-top:6px;font-family:'Inter',sans-serif}
+/* S10 SCHLUSS */#s10{background:var(--sand)}#s10 .section-inner{text-align:center;max-width:700px}
+#s10 .final-quote{font-family:'Playfair Display','Noto Sans SC',Georgia,serif;font-size:clamp(1.4rem,3.5vw,2.4rem);line-height:1.4;margin-bottom:16px}
+#s10 .final-zh{font-family:'Noto Sans SC',sans-serif;font-size:1rem;color:var(--grau);margin-bottom:28px}
+#s10 .culture-strip{display:flex;justify-content:center;gap:0;margin-top:32px}
+#s10 .culture-strip span{width:40px;height:2px}
+#s10 .culture-strip .black{background:var(--blau)}#s10 .culture-strip .red{background:var(--china-red)}#s10 .culture-strip .gold{background:var(--gold)}
+/* TOAST */.toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%);background:var(--blau);color:var(--weiß);padding:14px 32px;border-radius:30px;font-size:.88rem;z-index:3000;opacity:0;transition:opacity .3s;pointer-events:none;font-family:'Inter','Noto Sans SC',sans-serif;box-shadow:var(--shadow-lg)}.toast.show{opacity:1}
+.key-hint{position:fixed;bottom:24px;left:24px;font-size:.75rem;color:var(--grau-light);z-index:998;opacity:.6;font-family:'Inter','Noto Sans SC',sans-serif}
+/* RESPONSIVE */
+@media(max-width:479px){
+  html{font-size:15px}.section{min-height:100dvh;padding:calc(var(--safe-top)+8px) 12px calc(var(--safe-bottom)+16px)}
+  .section-inner{padding:28px 16px;border-radius:8px;box-shadow:var(--shadow)}.section-tag{top:-10px;left:16px;font-size:.65rem;padding:3px 12px;letter-spacing:2px}
+  .section-inner h2{font-size:1.2rem}.nav-row{margin-top:24px;padding-top:14px;gap:10px;flex-direction:column}
+  .nav-btn{padding:10px 20px;font-size:.82rem;min-height:44px}
+  .flip-grid{grid-template-columns:repeat(3,1fr);gap:8px}.flip-card{height:130px}
+  .flip-card-front .fc-de{font-size:.85rem}.flip-card-back .fc-zh{font-size:.9rem}
+  .cat-grid{grid-template-columns:1fr;gap:10px}.strategy-grid{grid-template-columns:1fr;gap:0}
+  .trait-grid{grid-template-columns:1fr;gap:14px}
+  #s1 .headline{font-size:1.8rem}#s1 .subhead{font-size:.95rem}
+  #progress-dots{top:calc(var(--safe-top)+8px);right:10px;gap:4px}#progress-dots .dot{width:7px;height:7px}
+  .key-hint{display:none}.text-tabs{overflow-x:auto}.text-tab{padding:8px 14px;font-size:.82rem;white-space:nowrap}
+}
+@media(min-width:480px) and (max-width:767px){
+  html{font-size:15.5px}.section{min-height:100dvh;padding:calc(var(--safe-top)+16px) 16px calc(var(--safe-bottom)+24px)}
+  .section-inner{padding:32px 22px;border-radius:10px}.section-inner h2{font-size:1.3rem}
+  .nav-btn{min-height:44px}.nav-row{flex-direction:column}
+  .flip-grid{grid-template-columns:repeat(4,1fr);gap:10px}.flip-card{height:135px}
+  .cat-grid{grid-template-columns:1fr 1fr;gap:12px}
+  .trait-grid{grid-template-columns:1fr;gap:14px}.key-hint{display:none}
+}
+@media(min-width:768px) and (max-width:1023px){
+  .section{padding:50px 24px}.section-inner{padding:44px 36px}
+  .flip-grid{grid-template-columns:repeat(4,1fr);gap:12px}
+  .cat-grid{grid-template-columns:repeat(2,1fr)}#s1 .headline{font-size:2.8rem}
+}
+@media(min-width:1024px) and (max-width:1439px){
+  .section-inner{max-width:880px;padding:52px 48px}
+  .flip-grid{grid-template-columns:repeat(5,1fr)}.cat-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(min-width:1440px){
+  html{font-size:18px}.section{padding:60px 40px}.section-inner{max-width:1100px;padding:64px 64px;border-radius:16px;box-shadow:var(--shadow-xl)}
+  .section-tag{top:-16px;left:36px;font-size:.75rem;padding:6px 20px;letter-spacing:3px}
+  .section-inner h2{font-size:1.8rem}.flip-grid{grid-template-columns:repeat(5,1fr);gap:16px}.flip-card{height:160px}
+  .cat-grid{grid-template-columns:repeat(4,1fr);gap:16px}.trait-grid{grid-template-columns:1fr 1fr;gap:24px}
+  #s1 .headline{font-size:4.2rem}#s1 .subhead{font-size:1.4rem}
+  .text-block{font-size:1.1rem;line-height:2.1}
+}
+@media(hover:none) and (pointer:coarse){.flip-card,.grammar-card,.trans-card,.cat-card .cat-word,.trait-tag{cursor:default}.nav-btn:active{transform:scale(.97)}}
+@media print{.section{display:block!important;min-height:auto;page-break-after:always;padding:20px 0}
+  #progress-bar,#progress-dots,.key-hint,.nav-row,.toast,.vocab-panel,.vocab-overlay{display:none!important}.section-inner{box-shadow:none;border:1px solid #ccc}}
+</style>
+</head>
+<body>
+<div id="progress-bar"></div><div id="progress-dots"></div><div id="toast" class="toast"></div><div class="key-hint">← → 翻页 | 点击交互</div>
+<div class="vocab-overlay" id="vocabOverlay" onclick="closeVocabPanel()"></div>
+<div class="vocab-panel" id="vocabPanel"><button class="vp-close" onclick="closeVocabPanel()">✕</button><div class="vp-word" id="vpWord"></div><div class="vp-zh" id="vpZh"></div><div class="vp-example" id="vpEx"></div></div>
+
+<!-- S1 COVER -->
+<section class="section active" id="s1" data-index="0">
+<div class="section-inner">
+<div class="masthead">Kulturbrücke — Interkulturelle Kommunikation</div>
+<h1 class="headline"><span class="hl-china">China</span> trifft <span class="hl-germany">Deutschland</span></h1>
+<p class="subhead">Kulturen verstehen · Brücken bauen</p>
+<p class="dek">两种文化的相遇并不总是一帆风顺。理解差异，学会适应，<br>是通向真正交流的第一步。</p>
+<div class="culture-strip"><span class="black"></span><span class="red"></span><span class="gold"></span><span class="red"></span><span class="black"></span></div>
+</div>
+<div class="nav-row" style="position:absolute;bottom:40px;left:50%;transform:translateX(-50%);border:none;margin:0;padding:0;width:auto">
+<button class="nav-btn" onclick="goTo(1)" style="background:var(--blau);color:var(--gold);font-weight:600;padding:14px 40px;font-size:1rem">Los geht's! →</button>
+</div>
+</section>
+
+<!-- S2 TEXT MANFRED -->
+<section class="section" id="s2" data-index="1">
+<div class="section-inner">
+<div class="section-tag dark">01 · Lesetext</div>
+<h2>Manfreds Erlebnisse in China</h2>
+<p style="margin-top:6px;color:var(--grau-light);font-size:.9rem">Ein deutscher Schüler berichtet über seine Erfahrungen in Kunming.<br><span class="zh">点击红色标注的词汇查看中文释义</span></p>
+
+<div style="margin-top:16px">
+<div class="text-block" id="textManfred">
+<p>Bevor ich in die 9. Klasse kam, machte meine Familie eine <span class="vocab-word" onclick="showVocab('Rundreise','环游旅行','eine Reise, bei der man an viele Orte fährt und dann zum Ausgangspunkt zurückkehrt. 例：Wir machten eine Rundreise durch Europa.')">Rundreise</span> durch den Südosten Chinas.</p>
+<p>Dabei war ich von der chinesischen Kultur <span class="vocab-word" onclick="showVocab('faszinieren','使着迷','jemanden sehr interessieren und begeistern. 例：Die japanische Kultur fasziniert mich sehr.')">fasziniert</span>.</p>
+<p>Deswegen entschied ich mich für ein <span class="vocab-word" onclick="showVocab('einjähriges Austauschjahr','为期一年的交换年','ein Schuljahr, das man im Ausland verbringt. 例：Mein Austauschjahr in Frankreich war unvergesslich.')">einjähriges Austauschjahr</span> in der Stadt Kunming.</p>
+<p>Meine <span class="vocab-word" onclick="showVocab('Gastfamilie','寄宿家庭','die Familie, bei der man wohnt, wenn man im Ausland ist. 例：Meine Gastfamilie war sehr nett zu mir.')">Gastfamilie</span> ist eine liebevolle Familie.</p>
+<p>Anfangs waren alle sehr <span class="vocab-word" onclick="showVocab('höflich','礼貌的','mit guten Manieren; respektvoll. 例：In Japan ist man sehr höflich.')">höflich</span> zu mir und <span class="vocab-word" onclick="showVocab('äußern','表达','sagen, was man denkt oder fühlt. 例：Er äußerte seine Meinung.')">äußerten</span> die Kritik sehr <span class="vocab-word" onclick="showVocab('indirekt','间接的','nicht direkt, sondern auf Umwegen. 例：In China ist Kritik oft indirekt.')">indirekt</span>.</p>
+<p>So hat mir meine Gastmutter nie auf direktem Weg gesagt, dass ich mein Zimmer aufräumen soll, während sie ihren Sohn wegen seiner <span class="vocab-word" onclick="showVocab('Unordentlichkeit','不整洁','der Zustand, nicht ordentlich zu sein. 例：Seine Unordentlichkeit nervt mich.')">Unordentlichkeit</span> <span class="vocab-word" onclick="showVocab('ausschimpfen','责骂','jemandem böse Worte sagen, weil er etwas falsch gemacht hat. 例：Die Mutter schimpfte ihren Sohn aus.')">ausgeschimpft</span> hat.</p>
+<p>Das hat <span class="vocab-word" onclick="showVocab('Eindruck','印象','das Gefühl oder die Meinung, die man von jemandem/etwas bekommt. 例：Seine Rede hat großen Eindruck auf mich gemacht.')">Eindruck</span> auf mich gemacht.</p>
+<p>Langsam verstand ich das und räumte auch jeden Tag mein Zimmer auf.</p>
+<p>Nach und nach <span class="vocab-word" onclick="showVocab('jemandem ans Herz wachsen','逐渐被某人喜爱','von jemandem immer mehr gemocht werden. 例：Der kleine Hund ist mir ans Herz gewachsen.')">wuchs mir meine Gastfamilie ans Herz</span> und sie brachte mir die schönsten und wertvollsten Erfahrungen.</p>
+<p style="text-align:right;margin-top:12px;font-size:.85rem;color:var(--grau-light)">— Manfred, ein deutscher Schüler</p>
+</div>
+<button class="nav-btn outline" onclick="document.getElementById('zhManfred').classList.toggle('show')" style="margin-top:12px">📖 显示/隐藏中文翻译</button>
+<div class="text-zh" id="zhManfred">
+在进入九年级之前，我和家人进行了一次环游中国东南部的旅行。在此过程中，我被中国文化深深吸引。因此我决定在昆明市进行为期一年的交换学习。我的寄宿家庭是一个非常温馨的家庭。起初，大家都对我非常有礼貌，表达批评也非常间接。例如，我的寄宿母亲从不直接告诉我应该整理房间，虽然她会因为儿子的不整洁而责备他。这给我留下了深刻的印象。慢慢地我理解了这一点，也开始每天整理自己的房间。渐渐地，寄宿家庭让我产生了深厚的感情，他们带给了我最美好、最宝贵的经历。
+</div>
+</div>
+
+<div class="nav-row">
+<button class="nav-btn prev" onclick="goTo(0)">← Zurück</button>
+<button class="nav-btn" onclick="goTo(2)">Gabrielas Geschichte →</button>
+</div>
+</div>
+</section>
+
+<!-- S3 TEXT GABRIELA -->
+<section class="section" id="s3" data-index="2">
+<div class="section-inner">
+<div class="section-tag gold">02 · Lesetext</div>
+<h2>Gabrielas Erfahrungen in Deutschland</h2>
+<p style="margin-top:6px;color:var(--grau-light);font-size:.9rem">Eine kolumbianische Studentin lernt deutsche Umgangsformen kennen.<br><span class="zh">点击红色词汇查看释义和例句</span></p>
+
+<div style="margin-top:16px">
+<div class="text-block" id="textGabriela">
+<p>Bevor ich nach Deutschland kam, hatte ich schon drei Jahre Deutsch <span class="vocab-word" onclick="showVocab('gelernt (lernen)','学习','sich Wissen oder Fähigkeiten aneignen.')">gelernt</span>.</p>
+<p>Daher kam ich anfangs schnell mit deutschen Studierenden in <span class="vocab-word" onclick="showVocab('Kontakt','联系','die Verbindung zu jemandem. 例：Mit ihr bin ich in Kontakt geblieben.')">Kontakt</span>.</p>
+<p>Jedes Mal, wenn ich sie traf, <span class="vocab-word" onclick="showVocab('begrüßen','问候、打招呼','jemanden bei einem Treffen willkommen heißen. 例：In Deutschland begrüßt man sich mit Händeschütteln.')">begrüßte</span> ich sie <span class="vocab-word" onclick="showVocab('selbstverständlich','理所当然地','etwas, das man als normal und erwartet ansieht. 例：Für ihn war es selbstverständlich, zu helfen.')">selbstverständlich</span> mit einem Kuss auf die Wange.</p>
+<p>Aber ich <span class="vocab-word" onclick="showVocab('merken','注意到','etwas mit den Sinnen wahrnehmen oder verstehen. 例：Ich merkte, dass er traurig war.')">merkte</span>, dass sie sich bei dem <span class="vocab-word" onclick="showVocab('Wangenkuss','脸颊吻','ein Kuss auf die Wange zur Begrüßung. 例：In Frankreich ist der Wangenkuss üblich.')">Wangenkuss</span> nicht wohl fühlten.</p>
+<p>Und während des Gesprächs rückten sie immer wieder weg, wenn ich mich ihnen <span class="vocab-word" onclick="showVocab('nähern','靠近','sich zu jemandem hinbewegen. 例：Er näherte sich dem Tisch.')">näherte</span>.</p>
+<p>Das hat mich <span class="vocab-word" onclick="showVocab('verletzen','伤害','jemandes Gefühle schlecht behandeln. 例：Seine Worte haben mich tief verletzt.')">verletzt</span>.</p>
+<p>Dann habe ich mit ihnen über meine <span class="vocab-word" onclick="showVocab('Gefühle','感受','Empfindungen und Emotionen. 例：Er sprach offen über seine Gefühle.')">Gefühle</span> geredet.</p>
+<p>Sie haben sich <span class="vocab-word" onclick="showVocab('sich entschuldigen','道歉','sagen, dass es einem leidtut. 例：Er entschuldigte sich für sein Verhalten.')">entschuldigt</span> und sagten mir, dass die Deutschen die <span class="vocab-word" onclick="showVocab('körperliche Distanz','身体距离','der Abstand zwischen Personen im physischen Raum. 例：In Deutschland ist die körperliche Distanz größer.')">körperliche Distanz</span> achten.</p>
+<p>Und in Deutschland begrüßen sich Studierende meist nur mit einem freundlichen „Hallo", manchmal auch mit einem <span class="vocab-word" onclick="showVocab('Händeschütteln','握手','die Begrüßungsgeste mit der Hand. 例：Bei Geschäftstreffen ist Händeschütteln üblich.')">Händeschütteln</span>.</p>
+<p>Jetzt begrüße ich meine deutschen Freunde manchmal auch kolumbianisch, aber nur wenn wir uns gut kennen und sie kein Problem damit haben.</p>
+<p style="text-align:right;margin-top:12px;font-size:.85rem;color:var(--grau-light)">— Gabriela, Studentin aus Kolumbien</p>
+</div>
+<button class="nav-btn outline" onclick="document.getElementById('zhGabriela').classList.toggle('show')" style="margin-top:12px">📖 显示/隐藏中文翻译</button>
+<div class="text-zh" id="zhGabriela">
+在我来德国之前，我已经学了三年德语。因此我一开始很快就能和德国学生建立联系。每次见到她们，我都会自然而然地亲吻她们的脸颊。但我注意到她们在脸颊亲吻时感到不舒服。而且在交谈过程中，当我靠近她们时，她们总是往后退。这让我感到受伤。然后我和她们谈了我的感受。她们向我道歉，并告诉我德国人注重身体距离。在德国，学生们通常只是友好地打招呼"Hallo"，有时也会握手。现在，我有时也会用哥伦比亚的方式问候我的德国朋友，但只有当我们彼此熟悉且她们对此没有问题时。
+</div>
+</div>
+
+<div class="nav-row">
+<button class="nav-btn prev" onclick="goTo(1)">← Zurück</button>
+<button class="nav-btn" onclick="goTo(3)">📚 Wortschatz →</button>
+</div>
+</div>
+</section>
+
+<!-- S4 WORTSCHATZ -->
+<section class="section" id="s4" data-index="3">
+<div class="section-inner">
+<div class="section-tag dark">03 · Wortschatz</div>
+<h2>📚 Wichtige Vokabeln</h2>
+<p style="margin-top:6px;color:var(--grau-light);font-size:.9rem"><span class="zh">点击每个词汇查看详细释义和例句</span></p>
+<div class="cat-grid" id="vocabGrid"></div>
+<div class="nav-row">
+<button class="nav-btn prev" onclick="goTo(2)">← Zurück</button>
+<button class="nav-btn" onclick="goTo(4)">Grammatik →</button>
+</div>
+</div>
+</section>
+
+<!-- S5 GRAMMAR -->
+<section class="section" id="s5" data-index="4">
+<div class="section-inner">
+<div class="section-tag red">04 · Grammatik</div>
+<h2>Temporale Nebensätze</h2>
+<p style="margin-top:6px;color:var(--grau-light);font-size:.9rem">während · bevor · nachdem — 时间从句<br><span class="zh">点击展开每个连词的例句和用法详解</span></p>
+
+<div class="grammar-card" onclick="this.querySelector('.gc-example').classList.toggle('show')">
+<div class="gc-title"><span class="gc-marker">Konjunktion</span> ⏳ <strong>während</strong></div>
+<p style="font-size:.88rem;color:var(--grau);margin-top:2px"><span class="zh">"在……的同时"——两个动作同时发生</span></p>
+<div class="gc-example">
+<strong>Gleichzeitigkeit — 同时发生</strong><br><br>
+• Manfred war fasziniert von der chinesischen Kultur, <strong>während</strong> er mit seinen Eltern eine Rundreise im Südosten Chinas machte.<br>
+<span class="zh">曼弗雷德对中国文化着迷，是在他和父母环游中国东南部期间。</span><br><br>
+• In Deutschland äußert man Kritik eher direkt, <strong>während</strong> man in China Kritik oft sehr indirekt ausdrückt.<br>
+<span class="zh">在德国人们表达批评比较直接，而在中国人们常常非常间接地表达批评。</span><br><br>
+• Die chinesischen Studierenden machten ungern kritische Anmerkungen, <strong>während</strong> sie im Kurs von Frau Schmitz mit anderen diskutierten.<br>
+<span class="zh">中国学生在Schmitz女士的课上与他人讨论时，不情愿地发表批评意见。</span><br><br>
+• <strong>Während</strong> die chinesischen Studierenden den Lehrer als Autorität ansehen, ist die Hierarchie zwischen Lehrern und Studierenden in Deutschland viel flacher.<br>
+<span class="zh">中国学生视老师为权威，而在德国师生之间的等级关系则扁平得多。</span><br><br>
+• <strong>Während</strong> in Kolumbien Wangenküsse bei der Begrüßung selbstverständlich sind, begrüßen sich Studierende in Deutschland meist mit einem „Hallo" oder Händeschütteln.<br>
+<span class="zh">在哥伦比亚打招呼时亲吻脸颊是理所当然的，而在德国学生之间通常以"Hallo"或握手问候。</span>
+</div>
+</div>
+
+<div class="grammar-card" onclick="this.querySelector('.gc-example').classList.toggle('show')">
+<div class="gc-title"><span class="gc-marker">Konjunktion</span> ⌛ <strong>bevor</strong></div>
+<p style="font-size:.88rem;color:var(--grau);margin-top:2px"><span class="zh">"在……之前"——主句发生在从句之后</span></p>
+<div class="gc-example">
+<strong>Vorzeitigkeit — 从句动作先于主句</strong><br><br>
+• <strong>Bevor</strong> ich in die 9. Klasse kam, machte meine Familie eine Rundreise durch den Südosten Chinas.<br>
+<span class="zh">在我进入九年级之前，我家进行了一次环游中国东南部的旅行。</span><br><br>
+• <strong>Bevor</strong> ich nach Deutschland kam, hatte ich schon drei Jahre Deutsch gelernt.<br>
+<span class="zh">在我来德国之前，我已经学了三年德语。</span><br><br>
+• <strong>Bevor</strong> Gabriela mit deutschen Freunden über die Kommunikationsprobleme offen gesprochen hat, hatte das Wegrucken der Deutschen für sie eine Distanzierung oder Ablehnung bedeutet.<br>
+<span class="zh">在Gabriela和德国朋友坦诚沟通这些问题之前，德国人的退后对她意味着疏远或拒绝。</span><br><br>
+<div style="padding:8px 14px;background:var(--gold-light);border-radius:var(--radius);margin-top:8px">
+💡 <strong>结构：</strong>bevor + 从句（动词放句末）+ 主句<br>
+或：主句 + bevor + 从句（动词放句末）
+</div>
+</div>
+</div>
+
+<div class="grammar-card" onclick="this.querySelector('.gc-example').classList.toggle('show')">
+<div class="gc-title"><span class="gc-marker">Konjunktion</span> 🕐 <strong>nachdem</strong></div>
+<p style="font-size:.88rem;color:var(--grau);margin-top:2px"><span class="zh">"在……之后"——主句发生在从句之后</span></p>
+<div class="gc-example">
+<strong>Nachzeitigkeit — 从句动作先于主句</strong><br><br>
+• Die chinesischen Studierenden sind im Unterricht offener und mutiger geworden, <strong>nachdem</strong> Frau Schmitz oft nach ihrer Meinung gefragt (hatte) und sie ermuntert hatte.<br>
+<span class="zh">在Schmitz女士经常询问他们的意见并鼓励他们之后，中国学生在课堂上变得更开放和大胆了。</span><br><br>
+<div style="padding:8px 14px;background:var(--gold-light);border-radius:var(--radius);margin-top:8px">
+💡 <strong>时态对应：</strong><br>
+nachdem + Plusquamperfekt ······ Präteritum (从句先发生)<br>
+nachdem + Perfekt ·············· Präsens (从句先发生)
+</div>
+</div>
+</div>
+
+<div class="nav-row">
+<button class="nav-btn prev" onclick="goTo(3)">← Zurück</button>
+<button class="nav-btn" onclick="goTo(5)">🎴 Vokabel-Flip-Karten →</button>
+</div>
+</div>
+</section>
+
+<!-- S6 FLIP CARDS -->
+<section class="section" id="s6" data-index="5">
+<div class="section-inner">
+<div class="section-tag gold">05 · Spiel</div>
+<h2>🎴 Vokabel-Flip-Karten</h2>
+<p style="margin-top:6px;color:var(--grau-light);font-size:.9rem"><span class="zh">点击卡片翻转查看中文释义</span></p>
+<div class="flip-grid" id="flipGrid"></div>
+<p class="card-counter" style="text-align:center;margin-top:16px;font-size:.85rem;color:var(--grau-light)">已翻面：<strong id="flipCount" style="color:var(--china-red)">0</strong>/<strong id="flipTotal" style="color:var(--china-red)">0</strong></p>
+<div class="nav-row">
+<button class="nav-btn prev" onclick="goTo(4)">← Zurück</button>
+<button class="nav-btn" onclick="goTo(6)">Strategien →</button>
+</div>
+</div>
+</section>
+
+<!-- S7 STRATEGIES MATCH -->
+<section class="section" id="s7" data-index="6">
+<div class="section-inner">
+<div class="section-tag dark">06 · Aufgabe 8</div>
+<h2>🌉 Interkulturelle Strategien</h2>
+<p style="margin-top:6px;color:var(--grau-light);font-size:.9rem">Welche Strategie hat welche Person verwendet? <span class="zh">点击左侧人物，再点击右侧策略进行配对。</span></p>
+<div class="strategy-grid" id="stratGrid"></div>
+<div class="strat-match-status" id="stratStatus">已配对：0 / 3 组</div>
+<div class="nav-row">
+<button class="nav-btn prev" onclick="goTo(5)">← Zurück</button>
+<button class="nav-btn" onclick="goTo(7)">Typisch deutsch? →</button>
+</div>
+</div>
+</section>
+
+<!-- S8 TYPICAL -->
+<section class="section" id="s8" data-index="7">
+<div class="section-inner">
+<div class="section-tag red">07 · Aufgabe 9</div>
+<h2>🇨🇳 Typisch chinesisch? 🇩🇪 Typisch deutsch?</h2>
+<p style="margin-top:6px;color:var(--grau-light);font-size:.9rem"><span class="zh">点击词汇标记它的归属——可以同时属于两边！每个词可切换标记状态。</span></p>
+
+<div class="trait-grid">
+<div class="trait-col china">
+<h4>🇨🇳 "typisch chinesisch"</h4>
+<div id="chinaTraits"></div>
+</div>
+<div class="trait-col germany">
+<h4>🇩🇪 "typisch deutsch"</h4>
+<div id="germanyTraits"></div>
+</div>
+</div>
+
+<p style="margin-top:16px;text-align:center;font-size:.85rem;color:var(--grau-light)">
+<span class="zh">灰色 = 未标记 | 深色 = 已标记到该侧</span>
+</p>
+
+<div class="nav-row">
+<button class="nav-btn prev" onclick="goTo(6)">← Zurück</button>
+<button class="nav-btn" onclick="goTo(8)">📝 Übersetzung →</button>
+</div>
+</div>
+</section>
+
+<!-- S9 TRANSLATION -->
+<section class="section" id="s9" data-index="8">
+<div class="section-inner">
+<div class="section-tag gold">08 · Aufgabe 10</div>
+<h2>📝 Übersetzung</h2>
+<p style="margin-top:6px;color:var(--grau-light);font-size:.9rem"><span class="zh">点击中文句子查看德语翻译</span></p>
+
+<div class="trans-card" onclick="this.querySelector('.tc-de').classList.toggle('show')">
+<div class="tc-cn">去中国前，请您先阅读这本中国旅游指南，了解一些中、德两国在文化方面的异同。</div>
+<div class="tc-hint">👆 点击查看德语</div>
+<div class="tc-de">Bevor Sie nach China gehen, sollten Sie den Ratgeber für China-Reisende lesen und sich über einige kulturelle Gemeinsamkeiten und Unterschiede zwischen China und Deutschland informieren.</div>
+</div>
+
+<div class="trans-card" onclick="this.querySelector('.tc-de').classList.toggle('show')">
+<div class="tc-cn">谦虚、礼貌与勤奋都是中国的传统美德。中国人和德国人一样重视礼貌。</div>
+<div class="tc-hint">👆 点击查看德语</div>
+<div class="tc-de">Bescheidenheit, Höflichkeit und Fleiß sind traditionelle chinesische Tugenden. Die Chinesen legen ebenso großen Wert auf Höflichkeit wie die Deutschen.</div>
+</div>
+
+<div class="trans-card" onclick="this.querySelector('.tc-de').classList.toggle('show')">
+<div class="tc-cn">如果您去中国家庭作客，您应遵守中国的习俗。比如在中国，客人早于约定的时间到达，这样显得礼貌，而在德国，客人最好晚到5至10分钟。</div>
+<div class="tc-hint">👆 点击查看德语</div>
+<div class="tc-de">Wenn man zu Gast bei einer chinesischen Familie ist, sollte man die chinesischen Sitten beachten. In China ist es z. B. höflich, dass der Gast früher als zur vereinbarten Zeit zu Einladungen kommt, während man in Deutschland besser fünf bis zehn Minuten später kommt.</div>
+</div>
+
+<div class="trans-card" onclick="this.querySelector('.tc-de').classList.toggle('show')">
+<div class="tc-cn">与德国不同的是，客人进入主人家前要先脱鞋。一些礼物在中国是禁忌，例如钟、梨和伞。</div>
+<div class="tc-hint">👆 点击查看德语</div>
+<div class="tc-de">Im Gegensatz zu Deutschland soll der Gast seine Schuhe ausziehen, bevor er den Wohnraum des Gastgebers betritt. Manche Geschenke sind in China Tabus, z. B. Uhren, Birnen und Regenschirme.</div>
+</div>
+
+<div class="trans-card" onclick="this.querySelector('.tc-de').classList.toggle('show')">
+<div class="tc-cn">中国的用餐习俗是客人不要把食物都吃光，而且在主人劝菜时要谦虚地谢绝。此外，不要挑剔饭菜，因为这会伤主人的面子。</div>
+<div class="tc-hint">👆 点击查看德语</div>
+<div class="tc-de">In China gehört es sich beim Essen, dass der Gast seinen Teller nicht leer isst und bei weiterem Anbieten des Gastgebers eher bescheiden ablehnt. Außerdem sollte man das Essen nicht bemängeln, weil man so das Gesicht des Gastgebers verletzt.</div>
+</div>
+
+<div class="nav-row">
+<button class="nav-btn prev" onclick="goTo(7)">← Zurück</button>
+<button class="nav-btn" onclick="goTo(9)">🎯 Abschluss →</button>
+</div>
+</div>
+</section>
+
+<!-- S10 SCHLUSS -->
+<section class="section" id="s10" data-index="9">
+<div class="section-inner">
+<div class="masthead" style="color:var(--gold);border-color:rgba(212,163,72,.25);font-size:.7rem;text-transform:uppercase;letter-spacing:3px">Kulturbrücke — Interkulturelle Kommunikation</div>
+<div class="final-quote">Es sind die Unterschiede,<br>die uns einander näherbringen.</div>
+<p class="final-zh">正是差异，让我们彼此走近。</p>
+<p style="color:var(--grau-light);font-size:.85rem;margin-bottom:28px">
+<span class="zh">理解差异 → 学会适应 → 建立沟通</span>
+</p>
+
+<div style="max-width:480px;margin:0 auto;text-align:left;padding:20px 24px;background:var(--sand);border-radius:var(--radius-lg);border:1px solid var(--linie-fein)">
+<p style="font-size:.9rem;line-height:1.8">
+<strong>Kernstrategien interkultureller Kommunikation:</strong><br>
+<span class="zh">跨文化交际的核心策略：</span>
+</p>
+<ul style="font-size:.85rem;margin-top:8px;padding-left:20px;line-height:1.9;color:var(--grau)">
+<li>👀 细心观察 (<span class="zh">die Situation aufmerksam beobachten</span>)</li>
+<li>🔍 探究文化差异 (<span class="zh">kulturelle Unterschiede ergründen</span>)</li>
+<li>🎭 灵活调整行为 (<span class="zh">eigenes Verhalten der Situation anpassen</span>)</li>
+<li>🗣️ 开诚布公地沟通 (<span class="zh">über Probleme offen sprechen</span>)</li>
+<li>🔄 保持本色，灵活应对 (<span class="zh">keine Überanpassung</span>)</li>
+</ul>
+</div>
+
+<div class="culture-strip"><span class="black"></span><span class="red"></span><span class="gold"></span><span class="red"></span><span class="black"></span></div>
+
+<div class="nav-row">
+<button class="nav-btn prev" onclick="goTo(8)">← Zurück</button>
+<button class="nav-btn" onclick="closeToasts()" style="background:var(--gold);color:var(--blau);font-weight:700">🦞 Kurs abgeschlossen!</button>
+</div>
+</div>
+</section>
+
+<script>
+const N=10;let cur=0;
+(function(){const d=document.getElementById('progress-dots');for(let i=0;i<N;i++){const s=document.createElement('span');s.className='dot';s.title='Seite '+(i+1);s.onclick=()=>goTo(i);d.appendChild(s)}})();
+function updProgress(){document.getElementById('progress-bar').style.width=((cur+1)/N*100)+'%';document.querySelectorAll('#progress-dots .dot').forEach((d,i)=>{d.classList.toggle('active',i===cur);d.classList.toggle('done',i<cur)})}
+function goTo(i){if(i<0||i>=N)return;document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.querySelector('[data-index="'+i+'"]').classList.add('active');window.scrollTo({top:0,behavior:'smooth'});cur=i;updProgress();if(i===3)buildVocab();if(i===5)buildFlipCards();if(i===6)buildStrategies();if(i===7)buildTraits()}
+
+/* VOCAB PANEL */
+function showVocab(word,zh,ex){
+  document.getElementById('vpWord').textContent=word;
+  document.getElementById('vpZh').textContent=zh;
+  document.getElementById('vpEx').textContent=ex||'';
+  document.getElementById('vocabPanel').classList.add('show');
+  document.getElementById('vocabOverlay').classList.add('show');
+}
+function closeVocabPanel(){
+  document.getElementById('vocabPanel').classList.remove('show');
+  document.getElementById('vocabOverlay').classList.remove('show');
+}
+
+/* S4 VOCABULARY */
+let vocabBuilt=false;
+const VOCAB={
+  'Kultur & Gesellschaft':[
+    ['die Kultur','文化'],['die Gastfamilie','寄宿家庭'],['die Erfahrung','经历、经验'],
+    ['der Eindruck','印象'],['das Verhalten','行为'],['die Hierarchie','等级制度'],
+    ['die Autorität','权威'],['die Distanz','距离'],['die Kritik','批评'],
+    ['die Begrüßung','问候、打招呼'],['die Sitte','习俗'],['die Tugend','美德']
+  ],
+  'Kommunikation':[
+    ['höflich','礼貌的'],['indirekt','间接的'],['direkt','直接的'],
+    ['äußern','表达、说出'],['sich entschuldigen','道歉'],['begrüßen','问候、打招呼'],
+    ['bemängeln','挑剔、批评'],['ablehnen','拒绝、谢绝'],['verletzen','伤害'],
+    ['merken','注意到'],['sich nähern','靠近']
+  ],
+  'Gefühle & Eigenschaften':[
+    ['faszinieren','使着迷'],['sich wohlfühlen','感到舒服'],['sich verletzt fühlen','感到受伤'],
+    ['liebevoll','充满爱心的'],['freundlich','友好的'],['ernst','严肃的'],
+    ['charmant','有魅力的'],['bescheiden','谦虚的'],['zuverlässig','可靠的'],
+    ['fleißig','勤奋的'],['ehrlich','诚实的'],['gehorsam','顺从的']
+  ],
+  'Wichtige Nomen':[
+    ['die Rundreise','环游旅行'],['das Austauschjahr','交换学年'],['der Wangenkuss','脸颊吻'],
+    ['das Händeschütteln','握手'],['die Unordentlichkeit','不整洁'],['der Gastgeber','主人'],
+    ['der Gast','客人'],['der Ratgeber','指南、手册'],['die Besonderheit','特点、特别之处'],
+    ['das Tabu','禁忌'],['das Gesicht','面子']
+  ]
+};
+function buildVocab(){
+  if(vocabBuilt)return;vocabBuilt=true;
+  const g=document.getElementById('vocabGrid');
+  Object.entries(VOCAB).forEach(([cat,words])=>{
+    const c=document.createElement('div');c.className='cat-card';
+    c.innerHTML='<h4>'+cat+'</h4>';
+    words.forEach(([de,zh])=>{
+      const w=document.createElement('div');w.className='cat-word';
+      w.innerHTML='<span class="cw-de">'+de+'</span><span class="cw-zh">'+zh+'</span>';
+      w.onclick=()=>showVocab(de,zh,'');
+      c.appendChild(w)
+    });
+    g.appendChild(c)
+  })
+}
+
+/* S6 FLIP CARDS */
+let flipBuilt=false;
+const FLIP_WORDS=[
+  ['die Rundreise','环游'],['faszinieren','使着迷'],['das Austauschjahr','交换学年'],
+  ['die Gastfamilie','寄宿家庭'],['höflich','礼貌的'],['indirekt','间接的'],
+  ['der Eindruck','印象'],['die Erfahrung','经历'],['äußern','表达'],
+  ['begrüßen','问候'],['der Wangenkuss','脸颊吻'],['körperliche Distanz','身体距离'],
+  ['sich entschuldigen','道歉'],['verletzen','伤害'],['merken','注意到'],
+  ['bescheiden','谦虚的'],['zuverlässig','可靠的'],['die Sitte','习俗'],
+  ['die Tugend','美德'],['das Tabu','禁忌']
+];
+function buildFlipCards(){
+  if(flipBuilt)return;flipBuilt=true;
+  const g=document.getElementById('flipGrid');
+  document.getElementById('flipTotal').textContent=FLIP_WORDS.length;
+  FLIP_WORDS.forEach(([de,zh])=>{
+    const c=document.createElement('div');c.className='flip-card';
+    c.onclick=function(){this.classList.toggle('flipped');
+      document.getElementById('flipCount').textContent=document.querySelectorAll('#flipGrid .flip-card.flipped').length
+    };
+    c.innerHTML='<div class="flip-card-inner"><div class="flip-card-front"><div class="fc-de">'+de+'</div></div><div class="flip-card-back"><div class="fc-zh">'+zh+'</div><div class="fc-hint">👆 German → Chinesisch</div></div></div>';
+    g.appendChild(c)
+  })
+}
+
+/* S7 STRATEGIES MATCH */
+let stratBuilt=false;
+const STRAT_PEOPLE=[
+  {id:'schmitz',name:'Frau Schmitz',strat:'die Situation aufmerksam beobachten; kulturelle Unterschiede ergründen'},
+  {id:'gabriela',name:'Gabriela',strat:'eigenes Verhalten der Situation anpassen; über Kommunikationsprobleme offen sprechen'},
+  {id:'manfred',name:'Manfred',strat:'die Situation aufmerksam beobachten; kein Überanpassung, flexibel reagieren'}
+];
+const STRAT_OPTIONS=[
+  'eigenes Verhalten der Situation anpassen',
+  'keine Überanpassung, flexibel verhalten',
+  'die Situation aufmerksam beobachten',
+  'kulturelle Unterschiede ergründen',
+  'über Kommunikationsprobleme offen sprechen',
+  'den Experten fragen'
+];
+let selPerson=null,stratMatched=0;
+function buildStrategies(){
+  if(stratBuilt)return;stratBuilt=true;
+  const g=document.getElementById('stratGrid');
+  const left=document.createElement('div');left.className='strat-left';
+  const right=document.createElement('div');right.className='strat-right';
+
+  STRAT_PEOPLE.forEach(p=>{
+    const el=document.createElement('div');el.className='sl-item';el.dataset.person=p.id;
+    el.innerHTML='<strong>'+p.name+'</strong>';
+    el.onclick=function(){
+      if(this.classList.contains('matched'))return;
+      document.querySelectorAll('.sl-item').forEach(x=>x.classList.remove('selected'));
+      this.classList.add('selected');selPerson=p.id
+    };
+    left.appendChild(el)
+  });
+
+  STRAT_OPTIONS.forEach(s=>{
+    const el=document.createElement('div');el.className='sr-item';
+    el.textContent=s;
+    el.onclick=function(){
+      if(this.classList.contains('matched')||!selPerson)return;
+      const p=STRAT_PEOPLE.find(x=>x.id===selPerson);
+      if(p&&p.strat.includes(s)){
+        this.classList.add('matched');
+        document.querySelector('.sl-item.selected').classList.add('matched');
+        document.querySelector('.sl-item.selected').classList.remove('selected');
+        stratMatched++;document.getElementById('stratStatus').textContent='已配对：'+stratMatched+' / 3 组';
+        selPerson=null;
+        if(stratMatched===3)document.getElementById('stratStatus').innerHTML='🎉 <strong>Alle richtig!</strong> 跨文化交际，细心观察→灵活调整→坦诚沟通！'
+      } else {
+        this.style.borderColor='var(--rot)';setTimeout(()=>this.style.borderColor='',500)
+      }
+    };
+    right.appendChild(el)
+  });
+
+  g.appendChild(left);g.appendChild(right)
+}
+
+/* S8 TRAITS */
+let traitsBuilt=false;
+const TRAITS=['freundlich','höflich','bescheiden','zuverlässig','fleißig','ehrlich','ordentlich','genau','ernst','charmant','kalt','nett','selbstständig','gehorsam','klug'];
+function buildTraits(){
+  if(traitsBuilt)return;traitsBuilt=true;
+  const cn=document.getElementById('chinaTraits'),de=document.getElementById('germanyTraits');
+  TRAITS.forEach(t=>{
+    const c=document.createElement('span');c.className='trait-tag';c.textContent=t;
+    c.onclick=function(){this.classList.toggle('tagged')};
+    cn.appendChild(c.cloneNode(true));
+    de.appendChild(c.cloneNode(true));
+    cn.lastChild.onclick=function(){this.classList.toggle('tagged')};
+    de.lastChild.onclick=function(){this.classList.toggle('tagged')}
+  })
+}
+
+function closeToasts(){const t=document.getElementById('toast');t.textContent='🎉 Kurs abgeschlossen! 🦞';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000)}
+
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowDown')goTo(Math.min(cur+1,N-1));if(e.key==='ArrowLeft'||e.key==='ArrowUp')goTo(Math.max(cur-1,0))});
+
+updProgress();
+</script>
+</body>
+</html>

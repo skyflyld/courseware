@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stadt und Land — Dialogvideo (A2)</title>
+<style>
+:root {
+  --bg: #f4f1ee;
+  --card: #ffffff;
+  --border: #e2e0dd;
+  --text: #1a1a2e;
+  --muted: #6b7280;
+  --city: #2563eb;
+  --city-light: #eff6ff;
+  --country: #059669;
+  --country-light: #ecfdf5;
+  --gold: #92400e;
+  --gold-light: #fffbeb;
+  --purple: #7c3aed;
+  --shadow: 0 4px 24px rgba(0,0,0,.06);
+  --shadow-hover: 0 8px 32px rgba(0,0,0,.1);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: -apple-system, 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow: hidden;
+  height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+.slides { height:100vh; position:relative; }
+
+.slide {
+  position:absolute; inset:0;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  padding: 4vh 5vw;
+  opacity:0; transform:translateY(40px);
+  transition: opacity .5s ease, transform .5s ease;
+  pointer-events:none;
+  overflow-y:auto;
+}
+.slide.active { opacity:1; transform:translateY(0); pointer-events:all; }
+
+/* ===== TYPOGRAPHY ===== */
+h1 {
+  font-size:clamp(2.4rem, 5vw, 4.5rem);
+  margin-bottom:.25em;
+  line-height:1.15;
+  text-align:center;
+  font-weight:800;
+  letter-spacing:-.02em;
+}
+h2 {
+  font-size:clamp(1.4rem, 3vw, 2.4rem);
+  margin-bottom:.3em;
+  line-height:1.25;
+  font-weight:700;
+}
+h3 {
+  font-size:clamp(1.1rem, 1.8vw, 1.5rem);
+  margin-bottom:.3em;
+  font-weight:600;
+}
+
+p, li {
+  font-size:clamp(1rem, 1.6vw, 1.3rem);
+  line-height:1.7;
+}
+.subtitle {
+  font-size:clamp(.9rem, 1.4vw, 1.15rem);
+  color:var(--muted);
+  margin-bottom:.6em;
+  text-align:center;
+}
+
+/* Colors */
+.city { color:var(--city); font-weight:700; }
+.country { color:var(--country); font-weight:700; }
+.gold { color:var(--gold); font-weight:700; }
+.muted { color:var(--muted); }
+
+/* Progress bar */
+.progress {
+  position:fixed; top:0; left:0; right:0; height:4px;
+  background:var(--border); z-index:200;
+}
+.progress-bar {
+  height:100%; background:linear-gradient(90deg, var(--city), var(--country));
+  transition:width .5s ease; width:0%;
+}
+
+/* Scene label */
+.scene-label {
+  position:absolute; top:clamp(12px,2vh,20px); left:50%;
+  transform:translateX(-50%);
+  background:var(--card); border:2px solid var(--border);
+  padding:6px 20px; border-radius:20px;
+  font-size:clamp(.75rem,1.1vw,.95rem);
+  color:var(--muted); font-weight:600;
+  box-shadow:var(--shadow);
+  z-index:10;
+}
+
+/* Backdrop images */
+.backdrop {
+  position:absolute; inset:0; opacity:.06;
+  background-size:cover; background-position:center;
+  z-index:0; pointer-events:none;
+}
+.backdrop-city {
+  background-image: radial-gradient(circle at 20% 50%, var(--city) 1px, transparent 1px),
+                    radial-gradient(circle at 80% 30%, var(--city) 1px, transparent 1px),
+                    radial-gradient(circle at 40% 80%, var(--city) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.backdrop-country {
+  background-image: radial-gradient(circle at 30% 40%, var(--country) 1px, transparent 1px),
+                    radial-gradient(circle at 70% 70%, var(--country) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Dialogue bubbles */
+.dialog {
+  display:flex; flex-direction:column;
+  gap:clamp(12px,2vh,24px);
+  width:100%; max-width:800px;
+  position:relative; z-index:1;
+}
+
+.bubble {
+  display:flex; gap:clamp(10px,1.5vw,20px);
+  align-items:flex-start;
+  max-width:90%;
+  opacity:0; transform:translateY(20px);
+  transition: opacity .6s ease .3s, transform .6s ease .3s;
+}
+.bubble.show { opacity:1; transform:translateY(0); }
+.bubble.anna { align-self:flex-start; }
+.bubble.ben { align-self:flex-end; flex-direction:row-reverse; }
+.bubble.narrator { align-self:center; max-width:100%; }
+
+.avatar {
+  width:clamp(36px,5vw,52px); height:clamp(36px,5vw,52px);
+  border-radius:50%; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  font-size:clamp(1rem,1.5vw,1.3rem);
+  font-weight:800; color:#fff;
+}
+.avatar.anna { background:var(--city); }
+.avatar.ben { background:var(--country); }
+.avatar.narrator { background:var(--purple); }
+
+.bubble-content {
+  background:var(--card); border-radius:16px;
+  padding:clamp(12px,1.8vw,20px) clamp(14px,2vw,24px);
+  box-shadow:var(--shadow); border:2px solid var(--border);
+  position:relative;
+}
+.bubble.anna .bubble-content { background:var(--city-light); border-color:rgba(37,99,235,.2); }
+.bubble.ben .bubble-content { background:var(--country-light); border-color:rgba(5,150,101,.2); }
+.bubble.narrator .bubble-content { background:var(--gold-light); border-color:rgba(146,64,14,.2); text-align:center; }
+
+.name-label {
+  font-size:clamp(.7rem,1vw,.85rem);
+  font-weight:700; margin-bottom:4px;
+}
+.bubble.anna .name-label { color:var(--city); }
+.bubble.ben .name-label { color:var(--country); }
+.bubble.narrator .name-label { color:var(--gold); }
+
+.de { font-size:clamp(1rem,1.6vw,1.3rem); line-height:1.65; }
+.cn { font-size:clamp(.85rem,1.2vw,1rem); color:var(--muted); margin-top:6px; line-height:1.5; }
+
+/* Comparison Table */
+.comp-table {
+  width:100%; max-width:700px; border-collapse:collapse;
+  margin:.6em 0; font-size:clamp(.9rem,1.4vw,1.1rem);
+  position:relative; z-index:1;
+}
+.comp-table th {
+  padding:clamp(10px,1.2vw,14px) clamp(12px,1.5vw,18px);
+  text-align:center; border-bottom:2px solid;
+  font-size:.85em; text-transform:uppercase; letter-spacing:.5px;
+  color:#fff;
+}
+.comp-table th.city-hdr { background:var(--city); }
+.comp-table th.country-hdr { background:var(--country); }
+.comp-table td {
+  padding:clamp(8px,1vw,12px) clamp(12px,1.5vw,18px);
+  text-align:center; border-bottom:1px solid var(--border);
+  line-height:1.5;
+}
+.comp-table td:first-child { border-right:1px solid var(--border); }
+.comp-table tr:hover td { background:rgba(37,99,235,.04); }
+
+/* Split scene */
+.split-scene {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:clamp(16px,2vw,28px);
+  width:100%; max-width:900px;
+  position:relative; z-index:1;
+}
+.split-half {
+  border-radius:20px; padding:clamp(16px,2.5vw,28px);
+  box-shadow:var(--shadow);
+}
+.split-half.city-side { background:var(--city-light); border:2px solid rgba(37,99,235,.15); }
+.split-half.country-side { background:var(--country-light); border:2px solid rgba(5,150,101,.15); }
+.split-half h3 { text-align:center; margin-bottom:10px; }
+.split-half .de { font-size:clamp(.9rem,1.4vw,1.15rem); }
+.split-half .cn { font-size:clamp(.8rem,1.1vw,.95rem); }
+
+/* Cover Scene */
+.cover-icon {
+  font-size:clamp(3rem,8vw,6rem);
+  margin-bottom:clamp(12px,2vh,20px);
+}
+.cover-tag {
+  display:inline-block;
+  background:var(--gold-light); color:var(--gold);
+  padding:6px 18px; border-radius:20px;
+  font-size:clamp(.75rem,1.1vw,.95rem);
+  font-weight:700; margin-bottom:clamp(16px,2.5vh,28px);
+  letter-spacing:1px;
+}
+
+/* Navigation */
+.nav {
+  position:fixed; bottom:clamp(12px,2vh,20px);
+  left:50%; transform:translateX(-50%);
+  display:flex; gap:clamp(8px,1.2vw,14px);
+  align-items:center; z-index:100;
+}
+.nav button {
+  background:var(--card); border:2px solid var(--border);
+  color:var(--text); padding:clamp(8px,1.2vw,12px) clamp(14px,2vw,22px);
+  border-radius:10px; cursor:pointer;
+  font-size:clamp(.8rem,1.1vw,1rem);
+  font-weight:600; transition:all .2s;
+  box-shadow:var(--shadow);
+}
+.nav button:hover { border-color:var(--city); background:var(--city-light); }
+.nav button:disabled { opacity:.25; cursor:default; background:var(--card); }
+.nav .indicator {
+  color:var(--muted); font-size:clamp(.75rem,1vw,.9rem);
+  font-weight:600; min-width:50px; text-align:center;
+}
+.nav .auto-btn {
+  background:var(--gold-light); border-color:rgba(146,64,14,.2);
+  color:var(--gold);
+}
+.nav .auto-btn.active { background:var(--gold); color:#fff; border-color:var(--gold); }
+
+/* Responsive */
+@media(max-width:600px) {
+  .slide { padding:3vh 3vw; justify-content:flex-start; padding-top:5vh; }
+  .split-scene { grid-template-columns:1fr; }
+  .bubble { max-width:100%; }
+  .nav { gap:4px; }
+  .nav button { padding:10px 14px; font-size:.8rem; }
+}
+
+@media(min-width:601px) and (max-width:900px) {
+  .slide { padding:4vh 4vw; }
+  .split-scene { gap:16px; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+
+<div class="slides">
+
+<!-- Slide 0: Cover -->
+<div class="slide active" id="s0">
+  <div class="scene-label">🎬 Start</div>
+  <div style="text-align:center; max-width:700px; position:relative; z-index:1;">
+    <div class="cover-icon">🏙️ 🌳</div>
+    <div class="cover-tag">Deutsch A2 · Grammatik & Dialog</div>
+    <h1>Stadt <span style="font-weight:300; color:var(--muted);">und</span> Land</h1>
+    <div class="tagline" style="font-size:clamp(1.2rem,2.5vw,1.8rem); color:var(--muted); margin-top:.4em;">
+      Dialog mit <span class="city">weil</span> & <span class="country">da</span>-Nebensätzen
+    </div>
+    <div style="margin-top:clamp(24px,4vh,40px); display:flex; gap:clamp(12px,2vw,20px); justify-content:center; flex-wrap:wrap;">
+      <div style="background:var(--city-light); border-radius:40px; padding:8px 20px; display:flex; align-items:center; gap:8px;">
+        <span style="background:var(--city); color:#fff; border-radius:50%; width:32px; height:32px; display:flex; align-items:center; justify-content:center; font-weight:800;">A</span>
+        <span style="font-weight:600;">Anna</span>
+        <span style="color:var(--muted); font-size:.85em;">aus der Stadt</span>
+      </div>
+      <div style="background:var(--country-light); border-radius:40px; padding:8px 20px; display:flex; align-items:center; gap:8px;">
+        <span style="background:var(--country); color:#fff; border-radius:50%; width:32px; height:32px; display:flex; align-items:center; justify-content:center; font-weight:800;">B</span>
+        <span style="font-weight:600;">Ben</span>
+        <span style="color:var(--muted); font-size:.85em;">vom Land</span>
+      </div>
+    </div>
+    <p style="color:var(--muted); margin-top:clamp(20px,3vh,32px); font-size:.9em;">
+      Dauer: ca. 3–4 Min. · Auto-Play einschaltbar
+    </p>
+  </div>
+</div>
+
+<!-- Slide 1: Introduction -->
+<div class="slide" id="s1">
+  <div class="scene-label">🎬 Szene 1 — Einleitung</div>
+  <div class="dialog">
+    <div class="bubble narrator">
+      <div class="avatar narrator">🎙</div>
+      <div class="bubble-content">
+        <div class="name-label">Sprecher/in</div>
+        <div class="de">Heute sprechen wir über ein wichtiges Thema: <strong>Stadt und Land</strong>.</div>
+        <div class="cn">今天我们来聊一个重要的话题：城市和乡村。</div>
+        <div style="margin-top:12px; border-top:1px solid var(--border); padding-top:10px;">
+          <div class="de">Anna wohnt in der <span class="city">Stadt</span>. Ben wohnt auf dem <span class="country">Land</span>.</div>
+          <div class="cn">Anna 住在城市。Ben 住在乡村。</div>
+        </div>
+        <div style="margin-top:10px;">
+          <div class="de">Was sagen sie über ihr Leben? <strong>Hör zu!</strong></div>
+          <div class="cn">听听他们怎么评价自己的生活！</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="backdrop" style="background:linear-gradient(135deg, var(--city-light) 0%, var(--country-light) 100%); opacity:.08;"></div>
+</div>
+
+<!-- Slide 2: First Opinions -->
+<div class="slide" id="s2">
+  <div class="scene-label">🎬 Szene 2 — Wohnort & erste Meinung</div>
+  <div class="dialog">
+    <div class="bubble anna">
+      <div class="avatar anna">A</div>
+      <div class="bubble-content">
+        <div class="name-label">Anna 🏙️</div>
+        <div class="de">Ich wohne gern in der Stadt. Hier gibt es viele Geschäfte, Restaurants und Cafés.</div>
+        <div class="cn">我喜欢住在城市。这里有很多商店、餐馆和咖啡馆。</div>
+        <div class="de" style="margin-top:8px;">Ich finde, das Leben in der Stadt ist <strong>aufregend</strong>.</div>
+        <div class="cn">我觉得城市生活很精彩。</div>
+      </div>
+    </div>
+    <div class="bubble ben">
+      <div class="avatar ben">B</div>
+      <div class="bubble-content">
+        <div class="name-label">Ben 🌳</div>
+        <div class="de">Ich wohne gern auf dem Land. Hier ist es ruhig und die Luft ist sauber.</div>
+        <div class="cn">我喜欢住在乡村。这里很安静，空气也很干净。</div>
+        <div class="de" style="margin-top:8px;">Ich finde, das Leben auf dem Land ist <strong>entspannend</strong>.</div>
+        <div class="cn">我觉得乡村生活很放松。</div>
+      </div>
+    </div>
+  </div>
+  <div class="backdrop backdrop-city"></div>
+  <div class="backdrop backdrop-country"></div>
+</div>
+
+<!-- Slide 3: weil-Sätze -->
+<div class="slide" id="s3">
+  <div class="scene-label">🎬 Szene 3 — Gründe mit „weil"</div>
+  <div style="margin-bottom:clamp(12px,1.5vh,20px); text-align:center; position:relative; z-index:1;">
+    <span style="background:var(--gold-light); color:var(--gold); padding:4px 16px; border-radius:16px; font-size:.85em; font-weight:700;">📌 Grammatikfokus: <em>weil</em> + Nebensatz (Verb am Ende)</span>
+  </div>
+  <div class="dialog">
+    <div class="bubble anna">
+      <div class="avatar anna">A</div>
+      <div class="bubble-content">
+        <div class="name-label">Anna 🏙️</div>
+        <div class="de">Ich lebe lieber in der Stadt, <strong class="gold">weil</strong> es mehr Möglichkeiten <strong>gibt</strong>.</div>
+        <div class="cn">我更喜欢住在城市，因为有更多机会。</div>
+        <div class="de" style="margin-top:8px;">Ich kann ins Kino, ins Museum oder in Konzerte gehen.</div>
+        <div class="cn">我可以去电影院、博物馆或者音乐会。</div>
+        <div class="de" style="margin-top:8px;">Außerdem finde ich: Die Infrastruktur ist besser.</div>
+        <div class="cn">此外我觉得基础设施更好。</div>
+      </div>
+    </div>
+    <div class="bubble ben">
+      <div class="avatar ben">B</div>
+      <div class="bubble-content">
+        <div class="name-label">Ben 🌳</div>
+        <div class="de">Ich wohne lieber auf dem Land, <strong class="gold">weil</strong> die Natur nah <strong>ist</strong>.</div>
+        <div class="cn">我更喜欢住在乡村，因为大自然很近。</div>
+        <div class="de" style="margin-top:8px;">Ich kann im Garten arbeiten oder im Wald spazieren gehen.</div>
+        <div class="cn">我可以在花园里干活，或者在森林里散步。</div>
+        <div class="de" style="margin-top:8px;">Außerdem finde ich: Das Leben hier ist gesünder.</div>
+        <div class="cn">此外我觉得这里的生活更健康。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 4: da-Sätze -->
+<div class="slide" id="s4">
+  <div class="scene-label">🎬 Szene 4 — Gründe mit „da"</div>
+  <div style="margin-bottom:clamp(12px,1.5vh,20px); text-align:center; position:relative; z-index:1;">
+    <span style="background:var(--gold-light); color:var(--gold); padding:4px 16px; border-radius:16px; font-size:.85em; font-weight:700;">📌 Grammatikfokus: <em>da</em> + Nebensatz (bekannter Grund, Verb am Ende)</span>
+  </div>
+  <div class="dialog">
+    <div class="bubble ben">
+      <div class="avatar ben">B</div>
+      <div class="bubble-content">
+        <div class="name-label">Ben 🌳</div>
+        <div class="de"><strong class="gold">Da</strong> es auf dem Land ruhiger <strong>ist</strong>, kann ich besser schlafen.</div>
+        <div class="cn">因为乡村更安静，我能睡得更好。</div>
+        <div class="de" style="margin-top:8px;">Ich höre keine Autos, nur Vögel und den Wind.</div>
+        <div class="cn">我听不到汽车声，只有鸟叫和风声。</div>
+        <div class="de" style="margin-top:8px;">Das finde ich sehr schön.</div>
+        <div class="cn">我觉得这很美。</div>
+      </div>
+    </div>
+    <div class="bubble anna">
+      <div class="avatar anna">A</div>
+      <div class="bubble-content">
+        <div class="name-label">Anna 🏙️</div>
+        <div class="de"><strong class="gold">Da</strong> es in der Stadt viel Lärm <strong>gibt</strong>, ist das Leben manchmal stressig.</div>
+        <div class="cn">因为城市有很多噪音，生活有时很有压力。</div>
+        <div class="de" style="margin-top:8px;">Aber ich mag die Energie und die vielen Menschen.</div>
+        <div class="cn">但我喜欢这里的活力和很多人。</div>
+        <div class="de" style="margin-top:8px;">Das Leben hier ist nie langweilig.</div>
+        <div class="cn">这里的生活从不无聊。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 5: Comparison Table -->
+<div class="slide" id="s5">
+  <div class="scene-label">🎬 Szene 5 — Vergleich</div>
+  <h2 style="text-align:center; position:relative; z-index:1;">Stadt <span style="font-weight:300; color:var(--muted);">vs</span> Land</h2>
+  <table class="comp-table">
+    <tr>
+      <th class="city-hdr">🏙️ Stadt</th>
+      <th class="country-hdr">🌳 Land</th>
+    </tr>
+    <tr>
+      <td>mehr Möglichkeiten<br><span class="muted" style="font-size:.85em;">更多机会</span></td>
+      <td>mehr Natur<br><span class="muted" style="font-size:.85em;">更多自然</span></td>
+    </tr>
+    <tr>
+      <td>gute Infrastruktur<br><span class="muted" style="font-size:.85em;">好基础设施</span></td>
+      <td>saubere Luft<br><span class="muted" style="font-size:.85em;">干净的空气</span></td>
+    </tr>
+    <tr>
+      <td>viel Lärm<br><span class="muted" style="font-size:.85em;">很多噪音</span></td>
+      <td>ruhig<br><span class="muted" style="font-size:.85em;">安静</span></td>
+    </tr>
+    <tr>
+      <td>stressiger<br><span class="muted" style="font-size:.85em;">更有压力</span></td>
+      <td>entspannender<br><span class="muted" style="font-size:.85em;">更放松</span></td>
+    </tr>
+  </table>
+</div>
+
+<!-- Slide 6: Personal Opinions -->
+<div class="slide" id="s6">
+  <div class="scene-label">🎬 Szene 6 — Persönliche Meinung</div>
+  <div class="dialog">
+    <div class="bubble anna">
+      <div class="avatar anna">A</div>
+      <div class="bubble-content">
+        <div class="name-label">Anna 🏙️</div>
+        <div class="de">Ich finde, dass die <strong class="city">Stadt</strong> besser für mich ist.</div>
+        <div class="cn">我觉得城市更适合我。</div>
+        <div class="de" style="margin-top:8px;">Ich brauche die Nähe zu Geschäften und Kultur.</div>
+        <div class="cn">我需要靠近商店和文化。</div>
+      </div>
+    </div>
+    <div class="bubble ben">
+      <div class="avatar ben">B</div>
+      <div class="bubble-content">
+        <div class="name-label">Ben 🌳</div>
+        <div class="de">Ich finde, dass das <strong class="country">Land</strong> besser für mich ist.</div>
+        <div class="cn">我觉得乡村更适合我。</div>
+        <div class="de" style="margin-top:8px;">Ich brauche die Ruhe und die Natur.</div>
+        <div class="cn">我需要宁静和自然。</div>
+      </div>
+    </div>
+    <div class="bubble narrator">
+      <div class="avatar narrator">🎙</div>
+      <div class="bubble-content" style="text-align:center;">
+        <div class="name-label">🎯 Fazit</div>
+        <div class="de" style="font-size:clamp(1rem,1.8vw,1.4rem); font-weight:700;">
+          Viele Menschen denken unterschiedlich.<br>
+          Das ist <span class="gold">völlig okay</span>!
+        </div>
+        <div class="cn">很多人有不同的想法。这完全没问题！</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 7: Closing -->
+<div class="slide" id="s7">
+  <div class="scene-label">🎬 Szene 7 — Schluss</div>
+  <div class="dialog">
+    <div class="bubble narrator">
+      <div class="avatar narrator">🎙</div>
+      <div class="bubble-content" style="text-align:center;">
+        <div class="name-label">Sprecher/in</div>
+        <div class="de" style="font-size:clamp(1.2rem,2vw,1.6rem); font-weight:700;">
+          Und du?<br>
+          Wo möchtest du leben?
+        </div>
+        <div class="cn">你呢？你想住在哪里？</div>
+      </div>
+    </div>
+    <div class="bubble narrator" style="transition-delay:.6s;">
+      <div class="avatar narrator">🎙</div>
+      <div class="bubble-content" style="text-align:center;">
+        <div class="de">In der <span class="city">Stadt</span> oder auf dem <span class="country">Land</span>?</div>
+        <div class="cn">在城市还是乡村？</div>
+      </div>
+    </div>
+    <div class="bubble narrator" style="transition-delay:1s;">
+      <div class="avatar narrator">💡</div>
+      <div class="bubble-content" style="background:var(--gold-light); border-color:rgba(146,64,14,.2); text-align:center;">
+        <div class="name-label">🧠 Aufgabe</div>
+        <div class="de" style="font-weight:600;">
+          Benutze <strong class="gold">„weil"</strong> oder <strong class="gold">„da"</strong><br>
+          und erkläre deinen Grund!
+        </div>
+        <div class="cn">用 weil 或者 da 来解释你的原因！</div>
+      </div>
+    </div>
+  </div>
+  <div class="backdrop" style="background:linear-gradient(135deg, var(--city-light) 0%, var(--country-light) 100%); opacity:.08;"></div>
+</div>
+
+</div><!-- /slides -->
+
+<div class="nav">
+  <button onclick="prevSlide()" id="prevBtn">← Zurück</button>
+  <span class="indicator" id="indicator">1 / 8</span>
+  <button onclick="nextSlide()" id="nextBtn">Weiter →</button>
+  <button class="auto-btn" onclick="toggleAutoPlay()" id="autoBtn">▶ Auto</button>
+</div>
+
+<script>
+let current = 0;
+const total = 8;
+let autoTimer = null;
+let autoActive = false;
+const AUTO_INTERVAL = 15000; // 15 seconds per scene
+
+function showSlide(n) {
+  const slides = document.querySelectorAll('.slide');
+  slides.forEach((s,i) => {
+    s.classList.toggle('active', i === n);
+  });
+  document.getElementById('indicator').textContent = `${n+1} / ${total}`;
+  document.getElementById('prevBtn').disabled = n === 0;
+  document.getElementById('nextBtn').disabled = n === total - 1;
+
+  // Update progress bar
+  document.getElementById('progressBar').style.width = `${((n+1)/total)*100}%`;
+
+  // Animate bubbles with staggered delay
+  const bubbles = slides[n].querySelectorAll('.bubble');
+  bubbles.forEach((b, i) => {
+    setTimeout(() => b.classList.add('show'), 100 + i * 300);
+  });
+
+  // Reset auto timer on manual navigation
+  if (autoActive) {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(nextSlide, AUTO_INTERVAL);
+  }
+}
+
+function nextSlide() {
+  const bubbles = document.querySelectorAll('.bubble');
+  bubbles.forEach(b => b.classList.remove('show'));
+  if(current < total - 1) { current++; showSlide(current); }
+}
+
+function prevSlide() {
+  const bubbles = document.querySelectorAll('.bubble');
+  bubbles.forEach(b => b.classList.remove('show'));
+  if(current > 0) { current--; showSlide(current); }
+}
+
+function toggleAutoPlay() {
+  const btn = document.getElementById('autoBtn');
+  autoActive = !autoActive;
+  if (autoActive) {
+    btn.textContent = '⏸ Pause';
+    btn.classList.add('active');
+    autoTimer = setInterval(nextSlide, AUTO_INTERVAL);
+  } else {
+    btn.textContent = '▶ Auto';
+    btn.classList.remove('active');
+    clearInterval(autoTimer);
+  }
+}
+
+document.addEventListener('keydown', e => {
+  if(e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextSlide(); }
+  if(e.key === 'ArrowLeft') { e.preventDefault(); prevSlide(); }
+  if(e.key === 'Enter') { toggleAutoPlay(); }
+});
+
+// Initial show
+showSlide(0);
+</script>
+
+</body>
+</html>

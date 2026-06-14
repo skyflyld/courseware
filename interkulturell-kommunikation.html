@@ -110,7 +110,21 @@ h1,h2,h3{font-family:'Playfair Display','Noto Sans SC',Georgia,serif;line-height
 .trans-card .tc-de{display:none;font-family:'EB Garamond',Georgia,serif;font-size:.95rem;color:var(--china-red);margin-top:8px;padding:10px 14px;background:var(--weiß);border-radius:var(--radius);line-height:1.7}
 .trans-card .tc-de.show{display:block;animation:slideIn .35s var(--ease)}
 .trans-card .tc-hint{font-size:.75rem;color:var(--grau-light);margin-top:6px;font-family:'Inter',sans-serif}
-/* S10 SCHLUSS */#s10{background:var(--sand)}#s10 .section-inner{text-align:center;max-width:700px}
+/* S10 SCHLUSS */
+#s10{background:var(--sand)}#s10 .section-inner{text-align:center;max-width:700px}
+#s10 .final-quote{font-family:'Playfair Display','Noto Sans SC',Georgia,serif;font-size:clamp(1.4rem,3.5vw,2.4rem);line-height:1.4;margin-bottom:16px}
+#s10 .final-zh{font-family:'Noto Sans SC',sans-serif;font-size:1rem;color:var(--grau);margin-bottom:28px}
+#s10 .culture-strip{display:flex;justify-content:center;gap:0;margin-top:32px}
+#s10 .culture-strip span{width:40px;height:2px}
+#s10 .culture-strip .black{background:var(--blau)}#s10 .culture-strip .red{background:var(--china-red)}#s10 .culture-strip .gold{background:var(--gold)}
+/* S11 VERGLEICH */
+.compare-table{width:100%;border-collapse:collapse;margin-top:16px;font-size:.95rem}
+.compare-table th,.compare-table td{padding:14px 16px;text-align:left;border:1px solid var(--linie-fein);vertical-align:top}
+.compare-table th{background:var(--blau);color:var(--weiß);font-weight:600;font-size:.85rem;text-transform:uppercase;letter-spacing:1px}
+.compare-table .cat-zeit{background:#e8f4e8}.compare-table .cat-vor{background:#fdf2e9}.compare-table .cat-nach{background:#eaf2f8}
+.compare-table .highlight{color:var(--china-red);font-weight:600}
+.compare-table .example{font-family:'EB Garamond',Georgia,serif;font-size:.9rem;line-height:1.5;color:var(--grau)}
+.compare-table .zh-ex{font-family:'Noto Sans SC',sans-serif;font-size:.82rem;color:var(--grau-light);display:block;margin-top:4px}
 #s10 .final-quote{font-family:'Playfair Display','Noto Sans SC',Georgia,serif;font-size:clamp(1.4rem,3.5vw,2.4rem);line-height:1.4;margin-bottom:16px}
 #s10 .final-zh{font-family:'Noto Sans SC',sans-serif;font-size:1rem;color:var(--grau);margin-bottom:28px}
 #s10 .culture-strip{display:flex;justify-content:center;gap:0;margin-top:32px}
@@ -271,9 +285,9 @@ h1,h2,h3{font-family:'Playfair Display','Noto Sans SC',Georgia,serif;line-height
 
 <div class="grammar-card" onclick="this.querySelector('.gc-example').classList.toggle('show')">
 <div class="gc-title"><span class="gc-marker">Konjunktion</span> ⏳ <strong>während</strong></div>
-<p style="font-size:.88rem;color:var(--grau);margin-top:2px"><span class="zh">"在……的同时"——两个动作同时发生</span></p>
+<p style="font-size:.88rem;color:var(--grau);margin-top:2px"><span class="zh">"在……的同时"——两个动作同时发生 / "而"——对比</span></p>
 <div class="gc-example">
-<strong>Gleichzeitigkeit — 同时发生</strong><br><br>
+<strong>Gleichzeitigkeit &amp; Gegensatz — 同时 &amp; 对比</strong><br><br>
 • Manfred war fasziniert von der chinesischen Kultur, <strong>während</strong> er mit seinen Eltern eine Rundreise im Südosten Chinas machte.<br>
 <span class="zh">曼弗雷德对中国文化着迷，是在他和父母环游中国东南部期间。</span><br><br>
 • In Deutschland äußert man Kritik eher direkt, <strong>während</strong> man in China Kritik oft sehr indirekt ausdrückt.<br>
@@ -289,15 +303,11 @@ h1,h2,h3{font-family:'Playfair Display','Noto Sans SC',Georgia,serif;line-height
 
 <div class="grammar-card" onclick="this.querySelector('.gc-example').classList.toggle('show')">
 <div class="gc-title"><span class="gc-marker">Konjunktion</span> ⌛ <strong>bevor</strong></div>
-<p style="font-size:.88rem;color:var(--grau);margin-top:2px"><span class="zh">"在……之前"——主句发生在从句之后</span></p>
+<p style="font-size:.88rem;color:var(--grau);margin-top:2px"><span class="zh">"在……之前"——从句动作先于主句</span></p>
 <div class="gc-example">
 <strong>Vorzeitigkeit — 从句动作先于主句</strong><br><br>
-• <strong>Bevor</strong> ich in die 9. Klasse kam, machte meine Familie eine Rundreise durch den Südosten Chinas.<br>
-<span class="zh">在我进入九年级之前，我家进行了一次环游中国东南部的旅行。</span><br><br>
-• <strong>Bevor</strong> ich nach Deutschland kam, hatte ich schon drei Jahre Deutsch gelernt.<br>
-<span class="zh">在我来德国之前，我已经学了三年德语。</span><br><br>
-• <strong>Bevor</strong> Gabriela mit deutschen Freunden über die Kommunikationsprobleme offen gesprochen hat, hatte das Wegrucken der Deutschen für sie eine Distanzierung oder Ablehnung bedeutet.<br>
-<span class="zh">在Gabriela和德国朋友坦诚沟通这些问题之前，德国人的退后对她意味着疏远或拒绝。</span><br><br>
+• <strong>Bevor</strong> Gabriela mit deutschen Freunden über die Kommunikationsprobleme offen gesprochen hat, hatte das Wegrucken der Deutschen für sie eine Distanzierung oder Ablehnung bedeutet, deswegen hatte sie sich verletzt gefühlt.<br>
+<span class="zh">在Gabriela和德国朋友坦诚沟通这些问题之前，德国人的退后对她意味着疏远或拒绝，因此她感到受伤。</span><br><br>
 <div style="padding:8px 14px;background:var(--gold-light);border-radius:var(--radius);margin-top:8px">
 💡 <strong>结构：</strong>bevor + 从句（动词放句末）+ 主句<br>
 或：主句 + bevor + 从句（动词放句末）
@@ -307,7 +317,7 @@ h1,h2,h3{font-family:'Playfair Display','Noto Sans SC',Georgia,serif;line-height
 
 <div class="grammar-card" onclick="this.querySelector('.gc-example').classList.toggle('show')">
 <div class="gc-title"><span class="gc-marker">Konjunktion</span> 🕐 <strong>nachdem</strong></div>
-<p style="font-size:.88rem;color:var(--grau);margin-top:2px"><span class="zh">"在……之后"——主句发生在从句之后</span></p>
+<p style="font-size:.88rem;color:var(--grau);margin-top:2px"><span class="zh">"在……之后"——从句动作先完成，主句后发生</span></p>
 <div class="gc-example">
 <strong>Nachzeitigkeit — 从句动作先于主句</strong><br><br>
 • Die chinesischen Studierenden sind im Unterricht offener und mutiger geworden, <strong>nachdem</strong> Frau Schmitz oft nach ihrer Meinung gefragt (hatte) und sie ermuntert hatte.<br>
@@ -458,13 +468,62 @@ nachdem + Perfekt ·············· Präsens (从句先发生)
 
 <div class="nav-row">
 <button class="nav-btn prev" onclick="goTo(8)">← Zurück</button>
+<button class="nav-btn" onclick="goTo(10)">📊 Vergleichstabelle →</button>
+</div>
+</div>
+</section>
+
+<!-- S11 VERGLEICH -->
+<section class="section" id="s11" data-index="10">
+<div class="section-inner">
+<div class="section-tag gold">09 · Vergleich</div>
+<h2>📊 Die drei Konjunktionen im Vergleich</h2>
+<p style="margin-top:6px;color:var(--grau-light);font-size:.9rem">während · bevor · nachdem — <span class="zh">三大时间连词对比总结</span></p>
+
+<table class="compare-table">
+<thead>
+<tr><th style="width:18%">Konjunktion</th><th style="width:18%">Bedeutung</th><th style="width:22%">Zeitverhältnis</th><th style="width:42%">Beispiel aus dem Text</th></tr>
+</thead>
+<tbody>
+<tr class="cat-zeit">
+<td><strong>während</strong><br><span class="zh">在……同时</span></td>
+<td><span class="zh">同时发生 / 对比</span></td>
+<td><span class="highlight">Gleichzeitigkeit</span><br><span class="zh">两个动作同时进行</span></td>
+<td><div class="example">Manfred war fasziniert von der chinesischen Kultur, <strong>während</strong> er mit seinen Eltern eine Rundreise machte.</div><span class="zh-ex">曼弗雷德对中国文化着迷→同时→环游中国</span></td>
+</tr>
+<tr class="cat-vor">
+<td><strong>bevor</strong><br><span class="zh">在……之前</span></td>
+<td><span class="zh">从句先于主句</span></td>
+<td><span class="highlight">Vorzeitigkeit</span><br><span class="zh">从句动作在主句之前</span></td>
+<td><div class="example"><strong>Bevor</strong> Gabriela offen gesprochen <strong>hat</strong>, <strong>hatte</strong> das Wegrucken eine Distanzierung bedeutet.</div><span class="zh-ex">坦诚沟通之前→距离感→（先后顺序）</span></td>
+</tr>
+<tr class="cat-nach">
+<td><strong>nachdem</strong><br><span class="zh">在……之后</span></td>
+<td><span class="zh">从句先完成，主句后发生</span></td>
+<td><span class="highlight">Nachzeitigkeit</span><br><span class="zh">从句先完成，主句接续</span></td>
+<td><div class="example">Die Studierenden sind offener geworden, <strong>nachdem</strong> Frau Schmitz nach ihrer Meinung gefragt <strong>hatte</strong>.</div><span class="zh-ex">老师问意见之后→学生变开放→（先后接续）</span></td>
+</tr>
+</tbody>
+</table>
+
+<div style="padding:16px 20px;background:var(--gold-light);border-radius:var(--radius-lg);margin-top:20px;border:1px solid rgba(212,163,72,.3)">
+<p style="font-size:.9rem;line-height:1.7"><strong>📌 Zusammenfassung:</strong><br>
+• ⏳ <strong>während</strong> — 两个动作<strong>同时</strong>发生（A &amp; B zur gleichen Zeit）<br>
+• ⌛ <strong>bevor</strong> — 从句动作<strong>先</strong>于主句（A vor B → A ist zuerst）<br>
+• 🕐 <strong>nachdem</strong> — 从句动作<strong>完成后</strong>主句发生（A → danach B / A先完成B再接续）<br><br>
+<span class="zh">💡 判断技巧：看两件事的先后顺序——</span><br>
+<span class="zh">同时进行 → während | 先发生 → bevor | 后发生 → nachdem</span></p>
+</div>
+
+<div class="nav-row">
+<button class="nav-btn prev" onclick="goTo(8)">← Grammatik</button>
 <button class="nav-btn" onclick="closeToasts()" style="background:var(--gold);color:var(--blau);font-weight:700">🦞 Kurs abgeschlossen!</button>
 </div>
 </div>
 </section>
 
 <script>
-const N=10;let cur=0;
+const N=11;let cur=0;
 (function(){const d=document.getElementById('progress-dots');for(let i=0;i<N;i++){const s=document.createElement('span');s.className='dot';s.title='Seite '+(i+1);s.onclick=()=>goTo(i);d.appendChild(s)}})();
 function updProgress(){document.getElementById('progress-bar').style.width=((cur+1)/N*100)+'%';document.querySelectorAll('#progress-dots .dot').forEach((d,i)=>{d.classList.toggle('active',i===cur);d.classList.toggle('done',i<cur)})}
 function goTo(i){if(i<0||i>=N)return;document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.querySelector('[data-index="'+i+'"]').classList.add('active');window.scrollTo({top:0,behavior:'smooth'});cur=i;updProgress();if(i===3)buildVocab();if(i===5)buildFlipCards();if(i===6)buildStrategies();if(i===7)buildTraits()}

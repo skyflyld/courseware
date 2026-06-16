@@ -352,7 +352,6 @@ h1,h2,h3{font-family:'Playfair Display','Noto Sans SC',Georgia,serif;line-height
 </div>
 </div>
 </section>
-
 <!-- S6 FLIP CARDS -->
 <section class="section" id="s6" data-index="5">
 <div class="section-inner">
@@ -368,23 +367,26 @@ h1,h2,h3{font-family:'Playfair Display','Noto Sans SC',Georgia,serif;line-height
 </div>
 </section>
 
-<!-- S7 STRATEGIES MATCH -->
+<!-- S7 VOCAB PAIRING — matching game with text vocabulary -->
 <section class="section" id="s7" data-index="6">
 <div class="section-inner">
 <div class="section-tag dark">06 · Aufgabe 8</div>
-<h2>🌉 Interkulturelle Strategien</h2>
-<p style="margin-top:6px;color:var(--grau-light);font-size:.9rem">Welche Strategie hat welche Person verwendet? <span class="zh">点击左侧人物，再点击右侧策略进行配对。</span></p>
-<div class="strategy-grid" id="stratGrid"></div>
-<div class="strat-match-status" id="stratStatus">已配对：0 / 3 组</div>
+<h2>🔗 Vokabel-Paarspiel</h2>
+<p style="margin-top:6px;color:var(--grau-light);font-size:.9rem"><span class="zh">点击左侧的德语单词，再点击右侧对应的中文释义配对。</span></p>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:20px" id="pairGrid">
+<div class="strat-left" id="pairLeft"></div>
+<div class="strat-right" id="pairRight"></div>
+</div>
+
+<div class="strat-match-status" id="pairStatus">已配对：0 / 12 组</div>
+
 <div class="nav-row">
 <button class="nav-btn prev" onclick="goTo(5)">← Zurück</button>
 <button class="nav-btn" onclick="goTo(7)">Typisch deutsch? →</button>
 </div>
 </div>
 </section>
-
-<!-- S8 TYPICAL -->
-<section class="section" id="s8" data-index="7">
 <div class="section-inner">
 <div class="section-tag red">07 · Aufgabe 9</div>
 <h2>🇨🇳 Typisch chinesisch? 🇩🇪 Typisch deutsch?</h2>
@@ -542,7 +544,7 @@ h1,h2,h3{font-family:'Playfair Display','Noto Sans SC',Georgia,serif;line-height
 const N=11;let cur=0;
 (function(){const d=document.getElementById('progress-dots');for(let i=0;i<N;i++){const s=document.createElement('span');s.className='dot';s.title='Seite '+(i+1);s.onclick=()=>goTo(i);d.appendChild(s)}})();
 function updProgress(){document.getElementById('progress-bar').style.width=((cur+1)/N*100)+'%';document.querySelectorAll('#progress-dots .dot').forEach((d,i)=>{d.classList.toggle('active',i===cur);d.classList.toggle('done',i<cur)})}
-function goTo(i){if(i<0||i>=N)return;document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.querySelector('[data-index="'+i+'"]').classList.add('active');window.scrollTo({top:0,behavior:'smooth'});cur=i;updProgress();if(i===3)buildVocab();if(i===5)buildFlipCards();if(i===6)buildStrategies();if(i===7)buildTraits()}
+function goTo(i){if(i<0||i>=N)return;document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.querySelector('[data-index="'+i+'"]').classList.add('active');window.scrollTo({top:0,behavior:'smooth'});cur=i;updProgress();if(i===3)buildVocab();if(i===5)buildFlipCards();if(i===6)buildPairGame();if(i===7)buildTraits()}
 
 /* VOCAB PANEL */
 function showVocab(word,zh,ex){
@@ -557,45 +559,45 @@ function closeVocabPanel(){
   document.getElementById('vocabOverlay').classList.remove('show');
 }
 
-/* S4 VOCABULARY — high-frequency words, click to reveal */
+/* S4 VOCABULARY — high-frequency, click-to-reveal with rich examples */
 let vocabBuilt=false;
 const VOCAB={
   'Kultur & Gesellschaft':[
-    {de:'die Kultur',zh:'文化',ex:'Jedes Land hat seine eigene Kultur.'},
-    {de:'die Gastfamilie',zh:'寄宿家庭',ex:'Meine Gastfamilie war sehr freundlich.'},
-    {de:'die Erfahrung',zh:'经历、经验',ex:'Das war eine gute Erfahrung für mich.'},
-    {de:'der Eindruck',zh:'印象',ex:'Der erste Eindruck ist wichtig.'},
-    {de:'das Verhalten',zh:'行为',ex:'Sein Verhalten war sehr höflich.'},
-    {de:'die Kritik',zh:'批评',ex:'Kritik kann helfen, besser zu werden.'},
-    {de:'die Sitte',zh:'习俗',ex:'In China gibt es andere Sitten.'},
-    {de:'die Hierarchie',zh:'等级制度',ex:'In manchen Kulturen ist die Hierarchie wichtig.'}
+    {de:'die Kultur',zh:'文化',ex:'Bevor ich nach China reiste, wusste ich wenig über die chinesische Kultur.'},
+    {de:'die Gastfamilie',zh:'寄宿家庭',ex:'Nachdem ich bei der Gastfamilie angekommen war, fühlte ich mich sofort wohl.'},
+    {de:'die Erfahrung',zh:'经历、经验',ex:'Ich habe viele Erfahrungen gesammelt, als ich in Deutschland gelebt habe.'},
+    {de:'der Eindruck',zh:'印象',ex:'Weißt du, welchen Eindruck die Deutschen von den Chinesen haben?'},
+    {de:'das Verhalten',zh:'行为',ex:'Ich fand es spannend, dass sich das Verhalten der Menschen von Kultur zu Kultur unterscheidet.'},
+    {de:'die Kritik',zh:'批评',ex:'In China äußert man Kritik indirekt, während man in Deutschland direkt sagt, was man denkt.'},
+    {de:'die Sitte',zh:'习俗',ex:'Weil ich die chinesischen Sitten nicht kannte, habe ich einen Fehler gemacht.'},
+    {de:'die Hierarchie',zh:'等级制度',ex:'Dass die Hierarchie an deutschen Unis viel flacher ist, fand ich überraschend.'}
   ],
   'Kommunikation':[
-    {de:'höflich',zh:'礼貌的',ex:'Man sollte immer höflich sein.'},
-    {de:'direkt',zh:'直接的',ex:'Deutsche sind oft sehr direkt.'},
-    {de:'indirekt',zh:'间接的',ex:'Kritik wird in China oft indirekt geäußert.'},
-    {de:'äußern',zh:'表达',ex:'Er äußerte seine Meinung offen.'},
-    {de:'sich entschuldigen',zh:'道歉',ex:'Sie entschuldigte sich für den Fehler.'},
-    {de:'begrüßen',zh:'问候、打招呼',ex:'In Deutschland begrüßt man sich mit Händeschütteln.'},
-    {de:'verletzen',zh:'伤害',ex:'Seine Worte haben mich verletzt.'},
-    {de:'ablehnen',zh:'拒绝',ex:'Sie lehnte die Einladung höflich ab.'}
+    {de:'höflich',zh:'礼貌的',ex:'Die Chinesen waren sehr höflich, als ich sie zum ersten Mal traf.'},
+    {de:'direkt',zh:'直接的',ex:'Ich habe gemerkt, dass Deutsche oft sehr direkt sind.'},
+    {de:'indirekt',zh:'间接的',ex:'Während ich in China war, habe ich gelernt, indirekt zu kommunizieren.'},
+    {de:'äußern',zh:'表达',ex:'Sie hat ihre Meinung geäußert, obwohl niemand sie gefragt hatte.'},
+    {de:'sich entschuldigen',zh:'道歉',ex:'Er hat sich bei mir entschuldigt, weil er zu spät gekommen war.'},
+    {de:'begrüßen',zh:'问候、打招呼',ex:'Als ich Deutschland besuchte, begrüßten mich die Leute mit Händeschütteln.'},
+    {de:'verletzen',zh:'伤害',ex:'Wenn mich jemand verletzt, spreche ich offen darüber.'},
+    {de:'ablehnen',zh:'拒绝',ex:'Sie hat die Einladung abgelehnt, weil sie an dem Tag schon etwas vorhatte.'}
   ],
   'Gefühle & Eigenschaften':[
-    {de:'faszinieren',zh:'使着迷',ex:'Die chinesische Kultur fasziniert mich.'},
-    {de:'sich wohlfühlen',zh:'感到舒服',ex:'Ich fühle mich in meiner neuen Stadt wohl.'},
-    {de:'bescheiden',zh:'谦虚的',ex:'Er ist bescheiden, obwohl er viel erreicht hat.'},
-    {de:'zuverlässig',zh:'可靠的',ex:'Sie ist eine zuverlässige Freundin.'},
-    {de:'fleißig',zh:'勤奋的',ex:'Die Studenten sind sehr fleißig.'},
-    {de:'ehrlich',zh:'诚实的',ex:'Ehrliche Antworten sind mir wichtig.'},
-    {de:'ernst',zh:'严肃的',ex:'Er sieht manchmal sehr ernst aus.'}
+    {de:'faszinieren',zh:'使着迷',ex:'Mich hat fasziniert, wie anders der Unterricht in Deutschland ist.'},
+    {de:'sich wohlfühlen',zh:'感到舒服',ex:'Nachdem ich Freunde gefunden hatte, fühlte ich mich in der neuen Stadt wohl.'},
+    {de:'bescheiden',zh:'谦虚的',ex:'Obwohl er viel erreicht hat, ist er bescheiden geblieben.'},
+    {de:'zuverlässig',zh:'可靠的',ex:'Eine zuverlässige Freundin ist jemand, der immer für einen da ist.'},
+    {de:'fleißig',zh:'勤奋的',ex:'Die Studenten waren fleißig, weil sie die Prüfung bestehen wollten.'},
+    {de:'ehrlich',zh:'诚实的',ex:'Ich weiß, dass ehrliche Antworten nicht immer leicht sind.'},
+    {de:'ernst',zh:'严肃的',ex:'Er sah sehr ernst aus, als ich ihm die Nachricht sagte.'}
   ],
   'Wichtige Nomen':[
-    {de:'der Gastgeber',zh:'主人',ex:'Der Gastgeber bereitete ein tolles Essen vor.'},
-    {de:'der Gast',zh:'客人',ex:'Die Gäste kamen pünktlich zur Party.'},
-    {de:'das Gesicht',zh:'面子',ex:'In China ist das Gesicht sehr wichtig.'},
-    {de:'das Tabu',zh:'禁忌',ex:'Dieses Thema ist ein Tabu.'},
-    {de:'der Wangenkuss',zh:'脸颊吻',ex:'In Frankreich ist der Wangenkuss üblich.'},
-    {de:'das Händeschütteln',zh:'握手',ex:'Bei Geschäftstreffen ist Händeschütteln üblich.'}
+    {de:'der Gastgeber',zh:'主人',ex:'Der Gastgeber hatte ein tolles Essen vorbereitet, als wir ankamen.'},
+    {de:'der Gast',zh:'客人',ex:'Bevor die Gäste kamen, habe ich die Wohnung aufgeräumt.'},
+    {de:'das Gesicht',zh:'面子',ex:'In China ist es wichtig, dass man das Gesicht des anderen nicht verletzt.'},
+    {de:'das Tabu',zh:'禁忌',ex:'Weißt du, welche Themen in China ein Tabu sind?'},
+    {de:'der Wangenkuss',zh:'脸颊吻',ex:'Hättest du gewusst, dass der Wangenkuss in Frankreich üblich ist?'},
+    {de:'das Händeschütteln',zh:'握手',ex:'Als ich ihn traf, gab er mir fest die Hand zur Begrüßung.'}
   ]
 };
 function buildVocab(){
@@ -613,7 +615,6 @@ function buildVocab(){
     g.appendChild(c)
   })
 }
-
 /* S6 FLIP CARDS */
 let flipBuilt=false;
 const FLIP_WORDS=[
@@ -639,63 +640,59 @@ function buildFlipCards(){
   })
 }
 
-/* S7 STRATEGIES MATCH */
-let stratBuilt=false;
-const STRAT_PEOPLE=[
-  {id:'schmitz',name:'Frau Schmitz',strat:'die Situation aufmerksam beobachten; kulturelle Unterschiede ergründen'},
-  {id:'gabriela',name:'Gabriela',strat:'eigenes Verhalten der Situation anpassen; über Kommunikationsprobleme offen sprechen'},
-  {id:'manfred',name:'Manfred',strat:'die Situation aufmerksam beobachten; kein Überanpassung, flexibel reagieren'}
+/* S7 VOCAB PAIRING — matching game with text vocabulary */
+let pairBuilt=false;
+const PAIR_WORDS=[
+  {de:'die Rundreise',zh:'环游旅行'},
+  {de:'die Gastfamilie',zh:'寄宿家庭'},
+  {de:'die Erfahrung',zh:'经历'},
+  {de:'faszinieren',zh:'使着迷'},
+  {de:'der Eindruck',zh:'印象'},
+  {de:'das Verhalten',zh:'行为'},
+  {de:'die Kritik',zh:'批评'},
+  {de:'der Wangenkuss',zh:'脸颊吻'},
+  {de:'das Händeschütteln',zh:'握手'},
+  {de:'sich entschuldigen',zh:'道歉'},
+  {de:'indirekt',zh:'间接的'},
+  {de:'die Sitte',zh:'习俗'}
 ];
-const STRAT_OPTIONS=[
-  'eigenes Verhalten der Situation anpassen',
-  'keine Überanpassung, flexibel verhalten',
-  'die Situation aufmerksam beobachten',
-  'kulturelle Unterschiede ergründen',
-  'über Kommunikationsprobleme offen sprechen',
-  'den Experten fragen'
-];
-let selPerson=null,stratMatched=0;
-function buildStrategies(){
-  if(stratBuilt)return;stratBuilt=true;
-  const g=document.getElementById('stratGrid');
-  const left=document.createElement('div');left.className='strat-left';
-  const right=document.createElement('div');right.className='strat-right';
-
-  STRAT_PEOPLE.forEach(p=>{
-    const el=document.createElement('div');el.className='sl-item';el.dataset.person=p.id;
-    el.innerHTML='<strong>'+p.name+'</strong>';
+let selDe=null,pairMatched=0;
+function shuffle(arr){for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]]}return arr}
+function buildPairGame(){
+  if(pairBuilt)return;pairBuilt=true;
+  const left=document.getElementById('pairLeft');
+  const right=document.getElementById('pairRight');
+  const shuffled=shuffle([...PAIR_WORDS]);
+  shuffled.forEach(({de,zh})=>{
+    const el=document.createElement('div');el.className='sl-item';el.dataset.de=de;
+    el.textContent=de;
     el.onclick=function(){
       if(this.classList.contains('matched'))return;
-      document.querySelectorAll('.sl-item').forEach(x=>x.classList.remove('selected'));
-      this.classList.add('selected');selPerson=p.id
+      document.querySelectorAll('#pairLeft .sl-item').forEach(x=>x.classList.remove('selected'));
+      this.classList.add('selected');selDe=de
     };
     left.appendChild(el)
   });
-
-  STRAT_OPTIONS.forEach(s=>{
-    const el=document.createElement('div');el.className='sr-item';
-    el.textContent=s;
+  const shuffledZh=shuffle([...PAIR_WORDS]);
+  shuffledZh.forEach(({de,zh})=>{
+    const el=document.createElement('div');el.className='sr-item';el.dataset.de=de;
+    el.textContent=zh;
     el.onclick=function(){
-      if(this.classList.contains('matched')||!selPerson)return;
-      const p=STRAT_PEOPLE.find(x=>x.id===selPerson);
-      if(p&&p.strat.includes(s)){
+      if(this.classList.contains('matched')||!selDe)return;
+      if(this.dataset.de===selDe){
         this.classList.add('matched');
-        document.querySelector('.sl-item.selected').classList.add('matched');
-        document.querySelector('.sl-item.selected').classList.remove('selected');
-        stratMatched++;document.getElementById('stratStatus').textContent='已配对：'+stratMatched+' / 3 组';
-        selPerson=null;
-        if(stratMatched===3)document.getElementById('stratStatus').innerHTML='🎉 <strong>Alle richtig!</strong> 跨文化交际，细心观察→灵活调整→坦诚沟通！'
+        document.querySelector('#pairLeft .sl-item.selected').classList.add('matched');
+        document.querySelector('#pairLeft .sl-item.selected').classList.remove('selected');
+        pairMatched++;document.getElementById('pairStatus').textContent='已配对：'+pairMatched+' / 12 组';
+        selDe=null;
+        if(pairMatched===12)document.getElementById('pairStatus').innerHTML='🎉 <strong>Alle richtig!</strong> 全部配对完成！'
       } else {
-        this.style.borderColor='var(--rot)';setTimeout(()=>this.style.borderColor='',500)
+        this.style.borderColor='var(--rot)';this.style.background='#fff0f0';setTimeout(()=>{this.style.borderColor='';this.style.background=''},500)
       }
     };
     right.appendChild(el)
-  });
-
-  g.appendChild(left);g.appendChild(right)
+  })
 }
-
-/* S8 TRAITS */
 let traitsBuilt=false;
 const TRAITS=['freundlich','höflich','bescheiden','zuverlässig','fleißig','ehrlich','ordentlich','genau','ernst','charmant','kalt','nett','selbstständig','gehorsam','klug'];
 function buildTraits(){

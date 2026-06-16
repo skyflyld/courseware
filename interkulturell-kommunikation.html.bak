@@ -266,8 +266,8 @@ h1,h2,h3{font-family:'Playfair Display','Noto Sans SC',Georgia,serif;line-height
 <section class="section" id="s4" data-index="3">
 <div class="section-inner">
 <div class="section-tag dark">03 · Wortschatz</div>
-<h2>📚 Hochfrequente Vokabeln</h2>
-<p style="margin-top:6px;color:var(--grau-light);font-size:.9rem"><span class="zh">高频核心词汇 — 点击查看中文释义+常用例句</span></p>
+<h2>📚 Wichtige Vokabeln</h2>
+<p style="margin-top:6px;color:var(--grau-light);font-size:.9rem"><span class="zh">点击每个词汇查看详细释义和例句</span></p>
 <div class="cat-grid" id="vocabGrid"></div>
 <div class="nav-row">
 <button class="nav-btn prev" onclick="goTo(2)">← Zurück</button>
@@ -281,68 +281,52 @@ h1,h2,h3{font-family:'Playfair Display','Noto Sans SC',Georgia,serif;line-height
 <div class="section-inner">
 <div class="section-tag red">04 · Grammatik</div>
 <h2>Temporale Nebensätze</h2>
-<p style="margin-top:6px;color:var(--grau-light);font-size:.9rem">während · bevor · nachdem — <span class="zh">三大时间连词用法对比，点击展开实用例句</span></p>
+<p style="margin-top:6px;color:var(--grau-light);font-size:.9rem">während · bevor · nachdem — 时间从句<br><span class="zh">点击展开每个连词的例句和用法详解</span></p>
 
 <div class="grammar-card" onclick="this.querySelector('.gc-example').classList.toggle('show')">
-<div class="gc-title"><span class="gc-marker">⏳ Gleichzeitigkeit</span> <strong>während</strong></div>
-<p style="font-size:.88rem;color:var(--grau);margin-top:2px"><span class="zh">两个动作同时发生 | "在……的同时"；也可表示对比"而"</span></p>
-<div class="gc-example" style="display:block">
-<div style="padding:10px 14px;background:#e8f4e8;border-radius:var(--radius);margin-bottom:12px">
-<strong>🔑 用法要点</strong><br>
-<span class="zh">• 从句和主句的动作<strong>同时发生</strong>，或形成<strong>对比</strong><br>• 动词放在从句末尾：während + Subjekt + ... + Verb</span>
-</div>
-<strong>📌 实用例句</strong><br><br>
-• <strong>Während</strong> ich koche, höre ich Musik.<br>
-<span class="zh">我做饭的同时听音乐。</span><br><br>
-• Er liest Zeitung, <strong>während</strong> seine Frau das Abendessen vorbereitet.<br>
-<span class="zh">他看报纸，同时他妻子准备晚餐。</span><br><br>
-• In China isst man mit Stäbchen, <strong>während</strong> man in Deutschland mit Messer und Gabel isst.<br>
-<span class="zh">在中国用筷子吃饭，而在德国用刀叉。（对比）</span><br><br>
-• <strong>Während</strong> mein Bruder gern Fußball spielt, liest meine Schwester lieber Bücher.<br>
-<span class="zh">我弟弟喜欢踢足球，而我妹妹更喜欢看书。（对比）</span>
-</div>
-</div>
-
-<div class="grammar-card" onclick="this.querySelector('.gc-example').classList.toggle('show')">
-<div class="gc-title"><span class="gc-marker">⌛ Vorzeitigkeit</span> <strong>bevor</strong></div>
-<p style="font-size:.88rem;color:var(--grau);margin-top:2px"><span class="zh">从句动作先于主句发生 | "在……之前"</span></p>
-<div class="gc-example" style="display:block">
-<div style="padding:10px 14px;background:#fdf2e9;border-radius:var(--radius);margin-bottom:12px">
-<strong>🔑 用法要点</strong><br>
-<span class="zh">• <strong>从句动作先发生</strong>（先于主句），强调时间先后顺序<br>• 语序：bevor + Subjekt + ... + Verb（句末）+ 主句<br>• 或：主句 + bevor + Subjekt + ... + Verb（句末）</span>
-</div>
-<strong>📌 实用例句</strong><br><br>
-• <strong>Bevor</strong> ich zur Arbeit gehe, trinke ich immer einen Kaffee.<br>
-<span class="zh">去上班之前，我总是喝杯咖啡。</span><br><br>
-• <strong>Bevor</strong> er nach China flog, lernte er ein Jahr Chinesisch.<br>
-<span class="zh">飞往中国之前，他学了一年中文。</span><br><br>
-• Du sollst die Schuhe ausziehen, <strong>bevor</strong> du die Wohnung betrittst.<br>
-<span class="zh">进房间前应该脱鞋。</span><br><br>
-• <strong>Bevor</strong> man eine Entscheidung trifft, sollte man gut nachdenken.<br>
-<span class="zh">做决定之前要好好思考。</span>
+<div class="gc-title"><span class="gc-marker">Konjunktion</span> ⏳ <strong>während</strong></div>
+<p style="font-size:.88rem;color:var(--grau);margin-top:2px"><span class="zh">"在……的同时"——两个动作同时发生 / "而"——对比</span></p>
+<div class="gc-example">
+<strong>Gleichzeitigkeit &amp; Gegensatz — 同时 &amp; 对比</strong><br><br>
+• Manfred war fasziniert von der chinesischen Kultur, <strong>während</strong> er mit seinen Eltern eine Rundreise im Südosten Chinas machte.<br>
+<span class="zh">曼弗雷德对中国文化着迷，是在他和父母环游中国东南部期间。</span><br><br>
+• In Deutschland äußert man Kritik eher direkt, <strong>während</strong> man in China Kritik oft sehr indirekt ausdrückt.<br>
+<span class="zh">在德国人们表达批评比较直接，而在中国人们常常非常间接地表达批评。</span><br><br>
+• Die chinesischen Studierenden machten ungern kritische Anmerkungen, <strong>während</strong> sie im Kurs von Frau Schmitz mit anderen diskutierten.<br>
+<span class="zh">中国学生在Schmitz女士的课上与他人讨论时，不情愿地发表批评意见。</span><br><br>
+• <strong>Während</strong> die chinesischen Studierenden den Lehrer als Autorität ansehen, ist die Hierarchie zwischen Lehrern und Studierenden in Deutschland viel flacher.<br>
+<span class="zh">中国学生视老师为权威，而在德国师生之间的等级关系则扁平得多。</span><br><br>
+• <strong>Während</strong> in Kolumbien Wangenküsse bei der Begrüßung selbstverständlich sind, begrüßen sich Studierende in Deutschland meist mit einem „Hallo" oder Händeschütteln.<br>
+<span class="zh">在哥伦比亚打招呼时亲吻脸颊是理所当然的，而在德国学生之间通常以"Hallo"或握手问候。</span>
 </div>
 </div>
 
 <div class="grammar-card" onclick="this.querySelector('.gc-example').classList.toggle('show')">
-<div class="gc-title"><span class="gc-marker">🕐 Nachzeitigkeit</span> <strong>nachdem</strong></div>
-<p style="font-size:.88rem;color:var(--grau);margin-top:2px"><span class="zh">从句完成后主句接续发生 | "在……之后"</span></p>
-<div class="gc-example" style="display:block">
-<div style="padding:10px 14px;background:#eaf2f8;border-radius:var(--radius);margin-bottom:12px">
-<strong>🔑 用法要点</strong><br>
-<span class="zh">• 从句动作<strong>先完成</strong>，主句动作紧接着<strong>后发生</strong><br>• ⚠️ <strong>时态搭配</strong>是关键：</span><br>
-  ─ nachdem + <strong>Plusquamperfekt</strong> → Präteritum（过去完成→过去）<br>
-  ─ nachdem + <strong>Perfekt</strong> → Präsens（完成→现在）<br>
-  <span class="zh">即：从句比主句<strong>早一个时态</strong></span>
+<div class="gc-title"><span class="gc-marker">Konjunktion</span> ⌛ <strong>bevor</strong></div>
+<p style="font-size:.88rem;color:var(--grau);margin-top:2px"><span class="zh">"在……之前"——从句动作先于主句</span></p>
+<div class="gc-example">
+<strong>Vorzeitigkeit — 从句动作先于主句</strong><br><br>
+• <strong>Bevor</strong> Gabriela mit deutschen Freunden über die Kommunikationsprobleme offen gesprochen hat, hatte das Wegrucken der Deutschen für sie eine Distanzierung oder Ablehnung bedeutet, deswegen hatte sie sich verletzt gefühlt.<br>
+<span class="zh">在Gabriela和德国朋友坦诚沟通这些问题之前，德国人的退后对她意味着疏远或拒绝，因此她感到受伤。</span><br><br>
+<div style="padding:8px 14px;background:var(--gold-light);border-radius:var(--radius);margin-top:8px">
+💡 <strong>结构：</strong>bevor + 从句（动词放句末）+ 主句<br>
+或：主句 + bevor + 从句（动词放句末）
 </div>
-<strong>📌 实用例句</strong><br><br>
-• <strong>Nachdem</strong> ich gegessen habe, sehe ich fern.<br>
-<span class="zh">吃完饭之后，我看电视。</span><br><br>
-• <strong>Nachdem</strong> er sein Studium abgeschlossen hatte, fand er einen Job.<br>
-<span class="zh">完成学业之后，他找到了一份工作。</span><br><br>
-• <strong>Nachdem</strong> sie in Berlin angekommen war, rief sie sofort ihre Eltern an.<br>
-<span class="zh">到达柏林之后，她立刻给父母打了电话。</span><br><br>
-• <strong>Nachdem</strong> wir uns eine Woche kennengelernt hatten, wurden wir gute Freunde.<br>
-<span class="zh">相互认识一周后，我们成了好朋友。</span>
+</div>
+</div>
+
+<div class="grammar-card" onclick="this.querySelector('.gc-example').classList.toggle('show')">
+<div class="gc-title"><span class="gc-marker">Konjunktion</span> 🕐 <strong>nachdem</strong></div>
+<p style="font-size:.88rem;color:var(--grau);margin-top:2px"><span class="zh">"在……之后"——从句动作先完成，主句后发生</span></p>
+<div class="gc-example">
+<strong>Nachzeitigkeit — 从句动作先于主句</strong><br><br>
+• Die chinesischen Studierenden sind im Unterricht offener und mutiger geworden, <strong>nachdem</strong> Frau Schmitz oft nach ihrer Meinung gefragt (hatte) und sie ermuntert hatte.<br>
+<span class="zh">在Schmitz女士经常询问他们的意见并鼓励他们之后，中国学生在课堂上变得更开放和大胆了。</span><br><br>
+<div style="padding:8px 14px;background:var(--gold-light);border-radius:var(--radius);margin-top:8px">
+💡 <strong>时态对应：</strong><br>
+nachdem + Plusquamperfekt ······ Präteritum (从句先发生)<br>
+nachdem + Perfekt ·············· Präsens (从句先发生)
+</div>
 </div>
 </div>
 
@@ -557,45 +541,32 @@ function closeVocabPanel(){
   document.getElementById('vocabOverlay').classList.remove('show');
 }
 
-/* S4 VOCABULARY — high-frequency words, click to reveal */
+/* S4 VOCABULARY */
 let vocabBuilt=false;
 const VOCAB={
   'Kultur & Gesellschaft':[
-    {de:'die Kultur',zh:'文化',ex:'Jedes Land hat seine eigene Kultur.'},
-    {de:'die Gastfamilie',zh:'寄宿家庭',ex:'Meine Gastfamilie war sehr freundlich.'},
-    {de:'die Erfahrung',zh:'经历、经验',ex:'Das war eine gute Erfahrung für mich.'},
-    {de:'der Eindruck',zh:'印象',ex:'Der erste Eindruck ist wichtig.'},
-    {de:'das Verhalten',zh:'行为',ex:'Sein Verhalten war sehr höflich.'},
-    {de:'die Kritik',zh:'批评',ex:'Kritik kann helfen, besser zu werden.'},
-    {de:'die Sitte',zh:'习俗',ex:'In China gibt es andere Sitten.'},
-    {de:'die Hierarchie',zh:'等级制度',ex:'In manchen Kulturen ist die Hierarchie wichtig.'}
+    ['die Kultur','文化'],['die Gastfamilie','寄宿家庭'],['die Erfahrung','经历、经验'],
+    ['der Eindruck','印象'],['das Verhalten','行为'],['die Hierarchie','等级制度'],
+    ['die Autorität','权威'],['die Distanz','距离'],['die Kritik','批评'],
+    ['die Begrüßung','问候、打招呼'],['die Sitte','习俗'],['die Tugend','美德']
   ],
   'Kommunikation':[
-    {de:'höflich',zh:'礼貌的',ex:'Man sollte immer höflich sein.'},
-    {de:'direkt',zh:'直接的',ex:'Deutsche sind oft sehr direkt.'},
-    {de:'indirekt',zh:'间接的',ex:'Kritik wird in China oft indirekt geäußert.'},
-    {de:'äußern',zh:'表达',ex:'Er äußerte seine Meinung offen.'},
-    {de:'sich entschuldigen',zh:'道歉',ex:'Sie entschuldigte sich für den Fehler.'},
-    {de:'begrüßen',zh:'问候、打招呼',ex:'In Deutschland begrüßt man sich mit Händeschütteln.'},
-    {de:'verletzen',zh:'伤害',ex:'Seine Worte haben mich verletzt.'},
-    {de:'ablehnen',zh:'拒绝',ex:'Sie lehnte die Einladung höflich ab.'}
+    ['höflich','礼貌的'],['indirekt','间接的'],['direkt','直接的'],
+    ['äußern','表达、说出'],['sich entschuldigen','道歉'],['begrüßen','问候、打招呼'],
+    ['bemängeln','挑剔、批评'],['ablehnen','拒绝、谢绝'],['verletzen','伤害'],
+    ['merken','注意到'],['sich nähern','靠近']
   ],
   'Gefühle & Eigenschaften':[
-    {de:'faszinieren',zh:'使着迷',ex:'Die chinesische Kultur fasziniert mich.'},
-    {de:'sich wohlfühlen',zh:'感到舒服',ex:'Ich fühle mich in meiner neuen Stadt wohl.'},
-    {de:'bescheiden',zh:'谦虚的',ex:'Er ist bescheiden, obwohl er viel erreicht hat.'},
-    {de:'zuverlässig',zh:'可靠的',ex:'Sie ist eine zuverlässige Freundin.'},
-    {de:'fleißig',zh:'勤奋的',ex:'Die Studenten sind sehr fleißig.'},
-    {de:'ehrlich',zh:'诚实的',ex:'Ehrliche Antworten sind mir wichtig.'},
-    {de:'ernst',zh:'严肃的',ex:'Er sieht manchmal sehr ernst aus.'}
+    ['faszinieren','使着迷'],['sich wohlfühlen','感到舒服'],['sich verletzt fühlen','感到受伤'],
+    ['liebevoll','充满爱心的'],['freundlich','友好的'],['ernst','严肃的'],
+    ['charmant','有魅力的'],['bescheiden','谦虚的'],['zuverlässig','可靠的'],
+    ['fleißig','勤奋的'],['ehrlich','诚实的'],['gehorsam','顺从的']
   ],
   'Wichtige Nomen':[
-    {de:'der Gastgeber',zh:'主人',ex:'Der Gastgeber bereitete ein tolles Essen vor.'},
-    {de:'der Gast',zh:'客人',ex:'Die Gäste kamen pünktlich zur Party.'},
-    {de:'das Gesicht',zh:'面子',ex:'In China ist das Gesicht sehr wichtig.'},
-    {de:'das Tabu',zh:'禁忌',ex:'Dieses Thema ist ein Tabu.'},
-    {de:'der Wangenkuss',zh:'脸颊吻',ex:'In Frankreich ist der Wangenkuss üblich.'},
-    {de:'das Händeschütteln',zh:'握手',ex:'Bei Geschäftstreffen ist Händeschütteln üblich.'}
+    ['die Rundreise','环游旅行'],['das Austauschjahr','交换学年'],['der Wangenkuss','脸颊吻'],
+    ['das Händeschütteln','握手'],['die Unordentlichkeit','不整洁'],['der Gastgeber','主人'],
+    ['der Gast','客人'],['der Ratgeber','指南、手册'],['die Besonderheit','特点、特别之处'],
+    ['das Tabu','禁忌'],['das Gesicht','面子']
   ]
 };
 function buildVocab(){
@@ -604,10 +575,10 @@ function buildVocab(){
   Object.entries(VOCAB).forEach(([cat,words])=>{
     const c=document.createElement('div');c.className='cat-card';
     c.innerHTML='<h4>'+cat+'</h4>';
-    words.forEach(({de,zh,ex})=>{
+    words.forEach(([de,zh])=>{
       const w=document.createElement('div');w.className='cat-word';
-      w.innerHTML='<span class="cw-de">'+de+'</span>';
-      w.onclick=()=>showVocab(de,zh,ex);
+      w.innerHTML='<span class="cw-de">'+de+'</span><span class="cw-zh">'+zh+'</span>';
+      w.onclick=()=>showVocab(de,zh,'');
       c.appendChild(w)
     });
     g.appendChild(c)

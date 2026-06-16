@@ -266,8 +266,8 @@ h1,h2,h3{font-family:'Playfair Display','Noto Sans SC',Georgia,serif;line-height
 <section class="section" id="s4" data-index="3">
 <div class="section-inner">
 <div class="section-tag dark">03 · Wortschatz</div>
-<h2>📚 Wichtige Vokabeln</h2>
-<p style="margin-top:6px;color:var(--grau-light);font-size:.9rem"><span class="zh">点击每个词汇查看详细释义和例句</span></p>
+<h2>📚 Hochfrequente Vokabeln</h2>
+<p style="margin-top:6px;color:var(--grau-light);font-size:.9rem"><span class="zh">高频核心词汇 — 点击查看中文释义+常用例句</span></p>
 <div class="cat-grid" id="vocabGrid"></div>
 <div class="nav-row">
 <button class="nav-btn prev" onclick="goTo(2)">← Zurück</button>
@@ -281,52 +281,68 @@ h1,h2,h3{font-family:'Playfair Display','Noto Sans SC',Georgia,serif;line-height
 <div class="section-inner">
 <div class="section-tag red">04 · Grammatik</div>
 <h2>Temporale Nebensätze</h2>
-<p style="margin-top:6px;color:var(--grau-light);font-size:.9rem">während · bevor · nachdem — 时间从句<br><span class="zh">点击展开每个连词的例句和用法详解</span></p>
+<p style="margin-top:6px;color:var(--grau-light);font-size:.9rem">während · bevor · nachdem — <span class="zh">三大时间连词用法对比，点击展开实用例句</span></p>
 
 <div class="grammar-card" onclick="this.querySelector('.gc-example').classList.toggle('show')">
-<div class="gc-title"><span class="gc-marker">Konjunktion</span> ⏳ <strong>während</strong></div>
-<p style="font-size:.88rem;color:var(--grau);margin-top:2px"><span class="zh">"在……的同时"——两个动作同时发生 / "而"——对比</span></p>
-<div class="gc-example">
-<strong>Gleichzeitigkeit &amp; Gegensatz — 同时 &amp; 对比</strong><br><br>
-• Manfred war fasziniert von der chinesischen Kultur, <strong>während</strong> er mit seinen Eltern eine Rundreise im Südosten Chinas machte.<br>
-<span class="zh">曼弗雷德对中国文化着迷，是在他和父母环游中国东南部期间。</span><br><br>
-• In Deutschland äußert man Kritik eher direkt, <strong>während</strong> man in China Kritik oft sehr indirekt ausdrückt.<br>
-<span class="zh">在德国人们表达批评比较直接，而在中国人们常常非常间接地表达批评。</span><br><br>
-• Die chinesischen Studierenden machten ungern kritische Anmerkungen, <strong>während</strong> sie im Kurs von Frau Schmitz mit anderen diskutierten.<br>
-<span class="zh">中国学生在Schmitz女士的课上与他人讨论时，不情愿地发表批评意见。</span><br><br>
-• <strong>Während</strong> die chinesischen Studierenden den Lehrer als Autorität ansehen, ist die Hierarchie zwischen Lehrern und Studierenden in Deutschland viel flacher.<br>
-<span class="zh">中国学生视老师为权威，而在德国师生之间的等级关系则扁平得多。</span><br><br>
-• <strong>Während</strong> in Kolumbien Wangenküsse bei der Begrüßung selbstverständlich sind, begrüßen sich Studierende in Deutschland meist mit einem „Hallo" oder Händeschütteln.<br>
-<span class="zh">在哥伦比亚打招呼时亲吻脸颊是理所当然的，而在德国学生之间通常以"Hallo"或握手问候。</span>
+<div class="gc-title"><span class="gc-marker">⏳ Gleichzeitigkeit</span> <strong>während</strong></div>
+<p style="font-size:.88rem;color:var(--grau);margin-top:2px"><span class="zh">两个动作同时发生 | "在……的同时"；也可表示对比"而"</span></p>
+<div class="gc-example" style="display:block">
+<div style="padding:10px 14px;background:#e8f4e8;border-radius:var(--radius);margin-bottom:12px">
+<strong>🔑 用法要点</strong><br>
+<span class="zh">• 从句和主句的动作<strong>同时发生</strong>，或形成<strong>对比</strong><br>• 动词放在从句末尾：während + Subjekt + ... + Verb</span>
 </div>
-</div>
-
-<div class="grammar-card" onclick="this.querySelector('.gc-example').classList.toggle('show')">
-<div class="gc-title"><span class="gc-marker">Konjunktion</span> ⌛ <strong>bevor</strong></div>
-<p style="font-size:.88rem;color:var(--grau);margin-top:2px"><span class="zh">"在……之前"——从句动作先于主句</span></p>
-<div class="gc-example">
-<strong>Vorzeitigkeit — 从句动作先于主句</strong><br><br>
-• <strong>Bevor</strong> Gabriela mit deutschen Freunden über die Kommunikationsprobleme offen gesprochen hat, hatte das Wegrucken der Deutschen für sie eine Distanzierung oder Ablehnung bedeutet, deswegen hatte sie sich verletzt gefühlt.<br>
-<span class="zh">在Gabriela和德国朋友坦诚沟通这些问题之前，德国人的退后对她意味着疏远或拒绝，因此她感到受伤。</span><br><br>
-<div style="padding:8px 14px;background:var(--gold-light);border-radius:var(--radius);margin-top:8px">
-💡 <strong>结构：</strong>bevor + 从句（动词放句末）+ 主句<br>
-或：主句 + bevor + 从句（动词放句末）
-</div>
+<strong>📌 实用例句</strong><br><br>
+• <strong>Während</strong> ich koche, höre ich Musik.<br>
+<span class="zh">我做饭的同时听音乐。</span><br><br>
+• Er liest Zeitung, <strong>während</strong> seine Frau das Abendessen vorbereitet.<br>
+<span class="zh">他看报纸，同时他妻子准备晚餐。</span><br><br>
+• In China isst man mit Stäbchen, <strong>während</strong> man in Deutschland mit Messer und Gabel isst.<br>
+<span class="zh">在中国用筷子吃饭，而在德国用刀叉。（对比）</span><br><br>
+• <strong>Während</strong> mein Bruder gern Fußball spielt, liest meine Schwester lieber Bücher.<br>
+<span class="zh">我弟弟喜欢踢足球，而我妹妹更喜欢看书。（对比）</span>
 </div>
 </div>
 
 <div class="grammar-card" onclick="this.querySelector('.gc-example').classList.toggle('show')">
-<div class="gc-title"><span class="gc-marker">Konjunktion</span> 🕐 <strong>nachdem</strong></div>
-<p style="font-size:.88rem;color:var(--grau);margin-top:2px"><span class="zh">"在……之后"——从句动作先完成，主句后发生</span></p>
-<div class="gc-example">
-<strong>Nachzeitigkeit — 从句动作先于主句</strong><br><br>
-• Die chinesischen Studierenden sind im Unterricht offener und mutiger geworden, <strong>nachdem</strong> Frau Schmitz oft nach ihrer Meinung gefragt (hatte) und sie ermuntert hatte.<br>
-<span class="zh">在Schmitz女士经常询问他们的意见并鼓励他们之后，中国学生在课堂上变得更开放和大胆了。</span><br><br>
-<div style="padding:8px 14px;background:var(--gold-light);border-radius:var(--radius);margin-top:8px">
-💡 <strong>时态对应：</strong><br>
-nachdem + Plusquamperfekt ······ Präteritum (从句先发生)<br>
-nachdem + Perfekt ·············· Präsens (从句先发生)
+<div class="gc-title"><span class="gc-marker">⌛ Vorzeitigkeit</span> <strong>bevor</strong></div>
+<p style="font-size:.88rem;color:var(--grau);margin-top:2px"><span class="zh">从句动作先于主句发生 | "在……之前"</span></p>
+<div class="gc-example" style="display:block">
+<div style="padding:10px 14px;background:#fdf2e9;border-radius:var(--radius);margin-bottom:12px">
+<strong>🔑 用法要点</strong><br>
+<span class="zh">• <strong>从句动作先发生</strong>（先于主句），强调时间先后顺序<br>• 语序：bevor + Subjekt + ... + Verb（句末）+ 主句<br>• 或：主句 + bevor + Subjekt + ... + Verb（句末）</span>
 </div>
+<strong>📌 实用例句</strong><br><br>
+• <strong>Bevor</strong> ich zur Arbeit gehe, trinke ich immer einen Kaffee.<br>
+<span class="zh">去上班之前，我总是喝杯咖啡。</span><br><br>
+• <strong>Bevor</strong> er nach China flog, lernte er ein Jahr Chinesisch.<br>
+<span class="zh">飞往中国之前，他学了一年中文。</span><br><br>
+• Du sollst die Schuhe ausziehen, <strong>bevor</strong> du die Wohnung betrittst.<br>
+<span class="zh">进房间前应该脱鞋。</span><br><br>
+• <strong>Bevor</strong> man eine Entscheidung trifft, sollte man gut nachdenken.<br>
+<span class="zh">做决定之前要好好思考。</span>
+</div>
+</div>
+
+<div class="grammar-card" onclick="this.querySelector('.gc-example').classList.toggle('show')">
+<div class="gc-title"><span class="gc-marker">🕐 Nachzeitigkeit</span> <strong>nachdem</strong></div>
+<p style="font-size:.88rem;color:var(--grau);margin-top:2px"><span class="zh">从句完成后主句接续发生 | "在……之后"</span></p>
+<div class="gc-example" style="display:block">
+<div style="padding:10px 14px;background:#eaf2f8;border-radius:var(--radius);margin-bottom:12px">
+<strong>🔑 用法要点</strong><br>
+<span class="zh">• 从句动作<strong>先完成</strong>，主句动作紧接着<strong>后发生</strong><br>• ⚠️ <strong>时态搭配</strong>是关键：</span><br>
+  ─ nachdem + <strong>Plusquamperfekt</strong> → Präteritum（过去完成→过去）<br>
+  ─ nachdem + <strong>Perfekt</strong> → Präsens（完成→现在）<br>
+  <span class="zh">即：从句比主句<strong>早一个时态</strong></span>
+</div>
+<strong>📌 实用例句</strong><br><br>
+• <strong>Nachdem</strong> ich gegessen habe, sehe ich fern.<br>
+<span class="zh">吃完饭之后，我看电视。</span><br><br>
+• <strong>Nachdem</strong> er sein Studium abgeschlossen hatte, fand er einen Job.<br>
+<span class="zh">完成学业之后，他找到了一份工作。</span><br><br>
+• <strong>Nachdem</strong> sie in Berlin angekommen war, rief sie sofort ihre Eltern an.<br>
+<span class="zh">到达柏林之后，她立刻给父母打了电话。</span><br><br>
+• <strong>Nachdem</strong> wir uns eine Woche kennengelernt hatten, wurden wir gute Freunde.<br>
+<span class="zh">相互认识一周后，我们成了好朋友。</span>
 </div>
 </div>
 
@@ -336,7 +352,6 @@ nachdem + Perfekt ·············· Präsens (从句先发生)
 </div>
 </div>
 </section>
-
 <!-- S6 FLIP CARDS -->
 <section class="section" id="s6" data-index="5">
 <div class="section-inner">
@@ -352,21 +367,52 @@ nachdem + Perfekt ·············· Präsens (从句先发生)
 </div>
 </section>
 
-<!-- S7 STRATEGIES MATCH -->
+<!-- S7 VOCAB PAIRING — matching game with text vocabulary -->
 <section class="section" id="s7" data-index="6">
 <div class="section-inner">
 <div class="section-tag dark">06 · Aufgabe 8</div>
-<h2>🌉 Interkulturelle Strategien</h2>
-<p style="margin-top:6px;color:var(--grau-light);font-size:.9rem">Welche Strategie hat welche Person verwendet? <span class="zh">点击左侧人物，再点击右侧策略进行配对。</span></p>
-<div class="strategy-grid" id="stratGrid"></div>
-<div class="strat-match-status" id="stratStatus">已配对：0 / 3 组</div>
+<h2>🔗 Vokabel-Paarspiel</h2>
+<p style="margin-top:6px;color:var(--grau-light);font-size:.9rem"><span class="zh">点击左侧的德语单词，再点击右侧对应的中文释义配对。</span></p>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:20px" id="pairGrid">
+<div class="strat-left" id="pairLeft"></div>
+<div class="strat-right" id="pairRight"></div>
+</div>
+
+<div class="strat-match-status" id="pairStatus">已配对：0 / 12 组</div>
+
 <div class="nav-row">
 <button class="nav-btn prev" onclick="goTo(5)">← Zurück</button>
 <button class="nav-btn" onclick="goTo(7)">Typisch deutsch? →</button>
 </div>
 </div>
 </section>
+<div class="section-inner">
+<div class="section-tag red">07 · Aufgabe 9</div>
+<h2>🇨🇳 Typisch chinesisch? 🇩🇪 Typisch deutsch?</h2>
+<p style="margin-top:6px;color:var(--grau-light);font-size:.9rem"><span class="zh">点击词汇标记它的归属——可以同时属于两边！每个词可切换标记状态。</span></p>
 
+<div class="trait-grid">
+<div class="trait-col china">
+<h4>🇨🇳 "typisch chinesisch"</h4>
+<div id="chinaTraits"></div>
+</div>
+<div class="trait-col germany">
+<h4>🇩🇪 "typisch deutsch"</h4>
+<div id="germanyTraits"></div>
+</div>
+</div>
+
+<p style="margin-top:16px;text-align:center;font-size:.85rem;color:var(--grau-light)">
+<span class="zh">灰色 = 未标记 | 深色 = 已标记到该侧</span>
+</p>
+
+<div class="nav-row">
+<button class="nav-btn prev" onclick="goTo(6)">← Zurück</button>
+<button class="nav-btn" onclick="goTo(8)">📝 Übersetzung →</button>
+</div>
+</div>
+</section>
 <!-- S8 TYPICAL -->
 <section class="section" id="s8" data-index="7">
 <div class="section-inner">
@@ -526,7 +572,7 @@ nachdem + Perfekt ·············· Präsens (从句先发生)
 const N=11;let cur=0;
 (function(){const d=document.getElementById('progress-dots');for(let i=0;i<N;i++){const s=document.createElement('span');s.className='dot';s.title='Seite '+(i+1);s.onclick=()=>goTo(i);d.appendChild(s)}})();
 function updProgress(){document.getElementById('progress-bar').style.width=((cur+1)/N*100)+'%';document.querySelectorAll('#progress-dots .dot').forEach((d,i)=>{d.classList.toggle('active',i===cur);d.classList.toggle('done',i<cur)})}
-function goTo(i){if(i<0||i>=N)return;document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.querySelector('[data-index="'+i+'"]').classList.add('active');window.scrollTo({top:0,behavior:'smooth'});cur=i;updProgress();if(i===3)buildVocab();if(i===5)buildFlipCards();if(i===6)buildStrategies();if(i===7)buildTraits()}
+function goTo(i){if(i<0||i>=N)return;document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.querySelector('[data-index="'+i+'"]').classList.add('active');window.scrollTo({top:0,behavior:'smooth'});cur=i;updProgress();if(i===3)buildVocab();if(i===5)buildFlipCards();if(i===6)buildPairGame();if(i===7)buildTraits()}
 
 /* VOCAB PANEL */
 function showVocab(word,zh,ex){
@@ -541,32 +587,45 @@ function closeVocabPanel(){
   document.getElementById('vocabOverlay').classList.remove('show');
 }
 
-/* S4 VOCABULARY */
+/* S4 VOCABULARY — high-frequency, click-to-reveal with rich examples */
 let vocabBuilt=false;
 const VOCAB={
   'Kultur & Gesellschaft':[
-    ['die Kultur','文化'],['die Gastfamilie','寄宿家庭'],['die Erfahrung','经历、经验'],
-    ['der Eindruck','印象'],['das Verhalten','行为'],['die Hierarchie','等级制度'],
-    ['die Autorität','权威'],['die Distanz','距离'],['die Kritik','批评'],
-    ['die Begrüßung','问候、打招呼'],['die Sitte','习俗'],['die Tugend','美德']
+    {de:'die Kultur',zh:'文化',ex:'Bevor ich nach China reiste, wusste ich wenig über die chinesische Kultur.'},
+    {de:'die Gastfamilie',zh:'寄宿家庭',ex:'Nachdem ich bei der Gastfamilie angekommen war, fühlte ich mich sofort wohl.'},
+    {de:'die Erfahrung',zh:'经历、经验',ex:'Ich habe viele Erfahrungen gesammelt, als ich in Deutschland gelebt habe.'},
+    {de:'der Eindruck',zh:'印象',ex:'Weißt du, welchen Eindruck die Deutschen von den Chinesen haben?'},
+    {de:'das Verhalten',zh:'行为',ex:'Ich fand es spannend, dass sich das Verhalten der Menschen von Kultur zu Kultur unterscheidet.'},
+    {de:'die Kritik',zh:'批评',ex:'In China äußert man Kritik indirekt, während man in Deutschland direkt sagt, was man denkt.'},
+    {de:'die Sitte',zh:'习俗',ex:'Weil ich die chinesischen Sitten nicht kannte, habe ich einen Fehler gemacht.'},
+    {de:'die Hierarchie',zh:'等级制度',ex:'Dass die Hierarchie an deutschen Unis viel flacher ist, fand ich überraschend.'}
   ],
   'Kommunikation':[
-    ['höflich','礼貌的'],['indirekt','间接的'],['direkt','直接的'],
-    ['äußern','表达、说出'],['sich entschuldigen','道歉'],['begrüßen','问候、打招呼'],
-    ['bemängeln','挑剔、批评'],['ablehnen','拒绝、谢绝'],['verletzen','伤害'],
-    ['merken','注意到'],['sich nähern','靠近']
+    {de:'höflich',zh:'礼貌的',ex:'Die Chinesen waren sehr höflich, als ich sie zum ersten Mal traf.'},
+    {de:'direkt',zh:'直接的',ex:'Ich habe gemerkt, dass Deutsche oft sehr direkt sind.'},
+    {de:'indirekt',zh:'间接的',ex:'Während ich in China war, habe ich gelernt, indirekt zu kommunizieren.'},
+    {de:'äußern',zh:'表达',ex:'Sie hat ihre Meinung geäußert, obwohl niemand sie gefragt hatte.'},
+    {de:'sich entschuldigen',zh:'道歉',ex:'Er hat sich bei mir entschuldigt, weil er zu spät gekommen war.'},
+    {de:'begrüßen',zh:'问候、打招呼',ex:'Als ich Deutschland besuchte, begrüßten mich die Leute mit Händeschütteln.'},
+    {de:'verletzen',zh:'伤害',ex:'Wenn mich jemand verletzt, spreche ich offen darüber.'},
+    {de:'ablehnen',zh:'拒绝',ex:'Sie hat die Einladung abgelehnt, weil sie an dem Tag schon etwas vorhatte.'}
   ],
   'Gefühle & Eigenschaften':[
-    ['faszinieren','使着迷'],['sich wohlfühlen','感到舒服'],['sich verletzt fühlen','感到受伤'],
-    ['liebevoll','充满爱心的'],['freundlich','友好的'],['ernst','严肃的'],
-    ['charmant','有魅力的'],['bescheiden','谦虚的'],['zuverlässig','可靠的'],
-    ['fleißig','勤奋的'],['ehrlich','诚实的'],['gehorsam','顺从的']
+    {de:'faszinieren',zh:'使着迷',ex:'Mich hat fasziniert, wie anders der Unterricht in Deutschland ist.'},
+    {de:'sich wohlfühlen',zh:'感到舒服',ex:'Nachdem ich Freunde gefunden hatte, fühlte ich mich in der neuen Stadt wohl.'},
+    {de:'bescheiden',zh:'谦虚的',ex:'Obwohl er viel erreicht hat, ist er bescheiden geblieben.'},
+    {de:'zuverlässig',zh:'可靠的',ex:'Eine zuverlässige Freundin ist jemand, der immer für einen da ist.'},
+    {de:'fleißig',zh:'勤奋的',ex:'Die Studenten waren fleißig, weil sie die Prüfung bestehen wollten.'},
+    {de:'ehrlich',zh:'诚实的',ex:'Ich weiß, dass ehrliche Antworten nicht immer leicht sind.'},
+    {de:'ernst',zh:'严肃的',ex:'Er sah sehr ernst aus, als ich ihm die Nachricht sagte.'}
   ],
   'Wichtige Nomen':[
-    ['die Rundreise','环游旅行'],['das Austauschjahr','交换学年'],['der Wangenkuss','脸颊吻'],
-    ['das Händeschütteln','握手'],['die Unordentlichkeit','不整洁'],['der Gastgeber','主人'],
-    ['der Gast','客人'],['der Ratgeber','指南、手册'],['die Besonderheit','特点、特别之处'],
-    ['das Tabu','禁忌'],['das Gesicht','面子']
+    {de:'der Gastgeber',zh:'主人',ex:'Der Gastgeber hatte ein tolles Essen vorbereitet, als wir ankamen.'},
+    {de:'der Gast',zh:'客人',ex:'Bevor die Gäste kamen, habe ich die Wohnung aufgeräumt.'},
+    {de:'das Gesicht',zh:'面子',ex:'In China ist es wichtig, dass man das Gesicht des anderen nicht verletzt.'},
+    {de:'das Tabu',zh:'禁忌',ex:'Weißt du, welche Themen in China ein Tabu sind?'},
+    {de:'der Wangenkuss',zh:'脸颊吻',ex:'Hättest du gewusst, dass der Wangenkuss in Frankreich üblich ist?'},
+    {de:'das Händeschütteln',zh:'握手',ex:'Als ich ihn traf, gab er mir fest die Hand zur Begrüßung.'}
   ]
 };
 function buildVocab(){
@@ -575,16 +634,15 @@ function buildVocab(){
   Object.entries(VOCAB).forEach(([cat,words])=>{
     const c=document.createElement('div');c.className='cat-card';
     c.innerHTML='<h4>'+cat+'</h4>';
-    words.forEach(([de,zh])=>{
+    words.forEach(({de,zh,ex})=>{
       const w=document.createElement('div');w.className='cat-word';
-      w.innerHTML='<span class="cw-de">'+de+'</span><span class="cw-zh">'+zh+'</span>';
-      w.onclick=()=>showVocab(de,zh,'');
+      w.innerHTML='<span class="cw-de">'+de+'</span>';
+      w.onclick=()=>showVocab(de,zh,ex);
       c.appendChild(w)
     });
     g.appendChild(c)
   })
 }
-
 /* S6 FLIP CARDS */
 let flipBuilt=false;
 const FLIP_WORDS=[
@@ -610,63 +668,59 @@ function buildFlipCards(){
   })
 }
 
-/* S7 STRATEGIES MATCH */
-let stratBuilt=false;
-const STRAT_PEOPLE=[
-  {id:'schmitz',name:'Frau Schmitz',strat:'die Situation aufmerksam beobachten; kulturelle Unterschiede ergründen'},
-  {id:'gabriela',name:'Gabriela',strat:'eigenes Verhalten der Situation anpassen; über Kommunikationsprobleme offen sprechen'},
-  {id:'manfred',name:'Manfred',strat:'die Situation aufmerksam beobachten; kein Überanpassung, flexibel reagieren'}
+/* S7 VOCAB PAIRING — matching game with text vocabulary */
+let pairBuilt=false;
+const PAIR_WORDS=[
+  {de:'die Rundreise',zh:'环游旅行'},
+  {de:'die Gastfamilie',zh:'寄宿家庭'},
+  {de:'die Erfahrung',zh:'经历'},
+  {de:'faszinieren',zh:'使着迷'},
+  {de:'der Eindruck',zh:'印象'},
+  {de:'das Verhalten',zh:'行为'},
+  {de:'die Kritik',zh:'批评'},
+  {de:'der Wangenkuss',zh:'脸颊吻'},
+  {de:'das Händeschütteln',zh:'握手'},
+  {de:'sich entschuldigen',zh:'道歉'},
+  {de:'indirekt',zh:'间接的'},
+  {de:'die Sitte',zh:'习俗'}
 ];
-const STRAT_OPTIONS=[
-  'eigenes Verhalten der Situation anpassen',
-  'keine Überanpassung, flexibel verhalten',
-  'die Situation aufmerksam beobachten',
-  'kulturelle Unterschiede ergründen',
-  'über Kommunikationsprobleme offen sprechen',
-  'den Experten fragen'
-];
-let selPerson=null,stratMatched=0;
-function buildStrategies(){
-  if(stratBuilt)return;stratBuilt=true;
-  const g=document.getElementById('stratGrid');
-  const left=document.createElement('div');left.className='strat-left';
-  const right=document.createElement('div');right.className='strat-right';
-
-  STRAT_PEOPLE.forEach(p=>{
-    const el=document.createElement('div');el.className='sl-item';el.dataset.person=p.id;
-    el.innerHTML='<strong>'+p.name+'</strong>';
+let selDe=null,pairMatched=0;
+function shuffle(arr){for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]]}return arr}
+function buildPairGame(){
+  if(pairBuilt)return;pairBuilt=true;
+  const left=document.getElementById('pairLeft');
+  const right=document.getElementById('pairRight');
+  const shuffled=shuffle([...PAIR_WORDS]);
+  shuffled.forEach(({de,zh})=>{
+    const el=document.createElement('div');el.className='sl-item';el.dataset.de=de;
+    el.textContent=de;
     el.onclick=function(){
       if(this.classList.contains('matched'))return;
-      document.querySelectorAll('.sl-item').forEach(x=>x.classList.remove('selected'));
-      this.classList.add('selected');selPerson=p.id
+      document.querySelectorAll('#pairLeft .sl-item').forEach(x=>x.classList.remove('selected'));
+      this.classList.add('selected');selDe=de
     };
     left.appendChild(el)
   });
-
-  STRAT_OPTIONS.forEach(s=>{
-    const el=document.createElement('div');el.className='sr-item';
-    el.textContent=s;
+  const shuffledZh=shuffle([...PAIR_WORDS]);
+  shuffledZh.forEach(({de,zh})=>{
+    const el=document.createElement('div');el.className='sr-item';el.dataset.de=de;
+    el.textContent=zh;
     el.onclick=function(){
-      if(this.classList.contains('matched')||!selPerson)return;
-      const p=STRAT_PEOPLE.find(x=>x.id===selPerson);
-      if(p&&p.strat.includes(s)){
+      if(this.classList.contains('matched')||!selDe)return;
+      if(this.dataset.de===selDe){
         this.classList.add('matched');
-        document.querySelector('.sl-item.selected').classList.add('matched');
-        document.querySelector('.sl-item.selected').classList.remove('selected');
-        stratMatched++;document.getElementById('stratStatus').textContent='已配对：'+stratMatched+' / 3 组';
-        selPerson=null;
-        if(stratMatched===3)document.getElementById('stratStatus').innerHTML='🎉 <strong>Alle richtig!</strong> 跨文化交际，细心观察→灵活调整→坦诚沟通！'
+        document.querySelector('#pairLeft .sl-item.selected').classList.add('matched');
+        document.querySelector('#pairLeft .sl-item.selected').classList.remove('selected');
+        pairMatched++;document.getElementById('pairStatus').textContent='已配对：'+pairMatched+' / 12 组';
+        selDe=null;
+        if(pairMatched===12)document.getElementById('pairStatus').innerHTML='🎉 <strong>Alle richtig!</strong> 全部配对完成！'
       } else {
-        this.style.borderColor='var(--rot)';setTimeout(()=>this.style.borderColor='',500)
+        this.style.borderColor='var(--rot)';this.style.background='#fff0f0';setTimeout(()=>{this.style.borderColor='';this.style.background=''},500)
       }
     };
     right.appendChild(el)
-  });
-
-  g.appendChild(left);g.appendChild(right)
+  })
 }
-
-/* S8 TRAITS */
 let traitsBuilt=false;
 const TRAITS=['freundlich','höflich','bescheiden','zuverlässig','fleißig','ehrlich','ordentlich','genau','ernst','charmant','kalt','nett','selbstständig','gehorsam','klug'];
 function buildTraits(){

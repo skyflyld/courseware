@@ -279,8 +279,16 @@
   .progress-dot.active { background: var(--accent); transform: scale(1.2); }
 
   /* ===== KEYWORD TAG ===== */
-  .kw { display: inline-block; background: #fef3e2; color: #8a6d2b; 
+  .kw { display: inline-block; background: #fef3e2; color: #8a6d2b;
         padding: 1px 8px; border-radius: 4px; font-size: 13px; cursor: help; }
+  .vocab-word{color:#c0392b;font-weight:600;cursor:pointer;border-bottom:2px dashed #e8a838;padding:0 2px;transition:all .2s}
+  .vocab-word:hover{background:#fef3e2;border-radius:3px}
+  .vocab-panel{display:none;position:fixed;bottom:0;left:0;right:0;background:#fff;border-radius:20px 20px 0 0;box-shadow:0 -8px 40px rgba(0,0,0,.15);padding:28px 24px 32px;z-index:2000;max-height:45vh;overflow-y:auto}
+  .vocab-panel.show{display:block}
+  .vocab-panel .vp-word{font-size:1.3rem;font-weight:700;color:var(--primary);margin-bottom:4px}
+  .vocab-panel .vp-zh{font-size:1rem;color:#c0392b;font-weight:600;margin-bottom:8px}
+  .vocab-panel .vp-example{font-size:.9rem;color:#666;padding:10px 14px;background:#f8f6f0;border-radius:8px;margin-top:6px;line-height:1.6}
+  .vocab-panel .vp-close{position:absolute;top:12px;right:16px;font-size:1.4rem;cursor:pointer;color:#999;background:none;border:none;padding:4px 8px}
 
   /* ===== RESPONSIVE ===== */
 /* ===== LARGE DESKTOP ≥1200 ===== */
@@ -333,7 +341,7 @@
 
   /* ===== TABLET & MOBILE ≤768 ===== */
   @media (max-width: 768px) {
-    .nav-links { display: none; flex-direction: column; position: absolute; 
+    .nav-links { display: none; flex-direction: column; position: absolute;
                  top: 100%; left: 0; right: 0; background: var(--primary); padding: 6px;
                  box-shadow: 0 8px 24px rgba(0,0,0,0.2); border-radius: 0 0 12px 12px;
                  max-height: 70vh; overflow-y: auto; }
@@ -344,7 +352,7 @@
     .main { max-width: 100%; min-height: calc(100vh - 56px); }
     section { padding: 16px 16px 48px; }
     html { scroll-padding-top: 60px; }
-    
+
     .hero { padding: 28px 18px; border-radius: 10px; margin-bottom: 20px; }
     .hero h1 { font-size: 24px; }
     .hero .sub { font-size: 16px; }
@@ -391,7 +399,7 @@
     .highlight-box { font-size: 13px; padding: 10px 14px; }
 
     .rule-box { font-size: 13px; padding: 12px 14px; }
-    
+
     .fill-area { min-width: 80px; font-size: 14px; }
   }
 
@@ -404,7 +412,7 @@
 
     section { padding: 12px 12px 40px; }
     html { scroll-padding-top: 56px; }
-    
+
     .hero { padding: 22px 14px; }
     .hero h1 { font-size: 20px; }
     .hero .sub { font-size: 14px; }
@@ -485,7 +493,7 @@
     <div class="hero">
       <h1>🚀 Start in die Zukunft!</h1>
       <div class="sub">新经典德语 · 第二册 · Lektion 7</div>
-      <div class="meta">教育选择 · 学校体系 · 未来规划 · 语法：带zu不定式</div>
+      <div class="meta">教育选择 · 学校体系 · 未来规划 · 语法:带zu不定式</div>
     </div>
 
     <div class="home-grid">
@@ -527,194 +535,75 @@
     </div>
   </section>
 
-  <!-- ===== 课文讲解 ===== -->
-  <section id="text">
 
-    <h2 class="section-title"><span class="num">1</span> 课文讲解 · 德国学生的教育选择</h2>
 
-    <p style="margin-bottom:16px;font-size:14px;color:var(--text-light)">
-      德国小学（Grundschule）通常为四年。毕业后，学生与家长面临学校选择（Schulentscheidung）。
-      以下为三则真实案例：
+<!-- 课文一：T1 - Schulwahl -->
+    <h2 class="section-title"><span class="num">1</span> T1 · 德国学生的教育选择</h2>
+    <p style="margin-bottom:12px;font-size:14px;color:var(--text-light)">
+      三则德国小升初案例。点击<span style="color:#c0392b;font-weight:600">红色标注的词汇</span>查看中文释义和例句。
     </p>
 
-    <!-- Person tabs -->
-    <div class="person-tabs">
-      <button class="active" onclick="switchPerson('tobias')">👬 Tobias & Niklas</button>
-      <button onclick="switchPerson('melisa')">👧 Melisa</button>
-      <button onclick="switchPerson('ingrid')">👩 Ingrid</button>
-      <button onclick="switchPerson('system')">🏫 德国学校体系</button>
-    </div>
-
-    <div id="p-tobias" class="person-content active">
-      <div class="text-card">
-        <h3>Tobias & Niklas — 综合中学（Gesamtschule）</h3>
-        <div class="de">
-          <p>Zwei beste Freunde, Tobias und Niklas: Von der Schule bekommt Tobias <span class="kw">die Empfehlung</span>, 
-          <strong class="zu-hl">auf das Gymnasium zu gehen</strong>. Und Niklas erhält eine <span class="kw">eingeschränkte Schulempfehlung</span>. 
-          Tobias' Eltern <span class="kw">bevorzugen</span> die Schulform Gesamtschule, Niklas' Eltern <span class="kw">planen</span>, 
-          <strong class="zu-hl">ihren Sohn auf ein Gymnasium zu schicken</strong>. 
-          Nun gehen Tobias und Niklas in die 5. Klasse einer Gesamtschule. Die beiden Freunde haben <span class="kw">großes Glück</span>, 
-          <strong class="zu-hl">weiter zusammenbleiben zu können</strong>. 
-          Nun will Niklas auch alles für <span class="kw">das Ziel</span> tun, 
-          <strong class="zu-hl">das Abitur mit seinem Freund an der Gesamtschule zu bestehen</strong>.</p>
-        </div>
-        <div class="zh">
-          <p>Tobias 和 Niklas 是一对好朋友。学校建议 Tobias 上文理中学（Gymnasium），
-          而 Niklas 获得了受限的学校推荐。Tobias 的父母更喜欢综合中学（Gesamtschule），
-          Niklas 的父母计划送儿子上文理中学。最终两人都进入了综合中学五年级。
-          两个好朋友很幸运能继续在一起。Niklas 下决心要和好朋友一起在综合中学考过 Abitur（高中毕业考）。</p>
-        </div>
-        <div class="highlight-box">
-          💡 <strong>关键信息：</strong>Tobias 获得 Gymnasium 推荐，父母却选择 Gesamtschule；Niklas 受限推荐，父母想送他上 Gymnasium，最终两人在 Gesamtschule 一起上学。<br>
-          📝 <strong>重点词汇：</strong><span class="kw">die Empfehlung</span> 推荐 / <span class="kw">eingeschränkt</span> 受限的 / <span class="kw">bevorzugen</span> 偏爱 / <span class="kw">planen</span> 计划 / <span class="kw">das Glück</span> 幸运 / <span class="kw">das Ziel</span> 目标
-        </div>
+    <div class="text-card">
+      <h3>Tobias & Niklas — 综合中学</h3>
+      <div class="de">
+        <p>Zwei beste Freunde, Tobias und Niklas: Von der Schule bekommt Tobias <span class="vocab-word" onclick="showVocab('die Empfehlung','推荐','der Vorschlag oder Rat von der Schule. 例：Die Grundschule gibt eine Empfehlung für die passende Schulform.')">die Empfehlung</span>, auf das Gymnasium <strong class="zu-hl">zu gehen</strong>. Und Niklas erhält eine <span class="vocab-word" onclick="showVocab('eingeschränkt','受限的','nicht vollständig; mit Einschränkungen. 例：Er hat nur eine eingeschränkte Schulempfehlung bekommen.')">eingeschränkte</span> Schulempfehlung. Tobias' Eltern <span class="vocab-word" onclick="showVocab('bevorzugen','偏爱','jemanden oder etwas lieber mögen als andere. 例：Viele Eltern bevorzugen das Gymnasium.')">bevorzugen</span> die Schulform Gesamtschule, Niklas' Eltern <span class="vocab-word" onclick="showVocab('planen','计划','sich vornehmen, etwas zu tun. 例：Wir planen eine Reise nach Deutschland.')">planen</span>, ihren Sohn auf ein Gymnasium <strong class="zu-hl">zu schicken</strong>. Nun gehen Tobias und Niklas in die 5. Klasse einer Gesamtschule. Die beiden Freunde haben großes <span class="vocab-word" onclick="showVocab('das Glück','幸运','eine glückliche Situation. 例：Sie haben großes Glück, zusammenbleiben zu können.')">Glück</span>, weiter zusammenbleiben <strong class="zu-hl">zu können</strong>. Nun will Niklas auch alles für <span class="vocab-word" onclick="showVocab('das Ziel','目标','das, was man erreichen will. 例：Er hat das Ziel, das Abitur zu bestehen.')">das Ziel</span> tun, das Abitur mit seinem Freund an der Gesamtschule <strong class="zu-hl">zu bestehen</strong>.</p>
+      </div>
+      <div class="highlight-box">
+        💡 Tobias bekam eine Gymnasialempfehlung, Eltern wählten Gesamtschule. Niklas hatte eingeschränkte Empfehlung, Eltern wollten Gymnasium. Ergebnis: beide in der Gesamtschule.
       </div>
     </div>
 
-    <div id="p-melisa" class="person-content">
-      <div class="text-card">
-        <h3>Melisa — 实科中学（Realschule）</h3>
-        <div class="de">
-          <p>Melisa wohnt neben einem Gymnasium. Ihre Mutter, <span class="kw">alleinerziehend</span> und <span class="kw">voll berufstätig</span>, 
-          trifft nach langer Diskussion mit ihr aber <span class="kw">die Entscheidung</span>, 
-          <strong class="zu-hl">Melisa auf eine Realschule am anderen Ende der Stadt zu schicken</strong>. 
-          <span class="kw">Die Vorteile</span> sind, dass diese eine <span class="kw">Ganztagsschule</span> ist und in der Nähe zur Wohnung von Melisas Vater liegt. 
-          Und was sagt Melisa? „Eine Ganztagsschule, na ja. Es freut mich aber, 
-          <strong class="zu-hl">meinen Vater öfter sehen zu können</strong>.“</p>
-        </div>
-        <div class="zh">
-          <p>Melisa 住在一所文理中学旁边。但她的母亲（单亲且全职工作）经过与她的长时间讨论后，
-          决定送 Melisa 去城市另一端的实科中学（Realschule）。
-          优点是这是一所全日制学校（Ganztagsschule），而且靠近她父亲的住所。
-          Melisa 说："全日制学校嘛，好吧。但能更经常见到父亲，我还是很高兴的。"</p>
-        </div>
-        <div class="highlight-box">
-          💡 <strong>关键信息：</strong>Melisa 家旁边就有 Gymnasium，但妈妈选择送她去另一端的 Realschule——因为全日制+靠近父亲。体现了教育选择中的家庭因素。<br>
-          📝 <strong>重点词汇：</strong><span class="kw">alleinerziehend</span> 单亲抚养的 / <span class="kw">voll berufstätig</span> 全职工作的 / <span class="kw">die Entscheidung treffen</span> 做决定 / <span class="kw">der Vorteil</span> 优势 / <span class="kw">die Ganztagsschule</span> 全日制学校
-        </div>
+    <div class="text-card">
+      <h3>Melisa — 实科中学</h3>
+      <div class="de">
+        <p>Melisa wohnt neben einem Gymnasium. Ihre Mutter, <span class="vocab-word" onclick="showVocab('alleinerziehend','单亲抚养的','ein Kind ohne Partner erziehen. 例：Sie ist alleinerziehend und voll berufstätig.')">alleinerziehend</span> und <span class="vocab-word" onclick="showVocab('voll berufstätig','全职工作的','einen ganzen Arbeitstag arbeiten. 例：Meine Mutter ist voll berufstätig.')">voll berufstätig</span>, trifft nach langer Diskussion mit ihr aber <span class="vocab-word" onclick="showVocab('die Entscheidung treffen','做决定','sich für etwas entscheiden. 例：Sie trifft die Entscheidung, Melisa auf die Realschule zu schicken.')">die Entscheidung</span>, Melisa auf eine Realschule am anderen Ende der Stadt <strong class="zu-hl">zu schicken</strong>. Die Vorteile sind, dass diese eine <span class="vocab-word" onclick="showVocab('die Ganztagsschule','全日制学校','eine Schule mit Unterricht und Betreuung am ganzen Tag. 例：In der Ganztagsschule können die Kinder mittags essen.')">Ganztagsschule</span> ist und in der Nähe zur Wohnung von Melisas Vater liegt. Und was sagt Melisa? „Eine Ganztagsschule, na ja. Es freut mich aber, meinen Vater öfter sehen <strong class="zu-hl">zu können</strong>.“</p>
+      </div>
+      <div class="highlight-box">
+        💡 Melisa wohnt neben einem Gymnasium, aber die Mutter entscheidet sich für eine Realschule am anderen Ende der Stadt – weil sie Ganztagsschule ist und näher am Vater.
       </div>
     </div>
 
-    <div id="p-ingrid" class="person-content">
-      <div class="text-card">
-        <h3>Ingrid — 家族传统的文理中学（Gymnasium）</h3>
-        <div class="de">
-          <p>Für Ingrid ist ihr <span class="kw">Bildungsweg</span> schon seit der Geburt klar. Sie wächst in demselben Stadtteil wie ihre Eltern auf. 
-          So war es für ihre Eltern <span class="kw">selbstverständlich</span>, 
-          <strong class="zu-hl">die kleine Tochter auf ihre alte Grundschule zu schicken</strong>. 
-          Die Wahl des Gymnasiums ist auch schnell geklärt. Ingrid hat <span class="kw">den Wunsch</span>, 
-          <strong class="zu-hl">das Abitur an derselben Schule wie ihre Eltern zu machen</strong>. 
-          Außerdem hat die Schule <span class="kw">den großen Vorteil</span>, dass ihre Oma um die Ecke wohnt. 
-          Dort kann Ingrid mittags essen, wenn es für ihre Eltern nicht möglich ist, 
-          <strong class="zu-hl">nach Hause zu kommen</strong>.</p>
-        </div>
-        <div class="zh">
-          <p>对 Ingrid 来说，她的教育之路从出生起就已经明确。她和父母在同一个城区长大。
-          对她父母来说，把小女儿送到自己当年的小学是理所当然的事。
-          文理中学的选择也很快就确定了。Ingrid 希望像父母一样在同样的学校考 Abitur。
-          此外，这所学校还有一个巨大优势——奶奶就住在附近。
-          当父母无法回家时，Ingrid 可以中午在奶奶那里吃饭。</p>
-        </div>
-        <div class="highlight-box">
-          💡 <strong>关键信息：</strong>Ingrid 的教育选择延续家族传统——上父母上过的 Grundschule 和 Gymnasium，奶奶在附近提供便利。<br>
-          📝 <strong>重点词汇：</strong><span class="kw">der Bildungsweg</span> 教育之路 / <span class="kw">selbstverständlich</span> 理所当然的 / <span class="kw">den Wunsch haben</span> 有愿望 / <span class="kw">der Vorteil</span> 优势 / <span class="kw">möglich</span> 可能的
-        </div
+    <div class="text-card">
+      <h3>Ingrid — 文理中学（家族传统）</h3>
+      <div class="de">
+        <p>Für Ingrid ist ihr <span class="vocab-word" onclick="showVocab('der Bildungsweg','教育之路','der Weg, den jemand in der Ausbildung geht. 例：Ihr Bildungsweg war schon früh klar.')">Bildungsweg</span> schon seit der Geburt klar. Sie wächst in demselben Stadtteil wie ihre Eltern auf. So war es für ihre Eltern <span class="vocab-word" onclick="showVocab('selbstverständlich','理所当然的','ganz normal; ohne Zweifel. 例：Es ist für sie selbstverständlich, ihr Kind auf diese Schule zu schicken.')">selbstverständlich</span>, die kleine Tochter auf ihre alte Grundschule <strong class="zu-hl">zu schicken</strong>. Die Wahl des Gymnasiums ist auch schnell geklärt. Ingrid hat <span class="vocab-word" onclick="showVocab('den Wunsch haben','有愿望','sich etwas wünschen. 例：Sie hat den Wunsch, Ärztin zu werden.')">den Wunsch</span>, das Abitur an derselben Schule wie ihre Eltern <strong class="zu-hl">zu machen</strong>. Außerdem hat die Schule den großen <span class="vocab-word" onclick="showVocab('der Vorteil','优势','ein positiver Aspekt. 例：Die Schule hat den Vorteil, dass die Oma um die Ecke wohnt.')">Vorteil</span>, dass ihre Oma um die Ecke wohnt. Dort kann Ingrid mittags essen, wenn es für ihre Eltern nicht <span class="vocab-word" onclick="showVocab('möglich','可能的','was getan werden kann. 例：Es ist nicht möglich, nach Hause zu kommen.')">möglich</span> ist, nach Hause <strong class="zu-hl">zu kommen</strong>.</p>
       </div>
-    </div>
-
-    <div id="p-system" class="person-content">
-      <div class="text-card">
-        <h3>🏫 德国基础教育体系概览</h3>
-        <div class="de">
-          <p>In Deutschland stehen Eltern und ihre Kinder am Ende der Grundschulzeit vor der Schulentscheidung. 
-          Es ist nicht leicht, die richtige Schule für das Kind zu wählen. 
-          Die Grundschule gibt den Eltern nach den Noten ihres Kindes in den Hauptfächern eine Empfehlung ab. 
-          Viele Eltern haben den Wunsch, ihr Kind auf ein Gymnasium zu schicken. 
-          Aber dieser Wunsch bedeutet nicht, dass ein Gymnasium wirklich die richtige Schulwahl für ihre Kinder ist. 
-          Gerade die Gesamtschule ist eine gute Alternative und bietet die Möglichkeit, 
-          alle drei Schulabschlüsse zu machen. Außerdem besteht in Deutschland die Möglichkeit, 
-          ohne Abitur an einer Hochschule zu studieren. 
-          Die richtige Schule soll ihre Schülerinnen und Schüler nicht nur bestmöglich beim Lernen unterstützen, 
-          sondern auch zum Kind und zum Alltag der Familie passen.</p>
-        </div>
-        <div class="zh">
-          <p>在德国，家长和孩子在小学毕业后面临学校选择。为孩子选择正确的学校并不容易。
-          小学根据孩子主科成绩给出推荐。许多家长希望把孩子送进文理中学。
-          但这并不意味着 Gymnasium 一定是正确选择。综合中学是一个很好的替代方案，
-          提供所有三种毕业方向。此外，在德国也有在没有 Abitur 的情况下上大学的可能性。
-          正确的学校不仅要最好地支持学生的学习，还应该适合孩子和家庭的日常生活。</p>
-        </div>
-
-        <h4 style="margin:20px 0 10px;color:var(--primary)">德国学校类型</h4>
-        <table class="comp-table">
-          <thead><tr><th>学校类型</th><th>学制</th><th>毕业方向</th><th>中文</th></tr></thead>
-          <tbody>
-            <tr><td>Grundschule</td><td>4–6 年</td><td>基础教育</td><td>小学</td></tr>
-            <tr><td>Hauptschule</td><td>5–9/10 年级</td><td>Hauptschulabschluss → 职业教育</td><td>主科中学</td></tr>
-            <tr><td>Realschule</td><td>5–10 年级</td><td>Realschulabschluss → 职业或升学</td><td>实科中学</td></tr>
-            <tr><td>Gymnasium</td><td>5–12/13 年级</td><td>Abitur → 大学</td><td>文理中学</td></tr>
-            <tr><td>Gesamtschule</td><td>5–12/13 年级</td><td>全部三种毕业方向</td><td>综合中学</td></tr>
-            <tr><td>Berufsschule</td><td>职业培训期</td><td>职业资格</td><td>职业学校</td></tr>
-          </tbody>
-        </table>
-
-        <h4 style="margin:16px 0 10px;color:var(--primary)">德国高校类型</h4>
-        <table class="comp-table">
-          <thead><tr><th>高校类型</th><th>特点</th></tr></thead>
-          <tbody>
-            <tr><td>Universität (TU, Pädagogische, Medizinische)</td><td>综合性大学，偏理论研究</td></tr>
-            <tr><td>Fachhochschule</td><td>应用科技大学，偏实践</td></tr>
-            <tr><td>Kunsthochschule / Musikhochschule</td><td>艺术/音乐学院</td></tr>
-            <tr><td>Berufsakademie</td><td>职业学院，双元制</td></tr>
-          </tbody>
-        </table>
+      <div class="highlight-box">
+        💡 Ingrid geht denselben Bildungsweg wie ihre Eltern – gleiche Grundschule, gleiches Gymnasium. Oma wohnt um die Ecke und hilft beim Mittagessen.
       </div>
     </div>
 
     <!-- 课文二：T2 - Start in die Zukunft -->
     <h2 class="section-title" style="margin-top:40px"><span class="num">2</span> T2 · Start in die Zukunft · 未来规划</h2>
-    <p style="margin-bottom:12px;font-size:14px;color:var(--text-light)">两则学生自述：一位中国留德学生和一位德国职业培训学生，分享他们的学习经历和未来规划。</p>
+    <p style="margin-bottom:12px;font-size:14px;color:var(--text-light)">
+      两则学生自述。点击<span style="color:#c0392b;font-weight:600">红色标注的词汇</span>查看中文释义和例句。
+    </p>
 
     <div class="text-card">
       <h3>Lin Na (21) — 亚琛工业大学 · Informatik</h3>
       <div class="de">
-        <p>Lin Na (21) <span class="kw">studiert</span> an der RWTH Aachen Informatik und ist momentan im 5. Semester.</p>
-        <p style="margin-top:6px">„Vor zweieinhalb Jahren habe ich in Aachen mit meinem Informatikstudium angefangen. Bis jetzt <span class="kw">läuft</span> alles meiner Meinung nach sehr gut und ich <span class="kw">schließe</span> in ungefähr 7 Monaten mein Studium mit dem Bachelor <span class="kw">ab</span>.</p>
-        <p style="margin-top:6px">Mein Studientag sieht ganz normal aus: Aufstehen um 7 Uhr morgens, Feierabend um 18 Uhr abends. Ich finde es sehr schön, früh <strong class="zu-hl">aufzustehen</strong>, weil der Geist morgens besonders fit ist. Außerdem ist ein <span class="kw">geordneter Tagesablauf</span> gut, wenn man sich aufs Studium <span class="kw">konzentrieren</span> will. Man muss ja ein <span class="kw">Gleichgewicht</span> zwischen dem Studium und den anderen Sachen des Lebens <strong class="zu-hl">zu finden</strong>.</p>
-        <p style="margin-top:6px">Für ein erfolgreiches Studium ist <span class="kw">Teamarbeit</span> sehr wichtig. Ein gutes Team <span class="kw">fordert</span> jedes Mitglied <span class="kw">auf</span>, klare Aufgaben <strong class="zu-hl">zu stellen</strong> und sein Bestes <strong class="zu-hl">zu geben</strong>. Und schließlich gehört ein <span class="kw">passender Arbeitsstil</span> dazu, z. B. pünktlich <strong class="zu-hl">zu sein</strong> und freundlich mit anderen <strong class="zu-hl">umzugehen</strong>.“</p>
-      </div>
-      <div class="zh">
-        <p>林娜（21岁）在亚琛工业大学学习计算机科学，目前在第5学期。</p>
-        <p>「两年半前我开始在亚琛学习计算机科学。到目前为止一切都很顺利，大约7个月后我将完成本科学习并获得学士学位。」</p>
-        <p>「我的学习日程很正常：早上7点起床，晚上6点结束。我觉得早起很好，因为早晨精神特别好。此外，有条理的日常安排对专注学习很有帮助。你必须在学习与生活其他方面之间找到平衡。」</p>
-        <p>「对于成功的学习，团队合作非常重要。一个好的团队要求每个成员明确任务并尽力而为。最后，合适的工作方式也很重要，比如守时和友善待人。」</p>
+        <p>Lin Na <span class="vocab-word" onclick="showVocab('studieren','（在大学）学习','an einer Hochschule lernen. 例：Sie studiert Informatik an der RWTH Aachen.')">studiert</span> an der RWTH Aachen Informatik und ist momentan im 5. Semester.</p>
+        <p style="margin-top:6px">„Vor zweieinhalb Jahren habe ich in Aachen mit meinem Informatikstudium angefangen. Bis jetzt <span class="vocab-word" onclick="showVocab('laufen','进展','sich entwickeln; funktionieren. 例：Alles läuft gut.')">läuft</span> alles meiner Meinung nach sehr gut und ich <span class="vocab-word" onclick="showVocab('abschließen','完成（学业）','etwas beenden. 例：In 7 Monaten schließe ich mein Studium ab.')">schließe</span> in ungefähr 7 Monaten mein Studium mit dem Bachelor <span class="vocab-word" onclick="showVocab('abschließen (mit)','以……毕业','ein Studium mit einem Abschluss beenden. 例：Er schließt mit dem Bachelor ab.')">ab</span>.</p>
+        <p style="margin-top:6px">Mein Studientag sieht ganz normal aus: Aufstehen um 7 Uhr morgens, Feierabend um 18 Uhr abends. Ich finde es sehr schön, früh <strong class="zu-hl">aufzustehen</strong>, weil der Geist morgens besonders fit ist. Außerdem ist ein <span class="vocab-word" onclick="showVocab('der geordnete Tagesablauf','有条理的日常作息','eine regelmäßige Tagesstruktur. 例：Ein geordneter Tagesablauf hilft beim Lernen.')">geordneter Tagesablauf</span> gut, wenn man sich aufs Studium <span class="vocab-word" onclick="showVocab('sich konzentrieren','专注于','sich ganz auf eine Sache richten. 例：Er konzentriert sich auf sein Studium.')">konzentrieren</span> will. Man muss ja ein <span class="vocab-word" onclick="showVocab('das Gleichgewicht','平衡','ein ausgewogenes Verhältnis. 例：Das Gleichgewicht zwischen Studium und Freizeit ist wichtig.')">Gleichgewicht</span> zwischen dem Studium und den anderen Sachen des Lebens <strong class="zu-hl">zu finden</strong>.</p>
+        <p style="margin-top:6px">Für ein erfolgreiches Studium ist <span class="vocab-word" onclick="showVocab('die Teamarbeit','团队合作','die Zusammenarbeit im Team. 例：Teamarbeit ist an der Uni sehr wichtig.')">Teamarbeit</span> sehr wichtig. Ein gutes Team <span class="vocab-word" onclick="showVocab('auffordern','要求','jemanden bitten, etwas zu tun. 例：Der Lehrer forderte die Schüler auf, leise zu sein.')">fordert</span> jedes Mitglied <span class="vocab-word" onclick="showVocab('auffordern zu','要求做某事','jdn. bitten, etw. zu tun (mit zu-Infinitiv). 例：Das Team fordert jedes Mitglied auf, sein Bestes zu geben.')">auf</span>, klare Aufgaben <strong class="zu-hl">zu stellen</strong> und sein Bestes <strong class="zu-hl">zu geben</strong>. Und schließlich gehört ein <span class="vocab-word" onclick="showVocab('der Arbeitsstil','工作方式','die Art und Weise, wie man arbeitet. 例：Pünktlichkeit gehört zu einem guten Arbeitsstil.')">passender Arbeitsstil</span> dazu, z. B. pünktlich <strong class="zu-hl">zu sein</strong> und freundlich mit anderen <strong class="zu-hl">umzugehen</strong>.“</p>
       </div>
       <div class="highlight-box">
-        💡 <strong>关键内容：</strong>留德中国学生的学习日常与感悟，包含大量 zu 不定式用法。<br>
-        📝 <span class="kw">studiert</span> 学习（专业）/ <span class="kw">abschließen</span> 完成（学业）/ <span class="kw">der geordnete Tagesablauf</span> 有条理的日程 / <span class="kw">das Gleichgewicht</span> 平衡 / <span class="kw">Teamarbeit</span> 团队合作 / <span class="kw">auffordern</span> 要求
+        💡 Lin Na (中国留德学生) über ihren Studienalltag: frühes Aufstehen, Tagesablauf, Gleichgewicht, Teamarbeit, Arbeitsstil – viele Beispiele für zu + Infinitiv!
       </div>
     </div>
 
     <div class="text-card">
-      <h3>Felix (22) — 科隆职业学院 · Auslandspraktikum in Guangzhou</h3>
+      <h3>Felix (22) — 科隆职业学院 · Auslandspraktikum</h3>
       <div class="de">
-        <p>Felix (22) <span class="kw">besucht</span> in Köln die <span class="kw">Berufsakademie</span> und hat während seiner Ausbildung ein <span class="kw">Auslandspraktikum</span> in Guangzhou <span class="kw">absolviert</span>.</p>
-        <p style="margin-top:6px">„Jetzt bin ich im dritten Jahr meiner Ausbildung zum <span class="kw">Kaufmann für Büromanagement</span> und habe gerade mein vierwöchiges Praktikum hinter mir. Die Zeit in Guangzhou hat mir sehr gefallen und ich bin froh, mich <strong class="zu-hl">entschieden zu haben</strong>. Ich war in einer multikulturellen Abteilung und die Kolleginnen und Kollegen kamen aus China, Deutschland, Indien und Australien. So konnte ich auch meine Sprachkenntnisse <strong class="zu-hl">zu verbessern</strong> und Menschen aus anderen Kulturen <span class="kw">kennenlernen</span>.</p>
-        <p style="margin-top:6px">Während des Praktikums hatte ich die Aufgaben, Events <strong class="zu-hl">zu organisieren</strong>, Präsentationen auf Englisch <strong class="zu-hl">vorzubereiten</strong>, E-Mails <strong class="zu-hl">zu übersetzen</strong> usw. Schwierigkeiten hatte ich natürlich auch. In ein fremdes Land <strong class="zu-hl">zu reisen</strong> bedeutet auch, auf sich alleine gestellt <strong class="zu-hl">zu sein</strong>. Zum Glück waren meine Kolleginnen und Kollegen sehr nett. Sie halfen mir, die Unterkunft <strong class="zu-hl">zu finden</strong> und mich schnell in Guangzhou <strong class="zu-hl">zurechtzufinden</strong>.</p>
-        <p style="margin-top:6px">Ich möchte wirklich jedem empfehlen, ein Auslandspraktikum <strong class="zu-hl">zu machen</strong>. Man kommt dann mit neuen Fähigkeiten und einem anderen Blick auf die Welt zurück. Ich hoffe, in der Zukunft mal wieder in China <strong class="zu-hl">arbeiten zu können</strong>.“</p>
-      </div>
-      <div class="zh">
-        <p>Felix（22岁）在科隆的职业学院学习，培训期间在广州完成了为期四周的海外实习。</p>
-        <p>「现在我正处于商务管理文员培训的第三年。我很喜欢在广州的时光，很高兴做了这个选择。我在一个多元文化的部门工作，同事来自中国、德国、印度和澳大利亚。这样我提高了语言能力并认识了来自其他文化的人。」</p>
-        <p>「实习期间我负责组织活动、准备英语演示、翻译邮件等。当然也有困难——去陌生国家意味着要独自面对一切。幸好同事们都很好，他们帮我找住所，让我很快适应了广州。」</p>
-        <p>「我真心推荐每个人都去做出国实习。你会带着新技能和不同的全球视野回来。我希望将来能再次在中国工作。」</p>
+        <p>Felix <span class="vocab-word" onclick="showVocab('besuchen','访问；上（学）','zu einer Schule/Veranstaltung gehen. 例：Er besucht die Berufsakademie in Köln.')">besucht</span> in Köln die <span class="vocab-word" onclick="showVocab('die Berufsakademie','职业学院','eine Hochschule, die Theorie und Praxis verbindet. 例：An der Berufsakademie macht man eine Ausbildung mit Studium.')">Berufsakademie</span> und hat während seiner Ausbildung ein <span class="vocab-word" onclick="showVocab('das Auslandspraktikum','海外实习','ein Praktikum im Ausland. 例：Felix hat ein Auslandspraktikum in Guangzhou gemacht.')">Auslandspraktikum</span> in Guangzhou <span class="vocab-word" onclick="showVocab('absolvieren','完成（学业/实习）','erfolgreich beenden. 例：Er absolviert eine Ausbildung zum Kaufmann.')">absolviert</span>.</p>
+        <p style="margin-top:6px">„Jetzt bin ich im dritten Jahr meiner Ausbildung zum <span class="vocab-word" onclick="showVocab('der Kaufmann für Büromanagement','商务管理文员','eine kaufmännische Ausbildung im Büro. 例：Er macht eine Ausbildung zum Kaufmann für Büromanagement.')">Kaufmann für Büromanagement</span> und habe gerade mein vierwöchiges Praktikum hinter mir. Die Zeit in Guangzhou hat mir sehr gefallen und ich bin froh, mich <strong class="zu-hl">entschieden zu haben</strong>. Ich war in einer <span class="vocab-word" onclick="showVocab('multikulturell','多元文化的','aus vielen verschiedenen Kulturen. 例：Die Abteilung war multikulturell.')">multikulturellen</span> Abteilung und die Kolleginnen und Kollegen kamen aus China, Deutschland, Indien und Australien. So konnte ich auch meine <span class="vocab-word" onclick="showVocab('die Sprachkenntnisse','语言能力','die Fähigkeit, eine Sprache zu sprechen. 例：Durch das Praktikum habe ich meine Sprachkenntnisse verbessert.')">Sprachkenntnisse</span> verbessern und Menschen aus anderen Kulturen <span class="vocab-word" onclick="showVocab('kennenlernen','结识','jemanden neu kennenlernen. 例：Ich habe viele interessante Leute kennengelernt.')">kennenlernen</span>.</p>
+        <p style="margin-top:6px">Während des Praktikums hatte ich die Aufgaben, Events <strong class="zu-hl">zu organisieren</strong>, Präsentationen auf Englisch <strong class="zu-hl">vorzubereiten</strong>, E-Mails <strong class="zu-hl">zu übersetzen</strong> usw. Schwierigkeiten hatte ich natürlich auch. In ein fremdes Land <strong class="zu-hl">zu reisen</strong> bedeutet auch, auf sich alleine gestellt <strong class="zu-hl">zu sein</strong>. Zum Glück waren meine Kolleginnen und Kollegen sehr nett. Sie halfen mir, die <span class="vocab-word" onclick="showVocab('die Unterkunft','住所','der Ort, wo man wohnt. 例：Ich habe eine Unterkunft in der Stadtmitte gefunden.')">Unterkunft</span> <strong class="zu-hl">zu finden</strong> und mich schnell in Guangzhou <strong class="zu-hl">zurechtzufinden</strong>.</p>
+        <p style="margin-top:6px">Ich möchte wirklich jedem empfehlen, ein Auslandspraktikum <strong class="zu-hl">zu machen</strong>. Man kommt dann mit neuen <span class="vocab-word" onclick="showVocab('die Fähigkeit','能力','das Können; die Fertigkeit. 例：Durch das Praktikum habe ich neue Fähigkeiten gelernt.')">Fähigkeiten</span> und einem anderen <span class="vocab-word" onclick="showVocab('der Blick auf die Welt','世界观','die Art, die Welt zu sehen. 例：Ein Auslandspraktikum gibt einem einen neuen Blick auf die Welt.')">Blick auf die Welt</span> zurück. Ich hoffe, in der Zukunft mal wieder in China <strong class="zu-hl">arbeiten zu können</strong>.“</p>
       </div>
       <div class="highlight-box">
-        💡 <strong>关键内容：</strong>德国学生 Felix 在中国广州的实习经历，大量 zu 不定式从句练习。<br>
-        📝 <span class="kw">die Berufsakademie</span> 职业学院 / <span class="kw">absolvieren</span> 完成（实习/学业）/ <span class="kw">das Auslandspraktikum</span> 海外实习 / <span class="kw">multikulturell</span> 多元文化的 / <span class="kw">die Sprachkenntnisse</span> 语言能力 / <span class="kw">die Unterkunft</span> 住所
+        💡 Felix (deutscher Student) über sein Praktikum in Guangzhou: multikulturelles Team, Aufgaben (organisieren/vorbereiten/übersetzen), Schwierigkeiten, und am Ende eine starke Empfehlung.
       </div>
     </div>
-
     <!-- 课后任务：三人档案 -->
     <h2 class="section-title" style="margin-top:40px"><span class="num">3</span> 拓展阅读 · 三种教育路径</h2>
     <table class="comp-table">
@@ -726,10 +615,8 @@
         <tr><td><strong>特点</strong></td><td>已获得 Kaufmann 培训岗位</td><td>已在 Wirtschaft 领域获得培训位置</td><td>学校期间大量接触艺术</td></tr>
       </tbody>
     </table>
-  </section>
 
-  <!-- ===== 重点词汇 ===== -->
-  <section id="vocab">
+id="vocab">
     <h2 class="section-title"><span class="num">1</span> 重点词汇 · Wortschatz</h2>
     <p style="margin-bottom:16px;font-size:14px;color:var(--text-light)">
       👆 点击卡片翻转查看中文释义、例句和搭配
@@ -759,70 +646,70 @@
     <div class="grammar-section">
       <h3>📌 1. 基本概念</h3>
       <div class="rule-box">
-        <strong>形式：</strong><code>zu + 动词原形（Infinitiv）</code><br>
-        <strong>功能：</strong>zu 不定式相当于一个从属句（Nebensatz），在句中充当宾语、主语、定语或状语。<br>
-        <strong>与 dass-Satz 的关系：</strong>zu 不定式可替代 dass-Satz，<strong>但有一个关键条件</strong>（见下文"逻辑主语"）。<br>
-        <strong>关键特点：</strong>zu 不定式 <em>本身不含语法主语</em>，其隐含的"执行者"（逻辑主语）需从主句推断。
+        <strong>形式:</strong><code>zu + 动词原形(Infinitiv)</code><br>
+        <strong>功能:</strong>zu 不定式相当于一个从属句(Nebensatz),在句中充当宾语、主语、定语或状语。<br>
+        <strong>与 dass-Satz 的关系:</strong>zu 不定式可替代 dass-Satz,<strong>但有一个关键条件</strong>(见下文"逻辑主语")。<br>
+        <strong>关键特点:</strong>zu 不定式 <em>本身不含语法主语</em>,其隐含的"执行者"(逻辑主语)需从主句推断。
       </div>
 
-      <h4 style="margin-top:16px">🔑 核心：逻辑主语（Logisches Subjekt）—— 谁做这个动作？</h4>
+      <h4 style="margin-top:16px">🔑 核心:逻辑主语(Logisches Subjekt)-- 谁做这个动作?</h4>
       <p style="font-size:13px;color:var(--text-light);margin-bottom:10px">
-        zu 不定式没有自己的主语，因此它的逻辑主语必须与主句中的某个成分一致。走不对这一步，整个句子就不成立。
+        zu 不定式没有自己的主语,因此它的逻辑主语必须与主句中的某个成分一致。走不对这一步,整个句子就不成立。
       </p>
 
       <div class="grammar-example">
-        <span class="de"><strong>Fall A — 逻辑主语 = 主句主语（Subjekt）</strong></span>
+        <span class="de"><strong>Fall A - 逻辑主语 = 主句主语(Subjekt)</strong></span>
         <span class="tag note">多数动词属于此类</span>
       </div>
       <p style="font-size:12px;color:var(--text-light);margin:0 0 4px 0">hoffen, wünschen, planen, versprechen, Lust/Zeit haben 等</p>
       <div class="grammar-example">
         <span class="de">Ich hoffe, <strong class="zu-hl">dich bald zu sehen</strong>.</span>
-        <span class="zh">我希望很快见到你（逻辑主语：ich ↔ sehen = ich sehe）</span>
+        <span class="zh">我希望很快见到你(逻辑主语:ich ↔ sehen = ich sehe)</span>
       </div>
       <div class="grammar-example">
         <span class="de">Sie hat den Wunsch, <strong class="zu-hl">Medizin zu studieren</strong>.</span>
-        <span class="zh">她有学医的愿望（逻辑主语：sie ↔ studieren = sie studiert）</span>
+        <span class="zh">她有学医的愿望(逻辑主语:sie ↔ studieren = sie studiert)</span>
       </div>
       <div class="grammar-example">
         <span class="de">Niklas' Eltern planen, <strong class="zu-hl">ihren Sohn auf ein Gymnasium zu schicken</strong>.</span>
-        <span class="zh">Niklas 的父母计划送儿子上文理中学（逻辑主语：Eltern ↔ schicken = Eltern schicken）</span>
+        <span class="zh">Niklas 的父母计划送儿子上文理中学(逻辑主语:Eltern ↔ schicken = Eltern schicken)</span>
         <span class="tag note">课文原句</span>
       </div>
 
       <div class="grammar-example" style="margin-top:16px">
-        <span class="de"><strong>Fall B — 逻辑主语 = 主句宾语（Akkusativobjekt / Dativobjekt）</strong></span>
+        <span class="de"><strong>Fall B - 逻辑主语 = 主句宾语(Akkusativobjekt / Dativobjekt)</strong></span>
         <span class="tag zu">⚠️ 容易出错</span>
       </div>
       <p style="font-size:12px;color:var(--text-light);margin:0 0 4px 0">bitten (A), empfehlen (D), überreden (A), verbieten (D), zwingen (A) 等</p>
       <div class="grammar-example">
         <span class="de">Ich <strong>bitte</strong> <em>dich</em><sub>Akk</sub>, <strong class="zu-hl">zu kommen</strong>.</span>
-        <span class="zh">我请你来（逻辑主语：dich ↔ kommen = du kommst，不是我！）</span>
+        <span class="zh">我请你来(逻辑主语:dich ↔ kommen = du kommst,不是我!)</span>
       </div>
       <div class="grammar-example">
         <span class="de">Der Arzt <strong>empfiehlt</strong> <em>dem Patienten</em><sub>Dat</sub>, <strong class="zu-hl">mehr Sport zu treiben</strong>.</span>
-        <span class="zh">医生建议病人多运动（逻辑主语：dem Patienten ↔ treiben = der Patient treibt Sport）</span>
+        <span class="zh">医生建议病人多运动(逻辑主语:dem Patienten ↔ treiben = der Patient treibt Sport)</span>
       </div>
       <div class="grammar-example">
         <span class="de">Die Mutter <strong>überredet</strong> <em>ihre Tochter</em><sub>Akk</sub>, <strong class="zu-hl">den Kurs zu besuchen</strong>.</span>
-        <span class="zh">母亲说服女儿参加课程（逻辑主语：Tochter ↔ besuchen）</span>
+        <span class="zh">母亲说服女儿参加课程(逻辑主语:Tochter ↔ besuchen)</span>
       </div>
 
       <div class="grammar-example" style="margin-top:16px">
-        <span class="de"><strong>Fall C — 泛指 / 无人称（es-句型）</strong></span>
+        <span class="de"><strong>Fall C - 泛指 / 无人称(es-句型)</strong></span>
         <span class="tag">逻辑主语 = man / 所有人</span>
       </div>
       <div class="grammar-example">
         <span class="de">Es ist wichtig, <strong class="zu-hl">pünktlich zu sein</strong>.</span>
-        <span class="zh">准时很重要（逻辑主语泛指：任何人都应准时）</span>
+        <span class="zh">准时很重要(逻辑主语泛指:任何人都应准时)</span>
       </div>
       <div class="grammar-example">
         <span class="de">Es ist nicht leicht, <strong class="zu-hl">die richtige Schule zu wählen</strong>.</span>
-        <span class="zh">选择合适的学校并不容易（逻辑主语泛指）</span>
+        <span class="zh">选择合适的学校并不容易(逻辑主语泛指)</span>
         <span class="tag note">课文原句</span>
       </div>
 
       <div class="highlight-box" style="margin-top:12px">
-        💡 <strong>记忆口诀：</strong>zu 不定式"找主人"——找主句中和动作发出者身份一致的那个人。大部分时候找主语，但碰到 bitten/empfehlen 这类词要去找宾语。
+        💡 <strong>记忆口诀:</strong>zu 不定式"找主人"--找主句中和动作发出者身份一致的那个人。大部分时候找主语,但碰到 bitten/empfehlen 这类词要去找宾语。
       </div>
     </div>
 
@@ -830,8 +717,8 @@
     <div class="grammar-section">
       <h3>📌 2. 三大核心句型</h3>
 
-      <h4>① <code>es ist + Adj./Nomen + (für jn.) + zu + Infinitiv</code></h4>
-      <p style="font-size:13px;color:var(--text-light);margin-bottom:6px">用于对某件事的性质进行评价。主语 es 为形式主语，zu 不定式是实际主语。</p>
+      <h4>1 <code>es ist + Adj./Nomen + (für jn.) + zu + Infinitiv</code></h4>
+      <p style="font-size:13px;color:var(--text-light);margin-bottom:6px">用于对某件事的性质进行评价。主语 es 为形式主语,zu 不定式是实际主语。</p>
       <div class="grammar-example">
         <span class="de">Es ist <strong>nicht leicht</strong>, die richtige Schule <strong class="zu-hl">zu wählen</strong>.</span>
         <span class="zh">选择合适的学校并不容易。</span>
@@ -839,7 +726,7 @@
       </div>
       <div class="grammar-example">
         <span class="de">Es ist <strong>für Ausländer schwer</strong>, sich an deutsche Sitten <strong class="zu-hl">zu gewöhnen</strong>.</span>
-        <span class="zh">对外国人来说，适应德国习俗很难。</span>
+        <span class="zh">对外国人来说,适应德国习俗很难。</span>
       </div>
       <div class="grammar-example">
         <span class="de">Es ist <strong>unhöflich</strong>, dem Jüngeren zuerst den Älteren <strong class="zu-hl">vorzustellen</strong>.</span>
@@ -850,36 +737,36 @@
         <span class="zh">把鲜花给女主人是习俗。</span>
       </div>
 
-      <h4 style="margin-top:20px">② 名词 + zu 不定式（多用于表达"有机会/意愿/困难做某事"）</h4>
+      <h4 style="margin-top:20px">2 名词 + zu 不定式(多用于表达"有机会/意愿/困难做某事")</h4>
       <p style="font-size:13px;color:var(--text-light);margin-bottom:6px">
-        结构：<code>Nomen + haben/sein + (,) + zu + Infinitiv</code>
+        结构:<code>Nomen + haben/sein + (,) + zu + Infinitiv</code>
       </p>
       <div class="grammar-example">
         <span class="de">Hast du <strong>Lust</strong>, ins Kino <strong class="zu-hl">zu gehen</strong>?</span>
-        <span class="zh">你有兴趣去看电影吗？（Lust haben）</span>
+        <span class="zh">你有兴趣去看电影吗?(Lust haben)</span>
       </div>
       <div class="grammar-example">
         <span class="de">Habt ihr <strong>Zeit</strong>, euch morgen <strong class="zu-hl">zu treffen</strong>?</span>
-        <span class="zh">你们明天有时间见面吗？（Zeit haben）</span>
+        <span class="zh">你们明天有时间见面吗?(Zeit haben)</span>
       </div>
       <div class="grammar-example">
         <span class="de">Ingrid hat den <strong>Wunsch</strong>, das Abitur zu machen.</span>
-        <span class="zh">Ingrid 有考 Abitur 的愿望。（den Wunsch haben）</span>
+        <span class="zh">Ingrid 有考 Abitur 的愿望。(den Wunsch haben)</span>
         <span class="tag note">课文原句</span>
       </div>
       <div class="grammar-example">
         <span class="de">Die Gesamtschule bietet die <strong>Möglichkeit</strong>, alle Abschlüsse <strong class="zu-hl">zu machen</strong>.</span>
-        <span class="zh">综合中学提供获得所有毕业证的可能性。（die Möglichkeit bieten）</span>
+        <span class="zh">综合中学提供获得所有毕业证的可能性。(die Möglichkeit bieten)</span>
         <span class="tag note">课文原句</span>
       </div>
       <div class="grammar-example">
         <span class="de">Melisas Mutter trifft die <strong>Entscheidung</strong>, sie auf die Realschule <strong class="zu-hl">zu schicken</strong>.</span>
-        <span class="zh">Melisa 的母亲决定送她去实科中学。（die Entscheidung treffen）</span>
+        <span class="zh">Melisa 的母亲决定送她去实科中学。(die Entscheidung treffen)</span>
         <span class="tag note">课文原句</span>
       </div>
 
       <p style="font-size:13px;color:var(--text-light);margin:8px 0 4px">
-        🔗 <strong>完整搭配表：</strong>
+        🔗 <strong>完整搭配表:</strong>
       </p>
       <table class="comp-table" style="margin-top:4px">
         <thead><tr><th>搭配</th><th>中文</th><th>例句</th></tr></thead>
@@ -896,35 +783,35 @@
         </tbody>
       </table>
 
-      <h4 style="margin-top:20px">③ 动词 + zu 不定式（包括情态动词化的用法）</h4>
+      <h4 style="margin-top:20px">3 动词 + zu 不定式(包括情态动词化的用法)</h4>
       <p style="font-size:13px;color:var(--text-light);margin-bottom:6px">
-        很多动词+形容词结构后接 zu 不定式：
+        很多动词+形容词结构后接 zu 不定式:
       </p>
       <div class="grammar-example">
         <span class="de">Es <strong>freut</strong> mich, meinen Vater öfter <strong class="zu-hl">sehen zu können</strong>.</span>
-        <span class="zh">能更常看到父亲，我很高兴。（sich freuen / jn. freut es）</span>
+        <span class="zh">能更常看到父亲,我很高兴。(sich freuen / jn. freut es)</span>
         <span class="tag note">课文原句</span>
       </div>
       <div class="grammar-example">
         <span class="de">Macht es dir <strong>Spaß</strong>, dauernd etwas <strong class="zu-hl">suchen zu müssen</strong>?</span>
-        <span class="zh">一直要到处找东西，你觉得有趣吗？（Spaß machen）</span>
+        <span class="zh">一直要到处找东西,你觉得有趣吗?(Spaß machen)</span>
       </div>
       <div class="grammar-example">
         <span class="de">Es ist für mich ein <strong>Problem</strong>, immer im Stau <strong class="zu-hl">zu stehen</strong>.</span>
-        <span class="zh">总是堵在路上对我来说是个问题。（ein Problem sein）</span>
+        <span class="zh">总是堵在路上对我来说是个问题。(ein Problem sein)</span>
       </div>
       <div class="grammar-example">
         <span class="de">Die beiden Freunde haben großes <strong>Glück</strong>, weiter <strong class="zu-hl">zusammenbleiben zu können</strong>.</span>
-        <span class="zh">两个好朋友很幸运能继续在一起。（Glück haben）</span>
+        <span class="zh">两个好朋友很幸运能继续在一起。(Glück haben)</span>
         <span class="tag note">课文原句</span>
       </div>
     </div>
 
     <!-- === 3. 可分动词 + zu === -->
     <div class="grammar-section">
-      <h3>📌 3. 可分动词（trennbare Verben）的 zu 不定式</h3>
+      <h3>📌 3. 可分动词(trennbare Verben)的 zu 不定式</h3>
       <div class="rule-box de">
-        <strong>规则：</strong>zu <strong class="zu-hl-sep">插入</strong> 前缀（Präfix）和词干（Stamm）之间。<br>
+        <strong>规则:</strong>zu <strong class="zu-hl-sep">插入</strong> 前缀(Präfix)和词干(Stamm)之间。<br>
         <code style="font-size:15px">vor·stellen → vor·<strong class="zu-hl-sep">zu·</strong>stellen</code>
       </div>
       <div class="grammar-example">
@@ -954,7 +841,7 @@
       </div>
       <div class="grammar-example">
         <span class="de"><strong>umgehen</strong> → um<strong class="zu-hl-sep">zu</strong>gehen</span>
-        <span class="zh">对待；相处</span>
+        <span class="zh">对待;相处</span>
         <span class="tag zu">可分</span>
       </div>
       <div class="grammar-example">
@@ -964,30 +851,30 @@
       </div>
       <div class="grammar-example">
         <span class="de"><strong>zurechtfinden</strong> → zurecht<strong class="zu-hl-sep">zu</strong>finden</span>
-        <span class="zh">找到方向；适应</span>
+        <span class="zh">找到方向;适应</span>
         <span class="tag note">T2 课文</span>
       </div>
       <div class="grammar-example">
         <span class="de"><strong>kennen lernen</strong> → kennen <strong class="zu-hl-sep">zu</strong> lernen</span>
-        <span class="zh">结识；认识</span>
+        <span class="zh">结识;认识</span>
         <span class="tag note">T2 课文</span>
       </div>
       <div class="highlight-box" style="margin-top:8px">
-        💡 规律就是：把 zu 塞进前缀和词根之间的缝隙里。<br>
+        💡 规律就是:把 zu 塞进前缀和词根之间的缝隙里。<br>
         <code>前缀 + <strong class="zu-hl-sep">zu</strong> + 词干</code> ← 就这么简单。
       </div>
     </div>
 
     <!-- === 4. 完成时 zu 不定式 === -->
     <div class="grammar-section">
-      <h3>📌 4. 完成时 zu 不定式（Perfekt-Infinitiv mit zu）</h3>
+      <h3>📌 4. 完成时 zu 不定式(Perfekt-Infinitiv mit zu)</h3>
       <div class="rule-box">
-        <strong>结构：</strong><code>Partizip II + <strong>zu haben</strong> / <strong class="zu-hl-sep">zu sein</strong></code><br>
-        <strong>用法：</strong>当 zu 不定式的动作<strong>先于</strong>主句动作发生时（"做了某事"而非"做某事"）。
+        <strong>结构:</strong><code>Partizip II + <strong>zu haben</strong> / <strong class="zu-hl-sep">zu sein</strong></code><br>
+        <strong>用法:</strong>当 zu 不定式的动作<strong>先于</strong>主句动作发生时("做了某事"而非"做某事")。
       </div>
       <div class="grammar-example">
         <span class="de">Ich bin froh, an diesem Sportfest <strong class="zu-hl">teilgenommen zu haben</strong>.</span>
-        <span class="zh">我很高兴参加了这个体育节（先参加了，现在高兴）。</span>
+        <span class="zh">我很高兴参加了这个体育节(先参加了,现在高兴)。</span>
         <span class="tag note">课文原句</span>
       </div>
       <div class="grammar-example">
@@ -997,24 +884,24 @@
       </div>
       <div class="grammar-example">
         <span class="de">Ich freue mich, dich <strong class="zu-hl">kennengelernt zu haben</strong>.</span>
-        <span class="zh">很高兴认识了你（已经认识了）。</span>
+        <span class="zh">很高兴认识了你(已经认识了)。</span>
       </div>
       <div class="highlight-box" style="margin-top:8px">
-        💡 <strong>对比：</strong>Ich hoffe, dich <strong>morgen zu sehen</strong>.（还未发生）←→ Ich freue mich, dich <strong>gesehen zu haben</strong>.（已经发生）
+        💡 <strong>对比:</strong>Ich hoffe, dich <strong>morgen zu sehen</strong>.(还未发生)←→ Ich freue mich, dich <strong>gesehen zu haben</strong>.(已经发生)
       </div>
     </div>
 
     <!-- === 5. um ... zu === -->
     <div class="grammar-section">
-      <h3>📌 5. <code>um ... zu + Infinitiv</code> — 目的状语</h3>
+      <h3>📌 5. <code>um ... zu + Infinitiv</code> - 目的状语</h3>
       <div class="rule-box">
-        <strong>意思：</strong>"为了做某事"<br>
-        <strong>结构：</strong><code>um + 其他成分 + zu + Infinitiv</code><br>
-        <strong>注意：</strong>zu 不定式的逻辑主语必须与主句主语一致。
+        <strong>意思:</strong>"为了做某事"<br>
+        <strong>结构:</strong><code>um + 其他成分 + zu + Infinitiv</code><br>
+        <strong>注意:</strong>zu 不定式的逻辑主语必须与主句主语一致。
       </div>
       <div class="grammar-example">
         <span class="de">Ich mache ein Auslandspraktikum, <strong class="zu-hl">um</strong> meine Sprachkenntnisse <strong class="zu-hl">zu verbessern</strong>.</span>
-        <span class="zh">我做出国实习，是为了提高语言能力。</span>
+        <span class="zh">我做出国实习,是为了提高语言能力。</span>
         <span class="tag note">T2 课文</span>
       </div>
       <div class="grammar-example">
@@ -1026,12 +913,12 @@
 
     <!-- === 6. dass-Satz vs. zu + Inf === -->
     <div class="grammar-section">
-      <h3>📌 6. 结构对比：dass-Satz → zu + Infinitiv</h3>
+      <h3>📌 6. 结构对比:dass-Satz → zu + Infinitiv</h3>
       <p style="font-size:13px;color:var(--text-light);margin-bottom:8px">
-        核心判断标准：<strong>逻辑主语是否一致。</strong>
+        核心判断标准:<strong>逻辑主语是否一致。</strong>
       </p>
       <table class="comp-table">
-        <thead><tr><th>✅ 可转为 zu 不定式（主语一致）</th><th>❌ 必须用 dass-Satz（主语不同）</th></tr></thead>
+        <thead><tr><th>✅ 可转为 zu 不定式(主语一致)</th><th>❌ 必须用 dass-Satz(主语不同)</th></tr></thead>
         <tbody>
           <tr>
             <td><span class="de">Ich hoffe, <strong>dass ich</strong> dich bald <strong>sehe</strong>.</span><br>
@@ -1043,45 +930,45 @@
             <td><span class="de">Ich habe den Wunsch, <strong>dass ich</strong> Medizin <strong>studiere</strong>.</span><br>
                 <span class="de">→ Ich habe den Wunsch, Medizin <strong class="zu-hl">zu studieren</strong>. ✓</span></td>
             <td><span class="de">Ich habe den Wunsch, <strong>dass meine Tochter</strong> Medizin <strong>studiert</strong>.</span><br>
-                <span class="de">→ ❌ （逻辑主语不同，须保留 dass）</span></td>
+                <span class="de">→ ❌ (逻辑主语不同,须保留 dass)</span></td>
           </tr>
           <tr>
             <td><span class="de">Es ist wichtig, <strong>dass man</strong> pünktlich <strong>ist</strong>.</span><br>
                 <span class="de">→ Es ist wichtig, pünktlich <strong class="zu-hl">zu sein</strong>. ✓</span></td>
             <td><span class="de">Es ist wichtig, <strong>dass alle</strong> pünktlich <strong>sind</strong>.</span><br>
-                <span class="de">→ ❌ （es 句型只能泛指，不能指定某群人）</span></td>
+                <span class="de">→ ❌ (es 句型只能泛指,不能指定某群人)</span></td>
           </tr>
         </tbody>
       </table>
       <div class="highlight-box" style="margin-top:8px">
-        💡 <strong>简化判断：</strong>问自己"zu不定式的动作是谁做的？" → 如果是主句主语/宾语，则可转；如果是另一人，则不可。
+        💡 <strong>简化判断:</strong>问自己"zu不定式的动作是谁做的?" → 如果是主句主语/宾语,则可转;如果是另一人,则不可。
       </div>
     </div>
 
     <!-- === 7. 小测验 === -->
     <div class="grammar-section">
-      <h3>📌 7. 小测验 — 你能写出正确的 zu 不定式吗？</h3>
+      <h3>📌 7. 小测验 - 你能写出正确的 zu 不定式吗?</h3>
       <div class="de" style="background:#fef9f0;padding:16px;border-radius:8px;font-size:14px">
-        <p>① Es ist nicht leicht, die richtige Schule <span class="blank-zu">________</span> (finden).</p>
-        <p>② Meine Eltern haben den Wunsch, mich auf ein Gymnasium <span class="blank-zu">________</span> (schicken).</p>
-        <p>③ Wir freuen uns, weiter zusammen <span class="blank-zu">________</span> (bleiben) können.</p>
-        <p>④ Hast du Lust, mit mir <span class="blank-zu">________</span> (mitkommen)?</p>
-        <p>⑤ Er ist stolz, die Prüfung <span class="blank-zu">________</span> (bestehen - Perfekt).</p>
-        <p>⑥ Der Arzt empfiehlt dem Patienten, mehr <span class="blank-zu">________</span> (Sport treiben).</p>
+        <p>1 Es ist nicht leicht, die richtige Schule <span class="blank-zu">________</span> (finden).</p>
+        <p>2 Meine Eltern haben den Wunsch, mich auf ein Gymnasium <span class="blank-zu">________</span> (schicken).</p>
+        <p>3 Wir freuen uns, weiter zusammen <span class="blank-zu">________</span> (bleiben) können.</p>
+        <p>4 Hast du Lust, mit mir <span class="blank-zu">________</span> (mitkommen)?</p>
+        <p>5 Er ist stolz, die Prüfung <span class="blank-zu">________</span> (bestehen - Perfekt).</p>
+        <p>6 Der Arzt empfiehlt dem Patienten, mehr <span class="blank-zu">________</span> (Sport treiben).</p>
         <p style="margin-top:8px;font-size:12px;color:var(--text-light)">
-          💡 <strong>提示：</strong>⑥ 的逻辑主语是谁？（答：病人做运动，不是医生做运动）
+          💡 <strong>提示:</strong>6 的逻辑主语是谁?(答:病人做运动,不是医生做运动)
         </p>
       </div>
       <button class="show-zu-answers" style="margin-top:12px;padding:8px 20px;background:var(--primary);color:#fff;border:none;border-radius:8px;cursor:pointer">显示答案</button>
       <div class="zu-answers" style="display:none;margin-top:12px">
         <p class="de">
-          ① <strong class="zu-hl">zu finden</strong> &nbsp;
-          ② <strong class="zu-hl">zu schicken</strong> &nbsp;
-          ③ <strong class="zu-hl">bleiben zu können</strong> &nbsp;
-          ④ <strong class="zu-hl">mitzukommen</strong> &nbsp;
-          ⑤ <strong class="zu-hl">bestanden zu haben</strong> &nbsp;
-          ⑥ <strong class="zu-hl">Sport zu treiben</strong><br><br>
-          ⚠️ ⑥的逻辑主语 = dem Patienten（宾语），不是 der Arzt（主语）。这是 Fall B！
+          1 <strong class="zu-hl">zu finden</strong> &nbsp;
+          2 <strong class="zu-hl">zu schicken</strong> &nbsp;
+          3 <strong class="zu-hl">bleiben zu können</strong> &nbsp;
+          4 <strong class="zu-hl">mitzukommen</strong> &nbsp;
+          5 <strong class="zu-hl">bestanden zu haben</strong> &nbsp;
+          6 <strong class="zu-hl">Sport zu treiben</strong><br><br>
+          ⚠️ 6的逻辑主语 = dem Patienten(宾语),不是 der Arzt(主语)。这是 Fall B!
         </p>
       </div>
     </div>
@@ -1101,7 +988,7 @@
         <button onclick="checkQuiz(this, 'q1', 2)">zumachen</button>
         <button onclick="checkQuiz(this, 'q1', 3)">zu machen zu</button>
       </div>
-      <div class="feedback"><strong>✅ 正确！</strong> Möglichkeit 后接 zu + Infinitiv：die Möglichkeit, etw. <strong>zu machen</strong>。</div>
+      <div class="feedback"><strong>✅ 正确!</strong> Möglichkeit 后接 zu + Infinitiv:die Möglichkeit, etw. <strong>zu machen</strong>。</div>
     </div>
 
     <!-- Quiz 2 -->
@@ -1116,14 +1003,14 @@
         <button onclick="checkQuiz(this, 'q2', 2)">warmzulaufen</button>
         <button onclick="checkQuiz(this, 'q2', 3)">warm zu laufen</button>
       </div>
-      <div class="feedback"><strong>✅ 正确！</strong> warmlaufen 是可分动词，zu 放在前缀 warm- 和词干 -laufen 之间：<strong>warmzulaufen</strong>。</div>
+      <div class="feedback"><strong>✅ 正确!</strong> warmlaufen 是可分动词,zu 放在前缀 warm- 和词干 -laufen 之间:<strong>warmzulaufen</strong>。</div>
     </div>
 
     <!-- Quiz 3 -->
     <div class="quiz-card" id="q3">
       <h4>3. 翻译选择</h4>
       <p style="font-size:14px;color:var(--text-light);margin-bottom:8px">
-        "Es freut mich, meinen Vater öfter sehen zu können." 的意思是什么？
+        "Es freut mich, meinen Vater öfter sehen zu können." 的意思是什么?
       </p>
       <div class="options" data-correct="1">
         <button onclick="checkQuiz(this, 'q3', 0)">看到父亲更常高兴我。</button>
@@ -1131,7 +1018,7 @@
         <button onclick="checkQuiz(this, 'q3', 2)">我父亲很高兴能更常看到我。</button>
         <button onclick="checkQuiz(this, 'q3', 3)">父亲让我高兴来看我。</button>
       </div>
-      <div class="feedback"><strong>✅ 正确！</strong> jn. freut es, etw. tun zu können = 某人很高兴能做某事。这里 sehen zu können = "能见到"。</div>
+      <div class="feedback"><strong>✅ 正确!</strong> jn. freut es, etw. tun zu können = 某人很高兴能做某事。这里 sehen zu können = "能见到"。</div>
     </div>
 
     <!-- Quiz 4 -->
@@ -1146,20 +1033,20 @@
         <button onclick="checkQuiz(this, 'q4', 2)">teilzunehmen gehabt</button>
         <button onclick="checkQuiz(this, 'q4', 3)">teilgenommen zu haben</button>
       </div>
-      <div class="feedback"><strong>✅ 正确！</strong> 完成时 zu 不定式结构：<strong>teilgenommen zu haben</strong>（Partizip II + zu haben）。表达"已经参加了"。</div>
+      <div class="feedback"><strong>✅ 正确!</strong> 完成时 zu 不定式结构:<strong>teilgenommen zu haben</strong>(Partizip II + zu haben)。表达"已经参加了"。</div>
     </div>
 
     <!-- Quiz 5 -->
     <div class="quiz-card" id="q5">
       <h4>5. 判断对错</h4>
       <p style="font-size:14px;color:var(--text-light);margin-bottom:8px">
-        "In Deutschland bekommt man an allen Schulen den gleichen Abschluss." 这个说法对吗？
+        "In Deutschland bekommt man an allen Schulen den gleichen Abschluss." 这个说法对吗?
       </p>
       <div class="options" data-correct="1">
         <button onclick="checkQuiz(this, 'q5', 0)">Richtig (对)</button>
         <button onclick="checkQuiz(this, 'q5', 1)">Falsch (错)</button>
       </div>
-      <div class="feedback"><strong>✅ 正确！</strong> 不同的学校类型获得不同的毕业证书（Hauptschulabschluss / Realschulabschluss / Abitur）。</div>
+      <div class="feedback"><strong>✅ 正确!</strong> 不同的学校类型获得不同的毕业证书(Hauptschulabschluss / Realschulabschluss / Abitur)。</div>
     </div>
 
     <!-- Quiz 6 -->
@@ -1174,60 +1061,60 @@
         <button onclick="checkQuiz(this, 'q6', 2)">schicken zu</button>
         <button onclick="checkQuiz(this, 'q6', 3)">geschickt zu haben</button>
       </div>
-      <div class="feedback"><strong>✅ 正确！</strong> planen + zu + Infinitiv = 计划做某事。原文：Niklas' Eltern planen, ihren Sohn auf ein Gymnasium <strong>zu schicken</strong>。</div>
+      <div class="feedback"><strong>✅ 正确!</strong> planen + zu + Infinitiv = 计划做某事。原文:Niklas' Eltern planen, ihren Sohn auf ein Gymnasium <strong>zu schicken</strong>。</div>
     </div>
 
     <!-- 填词练习 -->
     <h2 class="section-title" style="margin-top:32px"><span class="num">2</span> 选词填空 · Lückentext</h2>
     <div class="quiz-card">
-      <p style="margin-bottom:8px">填入正确的 zu 不定式形式（注意可分动词和完成时！）。</p>
+      <p style="margin-bottom:8px">填入正确的 zu 不定式形式(注意可分动词和完成时!)。</p>
       <p style="margin-bottom:4px;font-size:14px">
-        ① Ich habe Lust, am Wochenende mit dir ______ (<strong>mitkommen</strong>).
+        1 Ich habe Lust, am Wochenende mit dir ______ (<strong>mitkommen</strong>).
       </p>
       <p style="margin-bottom:4px;font-size:14px">
-        ② Es ist nicht einfach, eine gute Universität ______ (<strong>finden</strong>).
+        2 Es ist nicht einfach, eine gute Universität ______ (<strong>finden</strong>).
       </p>
       <p style="margin-bottom:4px;font-size:14px">
-        ③ Sie freut sich, die Prüfung ______ (<strong>bestehen</strong> - Perfekt).
+        3 Sie freut sich, die Prüfung ______ (<strong>bestehen</strong> - Perfekt).
       </p>
       <p style="margin-bottom:4px;font-size:14px">
-        ④ Wir haben endlich Zeit, uns ______ (<strong>ausruhen</strong>).
+        4 Wir haben endlich Zeit, uns ______ (<strong>ausruhen</strong>).
       </p>
       <p style="margin-bottom:4px;font-size:14px">
-        ⑤ Tobias und Niklas haben Glück, zusammenbleiben ______ (<strong>können</strong>).
+        5 Tobias und Niklas haben Glück, zusammenbleiben ______ (<strong>können</strong>).
       </p>
       <button onclick="showFillAnswers()" style="margin-top:12px;padding:8px 20px;background:var(--primary);color:#fff;border:none;border-radius:8px;cursor:pointer">显示答案</button>
       <div id="fill-answers" style="display:none;margin-top:12px;padding:12px;background:#eaf7ea;border-radius:8px;font-size:14px">
-        ① <strong>mitzukommen</strong> &nbsp; ② <strong>zu finden</strong> &nbsp; ③ <strong>bestanden zu haben</strong> &nbsp; ④ <strong>auszuruhen</strong> &nbsp; ⑤ <strong>bleiben zu können</strong>
+        1 <strong>mitzukommen</strong> &nbsp; 2 <strong>zu finden</strong> &nbsp; 3 <strong>bestanden zu haben</strong> &nbsp; 4 <strong>auszuruhen</strong> &nbsp; 5 <strong>bleiben zu können</strong>
       </div>
     </div>
 
     <!-- 句子改写 -->
     <h2 class="section-title" style="margin-top:32px"><span class="num">3</span> 句子改写 · 从 dass-Satz 到 zu 不定式</h2>
     <div class="quiz-card">
-      <p style="margin-bottom:8px;font-size:14px;color:var(--text-light)">将下列 dass-Satz 改为带 zu 不定式的句子（主语一致时）。</p>
+      <p style="margin-bottom:8px;font-size:14px;color:var(--text-light)">将下列 dass-Satz 改为带 zu 不定式的句子(主语一致时)。</p>
       <p style="margin-bottom:6px;font-size:14px">
-        ① Ich hoffe, <strong>dass ich</strong> das Abitur bestehe.<br>
+        1 Ich hoffe, <strong>dass ich</strong> das Abitur bestehe.<br>
         → Ich hoffe, <span class="fill-area">________________</span>.
       </p>
       <p style="margin-bottom:6px;font-size:14px">
-        ② Es ist wichtig, <strong>dass man</strong> pünktlich ist.<br>
+        2 Es ist wichtig, <strong>dass man</strong> pünktlich ist.<br>
         → Es ist wichtig, <span class="fill-area">________________</span>.
       </p>
       <p style="margin-bottom:6px;font-size:14px">
-        ③ Sie hat den Wunsch, <strong>dass sie</strong> Medizin studiert.<br>
+        3 Sie hat den Wunsch, <strong>dass sie</strong> Medizin studiert.<br>
         → Sie hat den Wunsch, <span class="fill-area">________________</span>.
       </p>
       <p style="margin-bottom:6px;font-size:14px">
-        ④ Wir sind froh, <strong>dass wir</strong> den Kurs besucht haben.<br>
+        4 Wir sind froh, <strong>dass wir</strong> den Kurs besucht haben.<br>
         → Wir sind froh, <span class="fill-area">________________</span>.
       </p>
       <button onclick="showRewriteAnswers()" style="margin-top:12px;padding:8px 20px;background:var(--primary);color:#fff;border:none;border-radius:8px;cursor:pointer">显示答案</button>
       <div id="rewrite-answers" style="display:none;margin-top:12px;padding:12px;background:#eaf7ea;border-radius:8px;font-size:14px">
-        ① Ich hoffe, <strong class="zu-hl">das Abitur zu bestehen</strong>.<br>
-        ② Es ist wichtig, <strong class="zu-hl">pünktlich zu sein</strong>.<br>
-        ③ Sie hat den Wunsch, <strong class="zu-hl">Medizin zu studieren</strong>.<br>
-        ④ Wir sind froh, <strong class="zu-hl">den Kurs besucht zu haben</strong>.
+        1 Ich hoffe, <strong class="zu-hl">das Abitur zu bestehen</strong>.<br>
+        2 Es ist wichtig, <strong class="zu-hl">pünktlich zu sein</strong>.<br>
+        3 Sie hat den Wunsch, <strong class="zu-hl">Medizin zu studieren</strong>.<br>
+        4 Wir sind froh, <strong class="zu-hl">den Kurs besucht zu haben</strong>.
       </div>
     </div>
   </section>
@@ -1240,17 +1127,17 @@
     document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
     document.getElementById(id).classList.add('active');
     document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
-    
+
     const labels = { home:0, text:1, vocab:2, grammar:3, exercise:4 };
     const btns = document.querySelectorAll('.nav-links button');
     if (btns[labels[id]]) btns[labels[id]].classList.add('active');
-    
+
     // Close mobile nav
     document.querySelector('.nav-links').classList.remove('show');
-    
+
     // Scroll to top of content (below nav bar)
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    
+
     // Init vocab if needed
     if (id === 'vocab') initVocab();
   }
@@ -1262,7 +1149,7 @@
     document.getElementById('p-' + id).classList.add('active');
     // Find and activate the clicked button
     document.querySelectorAll('.person-tabs button').forEach(b => {
-      if (b.textContent.includes(id === 'tobias' ? 'Tobias' : 
+      if (b.textContent.includes(id === 'tobias' ? 'Tobias' :
           id === 'melisa' ? 'Melisa' : id === 'ingrid' ? 'Ingrid' : '学校')) {
         b.classList.add('active');
       }
@@ -1275,9 +1162,9 @@
     const options = card.querySelectorAll('.options button');
     const correct = parseInt(card.querySelector('.options').dataset.correct);
     const feedback = card.querySelector('.feedback');
-    
+
     options.forEach(b => b.disabled = true);
-    
+
     if (index === correct) {
       btn.classList.add('correct');
       feedback.classList.add('show', 'correct');
@@ -1288,11 +1175,11 @@
       // Override text for wrong
       const texts = {
         'q1': '❌ 不对。正确答案是 <strong>zu machen</strong>。Möglichkeit 后接带zu不定式。',
-        'q2': '❌ 不对。正确答案是 <strong>warmzulaufen</strong>（注意 warmlaufen 是可分动词）。',
-        'q3': '❌ 不对。正确答案是 B：我很高兴能更经常见到父亲。',
+        'q2': '❌ 不对。正确答案是 <strong>warmzulaufen</strong>(注意 warmlaufen 是可分动词)。',
+        'q3': '❌ 不对。正确答案是 B:我很高兴能更经常见到父亲。',
         'q4': '❌ 不对。完成时 zu 不定式要用 <strong>teilgenommen zu haben</strong>。',
-        'q5': '❌ 不对。不同学校类型给不同毕业证书，所以这个说法是错误的。',
-        'q6': '❌ 不对。planen + zu + Infinitiv：<strong>zu schicken</strong>。',
+        'q5': '❌ 不对。不同学校类型给不同毕业证书,所以这个说法是错误的。',
+        'q6': '❌ 不对。planen + zu + Infinitiv:<strong>zu schicken</strong>。',
       };
       if (texts[qId]) feedback.innerHTML = texts[qId];
     }
@@ -1314,6 +1201,22 @@
     const el = document.getElementById('rewrite-answers');
     el.style.display = el.style.display === 'none' ? 'block' : 'none';
   }
+
+
+  // ===== Vocab Panel (show/hide) =====
+  function showVocab(word, zh, example) {
+    document.getElementById('vpWord').textContent = word;
+    document.getElementById('vpZh').textContent = zh;
+    document.getElementById('vpEx').textContent = example;
+    document.getElementById('vocabPanel').classList.add('show');
+  }
+  function closeVocabPanel() {
+    document.getElementById('vocabPanel').classList.remove('show');
+  }
+  // Close on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeVocabPanel();
+  });
 
   // ===== Vocabulary Cards =====
   let vocabInitialized = false;
@@ -1339,14 +1242,14 @@
     ],
     3: [
       { word: 'die Schulentscheidung', pos: 'f.', zh: '学校选择', example: 'Am Ende der Grundschulzeit steht die Schulentscheidung an.', exampleZh: '小学结束时面临学校选择。' },
-      { word: 'die Schulform', pos: 'f.', zh: '学校类型', example: 'Welche Schulform ist die richtige für mein Kind?', exampleZh: '哪种学校类型对我的孩子合适？' },
-      { word: 'die Empfehlung', pos: 'f.', zh: '推荐', example: 'Die Grundschule gibt eine Empfehlung ab.', exampleZh: '小学给出（学校）推荐。' },
-      { word: 'der Abschluss', pos: 'm.', zh: '毕业；毕业证', example: 'An der Gesamtschule kann man alle Abschlüsse machen.', exampleZh: '在综合中学可以获得所有毕业证。' },
+      { word: 'die Schulform', pos: 'f.', zh: '学校类型', example: 'Welche Schulform ist die richtige für mein Kind?', exampleZh: '哪种学校类型对我的孩子合适?' },
+      { word: 'die Empfehlung', pos: 'f.', zh: '推荐', example: 'Die Grundschule gibt eine Empfehlung ab.', exampleZh: '小学给出(学校)推荐。' },
+      { word: 'der Abschluss', pos: 'm.', zh: '毕业;毕业证', example: 'An der Gesamtschule kann man alle Abschlüsse machen.', exampleZh: '在综合中学可以获得所有毕业证。' },
       { word: 'das Abitur', pos: 'n.', zh: '高中毕业考', example: 'Mit dem Abitur kann man an der Universität studieren.', exampleZh: '持有Abitur可以上大学。' },
       { word: 'die Lehre / Ausbildung', pos: 'f.', zh: '职业培训', example: 'Er macht eine Lehre zum Kaufmann.', exampleZh: '他做商业贸易的学徒培训。' },
     ],
     4: [
-      { word: 'Lust haben, etw. zu tun', pos: '', zh: '有兴趣做某事', example: 'Hast du Lust, Fußball zu spielen?', exampleZh: '你有兴趣踢足球吗？' },
+      { word: 'Lust haben, etw. zu tun', pos: '', zh: '有兴趣做某事', example: 'Hast du Lust, Fußball zu spielen?', exampleZh: '你有兴趣踢足球吗?' },
       { word: 'Zeit haben, etw. zu tun', pos: '', zh: '有时间做某事', example: 'Ich habe keine Zeit, ins Kino zu gehen.', exampleZh: '我没时间去看电影。' },
       { word: 'den Wunsch haben, etw. zu tun', pos: '', zh: '有愿望做某事', example: 'Viele Eltern haben den Wunsch, ihr Kind auf ein Gymnasium zu schicken.', exampleZh: '很多家长希望送孩子上文理中学。' },
       { word: 'die Möglichkeit haben, etw. zu tun', pos: '', zh: '有机会/可能做某事', example: 'In Deutschland hat man die Möglichkeit, ohne Abitur zu studieren.', exampleZh: '在德国没有Abitur也有可能上大学。' },
@@ -1366,11 +1269,11 @@
   function initVocab() {
     if (vocabInitialized) return;
     vocabInitialized = true;
-    
+
     for (const [gridId, words] of Object.entries(vocabData)) {
       const grid = document.getElementById('vocab-grid-' + gridId);
       if (!grid) continue;
-      
+
       words.forEach(w => {
         const card = document.createElement('div');
         card.className = 'vocab-card';
@@ -1402,5 +1305,13 @@
     this.textContent = ans.style.display === 'block' ? '隐藏答案' : '显示答案';
   });
 </script>
+<!-- ===== VOCAB OVERLAY + PANEL ===== -->
+<div class="vocab-panel" id="vocabPanel">
+  <button class="vp-close" onclick="closeVocabPanel()">✕</button>
+  <div class="vp-word" id="vpWord"></div>
+  <div class="vp-zh" id="vpZh"></div>
+  <div class="vp-example" id="vpEx"></div>
+</div>
+
 </body>
 </html>

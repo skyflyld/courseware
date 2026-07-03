@@ -283,7 +283,47 @@
         padding: 1px 8px; border-radius: 4px; font-size: 13px; cursor: help; }
 
   /* ===== RESPONSIVE ===== */
-/* ===== TABLET 768-1024 ===== */
+/* ===== LARGE DESKTOP ≥1200 ===== */
+  @media (min-width: 1200px) {
+    .main { max-width: 1200px; }
+    section { padding: 48px 40px 80px; }
+    .hero { padding: 64px 60px; }
+    .hero h1 { font-size: 44px; }
+    .hero .sub { font-size: 24px; }
+    .hero .meta { font-size: 16px; }
+    .vocab-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .vocab-card { height: 220px; }
+    .vocab-card .front .word { font-size: 24px; }
+    .home-grid { grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .section-title { font-size: 28px; margin: 48px 0 20px; }
+    .section-title .num { width: 36px; height: 36px; font-size: 16px; }
+    .text-card { padding: 36px; margin-bottom: 24px; }
+    .text-card .de { font-size: 16px; line-height: 1.9; }
+    .text-card .zh { font-size: 15px; }
+    .text-card h3 { font-size: 22px; }
+    .grammar-section { padding: 36px; }
+    .grammar-section h3 { font-size: 22px; }
+    .grammar-example { padding: 10px 0; }
+    .grammar-example .de { font-size: 15px; }
+    .comp-table { font-size: 15px; }
+    .comp-table th, .comp-table td { padding: 14px 20px; }
+    .quiz-card { padding: 32px; }
+    .quiz-card h4 { font-size: 18px; }
+    .quiz-card .options button { padding: 12px 20px; font-size: 15px; }
+    .person-tabs button { padding: 10px 28px; font-size: 15px; }
+    .info-box { font-size: 15px; }
+    .rule-box { font-size: 15px; }
+  }
+
+  /* ===== DESKTOP 1025-1199 ===== */
+  @media (min-width: 1025px) and (max-width: 1199px) {
+    .main { max-width: 1060px; }
+    .vocab-grid { grid-template-columns: repeat(3, 1fr); }
+    .hero { padding: 56px 48px; }
+    .hero h1 { font-size: 38px; }
+  }
+
+  /* ===== TABLET 768-1024 ===== */
   @media (min-width: 769px) and (max-width: 1024px) {
     .main { max-width: 100%; padding-left: 20px; padding-right: 20px; }
     .vocab-grid { grid-template-columns: repeat(2, 1fr); }

@@ -21,6 +21,7 @@
     --green: #27ae60;
     --orange: #e67e22;
   }
+  html { scroll-padding-top: 64px; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
@@ -62,9 +63,13 @@
   .hamburger { display: none; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; }
 
   /* ===== MAIN ===== */
-  .main { padding-top: 56px; max-width: 960px; margin: 0 auto; }
-  section { display: none; padding: 32px 24px 60px; }
-  section.active { display: block; }
+  .main { padding-top: 56px; max-width: 960px; margin: 0 auto; min-height: calc(100vh - 56px); }
+  section { display: none; padding: 32px 24px 60px; scroll-margin-top: 64px; }
+  section.active { display: block; animation: fadeIn 0.35s ease-out; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
 
   /* ===== HERO ===== */
   .hero {
@@ -289,14 +294,16 @@
   /* ===== TABLET & MOBILE ≤768 ===== */
   @media (max-width: 768px) {
     .nav-links { display: none; flex-direction: column; position: absolute; 
-                 top: 56px; left: 0; right: 0; background: var(--primary); padding: 6px;
-                 box-shadow: 0 8px 24px rgba(0,0,0,0.2); border-radius: 0 0 12px 12px; }
+                 top: 100%; left: 0; right: 0; background: var(--primary); padding: 6px;
+                 box-shadow: 0 8px 24px rgba(0,0,0,0.2); border-radius: 0 0 12px 12px;
+                 max-height: 70vh; overflow-y: auto; }
     .nav-links.show { display: flex; }
-    .nav-links button { padding: 12px 16px; font-size: 15px; border-radius: 10px; }
+    .nav-links button { padding: 14px 16px; font-size: 15px; border-radius: 10px; }
     .hamburger { display: block; font-size: 26px; padding: 4px 8px; }
 
-    .main { max-width: 100%; padding: 0; }
-    section { padding: 20px 16px 48px; }
+    .main { max-width: 100%; min-height: calc(100vh - 56px); }
+    section { padding: 16px 16px 48px; }
+    html { scroll-padding-top: 60px; }
     
     .hero { padding: 28px 18px; border-radius: 10px; margin-bottom: 20px; }
     .hero h1 { font-size: 24px; }
@@ -352,8 +359,11 @@
   @media (max-width: 480px) {
     .top-nav .logo { font-size: 15px; }
     .top-nav .logo span { display: none; }
+    .top-nav { height: 50px; }
+    .main { padding-top: 50px; min-height: calc(100vh - 50px); }
 
-    section { padding: 16px 12px 40px; }
+    section { padding: 12px 12px 40px; }
+    html { scroll-padding-top: 56px; }
     
     .hero { padding: 22px 14px; }
     .hero h1 { font-size: 20px; }
@@ -399,6 +409,9 @@
   /* ===== HOME GRID ===== */
   .home-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-bottom: 24px; }
 
+  /* ===== OVERSCROLL BODY LOCK (prevent nav gap on iOS) ===== */
+  body { overflow-x: hidden; width: 100%; position: relative; }
+
   /* ===== TOUCH OPTIMIZATION ===== */
   @media (hover: none) and (pointer: coarse) {
     .vocab-card:hover { transform: none; }
@@ -406,12 +419,6 @@
     .quiz-card .options button { -webkit-tap-highlight-color: rgba(0,0,0,0.05); }
   }
 
-  /* ===== ANIMATIONS ===== */
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(12px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  section.active { animation: fadeIn 0.35s ease-out; }
   .text-card, .grammar-section, .quiz-card { animation: fadeIn 0.4s ease-out; }
 </style>
 </head>
@@ -1011,6 +1018,9 @@
     
     // Close mobile nav
     document.querySelector('.nav-links').classList.remove('show');
+    
+    // Scroll to top of content (below nav bar)
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     
     // Init vocab if needed
     if (id === 'vocab') initVocab();

@@ -278,19 +278,132 @@
         padding: 1px 8px; border-radius: 4px; font-size: 13px; cursor: help; }
 
   /* ===== RESPONSIVE ===== */
+/* ===== TABLET 768-1024 ===== */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .main { max-width: 100%; padding-left: 20px; padding-right: 20px; }
+    .vocab-grid { grid-template-columns: repeat(2, 1fr); }
+    .home-grid { grid-template-columns: repeat(2, 1fr); }
+    .comp-table { font-size: 13px; }
+  }
+
+  /* ===== TABLET & MOBILE ≤768 ===== */
   @media (max-width: 768px) {
     .nav-links { display: none; flex-direction: column; position: absolute; 
-                 top: 56px; left: 0; right: 0; background: var(--primary); padding: 8px; }
+                 top: 56px; left: 0; right: 0; background: var(--primary); padding: 6px;
+                 box-shadow: 0 8px 24px rgba(0,0,0,0.2); border-radius: 0 0 12px 12px; }
     .nav-links.show { display: flex; }
-    .hamburger { display: block; }
-    .hero { padding: 32px 20px; }
-    .hero h1 { font-size: 26px; }
-    .vocab-grid { grid-template-columns: 1fr 1fr; }
-    .person-tabs { flex-wrap: wrap; }
+    .nav-links button { padding: 12px 16px; font-size: 15px; border-radius: 10px; }
+    .hamburger { display: block; font-size: 26px; padding: 4px 8px; }
+
+    .main { max-width: 100%; padding: 0; }
+    section { padding: 20px 16px 48px; }
+    
+    .hero { padding: 28px 18px; border-radius: 10px; margin-bottom: 20px; }
+    .hero h1 { font-size: 24px; }
+    .hero .sub { font-size: 16px; }
+    .hero .meta { font-size: 12px; }
+
+    .home-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .home-grid .text-card { padding: 16px 14px; }
+    .home-grid .text-card h3 { font-size: 15px; }
+    .home-grid .text-card p { font-size: 12px !important; }
+
+    .text-card { padding: 18px 14px; }
+    .text-card h3 { font-size: 16px; }
+    .text-card .de { font-size: 14px; }
+    .text-card .zh { font-size: 13px; }
+
+    .section-title { font-size: 20px; margin: 28px 0 12px; }
+    .section-title .num { width: 28px; height: 28px; font-size: 12px; }
+
+    .vocab-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .vocab-card { height: 150px; }
+    .vocab-card .front .word { font-size: 17px; }
+    .vocab-card .back { padding: 14px; }
+    .vocab-card .back .zh-word { font-size: 16px; }
+    .vocab-card .back .example { font-size: 12px; }
+
+    .person-tabs { flex-wrap: wrap; gap: 6px; }
+    .person-tabs button { padding: 7px 14px; font-size: 13px; flex: 1; min-width: 0; text-align: center; }
+
+    .grammar-section { padding: 18px 14px; }
+    .grammar-section h3 { font-size: 17px; }
+    .grammar-section h4 { font-size: 15px; }
+    .grammar-example { flex-wrap: wrap; gap: 4px; }
+    .grammar-example .de { font-size: 13px; flex-basis: 100%; }
+    .grammar-example .zh { font-size: 12px; flex-basis: 100%; }
+
+    .comp-table { font-size: 12px; display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; white-space: nowrap; }
+    .comp-table th, .comp-table td { padding: 7px 10px; }
+
+    .quiz-card { padding: 16px 14px; }
+    .quiz-card h4 { font-size: 15px; }
+    .quiz-card .options button { font-size: 13px; padding: 10px 14px; }
+
+    .info-box { font-size: 13px; padding: 12px 14px; }
+    .highlight-box { font-size: 13px; padding: 10px 14px; }
+
+    .rule-box { font-size: 13px; padding: 12px 14px; }
+    
+    .fill-area { min-width: 80px; font-size: 14px; }
+  }
+
+  /* ===== PHONE ≤480 ===== */
+  @media (max-width: 480px) {
+    .top-nav .logo { font-size: 15px; }
+    .top-nav .logo span { display: none; }
+
+    section { padding: 16px 12px 40px; }
+    
+    .hero { padding: 22px 14px; }
+    .hero h1 { font-size: 20px; }
+    .hero .sub { font-size: 14px; }
+    .hero .meta { font-size: 11px; }
+
+    .home-grid { grid-template-columns: 1fr; gap: 8px; }
+
+    .vocab-grid { grid-template-columns: 1fr; gap: 10px; }
+    .vocab-card { height: 140px; }
+
+    .person-tabs button { font-size: 12px; padding: 6px 10px; }
+
+    .text-card .de { font-size: 13px; }
+    .text-card .zh { font-size: 12px; }
+
+    .section-title { font-size: 18px; }
+
+    .grammar-example .de { font-size: 12px; }
+    .grammar-example .zh { font-size: 11px; }
+
+    .quiz-card .options button { font-size: 12px; padding: 9px 12px; }
+
+    .comp-table { font-size: 11px; }
+    .comp-table th, .comp-table td { padding: 5px 8px; }
+
+    .fill-area { min-width: 60px; font-size: 13px; }
+
+    .nav-links button { padding: 10px 14px; font-size: 14px; }
+  }
+
+  /* ===== SAFE AREA (iPhone notch) ===== */
+  @supports (padding: max(0px)) {
+    .top-nav { padding-left: max(20px, env(safe-area-inset-left)); padding-right: max(20px, env(safe-area-inset-right)); }
+    section { padding-left: max(24px, env(safe-area-inset-left)); padding-right: max(24px, env(safe-area-inset-right)); }
   }
   @media (max-width: 480px) {
-    .vocab-grid { grid-template-columns: 1fr; }
-    section { padding: 20px 12px 40px; }
+    @supports (padding: max(0px)) {
+      section { padding-left: max(12px, env(safe-area-inset-left)); padding-right: max(12px, env(safe-area-inset-right)); }
+    }
+  }
+
+  /* ===== HOME GRID ===== */
+  .home-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-bottom: 24px; }
+
+  /* ===== TOUCH OPTIMIZATION ===== */
+  @media (hover: none) and (pointer: coarse) {
+    .vocab-card:hover { transform: none; }
+    .nav-links button { -webkit-tap-highlight-color: rgba(255,255,255,0.15); }
+    .quiz-card .options button { -webkit-tap-highlight-color: rgba(0,0,0,0.05); }
   }
 
   /* ===== ANIMATIONS ===== */
@@ -328,7 +441,7 @@
       <div class="meta">教育选择 · 学校体系 · 未来规划 · 语法：带zu不定式</div>
     </div>
 
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:24px">
+    <div class="home-grid">
       <div class="text-card" style="cursor:pointer" onclick="switchSection('text')">
         <h3>📚 课文讲解</h3>
         <p style="font-size:13px;color:var(--text-light)">

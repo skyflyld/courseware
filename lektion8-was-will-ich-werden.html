@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lektion 8 · Was will ich werden? · 交互式课件</title>
+<style>
+  :root {
+    --primary: #1a5c7a;
+    --primary-light: #2a8bb5;
+    --accent: #e8a838;
+    --bg: #f8f6f0;
+    --card-bg: #ffffff;
+    --text: #2c2c2c;
+    --text-light: #666;
+    --border: #ddd;
+    --shadow: 0 4px 16px rgba(0,0,0,0.08);
+    --radius: 12px;
+    --de: #c0392b;
+    --zh: #2980b9;
+    --green: #27ae60;
+    --orange: #e67e22;
+  }
+  html { scroll-padding-top: 64px; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* ===== TOP NAV ===== */
+  .top-nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    background: var(--primary);
+    color: #fff;
+    padding: 0 20px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  .top-nav .logo {
+    font-size: 18px; font-weight: 700;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .top-nav .logo span { font-weight: 400; font-size: 13px; opacity: 0.8; }
+  .nav-links {
+    display: flex; gap: 4px;
+  }
+  .nav-links button {
+    background: transparent; border: none; color: rgba(255,255,255,0.75);
+    padding: 8px 14px; border-radius: 8px; cursor: pointer;
+    font-size: 14px; font-weight: 500; transition: all 0.2s;
+  }
+  .nav-links button:hover { background: rgba(255,255,255,0.12); color: #fff; }
+  .nav-links button.active { background: rgba(255,255,255,0.18); color: #fff; }
+  .hamburger { display: none; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; }
+
+  /* ===== MAIN ===== */
+  .main { padding-top: 56px; max-width: 960px; margin: 0 auto; min-height: calc(100vh - 56px); }
+  section { display: none; padding: 32px 24px 60px; scroll-margin-top: 64px; }
+  section.active { display: block; animation: fadeIn 0.35s ease-out; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    color: #fff; border-radius: var(--radius); padding: 48px 40px;
+    margin-bottom: 32px; text-align: center;
+  }
+  .hero h1 { font-size: 36px; margin-bottom: 8px; }
+  .hero .sub { font-size: 20px; opacity: 0.9; margin-bottom: 12px; }
+  .hero .meta { font-size: 14px; opacity: 0.7; }
+
+  /* ===== SECTIONS ===== */
+  .section-title {
+    font-size: 24px; color: var(--primary);
+    margin: 40px 0 16px; padding-bottom: 8px;
+    border-bottom: 3px solid var(--accent);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .section-title .num {
+    background: var(--accent); color: #fff; border-radius: 50%;
+    width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 700;
+  }
+
+  /* ===== TEXT CARDS ===== */
+  .text-card {
+    background: var(--card-bg); border-radius: var(--radius);
+    box-shadow: var(--shadow); padding: 28px; margin-bottom: 20px;
+  }
+  .text-card h3 {
+    font-size: 18px; color: var(--primary);
+    margin-bottom: 12px;
+  }
+  .text-card .de { color: var(--text); }
+  .text-card .zh { color: var(--zh); font-size: 14px; margin-top: 4px; }
+  .text-card p { margin-bottom: 8px; }
+  .highlight-box {
+    background: #fff8e1; border-left: 4px solid var(--accent);
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 12px 0;
+    font-size: 14px;
+  }
+
+  /* ===== VOCAB CARDS ===== */
+  .vocab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 16px 0;
+  }
+  .vocab-card {
+    background: var(--card-bg); border-radius: var(--radius);
+    box-shadow: var(--shadow); padding: 0;
+    cursor: pointer; transition: transform 0.2s; perspective: 800px;
+    height: 200px;
+  }
+  .vocab-card:hover { transform: translateY(-2px); }
+  .vocab-card .inner {
+    position: relative; width: 100%; height: 100%;
+    transition: transform 0.5s; transform-style: preserve-3d;
+    border-radius: var(--radius);
+  }
+  .vocab-card.flipped .inner { transform: rotateY(180deg); }
+  .vocab-card .front, .vocab-card .back {
+    position: absolute; width: 100%; height: 100%;
+    backface-visibility: hidden;
+    border-radius: var(--radius);
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    padding: 20px; text-align: center;
+  }
+  .vocab-card .front {
+    background: var(--primary);
+    color: #fff;
+  }
+  .vocab-card .front .word { font-size: 22px; font-weight: 700; }
+  .vocab-card .front .pos { font-size: 12px; opacity: 0.7; margin-top: 4px; }
+  .vocab-card .front .hint { font-size: 12px; opacity: 0.5; margin-top: 8px; }
+  .vocab-card .back {
+    background: var(--card-bg); transform: rotateY(180deg);
+    border: 2px solid var(--border);
+    justify-content: flex-start; text-align: left;
+    overflow-y: auto;
+  }
+  .vocab-card .back .zh-word { font-size: 20px; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
+  .vocab-card .back .example { font-size: 13px; color: var(--de); margin-top: 6px; }
+  .vocab-card .back .example-zh { font-size: 12px; color: var(--text-light); }
+
+  /* ===== GRAMMAR ===== */
+  .grammar-section {
+    background: var(--card-bg); border-radius: var(--radius);
+    box-shadow: var(--shadow); padding: 28px; margin-bottom: 20px;
+  }
+  .grammar-section h3 {
+    color: var(--primary); font-size: 20px; margin-bottom: 12px;
+  }
+  .grammar-section h4 {
+    color: var(--primary-light); font-size: 16px; margin: 20px 0 8px;
+  }
+  .rule-box {
+    background: #e8f0fe; border-radius: 8px; padding: 16px;
+    margin: 12px 0; border-left: 4px solid var(--primary-light);
+  }
+  .rule-box.de { background: #fde8e4; border-left-color: var(--de); }
+  .grammar-example {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 8px 0; border-bottom: 1px solid #eee;
+  }
+  .grammar-example .de { color: var(--de); flex: 1; }
+  .grammar-example .zh { color: var(--text-light); font-size: 13px; flex: 1; }
+  .grammar-example .tag {
+    background: var(--accent); color: #fff; font-size: 11px;
+    padding: 2px 8px; border-radius: 4px; white-space: nowrap;
+  }
+  .grammar-example .tag.zu { background: var(--de); }
+  .grammar-example .tag.note { background: var(--green); }
+
+  /* Highlight zu + infinitiv */
+  .zu-hl { color: var(--de); font-weight: 700; }
+  .zu-hl-sep { color: #8e44ad; font-weight: 700; } /* for separable verbs */
+
+  /* ===== EXERCISES ===== */
+  .quiz-card {
+    background: var(--card-bg); border-radius: var(--radius);
+    box-shadow: var(--shadow); padding: 24px; margin-bottom: 16px;
+  }
+  .quiz-card h4 { margin-bottom: 12px; }
+  .quiz-card .options { display: flex; flex-direction: column; gap: 8px; }
+  .quiz-card .options button {
+    background: #f0f0f0; border: 2px solid transparent; border-radius: 8px;
+    padding: 10px 16px; text-align: left; cursor: pointer;
+    font-size: 14px; transition: all 0.2s;
+  }
+  .quiz-card .options button:hover { background: #e3e3e3; }
+  .quiz-card .options button.correct {
+    background: #d4edda; border-color: var(--green); color: #155724;
+  }
+  .quiz-card .options button.wrong {
+    background: #f8d7da; border-color: #e74c3c; color: #721c24;
+  }
+  .quiz-card .options button:disabled { cursor: default; opacity: 0.85; }
+  .quiz-card .feedback {
+    margin-top: 12px; padding: 12px; border-radius: 8px; display: none;
+    font-size: 14px;
+  }
+  .quiz-card .feedback.show { display: block; }
+  .quiz-card .feedback.correct { background: #d4edda; color: #155724; }
+  .quiz-card .feedback.wrong { background: #f8d7da; color: #721c24; }
+
+  /* ===== FILL IN THE BLANK ===== */
+  .fill-area {
+    display: inline-block; border-bottom: 2px solid var(--primary-light);
+    min-width: 120px; padding: 2px 8px; margin: 0 4px;
+    font-size: 16px; color: var(--primary); font-weight: 600;
+  }
+  .fill-input {
+    border: none; border-bottom: 2px dashed var(--primary-light);
+    background: transparent; font-size: 16px; padding: 2px 8px;
+    min-width: 120px; outline: none; color: var(--de); font-weight: 600;
+  }
+  .fill-input:focus { border-bottom-color: var(--primary); }
+
+  /* ===== TABS ===== */
+  .person-tabs {
+    display: flex; gap: 8px; margin-bottom: 16px;
+  }
+  .person-tabs button {
+    padding: 8px 20px; border: 2px solid var(--border); border-radius: 8px;
+    background: var(--card-bg); cursor: pointer; font-size: 14px; font-weight: 600;
+    transition: all 0.2s;
+  }
+  .person-tabs button:hover { border-color: var(--primary-light); }
+  .person-tabs button.active {
+    background: var(--primary); color: #fff; border-color: var(--primary);
+  }
+  .person-content { display: none; }
+  .person-content.active { display: block; }
+
+  /* ===== COMPARISON TABLE ===== */
+  .comp-table {
+    width: 100%; border-collapse: collapse; margin: 16px 0;
+    font-size: 14px;
+  }
+  .comp-table th, .comp-table td {
+    padding: 10px 14px; border: 1px solid var(--border); text-align: left;
+  }
+  .comp-table th {
+    background: var(--primary); color: #fff; font-weight: 600;
+  }
+  .comp-table tr:nth-child(even) { background: #f8f6f0; }
+
+  /* ===== INFO BOX ===== */
+  .info-box {
+    background: #eaf7ea; border-radius: 8px; padding: 16px;
+    margin: 12px 0; border-left: 4px solid var(--green);
+    font-size: 14px;
+  }
+  .info-box .label { font-weight: 700; color: var(--green); }
+
+  /* ===== PROGRESS ===== */
+  .progress-bar {
+    display: flex; gap: 8px; justify-content: center; margin: 24px 0 8px;
+  }
+  .progress-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--border); cursor: pointer; transition: 0.2s;
+  }
+  .progress-dot.active { background: var(--accent); transform: scale(1.2); }
+
+  /* ===== KEYWORD TAG ===== */
+  .kw { display: inline-block; background: #fef3e2; color: #8a6d2b;
+        padding: 1px 8px; border-radius: 4px; font-size: 13px; cursor: help; }
+  .vocab-word{color:#c0392b;font-weight:600;cursor:pointer;border-bottom:2px dashed #e8a838;padding:0 2px;transition:all .2s}
+  .vocab-word:hover{background:#fef3e2;border-radius:3px}
+  .vocab-panel{display:none;position:fixed;bottom:0;left:0;right:0;background:#fff;border-radius:20px 20px 0 0;box-shadow:0 -8px 40px rgba(0,0,0,.15);padding:28px 24px 32px;z-index:2000;max-height:45vh;overflow-y:auto}
+  .vocab-panel.show{display:block}
+  .vocab-panel .vp-word{font-size:1.3rem;font-weight:700;color:var(--primary);margin-bottom:4px}
+  .vocab-panel .vp-zh{font-size:1rem;color:#c0392b;font-weight:600;margin-bottom:8px}
+  .vocab-panel .vp-example{font-size:.9rem;color:#666;padding:10px 14px;background:#f8f6f0;border-radius:8px;margin-top:6px;line-height:1.6}
+  .vocab-panel .vp-close{position:absolute;top:12px;right:16px;font-size:1.4rem;cursor:pointer;color:#999;background:none;border:none;padding:4px 8px}
+
+  /* ===== RESPONSIVE ===== */
+/* ===== LARGE DESKTOP ≥1200 ===== */
+  @media (min-width: 1200px) {
+    .main { max-width: 1200px; }
+    section { padding: 48px 40px 80px; }
+    .hero { padding: 64px 60px; }
+    .hero h1 { font-size: 44px; }
+    .hero .sub { font-size: 24px; }
+    .hero .meta { font-size: 16px; }
+    .vocab-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .vocab-card { height: 220px; }
+    .vocab-card .front .word { font-size: 24px; }
+    .home-grid { grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .section-title { font-size: 28px; margin: 48px 0 20px; }
+    .section-title .num { width: 36px; height: 36px; font-size: 16px; }
+    .text-card { padding: 36px; margin-bottom: 24px; }
+    .text-card .de { font-size: 16px; line-height: 1.9; }
+    .text-card .zh { font-size: 15px; }
+    .text-card h3 { font-size: 22px; }
+    .grammar-section { padding: 36px; }
+    .grammar-section h3 { font-size: 22px; }
+    .grammar-example { padding: 10px 0; }
+    .grammar-example .de { font-size: 15px; }
+    .comp-table { font-size: 15px; }
+    .comp-table th, .comp-table td { padding: 14px 20px; }
+    .quiz-card { padding: 32px; }
+    .quiz-card h4 { font-size: 18px; }
+    .quiz-card .options button { padding: 12px 20px; font-size: 15px; }
+    .person-tabs button { padding: 10px 28px; font-size: 15px; }
+    .info-box { font-size: 15px; }
+    .rule-box { font-size: 15px; }
+  }
+
+  /* ===== DESKTOP 1025-1199 ===== */
+  @media (min-width: 1025px) and (max-width: 1199px) {
+    .main { max-width: 1060px; }
+    .vocab-grid { grid-template-columns: repeat(3, 1fr); }
+    .hero { padding: 56px 48px; }
+    .hero h1 { font-size: 38px; }
+  }
+
+  /* ===== TABLET 768-1024 ===== */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .main { max-width: 100%; padding-left: 20px; padding-right: 20px; }
+    .vocab-grid { grid-template-columns: repeat(2, 1fr); }
+    .home-grid { grid-template-columns: repeat(2, 1fr); }
+    .comp-table { font-size: 13px; }
+  }
+
+  /* ===== TABLET & MOBILE ≤768 ===== */
+  @media (max-width: 768px) {
+    .nav-links { display: none; flex-direction: column; position: absolute;
+                 top: 100%; left: 0; right: 0; background: var(--primary); padding: 6px;
+                 box-shadow: 0 8px 24px rgba(0,0,0,0.2); border-radius: 0 0 12px 12px;
+                 max-height: 70vh; overflow-y: auto; }
+    .nav-links.show { display: flex; }
+    .nav-links button { padding: 14px 16px; font-size: 15px; border-radius: 10px; }
+    .hamburger { display: block; font-size: 26px; padding: 4px 8px; }
+
+    .main { max-width: 100%; min-height: calc(100vh - 56px); }
+    section { padding: 16px 16px 48px; }
+    html { scroll-padding-top: 60px; }
+
+    .hero { padding: 28px 18px; border-radius: 10px; margin-bottom: 20px; }
+    .hero h1 { font-size: 24px; }
+    .hero .sub { font-size: 16px; }
+    .hero .meta { font-size: 12px; }
+
+    .home-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .home-grid .text-card { padding: 16px 14px; }
+    .home-grid .text-card h3 { font-size: 15px; }
+    .home-grid .text-card p { font-size: 12px !important; }
+
+    .text-card { padding: 20px 16px; }
+    .text-card h3 { font-size: 17px; }
+    .text-card .de { font-size: 15px; line-height: 1.7; }
+    .text-card .zh { font-size: 14px; line-height: 1.6; }
+
+    .section-title { font-size: 20px; margin: 28px 0 12px; }
+    .section-title .num { width: 28px; height: 28px; font-size: 12px; }
+
+    .vocab-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .vocab-card { height: 150px; }
+    .vocab-card .front .word { font-size: 17px; }
+    .vocab-card .back { padding: 14px; }
+    .vocab-card .back .zh-word { font-size: 16px; }
+    .vocab-card .back .example { font-size: 12px; }
+
+    .person-tabs { flex-wrap: wrap; gap: 6px; }
+    .person-tabs button { padding: 7px 14px; font-size: 13px; flex: 1; min-width: 0; text-align: center; }
+
+    .grammar-section { padding: 18px 14px; }
+    .grammar-section h3 { font-size: 17px; }
+    .grammar-section h4 { font-size: 15px; }
+    .grammar-example { flex-wrap: wrap; gap: 4px; }
+    .grammar-example .de { font-size: 13px; flex-basis: 100%; }
+    .grammar-example .zh { font-size: 12px; flex-basis: 100%; }
+
+    .comp-table { font-size: 12px; display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; white-space: nowrap; }
+    .comp-table th, .comp-table td { padding: 7px 10px; }
+
+    .quiz-card { padding: 16px 14px; }
+    .quiz-card h4 { font-size: 15px; }
+    .quiz-card .options button { font-size: 13px; padding: 10px 14px; }
+
+    .info-box { font-size: 13px; padding: 12px 14px; }
+    .highlight-box { font-size: 13px; padding: 10px 14px; }
+
+    .rule-box { font-size: 13px; padding: 12px 14px; }
+
+    .fill-area { min-width: 80px; font-size: 14px; }
+  }
+
+  /* ===== PHONE ≤480 ===== */
+  @media (max-width: 480px) {
+    .top-nav .logo { font-size: 15px; }
+    .top-nav .logo span { display: none; }
+    .top-nav { height: 50px; }
+    .main { padding-top: 50px; min-height: calc(100vh - 50px); }
+
+    section { padding: 12px 12px 40px; }
+    html { scroll-padding-top: 56px; }
+
+    .hero { padding: 22px 14px; }
+    .hero h1 { font-size: 20px; }
+    .hero .sub { font-size: 14px; }
+    .hero .meta { font-size: 11px; }
+
+    .home-grid { grid-template-columns: 1fr; gap: 8px; }
+
+    .vocab-grid { grid-template-columns: 1fr; gap: 10px; }
+    .vocab-card { height: 140px; }
+
+    .person-tabs button { font-size: 12px; padding: 6px 10px; }
+
+    .text-card .de { font-size: 14px; }
+    .text-card .zh { font-size: 13px; }
+
+    .section-title { font-size: 18px; }
+
+    .grammar-example .de { font-size: 12px; }
+    .grammar-example .zh { font-size: 11px; }
+
+    .quiz-card .options button { font-size: 12px; padding: 9px 12px; }
+
+    .comp-table { font-size: 11px; }
+    .comp-table th, .comp-table td { padding: 5px 8px; }
+
+    .fill-area { min-width: 60px; font-size: 13px; }
+
+    .nav-links button { padding: 10px 14px; font-size: 14px; }
+  }
+
+  /* ===== SAFE AREA (iPhone notch) ===== */
+  @supports (padding: max(0px)) {
+    .top-nav { padding-left: max(20px, env(safe-area-inset-left)); padding-right: max(20px, env(safe-area-inset-right)); }
+    section { padding-left: max(24px, env(safe-area-inset-left)); padding-right: max(24px, env(safe-area-inset-right)); }
+  }
+  @media (max-width: 480px) {
+    @supports (padding: max(0px)) {
+      section { padding-left: max(12px, env(safe-area-inset-left)); padding-right: max(12px, env(safe-area-inset-right)); }
+    }
+  }
+
+  /* ===== HOME GRID ===== */
+  .home-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-bottom: 24px; }
+
+  /* ===== OVERSCROLL BODY LOCK (prevent nav gap on iOS) ===== */
+  body { overflow-x: hidden; width: 100%; position: relative; }
+
+  /* ===== TOUCH OPTIMIZATION ===== */
+  @media (hover: none) and (pointer: coarse) {
+    .vocab-card:hover { transform: none; }
+    .nav-links button { -webkit-tap-highlight-color: rgba(255,255,255,0.15); }
+    .quiz-card .options button { -webkit-tap-highlight-color: rgba(0,0,0,0.05); }
+  }
+
+  .text-card, .grammar-section, .quiz-card { animation: fadeIn 0.4s ease-out; }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav class="top-nav">
+  <div class="logo">📖 Lektion 8 <span>Was will ich werden?</span></div>
+  <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('show')">☰</button>
+  <div class="nav-links">
+    <button class="active" onclick="switchSection('home')">首页</button>
+    <button onclick="switchSection('text')">课文讲解</button>
+    <button onclick="switchSection('vocab')">重点词汇</button>
+    <button onclick="switchSection('grammar')">语法·并列连词</button>
+    <button onclick="switchSection('exercise')">练习</button>
+  </div>
+</nav>
+
+<!-- ===== MAIN ===== -->
+<div class="main">
+
+  <!-- ===== HOME ===== -->
+  <section id="home" class="active">
+    <div class="hero">
+      <h1>💼 Was will ich werden?</h1>
+      <div class="sub">新经典德语 · 第二册 · Lektion 7</div>
+      <div class="meta">教育选择 · 学校体系 · 未来规划 · 语法:带zu不定式</div>
+    </div>
+
+    <div class="home-grid">
+      <div class="text-card" style="cursor:pointer" onclick="switchSection('text')">
+        <h3>📚 课文讲解</h3>
+        <p style="font-size:13px;color:var(--text-light)">
+          三则德国学生教育选择故事 · 德国学校体系 · 中德学生未来规划自述
+        </p>
+      </div>
+      <div class="text-card" style="cursor:pointer" onclick="switchSection('vocab')">
+        <h3>📝 重点词汇</h3>
+        <p style="font-size:13px;color:var(--text-light)">
+          职业词汇 · 高校类型 · 学习相关词汇 · 点击翻转记忆
+        </p>
+      </div>
+      <div class="text-card" style="cursor:pointer" onclick="switchSection('grammar')">
+        <h3>🔤 语法 · zu不定式</h3>
+        <p style="font-size:13px;color:var(--text-light)">
+          zu + Infinitiv 的结构与用法 · 可分动词 · 完成时 · 各项句型总结
+        </p>
+      </div>
+      <div class="text-card" style="cursor:pointer" onclick="switchSection('exercise')">
+        <h3>✏️ 练习</h3>
+        <p style="font-size:13px;color:var(--text-light)">
+          选择题 · 选词填空 · zu不定式专项训练
+        </p>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <span class="label">🎯 学习目标</span><br>
+      <ul style="margin-top:6px;padding-left:18px">
+        <li>了解德国基础教育体系与职业词汇</li>
+        <li>了解中德两国学生的学习与生活规划</li>
+        <li>掌握表达教育选择与未来规划的句型</li>
+        <li>熟练运用带 <strong>zu</strong> 不定式结构</li>
+        <li>能够讨论和比较不同国家的教育体系</li>
+      </ul>
+    </div>
+  </section>
+
+
+
+<section id="text">
+
+    <!-- 课文一：Erika -->
+    <h2 class="section-title"><span class="num">1</span> T1 · Erika · 女性电工</h2>
+    <p style="margin-bottom:12px;font-size:14px;color:var(--text-light)">
+      案例研究：Erika 选择了典型的男性职业。点击红色词汇查看释义。
+    </p>
+
+    <div class="text-card">
+      <h3>Erika — Elektronikerin</h3>
+      <div class="de">
+        <p>Erika hat <span class="vocab-word" onclick="showVocab('das Interesse','兴趣','Sie hat grosses Interesse an der Elektronik.')">Interesse an der Elektronik</span>. Sie ist <span class="vocab-word" onclick="showVocab('durchsetzungsfaehig','有决断力的','faehig, eigene Ideen zu verwirklichen.')">durchsetzungsfaehig</span>, weil sie als einzige Frau mit Maennern zusammenarbeitet. Sie ist <span class="vocab-word" onclick="showVocab('konfliktbereit','勇于面对冲突的','bereit, Konflikte direkt anzusprechen.')">konfliktbereit</span>, wenn sie Probleme ansprechen muss. Sie macht eine <span class="vocab-word" onclick="showVocab('die Ausbildung','职业培训','die Lehre in einem Beruf.')">Ausbildung zur Elektronikerin</span>.</p>
+      </div>
+      <div class="highlight-box">Erika: Interesse an Elektronik → durchsetzungsfaehig → Ausbildung zur Elektronikerin</div>
+    </div>
+
+    <!-- 课文二：Simon -->
+    <h2 class="section-title" style="margin-top:30px"><span class="num">2</span> T2 · Simon · 男性幼师</h2>
+
+    <div class="text-card">
+      <h3>Simon — Erzieher</h3>
+      <div class="de">
+        <p>Simon hat Interesse am <span class="vocab-word" onclick="showVocab('sozial','社会的','Er arbeitet gern im sozialen Bereich.')">sozialen Bereich</span>. Er ist <span class="vocab-word" onclick="showVocab('geduldig','有耐心的','ruhig und gelassen.')">geduldig</span>, <span class="vocab-word" onclick="showVocab('kreativ','有创造力的','neue Ideen haben.')">kreativ</span> und <span class="vocab-word" onclick="showVocab('einfuehlsam','有同理心的','die Gefuehle anderer verstehen.')">einfuehlsam</span>. Er macht eine Ausbildung <span class="vocab-word" onclick="showVocab('der Erzieher','幼师','eine Person, die Kinder betreut.')">zum Erzieher</span>.</p>
+      </div>
+      <div class="highlight-box">Simon: soziales Interesse → geduldig, kreativ, einfuehlsam → Erzieher</div>
+    </div>
+
+    <!-- 课文三：Markus -->
+    <h2 class="section-title" style="margin-top:30px"><span class="num">3</span> T3 · Markus · 职业转换</h2>
+
+    <div class="text-card">
+      <h3>Markus — vom Koch zum Erzieher</h3>
+      <div class="de">
+        <p>Als Kind wollte Markus schon immer <span class="vocab-word" onclick="showVocab('der Koch','厨师','eine Person, die beruflich kocht.')">Koch</span> werden. Die Arbeit ist <span class="vocab-word" onclick="showVocab('anstrengend','累人的','viel Kraft erfordernd.')">anstrengend</span>, er hatte kaum Zeit fuer seine Familie. Dann wechselte er zum Erzieher. Heute ist Erzieher sein <span class="vocab-word" onclick="showVocab('der Traumjob','理想工作','der ideale Beruf.')">Traumjob</span>.</p>
+      </div>
+      <div class="highlight-box">Markus: Koch → anstrengend, keine Familienzeit → Umschulung zum Erzieher</div>
+    </div>
+
+    </section>
+
+<section id="vocab">
+    <h2 class="section-title"><span class="num">1</span> 重点词汇 · Berufe & Eigenschaften</h2>
+    <p style="margin-bottom:16px;font-size:14px;color:var(--text-light)">
+      👆 点击卡片翻转查看中文释义、例句和搭配
+    </p>
+
+    <h3 style="color:var(--primary);margin:16px 0 8px;">🏫 职业词汇</h3>
+    <div class="vocab-grid" id="vocab-grid-1"></div>
+
+    <h3 style="color:var(--primary);margin:16px 0 8px;">🎓 大学与学业</h3>
+    <div class="vocab-grid" id="vocab-grid-2"></div>
+
+    <h3 style="color:var(--primary);margin:16px 0 8px;">📌 重要短语与搭配</h3>
+    <div class="vocab-grid" id="vocab-grid-3"></div>
+
+    <h3 style="color:var(--primary);margin:16px 0 8px;">🔑 zu不定式常用搭配动词与名词</h3>
+    <div class="vocab-grid" id="vocab-grid-4"></div>
+
+    <h3 style="color:var(--primary);margin:16px 0 8px;">🧑‍🎓 人物特质</h3>
+    <div class="vocab-grid" id="vocab-grid-5"></div>
+  </section>
+
+  <!-- ===== 语法 ===== -->
+    <section id="grammar">
+    <h2 class="section-title"><span class="num">1</span> 语法 · 并列连词</h2>
+
+    <div class="grammar-block">
+      <h3>1. zwar … aber (虽然…但是)</h3>
+      <div class="rule-box de">
+        <strong>用法：</strong>连接两个对立/矛盾的陈述。<br>
+        <code>zwar + Satz, <strong>aber</strong> + Satz</code>
+      </div>
+      <div class="grammar-example">
+        <span class="de">Brieffreundschaften sind <strong>zwar</strong> fast immer E-Mail-Kontakte, <strong>aber</strong> manche moechten lieber per Post kommunizieren.</span>
+        <span class="zh">笔友关系虽然几乎都是邮件联系，但有些人更喜欢通过信件交流。</span>
+      </div>
+      <div class="grammar-example">
+        <span class="de"><strong>Zwar</strong> gehen heute mehr Frauen einem Beruf nach als frueher, <strong>aber</strong> in manchen Branchen sind Frauen noch immer kaum vertreten.</span>
+        <span class="zh">虽然今天从事职业的女性比过去多得多，但在某些行业女性仍然几乎不被代表。</span>
+      </div>
+    </div>
+
+    <div class="grammar-block">
+      <h3>2. nicht nur … sondern auch (不仅…而且)</h3>
+      <div class="rule-box de">
+        <strong>用法：</strong>强调两个并列信息都成立。<br>
+        <code><strong>nicht nur</strong> + A, <strong>sondern auch</strong> + B</code>
+      </div>
+      <div class="grammar-example">
+        <span class="de">Zu viel Fernsehen schadet <strong>nicht nur</strong> der Gesundheit, <strong>sondern</strong> macht <strong>auch</strong> einen dumm.</span>
+        <span class="zh">看电视太多不仅损害健康，还会让人变笨。</span>
+      </div>
+      <div class="grammar-example">
+        <span class="de">Durchs Praktikum gewinnt man <strong>nicht nur</strong> Arbeitserfahrungen, <strong>sondern</strong> lernt <strong>auch</strong> neue Freunde kennen.</span>
+        <span class="zh">通过实习不仅获得工作经验，还能结识新朋友。</span>
+      </div>
+    </div>
+
+    <div class="grammar-block">
+      <h3>3. sowohl … als auch (既…又)</h3>
+      <div class="rule-box de">
+        <strong>用法：</strong>表示两者都成立，相当于"und"。<br>
+        <code><strong>sowohl</strong> + A <strong>als auch</strong> + B</code>
+      </div>
+      <div class="grammar-example">
+        <span class="de">Xu Meng stoert <strong>sowohl</strong> die Unpuenktlichkeit <strong>als auch</strong> die Unzuverlaessigkeit von Lukas.</span>
+        <span class="zh">Xu Meng 对 Lukas 的不守时和不靠谱都感到困扰。</span>
+      </div>
+    </div>
+
+  </section><!-- ===== 练习 ===== -->
+    <section id="exercise">
+    <h2 class="section-title"><span class="num">1</span> 练习 · Übungen</h2>
+    <p style="margin-bottom:12px;font-size:14px;color:var(--text-light)">
+      点击选项查看正误。绿色 = 正确，红色 = 错误。
+    </p>
+
+    <div class="quiz-card">
+      <div class="q-text">1. Erika hat Interesse an ______________.</div>
+      <div class="options">
+        <div class="opt" onclick="checkQuiz(this,'q1',0)">A. der Sozialarbeit</div>
+        <div class="opt" onclick="checkQuiz(this,'q1',1)">B. der Elektronik</div>
+        <div class="opt" onclick="checkQuiz(this,'q1',2)">C. der Medizin</div>
+        <div class="opt" onclick="checkQuiz(this,'q1',3)">D. der Wirtschaft</div>
+      </div>
+      <div class="q-answer"><strong>答案：</strong>B</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="q-text">2. Simon ist ______________, geduldig, kreativ und einfühlsam.</div>
+      <div class="options">
+        <div class="opt" onclick="checkQuiz(this,'q2',0)">A. durchsetzungsfähig</div>
+        <div class="opt" onclick="checkQuiz(this,'q2',1)">B. konfliktbereit</div>
+        <div class="opt" onclick="checkQuiz(this,'q2',2)">C. hilfsbereit</div>
+        <div class="opt" onclick="checkQuiz(this,'q2',3)">D. anstrengend</div>
+      </div>
+      <div class="q-answer"><strong>答案：</strong>C</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="q-text">3. Markus musste oft an Wochenenden und Feiertagen arbeiten. Er war ______________.</div>
+      <div class="options">
+        <div class="opt" onclick="checkQuiz(this,'q3',0)">A. Erzieher</div>
+        <div class="opt" onclick="checkQuiz(this,'q3',1)">B. Koch</div>
+        <div class="opt" onclick="checkQuiz(this,'q3',2)">C. Elektroniker</div>
+        <div class="opt" onclick="checkQuiz(this,'q3',3)">D. Journalist</div>
+      </div>
+      <div class="q-answer"><strong>答案：</strong>B</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="q-text">4. ______________ bedeutet "bereit, Konflikte direkt anzusprechen".</div>
+      <div class="options">
+        <div class="opt" onclick="checkQuiz(this,'q4',0)">A. durchsetzungsfähig</div>
+        <div class="opt" onclick="checkQuiz(this,'q4',1)">B. konfliktbereit</div>
+        <div class="opt" onclick="checkQuiz(this,'q4',2)">C. geduldig</div>
+        <div class="opt" onclick="checkQuiz(this,'q4',3)">D. hilfsbereit</div>
+      </div>
+      <div class="q-answer"><strong>答案：</strong>B</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="q-text">5. "Zwar … aber" ist ______________.</div>
+      <div class="options">
+        <div class="opt" onclick="checkQuiz(this,'q5',0)">A. ein Nebensatz</div>
+        <div class="opt" onclick="checkQuiz(this,'q5',1)">B. ein Hauptsatz</div>
+        <div class="opt" onclick="checkQuiz(this,'q5',2)">C. ein konnektiver Nebensatz</div>
+        <div class="opt" onclick="checkQuiz(this,'q5',3)">D. eine Satzverbindung (zwei Hauptsätze)</div>
+      </div>
+      <div class="q-answer"><strong>答案：</strong>D</div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="q-text">6. Welche Form ist grammatisch richtig?</div>
+      <div class="options">
+        <div class="opt" onclick="checkQuiz(this,'q6',0)">A. nicht nur … sondern auch</div>
+        <div class="opt" onclick="checkQuiz(this,'q6',1)">B. nicht nur … sondern auch …</div>
+        <div class="opt" onclick="checkQuiz(this,'q6',2)">C. nicht nur … aber auch</div>
+        <div class="opt" onclick="checkQuiz(this,'q6',3)">D. nicht nur … als auch</div>
+      </div>
+      <div class="q-answer"><strong>答案：</strong>A</div>
+    </div>
+
+    <div class="quiz-card" style="background:#f0f7ff;">
+      <div class="q-text">📝 Satzergänzung: Vervollständigen Sie die Sätze.</div>
+      <p style="margin:10px 0 6px 0;font-size:14px">7. Erika ist konfliktbereit, ______________________________.</p>
+      <p style="margin:6px 0 6px 0;font-size:14px">8. Markus hatte kaum Zeit für seine Familie, ______________________________.</p>
+      <p style="margin:6px 0 0 0;font-size:14px">9. Simon arbeitet gern mit Kindern und Jugendlichen, ______________________________.</p>
+      <div class="q-answer"><strong>参考答案：</strong>7. weil sie Probleme direkt anspricht / 8. denn er musste oft an Wochenenden arbeiten / 9. weil er geduldig und einfühlsam ist</div>
+    </div>
+
+  </section>
+
+</div>
+
+<script>
+  // ===== Section Switching =====
+  function switchSection(id) {
+    document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
+
+    const labels = { home:0, text:1, vocab:2, grammar:3, exercise:4 };
+    const btns = document.querySelectorAll('.nav-links button');
+    if (btns[labels[id]]) btns[labels[id]].classList.add('active');
+
+    // Close mobile nav
+    document.querySelector('.nav-links').classList.remove('show');
+
+    // Scroll to top of content (below nav bar)
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Init vocab if needed
+    if (id === 'vocab') initVocab();
+  }
+
+  // ===== Person Tabs =====
+  function switchPerson(id) {
+    document.querySelectorAll('.person-content').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.person-tabs button').forEach(b => b.classList.remove('active'));
+    document.getElementById('p-' + id).classList.add('active');
+    // Find and activate the clicked button
+    document.querySelectorAll('.person-tabs button').forEach(b => {
+      if (b.textContent.includes(id === 'erika' ? 'Erika' :
+          id === 'simon' ? 'Simon' : id === 'markus' ? 'Markus' : '职业')) {
+        b.classList.add('active');
+      }
+    });
+  }
+
+  // ===== Quiz =====
+  function checkQuiz(btn, qId, index) {
+    const card = document.getElementById(qId);
+    const options = card.querySelectorAll('.options button');
+    const correct = parseInt(card.querySelector('.options').dataset.correct);
+    const feedback = card.querySelector('.feedback');
+
+    options.forEach(b => b.disabled = true);
+
+    if (index === correct) {
+      btn.classList.add('correct');
+      feedback.classList.add('show', 'correct');
+    } else {
+      btn.classList.add('wrong');
+      options[correct].classList.add('correct');
+      feedback.classList.add('show', 'wrong');
+      // Override text for wrong
+      const texts = {
+        'q1': '❌ 不对。正确答案是 <strong>zu machen</strong>。Möglichkeit 后接带zu不定式。',
+        'q2': '❌ 不对。正确答案是 <strong>warmzulaufen</strong>(注意 warmlaufen 是可分动词)。',
+        'q3': '❌ 不对。正确答案是 B:我很高兴能更经常见到父亲。',
+        'q4': '❌ 不对。完成时 zu 不定式要用 <strong>teilgenommen zu haben</strong>。',
+        'q5': '❌ 不对。不同职业词汇给不同毕业证书,所以这个说法是错误的。',
+        'q6': '❌ 不对。planen + zu + Infinitiv:<strong>zu schicken</strong>。',
+      };
+      if (texts[qId]) feedback.innerHTML = texts[qId];
+    }
+  }
+
+  // ===== Show Answers =====
+  document.querySelector('.show-zu-answers')?.addEventListener('click', function() {
+    const ans = document.querySelector('.zu-answers');
+    ans.style.display = ans.style.display === 'none' ? 'block' : 'none';
+    this.textContent = ans.style.display === 'block' ? '隐藏答案' : '显示答案';
+  });
+
+  function showFillAnswers() {
+    const el = document.getElementById('fill-answers');
+    el.style.display = el.style.display === 'none' ? 'block' : 'none';
+  }
+
+  function showRewriteAnswers() {
+    const el = document.getElementById('rewrite-answers');
+    el.style.display = el.style.display === 'none' ? 'block' : 'none';
+  }
+
+
+  // ===== Vocab Panel (show/hide) =====
+  function showVocab(word, zh, example) {
+    document.getElementById('vpWord').textContent = word;
+    document.getElementById('vpZh').textContent = zh;
+    document.getElementById('vpEx').textContent = example;
+    document.getElementById('vocabPanel').classList.add('show');
+  }
+  function closeVocabPanel() {
+    document.getElementById('vocabPanel').classList.remove('show');
+  }
+  // Close on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeVocabPanel();
+  });
+
+  // ===== Vocabulary Cards =====
+  let vocabInitialized = false;
+
+  const vocabData = {
+  'T1': [
+    { de: 'das Interesse', zh: '兴趣', detail: 'das, wofuer man sich begeistert' },
+    { de: 'durchsetzungsfaehig', zh: '有决断力的', detail: 'faehig, eigene Ideen zu verwirklichen' },
+    { de: 'konfliktbereit', zh: '勇于面对冲突的', detail: 'bereit, Konflikte anzusprechen' },
+    { de: 'die Ausbildung', zh: '职业培训', detail: 'die Lehre in einem Beruf' },
+  ],
+  'T2': [
+    { de: 'sozial', zh: '社会的', detail: 'die Gesellschaft betreffend' },
+    { de: 'geduldig', zh: '有耐心的', detail: 'ruhig und gelassen' },
+    { de: 'kreativ', zh: '有创造力的', detail: 'neue Ideen haben' },
+    { de: 'einfuehlsam', zh: '有同理心的', detail: 'die Gefuehle anderer verstehen' },
+    { de: 'der Erzieher', zh: '幼师', detail: 'eine Person, die Kinder betreut' },
+  ],
+  'T3': [
+    { de: 'der Koch', zh: '厨师', detail: 'eine Person, die beruflich kocht' },
+    { de: 'anstrengend', zh: '累人的', detail: 'viel Kraft erfordernd' },
+    { de: 'der Traumjob', zh: '理想工作', detail: 'der ideale Beruf' },
+  ]
+};
+
+  function initVocab() {
+    if (vocabInitialized) return;
+    vocabInitialized = true;
+
+    for (const [gridId, words] of Object.entries(vocabData)) {
+      const grid = document.getElementById('vocab-grid-' + gridId);
+      if (!grid) continue;
+
+      words.forEach(w => {
+        const card = document.createElement('div');
+        card.className = 'vocab-card';
+        card.innerHTML = `
+          <div class="inner">
+            <div class="front">
+              <div class="word">${w.word}</div>
+              <div class="pos">${w.pos}</div>
+              <div class="hint">👆 点击翻转</div>
+            </div>
+            <div class="back">
+              <div class="zh-word">${w.zh}</div>
+              ${w.example ? `<div class="example">${w.example}</div>` : ''}
+              ${w.exampleZh ? `<div class="example-zh">${w.exampleZh}</div>` : ''}
+            </div>
+          </div>
+        `;
+        card.addEventListener('click', () => card.classList.toggle('flipped'));
+        grid.appendChild(card);
+      });
+    }
+  }
+
+  // Init vocab on load if home visible, otherwise on demand
+  // Preload answers toggle
+  document.querySelector('.show-zu-answers')?.addEventListener('click', function() {
+    const ans = document.querySelector('.zu-answers');
+    ans.style.display = ans.style.display === 'none' ? 'block' : 'none';
+    this.textContent = ans.style.display === 'block' ? '隐藏答案' : '显示答案';
+  });
+</script>
+<!-- ===== VOCAB OVERLAY + PANEL ===== -->
+<div class="vocab-panel" id="vocabPanel">
+  <button class="vp-close" onclick="closeVocabPanel()">✕</button>
+  <div class="vp-word" id="vpWord"></div>
+  <div class="vp-zh" id="vpZh"></div>
+  <div class="vp-example" id="vpEx"></div>
+</div>
+
+</body>
+</html>

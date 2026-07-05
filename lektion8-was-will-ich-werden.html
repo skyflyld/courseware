@@ -333,6 +333,7 @@
 
   /* ===== TABLET 768-1024 ===== */
   @media (min-width: 769px) and (max-width: 1024px) {
+    .match-card { font-size: 15px; padding: 12px 16px; }
     .main { max-width: 100%; padding-left: 20px; padding-right: 20px; }
     .vocab-grid { grid-template-columns: repeat(2, 1fr); }
     .home-grid { grid-template-columns: repeat(2, 1fr); }
@@ -405,6 +406,8 @@
 
   /* ===== PHONE ≤480 ===== */
   @media (max-width: 480px) {
+    .match-card { font-size: 13px; padding: 10px; }
+    .match-card.de, .match-card.zh { padding: 8px; }
     .top-nav .logo { font-size: 15px; }
     .top-nav .logo span { display: none; }
     .top-nav { height: 50px; }
@@ -449,6 +452,8 @@
     section { padding-left: max(24px, env(safe-area-inset-left)); padding-right: max(24px, env(safe-area-inset-right)); }
   }
   @media (max-width: 480px) {
+    .match-card { font-size: 13px; padding: 10px; }
+    .match-card.de, .match-card.zh { padding: 8px; }
     @supports (padding: max(0px)) {
       section { padding-left: max(12px, env(safe-area-inset-left)); padding-right: max(12px, env(safe-area-inset-right)); }
     }
@@ -468,6 +473,28 @@
   }
 
   .text-card, .grammar-section, .quiz-card { animation: fadeIn 0.4s ease-out; }
+
+  /* ===== MATCH CARDS (词汇配对) ===== */
+  .match-card {
+    background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 12px 16px; cursor: pointer; text-align: center;
+    transition: all 0.2s; user-select: none; font-size: 15px;
+    border: 2px solid transparent;
+  }
+  .match-card.de { background: #eef6ff; border-color: #b3d4fc; }
+  .match-card.zh { background: #fff8f0; border-color: #fce0b3; }
+  .match-card.selected { border-color: #e8a838; background: #fff8e1; transform: scale(1.05); }
+  .match-card.matched { background: #d4edda; border-color: #28a745; color: #155724; pointer-events: none; opacity: 0.8; }
+  .match-card.wrong-flash { animation: shake 0.3s; background: #f8d7da; border-color: #e74c3c; }
+  @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
+
+  /* ===== QUIZ ANSWER HIDE ===== */
+  .q-answer { display: none; margin-top: 10px; padding: 8px 14px; background: #d4edda; border-radius: 8px; color: #155724; font-weight: 600; font-size: 14px; }
+  .q-answer.show { display: block; }
+  .show-answer-btn { margin-top: 10px; padding: 6px 16px; font-size: 13px; border: 1px solid var(--primary-light); background: var(--card-bg); border-radius: 6px; cursor: pointer; color: var(--primary); transition: all 0.2s; }
+  .show-answer-btn:hover { background: var(--primary-light); color: #fff; }
+  .show-answer-btn.hidden { display: none; }
+
 </style>
 </head>
 <body>
@@ -685,21 +712,21 @@
       <section id="exercise">
     <h2 class="section-title"><span class="num">1</span> 练习 · Übungen</h2>
     <div class="quiz-card"><div class="q-text">1. Was bedeutet "durchsetzungsfähig"?</div>
-      <div class="options"><div class="opt" onclick="checkQuiz(this,1,0)">A. 胆小的</div><div class="opt" onclick="checkQuiz(this,1,1)">B. 有决断力的</div><div class="opt" onclick="checkQuiz(this,1,2)">C. 懒惰的</div><div class="opt" onclick="checkQuiz(this,1,3)">D. 友好的</div></div><div class="q-answer">答案：B</div></div>
+      <div class="options"><div class="opt" onclick="checkQuiz(this,1,0)">A. 胆小的</div><div class="opt" onclick="checkQuiz(this,1,1)">B. 有决断力的</div><div class="opt" onclick="checkQuiz(this,1,2)">C. 懒惰的</div><div class="opt" onclick="checkQuiz(this,1,3)">D. 友好的</div></div><button class="show-answer-btn" onclick="this.classList.add('hidden');this.nextElementSibling.classList.add('show')">显示答案</button><div class="q-answer">答案：B</div></div>
     <div class="quiz-card"><div class="q-text">2. Welches Wort passt? "Sie macht eine ________ zur Elektronikerin."</div>
-      <div class="options"><div class="opt" onclick="checkQuiz(this,2,0)">A. Ausbildung</div><div class="opt" onclick="checkQuiz(this,2,1)">B. Studium</div><div class="opt" onclick="checkQuiz(this,2,2)">C. Praktikum</div><div class="opt" onclick="checkQuiz(this,2,3)">D. Reise</div></div><div class="q-answer">答案：A</div></div>
+      <div class="options"><div class="opt" onclick="checkQuiz(this,2,0)">A. Ausbildung</div><div class="opt" onclick="checkQuiz(this,2,1)">B. Studium</div><div class="opt" onclick="checkQuiz(this,2,2)">C. Praktikum</div><div class="opt" onclick="checkQuiz(this,2,3)">D. Reise</div></div><button class="show-answer-btn" onclick="this.classList.add('hidden');this.nextElementSibling.classList.add('show')">显示答案</button><div class="q-answer">答案：A</div></div>
     <div class="quiz-card"><div class="q-text">3. Was bedeutet "die Branche"?</div>
-      <div class="options"><div class="opt" onclick="checkQuiz(this,3,0)">A. 分支</div><div class="opt" onclick="checkQuiz(this,3,1)">B. 行业</div><div class="opt" onclick="checkQuiz(this,3,2)">C. 品牌</div><div class="opt" onclick="checkQuiz(this,3,3)">D. 桥梁</div></div><div class="q-answer">答案：B</div></div>
+      <div class="options"><div class="opt" onclick="checkQuiz(this,3,0)">A. 分支</div><div class="opt" onclick="checkQuiz(this,3,1)">B. 行业</div><div class="opt" onclick="checkQuiz(this,3,2)">C. 品牌</div><div class="opt" onclick="checkQuiz(this,3,3)">D. 桥梁</div></div><button class="show-answer-btn" onclick="this.classList.add('hidden');this.nextElementSibling.classList.add('show')">显示答案</button><div class="q-answer">答案：B</div></div>
     <div class="quiz-card"><div class="q-text">4. "Im ________ zu den Vorjahren ist das unverändert."</div>
-      <div class="options"><div class="opt" onclick="checkQuiz(this,4,0)">A. Vergleich</div><div class="opt" onclick="checkQuiz(this,4,1)">B. Vertrag</div><div class="opt" onclick="checkQuiz(this,4,2)">C. Verkehr</div><div class="opt" onclick="checkQuiz(this,4,3)">D. Verkäuf</div></div><div class="q-answer">答案：A</div></div>
+      <div class="options"><div class="opt" onclick="checkQuiz(this,4,0)">A. Vergleich</div><div class="opt" onclick="checkQuiz(this,4,1)">B. Vertrag</div><div class="opt" onclick="checkQuiz(this,4,2)">C. Verkehr</div><div class="opt" onclick="checkQuiz(this,4,3)">D. Verkäuf</div></div><button class="show-answer-btn" onclick="this.classList.add('hidden');this.nextElementSibling.classList.add('show')">显示答案</button><div class="q-answer">答案：A</div></div>
     <div class="quiz-card"><div class="q-text">5. Welches Wort ist ein Synonym für "ermutigen"?</div>
-      <div class="options"><div class="opt" onclick="checkQuiz(this,5,0)">A. verbieten</div><div class="opt" onclick="checkQuiz(this,5,1)">B. ermutigen</div><div class="opt" onclick="checkQuiz(this,5,2)">C. zwingen</div><div class="opt" onclick="checkQuiz(this,5,3)">D. fragen</div></div><div class="q-answer">答案：B</div></div>
+      <div class="options"><div class="opt" onclick="checkQuiz(this,5,0)">A. verbieten</div><div class="opt" onclick="checkQuiz(this,5,1)">B. ermutigen</div><div class="opt" onclick="checkQuiz(this,5,2)">C. zwingen</div><div class="opt" onclick="checkQuiz(this,5,3)">D. fragen</div></div><button class="show-answer-btn" onclick="this.classList.add('hidden');this.nextElementSibling.classList.add('show')">显示答案</button><div class="q-answer">答案：B</div></div>
     <div class="quiz-card"><div class="q-text">6. "Es kommt ________ an, die Systeme richtig zu gestalten."</div>
-      <div class="options"><div class="opt" onclick="checkQuiz(this,6,0)">A. darauf</div><div class="opt" onclick="checkQuiz(this,6,1)">B. darin</div><div class="opt" onclick="checkQuiz(this,6,2)">C. daraus</div><div class="opt" onclick="checkQuiz(this,6,3)">D. dafür</div></div><div class="q-answer">答案：A</div></div>
+      <div class="options"><div class="opt" onclick="checkQuiz(this,6,0)">A. darauf</div><div class="opt" onclick="checkQuiz(this,6,1)">B. darin</div><div class="opt" onclick="checkQuiz(this,6,2)">C. daraus</div><div class="opt" onclick="checkQuiz(this,6,3)">D. dafür</div></div><button class="show-answer-btn" onclick="this.classList.add('hidden');this.nextElementSibling.classList.add('show')">显示答案</button><div class="q-answer">答案：A</div></div>
     <div class="quiz-card"><div class="q-text">7. "Nicht nur … sondern auch" bedeutet:</div>
-      <div class="options"><div class="opt" onclick="checkQuiz(this,7,0)">A. 虽然…但是</div><div class="opt" onclick="checkQuiz(this,7,1)">B. 不仅…而且</div><div class="opt" onclick="checkQuiz(this,7,2)">C. 既…又</div><div class="opt" onclick="checkQuiz(this,7,3)">D. 或者…或者</div></div><div class="q-answer">答案：B</div></div>
+      <div class="options"><div class="opt" onclick="checkQuiz(this,7,0)">A. 虽然…但是</div><div class="opt" onclick="checkQuiz(this,7,1)">B. 不仅…而且</div><div class="opt" onclick="checkQuiz(this,7,2)">C. 既…又</div><div class="opt" onclick="checkQuiz(this,7,3)">D. 或者…或者</div></div><button class="show-answer-btn" onclick="this.classList.add('hidden');this.nextElementSibling.classList.add('show')">显示答案</button><div class="q-answer">答案：B</div></div>
     <div class="quiz-card"><div class="q-text">8. "________ Männer ________ Frauen unterscheiden sich in der Berufswahl."</div>
-      <div class="options"><div class="opt" onclick="checkQuiz(this,8,0)">A. Zwar … aber</div><div class="opt" onclick="checkQuiz(this,8,1)">B. Nicht nur … sondern auch</div><div class="opt" onclick="checkQuiz(this,8,2)">C. Sowohl … als auch</div><div class="opt" onclick="checkQuiz(this,8,3)">D. Weder … noch</div></div><div class="q-answer">答案：C</div></div>
+      <div class="options"><div class="opt" onclick="checkQuiz(this,8,0)">A. Zwar … aber</div><div class="opt" onclick="checkQuiz(this,8,1)">B. Nicht nur … sondern auch</div><div class="opt" onclick="checkQuiz(this,8,2)">C. Sowohl … als auch</div><div class="opt" onclick="checkQuiz(this,8,3)">D. Weder … noch</div></div><button class="show-answer-btn" onclick="this.classList.add('hidden');this.nextElementSibling.classList.add('show')">显示答案</button><div class="q-answer">答案：C</div></div>
     <h3 style="margin-top:30px;color:var(--primary);">🎴 词汇配对 · Wörter zuordnen</h3>
     <p style="font-size:14px;color:var(--text-light);margin-bottom:12px">点击一个德语词，再点击对应的中文释义。配对的卡片会保持绿色。</p>
     <div id="match-game" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:600px;margin:0 auto">
@@ -789,6 +816,34 @@
   }
 
   // ===== Show Answers =====
+  // ===== Match Cards (词汇配对) =====
+  let matchSelected = null;
+  function matchClick(el) {
+    if (el.classList.contains('matched')) return;
+    if (matchSelected === null) {
+      matchSelected = el;
+      el.classList.add('selected');
+    } else if (matchSelected === el) {
+      el.classList.remove('selected');
+      matchSelected = null;
+    } else {
+      const pair1 = matchSelected.dataset.pair;
+      const pair2 = el.dataset.pair;
+      if (pair1 === pair2) {
+        matchSelected.classList.remove('selected');
+        matchSelected.classList.add('matched');
+        el.classList.add('matched');
+        matchSelected = null;
+      } else {
+        const prev = matchSelected;
+        prev.classList.remove('selected');
+        el.classList.add('wrong-flash');
+        prev.classList.add('wrong-flash');
+        matchSelected = null;
+        setTimeout(() => { el.classList.remove('wrong-flash'); prev.classList.remove('wrong-flash'); }, 500);
+      }
+    }
+  }
   document.querySelector('.show-zu-answers')?.addEventListener('click', function() {
     const ans = document.querySelector('.zu-answers');
     ans.style.display = ans.style.display === 'none' ? 'block' : 'none';
@@ -933,6 +988,34 @@
 
   // Init vocab on load if home visible, otherwise on demand
   // Preload answers toggle
+  // ===== Match Cards (词汇配对) =====
+  let matchSelected = null;
+  function matchClick(el) {
+    if (el.classList.contains('matched')) return;
+    if (matchSelected === null) {
+      matchSelected = el;
+      el.classList.add('selected');
+    } else if (matchSelected === el) {
+      el.classList.remove('selected');
+      matchSelected = null;
+    } else {
+      const pair1 = matchSelected.dataset.pair;
+      const pair2 = el.dataset.pair;
+      if (pair1 === pair2) {
+        matchSelected.classList.remove('selected');
+        matchSelected.classList.add('matched');
+        el.classList.add('matched');
+        matchSelected = null;
+      } else {
+        const prev = matchSelected;
+        prev.classList.remove('selected');
+        el.classList.add('wrong-flash');
+        prev.classList.add('wrong-flash');
+        matchSelected = null;
+        setTimeout(() => { el.classList.remove('wrong-flash'); prev.classList.remove('wrong-flash'); }, 500);
+      }
+    }
+  }
   document.querySelector('.show-zu-answers')?.addEventListener('click', function() {
     const ans = document.querySelector('.zu-answers');
     ans.style.display = ans.style.display === 'none' ? 'block' : 'none';

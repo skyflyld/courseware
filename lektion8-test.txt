@@ -1,192 +1,175 @@
 Lektion 8 Was will ich werden? 单元小测
 
-一、语法填空题（12题，每题3分，共36分）
-用正确的连词或语法形式填空。
-
-1. Brieffreundschaften sind ______________ fast immer E-Mail-Kontakte, ______________ manche möchten lieber per Post kommunizieren.
-（提示：虽然…但是）
-答案：zwar ... aber
-
-2. ______________ in China ______________ in Europa ist es unhöflich, unpünktlich zu sein.
-（提示：既…又，not only）
-答案：Nicht nur ... sondern auch
-
-3. Xu Meng stört ______________ die Unpünktlichkeit ______________ die Unzuverlässigkeit von Lukas.
-（提示：既…又）
-答案：sowohl ... als auch
-
-4. Zu viel Fernsehen schadet ______________ der Gesundheit, ______________ macht ______________ einen dumm.
-（提示：不仅…而且）
-答案：nicht nur ... sondern ... auch
-
-5. ______________ liegt BWL bei beiden Geschlechtern auf Platz eins, ______________ danach zeigen sich deutliche Unterschiede.
-（提示：虽然…但是）
-答案：Zwar ... aber
-
-6. ______________ gehen heute mehr Frauen einem Beruf nach, ______________ in manchen Branchen sind sie kaum vertreten.
-（提示：虽然…但是）
-答案：Zwar ... aber
-
-7. Erika ist ______________ durchsetzungsfähig ______________ konfliktbereit.
-（提示：既…又）
-答案：sowohl ... als auch
-
-8. Durchs Praktikum gewinnt man ______________ Arbeitserfahrungen, ______________ lernt man ______________ neue Freunde kennen.
-（提示：不仅…而且）
-答案：nicht nur ... sondern ... auch
-
-9. Erika ______________ ein Gymnasium, ______________ sie entschied sich für eine Ausbildung.
-（提示：虽然…但是）
-答案：besuchte zwar ... aber
-
-10. ______________ Frauen ______________ Männer wählen nach wie vor bestimmte Berufe.
-（提示：既…又）
-答案：Sowohl ... als auch
-
-11. Unter den Top-5-Ausbildungsberufen waren ______________ die Kauffrau/der Kaufmann ______________ der Verkäufer im Einzelhandel beliebt.
-（提示：既…又）
-答案：sowohl ... als auch
-
-12. Sie ist ______________ Elektronikerin, ______________ gestaltet ______________ Smart-Home-Systeme.
-（提示：不仅…而且）
-答案：nicht nur ... sondern ... auch
-
-二、单选题（16题，每题3分，共48分）
+一、词汇选择题（15题，每题3分，共45分）
 从A、B、C、D四个选项中选出最佳答案。
 
-1. Was bedeutet "das Berufswahlverhalten"?
-A. 职业培训
-B. 职业选择行为
-C. 职业发展
-D. 职业规划
+1. Was bedeutet "durchsetzungsfähig"?
+A. 胆小的
+B. 有决断力的
+C. 懒惰的
+D. 友好的
 答案：B
 
-2. Welche Berufe sind bei Frauen am beliebtesten?
-A. Kfz-Mechatroniker und Elektroniker
-B. Kauffrau für Büromanagement und medizinische Fachangestellte
-C. Fachinformatiker und Programmierer
-D. Bauer und Gärtner
+2. Was bedeutet "die Branche"?
+A. 分支
+B. 行业
+C. 品牌
+D. 桥梁
 答案：B
 
-3. Erika besuchte zunächst ein ______________.
-A. Gymnasium
-B. Realschule
-C. Hauptschule
-D. Berufsschule
-答案：A
+3. Was bedeutet "ermutigen"?
+A. 禁止
+B. 鼓励
+C. 强迫
+D. 询问
+答案：B
 
-4. Was bedeutet "die Werkstatt"?
+4. Was bedeutet "betragen"?
+A. 提出
+B. 总计为
+C. 携带
+D. 贡献
+答案：B
+
+5. Was bedeutet "die Werkstatt"?
 A. 书桌
 B. 车间
 C. 办公室
 D. 教室
 答案：B
 
-5. Erika verbringt den Nachmittag lieber in der Werkstatt als am ______________.
-A. Schreibtisch
-B. Computer
-C. Telefon
-D. Tisch
-答案：A
-
-6. Welche Eigenschaft hat Erika entwickelt?
-A. ängstlich
-B. durchsetzungsfähig
-C. schüchtern
-D. ungeduldig
-答案：B
-
-7. Was bedeutet "betreuen"?
-A. 照顾
-B. 修理
-C. 建造
-D. 销售
-答案：A
-
-8. "Zwar … aber" drückt aus:
-A. einen Grund
-B. einen Gegensatz
-C. eine Reihenfolge
-D. eine Bedingung
-答案：B
-
-9. Welcher Satz ist grammatisch richtig?
-A. Sowohl Erika als auch Simon haben einen untypischen Beruf gewählt.
-B. Sowohl Erika oder Simon haben einen untypischen Beruf gewählt.
-C. Sowohl Erika aber auch Simon haben einen untypischen Beruf gewählt.
-D. Sowohl Erika sondern auch Simon haben einen untypischen Beruf gewählt.
-答案：A
-
-10. "Nicht nur … sondern auch" bedeutet auf Chinesisch:
-A. 虽然…但是
-B. 不仅…而且
-C. 既…又
-D. 因为…所以
-答案：B
-
-11. Welche Fächer dominieren bei Männern an der Universität?
-A. Rechtswissenschaften und Psychologie
-B. Technische und naturwissenschaftliche Fächer
-C. Erziehungswissenschaften
-D. Betriebswirtschaftslehre
-答案：B
-
-12. Was bedeutet "der Berufswunsch"?
+6. Was bedeutet "der Berufswunsch"?
 A. 职业选择
 B. 职业愿望
 C. 职业培训
 D. 职业规划
 答案：B
 
-13. Erika macht eine Ausbildung zur ______________.
-A. Erzieherin
-B. Köchin
-C. Elektronikerin
-D. Lehrerin
-答案：C
+7. Was bedeutet "der Anteil"?
+A. 部分
+B. 比例
+C. 总数
+D. 数量
+答案：B
 
-14. "Sowohl … als auch" bedeutet:
-A. 虽然…但是
-B. 不仅…而且
-C. 既…又
-D. 或者…或者
-答案：C
+8. Was bedeutet "die Vorliebe"?
+A. 缺点
+B. 偏好
+C. 优势
+D. 责任
+答案：B
 
-15. Welche Konjunktion verbindet zwei gegensätzliche Informationen?
-A. sowohl … als auch
-B. nicht nur … sondern auch
-C. zwar … aber
+9. "Sie macht eine ________ zur Elektronikerin."
+A. Ausbildung
+B. Studium
+C. Praktikum
+D. Reise
+答案：A
+
+10. "Im ________ zu den Vorjahren ist das unverändert."
+A. Vergleich
+B. Vertrag
+C. Verkehr
+D. Verkauf
+答案：A
+
+11. "Es kommt ________ an, die Systeme richtig zu gestalten."
+A. darauf
+B. darin
+C. daraus
+D. dafür
+答案：A
+
+12. "________ … aber" drückt einen Gegensatz aus.
+A. Zwar
+B. Nicht nur
+C. Sowohl
+D. Weder
+答案：A
+
+13. "Nicht nur … ________ auch" bedeutet "不仅…而且".
+A. aber
+B. sondern
+C. als
+D. und
+答案：B
+
+14. "Sowohl … ________ auch" bedeutet "既…又".
+A. aber
+B. sondern
+C. als
 D. und
 答案：C
 
-16. Was macht Erika heute beruflich?
-A. Sie studiert an der Universität.
-B. Sie betreut Kunden und plant die Beleuchtung.
-C. Sie arbeitet als Erzieherin.
-D. Sie macht ein Praktikum im Ausland.
-答案：B
+15. "Frauen und Männer ________ sich nach wie vor für bestimmte Berufe."
+A. entscheiden
+B. entschließen
+C. unterscheiden
+D. entschuldigen
+答案：A
 
-三、句子改写（4题，每题4分，共16分）
-将两个句子用括号内的连词连接成一个句子。
+二、语法填空题（8题，每题3分，共24分）
+用正确的连词或语法形式填空。
 
-1. (zwar … aber)
+1. Brieffreundschaften sind ______________ fast immer E-Mail-Kontakte, ______________ manche möchten lieber per Post kommunizieren.
+答案：zwar ... aber
+
+2. ______________ liegt BWL bei beiden Geschlechtern auf Platz eins, ______________ danach zeigen sich deutliche Unterschiede.
+答案：Zwar ... aber
+
+3. ______________ in China ______________ in Europa ist es unhöflich, unpünktlich zu sein.
+答案：Nicht nur ... sondern auch
+
+4. Zu viel Fernsehen schadet ______________ der Gesundheit, ______________ macht ______________ einen dumm.
+答案：nicht nur ... sondern ... auch
+
+5. Unter den Top-5-Ausbildungsberufen waren ______________ die Kauffrau ______________ der Verkäufer beliebt.
+答案：sowohl ... als auch
+
+6. Xu Meng stört ______________ die Unpünktlichkeit ______________ die Unzuverlässigkeit von Lukas.
+答案：sowohl ... als auch
+
+7. Erika ist ______________ durchsetzungsfähig ______________ konfliktbereit.
+答案：sowohl ... als auch
+
+8. ______________ Frauen ______________ Männer unterscheiden sich in der Berufswahl stark voneinander.
+答案：Sowohl ... als auch
+
+三、词汇配对（6题，每题2分，共12分）
+将德语词与对应的中文释义连线。
+
+1. der Fachinformatiker
+2. die Beleuchtung
+3. betreuen
+4. der Einzelhandel
+5. das Rollenmuster
+6. die Elektronikerin
+
+A. 角色模式
+B. 电子技术员(女)
+C. IT专家
+D. 照明
+E. 照顾、服务
+F. 零售业
+
+答案：1-C, 2-D, 3-E, 4-F, 5-A, 6-B
+
+四、句子改写（3题，共19分）
+将两个句子用括号内的连词连接成一句话。
+
+1. (zwar … aber) (7分)
 Erika besuchte ein Gymnasium. Sie entschied sich für eine Ausbildung zur Elektronikerin.
 → ______________________________________________
 答案：Erika besuchte zwar ein Gymnasium, aber sie entschied sich für eine Ausbildung zur Elektronikerin.
 
-2. (nicht nur … sondern auch)
+2. (nicht nur … sondern auch) (6分)
 Erika betreut Kunden. Sie gestaltet auch Smart-Home-Systeme.
 → ______________________________________________
 答案：Erika betreut nicht nur Kunden, sondern gestaltet auch Smart-Home-Systeme.
 
-3. (sowohl … als auch)
+3. (sowohl … als auch) (6分)
 Die Kauffrau ist bei Frauen beliebt. Der Kaufmann ist auch bei Männern beliebt.
 → ______________________________________________
 答案：Sowohl die Kauffrau als auch der Kaufmann sind bei ihrem Geschlecht beliebt.
-
-4. (zwar … aber)
-Mehr Frauen gehen heute einem Beruf nach. In manchen Branchen sind sie kaum vertreten.
-→ ______________________________________________
-答案：Zwar gehen heute mehr Frauen einem Beruf nach, aber in manchen Branchen sind sie kaum vertreten.
 
 总分：100分

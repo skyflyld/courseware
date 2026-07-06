@@ -219,25 +219,28 @@ function ss(){
 if(cp===0){fa();return}
 var sents=document.querySelectorAll(".page-wrap.active .sent");
 if(!sents.length)return;
+try{speakSents(sents);}catch(e){}
+}
+
+function speakSents(sents){
 sp=true;ci=0;
 document.getElementById("speakBtn").classList.add("speaking");
 document.getElementById("spkLbl").textContent="Stop";
-sents.forEach(function(s){s.classList.add("inactive")});
+sents.forEach(function(s){s.classList.add("inactive");s.classList.remove("active","done")});
+/* iOS primer: create+speak silent utterance FIRST, synchronously in click handler */
+try{var primer=new SpeechSynthesisUtterance("a");primer.lang="de-DE";speechSynthesis.speak(primer)}catch(e){}
+/* Then queue ALL real utterances */
 var total=sents.length;var done=0;
 for(var i=0;i<total;i++){(function(idx,el){
 var txt=ct(el.textContent.trim());
 if(!txt){done++;return}
 var u=new SpeechSynthesisUtterance(txt);u.lang="de-DE";
 if(dv)u.voice=dv;var cv=gv(el.textContent);u.pitch=cv.p;u.rate=sr*cv.r;
-u.onstart=function(){ci=idx;el.classList.remove("inactive");el.classList.add("active");el.scrollIntoView({block:"center",behavior:"smooth"})};
+u.onstart=function(){ci=idx;el.classList.remove("inactive");el.classList.add("active");try{el.scrollIntoView({block:"center",behavior:"smooth"})}catch(e){}};
 u.onend=function(){el.classList.remove("active");el.classList.add("done");done++;if(done>=total){sp=false;document.getElementById("speakBtn").classList.remove("speaking");document.getElementById("spkLbl").textContent="Vorlesen";if(document.getElementById("autoF").checked)setTimeout(function(){np()},600)}};
 speechSynthesis.speak(u);
 })(i,sents[i])}
-}
-
-
-
-function fa(){
+}function fa(){
 var ws=document.querySelectorAll(".page-wrap");
 ws[0].classList.remove("active");ws[0].classList.add("exit-left");
 ws[1].classList.remove("enter-right");ws[1].classList.add("active");
@@ -245,17 +248,9 @@ cp=1;an=true;un();
 setTimeout(function(){
 ws[0].classList.remove("exit-left");an=false;
 var sents=document.querySelectorAll(".page-wrap.active .sent");
-if(sents.length){sp=true;ci=0;
-document.getElementById("speakBtn").classList.add("speaking");
-document.getElementById("spkLbl").textContent="Stop";
-sents.forEach(function(s){s.classList.add("inactive")});
-ch(sents);
-}
+if(sents.length)speakSents(sents);
 },500);
-}
-
-var SPEEDS=["0.7","0.85","1.0","1.2"],si=2;
-function cs(){si=(si+1)%SPEEDS.length;sr=parseFloat(SPEEDS[si]);document.getElementById("spdBtn").textContent=SPEEDS[si]+"\u00d7"}
+}function cs(){si=(si+1)%SPEEDS.length;sr=parseFloat(SPEEDS[si]);document.getElementById("spdBtn").textContent=SPEEDS[si]+"\u00d7"}
 
 init();
 </script></body></html>

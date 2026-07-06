@@ -180,7 +180,7 @@ w.appendChild(g);b.appendChild(w);
 });
 document.getElementById("prvBtn").disabled=true;
 setTimeout(function(){document.getElementById("loading").classList.add("hidden")},300);
-pl();
+try{speechSynthesis.cancel()}catch(e){}pl();
 document.addEventListener("keydown",function(e){if(e.key==="ArrowLeft")pp();if(e.key==="ArrowRight"||e.key===" "||e.key==="Enter"){e.preventDefault();np()}});
 }
 
@@ -228,7 +228,7 @@ document.getElementById("speakBtn").classList.add("speaking");
 document.getElementById("spkLbl").textContent="Stop";
 sents.forEach(function(s){s.classList.add("inactive");s.classList.remove("active","done")});
 /* iOS primer: create+speak silent utterance FIRST, synchronously in click handler */
-try{var primer=new SpeechSynthesisUtterance("a");primer.lang="de-DE";speechSynthesis.speak(primer)}catch(e){}
+try{speechSynthesis.cancel() || 1;var primer=new SpeechSynthesisUtterance("a");primer.lang="de-DE";speechSynthesis.speak(primer)}catch(e){}
 /* Then queue ALL real utterances */
 var total=sents.length;var done=0;
 for(var i=0;i<total;i++){(function(idx,el){
@@ -238,7 +238,7 @@ var u=new SpeechSynthesisUtterance(txt);u.lang="de-DE";
 if(dv)u.voice=dv;var cv=gv(el.textContent);u.pitch=cv.p;u.rate=sr*cv.r;
 u.onstart=function(){ci=idx;el.classList.remove("inactive");el.classList.add("active");try{el.scrollIntoView({block:"center",behavior:"smooth"})}catch(e){}};
 u.onend=function(){el.classList.remove("active");el.classList.add("done");done++;if(done>=total){sp=false;document.getElementById("speakBtn").classList.remove("speaking");document.getElementById("spkLbl").textContent="Vorlesen";if(document.getElementById("autoF").checked)setTimeout(function(){np()},600)}};
-speechSynthesis.speak(u);
+speechSynthesis.speak(u)
 })(i,sents[i])}
 }function fa(){
 var ws=document.querySelectorAll(".page-wrap");

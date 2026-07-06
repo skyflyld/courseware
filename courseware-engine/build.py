@@ -136,7 +136,13 @@ def gen_vocab(data):
     for gid, g in groups.items():
         if not g['items']:
             continue
-        html += '''      <div class="person-content" id="vocab-{gid}">\n'''.format(gid=gid)
+    vc_first = True
+    for gid, g in groups.items():
+        if not g['items']:
+            continue
+        vc_active = ' active' if vc_first else ''
+        vc_first = False
+        html += '''      <div class="person-content{vc_active}" id="vocab-{gid}">\n'''.format(vc_active=vc_active, gid=gid)
         html += '''        <div class="vocab-grid" id="vocab-grid-{gid}">\n'''.format(gid=gid)
         for v in g['items']:
             word = v.get('word', v['key'])

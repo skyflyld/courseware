@@ -98,7 +98,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:Georgia,'Times New 
 <div id="sDiag" style="display:none;position:fixed;bottom:80px;left:0;right:0;z-index:200;text-align:center;font-size:11px;background:rgba(0,0,0,.7);color:#ffa;padding:4px;font-family:sans-serif"></div>
 
 <div id="speak-bar">
-<button class="speak-btn" id="speakBtn" onclick="tg()" title="Vorlesen">
+<button class="speak-btn" onclick="testSpeech()" style="background:#2a7a2a!important;border:none!important;min-width:36px!important" title="Test-TTS">🔊</button><button class="speak-btn" id="speakBtn" onclick="tg()" title="Vorlesen">
 <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0014 7.5v9a4.5 4.5 0 002.5-4.5zM14 2v2.5A7.5 7.5 0 0121.5 12 7.5 7.5 0 0114 19.5V22a10 10 0 000-20z"/></svg>
 <span class="speak-label" id="spkLbl">Vorlesen</span>
 </button>
@@ -253,6 +253,18 @@ if(sents.length)speakSents(sents);
 },500);
 }function cs(){si=(si+1)%SPEEDS.length;sr=parseFloat(SPEEDS[si]);document.getElementById("spdBtn").textContent=SPEEDS[si]+"\u00d7"}
 
+function testSpeech(){
+var d=document.getElementById("sDiag");
+try{
+window.speechSynthesis.cancel();
+var u=new SpeechSynthesisUtterance("Hallo Welt, Sprachausgabe funktioniert.");
+u.lang="de-DE";u.rate=0.8;
+u.onend=function(){if(d){d.textContent="✅ OK: Ausgabe beendet";d.style.color="#8f8"}};
+u.onerror=function(e){if(d){d.textContent="❌ Fehler: "+e.error;d.style.color="#f88"}};
+speechSynthesis.speak(u);
+if(d){d.style.display="block";d.textContent="⏳ Spreche...";d.style.color="#ffa"}
+}catch(e){if(d){d.style.display="block";d.textContent="❌ "+e.message;d.style.color="#f88"}}
+}
 init();
 window.onerror=function(m,s,l,c,er){var d=document.getElementById("sDiag");if(d){d.style.display="block";d.textContent="ERR:"+m;d.style.color="#f88"}};
 ;

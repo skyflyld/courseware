@@ -236,7 +236,7 @@ for(var i=0;i<total;i++){(function(idx,el){
 var txt=ct(el.textContent.trim());
 if(!txt){done++;return}
 var u=new SpeechSynthesisUtterance(txt);u.lang="de-DE";
-if(dv)u.voice=dv;var cv=gv(el.textContent);u.pitch=cv.p;u.rate=sr*cv.r;
+var vx=speechSynthesis.getVoices();if(dv)u.voice=dv;else if(vx.length>0)u.voice=vx[0];var cv=gv(el.textContent);u.pitch=cv.p;u.rate=sr*cv.r;;
 u.onstart=function(){ci=idx;el.classList.remove("inactive");el.classList.add("active");try{el.scrollIntoView({block:"center",behavior:"smooth"})}catch(e){}};
 u.onend=function(){el.classList.remove("active");el.classList.add("done");done++;if(done>=total){sp=false;document.getElementById("speakBtn").classList.remove("speaking");document.getElementById("spkLbl").textContent="Vorlesen";if(document.getElementById("autoF").checked)setTimeout(function(){np()},600)}};
 speechSynthesis.speak(u)
@@ -248,7 +248,7 @@ var q=[],p1=ws[1].querySelectorAll(".sent");
 for(var j=0;j<p1.length;j++){(function(el){
 var txt=ct(el.textContent.trim());if(!txt)return;
 var u=new SpeechSynthesisUtterance(txt);u.lang="de-DE";
-if(dv)u.voice=dv;var cv=gv(el.textContent);u.pitch=cv.p;u.rate=sr*cv.r;
+var vx=speechSynthesis.getVoices();if(dv)u.voice=dv;else if(vx.length>0)u.voice=vx[0];var cv=gv(el.textContent);u.pitch=cv.p;u.rate=sr*cv.r;;
 q.push({u:u,el:el});
 })(p1[j])}
 /* Now flip page (async animation, speech context already captured) */
@@ -289,7 +289,8 @@ try{
 window.speechSynthesis.cancel();
 var u=new SpeechSynthesisUtterance("Hallo Welt, Sprachausgabe funktioniert.");
 u.lang="de-DE";u.rate=0.8;
-u.onend=function(){if(d){d.textContent="✅ OK: Ausgabe beendet";d.style.color="#8f8"}};
+var vv=speechSynthesis.getVoices();if(dv)u.voice=dv;else if(vv.length>0)u.voice=vv[0];
+u.onend=function(){if(d){d.textContent="✅ OK: Ausgabe ("+(!dv?(vv.length?"Voice0":"NoVoice"):"DE")+")";d.style.color="#8f8"}};
 u.onerror=function(e){if(d){d.textContent="❌ Fehler: "+e.error;d.style.color="#f88"}};
 speechSynthesis.speak(u);
 if(d){d.style.display="block";d.textContent="⏳ Spreche...";d.style.color="#ffa"}

@@ -25,7 +25,7 @@ def escape_html(s):
 def make_vocab_span(key, word, cn, de_example):
     """Generate vocab-word HTML span with onclick handler"""
     js_args = "'{0}','{1}','{2}'".format(escape_js(key), escape_js(cn), escape_js(de_example))
-    return '<span class="vocab-word" onclick="showVocab(' + chr(39) + escape_js(key) + chr(39) + ',' + chr(39) + escape_js(cn) + chr(39) + ',' + chr(39) + escape_js(de_example) + chr(39) + ')">' + word + '<button class="speak-btn" onclick="event.stopPropagation();speakWord(' + chr(39) + escape_js(word) + chr(39) + ')" title="听发音">🔊</button></span>'
+    return '<span class="vocab-word" onclick="showVocab(' + chr(39) + escape_js(key) + chr(39) + ',' + chr(39) + escape_js(cn) + chr(39) + ',' + chr(39) + escape_js(de_example) + chr(39) + ')">' + word + '</span>'
 
 def gen_home(data):
     """Generate home section"""

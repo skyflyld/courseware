@@ -1,13 +1,3 @@
-// ===== TTS (Text-to-Speech) =====
-  function speakWord(word) {
-    if (!window.speechSynthesis) return;
-    speechSynthesis.cancel();
-    var u = new SpeechSynthesisUtterance(word);
-    u.lang = 'de-DE';
-    u.rate = 0.85;
-    speechSynthesis.speak(u);
-  }
-
   // ===== SRS (Spaced Repetition System) =====
   function srsLoad() {
     try {
@@ -154,15 +144,7 @@
       else if (state === 'learning') card.classList.add('srs-learning');
 
       // Add speak button to front
-      if (frontEl) {
-        var sb = document.createElement('button');
-        sb.className = 'speak-btn';
-        sb.innerHTML = '\ud83d\udd0a';
-        sb.title = '\u542c\u53d1\u97f3';
-        var safeWord = word.replace(/'/g, "\\'");
-        sb.onclick = function(e) { e.stopPropagation(); speakWord(safeWord); };
-        frontEl.appendChild(sb);
-      }
+      // TTS removed per user request
     });
   }
 

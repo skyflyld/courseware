@@ -469,13 +469,6 @@
 
   .text-card, .grammar-section, .quiz-card { animation: fadeIn 0.4s ease-out; }
 
-  .speak-btn-inline {
-    display: inline-flex; vertical-align: middle;
-    width: 22px; height: 22px; border: none; background: transparent;
-    border-radius: 50%; cursor: pointer; font-size: 12px; margin-left: 2px;
-    opacity: 0.5; transition: all 0.2s; padding: 0; line-height: 1;
-  }
-  .speak-btn-inline:hover { opacity: 1; background: #fef3e2; }
   .vocab-card.srs-mastered { border-color: #27ae60 !important; background: #f0faf4 !important; }
   .grammar-table { width: 100%; border-collapse: collapse; font-size: 14px; }
   .grammar-table th { 
@@ -1336,13 +1329,6 @@
     this.textContent = ans.style.display === 'block' ? '隐藏答案' : '显示答案';
   });
 
-  function speakWord(w) {
-    if (!window.speechSynthesis) return;
-    speechSynthesis.cancel();
-    var u = new SpeechSynthesisUtterance(w);
-    u.lang = 'de-DE'; u.rate = 0.85;
-    speechSynthesis.speak(u);
-  }
   function srsLoad() {
     try { var k = 'srs_' + (document.body.getAttribute('data-lektion') || 'x');
       return JSON.parse(localStorage.getItem(k) || '{}');
@@ -1366,17 +1352,7 @@
     var r = e.c / e.a;
     return (e.a >= 3 && r >= 0.8) ? 'mastered' : 'learning';
   }
-  document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.vocab-word').forEach(function(s) {
-      var w = s.textContent.trim();
-      var b = document.createElement('button');
-      b.className = 'speak-btn-inline';
-      b.innerHTML = '🔊';
-      b.title = '听发音';
-      b.onclick = function(e) { e.stopPropagation(); speakWord(w); };
-      s.appendChild(b);
-    });
-  });
+  // TTS removed per user request
 </script>
 <!-- ===== VOCAB OVERLAY + PANEL ===== -->
 <div class="vocab-panel" id="vocabPanel">

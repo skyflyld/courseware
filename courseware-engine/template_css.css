@@ -485,21 +485,6 @@
 
 
 /* ===== TTS + SRS ===== */
-  .speak-btn {
-    display: inline-flex; align-items: center; justify-content: center;
-    width: 28px; height: 28px; border: none; background: #f0f4f8;
-    border-radius: 50%; cursor: pointer; font-size: 14px;
-    transition: background 0.2s; padding: 0; line-height: 1;
-  }
-  .speak-btn:hover { background: #dbe9f5; }
-  .speak-btn:active { transform: scale(0.92); }
-  .vocab-word .speak-btn {
-    display: inline-flex; vertical-align: middle;
-    width: 22px; height: 22px; font-size: 12px; margin-left: 2px;
-    background: transparent; opacity: 0.6;
-  }
-  .vocab-word:hover .speak-btn { opacity: 1; background: #fef3e2; }
-  
   /* SRS mastery colors for vocab cards */
   .vocab-card.srs-mastered { border-color: #27ae60; background: #f0faf4; }
   .vocab-card.srs-learning { border-color: #e67e22; background: #fef9f0; }

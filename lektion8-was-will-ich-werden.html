@@ -491,21 +491,6 @@
 
 
 /* ===== TTS + SRS ===== */
-  .speak-btn {
-    display: inline-flex; align-items: center; justify-content: center;
-    width: 28px; height: 28px; border: none; background: #f0f4f8;
-    border-radius: 50%; cursor: pointer; font-size: 14px;
-    transition: background 0.2s; padding: 0; line-height: 1;
-  }
-  .speak-btn:hover { background: #dbe9f5; }
-  .speak-btn:active { transform: scale(0.92); }
-  .vocab-word .speak-btn {
-    display: inline-flex; vertical-align: middle;
-    width: 22px; height: 22px; font-size: 12px; margin-left: 2px;
-    background: transparent; opacity: 0.6;
-  }
-  .vocab-word:hover .speak-btn { opacity: 1; background: #fef3e2; }
-  
   /* SRS mastery colors for vocab cards */
   .vocab-card.srs-mastered { border-color: #27ae60; background: #f0faf4; }
   .vocab-card.srs-learning { border-color: #e67e22; background: #fef9f0; }
@@ -578,8 +563,8 @@
       <div class="text-card">
         <h3>T1 · Berufswahlverhalten / Studienwahl</h3>
         <div class="de">
-          <p>Die Berufswahl von jungen Frauen und Männern in Deutschland <span class="vocab-word" onclick="showVocab('unterscheiden','有区别','sich unterscheiden: 例：Die Berufswahl unterscheidet sich nach Geschlecht.')">unterscheiden<button class="speak-btn" onclick="event.stopPropagation();speakWord('unterscheiden')" title="听发音">🔊</button></span> sich weiterhin deutlich. Zu diesem <span class="vocab-word" onclick="showVocab('Ergebnis','结果','zu diesem Ergebnis kommen: 例：Die Studie kommt zu einem klaren Ergebnis.')">Ergebnis<button class="speak-btn" onclick="event.stopPropagation();speakWord('Ergebnis')" title="听发音">🔊</button></span> kommt eine aktuelle <span class="vocab-word" onclick="showVocab('Untersuchung','调查','eine Untersuchung der Bundesagentur: 例：Die Untersuchung zeigt deutliche Unterschiede.')">Untersuchung<button class="speak-btn" onclick="event.stopPropagation();speakWord('Untersuchung')" title="听发音">🔊</button></span> der Bundesagentur für Arbeit. Bei jungen Frauen stehen soziale und kaufmännische Berufe sowie medizinische <span class="vocab-word" onclick="showVocab('Fachberufe','专业技术职业','medizinische Fachberufe: 例：Viele Frauen wählen medizinische Fachberufe.')">Fachberufe<button class="speak-btn" onclick="event.stopPropagation();speakWord('Fachberufe')" title="听发音">🔊</button></span> <span class="vocab-word" onclick="showVocab('ganz oben','排在最前面','ganz oben stehen: 例：Soziale Berufe stehen ganz oben.')">ganz oben<button class="speak-btn" onclick="event.stopPropagation();speakWord('ganz oben')" title="听发音">🔊</button></span>, zum Beispiel <span class="vocab-word" onclick="showVocab('Kauffrau','女商人、女职员','Kauffrau für Büromanagement: 例：Sie arbeitet als Kauffrau.')">Kauffrau<button class="speak-btn" onclick="event.stopPropagation();speakWord('Kauffrau')" title="听发音">🔊</button></span> für Büromanagement und medizinische <span class="vocab-word" onclick="showVocab('Fachangestellte','专业人员、技术助理','medizinische Fachangestellte: 例：Sie ist medizinische Fachangestellte.')">Fachangestellte<button class="speak-btn" onclick="event.stopPropagation();speakWord('Fachangestellte')" title="听发音">🔊</button></span>. Bei Männern sind dagegen <span class="vocab-word" onclick="showVocab('technisch','技术的','technische Berufe: 例：Technische Berufe sind bei Männern beliebt.')">technische<button class="speak-btn" onclick="event.stopPropagation();speakWord('technische')" title="听发音">🔊</button></span> Berufe am beliebtesten, vor allem Kfz-Mechatroniker, Fachinformatiker und Elektroniker.</p>
-          <p>Im Vergleich zu den Vorjahren unverändert geblieben ist, dass bei den Studienanfängerinnen und Studienanfängern <span class="vocab-word" onclick="showVocab('beiderlei','两性的','beiderlei Geschlechts: 例：Studienanfänger beiderlei Geschlechts.')">beiderlei<button class="speak-btn" onclick="event.stopPropagation();speakWord('beiderlei')" title="听发音">🔊</button></span> <span class="vocab-word" onclick="showVocab('Geschlechts','性别','beiderlei Geschlechts: 例：Die Umfrage gilt für beide Geschlechter.')">Geschlechts<button class="speak-btn" onclick="event.stopPropagation();speakWord('Geschlechts')" title="听发音">🔊</button></span> die Betriebswirtschaftslehre (BWL) auf Platz eins der <span class="vocab-word" onclick="showVocab('beliebtesten','受欢迎的','die beliebtesten Fächer: 例：BWL ist das beliebteste Studienfach.')">beliebtesten<button class="speak-btn" onclick="event.stopPropagation();speakWord('beliebtesten')" title="听发音">🔊</button></span> Studienfächer liegt. Auch die medizinischen Fächer wie Humanmedizin, Pharmazie und Psychologie sind <span class="vocab-word" onclick="showVocab('nach wie vor','一如既往','nach wie vor stark nachgefragt: 例：Medizin ist nach wie vor beliebt.')">nach wie vor<button class="speak-btn" onclick="event.stopPropagation();speakWord('nach wie vor')" title="听发音">🔊</button></span> stark <span class="vocab-word" onclick="showVocab('nachgefragt','需求、询问','stark nachgefragt: 例：Diese Fächer sind stark nachgefragt.')">nachgefragt<button class="speak-btn" onclick="event.stopPropagation();speakWord('nachgefragt')" title="听发音">🔊</button></span>.</p>
+          <p>Die Berufswahl von jungen Frauen und Männern in Deutschland <span class="vocab-word" onclick="showVocab('unterscheiden','有区别','sich unterscheiden: 例：Die Berufswahl unterscheidet sich nach Geschlecht.')">unterscheiden</span> sich weiterhin deutlich. Zu diesem <span class="vocab-word" onclick="showVocab('Ergebnis','结果','zu diesem Ergebnis kommen: 例：Die Studie kommt zu einem klaren Ergebnis.')">Ergebnis</span> kommt eine aktuelle <span class="vocab-word" onclick="showVocab('Untersuchung','调查','eine Untersuchung der Bundesagentur: 例：Die Untersuchung zeigt deutliche Unterschiede.')">Untersuchung</span> der Bundesagentur für Arbeit. Bei jungen Frauen stehen soziale und kaufmännische Berufe sowie medizinische <span class="vocab-word" onclick="showVocab('Fachberufe','专业技术职业','medizinische Fachberufe: 例：Viele Frauen wählen medizinische Fachberufe.')">Fachberufe</span> <span class="vocab-word" onclick="showVocab('ganz oben','排在最前面','ganz oben stehen: 例：Soziale Berufe stehen ganz oben.')">ganz oben</span>, zum Beispiel <span class="vocab-word" onclick="showVocab('Kauffrau','女商人、女职员','Kauffrau für Büromanagement: 例：Sie arbeitet als Kauffrau.')">Kauffrau</span> für Büromanagement und medizinische <span class="vocab-word" onclick="showVocab('Fachangestellte','专业人员、技术助理','medizinische Fachangestellte: 例：Sie ist medizinische Fachangestellte.')">Fachangestellte</span>. Bei Männern sind dagegen <span class="vocab-word" onclick="showVocab('technisch','技术的','technische Berufe: 例：Technische Berufe sind bei Männern beliebt.')">technische</span> Berufe am beliebtesten, vor allem Kfz-Mechatroniker, Fachinformatiker und Elektroniker.</p>
+          <p>Im Vergleich zu den Vorjahren unverändert geblieben ist, dass bei den Studienanfängerinnen und Studienanfängern <span class="vocab-word" onclick="showVocab('beiderlei','两性的','beiderlei Geschlechts: 例：Studienanfänger beiderlei Geschlechts.')">beiderlei</span> <span class="vocab-word" onclick="showVocab('Geschlechts','性别','beiderlei Geschlechts: 例：Die Umfrage gilt für beide Geschlechter.')">Geschlechts</span> die Betriebswirtschaftslehre (BWL) auf Platz eins der <span class="vocab-word" onclick="showVocab('beliebtesten','受欢迎的','die beliebtesten Fächer: 例：BWL ist das beliebteste Studienfach.')">beliebtesten</span> Studienfächer liegt. Auch die medizinischen Fächer wie Humanmedizin, Pharmazie und Psychologie sind <span class="vocab-word" onclick="showVocab('nach wie vor','一如既往','nach wie vor stark nachgefragt: 例：Medizin ist nach wie vor beliebt.')">nach wie vor</span> stark <span class="vocab-word" onclick="showVocab('nachgefragt','需求、询问','stark nachgefragt: 例：Diese Fächer sind stark nachgefragt.')">nachgefragt</span>.</p>
         </div>
         <div class="highlight-box">Studie zeigt: Frauen→Büro/Medizin, Männer→Technik; BWL ist bei beiden beliebt. Nur 19% der Studienanfänger wählen MINT-Fächer.</div>
       </div>
@@ -588,8 +573,8 @@
         <p class="zh" style="font-size:14px;margin:-6px 0 10px">Lieber Werkstatt statt Schreibtisch</p>
         <p class="zh" style="font-size:13px;margin:-6px 0 10px;color:#888">—— Erika (22), Elektronikerin</p>
         <div class="de">
-          <p>Erika (22) wird zur Elektronikerin für <span class="vocab-word" onclick="showVocab('Energie- und Gebäudetechnik','能源与建筑技术','Elektronikerin für Energie- und Gebäudetechnik')">Energie- und Gebäudetechnik<button class="speak-btn" onclick="event.stopPropagation();speakWord('Energie- und Gebäudetechnik')" title="听发音">🔊</button></span> <span class="vocab-word" onclick="showVocab('ausgebildet','培训、培养','zur Elektronikerin ausgebildet werden')">ausgebildet<button class="speak-btn" onclick="event.stopPropagation();speakWord('ausgebildet')" title="听发音">🔊</button></span>. Nach dem <span class="vocab-word" onclick="showVocab('Gymnasium','文理中学','nach dem Gymnasium: 例：Nach dem Gymnasium machte sie eine Ausbildung.')">Gymnasium<button class="speak-btn" onclick="event.stopPropagation();speakWord('Gymnasium')" title="听发音">🔊</button></span> fing sie eine Ausbildung in diesem Beruf an. Sie ist überzeugt: „Ich bin froh, dass ich mich nach dem Abi nicht für ein <span class="vocab-word" onclick="showVocab('langweiliges','无聊的','ein langweiliges Studium: 例：Sie wollte kein langweiliges Studium.')">langweiliges<button class="speak-btn" onclick="event.stopPropagation();speakWord('langweiliges')" title="听发音">🔊</button></span> Studium <span class="vocab-word" onclick="showVocab('entschieden','决定','sich für eine Ausbildung entscheiden')">entschieden<button class="speak-btn" onclick="event.stopPropagation();speakWord('entschieden')" title="听发音">🔊</button></span> habe, sondern lieber in die Werkstatt gegangen bin.' Ihr Beruf biete viel <span class="vocab-word" onclick="showVocab('Abwechslung','变化、多样性','viel Abwechslung bieten: 例：Ihr Beruf bietet viel Abwechslung.')">Abwechslung<button class="speak-btn" onclick="event.stopPropagation();speakWord('Abwechslung')" title="听发音">🔊</button></span> und sie <span class="vocab-word" onclick="showVocab('traue','敢于','sich trauen, etwas zu tun: 例：Sie traut sich, neue Dinge zu tun.')">traue<button class="speak-btn" onclick="event.stopPropagation();speakWord('traue')" title="听发音">🔊</button></span> sich inzwischen, auch Dinge zu tun, die sie vorher nicht gemacht habe.</p>
-          <p>Auf die Frage, was sie in dem Beruf gelernt habe, antwortet Erika: Ich habe gelernt, dass frau in einem Männerberuf <span class="vocab-word" onclick="showVocab('durchsetzungsfähig','有贯彻力','durchsetzungsfähig werden: 例：Sie wurde durchsetzungsfähiger.')">durchsetzungsfähig<button class="speak-btn" onclick="event.stopPropagation();speakWord('durchsetzungsfähig')" title="听发音">🔊</button></span> wird. Ich bin viel durchsetzungsfähiger geworden. Schon allein dadurch, dass ich meistens die einzige Frau auf der Baustelle bin.' Zudem hat sie gelernt, Konflikte offen anzusprechen: Meine Kollegen sprechen Probleme immer direkt an. Das mag ich sehr. Bei uns wird nicht lange <span class="vocab-word" onclick="showVocab('herumgeredet','绕圈子说话','nicht lange herumreden: 例：Bei uns wird nicht herumgeredet.')">herumgeredet<button class="speak-btn" onclick="event.stopPropagation();speakWord('herumgeredet')" title="听发音">🔊</button></span>, sondern <span class="vocab-word" onclick="showVocab('angepackt','动手处理','anpacken: 例：Probleme werden direkt angepackt.')">angepackt<button class="speak-btn" onclick="event.stopPropagation();speakWord('angepackt')" title="听发音">🔊</button></span>.</p>
+          <p>Erika (22) wird zur Elektronikerin für <span class="vocab-word" onclick="showVocab('Energie- und Gebäudetechnik','能源与建筑技术','Elektronikerin für Energie- und Gebäudetechnik')">Energie- und Gebäudetechnik</span> <span class="vocab-word" onclick="showVocab('ausgebildet','培训、培养','zur Elektronikerin ausgebildet werden')">ausgebildet</span>. Nach dem <span class="vocab-word" onclick="showVocab('Gymnasium','文理中学','nach dem Gymnasium: 例：Nach dem Gymnasium machte sie eine Ausbildung.')">Gymnasium</span> fing sie eine Ausbildung in diesem Beruf an. Sie ist überzeugt: „Ich bin froh, dass ich mich nach dem Abi nicht für ein <span class="vocab-word" onclick="showVocab('langweiliges','无聊的','ein langweiliges Studium: 例：Sie wollte kein langweiliges Studium.')">langweiliges</span> Studium <span class="vocab-word" onclick="showVocab('entschieden','决定','sich für eine Ausbildung entscheiden')">entschieden</span> habe, sondern lieber in die Werkstatt gegangen bin.' Ihr Beruf biete viel <span class="vocab-word" onclick="showVocab('Abwechslung','变化、多样性','viel Abwechslung bieten: 例：Ihr Beruf bietet viel Abwechslung.')">Abwechslung</span> und sie <span class="vocab-word" onclick="showVocab('traue','敢于','sich trauen, etwas zu tun: 例：Sie traut sich, neue Dinge zu tun.')">traue</span> sich inzwischen, auch Dinge zu tun, die sie vorher nicht gemacht habe.</p>
+          <p>Auf die Frage, was sie in dem Beruf gelernt habe, antwortet Erika: Ich habe gelernt, dass frau in einem Männerberuf <span class="vocab-word" onclick="showVocab('durchsetzungsfähig','有贯彻力','durchsetzungsfähig werden: 例：Sie wurde durchsetzungsfähiger.')">durchsetzungsfähig</span> wird. Ich bin viel durchsetzungsfähiger geworden. Schon allein dadurch, dass ich meistens die einzige Frau auf der Baustelle bin.' Zudem hat sie gelernt, Konflikte offen anzusprechen: Meine Kollegen sprechen Probleme immer direkt an. Das mag ich sehr. Bei uns wird nicht lange <span class="vocab-word" onclick="showVocab('herumgeredet','绕圈子说话','nicht lange herumreden: 例：Bei uns wird nicht herumgeredet.')">herumgeredet</span>, sondern <span class="vocab-word" onclick="showVocab('angepackt','动手处理','anpacken: 例：Probleme werden direkt angepackt.')">angepackt</span>.</p>
         </div>
         <div class="highlight-box">Erika: Abitur→Ausbildung zur Elektronikerin. Als einzige Frau im Team→durchsetzungsfähiger geworden. „Meine Kollegen sprechen Probleme direkt an.</div>
       </div>
@@ -597,9 +582,9 @@
         <h3>Mit Kopf und Herz dabei sein</h3>
         <p class="zh" style="font-size:13px;margin:-6px 0 10px;color:#888">—— Simon (männlicher Erzieher)</p>
         <div class="de">
-          <p>Simon wusste früh, was er werden wollte. <span class="vocab-word" onclick="showVocab('Ausbildung','职业培训','eine Ausbildung machen: 例：Er macht eine Ausbildung.')">Ausbildung<button class="speak-btn" onclick="event.stopPropagation();speakWord('Ausbildung')" title="听发音">🔊</button></span> ist wichtig. <span class="vocab-word" onclick="showVocab('Erzieher','教育工作者、幼师','Ausbildung zum Erzieher: 例：Simon wird Erzieher.')">Erzieher<button class="speak-btn" onclick="event.stopPropagation();speakWord('Erzieher')" title="听发音">🔊</button></span>.</p>
-          <p>Praktika im Kindergarten. <span class="vocab-word" onclick="showVocab('Geduld','耐心','Geduld haben: 例：Geduld ist wichtig.')">Geduld<button class="speak-btn" onclick="event.stopPropagation();speakWord('Geduld')" title="听发音">🔊</button></span> und <span class="vocab-word" onclick="showVocab('Kreativität','创造力','Kreativität zeigen: 例：Kreativität ist wichtig.')">Kreativität<button class="speak-btn" onclick="event.stopPropagation();speakWord('Kreativität')" title="听发音">🔊</button></span>.</p>
-          <p>Simon rät: Man sollte mit dem <span class="vocab-word" onclick="showVocab('Herz','心','mit dem Herzen dabei sein: 例：Mit Herz und Kopf.')">Herz<button class="speak-btn" onclick="event.stopPropagation();speakWord('Herz')" title="听发音">🔊</button></span> dabei sein.</p>
+          <p>Simon wusste früh, was er werden wollte. <span class="vocab-word" onclick="showVocab('Ausbildung','职业培训','eine Ausbildung machen: 例：Er macht eine Ausbildung.')">Ausbildung</span> ist wichtig. <span class="vocab-word" onclick="showVocab('Erzieher','教育工作者、幼师','Ausbildung zum Erzieher: 例：Simon wird Erzieher.')">Erzieher</span>.</p>
+          <p>Praktika im Kindergarten. <span class="vocab-word" onclick="showVocab('Geduld','耐心','Geduld haben: 例：Geduld ist wichtig.')">Geduld</span> und <span class="vocab-word" onclick="showVocab('Kreativität','创造力','Kreativität zeigen: 例：Kreativität ist wichtig.')">Kreativität</span>.</p>
+          <p>Simon rät: Man sollte mit dem <span class="vocab-word" onclick="showVocab('Herz','心','mit dem Herzen dabei sein: 例：Mit Herz und Kopf.')">Herz</span> dabei sein.</p>
         </div>
         <div class="highlight-box">Simon: früh→Ausbildung zum Erzieher→Praktika im Kindergarten→„Mit dem Herzen dabei sein.'</div>
       </div>
@@ -950,16 +935,6 @@
 <div class="vocab-overlay" id="vocabOverlay" onclick="hideVocab()"></div>
 <script>
 
-// ===== TTS (Text-to-Speech) =====
-  function speakWord(word) {
-    if (!window.speechSynthesis) return;
-    speechSynthesis.cancel();
-    var u = new SpeechSynthesisUtterance(word);
-    u.lang = 'de-DE';
-    u.rate = 0.85;
-    speechSynthesis.speak(u);
-  }
-
   // ===== SRS (Spaced Repetition System) =====
   function srsLoad() {
     try {
@@ -1106,15 +1081,7 @@
       else if (state === 'learning') card.classList.add('srs-learning');
 
       // Add speak button to front
-      if (frontEl) {
-        var sb = document.createElement('button');
-        sb.className = 'speak-btn';
-        sb.innerHTML = '\ud83d\udd0a';
-        sb.title = '\u542c\u53d1\u97f3';
-        var safeWord = word.replace(/'/g, "\\'");
-        sb.onclick = function(e) { e.stopPropagation(); speakWord(safeWord); };
-        frontEl.appendChild(sb);
-      }
+      // TTS removed per user request
     });
   }
 

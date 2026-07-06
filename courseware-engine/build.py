@@ -143,9 +143,9 @@ def gen_vocab(data):
             cn = v['cn']
             de_ex = v.get('de', '')
             html += '''          <div class="vocab-card" onclick="this.classList.toggle('flipped')">\n'''
-            html += '''            <div class="card-inner">\n'''
-            html += '''              <div class="card-front">{w}</div>\n'''.format(w=word)
-            html += '''              <div class="card-back">{cn}{de}</div>\n'''.format(cn=cn, de=('<br>' + de_ex if de_ex else ''))
+            html += '''            <div class="inner">\n'''
+            html += '''              <div class="front">{w}</div>\n'''.format(w=word)
+            html += '''              <div class="back">{cn}{de}</div>\n'''.format(cn=cn, de=('<br>' + de_ex if de_ex else ''))
             html += '''            </div>\n'''
             html += '''          </div>\n'''
         html += '''        </div>\n'''
@@ -360,8 +360,7 @@ def build(data_file):
     grammar = gen_grammar(data)
     exercise = gen_exercise(data)
     
-    # Generate vocab data JS
-    vocab_data_js = gen_vocab_data_js(data)
+    # vocab data JS not needed - static cards used
     
     # Clean up template CSS (add new rules)
     # Add answer toggle CSS if not present
@@ -393,7 +392,6 @@ def build(data_file):
     html += '</div>\n'
     html += '<div class="vocab-overlay" id="vocabOverlay" onclick="hideVocab()"></div>\n'
     html += '<script>\n'
-    html += vocab_data_js
     html += '\n'
     html += js_raw
     html += '</script>\n'

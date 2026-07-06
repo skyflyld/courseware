@@ -469,7 +469,28 @@
 
   .text-card, .grammar-section, .quiz-card { animation: fadeIn 0.4s ease-out; }
 
-  /* ===== TTS + SRS ===== */
+    /* ===== Grammar Table ===== */
+  .grammar-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .grammar-table th { 
+    background: var(--primary); color: #fff; padding: 10px 12px; 
+    text-align: left; font-weight: 600; font-size: 14px;
+  }
+  .grammar-table th:first-child { border-radius: 8px 0 0 0; }
+  .grammar-table th:last-child { border-radius: 0 8px 0 0; }
+  .grammar-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .grammar-table tbody tr:hover { background: #f5f9fc; }
+  .grammar-table tbody tr:last-child td { border-bottom: none; }
+  .grammar-table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px 0; }
+  .grammar-table td:first-child { font-weight: 600; color: var(--primary); white-space: nowrap; }
+  @media (max-width: 640px) {
+    .grammar-table th, .grammar-table td { padding: 8px 6px; font-size: 13px; }
+  }
+  @media (max-width: 480px) {
+    .grammar-table th, .grammar-table td { padding: 6px 4px; font-size: 12px; }
+  }
+
+
+/* ===== TTS + SRS ===== */
   .speak-btn {
     display: inline-flex; align-items: center; justify-content: center;
     width: 28px; height: 28px; border: none; background: #f0f4f8;
@@ -593,81 +614,81 @@
       <div class="person-content" id="vocab-T1">
         <div class="vocab-grid" id="vocab-grid-T1">
           <div class="vocab-card" onclick="this.classList.toggle('flipped')">
-            <div class="card-inner">
-              <div class="card-front">unterscheiden</div>
-              <div class="card-back">有区别<br>sich unterscheiden: 例：Die Berufswahl unterscheidet sich nach Geschlecht.</div>
+            <div class="inner">
+              <div class="front">unterscheiden</div>
+              <div class="back">有区别<br>sich unterscheiden: 例：Die Berufswahl unterscheidet sich nach Geschlecht.</div>
             </div>
           </div>
           <div class="vocab-card" onclick="this.classList.toggle('flipped')">
-            <div class="card-inner">
-              <div class="card-front">Ergebnis</div>
-              <div class="card-back">结果<br>zu diesem Ergebnis kommen: 例：Die Studie kommt zu einem klaren Ergebnis.</div>
+            <div class="inner">
+              <div class="front">Ergebnis</div>
+              <div class="back">结果<br>zu diesem Ergebnis kommen: 例：Die Studie kommt zu einem klaren Ergebnis.</div>
             </div>
           </div>
           <div class="vocab-card" onclick="this.classList.toggle('flipped')">
-            <div class="card-inner">
-              <div class="card-front">Untersuchung</div>
-              <div class="card-back">调查<br>eine Untersuchung der Bundesagentur: 例：Die Untersuchung zeigt deutliche Unterschiede.</div>
+            <div class="inner">
+              <div class="front">Untersuchung</div>
+              <div class="back">调查<br>eine Untersuchung der Bundesagentur: 例：Die Untersuchung zeigt deutliche Unterschiede.</div>
             </div>
           </div>
           <div class="vocab-card" onclick="this.classList.toggle('flipped')">
-            <div class="card-inner">
-              <div class="card-front">Fachberufe</div>
-              <div class="card-back">专业技术职业<br>medizinische Fachberufe: 例：Viele Frauen wählen medizinische Fachberufe.</div>
+            <div class="inner">
+              <div class="front">Fachberufe</div>
+              <div class="back">专业技术职业<br>medizinische Fachberufe: 例：Viele Frauen wählen medizinische Fachberufe.</div>
             </div>
           </div>
           <div class="vocab-card" onclick="this.classList.toggle('flipped')">
-            <div class="card-inner">
-              <div class="card-front">ganz oben</div>
-              <div class="card-back">排在最前面<br>ganz oben stehen: 例：Soziale Berufe stehen ganz oben.</div>
+            <div class="inner">
+              <div class="front">ganz oben</div>
+              <div class="back">排在最前面<br>ganz oben stehen: 例：Soziale Berufe stehen ganz oben.</div>
             </div>
           </div>
           <div class="vocab-card" onclick="this.classList.toggle('flipped')">
-            <div class="card-inner">
-              <div class="card-front">Kauffrau</div>
-              <div class="card-back">女商人、女职员<br>Kauffrau für Büromanagement: 例：Sie arbeitet als Kauffrau.</div>
+            <div class="inner">
+              <div class="front">Kauffrau</div>
+              <div class="back">女商人、女职员<br>Kauffrau für Büromanagement: 例：Sie arbeitet als Kauffrau.</div>
             </div>
           </div>
           <div class="vocab-card" onclick="this.classList.toggle('flipped')">
-            <div class="card-inner">
-              <div class="card-front">Fachangestellte</div>
-              <div class="card-back">专业人员、技术助理<br>medizinische Fachangestellte: 例：Sie ist medizinische Fachangestellte.</div>
+            <div class="inner">
+              <div class="front">Fachangestellte</div>
+              <div class="back">专业人员、技术助理<br>medizinische Fachangestellte: 例：Sie ist medizinische Fachangestellte.</div>
             </div>
           </div>
           <div class="vocab-card" onclick="this.classList.toggle('flipped')">
-            <div class="card-inner">
-              <div class="card-front">technische</div>
-              <div class="card-back">技术的<br>technische Berufe: 例：Technische Berufe sind bei Männern beliebt.</div>
+            <div class="inner">
+              <div class="front">technische</div>
+              <div class="back">技术的<br>technische Berufe: 例：Technische Berufe sind bei Männern beliebt.</div>
             </div>
           </div>
           <div class="vocab-card" onclick="this.classList.toggle('flipped')">
-            <div class="card-inner">
-              <div class="card-front">beiderlei</div>
-              <div class="card-back">两性的<br>beiderlei Geschlechts: 例：Studienanfänger beiderlei Geschlechts.</div>
+            <div class="inner">
+              <div class="front">beiderlei</div>
+              <div class="back">两性的<br>beiderlei Geschlechts: 例：Studienanfänger beiderlei Geschlechts.</div>
             </div>
           </div>
           <div class="vocab-card" onclick="this.classList.toggle('flipped')">
-            <div class="card-inner">
-              <div class="card-front">Geschlechts</div>
-              <div class="card-back">性别<br>beiderlei Geschlechts: 例：Die Umfrage gilt für beide Geschlechter.</div>
+            <div class="inner">
+              <div class="front">Geschlechts</div>
+              <div class="back">性别<br>beiderlei Geschlechts: 例：Die Umfrage gilt für beide Geschlechter.</div>
             </div>
           </div>
           <div class="vocab-card" onclick="this.classList.toggle('flipped')">
-            <div class="card-inner">
-              <div class="card-front">beliebtesten</div>
-              <div class="card-back">受欢迎的<br>die beliebtesten Fächer: 例：BWL ist das beliebteste Studienfach.</div>
+            <div class="inner">
+              <div class="front">beliebtesten</div>
+              <div class="back">受欢迎的<br>die beliebtesten Fächer: 例：BWL ist das beliebteste Studienfach.</div>
             </div>
           </div>
           <div class="vocab-card" onclick="this.classList.toggle('flipped')">
-            <div class="card-inner">
-              <div class="card-front">nach wie vor</div>
-              <div class="card-back">一如既往<br>nach wie vor stark nachgefragt: 例：Medizin ist nach wie vor beliebt.</div>
+            <div class="inner">
+              <div class="front">nach wie vor</div>
+              <div class="back">一如既往<br>nach wie vor stark nachgefragt: 例：Medizin ist nach wie vor beliebt.</div>
             </div>
           </div>
           <div class="vocab-card" onclick="this.classList.toggle('flipped')">
-            <div class="card-inner">
-              <div class="card-front">nachgefragt</div>
-              <div class="card-back">需求、询问<br>stark nachgefragt: 例：Diese Fächer sind stark nachgefragt.</div>
+            <div class="inner">
+              <div class="front">nachgefragt</div>
+              <div class="back">需求、询问<br>stark nachgefragt: 例：Diese Fächer sind stark nachgefragt.</div>
             </div>
           </div>
         </div>
@@ -675,63 +696,63 @@
       <div class="person-content" id="vocab-T2">
         <div class="vocab-grid" id="vocab-grid-T2">
           <div class="vocab-card" onclick="this.classList.toggle('flipped')">
-            <div class="card-inner">
-              <div class="card-front">Energie- und Gebäudetechnik</div>
-              <div class="card-back">能源与建筑技术<br>Elektronikerin für Energie- und Gebäudetechnik</div>
+            <div class="inner">
+              <div class="front">Energie- und Gebäudetechnik</div>
+              <div class="back">能源与建筑技术<br>Elektronikerin für Energie- und Gebäudetechnik</div>
             </div>
           </div>
           <div class="vocab-card" onclick="this.classList.toggle('flipped')">
-            <div class="card-inner">
-              <div class="card-front">ausgebildet</div>
-              <div class="card-back">培训、培养<br>zur Elektronikerin ausgebildet werden</div>
+            <div class="inner">
+              <div class="front">ausgebildet</div>
+              <div class="back">培训、培养<br>zur Elektronikerin ausgebildet werden</div>
             </div>
           </div>
           <div class="vocab-card" onclick="this.classList.toggle('flipped')">
-            <div class="card-inner">
-              <div class="card-front">Gymnasium</div>
-              <div class="card-back">文理中学<br>nach dem Gymnasium: 例：Nach dem Gymnasium machte sie eine Ausbildung.</div>
+            <div class="inner">
+              <div class="front">Gymnasium</div>
+              <div class="back">文理中学<br>nach dem Gymnasium: 例：Nach dem Gymnasium machte sie eine Ausbildung.</div>
             </div>
           </div>
           <div class="vocab-card" onclick="this.classList.toggle('flipped')">
-            <div class="card-inner">
-              <div class="card-front">langweiliges</div>
-              <div class="card-back">无聊的<br>ein langweiliges Studium: 例：Sie wollte kein langweiliges Studium.</div>
+            <div class="inner">
+              <div class="front">langweiliges</div>
+              <div class="back">无聊的<br>ein langweiliges Studium: 例：Sie wollte kein langweiliges Studium.</div>
             </div>
           </div>
           <div class="vocab-card" onclick="this.classList.toggle('flipped')">
-            <div class="card-inner">
-              <div class="card-front">entschieden</div>
-              <div class="card-back">决定<br>sich für eine Ausbildung entscheiden</div>
+            <div class="inner">
+              <div class="front">entschieden</div>
+              <div class="back">决定<br>sich für eine Ausbildung entscheiden</div>
             </div>
           </div>
           <div class="vocab-card" onclick="this.classList.toggle('flipped')">
-            <div class="card-inner">
-              <div class="card-front">Abwechslung</div>
-              <div class="card-back">变化、多样性<br>viel Abwechslung bieten: 例：Ihr Beruf bietet viel Abwechslung.</div>
+            <div class="inner">
+              <div class="front">Abwechslung</div>
+              <div class="back">变化、多样性<br>viel Abwechslung bieten: 例：Ihr Beruf bietet viel Abwechslung.</div>
             </div>
           </div>
           <div class="vocab-card" onclick="this.classList.toggle('flipped')">
-            <div class="card-inner">
-              <div class="card-front">traue</div>
-              <div class="card-back">敢于<br>sich trauen, etwas zu tun: 例：Sie traut sich, neue Dinge zu tun.</div>
+            <div class="inner">
+              <div class="front">traue</div>
+              <div class="back">敢于<br>sich trauen, etwas zu tun: 例：Sie traut sich, neue Dinge zu tun.</div>
             </div>
           </div>
           <div class="vocab-card" onclick="this.classList.toggle('flipped')">
-            <div class="card-inner">
-              <div class="card-front">durchsetzungsfähig</div>
-              <div class="card-back">有贯彻力<br>durchsetzungsfähig werden: 例：Sie wurde durchsetzungsfähiger.</div>
+            <div class="inner">
+              <div class="front">durchsetzungsfähig</div>
+              <div class="back">有贯彻力<br>durchsetzungsfähig werden: 例：Sie wurde durchsetzungsfähiger.</div>
             </div>
           </div>
           <div class="vocab-card" onclick="this.classList.toggle('flipped')">
-            <div class="card-inner">
-              <div class="card-front">herumgeredet</div>
-              <div class="card-back">绕圈子说话<br>nicht lange herumreden: 例：Bei uns wird nicht herumgeredet.</div>
+            <div class="inner">
+              <div class="front">herumgeredet</div>
+              <div class="back">绕圈子说话<br>nicht lange herumreden: 例：Bei uns wird nicht herumgeredet.</div>
             </div>
           </div>
           <div class="vocab-card" onclick="this.classList.toggle('flipped')">
-            <div class="card-inner">
-              <div class="card-front">angepackt</div>
-              <div class="card-back">动手处理<br>anpacken: 例：Probleme werden direkt angepackt.</div>
+            <div class="inner">
+              <div class="front">angepackt</div>
+              <div class="back">动手处理<br>anpacken: 例：Probleme werden direkt angepackt.</div>
             </div>
           </div>
         </div>
@@ -739,33 +760,33 @@
       <div class="person-content" id="vocab-T3">
         <div class="vocab-grid" id="vocab-grid-T3">
           <div class="vocab-card" onclick="this.classList.toggle('flipped')">
-            <div class="card-inner">
-              <div class="card-front">Ausbildung</div>
-              <div class="card-back">职业培训<br>eine Ausbildung machen: 例：Er macht eine Ausbildung.</div>
+            <div class="inner">
+              <div class="front">Ausbildung</div>
+              <div class="back">职业培训<br>eine Ausbildung machen: 例：Er macht eine Ausbildung.</div>
             </div>
           </div>
           <div class="vocab-card" onclick="this.classList.toggle('flipped')">
-            <div class="card-inner">
-              <div class="card-front">Erzieher</div>
-              <div class="card-back">教育工作者、幼师<br>Ausbildung zum Erzieher: 例：Simon wird Erzieher.</div>
+            <div class="inner">
+              <div class="front">Erzieher</div>
+              <div class="back">教育工作者、幼师<br>Ausbildung zum Erzieher: 例：Simon wird Erzieher.</div>
             </div>
           </div>
           <div class="vocab-card" onclick="this.classList.toggle('flipped')">
-            <div class="card-inner">
-              <div class="card-front">Geduld</div>
-              <div class="card-back">耐心<br>Geduld haben: 例：Geduld ist wichtig.</div>
+            <div class="inner">
+              <div class="front">Geduld</div>
+              <div class="back">耐心<br>Geduld haben: 例：Geduld ist wichtig.</div>
             </div>
           </div>
           <div class="vocab-card" onclick="this.classList.toggle('flipped')">
-            <div class="card-inner">
-              <div class="card-front">Kreativität</div>
-              <div class="card-back">创造力<br>Kreativität zeigen: 例：Kreativität ist wichtig.</div>
+            <div class="inner">
+              <div class="front">Kreativität</div>
+              <div class="back">创造力<br>Kreativität zeigen: 例：Kreativität ist wichtig.</div>
             </div>
           </div>
           <div class="vocab-card" onclick="this.classList.toggle('flipped')">
-            <div class="card-inner">
-              <div class="card-front">Herz</div>
-              <div class="card-back">心<br>mit dem Herzen dabei sein: 例：Mit Herz und Kopf.</div>
+            <div class="inner">
+              <div class="front">Herz</div>
+              <div class="back">心<br>mit dem Herzen dabei sein: 例：Mit Herz und Kopf.</div>
             </div>
           </div>
         </div>
@@ -928,70 +949,6 @@
 </div>
 <div class="vocab-overlay" id="vocabOverlay" onclick="hideVocab()"></div>
 <script>
-var vocabData = {
-  'T1': [
-    { word: 'unterscheiden', cn: '有区别', de: 'sich unterscheiden: 例：Die Berufswahl unterscheidet sich nach Geschlecht.' },
-    { word: 'unterscheiden', cn: '有区别', de: 'sich unterscheiden: 例：Die Berufswahl unterscheidet sich nach Geschlecht.' },
-    { word: 'Ergebnis', cn: '结果', de: 'zu diesem Ergebnis kommen: 例：Die Studie kommt zu einem klaren Ergebnis.' },
-    { word: 'Ergebnis', cn: '结果', de: 'zu diesem Ergebnis kommen: 例：Die Studie kommt zu einem klaren Ergebnis.' },
-    { word: 'Untersuchung', cn: '调查', de: 'eine Untersuchung der Bundesagentur: 例：Die Untersuchung zeigt deutliche Unterschiede.' },
-    { word: 'Untersuchung', cn: '调查', de: 'eine Untersuchung der Bundesagentur: 例：Die Untersuchung zeigt deutliche Unterschiede.' },
-    { word: 'Fachberufe', cn: '专业技术职业', de: 'medizinische Fachberufe: 例：Viele Frauen wählen medizinische Fachberufe.' },
-    { word: 'Fachberufe', cn: '专业技术职业', de: 'medizinische Fachberufe: 例：Viele Frauen wählen medizinische Fachberufe.' },
-    { word: 'ganz oben', cn: '排在最前面', de: 'ganz oben stehen: 例：Soziale Berufe stehen ganz oben.' },
-    { word: 'ganz oben', cn: '排在最前面', de: 'ganz oben stehen: 例：Soziale Berufe stehen ganz oben.' },
-    { word: 'Kauffrau', cn: '女商人、女职员', de: 'Kauffrau für Büromanagement: 例：Sie arbeitet als Kauffrau.' },
-    { word: 'Kauffrau', cn: '女商人、女职员', de: 'Kauffrau für Büromanagement: 例：Sie arbeitet als Kauffrau.' },
-    { word: 'Fachangestellte', cn: '专业人员、技术助理', de: 'medizinische Fachangestellte: 例：Sie ist medizinische Fachangestellte.' },
-    { word: 'Fachangestellte', cn: '专业人员、技术助理', de: 'medizinische Fachangestellte: 例：Sie ist medizinische Fachangestellte.' },
-    { word: 'technische', cn: '技术的', de: 'technische Berufe: 例：Technische Berufe sind bei Männern beliebt.' },
-    { word: 'technische', cn: '技术的', de: 'technische Berufe: 例：Technische Berufe sind bei Männern beliebt.' },
-    { word: 'beiderlei', cn: '两性的', de: 'beiderlei Geschlechts: 例：Studienanfänger beiderlei Geschlechts.' },
-    { word: 'beiderlei', cn: '两性的', de: 'beiderlei Geschlechts: 例：Studienanfänger beiderlei Geschlechts.' },
-    { word: 'Geschlechts', cn: '性别', de: 'beiderlei Geschlechts: 例：Die Umfrage gilt für beide Geschlechter.' },
-    { word: 'Geschlechts', cn: '性别', de: 'beiderlei Geschlechts: 例：Die Umfrage gilt für beide Geschlechter.' },
-    { word: 'beliebtesten', cn: '受欢迎的', de: 'die beliebtesten Fächer: 例：BWL ist das beliebteste Studienfach.' },
-    { word: 'beliebtesten', cn: '受欢迎的', de: 'die beliebtesten Fächer: 例：BWL ist das beliebteste Studienfach.' },
-    { word: 'nach wie vor', cn: '一如既往', de: 'nach wie vor stark nachgefragt: 例：Medizin ist nach wie vor beliebt.' },
-    { word: 'nach wie vor', cn: '一如既往', de: 'nach wie vor stark nachgefragt: 例：Medizin ist nach wie vor beliebt.' },
-    { word: 'nachgefragt', cn: '需求、询问', de: 'stark nachgefragt: 例：Diese Fächer sind stark nachgefragt.' },
-    { word: 'nachgefragt', cn: '需求、询问', de: 'stark nachgefragt: 例：Diese Fächer sind stark nachgefragt.' },
-  ],
-  'T2': [
-    { word: 'Energie- und Gebäudetechnik', cn: '能源与建筑技术', de: 'Elektronikerin für Energie- und Gebäudetechnik' },
-    { word: 'Energie- und Gebäudetechnik', cn: '能源与建筑技术', de: 'Elektronikerin für Energie- und Gebäudetechnik' },
-    { word: 'ausgebildet', cn: '培训、培养', de: 'zur Elektronikerin ausgebildet werden' },
-    { word: 'ausgebildet', cn: '培训、培养', de: 'zur Elektronikerin ausgebildet werden' },
-    { word: 'Gymnasium', cn: '文理中学', de: 'nach dem Gymnasium: 例：Nach dem Gymnasium machte sie eine Ausbildung.' },
-    { word: 'Gymnasium', cn: '文理中学', de: 'nach dem Gymnasium: 例：Nach dem Gymnasium machte sie eine Ausbildung.' },
-    { word: 'langweiliges', cn: '无聊的', de: 'ein langweiliges Studium: 例：Sie wollte kein langweiliges Studium.' },
-    { word: 'langweiliges', cn: '无聊的', de: 'ein langweiliges Studium: 例：Sie wollte kein langweiliges Studium.' },
-    { word: 'entschieden', cn: '决定', de: 'sich für eine Ausbildung entscheiden' },
-    { word: 'entschieden', cn: '决定', de: 'sich für eine Ausbildung entscheiden' },
-    { word: 'Abwechslung', cn: '变化、多样性', de: 'viel Abwechslung bieten: 例：Ihr Beruf bietet viel Abwechslung.' },
-    { word: 'Abwechslung', cn: '变化、多样性', de: 'viel Abwechslung bieten: 例：Ihr Beruf bietet viel Abwechslung.' },
-    { word: 'traue', cn: '敢于', de: 'sich trauen, etwas zu tun: 例：Sie traut sich, neue Dinge zu tun.' },
-    { word: 'traue', cn: '敢于', de: 'sich trauen, etwas zu tun: 例：Sie traut sich, neue Dinge zu tun.' },
-    { word: 'durchsetzungsfähig', cn: '有贯彻力', de: 'durchsetzungsfähig werden: 例：Sie wurde durchsetzungsfähiger.' },
-    { word: 'durchsetzungsfähig', cn: '有贯彻力', de: 'durchsetzungsfähig werden: 例：Sie wurde durchsetzungsfähiger.' },
-    { word: 'herumgeredet', cn: '绕圈子说话', de: 'nicht lange herumreden: 例：Bei uns wird nicht herumgeredet.' },
-    { word: 'herumgeredet', cn: '绕圈子说话', de: 'nicht lange herumreden: 例：Bei uns wird nicht herumgeredet.' },
-    { word: 'angepackt', cn: '动手处理', de: 'anpacken: 例：Probleme werden direkt angepackt.' },
-    { word: 'angepackt', cn: '动手处理', de: 'anpacken: 例：Probleme werden direkt angepackt.' },
-  ],
-  'T3': [
-    { word: 'Ausbildung', cn: '职业培训', de: 'eine Ausbildung machen: 例：Er macht eine Ausbildung.' },
-    { word: 'Ausbildung', cn: '职业培训', de: 'eine Ausbildung machen: 例：Er macht eine Ausbildung.' },
-    { word: 'Erzieher', cn: '教育工作者、幼师', de: 'Ausbildung zum Erzieher: 例：Simon wird Erzieher.' },
-    { word: 'Erzieher', cn: '教育工作者、幼师', de: 'Ausbildung zum Erzieher: 例：Simon wird Erzieher.' },
-    { word: 'Geduld', cn: '耐心', de: 'Geduld haben: 例：Geduld ist wichtig.' },
-    { word: 'Geduld', cn: '耐心', de: 'Geduld haben: 例：Geduld ist wichtig.' },
-    { word: 'Kreativität', cn: '创造力', de: 'Kreativität zeigen: 例：Kreativität ist wichtig.' },
-    { word: 'Kreativität', cn: '创造力', de: 'Kreativität zeigen: 例：Kreativität ist wichtig.' },
-    { word: 'Herz', cn: '心', de: 'mit dem Herzen dabei sein: 例：Mit Herz und Kopf.' },
-    { word: 'Herz', cn: '心', de: 'mit dem Herzen dabei sein: 例：Mit Herz und Kopf.' },
-  ],
-};
 
 // ===== TTS (Text-to-Speech) =====
   function speakWord(word) {
@@ -1058,11 +1015,11 @@ var vocabData = {
   function switchPerson(id) {
     document.querySelectorAll('.person-content').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.person-tabs button').forEach(b => b.classList.remove('active'));
-    document.getElementById('p-' + id).classList.add('active');
-    // Find and activate the clicked button
-    document.querySelectorAll('.person-tabs button').forEach(b => {
-      if (b.textContent.includes(id === 'berufswahl' ? 'Berufswahl' :
-          id === 'erika' ? 'Erika' : id === 'zusatz' ? 'Zusatz' : 'Tabellen')) {
+    var content = document.getElementById('vocab-' + id);
+    if (content) content.classList.add('active');
+    // Activate the clicked button
+    document.querySelectorAll('.person-tabs button').forEach(function(b) {
+      if (b.getAttribute('onclick') && b.getAttribute('onclick').includes("switchPerson('" + id + "')")) {
         b.classList.add('active');
       }
     });
@@ -1137,35 +1094,28 @@ var vocabData = {
     if (vocabInitialized) return;
     vocabInitialized = true;
 
-    for (const [gridId, words] of Object.entries(vocabData)) {
-      const grid = document.getElementById('vocab-grid-' + gridId);
-      if (!grid) continue;
+    // Add SRS state coloring and speak buttons to existing static cards
+    document.querySelectorAll('.vocab-card').forEach(function(card) {
+      var frontEl = card.querySelector('.front');
+      var word = frontEl ? frontEl.textContent.trim() : '';
+      if (!word) return;
 
-      words.forEach(w => {
-        var state = srsGetState(w.word);
-        var stateClass = state === 'mastered' ? 'srs-mastered' : state === 'learning' ? 'srs-learning' : '';
-        var stateIcon = state === 'mastered' ? ' 🟢' : state === 'learning' ? ' 🟡' : '';
-        var card = document.createElement('div');
-        card.className = 'vocab-card ' + stateClass;
-        card.innerHTML = `
-          <div class="inner">
-            <div class="front">
-              <div class="word">${w.word}${stateIcon}</div>
-              <div class="pos">${w.pos || ''}</div>
-              <div class="hint">👆 点击翻转</div>
-              <button class="speak-btn" onclick="event.stopPropagation();speakWord('${w.word.replace(/'/g, "\\'")}')" title="听发音">🔊</button>
-            </div>
-            <div class="back">
-              <div class="zh-word">${w.zh}</div>
-              ${w.example ? `<div class="example">${w.example}</div>` : ''}
-              ${w.exampleZh ? `<div class="example-zh">${w.exampleZh}</div>` : ''}
-            </div>
-          </div>
-        `;
-        card.addEventListener('click', () => card.classList.toggle('flipped'));
-        grid.appendChild(card);
-      });
-    }
+      // SRS state: add class and icon
+      var state = srsGetState(word);
+      if (state === 'mastered') card.classList.add('srs-mastered');
+      else if (state === 'learning') card.classList.add('srs-learning');
+
+      // Add speak button to front
+      if (frontEl) {
+        var sb = document.createElement('button');
+        sb.className = 'speak-btn';
+        sb.innerHTML = '\ud83d\udd0a';
+        sb.title = '\u542c\u53d1\u97f3';
+        var safeWord = word.replace(/'/g, "\\'");
+        sb.onclick = function(e) { e.stopPropagation(); speakWord(safeWord); };
+        frontEl.appendChild(sb);
+      }
+    });
   }
 
   // Init vocab on load if home visible, otherwise on demand

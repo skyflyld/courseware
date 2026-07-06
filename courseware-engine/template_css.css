@@ -463,7 +463,28 @@
 
   .text-card, .grammar-section, .quiz-card { animation: fadeIn 0.4s ease-out; }
 
-  /* ===== TTS + SRS ===== */
+    /* ===== Grammar Table ===== */
+  .grammar-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .grammar-table th { 
+    background: var(--primary); color: #fff; padding: 10px 12px; 
+    text-align: left; font-weight: 600; font-size: 14px;
+  }
+  .grammar-table th:first-child { border-radius: 8px 0 0 0; }
+  .grammar-table th:last-child { border-radius: 0 8px 0 0; }
+  .grammar-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .grammar-table tbody tr:hover { background: #f5f9fc; }
+  .grammar-table tbody tr:last-child td { border-bottom: none; }
+  .grammar-table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px 0; }
+  .grammar-table td:first-child { font-weight: 600; color: var(--primary); white-space: nowrap; }
+  @media (max-width: 640px) {
+    .grammar-table th, .grammar-table td { padding: 8px 6px; font-size: 13px; }
+  }
+  @media (max-width: 480px) {
+    .grammar-table th, .grammar-table td { padding: 6px 4px; font-size: 12px; }
+  }
+
+
+/* ===== TTS + SRS ===== */
   .speak-btn {
     display: inline-flex; align-items: center; justify-content: center;
     width: 28px; height: 28px; border: none; background: #f0f4f8;

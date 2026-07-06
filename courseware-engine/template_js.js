@@ -63,11 +63,11 @@
   function switchPerson(id) {
     document.querySelectorAll('.person-content').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.person-tabs button').forEach(b => b.classList.remove('active'));
-    document.getElementById('p-' + id).classList.add('active');
-    // Find and activate the clicked button
-    document.querySelectorAll('.person-tabs button').forEach(b => {
-      if (b.textContent.includes(id === 'berufswahl' ? 'Berufswahl' :
-          id === 'erika' ? 'Erika' : id === 'zusatz' ? 'Zusatz' : 'Tabellen')) {
+    var content = document.getElementById('vocab-' + id);
+    if (content) content.classList.add('active');
+    // Activate the clicked button
+    document.querySelectorAll('.person-tabs button').forEach(function(b) {
+      if (b.getAttribute('onclick') && b.getAttribute('onclick').includes("switchPerson('" + id + "')")) {
         b.classList.add('active');
       }
     });
@@ -142,35 +142,28 @@
     if (vocabInitialized) return;
     vocabInitialized = true;
 
-    for (const [gridId, words] of Object.entries(vocabData)) {
-      const grid = document.getElementById('vocab-grid-' + gridId);
-      if (!grid) continue;
+    // Add SRS state coloring and speak buttons to existing static cards
+    document.querySelectorAll('.vocab-card').forEach(function(card) {
+      var frontEl = card.querySelector('.front');
+      var word = frontEl ? frontEl.textContent.trim() : '';
+      if (!word) return;
 
-      words.forEach(w => {
-        var state = srsGetState(w.word);
-        var stateClass = state === 'mastered' ? 'srs-mastered' : state === 'learning' ? 'srs-learning' : '';
-        var stateIcon = state === 'mastered' ? ' 🟢' : state === 'learning' ? ' 🟡' : '';
-        var card = document.createElement('div');
-        card.className = 'vocab-card ' + stateClass;
-        card.innerHTML = `
-          <div class="inner">
-            <div class="front">
-              <div class="word">${w.word}${stateIcon}</div>
-              <div class="pos">${w.pos || ''}</div>
-              <div class="hint">👆 点击翻转</div>
-              <button class="speak-btn" onclick="event.stopPropagation();speakWord('${w.word.replace(/'/g, "\\'")}')" title="听发音">🔊</button>
-            </div>
-            <div class="back">
-              <div class="zh-word">${w.zh}</div>
-              ${w.example ? `<div class="example">${w.example}</div>` : ''}
-              ${w.exampleZh ? `<div class="example-zh">${w.exampleZh}</div>` : ''}
-            </div>
-          </div>
-        `;
-        card.addEventListener('click', () => card.classList.toggle('flipped'));
-        grid.appendChild(card);
-      });
-    }
+      // SRS state: add class and icon
+      var state = srsGetState(word);
+      if (state === 'mastered') card.classList.add('srs-mastered');
+      else if (state === 'learning') card.classList.add('srs-learning');
+
+      // Add speak button to front
+      if (frontEl) {
+        var sb = document.createElement('button');
+        sb.className = 'speak-btn';
+        sb.innerHTML = '\ud83d\udd0a';
+        sb.title = '\u542c\u53d1\u97f3';
+        var safeWord = word.replace(/'/g, "\\'");
+        sb.onclick = function(e) { e.stopPropagation(); speakWord(safeWord); };
+        frontEl.appendChild(sb);
+      }
+    });
   }
 
   // Init vocab on load if home visible, otherwise on demand

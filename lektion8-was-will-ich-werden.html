@@ -284,20 +284,7 @@
   .vocab-word{color:#c0392b;font-weight:600;cursor:pointer;border-bottom:2px dashed #e8a838;padding:0 2px;transition:all .2s}
   .vocab-word:hover{background:#fef3e2;border-radius:3px}
   .vocab-panel{display:none;position:fixed;bottom:0;left:0;right:0;background:#fff;border-radius:20px 20px 0 0;box-shadow:0 -8px 40px rgba(0,0,0,.15);padding:28px 24px 32px;z-index:2000;max-height:45vh;overflow-y:auto}
-
-  /* 匹配游戏卡片 */
-  #match-game{max-width:600px;margin:20px auto;grid-template-columns:1fr 1fr}
-  .match-card{padding:14px 18px;border-radius:10px;cursor:pointer;text-align:center;font-size:15px;font-weight:600;border:2px solid var(--border);transition:all 0.2s;background:var(--card-bg);user-select:none}
-  .match-card.de{color:var(--text)}
-  .match-card.zh{color:var(--zh)}
-  .match-card:hover{border-color:var(--primary-light);transform:scale(1.02)}
-  .match-card.selected{border-color:var(--primary);background:#eef6fa}
-  .match-card.matched{border-color:var(--green);background:#e8f8ee;cursor:default;transform:none}
-  /* 练习隐藏答案 */
-  .q-answer{display:none;margin-top:8px;padding:6px 12px;background:#f0f7ff;border-radius:6px;font-size:14px;color:var(--primary);font-weight:600;text-align:center}
-  .q-answer.show{display:block}
-  .show-answer-btn{display:block;margin:6px auto 0;padding:4px 14px;background:var(--primary);color:#fff;border:none;border-radius:6px;font-size:13px;cursor:pointer}
-  .show-answer-btn:hover{opacity:0.85}  .vocab-panel.show{display:block}
+  .vocab-panel.show{display:block}
   .vocab-panel .vp-word{font-size:1.3rem;font-weight:700;color:var(--primary);margin-bottom:4px}
   .vocab-panel .vp-zh{font-size:1rem;color:#c0392b;font-weight:600;margin-bottom:8px}
   .vocab-panel .vp-example{font-size:.9rem;color:#666;padding:10px 14px;background:#f8f6f0;border-radius:8px;margin-top:6px;line-height:1.6}
@@ -360,11 +347,7 @@
                  max-height: 70vh; overflow-y: auto; }
     .nav-links.show { display: flex; }
     .nav-links button { padding: 14px 16px; font-size: 15px; border-radius: 10px; }
-    .hamburger { display: block; font-size: 26px; padding: 4px 8px;     #match-game{grid-template-columns:1fr 1fr;gap:6px}
-    .match-card{padding:12px 10px;font-size:13px}
-    .grammar-table{font-size:13px}
-    .grammar-table td,.grammar-table th{padding:8px}
-}
+    .hamburger { display: block; font-size: 26px; padding: 4px 8px; }
 
     .main { max-width: 100%; min-height: calc(100vh - 56px); }
     section { padding: 16px 16px 48px; }
@@ -418,7 +401,12 @@
     .rule-box { font-size: 13px; padding: 12px 14px; }
 
     .fill-area { min-width: 80px; font-size: 14px; }
-  }
+  
+  #match-game{grid-template-columns:1fr 1fr;gap:6px}
+  .match-card{padding:12px 10px;font-size:13px}
+  .grammar-table{font-size:13px}
+  .grammar-table td,.grammar-table th{padding:8px}
+}
 
   /* ===== PHONE ≤480 ===== */
   @media (max-width: 480px) {
@@ -445,11 +433,7 @@
     .text-card .de { font-size: 14px; }
     .text-card .zh { font-size: 13px; }
 
-    .section-title { font-size: 18px;     #match-game{grid-template-columns:1fr;gap:5px}
-    .match-card{padding:10px 8px;font-size:13px}
-    .grammar-table{font-size:12px}
-    .grammar-table{display:block;overflow-x:auto;white-space:nowrap}
-}
+    .section-title { font-size: 18px; }
 
     .grammar-example .de { font-size: 12px; }
     .grammar-example .zh { font-size: 11px; }
@@ -462,7 +446,11 @@
     .fill-area { min-width: 60px; font-size: 13px; }
 
     .nav-links button { padding: 10px 14px; font-size: 14px; }
-  }
+  
+  #match-game{grid-template-columns:1fr;gap:5px}
+  .match-card{padding:10px 8px;font-size:13px}
+  .grammar-table{display:block;overflow-x:auto;white-space:nowrap}
+}
 
   /* ===== SAFE AREA (iPhone notch) ===== */
   @supports (padding: max(0px)) {
@@ -473,7 +461,11 @@
     @supports (padding: max(0px)) {
       section { padding-left: max(12px, env(safe-area-inset-left)); padding-right: max(12px, env(safe-area-inset-right)); }
     }
-  }
+  
+  #match-game{grid-template-columns:1fr;gap:5px}
+  .match-card{padding:10px 8px;font-size:13px}
+  .grammar-table{display:block;overflow-x:auto;white-space:nowrap}
+}
 
   /* ===== HOME GRID ===== */
   .home-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-bottom: 24px; }
@@ -489,6 +481,11 @@
   }
 
   .text-card, .grammar-section, .quiz-card { animation: fadeIn 0.4s ease-out; }
+
+  /* answer toggle */
+  .q-answer{display:none;margin-top:8px;padding:6px 12px;background:#f0f7ff;border-radius:6px;font-size:14px;color:var(--primary);font-weight:600;text-align:center}
+  .q-answer.show{display:block}
+  .show-answer-btn{display:block;margin:6px auto 0;padding:4px 14px;background:var(--primary);color:#fff;border:none;border-radius:6px;font-size:13px;cursor:pointer}
 </style>
 </head>
 <body>
@@ -559,7 +556,7 @@
       <span class="label">📖 主课文</span><br>
       <ul style="margin-top:6px;padding-left:18px">
         <li><strong>T1</strong> — Berufswahlverhalten + Studienwahl（男女职业/专业选择统计）</li>
-        <li><strong>T2</strong> — Lieber Werkstatt statt Schreibtisch + Mit Kopf und Herz dabei sein（Erika：电工·Simon：幼师·超越性别刻板印象）</li>
+        <li><strong>T2</strong> — Lieber Werkstatt statt Schreibtisch（Erika：年轻女性成为电工的故事）</li>
       </ul>
     </div>
   </section>
@@ -577,21 +574,21 @@
       <h3>Berufswahlverhalten — 职业选择行为</h3>
       <div class="de">
         <p>Das <span class="vocab-word" onclick="showVocab(&apos;das Berufswahlverhalten&apos;,&apos;职业选择行为&apos;,&apos;die Art und Weise, wie man einen Beruf waehlt. 例：Das Berufswahlverhalten von Frauen und Männern hat sich wenig verändert.&apos;)">Berufswahlverhalten</span> von Frauen und Männern hat sich wenig verändert – das zeigt der Blick auf die <span class="vocab-word" onclick="showVocab(&apos;die Ausbildungsstelle&apos;,&apos;培训岗位&apos;,&apos;der Platz in einem Ausbildungsbetrieb. 例：Das zeigt der Blick auf die Ausbildungsstellen.&apos;)">Ausbildungsstellen</span>. Frauen und Männer <span class="vocab-word" onclick="showVocab(&apos;sich entscheiden&apos;,&apos;决定&apos;,&apos;eine Wahl treffen. 例：Sie entscheiden sich fuer bestimmte Berufe.&apos;)">entscheiden</span> sich nach wie vor fuer ganz bestimmte Berufe. Heute <span class="vocab-word" onclick="showVocab(&apos;einem Beruf nachgehen&apos;,&apos;从事职业&apos;,&apos;einen Beruf ausueben. 例：Heute gehen mehr Frauen einem Beruf nach als frueher.&apos;)">gehen</span> in Deutschland deutlich mehr Frauen einem Beruf nach als vor einigen Jahrzehnten. Dennoch sind Frauen in manchen <span class="vocab-word" onclick="showVocab(&apos;die Branche&apos;,&apos;行业&apos;,&apos;ein bestimmter Wirtschaftsbereich. 例：In manchen Branchen sind Frauen kaum vertreten.&apos;)">Branchen</span> noch immer kaum vertreten.</p>
-        <p style="margin-top:6px">Im vergangenen Jahr <span class="vocab-word" onclick="showVocab(&apos;gehoeren zu&apos;,&apos;属于&apos;,&apos;Teil von etwas sein. 例：Diese Berufe gehörten zu den beliebtesten.&apos;)">gehörten</span> die Kauffrau fuer Bueromanagement, die medizinische und die zahnmedizinische <span class="vocab-word" onclick="showVocab(&apos;der/die Fachangestellte&apos;,&apos;专业人员(职员)&apos;,&apos;eine qualifizierte Angestellte in einem Fachbereich. 例：Sie ist medizinische Fachangestellte.&apos;)">Fachangestellte</span> zu den beliebtesten <span class="vocab-word" onclick="showVocab(&apos;der Ausbildungsberuf&apos;,&apos;培训职业&apos;,&apos;ein Beruf, den man in einer Ausbildung lernt. 例：Zu den beliebtesten Ausbildungsberufen gehoert der Kfz-Mechatroniker.&apos;)">Ausbildungsberufen</span> von Frauen. Das ist im <span class="vocab-word" onclick="showVocab(&apos;der Vergleich&apos;,&apos;比较&apos;,&apos;das Vergleichen von Dingen. 例：Im Vergleich zu den Vorjahren ist das unverändert.&apos;)">Vergleich</span> zu den Vorjahren unverändert geblieben. Männer wählen <span class="vocab-word" onclick="showVocab(&apos;dagegen&apos;,&apos;相反&apos;,&apos;im Gegensatz dazu. 例：Männer wählen dagegen technische Berufe.&apos;)">dagegen</span> am haeufigsten die Ausbildung zum Kfz-Mechatroniker, <span class="vocab-word" onclick="showVocab(&apos;der Fachinformatiker&apos;,&apos;IT专家&apos;,&apos;eine IT-Fachkraft. 例：Viele Männer werden Fachinformatiker.&apos;)">Fachinformatiker</span> und <span class="vocab-word" onclick="showVocab(&apos;der/die Elektroniker/in&apos;,&apos;电子技术员&apos;,&apos;eine Fachkraft fuer elektronische Systeme. 例；Er macht eine Ausbildung zum Elektroniker.&apos;)">Elektroniker</span>. Unter den Top-5-Ausbildungsberufen waren nur die Kauffrau / der Kaufmann und die <span class="vocab-word" onclick="showVocab(&apos;der Verkaeufer/die Verkaeuferin&apos;,&apos;售货员&apos;,&apos;jemand, der Waren verkauft. 例：Der Verkaeufer im Einzelhandel ist sehr beliebt.&apos;)">Verkaeuferin / der Verkaeufer</span> im <span class="vocab-word" onclick="showVocab(&apos;der Einzelhandel&apos;,&apos;零售业&apos;,&apos;der Verkauf von Waren an Endkunden. 例：Sie arbeitet im Einzelhandel.&apos;)">Einzelhandel</span> bei beiden <span class="vocab-word" onclick="showVocab(&apos;das Geschlecht&apos;,&apos;性别&apos;,&apos;ob mannlich oder weiblich. 例：Bei beiden Geschlechtern ist der Beruf beliebt.&apos;)">Geschlechtern</span> fast gleich beliebt. <span class="vocab-word" onclick="showVocab(&apos;waehrend&apos;,&apos;而、当&apos;,&apos;im Gegensatz dazu. 例：Während in Bauberufen wenige Frauen sind, sind sie im Gesundheitswesen stark vertreten.&apos;)">Während</span> in einigen der Bau- und Metallberufe deutlich weniger als 10 Prozent der <span class="vocab-word" onclick="showVocab(&apos;der/die Beschaeftigte&apos;,&apos;雇员、从业者&apos;,&apos;eine Person, die in einem Betrieb arbeitet. 例：Weniger als 10 Prozent der Beschäftigten waren Frauen.&apos;)">Beschäftigten</span> Frauen waren, <span class="vocab-word" onclick="showVocab(&apos;betragen&apos;,&apos;总计为&apos;,&apos;eine bestimmte Menge haben. 例：Ihr Anteil betrug mehr als 80 Prozent.&apos;)">betrug</span> ihr <span class="vocab-word" onclick="showVocab(&apos;der Anteil&apos;,&apos;比例&apos;,&apos;der prozentuale Teil. 例：Ihr Anteil betrug mehr als 80 Prozent.&apos;)">Anteil</span> vor allem in den Berufen des Erziehungs- und Gesundheitswesens mehr als 80 Prozent.</p>
+        <p style="margin-top:6px">Im vergangenen Jahr <span class="vocab-word" onclick="showVocab(&apos;gehoeren zu&apos;,&apos;属于&apos;,&apos;Teil von etwas sein. 例：Diese Berufe gehörten zu den beliebtesten.&apos;)">gehörten</span> die Kauffrau fuer Bueromanagement, die medizinische und die zahnmedizinische <span class="vocab-word" onclick="showVocab(&apos;der/die Fachangestellte&apos;,&apos;专业人员(职员)&apos;,&apos;eine qualifizierte Angestellte in einem Fachbereich. 例：Sie ist medizinische Fachangestellte.&apos;)">Fachangestellte</span> zu den beliebtesten <span class="vocab-word" onclick="showVocab(&apos;der Ausbildungsberuf&apos;,&apos;培训职业&apos;,&apos;ein Beruf, den man in einer Ausbildung lernt. 例：Zu den beliebtesten Ausbildungsberufen gehoert der Kfz-Mechatroniker.&apos;)">Ausbildungsberufen</span> von Frauen. Das ist im <span class="vocab-word" onclick="showVocab(&apos;der Vergleich&apos;,&apos;比较&apos;,&apos;das Vergleichen von Dingen. 例：Im Vergleich zu den Vorjahren ist das unverändert.&apos;)">Vergleich</span> zu den Vorjahren unverändert geblieben. Männer wählen <span class="vocab-word" onclick="showVocab(&apos;dagegen&apos;,&apos;相反&apos;,&apos;im Gegensatz dazu. 例：Männer wählen dagegen technische Berufe.&apos;)">dagegen</span> am haeufigsten die Ausbildung zum Kfz-Mechatroniker, <span class="vocab-word" onclick="showVocab(&apos;der Fachinformatiker&apos;,&apos;IT专家&apos;,&apos;eine IT-Fachkraft. 例：Viele Männer werden Fachinformatiker.&apos;)">Fachinformatiker</span> und <span class="vocab-word" onclick="showVocab(&apos;der/die Elektroniker/in&apos;,&apos;电子技术员&apos;,&apos;eine Fachkraft fuer elektronische Systeme. 例；Er macht eine Ausbildung zum Elektroniker.&apos;)">Elektroniker</span>. Unter den Top-5-Ausbildungsberufen waren nur die Kauffrau / der Kaufmann und die <span class="vocab-word" onclick="showVocab(&apos;der Verkaufer/die Verkauferin&apos;,&apos;售货员&apos;,&apos;jemand, der Waren verkauft. 例：Der Verkaufer im Einzelhandel ist sehr beliebt.&apos;)">Verkauferin / der Verkaufer</span> im <span class="vocab-word" onclick="showVocab(&apos;der Einzelhandel&apos;,&apos;零售业&apos;,&apos;der Verkauf von Waren an Endkunden. 例：Sie arbeitet im Einzelhandel.&apos;)">Einzelhandel</span> bei beiden <span class="vocab-word" onclick="showVocab(&apos;das Geschlecht&apos;,&apos;性别&apos;,&apos;ob mannlich oder weiblich. 例：Bei beiden Geschlechtern ist der Beruf beliebt.&apos;)">Geschlechtern</span> fast gleich beliebt. <span class="vocab-word" onclick="showVocab(&apos;waehrend&apos;,&apos;而、当&apos;,&apos;im Gegensatz dazu. 例：Während in Bauberufen wenige Frauen sind, sind sie im Gesundheitswesen stark vertreten.&apos;)">Während</span> in einigen der Bau- und Metallberufe deutlich weniger als 10 Prozent der <span class="vocab-word" onclick="showVocab(&apos;der/die Beschaeftigte&apos;,&apos;雇员、从业者&apos;,&apos;eine Person, die in einem Betrieb arbeitet. 例：Weniger als 10 Prozent der Beschäftigten waren Frauen.&apos;)">Beschäftigten</span> Frauen waren, <span class="vocab-word" onclick="showVocab(&apos;betragen&apos;,&apos;总计为&apos;,&apos;eine bestimmte Menge haben. 例：Ihr Anteil betrug mehr als 80 Prozent.&apos;)">betrug</span> ihr <span class="vocab-word" onclick="showVocab(&apos;der Anteil&apos;,&apos;比例&apos;,&apos;der prozentuale Teil. 例：Ihr Anteil betrug mehr als 80 Prozent.&apos;)">Anteil</span> vor allem in den Berufen des Erziehungs- und Gesundheitswesens mehr als 80 Prozent.</p>
       </div>
-      <div class="highlight-box">Berufswahlverhalten: Frauen→Buero/Medizin dominieren, Männer→Technik/Handwerk. Nur Kaufmann/Kauffrau und Verkaeufer bei beiden Geschlechtern gleich beliebt.</div>
+      <div class="highlight-box">Berufswahlverhalten: Frauen→Buero/Medizin dominieren, Männer→Technik/Handwerk. Nur Kaufmann/Kauffrau und Verkaufer bei beiden Geschlechtern gleich beliebt.</div>
     </div>
 
     <div class="text-card">
       <h3>Studienwahl — 大学专业选择</h3>
       <div class="de">
         <p>Heute entscheiden sich mehr Frauen fuer eine akademische <span class="vocab-word" onclick="showVocab(&apos;die Laufbahn&apos;,&apos;职业生涯&apos;,&apos;der berufliche Werdegang. 例：Sie entscheidet sich fuer eine akademische Laufbahn.&apos;)">Laufbahn</span>. Trotzdem zeigen sich bei der <span class="vocab-word" onclick="showVocab(&apos;die Studienwahl&apos;,&apos;大学专业选择&apos;,&apos;die Wahl des Studienfachs. 例：Bei der Studienwahl zeigen sich deutliche Unterschiede.&apos;)">Studienwahl</span> noch immer deutliche Unterschiede: <span class="vocab-word" onclick="showVocab(&apos;zwar … aber&apos;,&apos;虽然…但是&apos;,&apos;zwei gegensaetzliche Aussagen verbinden. 例：Zwar liegt BWL auf Platz eins, aber danach zeigen sich Unterschiede.&apos;)">Zwar</span> liegt <span class="vocab-word" onclick="showVocab(&apos;die Betriebswirtschaftslehre (BWL)&apos;,&apos;企业经济学&apos;,&apos;das Studium der Wirtschaftsfuehrung. 例：BWL liegt bei den Studienanfaengern auf Platz eins.&apos;)">Betriebswirtschaftslehre (BWL)</span> bei den <span class="vocab-word" onclick="showVocab(&apos;der/die Studienanfaenger/in&apos;,&apos;大学新生&apos;,&apos;jemand, der ein Studium beginnt. 例：Bei den Studienanfaengern beider Geschlechter ist BWL am beliebtesten.&apos;)">Studienanfaengern</span> beider Geschlechter auf Platz eins, danach <span class="vocab-word" onclick="showVocab(&apos;dominieren&apos;,&apos;占主导&apos;,&apos;am haeufgsten sein. 例：Bei Männern dominieren technische Fächer.&apos;)">dominieren</span> bei den Männern aber <span class="vocab-word" onclick="showVocab(&apos;technisch&apos;,&apos;技术的&apos;,&apos;die Technik betreffend. 例：Technische Fächer sind bei Männern beliebt.&apos;)">technische</span> und <span class="vocab-word" onclick="showVocab(&apos;naturwissenschaftlich&apos;,&apos;自然科学的&apos;,&apos;die Naturwissenschaft betreffend. 例：Naturwissenschaftliche Fächer wie Physik sind gefragt.&apos;)">naturwissenschaftliche</span> <span class="vocab-word" onclick="showVocab(&apos;das Fach&apos;,&apos;学科、专业&apos;,&apos;ein Studienfach. 例：Informatik ist ein technisches Fach.&apos;)">Fächer</span> wie <span class="vocab-word" onclick="showVocab(&apos;die Informatik&apos;,&apos;计算机科学&apos;,&apos;die Wissenschaft der Computer. 例；Informatik ist bei Männern sehr beliebt.&apos;)">Informatik</span> und <span class="vocab-word" onclick="showVocab(&apos;der Maschinenbau&apos;,&apos;机械工程&apos;,&apos;das Studium des Baus von Maschinen. 例：Maschinenbau ist ein typisches Mannerfach.&apos;)">Maschinenbau</span>. Bei den Frauen sind nach BWL vor allem <span class="vocab-word" onclick="showVocab(&apos;die Rechtswissenschaft&apos;,&apos;法学&apos;,&apos;das Studium des Rechts. 例：Rechtswissenschaften sind bei Frauen beliebt.&apos;)">Rechtswissenschaften</span>, <span class="vocab-word" onclick="showVocab(&apos;die Psychologie&apos;,&apos;心理学&apos;,&apos;die Wissenschaft der Psyche. 例：Psychologie studieren viele Frauen.&apos;)">Psychologie</span> sowie <span class="vocab-word" onclick="showVocab(&apos;die Erziehungswissenschaft&apos;,&apos;教育科学&apos;,&apos;die Wissenschaft der Erziehung. 例：Erziehungswissenschaften sind ein beliebtes Studienfach.&apos;)">Erziehungswissenschaften</span> beliebt.</p>
-        <p style="margin-top:6px">Insgesamt <span class="vocab-word" onclick="showVocab(&apos;sich unterscheiden&apos;,&apos;区别于&apos;,&apos;anders sein. 例：Frauen und Männer unterscheiden sich in ihrer Berufswahl.&apos;)">unterscheiden</span> sich Frauen und Männer in ihrer Berufswahl demnach noch immer stark voneinander. Daran ist nichts <span class="vocab-word" onclick="showVocab(&apos;auszusetzen haben an&apos;,&apos;批评、挑剔&apos;,&apos;etwas zu kritisieren haben. 例：Daran ist nichts auszusetzen.&apos;)">auszusetzen</span>, wenn die Wahl den jeweiligen <span class="vocab-word" onclick="showVocab(&apos;die Vorliebe&apos;,&apos;偏好&apos;,&apos;besondere Neigung. 例：Die Wahl entspricht den Vorlieben.&apos;)">Vorlieben</span> <span class="vocab-word" onclick="showVocab(&apos;entsprechen&apos;,&apos;符合、对应&apos;,&apos;zu etwas passen. 例：Die Wahl entspricht den Vorlieben.&apos;)">entspricht</span>. Dennoch gibt es gute <span class="vocab-word" onclick="showVocab(&apos;der Grund&apos;,&apos;原因&apos;,&apos;die Ursache. 例：Es gibt gute Gruende fuer diese Entscheidung.&apos;)">Gruende</span> dafuer, junge Menschen zu <span class="vocab-word" onclick="showVocab(&apos;ermoetigen&apos;,&apos;鼓励&apos;,&apos;Mut machen. 例：Man sollte Jugendliche ermoetigen, neue Wege zu gehen.&apos;)">ermoetigen</span>, die traditionellen <span class="vocab-word" onclick="showVocab(&apos;das Rollenmuster&apos;,&apos;角色模式&apos;,&apos;typische Verhaltensweisen fuer Männer/Frauen in der Gesellschaft. 例：Traditionelle Rollenmuster sollten aufgebrochen werden.&apos;)">Rollenmuster</span> zu verlassen und sich von <span class="vocab-word" onclick="showVocab(&apos;stereotyp&apos;,&apos;刻板的&apos;,&apos;klischeehaft, immer gleich. 例：Stereotype Vorstellungen ueber Berufe gibt es leider noch.&apos;)">stereotypen</span> <span class="vocab-word" onclick="showVocab(&apos;die Vorstellung&apos;,&apos;观念、想象&apos;,&apos;die Idee, die man von etwas hat. 例：Stereotype Vorstellungen sollten ueberwunden werden.&apos;)">Vorstellungen</span> zu lösen.</p>
+        <p style="margin-top:6px">Insgesamt <span class="vocab-word" onclick="showVocab(&apos;sich unterscheiden&apos;,&apos;区别于&apos;,&apos;anders sein. 例：Frauen und Männer unterscheiden sich in ihrer Berufswahl.&apos;)">unterscheiden</span> sich Frauen und Männer in ihrer Berufswahl demnach noch immer stark voneinander. Daran ist nichts <span class="vocab-word" onclick="showVocab(&apos;auszusetzen haben an&apos;,&apos;批评、挑剔&apos;,&apos;etwas zu kritisieren haben. 例：Daran ist nichts auszusetzen.&apos;)">auszusetzen</span>, wenn die Wahl den jeweiligen <span class="vocab-word" onclick="showVocab(&apos;die Vorliebe&apos;,&apos;偏好&apos;,&apos;besondere Neigung. 例：Die Wahl entspricht den Vorlieben.&apos;)">Vorlieben</span> <span class="vocab-word" onclick="showVocab(&apos;entsprechen&apos;,&apos;符合、对应&apos;,&apos;zu etwas passen. 例：Die Wahl entspricht den Vorlieben.&apos;)">entspricht</span>. Dennoch gibt es gute <span class="vocab-word" onclick="showVocab(&apos;der Grund&apos;,&apos;原因&apos;,&apos;die Ursache. 例：Es gibt gute Gruende fuer diese Entscheidung.&apos;)">Gruende</span> dafuer, junge Menschen zu <span class="vocab-word" onclick="showVocab(&apos;ermoetigen&apos;,&apos;鼓励&apos;,&apos;Mut machen. 例：Man sollte Jugendliche ermoetigen, neue Wege zu gehen.&apos;)">ermoetigen</span>, die traditionellen <span class="vocab-word" onclick="showVocab(&apos;das Rollenmuster&apos;,&apos;角色模式&apos;,&apos;typische Verhaltensweisen fuer Männer/Frauen in der Gesellschaft. 例：Traditionelle Rollenmuster sollten aufgebrochen werden.&apos;)">Rollenmuster</span> zu verlassen und sich von <span class="vocab-word" onclick="showVocab(&apos;stereotyp&apos;,&apos;刻板的&apos;,&apos;klischeehaft, immer gleich. 例：Stereotype Vorstellungen ueber Berufe gibt es leider noch.&apos;)">stereotypen</span> <span class="vocab-word" onclick="showVocab(&apos;die Vorstellung&apos;,&apos;观念、想象&apos;,&apos;die Idee, die man von etwas hat. 例：Stereotype Vorstellungen sollten ueberwunden werden.&apos;)">Vorstellungen</span> zu loesen.</p>
       </div>
       <div class="highlight-box">Studienwahl: BWL Platz 1 bei beiden. Danach Männer→Informatik/Maschinenbau, Frauen→Jura/Psychologie/Paedagogik.</div>
     </div>
 
-    <h2 class="section-title" style="margin-top:40px"><span class="num">2</span> T2 · Lieber Werkstatt statt Schreibtisch · Erika + Simon</h2>
+    <h2 class="section-title" style="margin-top:40px"><span class="num">2</span> T2+T3 · Erika + Simon · Berufe jenseits von Klischees</h2>
     <p style="margin-bottom:12px;font-size:14px;color:var(--text-light)">
       一位年轻女性选择成为电工的真实故事。点击红色词汇查看释义。
     </p>
@@ -600,19 +597,18 @@
       <h3>Erika — „Lieber Werkstatt statt Schreibtisch"</h3>
       <div class="de">
         <p><span class="vocab-word" onclick="showVocab(&apos;zunaechst&apos;,&apos;起初、首先&apos;,&apos;am Anfang, zuerst. 例：Zunaechst besuchte sie ein Gymnasium.&apos;)">Zunaechst</span> besuchte Erika ein <span class="vocab-word" onclick="showVocab(&apos;das Gymnasium&apos;,&apos;文理中学&apos;,&apos;die Schulform, die zum Abitur fuehrt. 例：Auf dem Gymnasium macht man das Abitur.&apos;)">Gymnasium</span>. <span class="vocab-word" onclick="showVocab(&apos;jedoch&apos;,&apos;然而&apos;,&apos;aber, trotzdem. 例：Jedoch stellte sie fest, dass ...&apos;)">Jedoch</span> <span class="vocab-word" onclick="showVocab(&apos;feststellen&apos;,&apos;发现、确认&apos;,&apos;etwas bemerken oder erkennen. 例：Sie stellte fest, dass ihr die Werkstatt besser gefaellt.&apos;)">stellte</span> sie fest, dass sie den Nachmittag in der <span class="vocab-word" onclick="showVocab(&apos;die Werkstatt&apos;,&apos;车间、工坊&apos;,&apos;der Arbeitsraum, in dem repariert oder gebaut wird. 例：Sie half in der Werkstatt ihres Vaters.&apos;)">Elektro-Werkstatt</span> ihres Vaters verbrachte, als nur am <span class="vocab-word" onclick="showVocab(&apos;der Schreibtisch&apos;,&apos;办公桌&apos;,&apos;der Tisch, an dem man schreibt und arbeitet. 例：Sie sass lieber in der Werkstatt als am Schreibtisch.&apos;)">Schreibtisch</span> zu sitzen. Dadurch wurde ihr klar: „Ich muss nicht studieren wie meine Freundinnen." Sie entschied sich daher fuer die <span class="vocab-word" onclick="showVocab(&apos;die Ausbildung&apos;,&apos;职业培训&apos;,&apos;die berufliche Bildung in einem Betrieb. 例：Sie machte eine Ausbildung zur Elektronikerin.&apos;)">Ausbildung</span> zur <span class="vocab-word" onclick="showVocab(&apos;der/die Elektroniker/in&apos;,&apos;电子技术员&apos;,&apos;eine Fachkraft fuer elektronische Systeme. 例：Sie absolviert eine Ausbildung zur Elektronikerin.&apos;)">Elektronikerin</span> – aus dem Traum wurde Realitaet. Nun <span class="vocab-word" onclick="showVocab(&apos;betreuen&apos;,&apos;照顾、服务&apos;,&apos;sich um jemanden kuemmern. 例：Sie betreut Kundinnen und Kunden.&apos;)">betreut</span> sie <span class="vocab-word" onclick="showVocab(&apos;der Kunde/die Kundin&apos;,&apos;客户&apos;,&apos;jemand, der eine Dienstleistung kauft. 例：Die Kundin ist mit der Arbeit zufrieden.&apos;)">Kundinnen und Kunden</span> und plant die <span class="vocab-word" onclick="showVocab(&apos;die Beleuchtung&apos;,&apos;照明&apos;,&apos;das Licht in einem Gebaeude. 例：Sie plant die Beleuchtung in Gebaeuden.&apos;)">Beleuchtung</span> in Gebaeuden.</p>
-        <p style="margin-top:6px">In ihrer Arbeit kommt es <span class="vocab-word" onclick="showVocab(&apos;darauf ankommen&apos;,&apos;关键取决于&apos;,&apos;wichtig sein fuer etwas. 例：Es kommt darauf an, die Systeme richtig zu gestalten.&apos;)">darauf an</span>, <span class="vocab-word" onclick="showVocab(&apos;sogenannt&apos;,&apos;所谓的&apos;,&apos;wie man etwas nennt. 例：Sie baut sogenannte Smart-Home-Systeme.&apos;)">sogenannte</span> Smart-Home-Systeme fuer die nachhaltige <span class="vocab-word" onclick="showVocab(&apos;die Energieversorgung&apos;,&apos;能源供应&apos;,&apos;die Bereitstellung von Energie. 例：Nachhaltige Energieversorgung ist wichtig fuer den Klimaschutz.&apos;)">Energieversorgung</span> und den <span class="vocab-word" onclick="showVocab(&apos;der Klimaschutz&apos;,&apos;气候保护&apos;,&apos;der Schutz des Klimas. 例：Smart-Home-Systeme helfen beim Klimaschutz.&apos;)">Klimaschutz</span> <span class="vocab-word" onclick="showVocab(&apos;mitgestalten&apos;,&apos;共同设计、参与塑造&apos;,&apos;bei der Gestaltung mitwirken. 例：Sie gestaltet die Systeme mit.&apos;)">mitzugestalten</span>. Dabei hat Erika auch ihre persoenlichen <span class="vocab-word" onclick="showVocab(&apos;die Staerke&apos;,&apos;优势、长处&apos;,&apos;eine positive Eigenschaft oder Faehigkeit. 例：Ihre persoenlichen Staerken hat sie weiterentwickelt.&apos;)">Staerken</span> weiterentwickelt. „Ich bin <span class="vocab-word" onclick="showVocab(&apos;durchsetzungsfähig&apos;,&apos;有决断力的&apos;,&apos;fähig, eigene Ideen und Ziele zu verwirklichen. 例：Sie ist durchsetzungsfähiger geworden.&apos;)">durchsetzungsfähiger</span> geworden, weil ich meistens als einzige Frau mit Männern <span class="vocab-word" onclick="showVocab(&apos;zusammenarbeiten&apos;,&apos;合作&apos;,&apos;mit anderen gemeinsam arbeiten. 例：Sie arbeitet mit Männern zusammen.&apos;)">zusammenarbeite</span>." Sie lachte, als sie sagte: „Ich mache das gerne, es ist ein sehr angenehmes Arbeiten. Meine maennlichen Kollegen sprechen Probleme immer direkt an. Das finde ich gut." Sie <span class="vocab-word" onclick="showVocab(&apos;sich freuen&apos;,&apos;感到高兴&apos;,&apos;froh ueber etwas sein. 例：Sie freut sich, wenn Maedchen ihren Traum verwirklichen.&apos;)">freut</span> sich, wenn Maedchen den <span class="vocab-word" onclick="showVocab(&apos;der Mut&apos;,&apos;勇气&apos;,&apos;die Tapferkeit, etwas zu tun. 例：Sie hat den Mut, ihren eigenen Weg zu gehen.&apos;)">Mut</span> haben, ihrem eigenen <span class="vocab-word" onclick="showVocab(&apos;der Berufswunsch&apos;,&apos;职业愿望&apos;,&apos;der Wunsch, einen bestimmten Beruf auszuueben. 例：Sie folgte ihrem Berufswunsch.&apos;)">Berufswunsch</span> zu folgen.</p>
+        <p style="margin-top:6px">In ihrer Arbeit kommt es <span class="vocab-word" onclick="showVocab(&apos;darauf ankommen&apos;,&apos;关键取决于&apos;,&apos;wichtig sein fuer etwas. 例：Es kommt darauf an, die Systeme richtig zu gestalten.&apos;)">darauf an</span>, <span class="vocab-word" onclick="showVocab(&apos;sogenannt&apos;,&apos;所谓的&apos;,&apos;wie man etwas nennt. 例：Sie baut sogenannte Smart-Home-Systeme.&apos;)">sogenannte</span> Smart-Home-Systeme fuer die nachhaltige <span class="vocab-word" onclick="showVocab(&apos;die Energieversorgung&apos;,&apos;能源供应&apos;,&apos;die Bereitstellung von Energie. 例：Nachhaltige Energieversorgung ist wichtig fuer den Klimaschutz.&apos;)">Energieversorgung</span> und den <span class="vocab-word" onclick="showVocab(&apos;der Klimaschutz&apos;,&apos;气候保护&apos;,&apos;der Schutz des Klimas. 例：Smart-Home-Systeme helfen beim Klimaschutz.&apos;)">Klimaschutz</span> <span class="vocab-word" onclick="showVocab(&apos;mitgestalten&apos;,&apos;共同设计、参与塑造&apos;,&apos;bei der Gestaltung mitwirken. 例：Sie gestaltet die Systeme mit.&apos;)">mitzugestalten</span>. Dabei hat Erika auch ihre persoenlichen <span class="vocab-word" onclick="showVocab(&apos;die Staerke&apos;,&apos;优势、长处&apos;,&apos;eine positive Eigenschaft oder Faehigkeit. 例：Ihre persoenlichen Staerken hat sie weiterentwickelt.&apos;)">Staerken</span> weiterentwickelt. „Ich bin <span class="vocab-word" onclick="showVocab(&apos;durchsetzungsfähig&apos;,&apos;有决断力的&apos;,&apos;faehig, eigene Ideen und Ziele zu verwirklichen. 例：Sie ist durchsetzungsfähiger geworden.&apos;)">durchsetzungsfähiger</span> geworden, weil ich meistens als einzige Frau mit Männern <span class="vocab-word" onclick="showVocab(&apos;zusammenarbeiten&apos;,&apos;合作&apos;,&apos;mit anderen gemeinsam arbeiten. 例：Sie arbeitet mit Männern zusammen.&apos;)">zusammenarbeite</span>." Sie lachte, als sie sagte: „Ich mache das gerne, es ist ein sehr angenehmes Arbeiten. Meine maennlichen Kollegen sprechen Probleme immer direkt an. Das finde ich gut." Sie <span class="vocab-word" onclick="showVocab(&apos;sich freuen&apos;,&apos;感到高兴&apos;,&apos;froh ueber etwas sein. 例：Sie freut sich, wenn Maedchen ihren Traum verwirklichen.&apos;)">freut</span> sich, wenn Maedchen den <span class="vocab-word" onclick="showVocab(&apos;der Mut&apos;,&apos;勇气&apos;,&apos;die Tapferkeit, etwas zu tun. 例：Sie hat den Mut, ihren eigenen Weg zu gehen.&apos;)">Mut</span> haben, ihrem eigenen <span class="vocab-word" onclick="showVocab(&apos;der Berufswunsch&apos;,&apos;职业愿望&apos;,&apos;der Wunsch, einen bestimmten Beruf auszuueben. 例：Sie folgte ihrem Berufswunsch.&apos;)">Berufswunsch</span> zu folgen.</p>
       </div>
       <div class="highlight-box">Erika: besuchte Gymnasium→half lieber in der Werkstatt→Ausbildung zur Elektronikerin→betreut Kunden, plant Beleuchtung, baut Smart-Home-Systeme. „Ich bin durchsetzungsfähiger geworden."</div>
     <div class="text-card" style="margin-top:24px">
       <h3>Mit Kopf und Herz dabei sein</h3>
       <div class="de">
-        <p>Simon wusste früh, was er werden wollte. „Ich habe <span class="vocab-word" onclick="showVocab(&apos;Lust haben auf&apos;,&apos;对…有兴趣&apos;,&apos;Freude an etwas haben. 例：Ich habe Lust darauf, mit Kindern zu arbeiten.&apos;)">Lust darauf</span>, mit Kindern und Jugendlichen zu arbeiten", <span class="vocab-word" onclick="showVocab(&apos;erzählen&apos;,&apos;讲述&apos;,&apos;etwas mündlich berichten. 例：Simon erzählt von seinen Erfahrungen.&apos;)">erzählt</span> Simon. Deshalb hat er sich <span class="vocab-word" onclick="showVocab(&apos;sich entscheiden&apos;,&apos;决定&apos;,&apos;eine Wahl treffen. 例：Er hat sich bewusst für eine Ausbildung entschieden.&apos;)">bewusst</span> für eine <span class="vocab-word" onclick="showVocab(&apos;die Ausbildung&apos;,&apos;职业培训&apos;,&apos;die berufliche Bildung in einem Betrieb. 例：Er macht eine Ausbildung zum Erzieher.&apos;)">Ausbildung</span> zum <span class="vocab-word" onclick="showVocab(&apos;der Erzieher&apos;,&apos;教育工作者、幼师&apos;,&apos;eine Person, die Kinder betreut und fördert. 例：Simon möchte Erzieher werden.&apos;)">Erzieher</span> entschieden. Der <span class="vocab-word" onclick="showVocab(&apos;sozial&apos;,&apos;社会的&apos;,&apos;die Gesellschaft betreffend. 例：Der soziale Bereich hat ihn interessiert.&apos;)">soziale</span> Bereich hat ihn schon immer interessiert.</p>
-        <p style="margin-top:6px"><span class="vocab-word" onclick="showVocab(&apos;während&apos;,&apos;在…期间&apos;,&apos;in der Zeit, als. 例：Während seiner Schulzeit hat er Praktika gemacht.&apos;)">Während</span> seiner Schulzeit hat er zwei <span class="vocab-word" onclick="showVocab(&apos;das Praktikum&apos;,&apos;实习&apos;,&apos;die praktische Arbeit zum Kennenlernen eines Berufs. 例：Er hat zwei Praktika im Kindergarten gemacht.&apos;)">Praktika</span> im <span class="vocab-word" onclick="showVocab(&apos;der Kindergarten&apos;,&apos;幼儿园&apos;,&apos;die Einrichtung für Kinder. 例：Er hat im Kindergarten gearbeitet.&apos;)">Kindergarten</span> gemacht und dadurch die <span class="vocab-word" onclick="showVocab(&apos;die Aufgabe&apos;,&apos;任务&apos;,&apos;etwas, das man tun muss. 例：Die Aufgaben von Erziehern sind vielfältig.&apos;)">Aufgaben</span> von Erziehern <span class="vocab-word" onclick="showVocab(&apos;kennenlernen&apos;,&apos;了解、认识&apos;,&apos;jemanden oder etwas zum ersten Mal kennenlernen. 例：Er hat die Arbeit der Erzieher kennengelernt.&apos;)">kennenlernen</span> gelernt. Es gehört z. B. zu seinen Aufgaben, Kinder zu <span class="vocab-word" onclick="showVocab(&apos;betreuen&apos;,&apos;照顾&apos;,&apos;sich um jemanden kümmern. 例：Erzieher betreuen und unterstützen die Kinder.&apos;)">betreuen</span> und zu <span class="vocab-word" onclick="showVocab(&apos;unterstützen&apos;,&apos;支持&apos;,&apos;jemandem helfen. 例：Sie unterstützen die Kinder bei ihren Aufgaben.&apos;)">unterstützen</span> sowie auf ihr Verhalten zu <span class="vocab-word" onclick="showVocab(&apos;achten auf&apos;,&apos;注意、关注&apos;,&apos;aufmerksam sein bei etwas. 例：Erzieher achten auf das Verhalten der Kinder.&apos;)">achten</span>.</p>
-        <p style="margin-top:6px">Auf die Frage, welche <span class="vocab-word" onclick="showVocab(&apos;die Stärke&apos;,&apos;优势、长处&apos;,&apos;eine positive Eigenschaft. 例：Welche Stärken bringst du für den Beruf mit?&apos;)">Stärken</span> er für den Beruf <span class="vocab-word" onclick="showVocab(&apos;mitbringen&apos;,&apos;带来&apos;,&apos;etwas als Eigenschaft haben. 例：Er bringt Geduld für den Beruf mit.&apos;)">mitbringt</span>, meint Simon: „<span class="vocab-word" onclick="showVocab(&apos;die Geduld&apos;,&apos;耐心&apos;,&apos;die Fähigkeit, ruhig zu warten. 例：Geduld ist im Umgang mit Kindern wichtig.&apos;)">Geduld</span>, <span class="vocab-word" onclick="showVocab(&apos;die Kreativität&apos;,&apos;创造力&apos;,&apos;die Fähigkeit, neue Ideen zu entwickeln. 例：Kreativität ist für Erzieher wichtig.&apos;)">Kreativität</span> und <span class="vocab-word" onclick="showVocab(&apos;das Einfühlungsvermögen&apos;,&apos;同理心、共情能力&apos;,&apos;die Fähigkeit, sich in andere hineinzuversetzen. 例：Einfühlungsvermögen ist die wichtigste Fähigkeit für Erzieher.&apos;)">Einfühlungsvermögen</span> sind sehr wichtig – die wichtigste Fähigkeit für Erzieher ist also Einfühlungsvermögen." Das heißt, ich <span class="vocab-word" onclick="showVocab(&apos;merken&apos;,&apos;注意到&apos;,&apos;etwas bemerken. 例：Ich merke, wenn es einem Kind nicht gut geht.&apos;)">merke</span>, wenn es einem Kind nicht gut geht. Ich höre ihm zu und <span class="vocab-word" onclick="showVocab(&apos;helfen&apos;,&apos;帮助&apos;,&apos;jemandem Unterstützung geben. 例：Ich helfe dem Kind.&apos;)">helfe</span> ihm. Simon <span class="vocab-word" onclick="showVocab(&apos;raten&apos;,&apos;建议&apos;,&apos;jemandem einen Rat geben. 例：Simon rät jungen Menschen, ihren Traum zu verfolgen.&apos;)">rät</span>: „Wenn man Erzieher werden möchte, sollte man mit dem <span class="vocab-word" onclick="showVocab(&apos;das Herz&apos;,&apos;心脏、心&apos;,&apos;das Organ, das Blut pumpt; auch: Seele, Gefühl. 例：Man sollte mit dem Herzen dabei sein.&apos;)">Herzen</span> dabei sein, nicht nur mit dem <span class="vocab-word" onclick="showVocab(&apos;der Kopf&apos;,&apos;头、头脑&apos;,&apos;der oberste Teil des Körpers; auch: Verstand. 例：Nicht nur mit dem Kopf, sondern auch mit dem Herzen.&apos;)">Kopf</span>."</p>
+        <p>Simon wusste früh, was er werden wollte. "Ich habe <span class="vocab-word" onclick="showVocab('Lust haben auf,''对…有兴趣,''Freude an etwas haben.')">Lust darauf</span>, mit Kindern und Jugendlichen zu arbeiten", <span class="vocab-word" onclick="showVocab('erzählen,''讲述,''etwas mündlich berichten.')">erzählt</span> Simon. Deshalb hat er sich <span class="vocab-word" onclick="showVocab('sich entscheiden,''决定,''eine Wahl treffen.')">bewusst</span> für eine <span class="vocab-word" onclick="showVocab('die Ausbildung,''职业培训,''die berufliche Bildung.')">Ausbildung</span> zum <span class="vocab-word" onclick="showVocab('der Erzieher,''教育工作者、幼师,''eine Person, die Kinder betreut und fördert.')">Erzieher</span> entschieden. Der <span class="vocab-word" onclick="showVocab('sozial,''社会的,''die Gesellschaft betreffend.')">soziale</span> Bereich hat ihn schon immer interessiert.</p>
+        <p style="margin-top:6px"><span class="vocab-word" onclick="showVocab('während,''在…期间,''in der Zeit, als.')">Während</span> seiner Schulzeit hat er zwei <span class="vocab-word" onclick="showVocab('das Praktikum,''实习,''die praktische Arbeit zum Kennenlernen eines Berufs.')">Praktika</span> im <span class="vocab-word" onclick="showVocab('der Kindergarten,''幼儿园,''die Einrichtung für Kinder.')">Kindergarten</span> gemacht und dadurch die <span class="vocab-word" onclick="showVocab('die Aufgabe,''任务,''etwas, das man tun muss.')">Aufgaben</span> von Erziehern <span class="vocab-word" onclick="showVocab('kennenlernen,''了解、认识,''jemanden oder etwas zum ersten Mal kennenlernen.')">kennenlernen</span> gelernt. Es gehört z. B. zu seinen Aufgaben, Kinder zu <span class="vocab-word" onclick="showVocab('betreuen,''照顾,''sich um jemanden kümmern.')">betreuen</span> und zu <span class="vocab-word" onclick="showVocab('unterstützen,''支持,''jemandem helfen.')">unterstützen</span> sowie auf ihr Verhalten zu <span class="vocab-word" onclick="showVocab('achten auf,''注意、关注,''aufmerksam sein bei etwas.')">achten</span>.</p>
+        <p style="margin-top:6px">Auf die Frage, welche <span class="vocab-word" onclick="showVocab('die Stärke,''优势、长处,''eine positive Eigenschaft.')">Stärken</span> er für den Beruf <span class="vocab-word" onclick="showVocab('mitbringen,''带来,''etwas als Eigenschaft haben.')">mitbringt</span>, meint Simon: "<span class="vocab-word" onclick="showVocab('die Geduld,''耐心,''die Fähigkeit, ruhig zu warten.')">Geduld</span>, <span class="vocab-word" onclick="showVocab('die Kreativität,''创造力,''die Fähigkeit, neue Ideen zu entwickeln.')">Kreativität</span> und <span class="vocab-word" onclick="showVocab('das Einfühlungsvermögen,''同理心、共情能力,''die Fähigkeit, sich in andere hineinzuversetzen.')">Einfühlungsvermögen</span> sind sehr wichtig – die wichtigste Fähigkeit für Erzieher ist also Einfühlungsvermögen." Das heißt, ich <span class="vocab-word" onclick="showVocab('merken,''注意到,''etwas bemerken.')">merke</span>, wenn es einem Kind nicht gut geht. Ich höre ihm zu und <span class="vocab-word" onclick="showVocab('helfen,''帮助,''jemandem Unterstützung geben.')">helfe</span> ihm. Simon <span class="vocab-word" onclick="showVocab('raten,''建议,''jemandem einen Rat geben.')">rät</span>: "Wenn man Erzieher werden möchte, sollte man mit dem <span class="vocab-word" onclick="showVocab('das Herz,''心脏、心,''das Organ, das Blut pumpt; auch: Seele, Gefühl.')">Herzen</span> dabei sein, nicht nur mit dem <span class="vocab-word" onclick="showVocab('der Kopf,''头、头脑,''der oberste Teil des Körpers; auch: Verstand.')">Kopf</span>."</p>
       </div>
-      <div class="highlight-box">Simon: wusste früh→Ausbildung zum Erzieher→Praktika im Kindergarten→Geduld, Kreativität und Einfühlungsvermögen sind wichtig. „Man sollte mit dem Herzen dabei sein."</div>
+      <div class="highlight-box">Simon: wusste früh→Ausbildung zum Erzieher→Praktika im Kindergarten→Geduld, Kreativität und Einfühlungsvermögen sind wichtig. "Man sollte mit dem Herzen dabei sein."</div>
     </div>
-
     </div>
 
     </section>
@@ -624,10 +620,10 @@
     </p>
 
     <h3 style="color:var(--primary);margin:16px 0 8px;">🏫 Berufsfelder</h3>
-    <div class="vocab-grid" id="vocab-grid-T1"></div>
+    <div class="vocab-grid" id="vocab-grid-1"></div>
 
     <h3 style="color:var(--primary);margin:16px 0 8px;">🎓 大学与学业</h3>
-    <div class="vocab-grid" id="vocab-grid-T2"></div>
+    <div class="vocab-grid" id="vocab-grid-2"></div>
 
     <h3 style="color:var(--primary);margin:16px 0 8px;">📌 重要短语与搭配</h3>
     <div class="vocab-grid" id="vocab-grid-3"></div>
@@ -694,7 +690,7 @@
         <span class="zh">Xu Meng对Lukas的不守时和不靠谱都感到困扰。</span>
       </div>
       <div class="grammar-example">
-        <span class="de">Unter den Top-5-Ausbildungsberufen waren <strong>sowohl</strong> die Kauffrau / der Kaufmann <strong>als auch</strong> der Verkaeufer im Einzelhandel beliebt.</span>
+        <span class="de">Unter den Top-5-Ausbildungsberufen waren <strong>sowohl</strong> die Kauffrau / der Kaufmann <strong>als auch</strong> der Verkaufer im Einzelhandel beliebt.</span>
         <span class="zh">前五名职业培训中，女/男商人和零售员都受欢迎。</span>
       </div>
     </div>
@@ -711,7 +707,7 @@
 
   </section><!-- ===== 练习 ===== -->
     <section id="exercise">
-    <h2 class="section-title"><span class="num">1</span> 练习 · Übungen</h2>
+    <h2 class="section-title"><span class="num">1</span> 练习 · Uebungen</h2>
 
     <div class="quiz-card"><div class="q-text">1. Welche Berufe sind bei Frauen am beliebtesten?</div>
       <div class="options">
@@ -720,7 +716,7 @@
         <div class="opt" onclick="checkQuiz(this,1,2)">C. Elektroniker, Metalltechniker</div>
         <div class="opt" onclick="checkQuiz(this,1,3)">D. Bauer, Gaertner</div>
       </div>
-      <div class="q-answer">答案：B</div><button class="show-answer-btn" onclick="this.previousElementSibling.classList.toggle('show');this.textContent=this.textContent=='显示答案'?'隐藏答案':'显示答案'">显示答案</button>
+      <div class="q-answer">答案：B</div><button class="show-answer-btn" onclick="this.previousElementSibling.classList.toggle('show')">显示答案</button>
     </div>
 
     <div class="quiz-card"><div class="q-text">2. Welches Fach liegt bei Studienanfaengern beider Geschlechter auf Platz eins?</div>
@@ -730,7 +726,7 @@
         <div class="opt" onclick="checkQuiz(this,2,2)">C. Maschinenbau</div>
         <div class="opt" onclick="checkQuiz(this,2,3)">D. Psychologie</div>
       </div>
-      <div class="q-answer">答案：B</div><button class="show-answer-btn" onclick="this.previousElementSibling.classList.toggle('show');this.textContent=this.textContent=='显示答案'?'隐藏答案':'显示答案'">显示答案</button>
+      <div class="q-answer">答案：B</div><button class="show-answer-btn" onclick="this.previousElementSibling.classList.toggle('show')">显示答案</button>
     </div>
 
     <div class="quiz-card"><div class="q-text">3. Was hat Erika nach dem Gymnasium gemacht?</div>
@@ -740,7 +736,7 @@
         <div class="opt" onclick="checkQuiz(this,3,2)">C. Sie hat im Buero gearbeitet.</div>
         <div class="opt" onclick="checkQuiz(this,3,3)">D. Sie ist ins Ausland gegangen.</div>
       </div>
-      <div class="q-answer">答案：B</div><button class="show-answer-btn" onclick="this.previousElementSibling.classList.toggle('show');this.textContent=this.textContent=='显示答案'?'隐藏答案':'显示答案'">显示答案</button>
+      <div class="q-answer">答案：B</div><button class="show-answer-btn" onclick="this.previousElementSibling.classList.toggle('show')">显示答案</button>
     </div>
 
     <div class="quiz-card"><div class="q-text">4. Erika ist durchsetzungsfähiger geworden, ______________.</div>
@@ -750,7 +746,7 @@
         <div class="opt" onclick="checkQuiz(this,4,2)">C. weil sie eine neue Stelle bekommen hat</div>
         <div class="opt" onclick="checkQuiz(this,4,3)">D. weil sie eine Pruefung bestanden hat</div>
       </div>
-      <div class="q-answer">答案：B</div><button class="show-answer-btn" onclick="this.previousElementSibling.classList.toggle('show');this.textContent=this.textContent=='显示答案'?'隐藏答案':'显示答案'">显示答案</button>
+      <div class="q-answer">答案：B</div><button class="show-answer-btn" onclick="this.previousElementSibling.classList.toggle('show')">显示答案</button>
     </div>
 
     <div class="quiz-card"><div class="q-text">5. Welche Konjunktion verbindet zwei gegensaetzliche Informationen?</div>
@@ -760,7 +756,7 @@
         <div class="opt" onclick="checkQuiz(this,5,2)">C. sowohl … als auch</div>
         <div class="opt" onclick="checkQuiz(this,5,3)">D. und</div>
       </div>
-      <div class="q-answer">答案：B</div><button class="show-answer-btn" onclick="this.previousElementSibling.classList.toggle('show');this.textContent=this.textContent=='显示答案'?'隐藏答案':'显示答案'">显示答案</button>
+      <div class="q-answer">答案：B</div><button class="show-answer-btn" onclick="this.previousElementSibling.classList.toggle('show')">显示答案</button>
     </div>
 
     <div class="quiz-card"><div class="q-text">6. "________ in China ________ in Europa ist es unhöflich, unpünktlich zu sein."</div>
@@ -770,10 +766,32 @@
         <div class="opt" onclick="checkQuiz(this,6,2)">C. Sowohl … als auch</div>
         <div class="opt" onclick="checkQuiz(this,6,3)">D. Weder … noch</div>
       </div>
-      <div class="q-answer">答案：C</div><button class="show-answer-btn" onclick="this.previousElementSibling.classList.toggle('show');this.textContent=this.textContent=='显示答案'?'隐藏答案':'显示答案'">显示答案</button>
+      <div class="q-answer">答案：C</div><button class="show-answer-btn" onclick="this.previousElementSibling.classList.toggle('show')">显示答案</button>
     </div>
 
-  </section>
+  
+    <div style="margin-top:24px">
+      <h3>词汇配对 · Wortpaare</h3>
+      <div id="match-game">
+        <div class="match-card de" data-pair="1" onclick="matchClick(this)">die Ausbildung</div>
+        <div class="match-card zh" data-pair="1" onclick="matchClick(this)">职业培训</div>
+        <div class="match-card de" data-pair="2" onclick="matchClick(this)">der Berufswunsch</div>
+        <div class="match-card zh" data-pair="2" onclick="matchClick(this)">职业愿望</div>
+        <div class="match-card de" data-pair="3" onclick="matchClick(this)">die Kreativitaet</div>
+        <div class="match-card zh" data-pair="3" onclick="matchClick(this)">创造力</div>
+        <div class="match-card de" data-pair="4" onclick="matchClick(this)">das Einfuehlungsvermoegen</div>
+        <div class="match-card zh" data-pair="4" onclick="matchClick(this)">共情能力</div>
+        <div class="match-card de" data-pair="5" onclick="matchClick(this)">die Elektronikerin</div>
+        <div class="match-card zh" data-pair="5" onclick="matchClick(this)">女电工</div>
+        <div class="match-card de" data-pair="6" onclick="matchClick(this)">die Werkstatt</div>
+        <div class="match-card zh" data-pair="6" onclick="matchClick(this)">车间</div>
+        <div class="match-card de" data-pair="7" onclick="matchClick(this)">der Erzieher</div>
+        <div class="match-card zh" data-pair="7" onclick="matchClick(this)">幼师</div>
+        <div class="match-card de" data-pair="8" onclick="matchClick(this)">der Kindergarten</div>
+        <div class="match-card zh" data-pair="8" onclick="matchClick(this)">幼儿园</div>
+      </div>
+    </div>
+</section>
 
 </div>
 
@@ -813,38 +831,37 @@
   }
 
   // ===== Quiz =====
-  
-let matchSelected = null;
+  let matchSelected = null;
 
 function matchClick(el) {
-  if (el.classList.contains('matched')) return;
+  if (el.classList.contains("matched")) return;
   if (matchSelected === null) {
     matchSelected = el;
-    el.classList.add('selected');
+    el.classList.add("selected");
   } else if (matchSelected === el) {
-    matchSelected.classList.remove('selected');
+    matchSelected.classList.remove("selected");
     matchSelected = null;
   } else {
-    const d = matchSelected.classList.contains('de');
-    const e = el.classList.contains('de');
+    var d = matchSelected.classList.contains("de");
+    var e = el.classList.contains("de");
     if (d === e) {
-      matchSelected.classList.remove('selected');
+      matchSelected.classList.remove("selected");
       matchSelected = el;
-      el.classList.add('selected');
+      el.classList.add("selected");
     } else if (matchSelected.dataset.pair === el.dataset.pair) {
-      matchSelected.classList.remove('selected');
-      matchSelected.classList.add('matched');
-      el.classList.add('matched');
+      matchSelected.classList.remove("selected");
+      matchSelected.classList.add("matched");
+      el.classList.add("matched");
       matchSelected = null;
-      if (document.querySelectorAll('.match-card:not(.matched)').length === 0)
-        {setTimeout(function(){alert('✨ 全部配对成功！');},200);}
+      var r = document.querySelectorAll(".match-card:not(.matched)").length;
+      if (r === 0) { setTimeout(function(){alert("Alles richtig!");},200); }
     } else {
-      matchSelected.classList.remove('selected');
+      matchSelected.classList.remove("selected");
       var o = matchSelected;
       matchSelected = null;
-      o.style.borderColor = '#e74c3c';
-      el.style.borderColor = '#e74c3c';
-      setTimeout(function(){o.style.borderColor = '';el.style.borderColor = '';},400);
+      o.style.borderColor = "#e74c3c";
+      el.style.borderColor = "#e74c3c";
+      setTimeout(function(){o.style.borderColor = "";el.style.borderColor = "";},400);
     }
   }
 }
@@ -926,7 +943,7 @@ function checkQuiz(btn, qId, index) {
     { word: 'der Vergleich', zh: '比较', pos: 'm.', example: 'Im Vergleich zu den Vorjahren ist das unverändert.', exampleZh: '与前几年相比，这没有变化。' },
     { word: 'dagegen', zh: '相反', pos: 'adv.', example: 'Männer wählen dagegen technische Berufe.', exampleZh: '男性则相反，选择技术职业。' },
     { word: 'der Fachinformatiker', zh: 'IT专家', pos: 'm.', example: 'Viele Männer werden Fachinformatiker.', exampleZh: '很多男性成为IT专家。' },
-    { word: 'der Einzelhandel', zh: '零售业', pos: 'm.', example: 'Der Verkaeufer im Einzelhandel ist ein beliebter Beruf.', exampleZh: '零售业售货员是受欢迎的职业。' },
+    { word: 'der Einzelhandel', zh: '零售业', pos: 'm.', example: 'Der Verkaufer im Einzelhandel ist ein beliebter Beruf.', exampleZh: '零售业售货员是受欢迎的职业。' },
     { word: 'das Geschlecht', zh: '性别', pos: 'n.', example: 'Bei beiden Geschlechtern ist der Beruf beliebt.', exampleZh: '这个职业在两性中都受欢迎。' },
     { word: 'waehrend', zh: '而、在…期间', pos: 'konj.', example: 'Während Frauen im Gesundheitswesen stark sind, sind sie in Bauberufen selten.', exampleZh: '女性在医疗行业占比高，而在建筑行业占比低。' },
     { word: 'der/die Beschaeftigte', zh: '雇员', pos: 'n.', example: 'Weniger als 10% der Beschäftigten waren Frauen.', exampleZh: '不到10%的雇员是女性。' },

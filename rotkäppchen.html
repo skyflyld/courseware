@@ -243,13 +243,32 @@ speechSynthesis.speak(u)
 })(i,sents[i])}
 }function fa(){
 var ws=document.querySelectorAll(".page-wrap");
+/* Pre-create utterances BEFORE setTimeout (iOS: must be in click handler sync frame) */
+var q=[],p1=ws[1].querySelectorAll(".sent");
+for(var j=0;j<p1.length;j++){(function(el){
+var txt=ct(el.textContent.trim());if(!txt)return;
+var u=new SpeechSynthesisUtterance(txt);u.lang="de-DE";
+if(dv)u.voice=dv;var cv=gv(el.textContent);u.pitch=cv.p;u.rate=sr*cv.r;
+q.push({u:u,el:el});
+})(p1[j])}
+/* Now flip page (async animation, speech context already captured) */
 ws[0].classList.remove("active");ws[0].classList.add("exit-left");
 ws[1].classList.remove("enter-right");ws[1].classList.add("active");
 cp=1;an=true;un();
 setTimeout(function(){
 ws[0].classList.remove("exit-left");an=false;
-var sents=document.querySelectorAll(".page-wrap.active .sent");
-if(sents.length)speakSents(sents);
+if(!q.length)return;
+sp=true;ci=0;
+document.getElementById("speakBtn").classList.add("speaking");
+document.getElementById("spkLbl").textContent="Stop";
+q.forEach(function(item){item.el.classList.add("inactive")});
+try{speechSynthesis.cancel()}catch(ex){}
+var done=0;
+for(var j=0;j<q.length;j++){(function(item){
+item.u.onstart=function(){ci=j;item.el.classList.remove("inactive");item.el.classList.add("active");try{item.el.scrollIntoView({block:"center",behavior:"smooth"})}catch(e){}};
+item.u.onend=function(){item.el.classList.remove("active");item.el.classList.add("done");done++;if(done>=q.length){sp=false;document.getElementById("speakBtn").classList.remove("speaking");document.getElementById("spkLbl").textContent="Vorlesen";if(document.getElementById("autoF").checked)setTimeout(function(){np()},600)}};
+speechSynthesis.speak(item.u);
+})(q[j])}
 },500);
 }function cs(){si=(si+1)%SPEEDS.length;sr=parseFloat(SPEEDS[si]);document.getElementById("spdBtn").textContent=SPEEDS[si]+"\u00d7"}
 

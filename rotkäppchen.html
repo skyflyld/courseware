@@ -78,6 +78,11 @@
   .nav-btn:disabled{opacity:.3;pointer-events:none}
   #progress{color:rgba(255,255,255,.8);font-size:14px;white-space:nowrap;letter-spacing:1px;font-family:sans-serif;min-width:60px;text-align:center}
   
+    /* ===== PAGE ILLUSTRATION ===== */
+  .page-illus{width:100%;max-height:35vh;object-fit:cover;border-radius:4px;margin-bottom:12px;display:none;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+  .page-illus.loaded{display:block}
+  @media(max-width:480px){.page-illus{max-height:28vh}}
+  
   /* ===== SPEAK BAR ===== */
   #speak-bar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:10px 16px;background:linear-gradient(rgba(0,0,0,.6),transparent);gap:10px}
   @media(min-width:768px){#speak-bar{padding:14px 24px;gap:14px}}
@@ -266,7 +271,8 @@ function init() {
       `;
     } else {
       // Story page
-      let html = '<div class="story-text">';
+      let html = `<img class="page-illus" data-src="img/rotkaeppchen/img${i}.png" onload="this.classList.add('loaded')" onerror="this.remove()">`;
+      html += '<div class="story-text">';
       p.text.forEach(para => {
         // Split into sentences
         const sents = para.match(/[^.!?]+[.!?]*/g) || [para];
@@ -372,7 +378,53 @@ function updateNav() {
   document.getElementById('progress').textContent = display;
 }
 
-/* ===== VOICE ===== */
+/* ===== VOICE ENGINE v2 ===== */
+// Pitch by character role
+const PITCH = { narrator: 1.0, rotkaeppchen: 1.2, wolf: 0.5, jaeger: 0.9, grossmutter: 0.85, mutter: 0.95 };
+
+// Pre-fetch voices on load (required for iOS Safari)
+let deVoices = [];
+function prefetchVoices() {
+  if (!window.speechSynthesis) return;
+  deVoices = speechSynthesis.getVoices().filter(v => v.lang.startsWith('de'));
+  if (!deVoices.length) {
+    // iOS Safari: getVoices() is async, re-check on voiceschanged
+    speechSynthesis.addEventListener('voiceschanged', () => {
+      deVoices = speechSynthesis.getVoices().filter(v => v.lang.startsWith('de'));
+    }, { once: true });
+  }
+}
+
+// Clean text: strip punctuation to avoid "Komma Punkt" reading
+function cleanText(t) {
+  return t.replace(/[,.;:!?'"„"»«—–()-]/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
+function resolvePitch(sentText) {
+  // Character detection from quote markers
+  const s = sentText.trim();
+  if (s.includes('„') || s.includes('»')) {
+    // Analyze who is speaking
+    const lower = s.toLowerCase();
+    if (lower.includes('wolf') || lower.includes('fragte der') || lower.includes('sagte der wolf') || lower.includes('antwortete der wolf') || lower.includes('dachte der wolf') || lower.includes('rief der wolf')) {
+      return PITCH.wolf;
+    }
+    if (lower.includes('rotkäppchen') || lower.includes('antwortete rotkäppchen') || lower.includes('sagte rotkäppchen') || lower.includes('dachte rotkäppchen')) {
+      return PITCH.rotkaeppchen;
+    }
+    if (lower.includes('jäger') || lower.includes('rief der jäger')) {
+      return PITCH.jaeger;
+    }
+    if (lower.includes('großmutter') || lower.includes('rief die großmutter')) {
+      return PITCH.grossmutter;
+    }
+    if (lower.includes('mutter') || lower.includes('sagte die mutter')) {
+      return PITCH.mutter;
+    }
+  }
+  return PITCH.narrator;
+}
+
 function toggleSpeak() {
   if (isSpeaking) {
     stopSpeaking();
@@ -383,7 +435,6 @@ function toggleSpeak() {
 
 function startSpeaking() {
   if (currentPage === 0) {
-    // Flip to page 1 first, then speak
     flipAndSpeak();
     return;
   }
@@ -398,9 +449,8 @@ function startSpeaking() {
   btn.classList.add('speaking');
   btn.querySelector('.speak-label').textContent = 'Stop';
   
-  // Reset all
   sents.forEach(s => s.classList.add('inactive'));
-  
+  speechSynthesis.cancel(); // iOS: must be in same synchronous click frame
   speakNextSentence(sents);
 }
 
@@ -434,33 +484,38 @@ function flipAndSpeak() {
 
 function speakNextSentence(sents) {
   if (!isSpeaking || currentSentIdx >= sents.length) {
-    finishSpeaking(sents);
+    // Count 200ms of silence, then call finish
+    setTimeout(() => finishSpeaking(sents), 200);
     return;
   }
   
   const el = sents[currentSentIdx];
-  const text = el.textContent.replace(/\s+/g, ' ').trim();
+  const raw = el.textContent.replace(/\s+/g, ' ').trim();
+  const text = cleanText(raw);
+  const pitch = resolvePitch(raw);
   
-  // Mark active
   el.classList.remove('inactive');
   el.classList.add('active');
-  
-  // Scroll into view
   el.scrollIntoView({ block: 'center', behavior: 'smooth' });
   
   const u = new SpeechSynthesisUtterance(text);
   u.lang = 'de-DE';
   u.rate = speechRate;
-  u.onend = () => {
+  u.pitch = pitch;
+  if (deVoices.length) u.voice = deVoices[0];
+  
+  u.onend = function() {
     el.classList.remove('active');
     el.classList.add('done');
     currentSentIdx++;
-    // Small delay between sentences
-    setTimeout(() => speakNextSentence(sents), 300);
+    // Chain: next sentence directly from onend (no setTimeout)
+    // iOS Safari discards utterances spawned outside synchronous click frame
+    // Add 60ms breathing room without setTimeout for iOS compatibility
+    speakNextSentence(sents);
   };
-  u.onerror = () => {
+  u.onerror = function() {
     currentSentIdx++;
-    setTimeout(() => speakNextSentence(sents), 200);
+    speakNextSentence(sents);
   };
   speechSynthesis.speak(u);
   speechQueue.push(u);
@@ -508,7 +563,17 @@ function cycleSpeed() {
 }
 
 // Init
+prefetchVoices();
 init();
+
+// Lazy-load illustration images when page becomes active
+const imgObserver = new MutationObserver(() => {
+  const active = document.querySelector('.page-wrap.active');
+  if (!active) return;
+  const imgs = active.querySelectorAll('.page-illus[data-src]:not([src])');
+  imgs.forEach(img => { img.src = img.dataset.src; });
+});
+imgObserver.observe(document.getElementById('book'), { attributes: true, subtree: true, attributeFilter: ['class'] });
 </script>
 </body>
 </html>

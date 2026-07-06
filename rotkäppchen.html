@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>Rotkäppchen · 小红帽 · 德语童话故事</title>
+<style>
+  /* ===== RESET ===== */
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:100%;height:100%;overflow:hidden;font-family:Georgia,'Times New Roman',serif;background:#1a1a2e;user-select:none;-webkit-user-select:none}
+  
+  /* ===== BOOK CONTAINER ===== */
+  #book{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;perspective:1200px}
+  .page-wrap{position:absolute;width:100%;height:100%;display:flex;align-items:center;justify-content:center;transition:transform .5s ease,opacity .5s ease;pointer-events:none}
+  .page-wrap.active{pointer-events:auto;z-index:10}
+  .page-wrap.exit-left{transform:translateX(-30%) rotateY(-8deg) scale(.92);opacity:0;z-index:5}
+  .page-wrap.enter-right{transform:translateX(30%) rotateY(8deg) scale(.92);opacity:0;z-index:5}
+  .page-wrap.exit-right{transform:translateX(30%) rotateY(8deg) scale(.92);opacity:0;z-index:5}
+  .page-wrap.enter-left{transform:translateX(-30%) rotateY(-8deg) scale(.92);opacity:0;z-index:5}
+  
+  /* ===== PAGE ===== */
+  .page{position:relative;width:92vmin;height:calc(92vmin * 1.4);border-radius:6px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5);display:flex;flex-direction:column;transition:height .3s}
+  @media(min-aspect-ratio:4/3){.page{height:90vh;width:calc(90vh / 1.4)}}
+  @media(max-width:600px){.page{width:96vw;height:calc(96vw * 1.5);border-radius:0}}
+  @media(max-width:400px){.page{height:calc(96vw * 1.6)}}
+  .page-inner{flex:1;display:flex;flex-direction:column;padding:5% 8%;overflow-y:auto;-webkit-overflow-scrolling:touch;position:relative}
+  .page-inner::-webkit-scrollbar{width:3px}
+  .page-inner::-webkit-scrollbar-thumb{background:rgba(255,255,255,.3);border-radius:3px}
+  
+  /* ===== COVER ===== */
+  .page-cover{background:linear-gradient(135deg,#8b1a1a 0%,#c0392b 30%,#e74c3c 60%,#c0392b 100%);color:#fff}
+  .page-cover .page-inner{align-items:center;justify-content:center;text-align:center}
+  
+  /* ===== THEMED BACKGROUNDS ===== */
+  .theme-forest{background:linear-gradient(160deg,#1a3a1a 0%,#2d5a27 30%,#3a7a35 60%,#1a3a1a 100%);color:#e8f5e9}
+  .theme-dark{background:linear-gradient(160deg,#1a1a2e 0%,#2d1b2e 40%,#1a1a2e 100%);color:#d5c6e0}
+  .theme-warm{background:linear-gradient(160deg,#5d4037 0%,#795548 30%,#8d6e63 60%,#5d4037 100%);color:#fff3e0}
+  .theme-light{background:linear-gradient(160deg,#fff8e1 0%,#fffde7 40%,#fff8e1 100%);color:#4e342e}
+  .theme-happy{background:linear-gradient(160deg,#fce4ec 0%,#fff3e0 40%,#e8f5e9 100%);color:#3e2723}
+  .theme-cover{background:linear-gradient(135deg,#6a1b1a 0%,#b71c1c 50%,#880e4f 100%);color:#fff}
+  
+  /* ===== TEXT STYLES ===== */
+  .page-number{position:absolute;bottom:12px;right:16px;font-size:12px;opacity:.6;letter-spacing:1px}
+  .story-text{font-size:clamp(14px,3vmin,22px);line-height:1.8;margin:0}
+  @media(max-width:400px){.story-text{font-size:clamp(13px,3.5vw,17px);line-height:1.6}}
+  .story-text p{margin-bottom:.8em;text-indent:0}
+  
+  /* ===== SENTENCE HIGHLIGHTING ===== */
+  .story-text .sent{transition:color .3s,opacity .3s;cursor:pointer}
+  .story-text .sent.inactive{opacity:.45}
+  .story-text .sent.active{opacity:1;color:inherit;font-weight:700}
+  .story-text .sent.done{opacity:1}
+  .page-cover .sent.inactive{opacity:.5!important}
+  
+  /* ===== COVER ELEMENTS ===== */
+  .cover-emoji{font-size:clamp(48px,12vmin,100px);margin-bottom:3vmin;display:block}
+  .cover-title{font-size:clamp(28px,7vmin,56px);font-weight:700;letter-spacing:4px;text-shadow:0 2px 8px rgba(0,0,0,.3);margin-bottom:2vmin}
+  .cover-sub{font-size:clamp(12px,2.5vmin,20px);opacity:.8;letter-spacing:2px}
+  .cover-by{font-size:clamp(10px,2vmin,16px);opacity:.5;margin-top:4vmin}
+  .cover-tip{position:absolute;bottom:12%;font-size:clamp(11px,2vmin,14px);opacity:.6;animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:.6}50%{opacity:.2}}
+  
+  /* ===== END PAGE ===== */
+  .end-emoji{font-size:clamp(40px,10vmin,80px);margin-bottom:3vmin}
+  .end-text{font-size:clamp(16px,3.5vmin,28px);margin-bottom:2vmin}
+  .end-moral{font-size:clamp(12px,2.5vmin,18px);max-width:80%;opacity:.8;line-height:1.6}
+  
+  /* ===== THEMED DECORATIONS ===== */
+  .deco-l{position:absolute;font-size:clamp(30px,8vmin,64px);opacity:.15;pointer-events:none}
+  .deco-r{position:absolute;font-size:clamp(20px,5vmin,40px);opacity:.12;pointer-events:none}
+  .deco-flowers{position:absolute;bottom:10%;right:8%;font-size:clamp(18px,4vmin,32px);opacity:.2;pointer-events:none}
+  
+  /* ===== NAVIGATION ===== */
+  #nav{position:fixed;bottom:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:10px 16px;background:linear-gradient(transparent,rgba(0,0,0,.7));gap:12px}
+  @media(min-width:768px){#nav{padding:16px 24px}}
+  .nav-btn{width:44px;height:44px;border:2px solid rgba(255,255,255,.3);border-radius:50%;background:rgba(255,255,255,.12);color:#fff;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;-webkit-tap-highlight-color:transparent;backdrop-filter:blur(4px)}
+  .nav-btn:active{transform:scale(.9);background:rgba(255,255,255,.25)}
+  .nav-btn:disabled{opacity:.3;pointer-events:none}
+  #progress{color:rgba(255,255,255,.8);font-size:14px;white-space:nowrap;letter-spacing:1px;font-family:sans-serif;min-width:60px;text-align:center}
+  
+  /* ===== SPEAK BAR ===== */
+  #speak-bar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:10px 16px;background:linear-gradient(rgba(0,0,0,.6),transparent);gap:10px}
+  @media(min-width:768px){#speak-bar{padding:14px 24px;gap:14px}}
+  .speak-btn{min-width:48px;height:44px;border:none;border-radius:22px;background:rgba(255,255,255,.15);color:#fff;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0 18px;gap:6px;backdrop-filter:blur(4px);-webkit-tap-highlight-color:transparent;transition:all .2s;font-family:sans-serif}
+  .speak-btn:active{transform:scale(.95);background:rgba(255,255,255,.25)}
+  .speak-btn.speaking{background:#e74c3c;box-shadow:0 0 20px rgba(231,76,60,.5)}
+  .speak-btn svg{width:22px;height:22px;fill:currentColor;flex-shrink:0}
+  .speak-label{font-size:13px;font-weight:600;letter-spacing:.5px;white-space:nowrap}
+  @media(max-width:380px){.speak-label{display:none}}
+  
+  /* ===== AUTO-FLIP TOGGLE ===== */
+  #auto-wrap{display:flex;align-items:center;gap:6px;color:rgba(255,255,255,.6);font-size:11px;font-family:sans-serif;cursor:pointer;-webkit-tap-highlight-color:transparent}
+  #auto-wrap input[type=checkbox]{display:none}
+  .toggle-track{width:32px;height:18px;background:rgba(255,255,255,.2);border-radius:9px;position:relative;transition:background .2s;flex-shrink:0}
+  .toggle-track::after{content:'';position:absolute;top:2px;left:2px;width:14px;height:14px;background:#fff;border-radius:50%;transition:transform .2s}
+  #auto-wrap input:checked+.toggle-track{background:#e74c3c}
+  #auto-wrap input:checked+.toggle-track::after{transform:translateX(14px)}
+  
+  /* ===== SPEED CONTROL ===== */
+  #speed-wrap{display:flex;align-items:center;gap:4px;color:rgba(255,255,255,.5);font-size:11px;font-family:sans-serif}
+  #speed-btn{background:rgba(255,255,255,.1);border:none;color:#fff;padding:2px 8px;border-radius:4px;cursor:pointer;font-size:11px;font-family:sans-serif;transition:background .2s}
+  #speed-btn:active{background:rgba(255,255,255,.25)}
+  
+  /* ===== TAP ZONES ===== */
+  #tap-left,#tap-right{position:fixed;top:0;bottom:80px;width:35%;z-index:50;cursor:pointer;-webkit-tap-highlight-color:transparent}
+  #tap-left{left:0}
+  #tap-right{right:0}
+  @media(min-width:768px){#tap-left,#tap-right{bottom:90px}}
+  
+  /* ===== SWIPE INDICATOR ===== */
+  .tap-hint{position:absolute;top:45%;font-size:clamp(20px,4vmin,30px);opacity:.15;pointer-events:none;animation:fadeInOut 2s ease-in-out infinite}
+  .tap-hint.left{left:8%}
+  .tap-hint.right{right:8%}
+  @media(max-width:480px){.tap-hint{opacity:0}}
+  @keyframes fadeInOut{0%,100%{opacity:.1}50%{opacity:.3}}
+  
+  /* ===== WORD CLICK VOICE ===== */
+  .click-word{cursor:pointer;border-bottom:1px dotted rgba(255,255,255,.2);transition:border-color .2s}
+  .click-word:active{border-color:#e74c3c}
+  .theme-light .click-word,.theme-happy .click-word{border-bottom:1px dotted rgba(0,0,0,.15)}
+  
+  /* ===== LOADING ===== */
+  #loading{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#1a1a2e;color:#fff;z-index:999;font-family:sans-serif;font-size:16px;opacity:1;transition:opacity .5s}
+  #loading.hidden{opacity:0;pointer-events:none}
+  .loading-spinner{width:32px;height:32px;border:3px solid rgba(255,255,255,.15);border-top-color:#e74c3c;border-radius:50%;animation:spin .8s linear infinite;margin-right:12px}
+  @keyframes spin{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+
+<!-- Loading Screen -->
+<div id="loading"><div class="loading-spinner"></div><span>Rotkäppchen lädt…</span></div>
+
+<!-- Speak Bar -->
+<div id="speak-bar">
+  <button class="speak-btn" id="speakBtn" onclick="toggleSpeak()" title="Vorlesen">
+    <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0014 7.5v9a4.5 4.5 0 002.5-4.5zM14 2v2.5A7.5 7.5 0 0121.5 12 7.5 7.5 0 0114 19.5V22a10 10 0 000-20z"/></svg>
+    <span class="speak-label">Vorlesen</span>
+  </button>
+  
+  <div id="auto-wrap">
+    <input type="checkbox" id="autoFlip">
+    <label for="autoFlip" class="toggle-track"></label>
+    <span>Auto</span>
+  </div>
+  
+  <div id="speed-wrap">
+    <button id="speed-btn" onclick="cycleSpeed()">1.0×</button>
+  </div>
+</div>
+
+<!-- Book -->
+<div id="book"></div>
+
+<!-- Tap Zones -->
+<div id="tap-left" onclick="prevPage()"><div class="tap-hint left">‹</div></div>
+<div id="tap-right" onclick="nextPage()"><div class="tap-hint right">›</div></div>
+
+<!-- Navigation Bar -->
+<div id="nav">
+  <button class="nav-btn" id="prevBtn" onclick="prevPage()" disabled>‹</button>
+  <span id="progress">1 / 12</span>
+  <button class="nav-btn" id="nextBtn" onclick="nextPage()">›</button>
+</div>
+
+<script>
+/* ===== STORY DATA ===== */
+const PAGES = [
+  {
+    cover: true,
+    theme: 'theme-cover',
+    title: 'Rotkäppchen',
+    subtitle: 'Ein Märchen der Brüder Grimm',
+    emoji: '👧🏻',
+    tip: '🫱 tippen zum Blättern'
+  },
+  {
+    theme: 'theme-light',
+    text: ['Es war einmal ein kleines Mädchen. Es trug immer eine rote Kappe. Darum nannten alle es Rotkäppchen.', 'Rotkäppchen wohnte mit seiner Mutter am Waldrand. Es war ein fröhliches und hilfsbereites Kind. Alle Menschen im Dorf mochten es gern.'],
+    deco: '🌳'
+  },
+  {
+    theme: 'theme-forest',
+    text: ['Eines Tages sagte die Mutter: „Rotkäppchen, bring der kranken Großmutter Kuchen und Wein. Sie wohnt im Wald, gleich hinter den drei alten Eichen.“', '„Geh aber nicht vom Weg ab!“', 'Rotkäppchen nahm den Korb und machte sich auf den Weg.'],
+    deco: '🧺'
+  },
+  {
+    theme: 'theme-forest',
+    text: ['Im Wald war es wunderschön. Die Vögel zwitscherten, die Sonne schien durch die Bäume. Rotkäppchen pflückte Blumen für die Großmutter.', 'Da tauchte plötzlich der Wolf auf. Er war groß und hatte scharfe Zähne. Aber er sprach freundlich.'],
+    deco: '🐺'
+  },
+  {
+    theme: 'theme-dark',
+    text: ['Der Wolf fragte: „Wohin gehst du, Rotkäppchen?“', '„Ich gehe zur Großmutter“, antwortete Rotkäppchen. „Sie ist krank und ich bringe ihr Kuchen und Wein.“', 'Der Wolf dachte: „Ha! Ich fresse beide!“ Immer lächelte er freundlich.'],
+    deco: '😈'
+  },
+  {
+    theme: 'theme-dark',
+    text: ['Der Wolf sagte: „Sieh doch die schönen Blumen! Deine Großmutter freut sich bestimmt über einen großen Strauß.“', 'Rotkäppchen lief tiefer in den Wald, um mehr Blumen zu pflücken.', 'Der Wolf aber rannte schnell zum Haus der Großmutter. Er klopfte an die Tür. „Herein!“, rief die Großmutter.'],
+    deco: '🌺'
+  },
+  {
+    theme: 'theme-warm',
+    text: ['Der Wolf stürzte sich auf die Großmutter und fraß sie auf. Aber er war noch nicht satt. Er zog das Nachthemd der Großmutter an, setzte ihre Haube auf und legte sich ins Bett.', 'Dann wartete er auf Rotkäppchen. Die Bettdecke zog er sich bis zur Nase.'],
+    deco: '🛏️'
+  },
+  {
+    theme: 'theme-warm',
+    text: ['Bald kam Rotkäppchen ans Haus. Es klopfte an die Tür. „Herein!“, rief der Wolf mit seiner tiefen Stimme.', 'Rotkäppchen trat ein. „Großmutter, warum hast du so große Ohren?“ — „Damit ich dich besser hören kann!“', '„Und warum hast du so große Augen?“ — „Damit ich dich besser sehen kann!“'],
+    deco: '👀'
+  },
+  {
+    theme: 'theme-dark',
+    text: ['„Großmutter, warum hast du so große Hände?“ — „Damit ich dich besser packen kann!“', '„Und warum hast du so einen großen Mund?“ — „Damit ich dich besser fressen kann!“', 'Mit diesen Worten sprang der Wolf aus dem Bett und fraß auch Rotkäppchen auf. Dann schlief er ein und schnarchte laut.'],
+    deco: '😱'
+  },
+  {
+    theme: 'theme-forest',
+    text: ['Ein Jäger hörte das laute Schnarchen. Das klang ja seltsam! Er trat ins Haus und sah den Wolf im Bett der Großmutter liegen.', 'Schnell holte er eine Schere und schnitt dem Wolf den Bauch auf. Heraus kamen Rotkäppchen und die Großmutter — beide waren noch am Leben!'],
+    deco: '🪓'
+  },
+  {
+    theme: 'theme-happy',
+    text: ['Der Jäger nähte dicke Steine in den Bauch des Wolfes. Als der Wolf aufwachte, konnte er kaum laufen und rannte ängstlich davon.', 'Rotkäppchen, die Großmutter und der Jäger aßen gemeinsam Kuchen und tranken Wein. Sie waren sehr glücklich.'],
+    deco: '🎉'
+  },
+  {
+    theme: 'theme-light',
+    end: true,
+    text: ['Rotkäppchen hatte eine wichtige Lektion gelernt: „Ich werde nie wieder vom Weg abgehen und mit Fremden sprechen!“', 'Und wenn sie nicht gestorben sind, dann leben sie noch heute.'],
+    deco: '⭐'
+  }
+];
+
+let currentPage = 0;
+let isSpeaking = false;
+let speechQueue = [];
+let currentSentIdx = 0;
+let speechRate = 1.0;
+
+/* ===== INIT ===== */
+function init() {
+  const book = document.getElementById('book');
+  book.innerHTML = '';
+  
+  PAGES.forEach((p, i) => {
+    const wrap = document.createElement('div');
+    wrap.className = 'page-wrap' + (i === 0 ? ' active' : '');
+    wrap.dataset.page = i;
+    
+    const page = document.createElement('div');
+    page.className = 'page ' + p.theme + (p.cover ? ' page-cover' : '');
+    page.dataset.page = i;
+    
+    const inner = document.createElement('div');
+    inner.className = 'page-inner';
+    
+    if (p.cover) {
+      // Cover page
+      inner.innerHTML = `
+        <span class="cover-emoji">${p.emoji}</span>
+        <div class="cover-title">${p.title}</div>
+        <div class="cover-sub">${p.subtitle}</div>
+        <div class="cover-by">🇩🇪 für 牧童 · Lektion 1</div>
+        <div class="cover-tip">${p.tip}</div>
+      `;
+    } else {
+      // Story page
+      let html = '<div class="story-text">';
+      p.text.forEach(para => {
+        // Split into sentences
+        const sents = para.match(/[^.!?]+[.!?]*/g) || [para];
+        html += '<p>';
+        sents.forEach(s => {
+          const trimmed = s.trim();
+          if (trimmed) {
+            html += '<span class="sent inactive">' + esc(trimmed) + ' </span>';
+          }
+        });
+        html += '</p>';
+      });
+      html += '</div>';
+      
+      if (p.end) {
+        html += '<div style="text-align:center;margin-top:auto;padding-top:20px"><div class="end-emoji">🏡</div></div>';
+      }
+      
+      if (p.deco) {
+        html += '<div class="deco-l" style="top:' + (5 + (i % 4) * 8) + '%">' + p.deco + '</div>';
+      }
+      
+      inner.innerHTML = html;
+    }
+    
+    // Page number (not on cover)
+    if (!p.cover) {
+      const pn = document.createElement('div');
+      pn.className = 'page-number';
+      pn.textContent = (i) + ' / ' + (PAGES.length - 1);
+      inner.appendChild(pn);
+    }
+    
+    page.appendChild(inner);
+    wrap.appendChild(page);
+    book.appendChild(wrap);
+  });
+  
+  updateNav();
+  
+  // Hide loading
+  setTimeout(() => document.getElementById('loading').classList.add('hidden'), 300);
+  
+  // Keyboard
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') prevPage();
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); nextPage(); }
+  });
+}
+
+function esc(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+/* ===== NAVIGATION ===== */
+function nextPage() {
+  if (currentPage >= PAGES.length - 1) return;
+  stopSpeaking();
+  if (isAnimating) return;
+  isAnimating = true;
+  
+  const wraps = document.querySelectorAll('.page-wrap');
+  wraps[currentPage].classList.remove('active');
+  wraps[currentPage].classList.add('exit-left');
+  wraps[currentPage + 1].classList.remove('enter-right');
+  wraps[currentPage + 1].classList.add('active');
+  
+  currentPage++;
+  setTimeout(() => {
+    wraps[currentPage - 1].classList.remove('exit-left');
+    isAnimating = false;
+  }, 500);
+  updateNav();
+}
+
+function prevPage() {
+  if (currentPage <= 0) return;
+  stopSpeaking();
+  if (isAnimating) return;
+  isAnimating = true;
+  
+  const wraps = document.querySelectorAll('.page-wrap');
+  wraps[currentPage].classList.remove('active');
+  wraps[currentPage].classList.add('exit-right');
+  wraps[currentPage - 1].classList.remove('enter-left');
+  wraps[currentPage - 1].classList.add('active');
+  
+  currentPage--;
+  setTimeout(() => {
+    wraps[currentPage + 1].classList.remove('exit-right');
+    isAnimating = false;
+  }, 500);
+  updateNav();
+}
+
+let isAnimating = false;
+
+function updateNav() {
+  document.getElementById('prevBtn').disabled = currentPage <= 0;
+  document.getElementById('nextBtn').disabled = currentPage >= PAGES.length - 1;
+  const total = PAGES.length - 1;
+  const display = currentPage === 0 ? 'Titel' : currentPage + ' / ' + total;
+  document.getElementById('progress').textContent = display;
+}
+
+/* ===== VOICE ===== */
+function toggleSpeak() {
+  if (isSpeaking) {
+    stopSpeaking();
+  } else {
+    startSpeaking();
+  }
+}
+
+function startSpeaking() {
+  if (currentPage === 0) {
+    // Flip to page 1 first, then speak
+    flipAndSpeak();
+    return;
+  }
+  if (!window.speechSynthesis) { return; }
+  
+  const sents = document.querySelectorAll('.page-wrap.active .sent');
+  if (!sents.length) return;
+  
+  isSpeaking = true;
+  currentSentIdx = 0;
+  const btn = document.getElementById('speakBtn');
+  btn.classList.add('speaking');
+  btn.querySelector('.speak-label').textContent = 'Stop';
+  
+  // Reset all
+  sents.forEach(s => s.classList.add('inactive'));
+  
+  speakNextSentence(sents);
+}
+
+let flipCallback = null;
+function flipAndSpeak() {
+  if (!window.speechSynthesis) { return; }
+  const wraps = document.querySelectorAll('.page-wrap');
+  wraps[0].classList.remove('active');
+  wraps[0].classList.add('exit-left');
+  wraps[1].classList.remove('enter-right');
+  wraps[1].classList.add('active');
+  currentPage = 1;
+  isAnimating = true;
+  updateNav();
+  setTimeout(() => {
+    wraps[0].classList.remove('exit-left');
+    isAnimating = false;
+    // Now start speaking
+    const sents = document.querySelectorAll('.page-wrap.active .sent');
+    if (sents.length) {
+      isSpeaking = true;
+      currentSentIdx = 0;
+      const btn = document.getElementById('speakBtn');
+      btn.classList.add('speaking');
+      btn.querySelector('.speak-label').textContent = 'Stop';
+      sents.forEach(s => s.classList.add('inactive'));
+      speakNextSentence(sents);
+    }
+  }, 500);
+}
+
+function speakNextSentence(sents) {
+  if (!isSpeaking || currentSentIdx >= sents.length) {
+    finishSpeaking(sents);
+    return;
+  }
+  
+  const el = sents[currentSentIdx];
+  const text = el.textContent.replace(/\s+/g, ' ').trim();
+  
+  // Mark active
+  el.classList.remove('inactive');
+  el.classList.add('active');
+  
+  // Scroll into view
+  el.scrollIntoView({ block: 'center', behavior: 'smooth' });
+  
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'de-DE';
+  u.rate = speechRate;
+  u.onend = () => {
+    el.classList.remove('active');
+    el.classList.add('done');
+    currentSentIdx++;
+    // Small delay between sentences
+    setTimeout(() => speakNextSentence(sents), 300);
+  };
+  u.onerror = () => {
+    currentSentIdx++;
+    setTimeout(() => speakNextSentence(sents), 200);
+  };
+  speechSynthesis.speak(u);
+  speechQueue.push(u);
+}
+
+function finishSpeaking(sents) {
+  isSpeaking = false;
+  const btn = document.getElementById('speakBtn');
+  btn.classList.remove('speaking');
+  btn.querySelector('.speak-label').textContent = 'Vorlesen';
+  
+  // Mark all as done
+  sents.forEach(s => { s.classList.remove('active', 'inactive'); s.classList.add('done'); });
+  
+  // Auto-flip?
+  if (document.getElementById('autoFlip').checked) {
+    setTimeout(() => nextPage(), 800);
+  }
+}
+
+function stopSpeaking() {
+  isSpeaking = false;
+  speechSynthesis.cancel();
+  speechQueue = [];
+  
+  const btn = document.getElementById('speakBtn');
+  btn.classList.remove('speaking');
+  btn.querySelector('.speak-label').textContent = 'Vorlesen';
+  
+  // Reset active/highlight states but keep done
+  document.querySelectorAll('.page-wrap.active .sent').forEach(s => {
+    s.classList.remove('active');
+    if (!s.classList.contains('done')) s.classList.add('inactive');
+  });
+}
+
+/* ===== SPEED ===== */
+const SPEEDS = ['0.7', '0.85', '1.0', '1.2'];
+let speedIdx = 2;
+
+function cycleSpeed() {
+  speedIdx = (speedIdx + 1) % SPEEDS.length;
+  speechRate = parseFloat(SPEEDS[speedIdx]);
+  document.getElementById('speed-btn').textContent = SPEEDS[speedIdx] + '×';
+}
+
+// Init
+init();
+</script>
+</body>
+</html>

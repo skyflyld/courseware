@@ -4,81 +4,81 @@ Fit für die Bewerbung!
 一、单选题（每题3分，共18分）
 
 1. Welche Teile hat ein Bewerbungsschreiben?
-A. Betreff, Einleitung, Hauptteil, Schluss
+A. Briefkopf, Betreff, Anrede, Einleitung, Hauptteil, Schluss, Gruß, Unterschrift, Anlagen
 B. Kopf, Einführung, Körper, Ende
 C. Titel, Vorspann, Kern, Ausklang
 D. Präambel, Darstellung, Fazit, Anhang
 答案：A
 
-2. Welche Grußformel ist in einem offiziellen Bewerbungsschreiben angemessen?
-A. Mit herzlichen Grüßen
-B. Mit freundlichen Grüßen
-C. Liebe Grüße
-D. Mit besten Grüßen aus Bonn
+2. Was studiert Anna an der Humboldt-Universität?
+A. Medien- und Eventmanagement
+B. Sinologie und Betriebswirtschaft
+C. Marketing und Vertrieb
+D. Germanistik und Geschichte
 答案：B
 
-3. Warum ist Max' Ungeduld vielleicht gar nicht so schlecht?
+3. Wo hat Anna ein Praktikum gemacht?
+A. Bei einer Eventagentur in München
+B. Bei der Filiale der Bank of China in Frankfurt
+C. In einem Verlagshaus in Darmstadt
+D. In einem Sportverein in Berlin
+答案：B
+
+4. Welche Phase gehört NICHT zu den fünf Phasen eines Vorstellungsgesprächs?
+A. Begrüßung
+B. Selbstpräsentation
+C. Rückfragen
+D. Vertragsunterzeichnung
+答案：D
+
+5. Warum ist Max' Ungeduld vielleicht nicht so schlecht?
 A. Weil er schnell Entscheidungen trifft
 B. Weil er sich schnell in eine neue Firma einarbeiten kann
 C. Weil er immer pünktlich ist
 D. Weil er keine Fehler macht
 答案：B
 
-4. Welche Fragetypen gibt es im Vorstellungsgespräch NICHT?
-A. Fragen zum Lebenslauf
-B. Fragen zur Persönlichkeit
-C. Fragen zur Familienplanung
-D. Fragen zum Verdienst
-答案：C
-
-5. Was bedeutet "Der Vater ließ die Kinder erst die Hausaufgaben machen"?
-A. 父亲让孩子们第一次做作业
-B. 父亲让（要求）孩子们先做作业
-C. 父亲允许孩子们做作业
-D. 父亲帮助孩子们做作业
-答案：B
-
-6. "Seit zwei Jahren arbeitet er hier." — Was bedeutet dieser Satz?
-A. 他两年前在这里工作过
-B. 他两年前开始在这里工作，现在还在做
-C. 他两年来一直在找工作
-D. 他在这里做了一份两年期的工作
+6. Was ist Max' Gehaltswunsch?
+A. 1500 bis 2000 Euro
+B. 1800 bis 2500 Euro
+C. 2500 bis 3000 Euro
+D. 3000 bis 3500 Euro
 答案：B
 
 二、词汇配对（每题2分，共24分）
 
-1. der Praktikant
-答案：实习生
+1. das Praktikum
+答案：实习
 
-2. das Vorstellungsgespräch
-答案：面试
+2. die Filiale
+答案：分行
 
-3. der Lebenslauf
-答案：简历
+3. der Betreff
+答案：事由
 
-4. das Bewerbungsschreiben
-答案：求职信
+4. die Anrede
+答案：称呼
 
-5. die Stellenanzeige
-答案：招聘广告
+5. die Einleitung
+答案：引言
 
-6. die Anrede
-答案：称呼（信函抬头）
-
-7. die Grußformel
-答案：问候语、落款
-
-8. das Zeugnis
-答案：证书
-
-9. der Betreff
-答案：主题行
-
-10. die Einleitung
-答案：引言开头
-
-11. der Hauptteil
+6. der Hauptteil
 答案：主体部分
 
-12. der Schluss
+7. der Schluss
 答案：结尾
+
+8. die Unterschrift
+答案：签名
+
+9. die Anlagen
+答案：附件
+
+10. das Vorstellungsgespräch
+答案：面试
+
+11. die Stellenanzeige
+答案：招聘广告
+
+12. der Berufsanfänger
+答案：职场新人

@@ -131,14 +131,68 @@
   .person-content { display: none; }
   .person-content.active { display: block; }
 
-  /* ===== Vocab Grid ===== */
-  .vocab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 8px; }
+  /* ===== Vocab Flip Cards ===== */
   .vc-card {
-    background: #fff; border: 1px solid #e8e8ed; border-radius: 8px;
-    padding: 12px 8px; text-align: center; font-size: 14px;
-    cursor: pointer; transition: all .15s;
+    background: transparent;
+    border: none;
+    padding: 0;
+    perspective: 600px;
+    position: relative;
+    min-height: 64px;
+    cursor: pointer;
   }
-  .vc-card:hover { border-color: #1a73e8; box-shadow: 0 2px 6px rgba(26,115,232,.15); }
+  .vc-inner {
+    position: relative;
+    transition: transform .45s ease;
+    transform-style: preserve-3d;
+    min-height: 64px;
+  }
+  .vc-card.flipped .vc-inner {
+    transform: rotateY(180deg);
+  }
+  .vc-front, .vc-back {
+    position: absolute; inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    display: flex; align-items: center; justify-content: center;
+    padding: 12px 8px;
+    border-radius: 8px;
+    border: 1px solid #e8e8ed;
+    font-size: 14px; text-align: center;
+    min-height: 64px;
+  }
+  .vc-front {
+    background: #fff;
+    z-index: 2;
+  }
+  .vc-back {
+    background: #e8f0fe;
+    color: #1a73e8;
+    font-weight: 500;
+    transform: rotateY(180deg);
+    z-index: 1;
+  }
+  .vc-detail {
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    background: #fff;
+    font-size: 10px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0;
+    transition: opacity .2s;
+    z-index: 10;
+    padding: 0; line-height: 1; color: #666;
+  }
+  .vc-card:hover .vc-detail { opacity: 1; }
+
+  /* ===== Vocab Grid ===== */
+  .vocab-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 8px;
+  }
 
   /* ===== Vocab Overlay Panel ===== */
   .vocab-overlay {
@@ -347,18 +401,90 @@
       </div>
       <div class="person-content active" id="vc-T1">
         <div class="vocab-grid">
-          <div class="vc-card" onclick="showVocab('die Anforderung','要求、条件','die Bedingungen für eine Stelle')">die Anforderung</div>
-          <div class="vc-card" onclick="showVocab('die Qualifikation','资格、资质','die Fähigkeiten und Kenntnisse')">die Qualifikation</div>
-          <div class="vc-card" onclick="showVocab('München','慕尼黑','die Hauptstadt Bayerns')">München</div>
-          <div class="vc-card" onclick="showVocab('der Praktikant','实习生','jemand, der ein Praktikum macht')">der Praktikant</div>
-          <div class="vc-card" onclick="showVocab('das Eventmanagement','活动管理','die Organisation und Planung von Veranstaltungen')">das Eventmanagement</div>
-          <div class="vc-card" onclick="showVocab('flache Hierarchie','扁平化管理','eine Organisation mit wenigen Führungsebenen')">flache Hierarchie</div>
-          <div class="vc-card" onclick="showVocab('überdurchschnittlich','高于平均水平的','mehr als der Durchschnitt')">überdurchschnittlich</div>
-          <div class="vc-card" onclick="showVocab('das Verlagshaus','出版社','ein Unternehmen, das Bücher veröffentlicht')">das Verlagshaus</div>
-          <div class="vc-card" onclick="showVocab('der Fachverlag','专业出版社','ein Verlag für Fachliteratur')">der Fachverlag</div>
-          <div class="vc-card" onclick="showVocab('der Messeveranstalter','展会主办方','jemand, der Messen organisiert')">der Messeveranstalter</div>
-          <div class="vc-card" onclick="showVocab('das Marketing','市场营销','die Vermarktung von Produkten')">das Marketing</div>
-          <div class="vc-card" onclick="showVocab('die Vertriebsassistenz','销售助理','Assistenz im Vertrieb')">die Vertriebsassistenz</div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">die Anforderung</div>
+              <div class="vc-back">要求、条件</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('die Anforderung','要求、条件','die Bedingungen für eine Stelle')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">die Qualifikation</div>
+              <div class="vc-back">资格、资质</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('die Qualifikation','资格、资质','die Fähigkeiten und Kenntnisse')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">München</div>
+              <div class="vc-back">慕尼黑</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('München','慕尼黑','die Hauptstadt Bayerns')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">der Praktikant</div>
+              <div class="vc-back">实习生</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('der Praktikant','实习生','jemand, der ein Praktikum macht')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">das Eventmanagement</div>
+              <div class="vc-back">活动管理</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('das Eventmanagement','活动管理','die Organisation und Planung von Veranstaltungen')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">flache Hierarchie</div>
+              <div class="vc-back">扁平化管理</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('flache Hierarchie','扁平化管理','eine Organisation mit wenigen Führungsebenen')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">überdurchschnittlich</div>
+              <div class="vc-back">高于平均水平的</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('überdurchschnittlich','高于平均水平的','mehr als der Durchschnitt')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">das Verlagshaus</div>
+              <div class="vc-back">出版社</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('das Verlagshaus','出版社','ein Unternehmen, das Bücher veröffentlicht')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">der Fachverlag</div>
+              <div class="vc-back">专业出版社</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('der Fachverlag','专业出版社','ein Verlag für Fachliteratur')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">der Messeveranstalter</div>
+              <div class="vc-back">展会主办方</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('der Messeveranstalter','展会主办方','jemand, der Messen organisiert')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">das Marketing</div>
+              <div class="vc-back">市场营销</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('das Marketing','市场营销','die Vermarktung von Produkten')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">die Vertriebsassistenz</div>
+              <div class="vc-back">销售助理</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('die Vertriebsassistenz','销售助理','Assistenz im Vertrieb')'>▶</button>
+          </div>
         </div>
       </div>
       <div class="person-tabs">
@@ -366,15 +492,69 @@
       </div>
       <div class="person-content" id="vc-T2">
         <div class="vocab-grid">
-          <div class="vc-card" onclick="showVocab('der Betreff','主题行','die Zeile über dem Text eines Briefes')">der Betreff</div>
-          <div class="vc-card" onclick="showVocab('die Einleitung','引言、开头','der erste Teil eines Textes')">die Einleitung</div>
-          <div class="vc-card" onclick="showVocab('der Hauptteil','主体部分','der zentrale Teil eines Textes')">der Hauptteil</div>
-          <div class="vc-card" onclick="showVocab('der Schluss','结尾','der letzte Teil eines Textes')">der Schluss</div>
-          <div class="vc-card" onclick="showVocab('sehr geehrte','尊敬的（信函抬头）','die förmliche Anrede in Briefen')">sehr geehrte</div>
-          <div class="vc-card" onclick="showVocab('die Fachkenntnisse','专业知识','theoretisches Wissen in einem Fachgebiet')">die Fachkenntnisse</div>
-          <div class="vc-card" onclick="showVocab('die Erfahrung','经验','die Kenntnisse aus der Praxis')">die Erfahrung</div>
-          <div class="vc-card" onclick="showVocab('die Fähigkeit','能力','die praktischen Fertigkeiten')">die Fähigkeit</div>
-          <div class="vc-card" onclick="showVocab('die Motivation','动机、积极性','der Grund für eine Handlung')">die Motivation</div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">der Betreff</div>
+              <div class="vc-back">主题行</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('der Betreff','主题行','die Zeile über dem Text eines Briefes')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">die Einleitung</div>
+              <div class="vc-back">引言、开头</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('die Einleitung','引言、开头','der erste Teil eines Textes')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">der Hauptteil</div>
+              <div class="vc-back">主体部分</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('der Hauptteil','主体部分','der zentrale Teil eines Textes')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">der Schluss</div>
+              <div class="vc-back">结尾</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('der Schluss','结尾','der letzte Teil eines Textes')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">sehr geehrte</div>
+              <div class="vc-back">尊敬的（信函抬头）</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('sehr geehrte','尊敬的（信函抬头）','die förmliche Anrede in Briefen')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">die Fachkenntnisse</div>
+              <div class="vc-back">专业知识</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('die Fachkenntnisse','专业知识','theoretisches Wissen in einem Fachgebiet')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">die Erfahrung</div>
+              <div class="vc-back">经验</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('die Erfahrung','经验','die Kenntnisse aus der Praxis')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">die Fähigkeit</div>
+              <div class="vc-back">能力</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('die Fähigkeit','能力','die praktischen Fertigkeiten')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">die Motivation</div>
+              <div class="vc-back">动机、积极性</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('die Motivation','动机、积极性','der Grund für eine Handlung')'>▶</button>
+          </div>
         </div>
       </div>
       <div class="person-tabs">
@@ -382,19 +562,97 @@
       </div>
       <div class="person-content" id="vc-T3">
         <div class="vocab-grid">
-          <div class="vc-card" onclick="showVocab('das Vorstellungsgespräch','面试','ein Gespräch mit einem potenziellen Arbeitgeber')">das Vorstellungsgespräch</div>
-          <div class="vc-card" onclick="showVocab('der Fragetyp','问题类型','die Kategorie von Fragen')">der Fragetyp</div>
-          <div class="vc-card" onclick="showVocab('der Lebenslauf','简历','eine Übersicht über den Werdegang')">der Lebenslauf</div>
-          <div class="vc-card" onclick="showVocab('die Berufswahl','职业选择','die Entscheidung für einen Beruf')">die Berufswahl</div>
-          <div class="vc-card" onclick="showVocab('die Persönlichkeit','个性、人格','die charakterlichen Eigenschaften')">die Persönlichkeit</div>
-          <div class="vc-card" onclick="showVocab('der Verdienst','收入、薪资','das Gehalt oder der Lohn')">der Verdienst</div>
-          <div class="vc-card" onclick="showVocab('kreativ','有创造力的','fähig, Neues zu schaffen')">kreativ</div>
-          <div class="vc-card" onclick="showVocab('die Umgangsform','礼仪、举止','das höfliche Verhalten')">die Umgangsform</div>
-          <div class="vc-card" onclick="showVocab('Englisch','英语','die englische Sprache')">Englisch</div>
-          <div class="vc-card" onclick="showVocab('Französisch','法语','die französische Sprache')">Französisch</div>
-          <div class="vc-card" onclick="showVocab('Spanisch','西班牙语','die spanische Sprache')">Spanisch</div>
-          <div class="vc-card" onclick="showVocab('der Berufsanfänger','职场新人','jemand am Anfang seiner Karriere')">der Berufsanfänger</div>
-          <div class="vc-card" onclick="showVocab('ungeduldig','不耐烦的','nicht warten können')">ungeduldig</div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">das Vorstellungsgespräch</div>
+              <div class="vc-back">面试</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('das Vorstellungsgespräch','面试','ein Gespräch mit einem potenziellen Arbeitgeber')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">der Fragetyp</div>
+              <div class="vc-back">问题类型</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('der Fragetyp','问题类型','die Kategorie von Fragen')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">der Lebenslauf</div>
+              <div class="vc-back">简历</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('der Lebenslauf','简历','eine Übersicht über den Werdegang')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">die Berufswahl</div>
+              <div class="vc-back">职业选择</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('die Berufswahl','职业选择','die Entscheidung für einen Beruf')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">die Persönlichkeit</div>
+              <div class="vc-back">个性、人格</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('die Persönlichkeit','个性、人格','die charakterlichen Eigenschaften')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">der Verdienst</div>
+              <div class="vc-back">收入、薪资</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('der Verdienst','收入、薪资','das Gehalt oder der Lohn')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">kreativ</div>
+              <div class="vc-back">有创造力的</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('kreativ','有创造力的','fähig, Neues zu schaffen')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">die Umgangsform</div>
+              <div class="vc-back">礼仪、举止</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('die Umgangsform','礼仪、举止','das höfliche Verhalten')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Englisch</div>
+              <div class="vc-back">英语</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Englisch','英语','die englische Sprache')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Französisch</div>
+              <div class="vc-back">法语</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Französisch','法语','die französische Sprache')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Spanisch</div>
+              <div class="vc-back">西班牙语</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Spanisch','西班牙语','die spanische Sprache')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">der Berufsanfänger</div>
+              <div class="vc-back">职场新人</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('der Berufsanfänger','职场新人','jemand am Anfang seiner Karriere')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">ungeduldig</div>
+              <div class="vc-back">不耐烦的</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('ungeduldig','不耐烦的','nicht warten können')'>▶</button>
+          </div>
         </div>
       </div>
     </section>
@@ -689,6 +947,11 @@ function updatePager(id, total, current) {
   if (prevBtn) prevBtn.disabled = current === 0;
   if (nextBtn) nextBtn.disabled = current >= total - 1;
   if (info) info.textContent = (current + 1) + ' / ' + total;
+}
+
+// ===== Vocab Flip Cards =====
+function flipCard(el) {
+  el.classList.toggle('flipped');
 }
 
 // ===== Vocab Panel =====

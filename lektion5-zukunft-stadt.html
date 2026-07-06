@@ -131,14 +131,68 @@
   .person-content { display: none; }
   .person-content.active { display: block; }
 
-  /* ===== Vocab Grid ===== */
-  .vocab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 8px; }
+  /* ===== Vocab Flip Cards ===== */
   .vc-card {
-    background: #fff; border: 1px solid #e8e8ed; border-radius: 8px;
-    padding: 12px 8px; text-align: center; font-size: 14px;
-    cursor: pointer; transition: all .15s;
+    background: transparent;
+    border: none;
+    padding: 0;
+    perspective: 600px;
+    position: relative;
+    min-height: 64px;
+    cursor: pointer;
   }
-  .vc-card:hover { border-color: #1a73e8; box-shadow: 0 2px 6px rgba(26,115,232,.15); }
+  .vc-inner {
+    position: relative;
+    transition: transform .45s ease;
+    transform-style: preserve-3d;
+    min-height: 64px;
+  }
+  .vc-card.flipped .vc-inner {
+    transform: rotateY(180deg);
+  }
+  .vc-front, .vc-back {
+    position: absolute; inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    display: flex; align-items: center; justify-content: center;
+    padding: 12px 8px;
+    border-radius: 8px;
+    border: 1px solid #e8e8ed;
+    font-size: 14px; text-align: center;
+    min-height: 64px;
+  }
+  .vc-front {
+    background: #fff;
+    z-index: 2;
+  }
+  .vc-back {
+    background: #e8f0fe;
+    color: #1a73e8;
+    font-weight: 500;
+    transform: rotateY(180deg);
+    z-index: 1;
+  }
+  .vc-detail {
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    background: #fff;
+    font-size: 10px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0;
+    transition: opacity .2s;
+    z-index: 10;
+    padding: 0; line-height: 1; color: #666;
+  }
+  .vc-card:hover .vc-detail { opacity: 1; }
+
+  /* ===== Vocab Grid ===== */
+  .vocab-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 8px;
+  }
 
   /* ===== Vocab Overlay Panel ===== */
   .vocab-overlay {
@@ -339,15 +393,69 @@
       </div>
       <div class="person-content active" id="vc-T1">
         <div class="vocab-grid">
-          <div class="vc-card" onclick="showVocab('der Städter','城市居民','die Bewohner einer Stadt')">der Städter</div>
-          <div class="vc-card" onclick="showVocab('sich sehnen','渴望、思念','sich sehnen + nach + Dat: sich nach der Natur sehnen')">sich sehnen</div>
-          <div class="vc-card" onclick="showVocab('urbane Gärtnern','城市园艺','das Gärtnern in der Stadt')">urbane Gärtnern</div>
-          <div class="vc-card" onclick="showVocab('der Trend','趋势、潮流','etwas wird zum Trend')">der Trend</div>
-          <div class="vc-card" onclick="showVocab('der Gemeinschaftsgarten','社区花园','ein Garten, den mehrere Personen gemeinsam pflegen')">der Gemeinschaftsgarten</div>
-          <div class="vc-card" onclick="showVocab('der Zugang','入口、通道、获取途径','der Zugang zu + Dat: Zugang zur Natur haben')">der Zugang</div>
-          <div class="vc-card" onclick="showVocab('die Nachbarschaft','邻里关系、街坊','die Beziehungen zwischen Nachbarn')">die Nachbarschaft</div>
-          <div class="vc-card" onclick="showVocab('das Mittel','手段、方法','ein gutes Mittel gegen etwas')">das Mittel</div>
-          <div class="vc-card" onclick="showVocab('die Anonymität','匿名、默默无闻','die Ungenanntheit in der Großstadt')">die Anonymität</div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">der Städter</div>
+              <div class="vc-back">城市居民</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('der Städter','城市居民','die Bewohner einer Stadt')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">sich sehnen</div>
+              <div class="vc-back">渴望、思念</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('sich sehnen','渴望、思念','sich sehnen + nach + Dat: sich nach der Natur sehnen')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">urbane Gärtnern</div>
+              <div class="vc-back">城市园艺</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('urbane Gärtnern','城市园艺','das Gärtnern in der Stadt')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">der Trend</div>
+              <div class="vc-back">趋势、潮流</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('der Trend','趋势、潮流','etwas wird zum Trend')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">der Gemeinschaftsgarten</div>
+              <div class="vc-back">社区花园</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('der Gemeinschaftsgarten','社区花园','ein Garten, den mehrere Personen gemeinsam pflegen')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">der Zugang</div>
+              <div class="vc-back">入口、通道、获取途径</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('der Zugang','入口、通道、获取途径','der Zugang zu + Dat: Zugang zur Natur haben')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">die Nachbarschaft</div>
+              <div class="vc-back">邻里关系、街坊</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('die Nachbarschaft','邻里关系、街坊','die Beziehungen zwischen Nachbarn')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">das Mittel</div>
+              <div class="vc-back">手段、方法</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('das Mittel','手段、方法','ein gutes Mittel gegen etwas')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">die Anonymität</div>
+              <div class="vc-back">匿名、默默无闻</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('die Anonymität','匿名、默默无闻','die Ungenanntheit in der Großstadt')'>▶</button>
+          </div>
         </div>
       </div>
       <div class="person-tabs">
@@ -355,17 +463,83 @@
       </div>
       <div class="person-content" id="vc-T2">
         <div class="vocab-grid">
-          <div class="vc-card" onclick="showVocab('das Unternehmen','企业、公司','ein großes Unternehmen für musikalische Produktion')">das Unternehmen</div>
-          <div class="vc-card" onclick="showVocab('die Produktion','生产、制作','die Produktion von Musikinstrumenten')">die Produktion</div>
-          <div class="vc-card" onclick="showVocab('die Verwaltung','管理部门、行政','die Verwaltung plant die Entwicklung')">die Verwaltung</div>
-          <div class="vc-card" onclick="showVocab('die Entwicklung','发展、开发','die Entwicklung des Tourismus')">die Entwicklung</div>
-          <div class="vc-card" onclick="showVocab('musikalisch','音乐的','mit musikalischer Umgebung')">musikalisch</div>
-          <div class="vc-card" onclick="showVocab('die Investition','投资','Investition in die Infrastruktur')">die Investition</div>
-          <div class="vc-card" onclick="showVocab('die Infrastruktur','基础设施','Investition in die touristische Infrastruktur')">die Infrastruktur</div>
-          <div class="vc-card" onclick="showVocab('die Raumgestaltung','空间设计','kreative Raumgestaltung')">die Raumgestaltung</div>
-          <div class="vc-card" onclick="showVocab('die Aufführung','演出、表演','musikalische Aufführungen veranstalten')">die Aufführung</div>
-          <div class="vc-card" onclick="showVocab('der Tourist','游客、旅游者','600.000 Touristen besichtigen das Dorf')">der Tourist</div>
-          <div class="vc-card" onclick="showVocab('der Bewohner','居民、住户','die Bewohner des Dorfes')">der Bewohner</div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">das Unternehmen</div>
+              <div class="vc-back">企业、公司</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('das Unternehmen','企业、公司','ein großes Unternehmen für musikalische Produktion')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">die Produktion</div>
+              <div class="vc-back">生产、制作</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('die Produktion','生产、制作','die Produktion von Musikinstrumenten')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">die Verwaltung</div>
+              <div class="vc-back">管理部门、行政</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('die Verwaltung','管理部门、行政','die Verwaltung plant die Entwicklung')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">die Entwicklung</div>
+              <div class="vc-back">发展、开发</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('die Entwicklung','发展、开发','die Entwicklung des Tourismus')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">musikalisch</div>
+              <div class="vc-back">音乐的</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('musikalisch','音乐的','mit musikalischer Umgebung')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">die Investition</div>
+              <div class="vc-back">投资</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('die Investition','投资','Investition in die Infrastruktur')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">die Infrastruktur</div>
+              <div class="vc-back">基础设施</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('die Infrastruktur','基础设施','Investition in die touristische Infrastruktur')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">die Raumgestaltung</div>
+              <div class="vc-back">空间设计</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('die Raumgestaltung','空间设计','kreative Raumgestaltung')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">die Aufführung</div>
+              <div class="vc-back">演出、表演</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('die Aufführung','演出、表演','musikalische Aufführungen veranstalten')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">der Tourist</div>
+              <div class="vc-back">游客、旅游者</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('der Tourist','游客、旅游者','600.000 Touristen besichtigen das Dorf')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">der Bewohner</div>
+              <div class="vc-back">居民、住户</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('der Bewohner','居民、住户','die Bewohner des Dorfes')'>▶</button>
+          </div>
         </div>
       </div>
       <div class="person-tabs">
@@ -373,12 +547,48 @@
       </div>
       <div class="person-content" id="vc-T3">
         <div class="vocab-grid">
-          <div class="vc-card" onclick="showVocab('zugänglich','可供使用的、可进入的','für alle Bewohner zugänglich')">zugänglich</div>
-          <div class="vc-card" onclick="showVocab('erreichen','到达、达到','den Zielort schnell erreichen')">erreichen</div>
-          <div class="vc-card" onclick="showVocab('die Grünfläche','绿化地带、绿地','mehr Grünflächen gegen die Hitze')">die Grünfläche</div>
-          <div class="vc-card" onclick="showVocab('die Teilhabe','参与、共享','soziale Teilhabe ermöglichen')">die Teilhabe</div>
-          <div class="vc-card" onclick="showVocab('der Rollstuhl','轮椅','im Rollstuhl sitzen')">der Rollstuhl</div>
-          <div class="vc-card" onclick="showVocab('die Barriere','障碍、阻碍','große Barrieren für behinderte Menschen')">die Barriere</div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">zugänglich</div>
+              <div class="vc-back">可供使用的、可进入的</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('zugänglich','可供使用的、可进入的','für alle Bewohner zugänglich')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">erreichen</div>
+              <div class="vc-back">到达、达到</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('erreichen','到达、达到','den Zielort schnell erreichen')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">die Grünfläche</div>
+              <div class="vc-back">绿化地带、绿地</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('die Grünfläche','绿化地带、绿地','mehr Grünflächen gegen die Hitze')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">die Teilhabe</div>
+              <div class="vc-back">参与、共享</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('die Teilhabe','参与、共享','soziale Teilhabe ermöglichen')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">der Rollstuhl</div>
+              <div class="vc-back">轮椅</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('der Rollstuhl','轮椅','im Rollstuhl sitzen')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">die Barriere</div>
+              <div class="vc-back">障碍、阻碍</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('die Barriere','障碍、阻碍','große Barrieren für behinderte Menschen')'>▶</button>
+          </div>
         </div>
       </div>
     </section>
@@ -631,6 +841,11 @@ function updatePager(id, total, current) {
   if (prevBtn) prevBtn.disabled = current === 0;
   if (nextBtn) nextBtn.disabled = current >= total - 1;
   if (info) info.textContent = (current + 1) + ' / ' + total;
+}
+
+// ===== Vocab Flip Cards =====
+function flipCard(el) {
+  el.classList.toggle('flipped');
 }
 
 // ===== Vocab Panel =====

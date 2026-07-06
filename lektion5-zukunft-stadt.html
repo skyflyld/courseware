@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Lektion 8 · Was will ich werden? · 交互式课件</title>
+<title>Lektion 5 · Wie sieht die Stadt der Zukunft aus? · 交互式课件</title>
 <style>
   /* ===== Reset & Base ===== */
   *, *::before, *::after { box-sizing: border-box; }
@@ -268,11 +268,11 @@
 </style>
 </head>
 <body>
-<nav><div class="top-nav"><div class="logo" style="cursor:pointer" onclick="switchSection('home')"><span class="logo-icon">🎓</span><span>Lektion 8</span></div><div class="nav-links" id="navLinks"><button onclick="switchSection('home')">首页</button><button onclick="switchSection('text')">课文讲解</button><button onclick="switchSection('vocab')">重点词汇</button><button onclick="switchSection('grammar')">语法·并列连词</button><button onclick="switchSection('exercise')">练习</button></div><button class="hamburger" onclick="toggleNav()">☰</button></div><div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div></nav><div class="main"><div class="container"><div class="text-cards">
+<nav><div class="top-nav"><div class="logo" style="cursor:pointer" onclick="switchSection('home')"><span class="logo-icon">🎓</span><span>Lektion 5</span></div><div class="nav-links" id="navLinks"><button onclick="switchSection('home')">首页</button><button onclick="switchSection('text')">课文讲解</button><button onclick="switchSection('vocab')">重点词汇</button><button onclick="switchSection('grammar')">语法·从句</button><button onclick="switchSection('exercise')">练习</button></div><button class="hamburger" onclick="toggleNav()">☰</button></div><div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div></nav><div class="main"><div class="container"><div class="text-cards">
     <section id="home" class="active">
       <div class="hero">
-        <h1>Lektion 8 · Was will ich werden?</h1>
-        <p class="sub">职业选择·Berufswahl</p>
+        <h1>Lektion 5 · Wie sieht die Stadt der Zukunft aus?</h1>
+        <p class="sub">城市未来 · Wo lebt es sich besser?</p>
         <p class="meta">教材课文 · 词汇 · 语法 · 练习</p>
       </div>
       <div class="home-grid">
@@ -285,7 +285,7 @@
           <p>可点击查词 + 词汇网格</p>
         </div>
         <div class="text-card" onclick="switchSection('grammar')" style="cursor:pointer">
-          <h3>🔤 语法·并列连词 (Konjunktionen)</h3>
+          <h3>🔤 语法·从句 (Nebensätze)</h3>
           <p>并列连词用法详解 + 例句</p>
         </div>
         <div class="text-card" onclick="switchSection('exercise')" style="cursor:pointer">
@@ -296,43 +296,40 @@
       <div class="obj-box">
         <strong>学习目标：</strong>
         <ul>
-          <li>了解德国年轻人的职业和大学选择现状</li>
-          <li>理解性别与职业选择的关联</li>
-          <li>掌握并列连词的使用</li>
-          <li>运用相关词汇描述职业选择</li>
+          <li>了解德国城市园艺和乡村文旅的发展</li>
+          <li>理解未来城市可持续发展的理念</li>
+          <li>掌握dass-Satz和weil/da从句的用法</li>
+          <li>运用城市主题词汇描述理想城市</li>
         </ul>
       </div>
     </section>
     <section id="text">
       <h2 class="section-title"><span class="num">1</span> 课文讲解 · Textanalyse</h2>
       <div class="text-card">
-        <h3>T1 · Berufswahlverhalten / Studienwahl</h3>
+        <h3>🌱 Gärtnern in der Stadt</h3>
         <div class="de">
-          <p>Die Berufswahl von jungen Frauen und Männern in Deutschland <span class="v-word" onclick="showVocab('unterscheiden','有区别','sich unterscheiden: 例：Die Berufswahl unterscheidet sich nach Geschlecht.')">unterscheiden</span> sich weiterhin deutlich. Zu diesem <span class="v-word" onclick="showVocab('Ergebnis','结果','zu diesem Ergebnis kommen: 例：Die Studie kommt zu einem klaren Ergebnis.')">Ergebnis</span> kommt eine aktuelle <span class="v-word" onclick="showVocab('Untersuchung','调查','eine Untersuchung der Bundesagentur: 例：Die Untersuchung zeigt deutliche Unterschiede.')">Untersuchung</span> der Bundesagentur für Arbeit. Bei jungen Frauen stehen soziale und kaufmännische Berufe sowie medizinische <span class="v-word" onclick="showVocab('Fachberufe','专业技术职业','medizinische Fachberufe: 例：Viele Frauen wählen medizinische Fachberufe.')">Fachberufe</span> <span class="v-word" onclick="showVocab('ganz oben','排在最前面','ganz oben stehen: 例：Soziale Berufe stehen ganz oben.')">ganz oben</span>, zum Beispiel <span class="v-word" onclick="showVocab('Kauffrau','女商人、女职员','Kauffrau für Büromanagement: 例：Sie arbeitet als Kauffrau.')">Kauffrau</span> für Büromanagement und medizinische <span class="v-word" onclick="showVocab('Fachangestellte','专业人员、技术助理','medizinische Fachangestellte: 例：Sie ist medizinische Fachangestellte.')">Fachangestellte</span>. Bei Männern sind dagegen <span class="v-word" onclick="showVocab('technisch','技术的','technische Berufe: 例：Technische Berufe sind bei Männern beliebt.')">technische</span> Berufe am beliebtesten, vor allem Kfz-Mechatroniker, Fachinformatiker und Elektroniker.</p>
-          <p>Im Vergleich zu den Vorjahren unverändert geblieben ist, dass bei den Studienanfängerinnen und Studienanfängern <span class="v-word" onclick="showVocab('beiderlei','两性的','beiderlei Geschlechts: 例：Studienanfänger beiderlei Geschlechts.')">beiderlei</span> <span class="v-word" onclick="showVocab('Geschlechts','性别','beiderlei Geschlechts: 例：Die Umfrage gilt für beide Geschlechter.')">Geschlechts</span> die Betriebswirtschaftslehre (BWL) auf Platz eins der <span class="v-word" onclick="showVocab('beliebtesten','受欢迎的','die beliebtesten Fächer: 例：BWL ist das beliebteste Studienfach.')">beliebtesten</span> Studienfächer liegt. Auch die medizinischen Fächer wie Humanmedizin, Pharmazie und Psychologie sind <span class="v-word" onclick="showVocab('nach wie vor','一如既往','nach wie vor stark nachgefragt: 例：Medizin ist nach wie vor beliebt.')">nach wie vor</span> stark <span class="v-word" onclick="showVocab('nachgefragt','需求、询问','stark nachgefragt: 例：Diese Fächer sind stark nachgefragt.')">nachgefragt</span>.</p>
+          <p>Weltweit leben immer mehr Menschen in Städten. Doch immer mehr <span class="v-word" onclick="showVocab('Städter','城市居民','die Bewohner einer Stadt')">der Städter</span> <span class="v-word" onclick="showVocab('sehnen','渴望、思念','sich sehnen + nach + Dat: sich nach der Natur sehnen')">sich sehnen</span> sich nach der Natur und sozialem Kontakt in ihrer Umgebung. Das macht das <span class="v-word" onclick="showVocab('urbane Gärtnern','城市园艺','das Gärtnern in der Stadt')">urbane Gärtnern</span> in vielen deutschen Städten zum neuen <span class="v-word" onclick="showVocab('Trend','趋势、潮流','etwas wird zum Trend')">der Trend</span>. Durch den Anbau von Blumen und Gemüse auf Balkonen oder Dächern bringen viele Menschen die Natur nach Hause.</p>
+          <p>Oder man kann auch einen <span class="v-word" onclick="showVocab('Gemeinschaftsgarten','社区花园','ein Garten, den mehrere Personen gemeinsam pflegen')">der Gemeinschaftsgarten</span> gründen. Dabei kümmern sich mehrere Personen gemeinsam um den Garten. Der Gemeinschaftsgarten hat die Vorteile, dass Stadtmenschen wieder <span class="v-word" onclick="showVocab('Zugang','入口、通道、获取途径','der Zugang zu + Dat: Zugang zur Natur haben')">der Zugang</span> zur Natur haben und die Stadt grüner machen. Durch gemeinsame Gartenarbeit kann man auch seine <span class="v-word" onclick="showVocab('Nachbarschaft','邻里关系、街坊','die Beziehungen zwischen Nachbarn')">die Nachbarschaft</span> besser kennen lernen und sich miteinander austauschen. Das ist ein gutes <span class="v-word" onclick="showVocab('Mittel','手段、方法','ein gutes Mittel gegen etwas')">das Mittel</span> gegen die <span class="v-word" onclick="showVocab('Anonymität','匿名、默默无闻','die Ungenanntheit in der Großstadt')">die Anonymität</span> in der Großstadt.</p>
         </div>
-        <div class="highlight-box">Studie zeigt: Frauen→Büro/Medizin, Männer→Technik; BWL ist bei beiden beliebt. Nur 19% der Studienanfänger wählen MINT-Fächer.</div>
+        <div class="highlight-box">城市园艺成为德国城市新趋势。市民通过阳台种菜和社区花园实现与自然的连接。</div>
       </div>
       <div class="text-card">
-        <h3>T2 · Berufe jenseits von Klischees</h3>
-        <p class="zh sub">Lieber Werkstatt statt Schreibtisch</p>
-        <p class="zh by">—— Erika (22), Elektronikerin</p>
+        <h3>🏘️ Zhouwo: Vom armen Dorf zum Tourismusmagnet</h3>
         <div class="de">
-          <p>Erika (22) wird zur Elektronikerin für <span class="v-word" onclick="showVocab('Energie- und Gebäudetechnik','能源与建筑技术','Elektronikerin für Energie- und Gebäudetechnik')">Energie- und Gebäudetechnik</span> <span class="v-word" onclick="showVocab('ausgebildet','培训、培养','zur Elektronikerin ausgebildet werden')">ausgebildet</span>. Nach dem <span class="v-word" onclick="showVocab('Gymnasium','文理中学','nach dem Gymnasium: 例：Nach dem Gymnasium machte sie eine Ausbildung.')">Gymnasium</span> fing sie eine Ausbildung in diesem Beruf an. Sie ist überzeugt: „Ich bin froh, dass ich mich nach dem Abi nicht für ein <span class="v-word" onclick="showVocab('langweiliges','无聊的','ein langweiliges Studium: 例：Sie wollte kein langweiliges Studium.')">langweiliges</span> Studium <span class="v-word" onclick="showVocab('entschieden','决定','sich für eine Ausbildung entscheiden')">entschieden</span> habe, sondern lieber in die Werkstatt gegangen bin.' Ihr Beruf biete viel <span class="v-word" onclick="showVocab('Abwechslung','变化、多样性','viel Abwechslung bieten: 例：Ihr Beruf bietet viel Abwechslung.')">Abwechslung</span> und sie <span class="v-word" onclick="showVocab('traue','敢于','sich trauen, etwas zu tun: 例：Sie traut sich, neue Dinge zu tun.')">traue</span> sich inzwischen, auch Dinge zu tun, die sie vorher nicht gemacht habe.</p>
-          <p>Auf die Frage, was sie in dem Beruf gelernt habe, antwortet Erika: Ich habe gelernt, dass frau in einem Männerberuf <span class="v-word" onclick="showVocab('durchsetzungsfähig','有贯彻力','durchsetzungsfähig werden: 例：Sie wurde durchsetzungsfähiger.')">durchsetzungsfähig</span> wird. Ich bin viel durchsetzungsfähiger geworden. Schon allein dadurch, dass ich meistens die einzige Frau auf der Baustelle bin.' Zudem hat sie gelernt, Konflikte offen anzusprechen: Meine Kollegen sprechen Probleme immer direkt an. Das mag ich sehr. Bei uns wird nicht lange <span class="v-word" onclick="showVocab('herumgeredet','绕圈子说话','nicht lange herumreden: 例：Bei uns wird nicht herumgeredet.')">herumgeredet</span>, sondern <span class="v-word" onclick="showVocab('angepackt','动手处理','anpacken: 例：Probleme werden direkt angepackt.')">angepackt</span>.</p>
+          <p>Zhouwo war früher ein armes Dorf in der Provinz Hebei. Aber das Dorf hatte den Vorteil, dass es in der Nähe ein großes <span class="v-word" onclick="showVocab('Unternehmen','企业、公司','ein großes Unternehmen für musikalische Produktion')">das Unternehmen</span> für die <span class="v-word" onclick="showVocab('Produktion','生产、制作','die Produktion von Musikinstrumenten')">die Produktion</span> von Musikinstrumenten gab. Im Jahr 2012 plante die <span class="v-word" onclick="showVocab('Verwaltung','管理部门、行政','die Verwaltung plant die Entwicklung')">die Verwaltung</span> die <span class="v-word" onclick="showVocab('Entwicklung','发展、开发','die Entwicklung des Tourismus')">die Entwicklung</span> des Tourismus mit <span class="v-word" onclick="showVocab('musikalischer','音乐的','mit musikalischer Umgebung')">musikalisch</span> Umgebung.</p>
+          <p>Durch <span class="v-word" onclick="showVocab('Investition','投资','Investition in die Infrastruktur')">die Investition</span> in die <span class="v-word" onclick="showVocab('Infrastruktur','基础设施','Investition in die touristische Infrastruktur')">die Infrastruktur</span> und kreative <span class="v-word" onclick="showVocab('Raumgestaltung','空间设计','kreative Raumgestaltung')">die Raumgestaltung</span> spürt man jetzt die Verstädterung des Dorfs. Überall sieht man Ferienwohnungen, gemütliche Cafés und mehrere schöne Parks mit musikalischen Themen. Kulturelle Angebote fehlen auch nicht. Bis heute hat das Dorf schon ein Gitarrenfestival, ein studentisches Musikfest und einige musikalische <span class="v-word" onclick="showVocab('Aufführungen','演出、表演','musikalische Aufführungen veranstalten')">die Aufführung</span> veranstaltet.</p>
+          <p>In den vergangenen drei Jahren haben gegen 600.000 <span class="v-word" onclick="showVocab('Touristen','游客、旅游者','600.000 Touristen besichtigen das Dorf')">der Tourist</span> das Musikdorf besichtigt. Durch die touristischen Einnahmen hat sich das Leben der Dorf<span class="v-word" onclick="showVocab('bewohner','居民、住户','die Bewohner des Dorfes')">der Bewohner</span> stark verbessert.</p>
         </div>
-        <div class="highlight-box">Erika: Abitur→Ausbildung zur Elektronikerin. Als einzige Frau im Team→durchsetzungsfähiger geworden. „Meine Kollegen sprechen Probleme direkt an.</div>
+        <div class="highlight-box">周窝村从一个贫困村转型为音乐主题旅游村，吸引了大量游客并改善了村民生活。</div>
       </div>
       <div class="text-card">
-        <h3>Mit Kopf und Herz dabei sein · Simon</h3>
-        <p class="zh sub">Simon · Mit Kopf und Herz dabei sein</p>
-        <p class="zh by">—— Simon (männlicher Erzieher)</p>
+        <h3>🎧 Die Stadt und ich (Hörtext)</h3>
         <div class="de">
-          <p>Simon wusste früh, was er werden wollte. „Ich habe <span class="v-word" onclick="showVocab('Lust darauf','对…有兴趣','Freude an etwas haben')">Lust haben auf</span>, mit Kindern und Jugendlichen zu arbeiten", <span class="v-word" onclick="showVocab('erzählt','讲述','etwas mündlich berichten')">erzählen</span> Simon. Deshalb hat er sich <span class="v-word" onclick="showVocab('bewusst','有意识地决定','eine bewusste Wahl treffen')">sich bewusst entscheiden</span> für eine <span class="v-word" onclick="showVocab('Ausbildung','职业培训','eine Ausbildung machen: 例：Er macht eine Ausbildung.')">Ausbildung</span> zum <span class="v-word" onclick="showVocab('Erzieher','教育工作者、幼师','Ausbildung zum Erzieher: 例：Simon wird Erzieher.')">Erzieher</span> entschieden. Der <span class="v-word" onclick="showVocab('sozial','社会的','die Gesellschaft betreffend')">sozial</span> Bereich hat ihn schon immer interessiert.</p>
-          <p><span class="v-word" onclick="showVocab('Während','在…期间','in der Zeit, als')">während</span> seiner Schulzeit hat er zwei <span class="v-word" onclick="showVocab('Praktika','实习','die praktische Arbeit')">das Praktikum</span> im <span class="v-word" onclick="showVocab('Kindergarten','幼儿园','die Einrichtung für Kinder')">der Kindergarten</span> gemacht und dadurch die <span class="v-word" onclick="showVocab('Aufgaben','任务','etwas, das man tun muss')">die Aufgabe</span> von Erziehern <span class="v-word" onclick="showVocab('kennengelernt','了解、认识','jemanden oder etwas kennenlernen')">kennenlernen</span> gelernt. Es gehört z. B. zu seinen Aufgaben, Kinder zu <span class="v-word" onclick="showVocab('betreuen','照顾','sich um jemanden kümmern')">betreuen</span> und zu <span class="v-word" onclick="showVocab('unterstützen','支持','jemandem helfen')">unterstützen</span> sowie auf ihr Verhalten zu <span class="v-word" onclick="showVocab('achten auf','注意、关注','aufmerksam sein bei etwas')">achten auf</span>.</p>
-          <p>Auf die Frage, welche <span class="v-word" onclick="showVocab('Stärken','优势、长处','eine positive Eigenschaft')">die Stärke</span> er für den Beruf <span class="v-word" onclick="showVocab('mitbringt','带来','etwas als Eigenschaft haben')">mitbringen</span>, meint Simon: „<span class="v-word" onclick="showVocab('Geduld','耐心','Geduld haben: 例：Geduld ist wichtig.')">Geduld</span>, <span class="v-word" onclick="showVocab('Kreativität','创造力','Kreativität zeigen: 例：Kreativität ist wichtig.')">Kreativität</span> und <span class="v-word" onclick="showVocab('Einfühlungsvermögen','同理心、共情能力','die Fähigkeit, sich in andere hineinzuversetzen')">Einfühlungsvermögen</span> sind sehr wichtig – die wichtigste Fähigkeit für Erzieher ist also Einfühlungsvermögen." Das heißt, ich <span class="v-word" onclick="showVocab('merke','注意到','etwas bemerken')">merken</span>, wenn es einem Kind nicht gut geht. Ich höre ihm zu und <span class="v-word" onclick="showVocab('helfe','帮助','jemandem Unterstützung geben')">helfen</span> ihm. Simon <span class="v-word" onclick="showVocab('rät','建议','jemandem einen Rat geben')">raten</span>: „Wenn man Erzieher werden möchte, sollte man mit dem <span class="v-word" onclick="showVocab('Herz','心','mit dem Herzen dabei sein: 例：Mit Herz und Kopf.')">Herz</span> dabei sein, nicht nur mit dem <span class="v-word" onclick="showVocab('Kopf','头、头脑','der oberste Teil des Körpers; auch: Verstand')">der Kopf</span>."</p>
+          <p>Jonas: Die Stadt für Morgen ist kompakt gebaut. Es gibt z. B. Schwimmbäder auf allen Hausdächern. Die sind für alle Hausbewohner und auch für Bewohner aus der Nachbarschaft <span class="v-word" onclick="showVocab('zugänglich','可供使用的、可进入的','für alle Bewohner zugänglich')">zugänglich</span>. Weil ich viel Rad fahre, wünsche ich mir Radschnellwege. Das heißt ohne Ampeln, ohne Autos, ohne Stau und Fußgänger. Durch die Radschnellwege kann man den Zielort schnell <span class="v-word" onclick="showVocab('erreichen','到达、达到','den Zielort schnell erreichen')">erreichen</span>.</p>
+          <p>Liang Chen: Die Stadt für Morgen soll definitiv grüner sein. Da ich aus der Ofenstadt Wuhan komme, wünsche ich mir mehr <span class="v-word" onclick="showVocab('Grünflächen','绿化地带、绿地','mehr Grünflächen gegen die Hitze')">die Grünfläche</span> gegen die Hitze. Es sollen auch mehr Elektroautos geben, wenn Autos autonom fahren können.</p>
+          <p>Lena: Die Stadt für Morgen soll menschlicher sein. Sie soll auch behinderten Menschen soziale <span class="v-word" onclick="showVocab('Teilhabe','参与、共享','soziale Teilhabe ermöglichen')">die Teilhabe</span> ermöglichen. Mein Vater sitzt seit zwei Jahren im <span class="v-word" onclick="showVocab('Rollstuhl','轮椅','im Rollstuhl sitzen')">der Rollstuhl</span>. Die Treppen zum oder im öffentlichen Raum sind für ihn große <span class="v-word" onclick="showVocab('Barrieren','障碍、阻碍','große Barrieren für behinderte Menschen')">die Barriere</span>. In den zukünftigen Städten soll es mehr barrierefreie Wohnungen und Wege geben.</p>
         </div>
-        <div class="highlight-box">Simon: wusste früh→Ausbildung zum Erzieher→Praktika im Kindergarten→Geduld, Kreativität und Einfühlungsvermögen sind wichtig. „Man sollte mit dem Herzen dabei sein."</div>
+        <div class="highlight-box">三位受访者分享对理想城市的愿景：紧凑型建筑、绿色空间和无障碍设施。</div>
       </div>
     </section>
     <section id="vocab">
@@ -342,19 +339,15 @@
       </div>
       <div class="person-content active" id="vc-T1">
         <div class="vocab-grid">
-          <div class="vc-card" onclick="showVocab('unterscheiden','有区别','sich unterscheiden: 例：Die Berufswahl unterscheidet sich nach Geschlecht.')">unterscheiden</div>
-          <div class="vc-card" onclick="showVocab('Ergebnis','结果','zu diesem Ergebnis kommen: 例：Die Studie kommt zu einem klaren Ergebnis.')">Ergebnis</div>
-          <div class="vc-card" onclick="showVocab('Untersuchung','调查','eine Untersuchung der Bundesagentur: 例：Die Untersuchung zeigt deutliche Unterschiede.')">Untersuchung</div>
-          <div class="vc-card" onclick="showVocab('Fachberufe','专业技术职业','medizinische Fachberufe: 例：Viele Frauen wählen medizinische Fachberufe.')">Fachberufe</div>
-          <div class="vc-card" onclick="showVocab('ganz oben','排在最前面','ganz oben stehen: 例：Soziale Berufe stehen ganz oben.')">ganz oben</div>
-          <div class="vc-card" onclick="showVocab('Kauffrau','女商人、女职员','Kauffrau für Büromanagement: 例：Sie arbeitet als Kauffrau.')">Kauffrau</div>
-          <div class="vc-card" onclick="showVocab('Fachangestellte','专业人员、技术助理','medizinische Fachangestellte: 例：Sie ist medizinische Fachangestellte.')">Fachangestellte</div>
-          <div class="vc-card" onclick="showVocab('technische','技术的','technische Berufe: 例：Technische Berufe sind bei Männern beliebt.')">technische</div>
-          <div class="vc-card" onclick="showVocab('beiderlei','两性的','beiderlei Geschlechts: 例：Studienanfänger beiderlei Geschlechts.')">beiderlei</div>
-          <div class="vc-card" onclick="showVocab('Geschlechts','性别','beiderlei Geschlechts: 例：Die Umfrage gilt für beide Geschlechter.')">Geschlechts</div>
-          <div class="vc-card" onclick="showVocab('beliebtesten','受欢迎的','die beliebtesten Fächer: 例：BWL ist das beliebteste Studienfach.')">beliebtesten</div>
-          <div class="vc-card" onclick="showVocab('nach wie vor','一如既往','nach wie vor stark nachgefragt: 例：Medizin ist nach wie vor beliebt.')">nach wie vor</div>
-          <div class="vc-card" onclick="showVocab('nachgefragt','需求、询问','stark nachgefragt: 例：Diese Fächer sind stark nachgefragt.')">nachgefragt</div>
+          <div class="vc-card" onclick="showVocab('der Städter','城市居民','die Bewohner einer Stadt')">der Städter</div>
+          <div class="vc-card" onclick="showVocab('sich sehnen','渴望、思念','sich sehnen + nach + Dat: sich nach der Natur sehnen')">sich sehnen</div>
+          <div class="vc-card" onclick="showVocab('urbane Gärtnern','城市园艺','das Gärtnern in der Stadt')">urbane Gärtnern</div>
+          <div class="vc-card" onclick="showVocab('der Trend','趋势、潮流','etwas wird zum Trend')">der Trend</div>
+          <div class="vc-card" onclick="showVocab('der Gemeinschaftsgarten','社区花园','ein Garten, den mehrere Personen gemeinsam pflegen')">der Gemeinschaftsgarten</div>
+          <div class="vc-card" onclick="showVocab('der Zugang','入口、通道、获取途径','der Zugang zu + Dat: Zugang zur Natur haben')">der Zugang</div>
+          <div class="vc-card" onclick="showVocab('die Nachbarschaft','邻里关系、街坊','die Beziehungen zwischen Nachbarn')">die Nachbarschaft</div>
+          <div class="vc-card" onclick="showVocab('das Mittel','手段、方法','ein gutes Mittel gegen etwas')">das Mittel</div>
+          <div class="vc-card" onclick="showVocab('die Anonymität','匿名、默默无闻','die Ungenanntheit in der Großstadt')">die Anonymität</div>
         </div>
       </div>
       <div class="person-tabs">
@@ -362,16 +355,17 @@
       </div>
       <div class="person-content" id="vc-T2">
         <div class="vocab-grid">
-          <div class="vc-card" onclick="showVocab('Energie- und Gebäudetechnik','能源与建筑技术','Elektronikerin für Energie- und Gebäudetechnik')">Energie- und Gebäudetechnik</div>
-          <div class="vc-card" onclick="showVocab('ausgebildet','培训、培养','zur Elektronikerin ausgebildet werden')">ausgebildet</div>
-          <div class="vc-card" onclick="showVocab('Gymnasium','文理中学','nach dem Gymnasium: 例：Nach dem Gymnasium machte sie eine Ausbildung.')">Gymnasium</div>
-          <div class="vc-card" onclick="showVocab('langweiliges','无聊的','ein langweiliges Studium: 例：Sie wollte kein langweiliges Studium.')">langweiliges</div>
-          <div class="vc-card" onclick="showVocab('entschieden','决定','sich für eine Ausbildung entscheiden')">entschieden</div>
-          <div class="vc-card" onclick="showVocab('Abwechslung','变化、多样性','viel Abwechslung bieten: 例：Ihr Beruf bietet viel Abwechslung.')">Abwechslung</div>
-          <div class="vc-card" onclick="showVocab('traue','敢于','sich trauen, etwas zu tun: 例：Sie traut sich, neue Dinge zu tun.')">traue</div>
-          <div class="vc-card" onclick="showVocab('durchsetzungsfähig','有贯彻力','durchsetzungsfähig werden: 例：Sie wurde durchsetzungsfähiger.')">durchsetzungsfähig</div>
-          <div class="vc-card" onclick="showVocab('herumgeredet','绕圈子说话','nicht lange herumreden: 例：Bei uns wird nicht herumgeredet.')">herumgeredet</div>
-          <div class="vc-card" onclick="showVocab('angepackt','动手处理','anpacken: 例：Probleme werden direkt angepackt.')">angepackt</div>
+          <div class="vc-card" onclick="showVocab('das Unternehmen','企业、公司','ein großes Unternehmen für musikalische Produktion')">das Unternehmen</div>
+          <div class="vc-card" onclick="showVocab('die Produktion','生产、制作','die Produktion von Musikinstrumenten')">die Produktion</div>
+          <div class="vc-card" onclick="showVocab('die Verwaltung','管理部门、行政','die Verwaltung plant die Entwicklung')">die Verwaltung</div>
+          <div class="vc-card" onclick="showVocab('die Entwicklung','发展、开发','die Entwicklung des Tourismus')">die Entwicklung</div>
+          <div class="vc-card" onclick="showVocab('musikalisch','音乐的','mit musikalischer Umgebung')">musikalisch</div>
+          <div class="vc-card" onclick="showVocab('die Investition','投资','Investition in die Infrastruktur')">die Investition</div>
+          <div class="vc-card" onclick="showVocab('die Infrastruktur','基础设施','Investition in die touristische Infrastruktur')">die Infrastruktur</div>
+          <div class="vc-card" onclick="showVocab('die Raumgestaltung','空间设计','kreative Raumgestaltung')">die Raumgestaltung</div>
+          <div class="vc-card" onclick="showVocab('die Aufführung','演出、表演','musikalische Aufführungen veranstalten')">die Aufführung</div>
+          <div class="vc-card" onclick="showVocab('der Tourist','游客、旅游者','600.000 Touristen besichtigen das Dorf')">der Tourist</div>
+          <div class="vc-card" onclick="showVocab('der Bewohner','居民、住户','die Bewohner des Dorfes')">der Bewohner</div>
         </div>
       </div>
       <div class="person-tabs">
@@ -379,129 +373,182 @@
       </div>
       <div class="person-content" id="vc-T3">
         <div class="vocab-grid">
-          <div class="vc-card" onclick="showVocab('Ausbildung','职业培训','eine Ausbildung machen: 例：Er macht eine Ausbildung.')">Ausbildung</div>
-          <div class="vc-card" onclick="showVocab('Erzieher','教育工作者、幼师','Ausbildung zum Erzieher: 例：Simon wird Erzieher.')">Erzieher</div>
-          <div class="vc-card" onclick="showVocab('Geduld','耐心','Geduld haben: 例：Geduld ist wichtig.')">Geduld</div>
-          <div class="vc-card" onclick="showVocab('Kreativität','创造力','Kreativität zeigen: 例：Kreativität ist wichtig.')">Kreativität</div>
-          <div class="vc-card" onclick="showVocab('Herz','心','mit dem Herzen dabei sein: 例：Mit Herz und Kopf.')">Herz</div>
-          <div class="vc-card" onclick="showVocab('Lust haben auf','对…有兴趣','Freude an etwas haben')">Lust haben auf</div>
-          <div class="vc-card" onclick="showVocab('erzählen','讲述','etwas mündlich berichten')">erzählen</div>
-          <div class="vc-card" onclick="showVocab('sich bewusst entscheiden','有意识地决定','eine bewusste Wahl treffen')">sich bewusst entscheiden</div>
-          <div class="vc-card" onclick="showVocab('sozial','社会的','die Gesellschaft betreffend')">sozial</div>
-          <div class="vc-card" onclick="showVocab('während','在…期间','in der Zeit, als')">während</div>
-          <div class="vc-card" onclick="showVocab('das Praktikum','实习','die praktische Arbeit')">das Praktikum</div>
-          <div class="vc-card" onclick="showVocab('der Kindergarten','幼儿园','die Einrichtung für Kinder')">der Kindergarten</div>
-          <div class="vc-card" onclick="showVocab('die Aufgabe','任务','etwas, das man tun muss')">die Aufgabe</div>
-          <div class="vc-card" onclick="showVocab('kennenlernen','了解、认识','jemanden oder etwas kennenlernen')">kennenlernen</div>
-          <div class="vc-card" onclick="showVocab('betreuen','照顾','sich um jemanden kümmern')">betreuen</div>
-          <div class="vc-card" onclick="showVocab('unterstützen','支持','jemandem helfen')">unterstützen</div>
-          <div class="vc-card" onclick="showVocab('achten auf','注意、关注','aufmerksam sein bei etwas')">achten auf</div>
-          <div class="vc-card" onclick="showVocab('die Stärke','优势、长处','eine positive Eigenschaft')">die Stärke</div>
-          <div class="vc-card" onclick="showVocab('mitbringen','带来','etwas als Eigenschaft haben')">mitbringen</div>
-          <div class="vc-card" onclick="showVocab('Einfühlungsvermögen','同理心、共情能力','die Fähigkeit, sich in andere hineinzuversetzen')">Einfühlungsvermögen</div>
-          <div class="vc-card" onclick="showVocab('merken','注意到','etwas bemerken')">merken</div>
-          <div class="vc-card" onclick="showVocab('helfen','帮助','jemandem Unterstützung geben')">helfen</div>
-          <div class="vc-card" onclick="showVocab('raten','建议','jemandem einen Rat geben')">raten</div>
-          <div class="vc-card" onclick="showVocab('der Kopf','头、头脑','der oberste Teil des Körpers; auch: Verstand')">der Kopf</div>
+          <div class="vc-card" onclick="showVocab('zugänglich','可供使用的、可进入的','für alle Bewohner zugänglich')">zugänglich</div>
+          <div class="vc-card" onclick="showVocab('erreichen','到达、达到','den Zielort schnell erreichen')">erreichen</div>
+          <div class="vc-card" onclick="showVocab('die Grünfläche','绿化地带、绿地','mehr Grünflächen gegen die Hitze')">die Grünfläche</div>
+          <div class="vc-card" onclick="showVocab('die Teilhabe','参与、共享','soziale Teilhabe ermöglichen')">die Teilhabe</div>
+          <div class="vc-card" onclick="showVocab('der Rollstuhl','轮椅','im Rollstuhl sitzen')">der Rollstuhl</div>
+          <div class="vc-card" onclick="showVocab('die Barriere','障碍、阻碍','große Barrieren für behinderte Menschen')">die Barriere</div>
         </div>
       </div>
     </section>
     <section id="grammar">
       <h2 class="section-title"><span class="num">3</span> 语法 · Grammatik</h2>
       <div class="grammar-table-wrapper">
-        <h3>并列连词 Übersicht</h3>
+        <h3>从句概览 · Nebensätze</h3>
         <table class="grammar-table">
           <thead><tr><th>连词</th><th>含义</th><th>功能</th><th>例句</th></tr></thead>
           <tbody>
-            <tr><td>und</td><td>和、以及</td><td>列举、并列</td><td>Ich lerne Deutsch <strong>und</strong> mein Bruder lernt Englisch.</td></tr>
-            <tr><td>oder</td><td>或者</td><td>选择</td><td>Möchtest du studieren <strong>oder</strong> eine Ausbildung machen?</td></tr>
-            <tr><td>aber</td><td>但是</td><td>转折</td><td>Er ist jung, <strong>aber</strong> sehr erfahren.</td></tr>
-            <tr><td>denn</td><td>因为</td><td>原因</td><td>Sie wird Elektronikerin, <strong>denn</strong> Technik interessiert sie.</td></tr>
-            <tr><td>sondern</td><td>而是</td><td>否定后纠正</td><td>nicht A, <strong>sondern</strong> B: Sie studiert nicht, <strong>sondern</strong> macht eine Ausbildung.</td></tr>
-            <tr><td>zwar … aber</td><td>虽然…但是</td><td>转折让步</td><td>Er ist <strong>zwar</strong> jung, <strong>aber</strong> sehr tüchtig.</td></tr>
-            <tr><td>nicht nur … sondern auch</td><td>不仅…而且</td><td>递进</td><td>Sie kann <strong>nicht nur</strong> Deutsch, <strong>sondern auch</strong> Englisch.</td></tr>
-            <tr><td>sowohl … als auch</td><td>既…又</td><td>并列强调</td><td><strong>Sowohl</strong> Jungen <strong>als auch</strong> Mädchen wählen technische Berufe.</td></tr>
+            <tr><td>dass</td><td>（无含义）引导名词性从句</td><td>陈述事实、观点</td><td>Es ist wichtig, <strong>dass</strong> mehr Grünflächen geschaffen werden.</td></tr>
+            <tr><td>ob</td><td>是否</td><td>引导间接疑问句</td><td>Man fragt sich, <strong>ob</strong> die Stadt grüner wird.</td></tr>
+            <tr><td>weil</td><td>因为</td><td>原因（回答warum）</td><td><strong>Weil</strong> ich viel Rad fahre, wünsche ich mir Radschnellwege.</td></tr>
+            <tr><td>da</td><td>因为（已知原因）</td><td>原因（句首常用）</td><td><strong>Da</strong> ich aus Wuhan komme, wünsche ich mir Grünflächen.</td></tr>
+            <tr><td>wenn</td><td>当…时 / 如果</td><td>时间/条件</td><td><strong>Wenn</strong> Autos autonom fahren, gibt es weniger Unfälle.</td></tr>
+            <tr><td>durch</td><td>通过（介词+宾）</td><td>方式、途径</td><td>Durch die Radschnellwege kann man den Zielort schnell erreichen.</td></tr>
           </tbody>
         </table>
       </div>
       <div class="grammar-examples">
         <h3>例句</h3>
         <div class="grammar-example">
-          <div class="de">Erika macht eine Ausbildung, denn sie liebt die praktische Arbeit.</div>
-          <div class="zh">Erika 在做职业培训，因为她喜欢实践</div>
+          <div class="de">Es ist wichtig, dass die Stadt mehr Grünflächen schafft.</div>
+          <div class="zh">重要的是城市创造更多绿地。</div>
         </div>
         <div class="grammar-example">
-          <div class="de">Simon wird nicht Ingenieur, sondern Erzieher.</div>
-          <div class="zh">Simon 不做工程师，而是做幼师</div>
+          <div class="de">Weil es in der Stadt laut ist, sehnen sich viele Menschen nach der Natur.</div>
+          <div class="zh">因为城市很吵，许多人渴望自然。</div>
+        </div>
+        <div class="grammar-example">
+          <div class="de">Da Zhouwo ein Musikdorf ist, besuchen viele Touristen es jedes Jahr.</div>
+          <div class="zh">由于周窝是一个音乐村，许多游客每年都来参观。</div>
+        </div>
+        <div class="grammar-example">
+          <div class="de">Wenn ich Rad fahre, möchte ich keine Ampeln und keinen Stau.</div>
+          <div class="zh">当我骑车时，我不想有红绿灯和堵车。</div>
         </div>
       </div>
     </section>
     <section id="exercise">
       <h2 class="section-title"><span class="num">4</span> 练习 · Übungen</h2>
       <div class="quiz-card">
-        <div class="q-text">1. Welche Berufe sind bei Frauen am beliebtesten?</div>
+        <div class="q-text">1. Was ist in deutschen Städten zum neuen Trend geworden?</div>
         <div class="options">
-          <div class="opt" onclick="checkQuiz(this,1,0)">A. Kfz-Mechatroniker, Fachinformatiker</div>
-          <div class="opt" onclick="checkQuiz(this,1,1)">B. Kauffrau für Büromanagement, med. Fachangestellte</div>
-          <div class="opt" onclick="checkQuiz(this,1,2)">C. Elektroniker, Metalltechniker</div>
-          <div class="opt" onclick="checkQuiz(this,1,3)">D. Bauer, Gärtner</div>
+          <div class="opt" onclick="checkQuiz(this,1,0)">A. Hochhäuser bauen</div>
+          <div class="opt" onclick="checkQuiz(this,1,1)">B. Urbanes Gärtnern</div>
+          <div class="opt" onclick="checkQuiz(this,1,2)">C. Autofreie Innenstädte</div>
+          <div class="opt" onclick="checkQuiz(this,1,3)">D. Mehr Flughäfen</div>
         </div>
         <div class="q-answer">B</div>
         <button class="show-answer-btn" onclick="this.previousElementSibling.classList.toggle('show')">显示答案</button>
       </div>
       <div class="quiz-card">
-        <div class="q-text">2. Welches Fach liegt bei Studienanfängern beider Geschlechter auf Platz eins?</div>
+        <div class="q-text">2. Welchen Vorteil hat der Gemeinschaftsgarten?</div>
         <div class="options">
-          <div class="opt" onclick="checkQuiz(this,2,0)">A. Informatik</div>
-          <div class="opt" onclick="checkQuiz(this,2,1)">B. Betriebswirtschaftslehre (BWL)</div>
-          <div class="opt" onclick="checkQuiz(this,2,2)">C. Maschinenbau</div>
-          <div class="opt" onclick="checkQuiz(this,2,3)">D. Psychologie</div>
+          <div class="opt" onclick="checkQuiz(this,2,0)">A. Man kann Geld verdienen</div>
+          <div class="opt" onclick="checkQuiz(this,2,1)">B. Man hat Zugang zur Natur und lernt Nachbarn kennen</div>
+          <div class="opt" onclick="checkQuiz(this,2,2)">C. Man muss keine Steuern zahlen</div>
+          <div class="opt" onclick="checkQuiz(this,2,3)">D. Man wohnt kostenlos</div>
         </div>
         <div class="q-answer">B</div>
         <button class="show-answer-btn" onclick="this.previousElementSibling.classList.toggle('show')">显示答案</button>
       </div>
       <div class="quiz-card">
-        <div class="q-text">3. Was hat Erika nach dem Gymnasium gemacht?</div>
+        <div class="q-text">3. Wodurch hat sich Zhouwo vom armen Dorf zum Tourismusmagnet entwickelt?</div>
         <div class="options">
-          <div class="opt" onclick="checkQuiz(this,3,0)">A. Sie hat studiert.</div>
-          <div class="opt" onclick="checkQuiz(this,3,1)">B. Sie hat eine Ausbildung zur Elektronikerin gemacht.</div>
-          <div class="opt" onclick="checkQuiz(this,3,2)">C. Sie hat im Büro gearbeitet.</div>
-          <div class="opt" onclick="checkQuiz(this,3,3)">D. Sie ist ins Ausland gegangen.</div>
+          <div class="opt" onclick="checkQuiz(this,3,0)">A. Durch die Produktion von Musikinstrumenten und Tourismusentwicklung</div>
+          <div class="opt" onclick="checkQuiz(this,3,1)">B. Durch den Bau einer Autobahn</div>
+          <div class="opt" onclick="checkQuiz(this,3,2)">C. Durch die Eröffnung einer Universität</div>
+          <div class="opt" onclick="checkQuiz(this,3,3)">D. Durch die Landwirtschaft</div>
+        </div>
+        <div class="q-answer">A</div>
+        <button class="show-answer-btn" onclick="this.previousElementSibling.classList.toggle('show')">显示答案</button>
+      </div>
+      <div class="quiz-card">
+        <div class="q-text">4. Was wünscht sich Lena für die Stadt der Zukunft?</div>
+        <div class="options">
+          <div class="opt" onclick="checkQuiz(this,4,0)">A. Mehr Einkaufszentren</div>
+          <div class="opt" onclick="checkQuiz(this,4,1)">B. Mehr barrierefreie Wohnungen und Wege</div>
+          <div class="opt" onclick="checkQuiz(this,4,2)">C. Höhere Gebäude</div>
+          <div class="opt" onclick="checkQuiz(this,4,3)">D. Weniger Parks</div>
         </div>
         <div class="q-answer">B</div>
         <button class="show-answer-btn" onclick="this.previousElementSibling.classList.toggle('show')">显示答案</button>
       </div>
-      <div class="quiz-card">
-        <div class="q-text">4. Erika ist durchsetzungsfähiger geworden, ______________.</div>
-        <div class="options">
-          <div class="opt" onclick="checkQuiz(this,4,0)">A. weil sie viel gelernt hat</div>
-          <div class="opt" onclick="checkQuiz(this,4,1)">B. weil sie meistens als einzige Frau mit Männern zusammenarbeitet</div>
-          <div class="opt" onclick="checkQuiz(this,4,2)">C. weil sie eine neue Stelle bekommen hat</div>
-          <div class="opt" onclick="checkQuiz(this,4,3)">D. weil sie eine Prüfung bestanden hat</div>
+      <div class="connect-game">
+        <h3>动词搭配连线</h3>
+        <p class="zh">点击左列德文，再点击右列中文进行匹配</p>
+        <div class="connect-field" id="cg-0">
+          <div class="connect-col" id="cg-de-0">
+            <div class="c-item de" data-pair="0" data-gid="0" onclick="cClick(this)">sich sehnen nach</div>
+            <div class="c-item de" data-pair="1" data-gid="0" onclick="cClick(this)">sich kümmern um</div>
+            <div class="c-item de" data-pair="2" data-gid="0" onclick="cClick(this)">sich austauschen über</div>
+            <div class="c-item de" data-pair="3" data-gid="0" onclick="cClick(this)">Zugang haben zu</div>
+            <div class="c-item de" data-pair="4" data-gid="0" onclick="cClick(this)">einen Beitrag leisten</div>
+          </div>
+          <div class="connect-col" id="cg-cn-0">
+            <div class="c-item cn" data-pair="0" data-gid="0" onclick="cClick(this)">渴望</div>
+            <div class="c-item cn" data-pair="1" data-gid="0" onclick="cClick(this)">照顾</div>
+            <div class="c-item cn" data-pair="2" data-gid="0" onclick="cClick(this)">交流</div>
+            <div class="c-item cn" data-pair="3" data-gid="0" onclick="cClick(this)">有途径</div>
+            <div class="c-item cn" data-pair="4" data-gid="0" onclick="cClick(this)">做出贡献</div>
+          </div>
         </div>
-        <div class="q-answer">B</div>
-        <button class="show-answer-btn" onclick="this.previousElementSibling.classList.toggle('show')">显示答案</button>
+        <div class="connect-score" id="cg-score-0">匹配：<span id="cg-cnt-0">0</span> / 5</div>
+      </div>
+      <div class="fill-game">
+        <h3>填入合适的连词</h3>
+        <p class="zh">在空白处填入合适的词汇</p>
+        <div class="fill-item">
+          <div class="fill-sentence">Es ist wichtig, ______ die Stadt mehr Grünflächen schafft.</div>
+          <div class="fill-input-line">
+            <input type="text" class="fill-input" id="fg-0-0" placeholder="..." data-answer="dass">
+            <button class="fill-check" onclick="checkFill(0,0)">✓</button>
+            <span class="fill-result" id="fg-res-0-0"></span>
+          </div>
+        </div>
+        <div class="fill-item">
+          <div class="fill-sentence">______ ich viel Rad fahre, wünsche ich mir Radschnellwege.</div>
+          <div class="fill-input-line">
+            <input type="text" class="fill-input" id="fg-0-1" placeholder="..." data-answer="weil">
+            <button class="fill-check" onclick="checkFill(0,1)">✓</button>
+            <span class="fill-result" id="fg-res-0-1"></span>
+          </div>
+        </div>
+        <div class="fill-item">
+          <div class="fill-sentence">______ Zhouwo ein Musikdorf ist, besuchen viele Touristen es.</div>
+          <div class="fill-input-line">
+            <input type="text" class="fill-input" id="fg-0-2" placeholder="..." data-answer="da">
+            <button class="fill-check" onclick="checkFill(0,2)">✓</button>
+            <span class="fill-result" id="fg-res-0-2"></span>
+          </div>
+        </div>
+        <div class="fill-item">
+          <div class="fill-sentence">Ich frage mich, ______ die Stadt grüner wird.</div>
+          <div class="fill-input-line">
+            <input type="text" class="fill-input" id="fg-0-3" placeholder="..." data-answer="ob">
+            <button class="fill-check" onclick="checkFill(0,3)">✓</button>
+            <span class="fill-result" id="fg-res-0-3"></span>
+          </div>
+        </div>
+        <div class="fill-item">
+          <div class="fill-sentence">______ ich in der Stadt wohne, möchte ich mehr Parks.</div>
+          <div class="fill-input-line">
+            <input type="text" class="fill-input" id="fg-0-4" placeholder="..." data-answer="weil">
+            <button class="fill-check" onclick="checkFill(0,4)">✓</button>
+            <span class="fill-result" id="fg-res-0-4"></span>
+          </div>
+        </div>
       </div>
       <div class="match-game">
         <h3>词汇配对 &middot; Wortpaare</h3>
         <p class="zh">点击两张卡片配对德语词和中文释义</p>
         <div id="match-game" style="max-width:600px;margin:0 auto">
-          <div class="match-card de" data-pair="1" onclick="matchClick(this)">die Ausbildung</div>
-          <div class="match-card zh" data-pair="1" onclick="matchClick(this)">职业培训</div>
-          <div class="match-card de" data-pair="2" onclick="matchClick(this)">der Berufswunsch</div>
-          <div class="match-card zh" data-pair="2" onclick="matchClick(this)">职业愿望</div>
-          <div class="match-card de" data-pair="3" onclick="matchClick(this)">die Kreativität</div>
-          <div class="match-card zh" data-pair="3" onclick="matchClick(this)">创造力</div>
-          <div class="match-card de" data-pair="4" onclick="matchClick(this)">die Geduld</div>
-          <div class="match-card zh" data-pair="4" onclick="matchClick(this)">耐心</div>
-          <div class="match-card de" data-pair="5" onclick="matchClick(this)">die Elektronikerin</div>
-          <div class="match-card zh" data-pair="5" onclick="matchClick(this)">女电工</div>
-          <div class="match-card de" data-pair="6" onclick="matchClick(this)">die Werkstatt</div>
-          <div class="match-card zh" data-pair="6" onclick="matchClick(this)">车间</div>
-          <div class="match-card de" data-pair="7" onclick="matchClick(this)">der Erzieher</div>
-          <div class="match-card zh" data-pair="7" onclick="matchClick(this)">幼师</div>
-          <div class="match-card de" data-pair="8" onclick="matchClick(this)">der Kindergarten</div>
-          <div class="match-card zh" data-pair="8" onclick="matchClick(this)">幼儿园</div>
+          <div class="match-card de" data-pair="1" onclick="matchClick(this)">der Gemeinschaftsgarten</div>
+          <div class="match-card zh" data-pair="1" onclick="matchClick(this)">社区花园</div>
+          <div class="match-card de" data-pair="2" onclick="matchClick(this)">die Nachbarschaft</div>
+          <div class="match-card zh" data-pair="2" onclick="matchClick(this)">邻里关系</div>
+          <div class="match-card de" data-pair="3" onclick="matchClick(this)">die Infrastruktur</div>
+          <div class="match-card zh" data-pair="3" onclick="matchClick(this)">基础设施</div>
+          <div class="match-card de" data-pair="4" onclick="matchClick(this)">die Grünfläche</div>
+          <div class="match-card zh" data-pair="4" onclick="matchClick(this)">绿化地带</div>
+          <div class="match-card de" data-pair="5" onclick="matchClick(this)">die Teilhabe</div>
+          <div class="match-card zh" data-pair="5" onclick="matchClick(this)">参与共享</div>
+          <div class="match-card de" data-pair="6" onclick="matchClick(this)">die Barriere</div>
+          <div class="match-card zh" data-pair="6" onclick="matchClick(this)">障碍</div>
+          <div class="match-card de" data-pair="7" onclick="matchClick(this)">der Zugang</div>
+          <div class="match-card zh" data-pair="7" onclick="matchClick(this)">入口通道</div>
+          <div class="match-card de" data-pair="8" onclick="matchClick(this)">das Mittel</div>
+          <div class="match-card zh" data-pair="8" onclick="matchClick(this)">手段方法</div>
         </div>
       </div>
     </section>

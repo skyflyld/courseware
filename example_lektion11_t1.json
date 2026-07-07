@@ -1,0 +1,674 @@
+{
+  "meta": {
+    "lektion": "11",
+    "title": "Wie und wozu nutze ich die Medien?",
+    "subtitle": "三代人的媒体使用习惯 · 77岁奶奶 ↔ 52岁父亲 ↔ 21岁大学生",
+    "grammarTopic": "Passiv & Zwar … aber …",
+    "navLabels": [
+      "首页",
+      "课文讲解",
+      "重点词汇",
+      "语法",
+      "练习",
+      "翻译卡片"
+    ],
+    "sectionTitles": {
+      "text": "T1 · Wie und wozu nutze ich die Medien?",
+      "vocab": "重点词汇 · Mediennutzung & Wortschatz",
+      "grammar": "语法 · Passiv & Konnektoren",
+      "translation": "逐句翻译练习",
+      "exercise": "练习 · Wortschatz"
+    },
+    "objectives": [
+      "理解三代人不同的媒体使用习惯（传统 vs. 数字媒体）",
+      "掌握被动语态（Präsens Passiv + Perfekt Passiv）",
+      "掌握重点词组：abschalten, posten, teilen, einsetzen, ermöglichen",
+      "能完成德⇄中逐句翻译练习"
+    ]
+  },
+  "texts": [
+    {
+      "id": "T1",
+      "title": "Wie und wozu nutze ich die Medien?",
+      "subTitle": "三代人的媒体使用习惯",
+      "by": "",
+      "summary": "通过 Bode 一家三口（77岁奶奶、52岁父亲、21岁大学生）的视角，展示不同世代对传统媒体和数字媒体的不同态度。",
+      "paragraphs": [],
+      "pages": [
+        [
+          "Jonas Bode hat mit seinen chinesischen Kommilitoninnen und Kommilitonen über die Mediennutzung verschiedener Generationen gesprochen. Dazu hat er seine Familie gefragt. Hier sind drei verschiedene Perspektiven:"
+        ],
+        [
+          "„Jeden Tag schalte ich schon früh morgens mein Radio ein und höre die Nachrichten. Tagsüber lese ich manchmal die Lokalzeitung, um das Neueste aus meiner Umgebung zu %%erfahren%%. Ich sehe nur fern, wenn ein guter %%Spielfilm%% oder eine interessante %%Reportage%% gezeigt wird. Mein altes Handy nutze ich fast nur zum Telefonieren. Zwar können heute auch mit dem Handy auch %%Kurznachrichten%% %%verschickt%% werden, aber ich schreibe immer noch gern Briefe.",
+          "Ein %%handgeschriebener%% Brief ist persönlicher und %%hält%% viel länger als Kurznachrichten. Außerdem ist es ein wunderbares %%Gefühl%%, wenn die %%Briefmarke%% auf den %%Umschlag%% geklebt und der Brief in den %%Briefkasten%% %%geworfen%% worden ist. Zwar muss man ein bisschen länger auf die Antwort warten, aber wenn der Brief endlich nach Hause %%gebracht%% worden ist, ist die Freude riesengroß. Diese %%Erfahrung%% macht man mit dem Handy einfach nicht.“",
+          "— Frau Bode, 77, Rentnerin: „Ich schreibe gern Briefe.“"
+        ],
+        [
+          "„Täglich sitze ich im Büro stundenlang vor dem %%Bildschirm%%, um neue %%E-Mails%% zu beantworten. Nach Feierabend kommen auch %%Anrufe%% und Nachrichten von %%Kollegen%% und %%Kunden%% aus aller Welt auf mein Smartphone. Da bin ich immer %%erreichbar%%. Für viele Menschen ist ein Leben ohne digitale %%Geräte%% unvorstellbar. Denn mit dem Smartphone kann nicht nur ferngesehen oder telefoniert werden, sondern es %%ermöglicht%% auch Onlinekäufe, digitales Lernen und das Erledigen von Bankgeschäften.",
+          "Für mich ist jedoch die ständige digitale %%Erreichbarkeit%% zur %%Belastung%% geworden. Deshalb habe ich mich entschieden, diesen Sommer einen %%Offline-Urlaub%% zu machen und einfach mal von dem digitalen %%Stress%% %%abzuschalten%%. Dabei verzichte ich auf Internet, Handy, Laptop und Tablet. Zwar können meine Urlaubsmomente nicht sofort mit Freunden %%geteilt%% werden und Urlaubsfotos nicht gleich %%gepostet%% werden, aber ich kann mit meiner Familie die Ruhe genießen.“",
+          "— Herr Bode, 52, Geschäftsmann: „Mit dem Offline-Urlaub kann ich mal abschalten.“"
+        ],
+        [
+          "„Meine Lieblingsmedien sind Laptop und %%Tablet%%. Ich nutze sie nicht nur als %%Kommunikationsmittel%%, sondern setze sie auch gezielt zum Lernen %%einsetzen%%. Im letzten Semester sind zwei %%Online-Vorlesungen%% an der Uni %%angeboten%% worden. Dabei sollten die Lerninhalte und -videos auf einer %%Lernplattform%% angeschaut und die %%Lernaufgaben%% online %%erledigt%% werden. Auch in sozialen %%Netzwerken%% habe ich einige interessante %%Kanäle%% %%abonniert%%.",
+          "Das digitale Lernen finde ich sehr gut, weil man zeitlich und räumlich %%unabhängig%% ist. Außerdem kann jeder %%Inhalt%% nach eigenem %%Bedarf%% und %%Tempo%% %%behandelt%% oder %%vertieft%% werden. Die Lerninhalte sind zu jeder Uhrzeit %%verfügbar%%. Es ist nur ein wenig %%bedauerlich%%, dass ich meine %%Kommilitonen%% aus diesen beiden Kursen nicht persönlich treffen kann.“",
+          "— Jonas Bode, 21, Germanistikstudent: „Meine Lieblingsmedien sind Laptop und Tablet.“"
+        ]
+      ]
+    }
+  ],
+  "vocab": [
+    {
+      "key": "erfahren",
+      "cn": "得知、了解到"
+    },
+    {
+      "key": "Spielfilm",
+      "cn": "故事片、电影"
+    },
+    {
+      "key": "Reportage",
+      "cn": "报道、纪实节目"
+    },
+    {
+      "key": "Kurznachrichten",
+      "cn": "短信（复数）"
+    },
+    {
+      "key": "verschickt",
+      "word": "verschickt",
+      "cn": "发送、寄出"
+    },
+    {
+      "key": "handgeschriebener",
+      "cn": "手写的"
+    },
+    {
+      "key": "hält",
+      "word": "hält",
+      "cn": "保持、持续"
+    },
+    {
+      "key": "Gefühl",
+      "cn": "感觉、感受"
+    },
+    {
+      "key": "Briefmarke",
+      "cn": "邮票"
+    },
+    {
+      "key": "Umschlag",
+      "cn": "信封"
+    },
+    {
+      "key": "Briefkasten",
+      "cn": "信箱"
+    },
+    {
+      "key": "geworfen",
+      "word": "geworfen",
+      "cn": "投、扔"
+    },
+    {
+      "key": "gebracht",
+      "word": "gebracht",
+      "cn": "带来、送到"
+    },
+    {
+      "key": "Erfahrung",
+      "cn": "经验、体验"
+    },
+    {
+      "key": "Bildschirm",
+      "cn": "屏幕"
+    },
+    {
+      "key": "E-Mails",
+      "word": "E-Mails",
+      "cn": "电子邮件"
+    },
+    {
+      "key": "Anrufe",
+      "word": "Anrufe",
+      "cn": "电话来电"
+    },
+    {
+      "key": "Kollegen",
+      "word": "Kollegen",
+      "cn": "同事"
+    },
+    {
+      "key": "Kunden",
+      "word": "Kunden",
+      "cn": "客户"
+    },
+    {
+      "key": "erreichbar",
+      "cn": "可联系的、可到达的"
+    },
+    {
+      "key": "Geräte",
+      "word": "Geräte",
+      "cn": "设备"
+    },
+    {
+      "key": "ermöglicht",
+      "word": "ermöglicht",
+      "cn": "使……成为可能"
+    },
+    {
+      "key": "Erreichbarkeit",
+      "cn": "可联系性"
+    },
+    {
+      "key": "Belastung",
+      "cn": "负担、压力"
+    },
+    {
+      "key": "Offline-Urlaub",
+      "cn": "断网休假"
+    },
+    {
+      "key": "Stress",
+      "cn": "压力"
+    },
+    {
+      "key": "abzuschalten",
+      "word": "abzuschalten",
+      "cn": "关掉、断开（放松）"
+    },
+    {
+      "key": "geteilt",
+      "word": "geteilt",
+      "cn": "分享"
+    },
+    {
+      "key": "gepostet",
+      "word": "gepostet",
+      "cn": "发布（帖子）"
+    },
+    {
+      "key": "Tablet",
+      "cn": "平板电脑"
+    },
+    {
+      "key": "Kommunikationsmittel",
+      "cn": "通信工具"
+    },
+    {
+      "key": "einsetzen",
+      "word": "einsetzen",
+      "cn": "使用、投入"
+    },
+    {
+      "key": "Online-Vorlesungen",
+      "word": "Online-Vorlesungen",
+      "cn": "在线课程"
+    },
+    {
+      "key": "angeboten",
+      "word": "angeboten",
+      "cn": "提供"
+    },
+    {
+      "key": "Lernplattform",
+      "cn": "学习平台"
+    },
+    {
+      "key": "Lernaufgaben",
+      "word": "Lernaufgaben",
+      "cn": "学习任务"
+    },
+    {
+      "key": "erledigt",
+      "word": "erledigt",
+      "cn": "完成（任务）"
+    },
+    {
+      "key": "Netzwerken",
+      "word": "Netzwerken",
+      "cn": "网络"
+    },
+    {
+      "key": "Kanäle",
+      "word": "Kanäle",
+      "cn": "频道"
+    },
+    {
+      "key": "abonniert",
+      "word": "abonniert",
+      "cn": "订阅"
+    },
+    {
+      "key": "unabhängig",
+      "cn": "独立的"
+    },
+    {
+      "key": "Inhalt",
+      "cn": "内容"
+    },
+    {
+      "key": "Bedarf",
+      "cn": "需求"
+    },
+    {
+      "key": "Tempo",
+      "cn": "速度、节奏"
+    },
+    {
+      "key": "behandelt",
+      "word": "behandelt",
+      "cn": "处理、对待"
+    },
+    {
+      "key": "vertieft",
+      "word": "vertieft",
+      "cn": "加深、深入学习"
+    },
+    {
+      "key": "verfügbar",
+      "cn": "可用的、可获得的"
+    },
+    {
+      "key": "bedauerlich",
+      "cn": "令人遗憾的"
+    },
+    {
+      "key": "Kommilitonen",
+      "word": "Kommilitonen",
+      "cn": "大学同学"
+    }
+  ],
+  "grammar": {
+    "tables": [
+      {
+        "title": "Passiv Präsens（现在时被动）",
+        "headers": [
+          "主语",
+          "助动词",
+          "Partizip II",
+          "中文"
+        ],
+        "rows": [
+          [
+            "Ein guter Spielfilm",
+            "wird",
+            "gezeigt.",
+            "一部好电影被播放。"
+          ],
+          [
+            "Kurznachrichten",
+            "werden",
+            "verschickt.",
+            "短信被发送。"
+          ],
+          [
+            "Die Lerninhalte",
+            "werden",
+            "behandelt.",
+            "学习内容被处理。"
+          ]
+        ]
+      },
+      {
+        "title": "Passiv mit Modalverb（情态动词被动）",
+        "headers": [
+          "结构",
+          "例句",
+          "中文"
+        ],
+        "rows": [
+          [
+            "können + Passiv",
+            "Kurznachrichten können verschickt werden.",
+            "短信可以被发送。"
+          ],
+          [
+            "können + Passiv（无人称）",
+            "Es kann ferngesehen oder telefoniert werden.",
+            "可以看电视或打电话。"
+          ],
+          [
+            "sollen + Passiv",
+            "Die Lerninhalte sollen behandelt werden.",
+            "学习内容应该被处理。"
+          ]
+        ]
+      },
+      {
+        "title": "Perfekt Passiv（完成时被动）",
+        "headers": [
+          "结构",
+          "例句",
+          "中文"
+        ],
+        "rows": [
+          [
+            "sein + Partizip II + worden",
+            "Der Brief ist in den Briefkasten geworfen worden.",
+            "信被投进了信箱。"
+          ],
+          [
+            "sein + Partizip II + worden",
+            "Der Brief ist nach Hause gebracht worden.",
+            "信被送到了家。"
+          ],
+          [
+            "sein + Partizip II + worden",
+            "Zwei Online-Vorlesungen sind angeboten worden.",
+            "两门在线课程被提供了。"
+          ],
+          [
+            "注意",
+            "worden（不带 ge-）",
+            "worden 而非 geworden（Perfekt Passiv）"
+          ]
+        ]
+      },
+      {
+        "title": "Zwar … aber …（虽然……但是……）",
+        "headers": [
+          "结构",
+          "例句",
+          "中文"
+        ],
+        "rows": [
+          [
+            "Zwar + Satz, aber + Satz",
+            "Zwar können Kurznachrichten verschickt werden, aber ich schreibe gern Briefe.",
+            "虽然可以发短信，但我喜欢写信。"
+          ],
+          [
+            "Zwar + Satz, aber + Satz",
+            "Zwar muss man länger warten, aber die Freude ist riesengroß.",
+            "虽然要等更久，但喜悦是巨大的。"
+          ],
+          [
+            "Zwar + Satz, aber + Satz",
+            "Zwar können Fotos nicht sofort geteilt werden, aber ich genieße die Ruhe.",
+            "虽然不能马上分享照片，但我享受宁静。"
+          ]
+        ]
+      }
+    ]
+  },
+  "connectGrids": [
+    {
+      "title": "🏛️ 媒体类型 & 基础概念 · Medientypen & Grundbegriffe",
+      "pairs": [
+        [
+          "der Spielfilm",
+          "故事片、电影"
+        ],
+        [
+          "die Reportage",
+          "报道、纪实节目"
+        ],
+        [
+          "die Lokalzeitung",
+          "地方报纸"
+        ],
+        [
+          "die Kurznachricht",
+          "短信"
+        ],
+        [
+          "die Briefmarke",
+          "邮票"
+        ],
+        [
+          "der Umschlag",
+          "信封"
+        ],
+        [
+          "der Briefkasten",
+          "信箱"
+        ],
+        [
+          "der Bildschirm",
+          "屏幕"
+        ],
+        [
+          "das Smartphone",
+          "智能手机"
+        ],
+        [
+          "das Tablet",
+          "平板电脑"
+        ],
+        [
+          "die Lernplattform",
+          "学习平台"
+        ]
+      ]
+    },
+    {
+      "title": "🎯 关键名词 · Mediennutzung & Schlüsselnomen",
+      "pairs": [
+        [
+          "der Anruf",
+          "来电、电话"
+        ],
+        [
+          "die E-Mail",
+          "电子邮件"
+        ],
+        [
+          "der Kunde",
+          "客户"
+        ],
+        [
+          "der Kollege",
+          "同事"
+        ],
+        [
+          "die Erreichbarkeit",
+          "可联系性"
+        ],
+        [
+          "die Belastung",
+          "负担、压力"
+        ],
+        [
+          "der Stress",
+          "压力"
+        ],
+        [
+          "der Offline-Urlaub",
+          "断网休假"
+        ],
+        [
+          "das Netzwerk",
+          "网络"
+        ],
+        [
+          "der Kanal",
+          "频道"
+        ],
+        [
+          "der Inhalt",
+          "内容"
+        ],
+        [
+          "der Bedarf",
+          "需求"
+        ]
+      ]
+    },
+    {
+      "title": "🔑 核心动词 · Schlüsselverben",
+      "pairs": [
+        [
+          "erfahren",
+          "得知、了解到"
+        ],
+        [
+          "verschicken",
+          "发送、寄出"
+        ],
+        [
+          "werfen",
+          "投、扔"
+        ],
+        [
+          "bringen",
+          "带来、送到"
+        ],
+        [
+          "ermöglichen",
+          "使……成为可能"
+        ],
+        [
+          "abschalten",
+          "关掉、断开（放松）"
+        ],
+        [
+          "teilen",
+          "分享"
+        ],
+        [
+          "posten",
+          "发布（帖子）"
+        ],
+        [
+          "einsetzen",
+          "使用、投入"
+        ],
+        [
+          "anbieten",
+          "提供"
+        ],
+        [
+          "erledigen",
+          "完成（任务）"
+        ],
+        [
+          "abonnieren",
+          "订阅"
+        ],
+        [
+          "behandeln",
+          "处理"
+        ],
+        [
+          "vertiefen",
+          "加深、深入学习"
+        ]
+      ]
+    },
+    {
+      "title": "✨ 形容词 & 固定搭配 · Adjektive & Wendungen",
+      "pairs": [
+        [
+          "handgeschrieben",
+          "手写的"
+        ],
+        [
+          "persönlich",
+          "私人的、亲自的"
+        ],
+        [
+          "erreichbar",
+          "可联系的"
+        ],
+        [
+          "unabhängig",
+          "独立的"
+        ],
+        [
+          "verfügbar",
+          "可用的"
+        ],
+        [
+          "bedauerlich",
+          "令人遗憾的"
+        ],
+        [
+          "riesengroß",
+          "巨大的"
+        ],
+        [
+          "nach eigenem Bedarf",
+          "根据自身需求"
+        ],
+        [
+          "zeitlich und räumlich unabhängig",
+          "不受时间地点限制"
+        ],
+        [
+          "zu jeder Uhrzeit verfügbar",
+          "随时可用"
+        ],
+        [
+          "ständige digitale Erreichbarkeit",
+          "持续数字可联系状态"
+        ],
+        [
+          "digitaler Stress",
+          "数字压力"
+        ]
+      ]
+    }
+  ],
+  "translationCards": [
+    {
+      "de": "Ein handgeschriebener Brief ist persönlicher und hält viel länger als Kurznachrichten.",
+      "zh": "手写的信更私密，保存时间比短信长得多。",
+      "vocab": "handgeschrieben — 手写的"
+    },
+    {
+      "de": "Wenn die Briefmarke auf den Umschlag geklebt und der Brief in den Briefkasten geworfen worden ist, ist die Freude riesengroß.",
+      "zh": "当邮票贴在信封上、信被投进信箱后，喜悦是巨大的。",
+      "vocab": "geworfen worden — 被投（Perfekt Passiv）"
+    },
+    {
+      "de": "Mit dem Smartphone kann nicht nur ferngesehen oder telefoniert werden, sondern es ermöglicht auch Onlinekäufe.",
+      "zh": "用智能手机不仅可以看电视或打电话，还可以进行网购。",
+      "vocab": "ermöglichen — 使可能"
+    },
+    {
+      "de": "Für mich ist die ständige digitale Erreichbarkeit zur Belastung geworden.",
+      "zh": "对我来说，持续的数字可联系状态成了一种负担。",
+      "vocab": "die Belastung — 负担"
+    },
+    {
+      "de": "Ich habe mich entschieden, einen Offline-Urlaub zu machen und von dem digitalen Stress abzuschalten.",
+      "zh": "我决定断网休假，摆脱数字压力。",
+      "vocab": "sich entscheiden — 决定；abschalten — 断开"
+    },
+    {
+      "de": "Zwar können Urlaubsmomente nicht sofort geteilt werden, aber ich kann die Ruhe genießen.",
+      "zh": "虽然不能马上分享假期时刻，但我可以享受宁静。",
+      "vocab": "Zwar … aber … — 虽然……但是……"
+    },
+    {
+      "de": "Ich nutze Laptop und Tablet nicht nur als Kommunikationsmittel, sondern setze sie auch gezielt zum Lernen ein.",
+      "zh": "我不仅把笔记本和平板用作通信工具，还有针对性地用于学习。",
+      "vocab": "einsetzen — 使用、投入"
+    },
+    {
+      "de": "Zwei Online-Vorlesungen sind an der Uni angeboten worden.",
+      "zh": "大学提供了两门在线课程。",
+      "vocab": "angeboten worden — 被提供（Perfekt Passiv）"
+    },
+    {
+      "de": "Digitales Lernen finde ich sehr gut, weil man zeitlich und räumlich unabhängig ist.",
+      "zh": "我觉得数字化学习很好，因为不受时间和地点的限制。",
+      "vocab": "unabhängig — 独立的"
+    },
+    {
+      "de": "Die Lerninhalte sind zu jeder Uhrzeit verfügbar.",
+      "zh": "学习内容随时可用。",
+      "vocab": "verfügbar — 可用的"
+    },
+    {
+      "de": "Es ist bedauerlich, dass ich meine Kommilitonen nicht persönlich treffen kann.",
+      "zh": "遗憾的是我不能亲自见到我的同学。",
+      "vocab": "bedauerlich — 令人遗憾的"
+    },
+    {
+      "de": "Jeder Inhalt kann nach eigenem Bedarf und Tempo behandelt oder vertieft werden.",
+      "zh": "每个内容都可以根据自己的需求和节奏被处理或深入学习。",
+      "vocab": "der Bedarf — 需求；vertiefen — 加深"
+    }
+  ]
+}

@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Lektion 11 · Wie und wozu nutze ich die Medien? · 交互式课件</title>
+<style>
+  /* ===== Reset & Base ===== */
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+    background: #f5f5f7; color: #1d1d1f; line-height: 1.7;
+    padding-top: 76px;
+    font-size: clamp(15px, 2.2vw, 20px);
+  }
+
+  /* ===== Nav ===== */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,.95); backdrop-filter: blur(12px);
+    box-shadow: 0 1px 3px rgba(0,0,0,.08);
+  }
+  .top-nav {
+    max-width: 900px; margin: 0 auto;
+    display: flex; align-items: center;
+    padding: 0 16px; height: 48px; gap: 12px;
+  }
+  .logo { display: flex; align-items: center; gap: 6px; font-weight: 600; font-size: 15px; color: #1d1d1f; flex-shrink: 0; }
+  .logo-icon { font-size: 20px; }
+  .nav-links { display: flex; gap: 4px; overflow-x: auto; flex: 1; }
+  .nav-links button {
+    background: none; border: none; padding: 8px 14px;
+    font-size: clamp(12px, 1.6vw, 16px); color: #666; cursor: pointer; border-radius: 6px;
+    white-space: nowrap; transition: all .15s;
+  }
+  .nav-links button:hover { background: #f0f0f0; }
+  .nav-links button.active { background: #1a73e8; color: #fff; font-weight: 500; }
+  .hamburger { display: none; background: none; border: none; font-size: 20px; cursor: pointer; padding: 4px 8px; color: #333; }
+
+  /* ===== Progress Bar ===== */
+  .progress-bar { height: 3px; background: #e8e8ed; position: relative; }
+  .progress-fill {
+    height: 100%; width: 0%;
+    background: linear-gradient(90deg, #1a73e8, #4285f4);
+    transition: width .4s ease;
+  }
+
+  /* ===== Main Content ===== */
+  .main { max-width: 1100px; margin: 0 auto; padding: 16px; }
+  .container { max-width: min(900px, 95vw); margin: 0 auto; }
+  section { display: none; }
+  section.active { display: block; }
+
+  /* ===== Home ===== */
+  .hero {
+    text-align: center; padding: 32px 16px 24px;
+    background: linear-gradient(135deg, #e8f0fe 0%, #f5f5f7 100%);
+    border-radius: 12px; margin-bottom: 20px;
+  }
+  .hero h1 { font-size: clamp(22px, 3.5vw, 36px); font-weight: 700; margin: 0 0 6px; color: #1d1d1f; }
+  .hero .sub { font-size: clamp(14px, 2vw, 20px); color: #666; margin: 0 0 4px; }
+  .hero .meta { font-size: 13px; color: #999; margin: 0; }
+
+  .home-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+  @media (max-width: 480px) { .home-grid { grid-template-columns: 1fr; } }
+
+  .text-card {
+    background: #fff; border-radius: 10px; padding: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06); transition: box-shadow .2s;
+  }
+  .text-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,.1); }
+  .text-card h3 { font-size: clamp(15px, 2.5vw, 24px); margin: 0 0 6px; color: #1d1d1f; }
+  .text-card p { font-size: 13px; margin: 0; color: #999; }
+
+  .section-title {
+    font-size: clamp(17px, 2.8vw, 28px); font-weight: 700; margin: 24px 0 12px;
+    padding-bottom: 6px; border-bottom: 2px solid #1a73e8;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .section-title .num {
+    background: #1a73e8; color: #fff; border-radius: 50%;
+    width: 28px; height: 28px; display: inline-flex;
+    align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 600; flex-shrink: 0;
+  }
+
+  .obj-box { background: #f8f9fa; border-radius: 8px; padding: 14px 18px; font-size: 14px; }
+  .obj-box strong { color: #333; }
+  .obj-box ul { margin: 6px 0 0 16px; padding: 0; line-height: 1.7; color: #555; }
+
+  /* ===== Text Section ===== */
+  .text-card .zh.sub { font-size: 14px; margin: -4px 0 8px; color: #666; }
+  .text-card .zh.by { font-size: 13px; margin: -4px 0 10px; color: #888; }
+  .text-card .de { font-size: clamp(14px, 2.2vw, 22px); line-height: 1.8; color: #333; }
+  .text-card .de p { margin: 0 0 8px; }
+  .v-word {
+    color: #1a73e8; border-bottom: 1px dashed #1a73e8;
+    cursor: pointer; transition: background .15s;
+  }
+  .v-word:hover { background: #e8f0fe; }
+  .highlight-box {
+    background: #fff8e1; border-left: 3px solid #fbbc04;
+    padding: 10px 14px; border-radius: 0 6px 6px 0;
+    margin: 12px 0 0; font-size: 14px; color: #555;
+  }
+
+  /* ===== Text Pagination ===== */
+  .text-pager-nav {
+    display: flex; align-items: center; justify-content: center;
+    gap: 16px; margin: 14px 0;
+  }
+  .tp-btn {
+    width: 36px; height: 36px; border-radius: 50%;
+    border: 1px solid #ddd; background: #fff;
+    font-size: 18px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all .15s;
+  }
+  .tp-btn:hover:not(:disabled) { background: #e8f0fe; border-color: #1a73e8; }
+  .tp-btn:disabled { opacity: .35; cursor: default; }
+  .tp-info { font-size: 14px; color: #666; min-width: 50px; text-align: center; }
+
+  /* ===== Person Tabs (Vocab) ===== */
+  .person-tabs { display: flex; gap: 4px; margin: 0 0 10px; }
+  .person-btn {
+    padding: 6px 16px; border: 1px solid #ddd; border-radius: 6px;
+    background: #fff; font-size: 13px; cursor: pointer; transition: all .15s;
+  }
+  .person-btn.active { background: #1a73e8; color: #fff; border-color: #1a73e8; font-weight: 500; }
+  .person-content { display: none; }
+  .person-content.active { display: block; }
+
+  /* ===== Vocab Flip Cards ===== */
+  .vc-card {
+    background: transparent;
+    border: none;
+    padding: 0;
+    perspective: 600px;
+    position: relative;
+    min-height: 64px;
+    cursor: pointer;
+  }
+  .vc-inner {
+    position: relative;
+    transition: transform .45s ease;
+    transform-style: preserve-3d;
+    min-height: 64px;
+  }
+  .vc-card.flipped .vc-inner {
+    transform: rotateY(180deg);
+  }
+  .vc-front, .vc-back {
+    position: absolute; inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    display: flex; align-items: center; justify-content: center;
+    padding: 12px 8px;
+    border-radius: 8px;
+    border: 1px solid #e8e8ed;
+    font-size: clamp(13px, 1.8vw, 18px); text-align: center;
+    min-height: 64px;
+  }
+  .vc-front {
+    background: #fff;
+    z-index: 2;
+  }
+  .vc-back {
+    background: #e8f0fe;
+    color: #1a73e8;
+    font-weight: 500;
+    transform: rotateY(180deg);
+    z-index: 1;
+  }
+  .vc-detail {
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    background: #fff;
+    font-size: 10px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0;
+    transition: opacity .2s;
+    z-index: 10;
+    padding: 0; line-height: 1; color: #666;
+  }
+  .vc-card:hover .vc-detail { opacity: 1; }
+
+  /* ===== Vocab Grid ===== */
+  .vocab-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 10px;
+  }
+
+  /* ===== Vocab Overlay Panel ===== */
+  .vocab-overlay {
+    display: none; position: fixed; inset: 0; z-index: 200;
+    background: rgba(0,0,0,.4); backdrop-filter: blur(2px);
+  }
+  .vocab-overlay.show { display: block; }
+
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 201;
+    background: #fff; border-radius: 16px 16px 0 0;
+    padding: 20px; max-height: 50vh; overflow-y: auto;
+    box-shadow: 0 -4px 20px rgba(0,0,0,.12);
+    animation: slideUp .25s ease;
+  }
+  .vocab-panel.show { display: block; }
+
+  @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+
+  .vocab-panel-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+  .vp-word { font-size: 20px; font-weight: 700; color: #1d1d1f; }
+  .vp-close { background: none; border: none; font-size: 22px; cursor: pointer; color: #999; padding: 0 4px; }
+  .vp-zh { font-size: 16px; color: #555; margin-bottom: 10px; }
+  .vp-ex { font-size: 14px; color: #777; line-height: 1.6; padding: 10px 12px; background: #f8f9fa; border-radius: 8px; }
+
+  @media (min-width: 600px) {
+    .vocab-panel {
+      left: 50%; right: auto; bottom: auto; top: 50%;
+      transform: translate(-50%, -50%); width: 420px; max-height: 60vh;
+      border-radius: 16px; animation: fadeIn .2s ease;
+    }
+    .vocab-panel.show { transform: translate(-50%, -50%); }
+    @keyframes fadeIn { from { opacity: 0; transform: translate(-50%, -50%) scale(.95); } to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
+  }
+
+  /* ===== Grammar ===== */
+  .grammar-table-wrapper { overflow-x: auto; margin: 12px 0; }
+  .grammar-table { width: 100%; border-collapse: collapse; font-size: clamp(12px, 1.8vw, 18px); }
+  .grammar-table th, .grammar-table td {
+    border: 1px solid #e8e8ed; padding: 10px 12px; text-align: left; vertical-align: top;
+  }
+  .grammar-table th { background: #f0f4ff; font-weight: 600; color: #333; white-space: nowrap; }
+  .grammar-table td strong { color: #1a73e8; }
+  .grammar-table tr:nth-child(even) td { background: #fafbfc; }
+  .grammar-examples { margin-top: 16px; }
+  .grammar-examples h3 { font-size: 16px; margin: 0 0 8px; }
+  .grammar-example { padding: 10px 14px; margin-bottom: 8px; background: #fff; border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,.06); }
+  .grammar-example .de { font-size: 15px; color: #333; }
+  .grammar-example .zh { font-size: 13px; color: #888; margin-top: 2px; }
+
+  /* ===== Quiz ===== */
+  .quiz-card { background: #fff; border-radius: 10px; padding: 18px; margin-bottom: 14px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+  .q-text { font-size: clamp(14px, 2.2vw, 20px); font-weight: 500; margin-bottom: 10px; line-height: 1.5; }
+  .options { display: flex; flex-direction: column; gap: 6px; }
+  .opt {
+    padding: 10px 14px; border: 1px solid #e8e8ed; border-radius: 6px;
+    cursor: pointer; font-size: clamp(13px, 2vw, 18px); transition: all .15s;
+  }
+  .opt:hover { border-color: #1a73e8; }
+  .opt.correct { background: #e8f8e8; border-color: #27ae60; color: #1e7e34; font-weight: 500; }
+  .opt.wrong { background: #fdecea; border-color: #e74c3c; color: #c0392b; }
+  .q-answer { display: none; margin-top: 8px; padding: 6px 12px; background: #f0f7ff; border-radius: 6px; font-size: 14px; color: #1a73e8; font-weight: 600; text-align: center; }
+  .q-answer.show { display: block; }
+  .show-answer-btn { display: block; margin: 6px auto 0; padding: 4px 14px; background: #1a73e8; color: #fff; border: none; border-radius: 6px; font-size: 13px; cursor: pointer; }
+
+  /* ===== Connect Grid ===== */
+  .connect-game { background: #fff; border-radius: 10px; padding: 18px; margin-bottom: 14px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+  .connect-game h3 { font-size: 16px; margin: 0 0 4px; }
+  .connect-game .zh { font-size: 13px; color: #888; margin: 0 0 12px; }
+  .connect-field { display: flex; gap: 24px; justify-content: center; }
+  .connect-col { display: flex; flex-direction: column; gap: 10px; min-width: 130px; }
+  .c-item {
+    padding: 10px 14px; border: 1px solid #ddd; border-radius: 8px;
+    text-align: center; cursor: pointer; font-size: clamp(13px, 1.8vw, 18px);
+    transition: all .15s; background: #fff;
+  }
+  .c-item:hover { border-color: #1a73e8; }
+  .c-item.selected { border-color: #1a73e8; background: #e8f0fe; font-weight: 500; }
+  .c-item.matched { border-color: #27ae60; background: #e8f8e8; color: #1e7e34; cursor: default; }
+  .connect-score { text-align: center; font-size: 14px; color: #666; margin-top: 12px; }
+
+  /* ===== Fill-gap ===== */
+  .fill-game { background: #fff; border-radius: 10px; padding: 18px; margin-bottom: 14px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+  .fill-game h3 { font-size: 16px; margin: 0 0 4px; }
+  .fill-game .zh { font-size: 13px; color: #888; margin: 0 0 12px; }
+  .fill-item { margin-bottom: 10px; }
+  .fill-sentence { font-size: clamp(13px, 2vw, 19px); color: #333; margin-bottom: 4px; line-height: 1.5; }
+  .fill-input-line { display: flex; align-items: center; gap: 6px; }
+  .fill-input {
+    flex: 1; padding: 6px 10px; border: 1px solid #ddd; border-radius: 6px;
+    font-size: 14px; outline: none; transition: border .15s;
+  }
+  .fill-input:focus { border-color: #1a73e8; }
+  .fill-check {
+    padding: 6px 10px; border: 1px solid #1a73e8; border-radius: 6px;
+    background: #e8f0fe; color: #1a73e8; cursor: pointer; font-size: 14px;
+  }
+  .fill-result { font-size: 16px; min-width: 20px; text-align: center; }
+  .fill-result.correct { color: #27ae60; }
+  .fill-result.wrong { color: #e74c3c; }
+
+  /* ===== Matching Game ===== */
+  .match-game { margin-top: 20px; }
+  .match-game h3 { font-size: 16px; margin: 0 0 4px; }
+  .match-game .zh { font-size: 13px; color: #888; margin: 0 0 12px; }
+  #match-game { display: flex; flex-wrap: wrap; gap: 8px; }
+  .match-card {
+    padding: 8px 14px; border: 1px solid #ddd; border-radius: 8px;
+    cursor: pointer; font-size: 14px; transition: all .15s;
+    background: #fff; text-align: center; flex: 0 0 auto; min-width: 80px;
+  }
+  .match-card:hover { border-color: #1a73e8; }
+  .match-card.selected { border-color: #1a73e8; background: #e8f0fe; }
+  .match-card.matched { border-color: #27ae60; background: #e8f8e8; color: #1e7e34; cursor: default; opacity: .7; }
+  .match-card.de { font-weight: 500; }
+  .match-card.zh { background: #fafbfc; }
+
+  /* ===== Translation Cards ===== */
+  .translation-grid {
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .tc-card {
+    background: transparent;
+    border: none;
+    padding: 0;
+    perspective: 800px;
+    cursor: pointer;
+  }
+  .tc-inner {
+    position: relative;
+    transition: transform .5s ease;
+    transform-style: preserve-3d;
+    min-height: 80px;
+  }
+  .tc-card.flipped .tc-inner {
+    transform: rotateY(180deg);
+  }
+  .tc-front, .tc-back {
+    position: absolute; inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    display: flex; flex-direction: column; align-items: flex-start; justify-content: center;
+    padding: 14px 16px;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    font-size: clamp(14px, 2.2vw, 21px); line-height: 1.5;
+    min-height: 80px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06);
+  }
+  .tc-front {
+    background: #fff;
+    z-index: 2;
+    border-left: 3px solid #1a73e8;
+  }
+  .tc-back {
+    background: linear-gradient(135deg, #e8f0fe, #f5f5ff);
+    color: #1d1d1f;
+    transform: rotateY(180deg);
+    z-index: 1;
+    border-left: 3px solid #27ae60;
+  }
+  .tc-num {
+    display: inline-block;
+    width: 22px; height: 22px; line-height: 22px;
+    text-align: center;
+    background: #1a73e8; color: #fff;
+    border-radius: 50%;
+    font-size: 11px; font-weight: 600;
+    margin-bottom: 4px;
+    flex-shrink: 0;
+  }
+  .tc-back .tc-num {
+    background: #27ae60;
+  }
+  .tc-de {
+    font-size: clamp(14px, 2.2vw, 21px); color: #1d1d1f; font-weight: 500;
+  }
+  .tc-zh {
+    font-size: 16px; color: #1d1d1f;
+  }
+  .tc-vocab {
+    margin-top: 6px;
+    font-size: 12px; color: #888;
+    background: rgba(255,255,255,.7);
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+  .tc-card:hover .tc-front {
+    box-shadow: 0 2px 8px rgba(0,0,0,.1);
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 600px) {
+    .nav-links { position: fixed; top: 48px; left: 0; right: 0; background: #fff; flex-direction: column; padding: 8px; box-shadow: 0 4px 12px rgba(0,0,0,.1); display: none; }
+    .nav-links.show { display: flex; }
+    .hamburger { display: block; }
+    .vocab-grid { grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); }
+    .connect-field { gap: 10px; }
+    .connect-col { min-width: 80px; }
+  }
+</style>
+</head>
+<body>
+<nav><div class="top-nav"><div class="logo" style="cursor:pointer" onclick="switchSection('home')"><span class="logo-icon">🎓</span><span>Lektion 11</span></div><div class="nav-links" id="navLinks"><button onclick="switchSection('home')">首页</button><button onclick="switchSection('text')">课文讲解</button><button onclick="switchSection('vocab')">重点词汇</button><button onclick="switchSection('grammar')">语法</button><button onclick="switchSection('exercise')">练习</button><button onclick="switchSection('translation')">翻译卡片</button></div><button class="hamburger" onclick="toggleNav()">☰</button></div><div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div></nav><div class="main"><div class="container"><div class="text-cards">
+    <section id="home" class="active">
+      <div class="hero">
+        <h1>Lektion 11 · Wie und wozu nutze ich die Medien?</h1>
+        <p class="sub">三代人的媒体使用习惯 · 77岁奶奶 ↔ 52岁父亲 ↔ 21岁大学生</p>
+        <p class="meta">教材课文 · 词汇 · 语法 · 练习</p>
+      </div>
+      <div class="home-grid">
+        <div class="text-card" onclick="switchSection('text')" style="cursor:pointer">
+          <h3>📖 课文讲解</h3>
+          <p>教材原文 + 重点词汇 + 德文概要</p>
+        </div>
+        <div class="text-card" onclick="switchSection('vocab')" style="cursor:pointer">
+          <h3>📝 重点词汇</h3>
+          <p>可点击查词 + 词汇网格</p>
+        </div>
+        <div class="text-card" onclick="switchSection('grammar')" style="cursor:pointer">
+          <h3>🔤 语法·Passiv & Zwar … aber …</h3>
+          <p>并列连词用法详解 + 例句</p>
+        </div>
+        <div class="text-card" onclick="switchSection('exercise')" style="cursor:pointer">
+          <h3>✏️ 练习</h3>
+          <p>词汇练习 + 配对游戏 + 填空</p>
+        </div>
+      </div>
+      <div class="obj-box">
+        <strong>学习目标：</strong>
+        <ul>
+          <li>理解三代人不同的媒体使用习惯（传统 vs. 数字媒体）</li>
+          <li>掌握被动语态（Präsens Passiv + Perfekt Passiv）</li>
+          <li>掌握重点词组：abschalten, posten, teilen, einsetzen, ermöglichen</li>
+          <li>能完成德⇄中逐句翻译练习</li>
+        </ul>
+      </div>
+    </section>
+    <section id="text">
+      <h2 class="section-title"><span class="num">1</span> T1 · Wie und wozu nutze ich die Medien?</h2>
+      <div class="text-card">
+        <h3>Wie und wozu nutze ich die Medien?</h3>
+        <p class="zh sub">三代人的媒体使用习惯</p>
+        <div class="text-pager" id="tp-T1">
+          <div class="text-page" data-page="0" style="display:block">
+            <p>Jonas Bode hat mit seinen chinesischen Kommilitoninnen und Kommilitonen über die Mediennutzung verschiedener Generationen gesprochen. Dazu hat er seine Familie gefragt. Hier sind drei verschiedene Perspektiven:</p>
+          </div>
+          <div class="text-page" data-page="1" style="display:none">
+            <p>„Jeden Tag schalte ich schon früh morgens mein Radio ein und höre die Nachrichten. Tagsüber lese ich manchmal die Lokalzeitung, um das Neueste aus meiner Umgebung zu <span class="v-word" onclick="showVocab('erfahren','得知、了解到','')">erfahren</span>. Ich sehe nur fern, wenn ein guter <span class="v-word" onclick="showVocab('Spielfilm','故事片、电影','')">Spielfilm</span> oder eine interessante <span class="v-word" onclick="showVocab('Reportage','报道、纪实节目','')">Reportage</span> gezeigt wird. Mein altes Handy nutze ich fast nur zum Telefonieren. Zwar können heute auch mit dem Handy auch <span class="v-word" onclick="showVocab('Kurznachrichten','短信（复数）','')">Kurznachrichten</span> <span class="v-word" onclick="showVocab('verschickt','发送、寄出','')">verschickt</span> werden, aber ich schreibe immer noch gern Briefe.</p>
+            <p>Ein <span class="v-word" onclick="showVocab('handgeschriebener','手写的','')">handgeschriebener</span> Brief ist persönlicher und <span class="v-word" onclick="showVocab('hält','保持、持续','')">hält</span> viel länger als Kurznachrichten. Außerdem ist es ein wunderbares <span class="v-word" onclick="showVocab('Gefühl','感觉、感受','')">Gefühl</span>, wenn die <span class="v-word" onclick="showVocab('Briefmarke','邮票','')">Briefmarke</span> auf den <span class="v-word" onclick="showVocab('Umschlag','信封','')">Umschlag</span> geklebt und der Brief in den <span class="v-word" onclick="showVocab('Briefkasten','信箱','')">Briefkasten</span> <span class="v-word" onclick="showVocab('geworfen','投、扔','')">geworfen</span> worden ist. Zwar muss man ein bisschen länger auf die Antwort warten, aber wenn der Brief endlich nach Hause <span class="v-word" onclick="showVocab('gebracht','带来、送到','')">gebracht</span> worden ist, ist die Freude riesengroß. Diese <span class="v-word" onclick="showVocab('Erfahrung','经验、体验','')">Erfahrung</span> macht man mit dem Handy einfach nicht.“</p>
+            <p>— Frau Bode, 77, Rentnerin: „Ich schreibe gern Briefe.“</p>
+          </div>
+          <div class="text-page" data-page="2" style="display:none">
+            <p>„Täglich sitze ich im Büro stundenlang vor dem <span class="v-word" onclick="showVocab('Bildschirm','屏幕','')">Bildschirm</span>, um neue <span class="v-word" onclick="showVocab('E-Mails','电子邮件','')">E-Mails</span> zu beantworten. Nach Feierabend kommen auch <span class="v-word" onclick="showVocab('Anrufe','电话来电','')">Anrufe</span> und Nachrichten von <span class="v-word" onclick="showVocab('Kollegen','同事','')">Kollegen</span> und <span class="v-word" onclick="showVocab('Kunden','客户','')">Kunden</span> aus aller Welt auf mein Smartphone. Da bin ich immer <span class="v-word" onclick="showVocab('erreichbar','可联系的、可到达的','')">erreichbar</span>. Für viele Menschen ist ein Leben ohne digitale <span class="v-word" onclick="showVocab('Geräte','设备','')">Geräte</span> unvorstellbar. Denn mit dem Smartphone kann nicht nur ferngesehen oder telefoniert werden, sondern es <span class="v-word" onclick="showVocab('ermöglicht','使……成为可能','')">ermöglicht</span> auch Onlinekäufe, digitales Lernen und das Erledigen von Bankgeschäften.</p>
+            <p>Für mich ist jedoch die ständige digitale <span class="v-word" onclick="showVocab('Erreichbarkeit','可联系性','')">Erreichbarkeit</span> zur <span class="v-word" onclick="showVocab('Belastung','负担、压力','')">Belastung</span> geworden. Deshalb habe ich mich entschieden, diesen Sommer einen <span class="v-word" onclick="showVocab('Offline-Urlaub','断网休假','')">Offline-Urlaub</span> zu machen und einfach mal von dem digitalen <span class="v-word" onclick="showVocab('Stress','压力','')">Stress</span> <span class="v-word" onclick="showVocab('abzuschalten','关掉、断开（放松）','')">abzuschalten</span>. Dabei verzichte ich auf Internet, Handy, Laptop und Tablet. Zwar können meine Urlaubsmomente nicht sofort mit Freunden <span class="v-word" onclick="showVocab('geteilt','分享','')">geteilt</span> werden und Urlaubsfotos nicht gleich <span class="v-word" onclick="showVocab('gepostet','发布（帖子）','')">gepostet</span> werden, aber ich kann mit meiner Familie die Ruhe genießen.“</p>
+            <p>— Herr Bode, 52, Geschäftsmann: „Mit dem Offline-Urlaub kann ich mal abschalten.“</p>
+          </div>
+          <div class="text-page" data-page="3" style="display:none">
+            <p>„Meine Lieblingsmedien sind Laptop und <span class="v-word" onclick="showVocab('Tablet','平板电脑','')">Tablet</span>. Ich nutze sie nicht nur als <span class="v-word" onclick="showVocab('Kommunikationsmittel','通信工具','')">Kommunikationsmittel</span>, sondern setze sie auch gezielt zum Lernen <span class="v-word" onclick="showVocab('einsetzen','使用、投入','')">einsetzen</span>. Im letzten Semester sind zwei <span class="v-word" onclick="showVocab('Online-Vorlesungen','在线课程','')">Online-Vorlesungen</span> an der Uni <span class="v-word" onclick="showVocab('angeboten','提供','')">angeboten</span> worden. Dabei sollten die Lerninhalte und -videos auf einer <span class="v-word" onclick="showVocab('Lernplattform','学习平台','')">Lernplattform</span> angeschaut und die <span class="v-word" onclick="showVocab('Lernaufgaben','学习任务','')">Lernaufgaben</span> online <span class="v-word" onclick="showVocab('erledigt','完成（任务）','')">erledigt</span> werden. Auch in sozialen <span class="v-word" onclick="showVocab('Netzwerken','网络','')">Netzwerken</span> habe ich einige interessante <span class="v-word" onclick="showVocab('Kanäle','频道','')">Kanäle</span> <span class="v-word" onclick="showVocab('abonniert','订阅','')">abonniert</span>.</p>
+            <p>Das digitale Lernen finde ich sehr gut, weil man zeitlich und räumlich <span class="v-word" onclick="showVocab('unabhängig','独立的','')">unabhängig</span> ist. Außerdem kann jeder <span class="v-word" onclick="showVocab('Inhalt','内容','')">Inhalt</span> nach eigenem <span class="v-word" onclick="showVocab('Bedarf','需求','')">Bedarf</span> und <span class="v-word" onclick="showVocab('Tempo','速度、节奏','')">Tempo</span> <span class="v-word" onclick="showVocab('behandelt','处理、对待','')">behandelt</span> oder <span class="v-word" onclick="showVocab('vertieft','加深、深入学习','')">vertieft</span> werden. Die Lerninhalte sind zu jeder Uhrzeit <span class="v-word" onclick="showVocab('verfügbar','可用的、可获得的','')">verfügbar</span>. Es ist nur ein wenig <span class="v-word" onclick="showVocab('bedauerlich','令人遗憾的','')">bedauerlich</span>, dass ich meine <span class="v-word" onclick="showVocab('Kommilitonen','大学同学','')">Kommilitonen</span> aus diesen beiden Kursen nicht persönlich treffen kann.“</p>
+            <p>— Jonas Bode, 21, Germanistikstudent: „Meine Lieblingsmedien sind Laptop und Tablet.“</p>
+          </div>
+          <div class="text-pager-nav">
+            <button class="tp-btn" onclick="prevPage('T1')" id="tp-prev-T1" disabled>‹</button>
+            <span class="tp-info" id="tp-info-T1">1 / 4</span>
+            <button class="tp-btn" onclick="nextPage('T1')" id="tp-next-T1">›</button>
+          </div>
+        </div>
+        <div class="highlight-box">通过 Bode 一家三口（77岁奶奶、52岁父亲、21岁大学生）的视角，展示不同世代对传统媒体和数字媒体的不同态度。</div>
+      </div>
+    </section>
+    <section id="vocab">
+      <h2 class="section-title"><span class="num">2</span> 重点词汇 · Mediennutzung & Wortschatz</h2>
+      <div class="person-tabs">
+        <button class="person-btn active" onclick="switchVocabTab('T1')">T1</button>
+      </div>
+      <div class="person-content active" id="vc-T1">
+        <div class="vocab-grid">
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">erfahren</div>
+              <div class="vc-back">得知、了解到</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('erfahren','得知、了解到','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Spielfilm</div>
+              <div class="vc-back">故事片、电影</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Spielfilm','故事片、电影','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Reportage</div>
+              <div class="vc-back">报道、纪实节目</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Reportage','报道、纪实节目','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Kurznachrichten</div>
+              <div class="vc-back">短信（复数）</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Kurznachrichten','短信（复数）','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">verschickt</div>
+              <div class="vc-back">发送、寄出</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('verschickt','发送、寄出','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">handgeschriebener</div>
+              <div class="vc-back">手写的</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('handgeschriebener','手写的','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">hält</div>
+              <div class="vc-back">保持、持续</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('hält','保持、持续','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Gefühl</div>
+              <div class="vc-back">感觉、感受</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Gefühl','感觉、感受','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Briefmarke</div>
+              <div class="vc-back">邮票</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Briefmarke','邮票','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Umschlag</div>
+              <div class="vc-back">信封</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Umschlag','信封','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Briefkasten</div>
+              <div class="vc-back">信箱</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Briefkasten','信箱','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">geworfen</div>
+              <div class="vc-back">投、扔</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('geworfen','投、扔','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">gebracht</div>
+              <div class="vc-back">带来、送到</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('gebracht','带来、送到','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Erfahrung</div>
+              <div class="vc-back">经验、体验</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Erfahrung','经验、体验','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Bildschirm</div>
+              <div class="vc-back">屏幕</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Bildschirm','屏幕','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">E-Mails</div>
+              <div class="vc-back">电子邮件</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('E-Mails','电子邮件','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Anrufe</div>
+              <div class="vc-back">电话来电</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Anrufe','电话来电','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Kollegen</div>
+              <div class="vc-back">同事</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Kollegen','同事','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Kunden</div>
+              <div class="vc-back">客户</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Kunden','客户','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">erreichbar</div>
+              <div class="vc-back">可联系的、可到达的</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('erreichbar','可联系的、可到达的','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Geräte</div>
+              <div class="vc-back">设备</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Geräte','设备','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">ermöglicht</div>
+              <div class="vc-back">使……成为可能</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('ermöglicht','使……成为可能','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Erreichbarkeit</div>
+              <div class="vc-back">可联系性</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Erreichbarkeit','可联系性','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Belastung</div>
+              <div class="vc-back">负担、压力</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Belastung','负担、压力','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Offline-Urlaub</div>
+              <div class="vc-back">断网休假</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Offline-Urlaub','断网休假','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Stress</div>
+              <div class="vc-back">压力</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Stress','压力','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">abzuschalten</div>
+              <div class="vc-back">关掉、断开（放松）</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('abzuschalten','关掉、断开（放松）','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">geteilt</div>
+              <div class="vc-back">分享</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('geteilt','分享','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">gepostet</div>
+              <div class="vc-back">发布（帖子）</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('gepostet','发布（帖子）','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Tablet</div>
+              <div class="vc-back">平板电脑</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Tablet','平板电脑','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Kommunikationsmittel</div>
+              <div class="vc-back">通信工具</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Kommunikationsmittel','通信工具','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">einsetzen</div>
+              <div class="vc-back">使用、投入</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('einsetzen','使用、投入','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Online-Vorlesungen</div>
+              <div class="vc-back">在线课程</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Online-Vorlesungen','在线课程','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">angeboten</div>
+              <div class="vc-back">提供</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('angeboten','提供','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Lernplattform</div>
+              <div class="vc-back">学习平台</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Lernplattform','学习平台','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Lernaufgaben</div>
+              <div class="vc-back">学习任务</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Lernaufgaben','学习任务','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">erledigt</div>
+              <div class="vc-back">完成（任务）</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('erledigt','完成（任务）','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Netzwerken</div>
+              <div class="vc-back">网络</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Netzwerken','网络','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Kanäle</div>
+              <div class="vc-back">频道</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Kanäle','频道','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">abonniert</div>
+              <div class="vc-back">订阅</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('abonniert','订阅','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">unabhängig</div>
+              <div class="vc-back">独立的</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('unabhängig','独立的','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Inhalt</div>
+              <div class="vc-back">内容</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Inhalt','内容','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Bedarf</div>
+              <div class="vc-back">需求</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Bedarf','需求','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Tempo</div>
+              <div class="vc-back">速度、节奏</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Tempo','速度、节奏','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">behandelt</div>
+              <div class="vc-back">处理、对待</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('behandelt','处理、对待','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">vertieft</div>
+              <div class="vc-back">加深、深入学习</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('vertieft','加深、深入学习','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">verfügbar</div>
+              <div class="vc-back">可用的、可获得的</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('verfügbar','可用的、可获得的','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">bedauerlich</div>
+              <div class="vc-back">令人遗憾的</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('bedauerlich','令人遗憾的','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Kommilitonen</div>
+              <div class="vc-back">大学同学</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Kommilitonen','大学同学','')'>▶</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="grammar">
+      <h2 class="section-title"><span class="num">3</span> 语法 · Passiv & Konnektoren</h2>
+      <div class="grammar-table-wrapper">
+        <h3>Passiv Präsens（现在时被动）</h3>
+        <table class="grammar-table">
+          <thead><tr><th>主语</th><th>助动词</th><th>Partizip II</th><th>中文</th></tr></thead>
+          <tbody>
+            <tr><td>Ein guter Spielfilm</td><td>wird</td><td>gezeigt.</td><td>一部好电影被播放。</td></tr>
+            <tr><td>Kurznachrichten</td><td>werden</td><td>verschickt.</td><td>短信被发送。</td></tr>
+            <tr><td>Die Lerninhalte</td><td>werden</td><td>behandelt.</td><td>学习内容被处理。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="grammar-table-wrapper">
+        <h3>Passiv mit Modalverb（情态动词被动）</h3>
+        <table class="grammar-table">
+          <thead><tr><th>结构</th><th>例句</th><th>中文</th></tr></thead>
+          <tbody>
+            <tr><td>können + Passiv</td><td>Kurznachrichten können verschickt werden.</td><td>短信可以被发送。</td></tr>
+            <tr><td>können + Passiv（无人称）</td><td>Es kann ferngesehen oder telefoniert werden.</td><td>可以看电视或打电话。</td></tr>
+            <tr><td>sollen + Passiv</td><td>Die Lerninhalte sollen behandelt werden.</td><td>学习内容应该被处理。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="grammar-table-wrapper">
+        <h3>Perfekt Passiv（完成时被动）</h3>
+        <table class="grammar-table">
+          <thead><tr><th>结构</th><th>例句</th><th>中文</th></tr></thead>
+          <tbody>
+            <tr><td>sein + Partizip II + worden</td><td>Der Brief ist in den Briefkasten geworfen worden.</td><td>信被投进了信箱。</td></tr>
+            <tr><td>sein + Partizip II + worden</td><td>Der Brief ist nach Hause gebracht worden.</td><td>信被送到了家。</td></tr>
+            <tr><td>sein + Partizip II + worden</td><td>Zwei Online-Vorlesungen sind angeboten worden.</td><td>两门在线课程被提供了。</td></tr>
+            <tr><td>注意</td><td>worden（不带 ge-）</td><td>worden 而非 geworden（Perfekt Passiv）</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="grammar-table-wrapper">
+        <h3>Zwar … aber …（虽然……但是……）</h3>
+        <table class="grammar-table">
+          <thead><tr><th>结构</th><th>例句</th><th>中文</th></tr></thead>
+          <tbody>
+            <tr><td>Zwar + Satz, aber + Satz</td><td>Zwar können Kurznachrichten verschickt werden, aber ich schreibe gern Briefe.</td><td>虽然可以发短信，但我喜欢写信。</td></tr>
+            <tr><td>Zwar + Satz, aber + Satz</td><td>Zwar muss man länger warten, aber die Freude ist riesengroß.</td><td>虽然要等更久，但喜悦是巨大的。</td></tr>
+            <tr><td>Zwar + Satz, aber + Satz</td><td>Zwar können Fotos nicht sofort geteilt werden, aber ich genieße die Ruhe.</td><td>虽然不能马上分享照片，但我享受宁静。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <section id="exercise">
+      <h2 class="section-title"><span class="num">4</span> 练习 · Wortschatz</h2>
+      <div class="connect-game">
+        <h3>🏛️ 媒体类型 & 基础概念 · Medientypen & Grundbegriffe</h3>
+        <p class="zh">点击左列德文，再点击右列中文进行匹配</p>
+        <div class="connect-field" id="cg-0">
+          <div class="connect-col" id="cg-de-0">
+            <div class="c-item de" data-pair="0" data-gid="0" onclick="cClick(this)">der Spielfilm</div>
+            <div class="c-item de" data-pair="1" data-gid="0" onclick="cClick(this)">die Reportage</div>
+            <div class="c-item de" data-pair="2" data-gid="0" onclick="cClick(this)">die Lokalzeitung</div>
+            <div class="c-item de" data-pair="3" data-gid="0" onclick="cClick(this)">die Kurznachricht</div>
+            <div class="c-item de" data-pair="4" data-gid="0" onclick="cClick(this)">die Briefmarke</div>
+            <div class="c-item de" data-pair="5" data-gid="0" onclick="cClick(this)">der Umschlag</div>
+            <div class="c-item de" data-pair="6" data-gid="0" onclick="cClick(this)">der Briefkasten</div>
+            <div class="c-item de" data-pair="7" data-gid="0" onclick="cClick(this)">der Bildschirm</div>
+            <div class="c-item de" data-pair="8" data-gid="0" onclick="cClick(this)">das Smartphone</div>
+            <div class="c-item de" data-pair="9" data-gid="0" onclick="cClick(this)">das Tablet</div>
+            <div class="c-item de" data-pair="10" data-gid="0" onclick="cClick(this)">die Lernplattform</div>
+          </div>
+          <div class="connect-col" id="cg-cn-0">
+            <div class="c-item cn" data-pair="9" data-gid="0" onclick="cClick(this)">平板电脑</div>
+            <div class="c-item cn" data-pair="2" data-gid="0" onclick="cClick(this)">地方报纸</div>
+            <div class="c-item cn" data-pair="0" data-gid="0" onclick="cClick(this)">故事片、电影</div>
+            <div class="c-item cn" data-pair="6" data-gid="0" onclick="cClick(this)">信箱</div>
+            <div class="c-item cn" data-pair="8" data-gid="0" onclick="cClick(this)">智能手机</div>
+            <div class="c-item cn" data-pair="4" data-gid="0" onclick="cClick(this)">邮票</div>
+            <div class="c-item cn" data-pair="3" data-gid="0" onclick="cClick(this)">短信</div>
+            <div class="c-item cn" data-pair="7" data-gid="0" onclick="cClick(this)">屏幕</div>
+            <div class="c-item cn" data-pair="5" data-gid="0" onclick="cClick(this)">信封</div>
+            <div class="c-item cn" data-pair="10" data-gid="0" onclick="cClick(this)">学习平台</div>
+            <div class="c-item cn" data-pair="1" data-gid="0" onclick="cClick(this)">报道、纪实节目</div>
+          </div>
+        </div>
+        <div class="connect-score" id="cg-score-0">匹配：<span id="cg-cnt-0">0</span> / 11</div>
+      </div>
+      <div class="connect-game">
+        <h3>🎯 关键名词 · Mediennutzung & Schlüsselnomen</h3>
+        <p class="zh">点击左列德文，再点击右列中文进行匹配</p>
+        <div class="connect-field" id="cg-1">
+          <div class="connect-col" id="cg-de-1">
+            <div class="c-item de" data-pair="0" data-gid="1" onclick="cClick(this)">der Anruf</div>
+            <div class="c-item de" data-pair="1" data-gid="1" onclick="cClick(this)">die E-Mail</div>
+            <div class="c-item de" data-pair="2" data-gid="1" onclick="cClick(this)">der Kunde</div>
+            <div class="c-item de" data-pair="3" data-gid="1" onclick="cClick(this)">der Kollege</div>
+            <div class="c-item de" data-pair="4" data-gid="1" onclick="cClick(this)">die Erreichbarkeit</div>
+            <div class="c-item de" data-pair="5" data-gid="1" onclick="cClick(this)">die Belastung</div>
+            <div class="c-item de" data-pair="6" data-gid="1" onclick="cClick(this)">der Stress</div>
+            <div class="c-item de" data-pair="7" data-gid="1" onclick="cClick(this)">der Offline-Urlaub</div>
+            <div class="c-item de" data-pair="8" data-gid="1" onclick="cClick(this)">das Netzwerk</div>
+            <div class="c-item de" data-pair="9" data-gid="1" onclick="cClick(this)">der Kanal</div>
+            <div class="c-item de" data-pair="10" data-gid="1" onclick="cClick(this)">der Inhalt</div>
+            <div class="c-item de" data-pair="11" data-gid="1" onclick="cClick(this)">der Bedarf</div>
+          </div>
+          <div class="connect-col" id="cg-cn-1">
+            <div class="c-item cn" data-pair="8" data-gid="1" onclick="cClick(this)">网络</div>
+            <div class="c-item cn" data-pair="3" data-gid="1" onclick="cClick(this)">同事</div>
+            <div class="c-item cn" data-pair="10" data-gid="1" onclick="cClick(this)">内容</div>
+            <div class="c-item cn" data-pair="6" data-gid="1" onclick="cClick(this)">压力</div>
+            <div class="c-item cn" data-pair="5" data-gid="1" onclick="cClick(this)">负担、压力</div>
+            <div class="c-item cn" data-pair="1" data-gid="1" onclick="cClick(this)">电子邮件</div>
+            <div class="c-item cn" data-pair="7" data-gid="1" onclick="cClick(this)">断网休假</div>
+            <div class="c-item cn" data-pair="9" data-gid="1" onclick="cClick(this)">频道</div>
+            <div class="c-item cn" data-pair="2" data-gid="1" onclick="cClick(this)">客户</div>
+            <div class="c-item cn" data-pair="4" data-gid="1" onclick="cClick(this)">可联系性</div>
+            <div class="c-item cn" data-pair="0" data-gid="1" onclick="cClick(this)">来电、电话</div>
+            <div class="c-item cn" data-pair="11" data-gid="1" onclick="cClick(this)">需求</div>
+          </div>
+        </div>
+        <div class="connect-score" id="cg-score-1">匹配：<span id="cg-cnt-1">0</span> / 12</div>
+      </div>
+      <div class="connect-game">
+        <h3>🔑 核心动词 · Schlüsselverben</h3>
+        <p class="zh">点击左列德文，再点击右列中文进行匹配</p>
+        <div class="connect-field" id="cg-2">
+          <div class="connect-col" id="cg-de-2">
+            <div class="c-item de" data-pair="0" data-gid="2" onclick="cClick(this)">erfahren</div>
+            <div class="c-item de" data-pair="1" data-gid="2" onclick="cClick(this)">verschicken</div>
+            <div class="c-item de" data-pair="2" data-gid="2" onclick="cClick(this)">werfen</div>
+            <div class="c-item de" data-pair="3" data-gid="2" onclick="cClick(this)">bringen</div>
+            <div class="c-item de" data-pair="4" data-gid="2" onclick="cClick(this)">ermöglichen</div>
+            <div class="c-item de" data-pair="5" data-gid="2" onclick="cClick(this)">abschalten</div>
+            <div class="c-item de" data-pair="6" data-gid="2" onclick="cClick(this)">teilen</div>
+            <div class="c-item de" data-pair="7" data-gid="2" onclick="cClick(this)">posten</div>
+            <div class="c-item de" data-pair="8" data-gid="2" onclick="cClick(this)">einsetzen</div>
+            <div class="c-item de" data-pair="9" data-gid="2" onclick="cClick(this)">anbieten</div>
+            <div class="c-item de" data-pair="10" data-gid="2" onclick="cClick(this)">erledigen</div>
+            <div class="c-item de" data-pair="11" data-gid="2" onclick="cClick(this)">abonnieren</div>
+            <div class="c-item de" data-pair="12" data-gid="2" onclick="cClick(this)">behandeln</div>
+            <div class="c-item de" data-pair="13" data-gid="2" onclick="cClick(this)">vertiefen</div>
+          </div>
+          <div class="connect-col" id="cg-cn-2">
+            <div class="c-item cn" data-pair="2" data-gid="2" onclick="cClick(this)">投、扔</div>
+            <div class="c-item cn" data-pair="6" data-gid="2" onclick="cClick(this)">分享</div>
+            <div class="c-item cn" data-pair="9" data-gid="2" onclick="cClick(this)">提供</div>
+            <div class="c-item cn" data-pair="12" data-gid="2" onclick="cClick(this)">处理</div>
+            <div class="c-item cn" data-pair="5" data-gid="2" onclick="cClick(this)">关掉、断开（放松）</div>
+            <div class="c-item cn" data-pair="7" data-gid="2" onclick="cClick(this)">发布（帖子）</div>
+            <div class="c-item cn" data-pair="0" data-gid="2" onclick="cClick(this)">得知、了解到</div>
+            <div class="c-item cn" data-pair="3" data-gid="2" onclick="cClick(this)">带来、送到</div>
+            <div class="c-item cn" data-pair="11" data-gid="2" onclick="cClick(this)">订阅</div>
+            <div class="c-item cn" data-pair="4" data-gid="2" onclick="cClick(this)">使……成为可能</div>
+            <div class="c-item cn" data-pair="13" data-gid="2" onclick="cClick(this)">加深、深入学习</div>
+            <div class="c-item cn" data-pair="8" data-gid="2" onclick="cClick(this)">使用、投入</div>
+            <div class="c-item cn" data-pair="10" data-gid="2" onclick="cClick(this)">完成（任务）</div>
+            <div class="c-item cn" data-pair="1" data-gid="2" onclick="cClick(this)">发送、寄出</div>
+          </div>
+        </div>
+        <div class="connect-score" id="cg-score-2">匹配：<span id="cg-cnt-2">0</span> / 14</div>
+      </div>
+      <div class="connect-game">
+        <h3>✨ 形容词 & 固定搭配 · Adjektive & Wendungen</h3>
+        <p class="zh">点击左列德文，再点击右列中文进行匹配</p>
+        <div class="connect-field" id="cg-3">
+          <div class="connect-col" id="cg-de-3">
+            <div class="c-item de" data-pair="0" data-gid="3" onclick="cClick(this)">handgeschrieben</div>
+            <div class="c-item de" data-pair="1" data-gid="3" onclick="cClick(this)">persönlich</div>
+            <div class="c-item de" data-pair="2" data-gid="3" onclick="cClick(this)">erreichbar</div>
+            <div class="c-item de" data-pair="3" data-gid="3" onclick="cClick(this)">unabhängig</div>
+            <div class="c-item de" data-pair="4" data-gid="3" onclick="cClick(this)">verfügbar</div>
+            <div class="c-item de" data-pair="5" data-gid="3" onclick="cClick(this)">bedauerlich</div>
+            <div class="c-item de" data-pair="6" data-gid="3" onclick="cClick(this)">riesengroß</div>
+            <div class="c-item de" data-pair="7" data-gid="3" onclick="cClick(this)">nach eigenem Bedarf</div>
+            <div class="c-item de" data-pair="8" data-gid="3" onclick="cClick(this)">zeitlich und räumlich unabhängig</div>
+            <div class="c-item de" data-pair="9" data-gid="3" onclick="cClick(this)">zu jeder Uhrzeit verfügbar</div>
+            <div class="c-item de" data-pair="10" data-gid="3" onclick="cClick(this)">ständige digitale Erreichbarkeit</div>
+            <div class="c-item de" data-pair="11" data-gid="3" onclick="cClick(this)">digitaler Stress</div>
+          </div>
+          <div class="connect-col" id="cg-cn-3">
+            <div class="c-item cn" data-pair="10" data-gid="3" onclick="cClick(this)">持续数字可联系状态</div>
+            <div class="c-item cn" data-pair="2" data-gid="3" onclick="cClick(this)">可联系的</div>
+            <div class="c-item cn" data-pair="9" data-gid="3" onclick="cClick(this)">随时可用</div>
+            <div class="c-item cn" data-pair="5" data-gid="3" onclick="cClick(this)">令人遗憾的</div>
+            <div class="c-item cn" data-pair="1" data-gid="3" onclick="cClick(this)">私人的、亲自的</div>
+            <div class="c-item cn" data-pair="4" data-gid="3" onclick="cClick(this)">可用的</div>
+            <div class="c-item cn" data-pair="7" data-gid="3" onclick="cClick(this)">根据自身需求</div>
+            <div class="c-item cn" data-pair="0" data-gid="3" onclick="cClick(this)">手写的</div>
+            <div class="c-item cn" data-pair="3" data-gid="3" onclick="cClick(this)">独立的</div>
+            <div class="c-item cn" data-pair="8" data-gid="3" onclick="cClick(this)">不受时间地点限制</div>
+            <div class="c-item cn" data-pair="6" data-gid="3" onclick="cClick(this)">巨大的</div>
+            <div class="c-item cn" data-pair="11" data-gid="3" onclick="cClick(this)">数字压力</div>
+          </div>
+        </div>
+        <div class="connect-score" id="cg-score-3">匹配：<span id="cg-cnt-3">0</span> / 12</div>
+      </div>
+    </section>
+    <section id="translation">
+      <h2 class="section-title"><span class="num">5</span> 逐句翻译练习</h2>
+      <p class="zh" style="margin:0 0 12px;font-size:14px;color:#888">点击卡片查看答案 · 先自己试译，再翻开核对</p>
+      <div class="translation-grid">
+        <div class="tc-card" onclick="flipTrans(this)">
+          <div class="tc-inner">
+            <div class="tc-front">
+              <span class="tc-num">1</span>
+              <div class="tc-de">Ein handgeschriebener Brief ist persönlicher und hält viel länger als Kurznachrichten.</div>
+            </div>
+            <div class="tc-back">
+              <span class="tc-num">1</span>
+              <div class="tc-zh">手写的信更私密，保存时间比短信长得多。</div>
+              <div class="tc-vocab">组词→ handgeschrieben — 手写的</div>
+            </div>
+          </div>
+        </div>
+        <div class="tc-card" onclick="flipTrans(this)">
+          <div class="tc-inner">
+            <div class="tc-front">
+              <span class="tc-num">2</span>
+              <div class="tc-de">Wenn die Briefmarke auf den Umschlag geklebt und der Brief in den Briefkasten geworfen worden ist, ist die Freude riesengroß.</div>
+            </div>
+            <div class="tc-back">
+              <span class="tc-num">2</span>
+              <div class="tc-zh">当邮票贴在信封上、信被投进信箱后，喜悦是巨大的。</div>
+              <div class="tc-vocab">组词→ geworfen worden — 被投（Perfekt Passiv）</div>
+            </div>
+          </div>
+        </div>
+        <div class="tc-card" onclick="flipTrans(this)">
+          <div class="tc-inner">
+            <div class="tc-front">
+              <span class="tc-num">3</span>
+              <div class="tc-de">Mit dem Smartphone kann nicht nur ferngesehen oder telefoniert werden, sondern es ermöglicht auch Onlinekäufe.</div>
+            </div>
+            <div class="tc-back">
+              <span class="tc-num">3</span>
+              <div class="tc-zh">用智能手机不仅可以看电视或打电话，还可以进行网购。</div>
+              <div class="tc-vocab">组词→ ermöglichen — 使可能</div>
+            </div>
+          </div>
+        </div>
+        <div class="tc-card" onclick="flipTrans(this)">
+          <div class="tc-inner">
+            <div class="tc-front">
+              <span class="tc-num">4</span>
+              <div class="tc-de">Für mich ist die ständige digitale Erreichbarkeit zur Belastung geworden.</div>
+            </div>
+            <div class="tc-back">
+              <span class="tc-num">4</span>
+              <div class="tc-zh">对我来说，持续的数字可联系状态成了一种负担。</div>
+              <div class="tc-vocab">组词→ die Belastung — 负担</div>
+            </div>
+          </div>
+        </div>
+        <div class="tc-card" onclick="flipTrans(this)">
+          <div class="tc-inner">
+            <div class="tc-front">
+              <span class="tc-num">5</span>
+              <div class="tc-de">Ich habe mich entschieden, einen Offline-Urlaub zu machen und von dem digitalen Stress abzuschalten.</div>
+            </div>
+            <div class="tc-back">
+              <span class="tc-num">5</span>
+              <div class="tc-zh">我决定断网休假，摆脱数字压力。</div>
+              <div class="tc-vocab">组词→ sich entscheiden — 决定；abschalten — 断开</div>
+            </div>
+          </div>
+        </div>
+        <div class="tc-card" onclick="flipTrans(this)">
+          <div class="tc-inner">
+            <div class="tc-front">
+              <span class="tc-num">6</span>
+              <div class="tc-de">Zwar können Urlaubsmomente nicht sofort geteilt werden, aber ich kann die Ruhe genießen.</div>
+            </div>
+            <div class="tc-back">
+              <span class="tc-num">6</span>
+              <div class="tc-zh">虽然不能马上分享假期时刻，但我可以享受宁静。</div>
+              <div class="tc-vocab">组词→ Zwar … aber … — 虽然……但是……</div>
+            </div>
+          </div>
+        </div>
+        <div class="tc-card" onclick="flipTrans(this)">
+          <div class="tc-inner">
+            <div class="tc-front">
+              <span class="tc-num">7</span>
+              <div class="tc-de">Ich nutze Laptop und Tablet nicht nur als Kommunikationsmittel, sondern setze sie auch gezielt zum Lernen ein.</div>
+            </div>
+            <div class="tc-back">
+              <span class="tc-num">7</span>
+              <div class="tc-zh">我不仅把笔记本和平板用作通信工具，还有针对性地用于学习。</div>
+              <div class="tc-vocab">组词→ einsetzen — 使用、投入</div>
+            </div>
+          </div>
+        </div>
+        <div class="tc-card" onclick="flipTrans(this)">
+          <div class="tc-inner">
+            <div class="tc-front">
+              <span class="tc-num">8</span>
+              <div class="tc-de">Zwei Online-Vorlesungen sind an der Uni angeboten worden.</div>
+            </div>
+            <div class="tc-back">
+              <span class="tc-num">8</span>
+              <div class="tc-zh">大学提供了两门在线课程。</div>
+              <div class="tc-vocab">组词→ angeboten worden — 被提供（Perfekt Passiv）</div>
+            </div>
+          </div>
+        </div>
+        <div class="tc-card" onclick="flipTrans(this)">
+          <div class="tc-inner">
+            <div class="tc-front">
+              <span class="tc-num">9</span>
+              <div class="tc-de">Digitales Lernen finde ich sehr gut, weil man zeitlich und räumlich unabhängig ist.</div>
+            </div>
+            <div class="tc-back">
+              <span class="tc-num">9</span>
+              <div class="tc-zh">我觉得数字化学习很好，因为不受时间和地点的限制。</div>
+              <div class="tc-vocab">组词→ unabhängig — 独立的</div>
+            </div>
+          </div>
+        </div>
+        <div class="tc-card" onclick="flipTrans(this)">
+          <div class="tc-inner">
+            <div class="tc-front">
+              <span class="tc-num">10</span>
+              <div class="tc-de">Die Lerninhalte sind zu jeder Uhrzeit verfügbar.</div>
+            </div>
+            <div class="tc-back">
+              <span class="tc-num">10</span>
+              <div class="tc-zh">学习内容随时可用。</div>
+              <div class="tc-vocab">组词→ verfügbar — 可用的</div>
+            </div>
+          </div>
+        </div>
+        <div class="tc-card" onclick="flipTrans(this)">
+          <div class="tc-inner">
+            <div class="tc-front">
+              <span class="tc-num">11</span>
+              <div class="tc-de">Es ist bedauerlich, dass ich meine Kommilitonen nicht persönlich treffen kann.</div>
+            </div>
+            <div class="tc-back">
+              <span class="tc-num">11</span>
+              <div class="tc-zh">遗憾的是我不能亲自见到我的同学。</div>
+              <div class="tc-vocab">组词→ bedauerlich — 令人遗憾的</div>
+            </div>
+          </div>
+        </div>
+        <div class="tc-card" onclick="flipTrans(this)">
+          <div class="tc-inner">
+            <div class="tc-front">
+              <span class="tc-num">12</span>
+              <div class="tc-de">Jeder Inhalt kann nach eigenem Bedarf und Tempo behandelt oder vertieft werden.</div>
+            </div>
+            <div class="tc-back">
+              <span class="tc-num">12</span>
+              <div class="tc-zh">每个内容都可以根据自己的需求和节奏被处理或深入学习。</div>
+              <div class="tc-vocab">组词→ der Bedarf — 需求；vertiefen — 加深</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+</div></div></div>
+<div class="vocab-overlay" id="vocabOverlay" onclick="hideVocab()"></div>
+<div class="vocab-panel" id="vocabPanel">
+  <div class="vocab-panel-header">
+    <span id="vpWord" class="vp-word"></span>
+    <button onclick="hideVocab()" class="vp-close">&times;</button>
+  </div>
+  <div id="vpZh" class="vp-zh"></div>
+  <div id="vpEx" class="vp-ex"></div>
+</div>
+<script>
+// ===== Section Navigation =====
+function switchSection(id) {
+  document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
+
+  const map = { home:0, text:1, vocab:2, grammar:3, exercise:4, translation:5 };
+  const btns = document.querySelectorAll('.nav-links button');
+  if (btns[map[id]]) btns[map[id]].classList.add('active');
+
+  document.querySelector('.nav-links').classList.remove('show');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  updateProgress(id);
+}
+
+function updateProgress(id) {
+  const map = { home:0, text:20, vocab:40, grammar:60, exercise:80, translation:100 };
+  const bar = document.getElementById('progressFill');
+  if (bar) bar.style.width = (map[id] || 0) + '%';
+}
+
+// ===== Mobile Nav Toggle =====
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('show');
+}
+
+// ===== Text Pagination =====
+function prevPage(id) {
+  var container = document.getElementById('tp-' + id);
+  if (!container) return;
+  var pages = container.querySelectorAll('.text-page');
+  var current = 0;
+  pages.forEach(function(p, i) {
+    if (p.style.display !== 'none') current = i;
+    p.style.display = 'none';
+  });
+  if (current > 0) {
+    pages[current - 1].style.display = 'block';
+    updatePager(id, pages.length, current - 1);
+  } else {
+    pages[0].style.display = 'block';
+  }
+}
+
+function nextPage(id) {
+  var container = document.getElementById('tp-' + id);
+  if (!container) return;
+  var pages = container.querySelectorAll('.text-page');
+  var current = 0;
+  pages.forEach(function(p, i) {
+    if (p.style.display !== 'none') current = i;
+    p.style.display = 'none';
+  });
+  if (current < pages.length - 1) {
+    pages[current + 1].style.display = 'block';
+    updatePager(id, pages.length, current + 1);
+  } else {
+    pages[pages.length - 1].style.display = 'block';
+  }
+}
+
+function updatePager(id, total, current) {
+  var prevBtn = document.getElementById('tp-prev-' + id);
+  var nextBtn = document.getElementById('tp-next-' + id);
+  var info = document.getElementById('tp-info-' + id);
+  if (prevBtn) prevBtn.disabled = current === 0;
+  if (nextBtn) nextBtn.disabled = current >= total - 1;
+  if (info) info.textContent = (current + 1) + ' / ' + total;
+}
+
+// ===== Vocab Flip Cards =====
+function flipCard(el) {
+  el.classList.toggle('flipped');
+}
+
+// ===== Translation Flip Cards =====
+function flipTrans(el) {
+  el.classList.toggle('flipped');
+}
+
+// ===== Vocab Panel =====
+function showVocab(word, zh, ex) {
+  document.getElementById('vpWord').textContent = word || '';
+  document.getElementById('vpZh').textContent = zh || '';
+  document.getElementById('vpEx').textContent = ex || '';
+  document.getElementById('vocabPanel').classList.add('show');
+  document.getElementById('vocabOverlay').classList.add('show');
+}
+
+function hideVocab() {
+  document.getElementById('vocabPanel').classList.remove('show');
+  document.getElementById('vocabOverlay').classList.remove('show');
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') hideVocab();
+});
+
+// ===== Vocab Tabs =====
+function switchVocabTab(id) {
+  document.querySelectorAll('.person-content').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.person-tabs button').forEach(b => b.classList.remove('active'));
+  var content = document.getElementById('vc-' + id);
+  if (content) content.classList.add('active');
+  document.querySelectorAll('.person-tabs button').forEach(function(b) {
+    if (b.getAttribute('onclick') && b.getAttribute('onclick').includes("switchVocabTab('" + id + "')")) {
+      b.classList.add('active');
+    }
+  });
+}
+
+// ===== Quiz =====
+function checkQuiz(el, qId, optIdx) {
+  var card = el.closest('.quiz-card');
+  var answerDiv = card.querySelector('.q-answer');
+  var answer = answerDiv ? answerDiv.textContent.replace('答案：','').trim() : '';
+  var correctLetter = answer.charCodeAt(0) - 65;
+  var options = card.querySelectorAll('.opt');
+  options.forEach(function(o) { o.style.pointerEvents = 'none'; });
+  if (optIdx === correctLetter) {
+    el.classList.add('correct');
+  } else {
+    el.classList.add('wrong');
+    options[correctLetter].classList.add('correct');
+  }
+}
+
+// ===== Connect Grid =====
+var cSelected = null;
+
+function cClick(el) {
+  if (el.classList.contains('matched')) return;
+  if (cSelected === null) {
+    cSelected = el;
+    el.classList.add('selected');
+  } else if (cSelected === el) {
+    cSelected.classList.remove('selected');
+    cSelected = null;
+  } else {
+    var isDe1 = cSelected.classList.contains('de');
+    var isDe2 = el.classList.contains('de');
+    if (isDe1 === isDe2) {
+      cSelected.classList.remove('selected');
+      cSelected = el;
+      el.classList.add('selected');
+    } else if (cSelected.dataset.pair === el.dataset.pair) {
+      cSelected.classList.remove('selected');
+      cSelected.classList.add('matched');
+      el.classList.add('matched');
+      cSelected = null;
+      var gid = el.dataset.gid;
+      var total = document.querySelectorAll('#cg-de-' + gid + ' .c-item').length;
+      var done = document.querySelectorAll('#cg-de-' + gid + ' .c-item.matched').length;
+      document.getElementById('cg-cnt-' + gid).textContent = done;
+      if (done >= total) {
+        setTimeout(function(){ alert('Alle richtig!'); }, 200);
+      }
+    } else {
+      cSelected.classList.remove('selected');
+      var old = cSelected;
+      cSelected = null;
+      old.style.borderColor = '#e74c3c';
+      el.style.borderColor = '#e74c3c';
+      setTimeout(function() {
+        old.style.borderColor = '';
+        el.style.borderColor = '';
+      }, 300);
+    }
+  }
+}
+
+// ===== Fill-gap =====
+function checkFill(gid, idx) {
+  var input = document.getElementById('fg-' + gid + '-' + idx);
+  var result = document.getElementById('fg-res-' + gid + '-' + idx);
+  var answer = input.dataset.answer;
+  var val = input.value.trim().toLowerCase();
+  if (val === answer.toLowerCase()) {
+    input.style.borderColor = '#27ae60';
+    input.style.background = '#e8f8e8';
+    result.textContent = '\u2713';
+    result.className = 'fill-result correct';
+  } else {
+    input.style.borderColor = '#e74c3c';
+    input.style.background = '#fdecea';
+    result.textContent = '\u2717';
+    result.className = 'fill-result wrong';
+  }
+}
+
+// Support Enter key in fill-gap
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') {
+    var input = e.target.closest('.fill-input');
+    if (input) {
+      var parts = input.id.split('-');
+      checkFill(parseInt(parts[1]), parseInt(parts[2]));
+    }
+  }
+});
+
+// ===== Matching Game =====
+var matchSelected = null;
+function matchClick(el) {
+  if (el.classList.contains('matched')) return;
+  if (matchSelected === null) {
+    matchSelected = el;
+    el.classList.add('selected');
+  } else if (matchSelected === el) {
+    matchSelected.classList.remove('selected');
+    matchSelected = null;
+  } else {
+    var d = matchSelected.classList.contains('de');
+    var e = el.classList.contains('de');
+    if (d === e) {
+      matchSelected.classList.remove('selected');
+      matchSelected = el;
+      el.classList.add('selected');
+    } else if (matchSelected.dataset.pair === el.dataset.pair) {
+      matchSelected.classList.remove('selected');
+      matchSelected.classList.add('matched');
+      el.classList.add('matched');
+      matchSelected = null;
+      var remaining = document.querySelectorAll('.match-card:not(.matched)').length;
+      if (remaining === 0) { setTimeout(function(){ alert('Alles richtig!'); }, 200); }
+    } else {
+      matchSelected.classList.remove('selected');
+      var old = matchSelected;
+      matchSelected = null;
+      old.style.borderColor = '#e74c3c';
+      el.style.borderColor = '#e74c3c';
+      setTimeout(function(){old.style.borderColor = ''; el.style.borderColor = '';}, 300);
+    }
+  }
+}
+
+// ===== Keyboard shortcuts =====
+document.addEventListener('keydown', function(e) {
+  if (e.key === '1') switchSection('home');
+  if (e.key === '2') switchSection('text');
+  if (e.key === '3') switchSection('vocab');
+  if (e.key === '4') switchSection('grammar');
+  if (e.key === '5') switchSection('exercise');
+  if (e.key === '6') switchSection('translation');
+});
+
+</script>
+</body>
+</html>

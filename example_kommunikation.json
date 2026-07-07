@@ -1,0 +1,343 @@
+{
+  "meta": {
+    "lektion": "Lektion",
+    "title": "Kommunikation früher und heute",
+    "subtitle": "沟通方式的变迁 · 1900 → 2025",
+    "grammarTopic": "Passiv & Wendungen",
+    "navLabels": [
+      "首页",
+      "课文讲解",
+      "重点词汇",
+      "语法",
+      "练习",
+      "翻译卡片"
+    ],
+    "sectionTitles": {
+      "text": "课文 · Kommunikation früher und heute",
+      "vocab": "重点词汇 · Wendungen & Wortschatz",
+      "grammar": "语法 · Passiv & Infinitiv mit zu",
+      "translation": "逐句翻译练习",
+      "exercise": "练习 · Übungen"
+    },
+    "objectives": [
+      "理解五个时代通信方式的变迁（1900书信 → 2025互联网）",
+      "掌握被动语态（Präsens Passiv + Präteritum Passiv）",
+      "掌握重点词组：Zugang haben, sich leisten können, aus etwas nicht mehr wegzudenken",
+      "能完成德⇄中逐句翻译练习"
+    ]
+  },
+  "texts": [
+    {
+      "id": "T1",
+      "title": "Kommunikation früher und heute",
+      "subTitle": "从马车邮递到数字媒体——通信方式的世纪变迁",
+      "by": "Entdecken 1 · G1 · T1",
+      "summary": "通过五个时间节点（1900/1923/1950/1970/1990），展示人类通信方式的演变。",
+      "paragraphs": [],
+      "pages": [
+        [
+          "Yang Fang und Laura besichtigen heute das Museum für Kommunikation Berlin. Durch einen geführten Rundgang %%werden%% sie über die %%Entwicklung%% der menschlichen Kommunikation %%informiert%%.",
+          "Vor 100 Jahren %%wurden%% viele Briefe %%geschrieben%% und mit der Post %%geschickt%%, wenn man sich %%gegenseitig%% %%Nachrichten%% %%überbringen%% wollte. Die Post %%wurde%% allerdings nicht wie heute mit extrem schnellen Zügen oder sogar mit Flugzeugen %%transportiert%%, sondern mit %%Dampfschiffen%%, %%Eisenbahnen%% oder sogar auch mit Pferden und Kutschen. So dauerte es sehr lange, bis die Briefe ankamen. Die Menschen mussten oft wochenlang auf Antworten warten. Das ist für uns kaum denkbar, oder?"
+        ],
+        [
+          "1923 fand eine %%bahnbrechende%% %%Erfindung%% ihren Weg nach Deutschland: Das Radio. Im Gegensatz zu heute war das Gerät damals nicht für alle %%selbstverständlich%%. Eine gewisse Zeit lang musste jedes Radio %%genehmigt%% %%werden%%. In den 1970er Jahren %%entwickelte%% sich das Radio langsam zu einem üblichen %%Haushaltsgerät%%. Alle hatten so %%Zugang%% zu Musik, %%Nachrichten%% und Hörspielen. Die Familien %%versammelten%% sich rund um das Radio und %%lauschten%% dem Programm. Denn damals gab es zu Hause noch keinen Fernseher."
+        ],
+        [
+          "Um 1950 begann das Fernsehen, das Radio langsam als beliebtestes Medium %%abzulösen%%. Aber auch das Fernsehen, damals noch in schwarz-weiß, war anfangs nicht für jeden %%zugänglich%%. Viele Familien konnten %%sich%% so ein teures Gerät gar nicht %%leisten%%. In Schaufenstern mancher Läden %%wurden%% Fernseher %%aufgestellt%%. Deshalb standen oft viele Menschen vor den Scheiben und schauten sich die Nachrichten an. Es gab auch nur bestimmte Sender. Diese konnten an einer Hand %%abgezählt%% %%werden%%. Kaum vorstellbar, dass wir heute über 60 Sender zur Auswahl haben, oder?"
+        ],
+        [
+          "Noch bis 1970 hatten viele deutsche Familien kein eigenes Telefon. Für viele war das ein %%unbezahlbarer%% %%Luxusgegenstand%%. Es %%wurden%% viele öffentliche %%Telefonzellen%% %%errichtet%%. Diese %%prägten%% ab 1920 das %%Straßenbild%%. Heute sieht man kaum noch welche in den deutschen Städten. Denn heute %%wird%% fast immer mit dem Handy %%telefoniert%%."
+        ],
+        [
+          "Spätestens mit dem globalen %%Durchbruch%% des Internets seit 1990 %%wurde%% die menschliche Kommunikation %%grundlegend%% %%verändert%%. Für viele Menschen war es damals eine große %%Umstellung%%, die neuen technischen Geräte überall im %%Alltag%% zu benutzen. Mittlerweile sind sie aus dem Leben nicht mehr %%wegzudenken%%. Kinder %%wachsen%% mit den digitalen Medien %%auf%% und alte Kommunikationswege, wie das Briefschreiben oder das Radio, %%werden%% immer mehr von neuen Medien %%ersetzt%%."
+        ]
+      ]
+    }
+  ],
+  "vocab": [
+    {"key": "werden", "word": "werden (+ Passiv)", "cn": "被（被动助动词）", "de": "Hilfsverb zur Bildung des Passivs"},
+    {"key": "Entwicklung", "cn": "发展", "de": "die Entwicklung (Pl. -en)"},
+    {"key": "informiert", "word": "informieren", "cn": "通知、告知", "de": "jmdn. über etwas informieren"},
+    {"key": "geschrieben", "word": "schreiben", "cn": "写", "de": "einen Brief schreiben"},
+    {"key": "geschickt", "word": "schicken", "cn": "寄送", "de": "etwas mit der Post schicken"},
+    {"key": "gegenseitig", "cn": "互相、彼此", "de": "einander"},
+    {"key": "Nachrichten", "word": "die Nachricht", "cn": "消息（复数）", "de": "die Nachricht (Pl. -en)"},
+    {"key": "überbringen", "cn": "传递、送达", "de": "jmdm. eine Nachricht überbringen"},
+    {"key": "transportiert", "word": "transportieren", "cn": "运输", "de": "etwas mit Zügen/Flugzeugen transportieren"},
+    {"key": "Dampfschiff", "cn": "蒸汽船", "de": "das Dampfschiff (Pl. -e)"},
+    {"key": "Eisenbahnen", "word": "die Eisenbahn", "cn": "铁路、火车（复数）", "de": "die Eisenbahn (Pl. -en)"},
+    {"key": "bahnbrechende", "word": "bahnbrechend", "cn": "开创性的、突破性的", "de": "eine bahnbrechende Erfindung"},
+    {"key": "Erfindung", "cn": "发明", "de": "die Erfindung (Pl. -en)"},
+    {"key": "selbstverständlich", "cn": "理所当然的、自然的", "de": "etwas ist selbstverständlich"},
+    {"key": "genehmigt", "word": "genehmigen", "cn": "批准、许可", "de": "etwas genehmigen; genehmigt werden"},
+    {"key": "entwickelte", "word": "entwickeln", "cn": "发展", "de": "sich entwickeln zu"},
+    {"key": "Haushaltsgerät", "cn": "家用电器", "de": "das Haushaltsgerät (Pl. -e)"},
+    {"key": "Zugang", "cn": "接触途径、通道", "de": "Zugang zu etwas haben"},
+    {"key": "versammelten", "word": "sich versammeln", "cn": "聚集", "de": "sich um etwas versammeln"},
+    {"key": "lauschten", "word": "lauschen", "cn": "倾听", "de": "dem Programm lauschen"},
+    {"key": "abzulösen", "word": "ablösen", "cn": "取代、接替", "de": "etwas als ... ablösen"},
+    {"key": "zugänglich", "cn": "可接触的、可获得的", "de": "für jmdn. zugänglich sein"},
+    {"key": "sich ... leisten", "word": "sich etwas leisten", "cn": "负担得起", "de": "sich etwas (nicht) leisten können"},
+    {"key": "aufgestellt", "word": "aufstellen", "cn": "放置、安装", "de": "etwas in Schaufenstern aufstellen"},
+    {"key": "abgezählt", "word": "abzählen", "cn": "数出来", "de": "an einer Hand abzählen können"},
+    {"key": "unbezahlbarer", "word": "unbezahlbar", "cn": "买不起的、昂贵的", "de": "unbezahlbarer Luxusgegenstand"},
+    {"key": "Luxusgegenstand", "cn": "奢侈品", "de": "der Luxusgegenstand (Pl. -stände)"},
+    {"key": "Telefonzellen", "word": "die Telefonzelle", "cn": "公用电话亭（复数）", "de": "die Telefonzelle (Pl. -n)"},
+    {"key": "errichtet", "word": "errichten", "cn": "建立、建造", "de": "öffentliche Telefonzellen errichten"},
+    {"key": "prägten", "word": "prägen", "cn": "塑造、构成特征", "de": "etwas prägt das Straßenbild"},
+    {"key": "Straßenbild", "cn": "街景、街道风貌", "de": "das Straßenbild (Pl. -er)"},
+    {"key": "telefoniert", "word": "telefonieren", "cn": "打电话", "de": "mit dem Handy telefonieren"},
+    {"key": "Durchbruch", "cn": "突破", "de": "der Durchbruch (Pl. -brüche)"},
+    {"key": "grundlegend", "cn": "根本性地", "de": "etwas grundlegend verändern"},
+    {"key": "verändert", "word": "verändern", "cn": "改变", "de": "etwas grundlegend verändern"},
+    {"key": "Umstellung", "cn": "转变、适应", "de": "die Umstellung (Pl. -en)"},
+    {"key": "Alltag", "cn": "日常生活", "de": "der Alltag (kein Pl.)"},
+    {"key": "wegzudenken", "word": "wegdenken", "cn": "想象……不存在", "de": "aus etwas nicht mehr wegzudenken sein"},
+    {"key": "wachsen ... auf", "word": "aufwachsen", "cn": "长大", "de": "mit etwas aufwachsen"},
+    {"key": "ersetzt", "word": "ersetzen", "cn": "取代", "de": "etwas durch/von etwas ersetzen lassen"}
+  ],
+  "grammar": {
+    "tables": [
+      {
+        "title": "Passiv Präsens（现在时被动语态）",
+        "headers": ["主语", "助动词", "Partizip II", "中文"],
+        "rows": [
+          ["Die Post", "wird", "transportiert.", "邮件被运输。"],
+          ["Die Briefe", "werden", "geschrieben.", "信被写。"],
+          ["Hier", "wird", "telefoniert.", "这里在打电话。（无人称被动）"],
+          ["Das Radio", "wird", "ersetzt.", "收音机被取代。"]
+        ]
+      },
+      {
+        "title": "Passiv Präteritum（过去时被动语态）",
+        "headers": ["主语", "助动词", "Partizip II", "中文"],
+        "rows": [
+          ["Die Briefe", "wurden", "geschrieben.", "信被写了（过去）。"],
+          ["Viele Telefonzellen", "wurden", "errichtet.", "许多电话亭被建了起来。"],
+          ["Die Kommunikation", "wurde", "grundlegend verändert.", "沟通方式发生了根本性变化。"],
+          ["Fernseher", "wurden", "aufgestellt.", "电视机被摆了出来。"]
+        ]
+      },
+      {
+        "title": "Modalverb + Passiv（情态动词+被动）",
+        "headers": ["结构", "例句", "中文"],
+        "rows": [
+          ["müssen + Passiv", "Jedes Radio musste genehmigt werden.", "每个收音机都必须被批准。"],
+          ["können + Passiv", "Die Sender konnten abgezählt werden.", "频道可以数出来。"],
+          ["an einer Hand abzählen können", "An einer Hand abzählen können.", "屈指可数。"]
+        ]
+      },
+      {
+        "title": "被动句型转换公式",
+        "headers": ["Aktiv（主动）", "", "Passiv（被动）"],
+        "rows": [
+          ["Die Postkutsche transportierte die Briefe.", "→", "Die Briefe wurden von der Postkutsche transportiert."],
+          ["Man schrieb viele Briefe.", "→", "Es wurden viele Briefe geschrieben."],
+          ["Die Menschen nutzen digitale Medien.", "→", "Digitale Medien werden genutzt."]
+        ]
+      }
+    ],
+    "examples": [
+      {"de": "Vor 100 Jahren wurden viele Briefe mit der Post geschickt.", "zh": "100年前，很多信通过邮局寄送。"},
+      {"de": "Jedes Radio musste damals genehmigt werden.", "zh": "那时候每个收音机都必须获得批准。"},
+      {"de": "Die Sender konnten an einer Hand abgezählt werden.", "zh": "频道屈指可数。"},
+      {"de": "Alte Kommunikationswege werden immer mehr von neuen Medien ersetzt.", "zh": "旧的通信方式正越来越多地被新媒体取代。"},
+      {"de": "Digitale Medien sind aus unserem Alltag nicht mehr wegzudenken.", "zh": "数字媒体在我们的日常生活中不可或缺。"}
+    ]
+  },
+  "quiz": [
+    {
+      "q": "Wie wurden die Briefe vor 100 Jahren transportiert?",
+      "options": [
+        "Mit extrem schnellen Zügen und Flugzeugen",
+        "Mit Dampfschiffen, Eisenbahnen oder Pferden und Kutschen",
+        "Nur mit Fahrrädern",
+        "Mit modernen Lieferwagen"
+      ],
+      "answer": "B"
+    },
+    {
+      "q": "Was musste beim Radio in den ersten Jahren gemacht werden?",
+      "options": [
+        "Es musste gekauft werden",
+        "Es musste repariert werden",
+        "Es musste genehmigt werden",
+        "Es musste versichert werden"
+      ],
+      "answer": "C"
+    },
+    {
+      "q": "Warum standen viele Leute in den 1950ern vor Schaufenstern?",
+      "options": [
+        "Weil sie die neueste Mode sehen wollten",
+        "Weil dort Fernseher aufgestellt wurden",
+        "Weil sie auf den Bus warteten",
+        "Weil sie Zeitungen lasen"
+      ],
+      "answer": "B"
+    },
+    {
+      "q": "Was bedeutet »an einer Hand abzählen können«?",
+      "options": [
+        "Sehr viel – man braucht mehrere Hände zum Zählen",
+        "Sehr wenig – man braucht nur eine Hand",
+        "Man zählt das Geld in der Hand",
+        "Man kann nicht richtig zählen"
+      ],
+      "answer": "B"
+    },
+    {
+      "q": "Welche Wendung bedeutet »nicht genug Geld zum Kauf haben«?",
+      "options": [
+        "Zugang zu etwas haben",
+        "Dem Programm lauschen",
+        "Sich etwas nicht leisten können",
+        "Etwas ablösen"
+      ],
+      "answer": "C"
+    },
+    {
+      "q": "Seit wann veränderte das Internet die Kommunikation grundlegend?",
+      "options": [
+        "Seit 1923",
+        "Seit 1950",
+        "Seit 1970",
+        "Seit 1990"
+      ],
+      "answer": "D"
+    }
+  ],
+  "matchingPairs": [
+    ["der Rundgang", "参观导览"],
+    ["die Entwicklung", "发展"],
+    ["die Nachricht", "消息、通知"],
+    ["die Erfindung", "发明"],
+    ["das Haushaltsgerät", "家用电器"],
+    ["der Luxusgegenstand", "奢侈品"],
+    ["die Telefonzelle", "公用电话亭"],
+    ["das Straßenbild", "街景"],
+    ["der Durchbruch", "突破"],
+    ["der Alltag", "日常生活"],
+    ["das Medium", "媒体（单数）"],
+    ["die Umstellung", "转变、调整"]
+  ],
+  "connectGrids": [
+    {
+      "title": "Wendungen und ihre Bedeutungen（词组配对）",
+      "pairs": [
+        ["Zugang zu etwas haben", "有机会接触到…"],
+        ["dem Programm lauschen", "仔细收听节目"],
+        ["etwas ablösen", "取代某事物"],
+        ["sich etwas leisten können", "负担得起某物"],
+        ["aus etwas nicht wegzudenken", "不可或缺的"],
+        ["an einer Hand abzählen", "屈指可数"]
+      ]
+    }
+  ],
+  "fillGaps": [
+    {
+      "title": "填入正确的被动语态形式（Passiv）",
+      "items": [
+        {"sentence": "Vor 100 Jahren _____ viele Briefe mit der Post _____ (schicken).", "answer": "wurden ... geschickt"},
+        {"sentence": "Die Post _____ damals mit Dampfschiffen _____ (transportieren).", "answer": "wurde ... transportiert"},
+        {"sentence": "Jedes Radio _____ früher _____ (genehmigen).", "answer": "musste ... genehmigt werden"},
+        {"sentence": "In Schaufenstern _____ Fernseher _____ (aufstellen).", "answer": "wurden ... aufgestellt"},
+        {"sentence": "Alte Medien _____ immer mehr von neuen _____ (ersetzen).", "answer": "werden ... ersetzt"},
+        {"sentence": "Heute _____ fast immer mit dem Handy _____ (telefonieren).", "answer": "wird ... telefoniert"}
+      ]
+    },
+    {
+      "title": "翻译练习 (Übersetzen Sie)",
+      "items": [
+        {"sentence": "Anfangs hatten nicht alle Zugang zum Radio.", "answer": "最初并不是所有人都能接触到收音机。"},
+        {"sentence": "Viele Familien konnten sich solche Luxusgegenstände nicht leisten.", "answer": "很多家庭负担不起这些奢侈品。"},
+        {"sentence": "Die Sender konnten an einer Hand abgezählt werden.", "answer": "频道屈指可数。"},
+        {"sentence": "Da früher viele Familien kein eigenes Telefon hatten, wurden viele Telefonzellen errichtet.", "answer": "以前很多家庭没有自己的电话，因此建立了许多公用电话亭。"},
+        {"sentence": "Alte Kommunikationswege werden immer mehr von neuen ersetzt.", "answer": "旧的通信方式正被新的方式逐渐取代。"},
+        {"sentence": "Verschiedene digitale Medien sind aus unserem Alltag nicht mehr wegzudenken.", "answer": "各种数字媒体已成为我们日常生活中不可或缺的一部分。"}
+      ]
+    }
+  ],
+  "translationCards": [
+    {
+      "de": "Vor 100 Jahren wurden viele Briefe geschrieben und mit der Post geschickt.",
+      "zh": "100年前，很多信被写成并通过邮局寄送。",
+      "vocab": "wurden ... geschickt — 被寄送；der Brief — 信"
+    },
+    {
+      "de": "Die Post wurde mit Dampfschiffen, Eisenbahnen oder Pferden und Kutschen transportiert.",
+      "zh": "邮件通过蒸汽船、火车或马车运输。",
+      "vocab": "das Dampfschiff — 蒸汽船；die Kutsche — 马车"
+    },
+    {
+      "de": "1923 fand eine bahnbrechende Erfindung ihren Weg nach Deutschland: Das Radio.",
+      "zh": "1923年，一项开创性发明传入德国：收音机。",
+      "vocab": "die Erfindung — 发明；bahnbrechend — 开创性的"
+    },
+    {
+      "de": "Eine gewisse Zeit lang musste jedes Radio genehmigt werden.",
+      "zh": "在相当一段时间内，每个收音机都必须获得批准。",
+      "vocab": "genehmigt werden — 被批准；musste — 必须（过去式）"
+    },
+    {
+      "de": "In den 1970er Jahren entwickelte sich das Radio zu einem üblichen Haushaltsgerät.",
+      "zh": "在1970年代，收音机逐渐发展成为常见的家用电器。",
+      "vocab": "sich entwickeln zu — 发展成；das Haushaltsgerät — 家用电器"
+    },
+    {
+      "de": "Alle hatten so Zugang zu Musik, Nachrichten und Hörspielen.",
+      "zh": "所有人都能接触到音乐、新闻和广播剧。",
+      "vocab": "Zugang zu etwas haben — 有机会接触到……"
+    },
+    {
+      "de": "Die Familien versammelten sich rund um das Radio und lauschten dem Programm.",
+      "zh": "全家人围坐在收音机旁收听节目。",
+      "vocab": "sich versammeln — 聚集；lauschen — 倾听"
+    },
+    {
+      "de": "Um 1950 begann das Fernsehen, das Radio langsam als beliebtestes Medium abzulösen.",
+      "zh": "1950年左右，电视开始逐渐取代收音机成为最受欢迎的媒体。",
+      "vocab": "etwas ablösen — 取代某事物"
+    },
+    {
+      "de": "Viele Familien konnten sich so ein teures Gerät gar nicht leisten.",
+      "zh": "很多家庭根本负担不起这么昂贵的设备。",
+      "vocab": "sich etwas (nicht) leisten können — （不）能负担得起"
+    },
+    {
+      "de": "In Schaufenstern mancher Läden wurden Fernseher aufgestellt.",
+      "zh": "一些商店的橱窗里摆上了电视机。",
+      "vocab": "aufstellen — 放置、展示；das Schaufenster — 橱窗"
+    },
+    {
+      "de": "Es gab nur bestimmte Sender. Diese konnten an einer Hand abgezählt werden.",
+      "zh": "只有有限的频道，屈指可数。",
+      "vocab": "an einer Hand abzählen können — 屈指可数"
+    },
+    {
+      "de": "Noch bis 1970 hatten viele deutsche Familien kein eigenes Telefon.",
+      "zh": "直到1970年，很多德国家庭还没有自己的电话。",
+      "vocab": "eigen — 自己的；das Telefon — 电话"
+    },
+    {
+      "de": "Es wurden viele öffentliche Telefonzellen errichtet.",
+      "zh": "建立了许多公用电话亭。",
+      "vocab": "errichtet werden — 被建立；die Telefonzelle — 电话亭"
+    },
+    {
+      "de": "Spätestens mit dem globalen Durchbruch des Internets seit 1990 wurde die Kommunikation grundlegend verändert.",
+      "zh": "随着1990年以来互联网的全球性突破，通信方式发生了根本性变化。",
+      "vocab": "der Durchbruch — 突破；grundlegend verändern — 根本性改变"
+    },
+    {
+      "de": "Mittlerweile sind digitale Medien aus dem Leben nicht mehr wegzudenken.",
+      "zh": "如今，数字媒体在生活中已不可或缺。",
+      "vocab": "aus etwas nicht mehr wegzudenken — 不可或缺的"
+    },
+    {
+      "de": "Alte Kommunikationswege werden immer mehr von neuen Medien ersetzt.",
+      "zh": "旧的通信方式正越来越多地被新媒体取代。",
+      "vocab": "ersetzen — 取代（表被动时用 von + Dativ）"
+    }
+  ]
+}

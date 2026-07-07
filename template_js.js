@@ -79,9 +79,11 @@ function flipTrans(el) {
 }
 
 // ===== Vocab Panel =====
-function showVocab(word, zh, ex) {
+function showVocab(word, zh, ex, phrase, example) {
   document.getElementById('vpWord').textContent = word || '';
   document.getElementById('vpZh').textContent = zh || '';
+  document.getElementById('vpPhrase').innerHTML = phrase ? '📎 ' + phrase : '';
+  document.getElementById('vpExample').innerHTML = example ? '💬 ' + example : '';
   document.getElementById('vpEx').textContent = ex || '';
   document.getElementById('vocabPanel').classList.add('show');
   document.getElementById('vocabOverlay').classList.add('show');

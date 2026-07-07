@@ -176,9 +176,16 @@ def gen_vocab(data):
             h += '          <div class="vc-card" onclick="flipCard(this)">\n'
             h += '            <div class="vc-inner">\n'
             h += '              <div class="vc-front">{w}</div>\n'.format(w=word)
-            h += '              <div class="vc-back">{c}</div>\n'.format(c=v['cn'])
+            phrase = v.get('phrase', '')
+            example = v.get('example', '')
+            back_html = '<div class="vc-meaning">{c}</div>'.format(c=v['cn'])
+            if phrase:
+                back_html += '<div class="vc-detail-row vc-phrase">\U0001f4ce {p}</div>'.format(p=phrase)
+            if example:
+                back_html += '<div class="vc-detail-row vc-example">\U0001f4ac {e}</div>'.format(e=example)
+            h += '              <div class="vc-back">' + back_html + '</div>\n'
             h += '            </div>\n'
-            h += '            <button class="vc-detail" onclick=\'event.stopPropagation();showVocab(' + a1 + js_str(word) + a1 + ',' + a1 + js_str(v['cn']) + a1 + ',' + a1 + js_str(v.get('de', '')) + a1 + ')\'>\u25b6</button>\n'
+            h += '            <button class="vc-detail" onclick=\'event.stopPropagation();showVocab(' + a1 + js_str(word) + a1 + ',' + a1 + js_str(v['cn']) + a1 + ',' + a1 + js_str(v.get('de', '')) + a1 + ',' + a1 + js_str(v.get('phrase', '')) + a1 + ',' + a1 + js_str(v.get('example', '')) + a1 + ')\'>\u25b6</button>\n'
             h += '          </div>\n'
         h += '        </div>\n'
         h += '      </div>\n'
@@ -393,6 +400,8 @@ def build(data_file):
     h += '    <button onclick="hideVocab()" class="vp-close">&times;</button>\n'
     h += '  </div>\n'
     h += '  <div id="vpZh" class="vp-zh"></div>\n'
+    h += '  <div id="vpPhrase" class="vp-phrase-row"></div>\n'
+    h += '  <div id="vpExample" class="vp-example-row"></div>\n'
     h += '  <div id="vpEx" class="vp-ex"></div>\n'
     h += '</div>\n'
     h += '<script>\n' + js + '\n</script>\n'

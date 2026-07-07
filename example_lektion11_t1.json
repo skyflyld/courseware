@@ -59,223 +59,321 @@
   "vocab": [
     {
       "key": "erfahren",
-      "cn": "得知、了解到"
+      "cn": "得知、了解到",
+      "phrase": "das Neueste aus der Zeitung erfahren",
+      "example": "Hast du schon erfahren, was passiert ist?"
     },
     {
       "key": "Spielfilm",
-      "cn": "故事片、电影"
+      "cn": "故事片、电影",
+      "phrase": "ein spannender Spielfilm",
+      "example": "Heute Abend läuft ein guter Spielfilm im Fernsehen."
     },
     {
       "key": "Reportage",
-      "cn": "报道、纪实节目"
+      "cn": "报道、纪实节目",
+      "phrase": "eine interessante Reportage",
+      "example": "Die Reportage zeigt das Leben in Berlin."
     },
     {
       "key": "Kurznachrichten",
-      "cn": "短信（复数）"
+      "cn": "短信（复数）",
+      "phrase": "Kurznachrichten verschicken / empfangen",
+      "example": "Früher hat man SMS (Kurznachrichten) geschrieben."
     },
     {
       "key": "verschickt",
       "word": "verschickt",
-      "cn": "发送、寄出"
+      "cn": "发送、寄出",
+      "phrase": "Kurznachrichten verschicken",
+      "example": "Die E-Mail wurde an alle Kollegen verschickt."
     },
     {
       "key": "handgeschriebener",
-      "cn": "手写的"
+      "cn": "手写的",
+      "phrase": "ein handgeschriebener Brief",
+      "example": "Handgeschriebene Briefe sind persönlicher."
     },
     {
       "key": "hält",
       "word": "hält",
-      "cn": "保持、持续"
+      "cn": "保持、持续",
+      "phrase": "etwas hält länger",
+      "example": "Dieser Brief hält viel länger als eine E-Mail."
     },
     {
       "key": "Gefühl",
-      "cn": "感觉、感受"
+      "cn": "感觉、感受",
+      "phrase": "ein gutes Gefühl / ein wunderbares Gefühl",
+      "example": "Es ist ein wunderbares Gefühl, Post zu bekommen."
     },
     {
       "key": "Briefmarke",
-      "cn": "邮票"
+      "cn": "邮票",
+      "phrase": "eine Briefmarke auf den Umschlag kleben",
+      "example": "Die Briefmarke kostet 85 Cent."
     },
     {
       "key": "Umschlag",
-      "cn": "信封"
+      "cn": "信封",
+      "phrase": "der Umschlag, die Umschläge",
+      "example": "Sie steckt den Brief in einen Umschlag."
     },
     {
       "key": "Briefkasten",
-      "cn": "信箱"
+      "cn": "信箱",
+      "phrase": "der Briefkasten, die Briefkästen",
+      "example": "Er wirft den Brief in den Briefkasten."
     },
     {
       "key": "geworfen",
       "word": "geworfen",
-      "cn": "投、扔"
+      "cn": "投、扔",
+      "phrase": "den Brief in den Briefkasten werfen",
+      "example": "Der Brief wurde in den Briefkasten geworfen."
     },
     {
       "key": "gebracht",
       "word": "gebracht",
-      "cn": "带来、送到"
+      "cn": "带来、送到",
+      "phrase": "den Brief nach Hause bringen",
+      "example": "Der Postbote hat den Brief gebracht."
     },
     {
       "key": "Erfahrung",
-      "cn": "经验、体验"
+      "cn": "经验、体验",
+      "phrase": "Erfahrung machen / Erfahrung mit etwas haben",
+      "example": "Mit dem Handy macht man eine ganz andere Erfahrung."
     },
     {
       "key": "Bildschirm",
-      "cn": "屏幕"
+      "cn": "屏幕",
+      "phrase": "vor dem Bildschirm sitzen",
+      "example": "Er sitzt den ganzen Tag vor dem Bildschirm."
     },
     {
       "key": "E-Mails",
       "word": "E-Mails",
-      "cn": "电子邮件"
+      "cn": "电子邮件",
+      "phrase": "E-Mails beantworten / schreiben",
+      "example": "Ich muss jeden Tag viele E-Mails beantworten."
     },
     {
       "key": "Anrufe",
       "word": "Anrufe",
-      "cn": "电话来电"
+      "cn": "电话来电",
+      "phrase": "Anrufe bekommen / entgegennehmen",
+      "example": "Nach Feierabend kommen noch private Anrufe."
     },
     {
       "key": "Kollegen",
       "word": "Kollegen",
-      "cn": "同事"
+      "cn": "同事",
+      "phrase": "mit Kollegen zusammenarbeiten",
+      "example": "Meine Kollegen kommen aus aller Welt."
     },
     {
       "key": "Kunden",
       "word": "Kunden",
-      "cn": "客户"
+      "cn": "客户",
+      "phrase": "Kunden betreuen / beraten",
+      "example": "Die Kunden sind mit dem Service zufrieden."
     },
     {
       "key": "erreichbar",
-      "cn": "可联系的、可到达的"
+      "cn": "可联系的、可到达的",
+      "phrase": "telefonisch/per E-Mail erreichbar sein",
+      "example": "Dank Smartphone bin ich immer erreichbar."
     },
     {
       "key": "Geräte",
       "word": "Geräte",
-      "cn": "设备"
+      "cn": "设备",
+      "phrase": "digitale / elektronische Geräte",
+      "example": "Ohne digitale Geräte können wir kaum noch leben."
     },
     {
       "key": "ermöglicht",
       "word": "ermöglicht",
-      "cn": "使……成为可能"
+      "cn": "使……成为可能",
+      "phrase": "etwas ermöglicht etwas",
+      "example": "Das Internet ermöglicht weltweite Kommunikation."
     },
     {
       "key": "Erreichbarkeit",
-      "cn": "可联系性"
+      "cn": "可联系性",
+      "phrase": "ständige Erreichbarkeit",
+      "example": "Die ständige Erreichbarkeit kann zur Belastung werden."
     },
     {
       "key": "Belastung",
-      "cn": "负担、压力"
+      "cn": "负担、压力",
+      "phrase": "eine Belastung / zur Belastung werden",
+      "example": "Der Stress im Büro ist eine große Belastung."
     },
     {
       "key": "Offline-Urlaub",
-      "cn": "断网休假"
+      "cn": "断网休假",
+      "phrase": "einen Offline-Urlaub machen",
+      "example": "Im Offline-Urlaub verzichtet man auf Internet und Handy."
     },
     {
       "key": "Stress",
-      "cn": "压力"
+      "cn": "压力",
+      "phrase": "digitaler Stress / unter Stress stehen",
+      "example": "Vom digitalen Stress möchte er sich erholen."
     },
     {
       "key": "abzuschalten",
       "word": "abzuschalten",
-      "cn": "关掉、断开（放松）"
+      "cn": "关掉、断开（放松）",
+      "phrase": "vom Stress abschalten / das Handy abschalten",
+      "example": "Im Urlaub kann ich endlich abschalten."
     },
     {
       "key": "geteilt",
       "word": "geteilt",
-      "cn": "分享"
+      "cn": "分享",
+      "phrase": "Fotos / Momente mit Freunden teilen",
+      "example": "Die Urlaubsfotos wurden auf Instagram geteilt."
     },
     {
       "key": "gepostet",
       "word": "gepostet",
-      "cn": "发布（帖子）"
+      "cn": "发布（帖子）",
+      "phrase": "Fotos / Beiträge im Internet posten",
+      "example": "Sie hat ein neues Foto auf ihrem Profil gepostet."
     },
     {
       "key": "Tablet",
-      "cn": "平板电脑"
+      "cn": "平板电脑",
+      "phrase": "das Tablet, -s",
+      "example": "Mit dem Tablet kann man bequem im Internet surfen."
     },
     {
       "key": "Kommunikationsmittel",
-      "cn": "通信工具"
+      "cn": "通信工具",
+      "phrase": "das Kommunikationsmittel, -",
+      "example": "Das Smartphone ist heute ein wichtiges Kommunikationsmittel."
     },
     {
       "key": "einsetzen",
       "word": "einsetzen",
-      "cn": "使用、投入"
+      "cn": "使用、投入",
+      "phrase": "etwas gezielt zum Lernen einsetzen",
+      "example": "Sie setzt ihr Tablet auch zum Lernen ein."
     },
     {
       "key": "Online-Vorlesungen",
       "word": "Online-Vorlesungen",
-      "cn": "在线课程"
+      "cn": "在线课程",
+      "phrase": "an einer Online-Vorlesung teilnehmen",
+      "example": "Online-Vorlesungen werden an vielen Unis angeboten."
     },
     {
       "key": "angeboten",
       "word": "angeboten",
-      "cn": "提供"
+      "cn": "提供",
+      "phrase": "einen Kurs / eine Vorlesung anbieten",
+      "example": "Dieses Semester werden zwei Online-Kurse angeboten."
     },
     {
       "key": "Lernplattform",
-      "cn": "学习平台"
+      "cn": "学习平台",
+      "phrase": "die Lernplattform, -en",
+      "example": "Die Lernmaterialien stehen auf einer Lernplattform."
     },
     {
       "key": "Lernaufgaben",
       "word": "Lernaufgaben",
-      "cn": "学习任务"
+      "cn": "学习任务",
+      "phrase": "Lernaufgaben online erledigen",
+      "example": "Die Lernaufgaben müssen bis Freitag erledigt werden."
     },
     {
       "key": "erledigt",
       "word": "erledigt",
-      "cn": "完成（任务）"
+      "cn": "完成（任务）",
+      "phrase": "Aufgaben / Arbeiten erledigen",
+      "example": "Hast du deine Hausaufgaben schon erledigt?"
     },
     {
       "key": "Netzwerken",
       "word": "Netzwerken",
-      "cn": "网络"
+      "cn": "网络",
+      "phrase": "soziale Netzwerke",
+      "example": "In sozialen Netzwerken kann man interessante Kanäle abonnieren."
     },
     {
       "key": "Kanäle",
       "word": "Kanäle",
-      "cn": "频道"
+      "cn": "频道",
+      "phrase": "einen Kanal abonnieren / interessante Kanäle",
+      "example": "Welche YouTube-Kanäle abonnierst du?"
     },
     {
       "key": "abonniert",
       "word": "abonniert",
-      "cn": "订阅"
+      "cn": "订阅",
+      "phrase": "einen Newsletter / Kanal abonnieren",
+      "example": "Ich habe den Sprachlern-Kanal abonniert."
     },
     {
       "key": "unabhängig",
-      "cn": "独立的"
+      "cn": "独立的",
+      "phrase": "zeitlich und räumlich unabhängig sein",
+      "example": "Digitales Lernen macht zeitlich und räumlich unabhängig."
     },
     {
       "key": "Inhalt",
-      "cn": "内容"
+      "cn": "内容",
+      "phrase": "der Inhalt, -e / Lerninhalte",
+      "example": "Die Inhalte können nach eigenem Bedarf gewählt werden."
     },
     {
       "key": "Bedarf",
-      "cn": "需求"
+      "cn": "需求",
+      "phrase": "nach eigenem Bedarf",
+      "example": "Die Lernzeit kann man nach eigenem Bedarf einteilen."
     },
     {
       "key": "Tempo",
-      "cn": "速度、节奏"
+      "cn": "速度、节奏",
+      "phrase": "das Tempo (Sg.) / im eigenen Tempo",
+      "example": "Jeder lernt in seinem eigenen Tempo."
     },
     {
       "key": "behandelt",
       "word": "behandelt",
-      "cn": "处理、对待"
+      "cn": "处理、对待",
+      "phrase": "ein Thema / Inhalte behandeln",
+      "example": "Im Kurs werden verschiedene Themen behandelt."
     },
     {
       "key": "vertieft",
       "word": "vertieft",
-      "cn": "加深、深入学习"
+      "cn": "加深、深入学习",
+      "phrase": "Kenntnisse vertiefen / Inhalte vertiefen",
+      "example": "Wer möchte, kann die Inhalte vertiefen."
     },
     {
       "key": "verfügbar",
-      "cn": "可用的、可获得的"
+      "cn": "可用的、可获得的",
+      "phrase": "zu jeder Uhrzeit verfügbar",
+      "example": "Die Lernmaterialien sind jederzeit verfügbar."
     },
     {
       "key": "bedauerlich",
-      "cn": "令人遗憾的"
+      "cn": "令人遗憾的",
+      "phrase": "es ist bedauerlich, dass ...",
+      "example": "Es ist bedauerlich, dass der Kurs online stattfindet."
     },
     {
       "key": "Kommilitonen",
       "word": "Kommilitonen",
-      "cn": "大学同学"
+      "cn": "大学同学",
+      "phrase": "die Kommilitonen (Pl. von der Kommilitone)",
+      "example": "Meine Kommilitonen und ich lernen zusammen Deutsch."
     }
   ],
   "grammar": {

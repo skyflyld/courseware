@@ -1,0 +1,519 @@
+{
+  "meta": {
+    "lektion": "8",
+    "title": "Was will ich werden?",
+    "subtitle": "职业选择·Berufswahl",
+    "grammarTopic": "并列连词 (Konjunktionen)",
+    "objectives": [
+      "了解德国年轻人的职业和大学选择现状",
+      "理解性别与职业选择的关联",
+      "掌握并列连词的使用",
+      "运用相关词汇描述职业选择"
+    ],
+    "navLabels": [
+      "首页",
+      "课文讲解",
+      "重点词汇",
+      "语法·并列连词",
+      "练习"
+    ],
+    "sectionTitles": {
+      "text": "课文讲解 · Textanalyse",
+      "vocab": "重点词汇 · Wortschatz",
+      "grammar": "语法 · Grammatik",
+      "exercise": "练习 · Übungen"
+    }
+  },
+  "texts": [
+    {
+      "id": "T1",
+      "title": "T1 · Berufswahlverhalten / Studienwahl",
+      "summary": "Studie zeigt: Frauen→Büro/Medizin, Männer→Technik; BWL ist bei beiden beliebt. Nur 19% der Studienanfänger wählen MINT-Fächer.",
+      "paragraphs": [
+        "Die Berufswahl von jungen Frauen und Männern in Deutschland %%unterscheiden%% sich weiterhin deutlich. Zu diesem %%Ergebnis%% kommt eine aktuelle %%Untersuchung%% der Bundesagentur für Arbeit. Bei jungen Frauen stehen soziale und kaufmännische Berufe sowie medizinische %%Fachberufe%% %%ganz oben%%, zum Beispiel %%Kauffrau%% für Büromanagement und medizinische %%Fachangestellte%%. Bei Männern sind dagegen %%technisch%% Berufe am beliebtesten, vor allem Kfz-Mechatroniker, Fachinformatiker und Elektroniker.",
+        "Im Vergleich zu den Vorjahren unverändert geblieben ist, dass bei den Studienanfängerinnen und Studienanfängern %%beiderlei%% %%Geschlechts%% die Betriebswirtschaftslehre (BWL) auf Platz eins der %%beliebtesten%% Studienfächer liegt. Auch die medizinischen Fächer wie Humanmedizin, Pharmazie und Psychologie sind %%nach wie vor%% stark %%nachgefragt%%."
+      ]
+    },
+    {
+      "id": "T2",
+      "title": "T2 · Berufe jenseits von Klischees",
+      "subTitle": "Lieber Werkstatt statt Schreibtisch",
+      "by": "Erika (22), Elektronikerin",
+      "summary": "Erika: Abitur→Ausbildung zur Elektronikerin. Als einzige Frau im Team→durchsetzungsfähiger geworden. „Meine Kollegen sprechen Probleme direkt an.",
+      "paragraphs": [
+        "Erika (22) wird zur Elektronikerin für %%Energie- und Gebäudetechnik%% %%ausgebildet%%. Nach dem %%Gymnasium%% fing sie eine Ausbildung in diesem Beruf an. Sie ist überzeugt: „Ich bin froh, dass ich mich nach dem Abi nicht für ein %%langweiliges%% Studium %%entschieden%% habe, sondern lieber in die Werkstatt gegangen bin.' Ihr Beruf biete viel %%Abwechslung%% und sie %%traue%% sich inzwischen, auch Dinge zu tun, die sie vorher nicht gemacht habe.",
+        "Auf die Frage, was sie in dem Beruf gelernt habe, antwortet Erika: Ich habe gelernt, dass frau in einem Männerberuf %%durchsetzungsfähig%% wird. Ich bin viel durchsetzungsfähiger geworden. Schon allein dadurch, dass ich meistens die einzige Frau auf der Baustelle bin.' Zudem hat sie gelernt, Konflikte offen anzusprechen: Meine Kollegen sprechen Probleme immer direkt an. Das mag ich sehr. Bei uns wird nicht lange %%herumgeredet%%, sondern %%angepackt%%."
+      ]
+    },
+    {
+      "id": "T3",
+      "title": "Mit Kopf und Herz dabei sein · Simon",
+      "by": "Simon (männlicher Erzieher)",
+      "summary": "Simon: wusste früh→Ausbildung zum Erzieher→Praktika im Kindergarten→Geduld, Kreativität und Einfühlungsvermögen sind wichtig. „Man sollte mit dem Herzen dabei sein.\"",
+      "paragraphs": [
+        "Simon wusste früh, was er werden wollte. „Ich habe %%Lust darauf%%, mit Kindern und Jugendlichen zu arbeiten\", %%erzählt%% Simon. Deshalb hat er sich %%bewusst%% für eine %%Ausbildung%% zum %%Erzieher%% entschieden. Der %%sozial%%e Bereich hat ihn schon immer interessiert.",
+        "%%Während%% seiner Schulzeit hat er zwei %%Praktika%% im %%Kindergarten%% gemacht und dadurch die %%Aufgaben%% von Erziehern %%kennengelernt%%. Es gehört z. B. zu seinen Aufgaben, Kinder zu %%betreuen%% und zu %%unterstützen%% sowie auf ihr %%Verhalten%% zu achten.",
+        "Auf die Frage, welche %%Stärken%% er für den Beruf %%mitbringt%%, meint Simon: „%%Geduld%%, %%Kreativität%% und %%Einfühlungsvermögen%% sind sehr wichtig – die wichtigste Fähigkeit für Erzieher ist also Einfühlungsvermögen.\" Das heißt, ich %%merke%%, wenn es einem Kind nicht gut geht. Ich höre ihm zu und %%helfe%% ihm. Simon %%rät%%: „Wenn man Erzieher werden möchte, sollte man mit dem %%Herz%% dabei sein, nicht nur mit dem %%Kopf%%.\""
+      ],
+      "fullTitle": "Mit Kopf und Herz dabei sein",
+      "subTitle": "Simon · Mit Kopf und Herz dabei sein"
+    }
+  ],
+  "vocab": [
+    {
+      "key": "unterscheiden",
+      "word": "unterscheiden",
+      "cn": "有区别",
+      "phrase": "sich unterscheiden",
+      "example": "Die Berufswahl unterscheidet sich nach Geschlecht."
+    },
+    {
+      "key": "Ergebnis",
+      "word": "Ergebnis",
+      "cn": "结果",
+      "phrase": "zu diesem Ergebnis kommen",
+      "example": "Die Studie kommt zu einem klaren Ergebnis."
+    },
+    {
+      "key": "Untersuchung",
+      "word": "Untersuchung",
+      "cn": "调查",
+      "phrase": "eine Untersuchung der Bundesagentur",
+      "example": "Die Untersuchung zeigt deutliche Unterschiede."
+    },
+    {
+      "key": "Fachberufe",
+      "word": "Fachberufe",
+      "cn": "专业技术职业",
+      "phrase": "medizinische Fachberufe",
+      "example": "Viele Frauen wählen medizinische Fachberufe."
+    },
+    {
+      "key": "ganz oben",
+      "word": "ganz oben",
+      "cn": "排在最前面",
+      "phrase": "ganz oben stehen",
+      "example": "Soziale Berufe stehen ganz oben."
+    },
+    {
+      "key": "Kauffrau",
+      "word": "Kauffrau",
+      "cn": "女商人、女职员",
+      "phrase": "Kauffrau für Büromanagement",
+      "example": "Sie arbeitet als Kauffrau."
+    },
+    {
+      "key": "Fachangestellte",
+      "word": "Fachangestellte",
+      "cn": "专业人员、技术助理",
+      "phrase": "medizinische Fachangestellte",
+      "example": "Sie ist medizinische Fachangestellte."
+    },
+    {
+      "key": "technisch",
+      "word": "technische",
+      "cn": "技术的",
+      "phrase": "technische Berufe",
+      "example": "Technische Berufe sind bei Männern beliebt."
+    },
+    {
+      "key": "beiderlei",
+      "word": "beiderlei",
+      "cn": "两性的",
+      "phrase": "beiderlei Geschlechts",
+      "example": "Studienanfänger beiderlei Geschlechts."
+    },
+    {
+      "key": "Geschlechts",
+      "word": "Geschlechts",
+      "cn": "性别",
+      "phrase": "beiderlei Geschlechts",
+      "example": "Die Umfrage gilt für beide Geschlechter."
+    },
+    {
+      "key": "beliebtesten",
+      "word": "beliebtesten",
+      "cn": "受欢迎的",
+      "phrase": "die beliebtesten Fächer",
+      "example": "BWL ist das beliebteste Studienfach."
+    },
+    {
+      "key": "nach wie vor",
+      "word": "nach wie vor",
+      "cn": "一如既往",
+      "phrase": "nach wie vor stark nachgefragt",
+      "example": "Medizin ist nach wie vor beliebt."
+    },
+    {
+      "key": "nachgefragt",
+      "word": "nachgefragt",
+      "cn": "需求、询问",
+      "phrase": "stark nachgefragt",
+      "example": "Diese Fächer sind stark nachgefragt."
+    },
+    {
+      "key": "Energie- und Gebäudetechnik",
+      "word": "Energie- und Gebäudetechnik",
+      "cn": "能源与建筑技术",
+      "phrase": "Elektronikerin für Energie- und Gebäudetechnik"
+    },
+    {
+      "key": "ausgebildet",
+      "word": "ausgebildet",
+      "cn": "培训、培养",
+      "phrase": "zur Elektronikerin ausgebildet werden"
+    },
+    {
+      "key": "Gymnasium",
+      "word": "Gymnasium",
+      "cn": "文理中学",
+      "phrase": "nach dem Gymnasium",
+      "example": "Nach dem Gymnasium machte sie eine Ausbildung."
+    },
+    {
+      "key": "langweiliges",
+      "word": "langweiliges",
+      "cn": "无聊的",
+      "phrase": "ein langweiliges Studium",
+      "example": "Sie wollte kein langweiliges Studium."
+    },
+    {
+      "key": "entschieden",
+      "word": "entschieden",
+      "cn": "决定",
+      "phrase": "sich für eine Ausbildung entscheiden"
+    },
+    {
+      "key": "Abwechslung",
+      "word": "Abwechslung",
+      "cn": "变化、多样性",
+      "phrase": "viel Abwechslung bieten",
+      "example": "Ihr Beruf bietet viel Abwechslung."
+    },
+    {
+      "key": "traue",
+      "word": "traue",
+      "cn": "敢于",
+      "phrase": "sich trauen, etwas zu tun",
+      "example": "Sie traut sich, neue Dinge zu tun."
+    },
+    {
+      "key": "durchsetzungsfähig",
+      "word": "durchsetzungsfähig",
+      "cn": "有贯彻力",
+      "phrase": "durchsetzungsfähig werden",
+      "example": "Sie wurde durchsetzungsfähiger."
+    },
+    {
+      "key": "herumgeredet",
+      "word": "herumgeredet",
+      "cn": "绕圈子说话",
+      "phrase": "nicht lange herumreden",
+      "example": "Bei uns wird nicht herumgeredet."
+    },
+    {
+      "key": "angepackt",
+      "word": "angepackt",
+      "cn": "动手处理",
+      "phrase": "anpacken",
+      "example": "Probleme werden direkt angepackt."
+    },
+    {
+      "key": "Ausbildung",
+      "word": "Ausbildung",
+      "cn": "职业培训",
+      "phrase": "eine Ausbildung machen",
+      "example": "Er macht eine Ausbildung."
+    },
+    {
+      "key": "Erzieher",
+      "word": "Erzieher",
+      "cn": "教育工作者、幼师",
+      "phrase": "Ausbildung zum Erzieher",
+      "example": "Simon wird Erzieher."
+    },
+    {
+      "key": "Geduld",
+      "word": "Geduld",
+      "cn": "耐心",
+      "phrase": "Geduld haben",
+      "example": "Geduld ist wichtig."
+    },
+    {
+      "key": "Kreativität",
+      "word": "Kreativität",
+      "cn": "创造力",
+      "phrase": "Kreativität zeigen",
+      "example": "Kreativität ist wichtig."
+    },
+    {
+      "key": "Herz",
+      "word": "Herz",
+      "cn": "心",
+      "phrase": "mit dem Herzen dabei sein",
+      "example": "Mit Herz und Kopf."
+    },
+    {
+      "key": "Lust darauf",
+      "cn": "对…有兴趣",
+      "phrase": "Freude an etwas haben"
+    },
+    {
+      "key": "erzählt",
+      "cn": "讲述",
+      "phrase": "etwas mündlich berichten"
+    },
+    {
+      "key": "bewusst",
+      "cn": "有意识地决定",
+      "phrase": "mit Absicht: Er hat sich bewusst für diesen Beruf entschieden"
+    },
+    {
+      "key": "sozial",
+      "word": "sozial",
+      "cn": "社会的",
+      "phrase": "die Gesellschaft betreffend"
+    },
+    {
+      "key": "Während",
+      "word": "während",
+      "cn": "在…期间",
+      "phrase": "in der Zeit, als"
+    },
+    {
+      "key": "Praktika",
+      "word": "Praktika (Pl.)",
+      "cn": "实习",
+      "phrase": "mehrere Praktika: zwei Praktika im Kindergarten"
+    },
+    {
+      "key": "Kindergarten",
+      "word": "der Kindergarten",
+      "cn": "幼儿园",
+      "phrase": "die Einrichtung für Kinder"
+    },
+    {
+      "key": "Aufgaben",
+      "word": "Aufgaben",
+      "cn": "任务",
+      "phrase": "die Tätigkeiten: die Aufgaben eines Erziehers"
+    },
+    {
+      "key": "kennengelernt",
+      "cn": "了解、认识",
+      "phrase": "jemanden oder etwas kennenlernen"
+    },
+    {
+      "key": "betreuen",
+      "word": "betreuen",
+      "cn": "照顾",
+      "phrase": "sich um jemanden kümmern"
+    },
+    {
+      "key": "unterstützen",
+      "word": "unterstützen",
+      "cn": "支持",
+      "phrase": "jemandem helfen"
+    },
+    {
+      "key": "Verhalten",
+      "word": "das Verhalten",
+      "cn": "行为、举止",
+      "phrase": "das Benehmen: auf das Verhalten der Kinder achten"
+    },
+    {
+      "key": "achten",
+      "word": "achten",
+      "cn": "注意、关注",
+      "phrase": "auf jdn./etw. achten: auf die Kinder achten"
+    },
+    {
+      "key": "Stärken",
+      "word": "Stärken",
+      "cn": "优势、长处",
+      "phrase": "die positiven Eigenschaften: welche Stärken er mitbringt"
+    },
+    {
+      "key": "mitbringt",
+      "cn": "带来",
+      "phrase": "etwas als Eigenschaft haben"
+    },
+    {
+      "key": "Einfühlungsvermögen",
+      "word": "Einfühlungsvermögen",
+      "cn": "同理心、共情能力",
+      "phrase": "die Fähigkeit, sich in andere hineinzuversetzen"
+    },
+    {
+      "key": "merke",
+      "cn": "注意到",
+      "phrase": "etwas bemerken"
+    },
+    {
+      "key": "helfe",
+      "cn": "帮助",
+      "phrase": "jemandem Unterstützung geben"
+    },
+    {
+      "key": "rät",
+      "cn": "建议",
+      "phrase": "jemandem einen Rat geben"
+    },
+    {
+      "key": "Kopf",
+      "word": "der Kopf",
+      "cn": "头、头脑",
+      "phrase": "der oberste Teil des Körpers; auch: Verstand"
+    }
+  ],
+  "grammar": {
+    "tables": [
+      {
+        "type": "conjunction",
+        "title": "并列连词 Übersicht",
+        "headers": [
+          "连词",
+          "含义",
+          "功能",
+          "例句"
+        ],
+        "rows": [
+          [
+            "und",
+            "和、以及",
+            "列举、并列",
+            "Ich lerne Deutsch %%und%% mein Bruder lernt Englisch."
+          ],
+          [
+            "oder",
+            "或者",
+            "选择",
+            "Möchtest du studieren %%oder%% eine Ausbildung machen?"
+          ],
+          [
+            "aber",
+            "但是",
+            "转折",
+            "Er ist jung, %%aber%% sehr erfahren."
+          ],
+          [
+            "denn",
+            "因为",
+            "原因",
+            "Sie wird Elektronikerin, %%denn%% Technik interessiert sie."
+          ],
+          [
+            "sondern",
+            "而是",
+            "否定后纠正",
+            "nicht A, %%sondern%% B: Sie studiert nicht, %%sondern%% macht eine Ausbildung."
+          ],
+          [
+            "zwar … aber",
+            "虽然…但是",
+            "转折让步",
+            "Er ist %%zwar%% jung, %%aber%% sehr tüchtig."
+          ],
+          [
+            "nicht nur … sondern auch",
+            "不仅…而且",
+            "递进",
+            "Sie kann %%nicht nur%% Deutsch, %%sondern auch%% Englisch."
+          ],
+          [
+            "sowohl … als auch",
+            "既…又",
+            "并列强调",
+            "%%Sowohl%% Jungen %%als auch%% Mädchen wählen technische Berufe."
+          ]
+        ]
+      }
+    ],
+    "examples": [
+      {
+        "de": "Erika macht eine Ausbildung, denn sie liebt die praktische Arbeit.",
+        "zh": "Erika 在做职业培训，因为她喜欢实践"
+      },
+      {
+        "de": "Simon wird nicht Ingenieur, sondern Erzieher.",
+        "zh": "Simon 不做工程师，而是做幼师"
+      }
+    ]
+  },
+  "quiz": [
+    {
+      "q": "Welche Berufe sind bei Frauen am beliebtesten?",
+      "options": [
+        "Kfz-Mechatroniker, Fachinformatiker",
+        "Kauffrau für Büromanagement, med. Fachangestellte",
+        "Elektroniker, Metalltechniker",
+        "Bauer, Gärtner"
+      ],
+      "answer": "B"
+    },
+    {
+      "q": "Welches Fach liegt bei Studienanfängern beider Geschlechter auf Platz eins?",
+      "options": [
+        "Informatik",
+        "Betriebswirtschaftslehre (BWL)",
+        "Maschinenbau",
+        "Psychologie"
+      ],
+      "answer": "B"
+    },
+    {
+      "q": "Was hat Erika nach dem Gymnasium gemacht?",
+      "options": [
+        "Sie hat studiert.",
+        "Sie hat eine Ausbildung zur Elektronikerin gemacht.",
+        "Sie hat im Büro gearbeitet.",
+        "Sie ist ins Ausland gegangen."
+      ],
+      "answer": "B"
+    },
+    {
+      "q": "Erika ist durchsetzungsfähiger geworden, ______________.",
+      "options": [
+        "weil sie viel gelernt hat",
+        "weil sie meistens als einzige Frau mit Männern zusammenarbeitet",
+        "weil sie eine neue Stelle bekommen hat",
+        "weil sie eine Prüfung bestanden hat"
+      ],
+      "answer": "B"
+    }
+  ],
+  "matchingPairs": [
+    [
+      "die Ausbildung",
+      "职业培训"
+    ],
+    [
+      "der Berufswunsch",
+      "职业愿望"
+    ],
+    [
+      "die Kreativität",
+      "创造力"
+    ],
+    [
+      "die Geduld",
+      "耐心"
+    ],
+    [
+      "die Elektronikerin",
+      "女电工"
+    ],
+    [
+      "die Werkstatt",
+      "车间"
+    ],
+    [
+      "der Erzieher",
+      "幼师"
+    ],
+    [
+      "der Kindergarten",
+      "幼儿园"
+    ]
+  ]
+}

@@ -44,8 +44,8 @@
           "● Bei der %%Meinungsbildung%% sollen die Massenmedien dafür %%sorgen%%, dass Fragen von öffentlichem %%Interesse%% in freier und offener %%Diskussion%% %%erhört%% werden und dass %%Meinungen%% verschiedener %%Interessengruppen%% in die %%Öffentlichkeit%% kommen."
         ],
         [
-          "● Außerdem %%übernehmen%% die Massenmedien eine %%Kontroll%%- und %%Kritikfunktion%%. Sie sollen politische %%Entscheidungen%% %%hinterfragen%% und %%Missstände%% %%aufdecken%%, um dadurch die Arbeit der Politikerinnen und Politiker zu %%kontrollieren%%.",
-          "● Zu den weiteren Aufgaben der Massenmedien gehören aber auch %%Bildungs%%- und %%Unterhaltungsfunktion%%. Die Massenmedien bieten viel %%Kultur%%: Im Fernsehen werden %%Dokumentationen%%, %%Reportagen%% und Magazine, Konzerte, %%Opern%%, %%Theateraufführungen%% und %%anspruchsvolle%% Filme gezeigt. Man schaltet ein, um sich %%einerseits%% zu %%bilden%% und um sich %%andererseits%% auch zu %%unterhalten%% und zu %%entspannen%%.",
+          "● Außerdem %%übernehmen%% die Massenmedien eine Kontroll- und %%Kritikfunktion%%. Sie sollen politische %%Entscheidungen%% %%hinterfragen%% und %%Missstände%% %%aufdecken%%, um dadurch die Arbeit der Politikerinnen und Politiker zu %%kontrollieren%%.",
+          "● Zu den weiteren Aufgaben der Massenmedien gehören aber auch Bildungs- und %%Unterhaltungsfunktion%%. Die Massenmedien bieten viel %%Kultur%%: Im Fernsehen werden %%Dokumentationen%%, %%Reportagen%% und Magazine, Konzerte, %%Opern%%, %%Theateraufführungen%% und %%anspruchsvolle%% Filme gezeigt. Man schaltet ein, um sich %%einerseits%% zu %%bilden%% und um sich %%andererseits%% auch zu %%unterhalten%% und zu %%entspannen%%.",
           "Die Medien und die Personen hinter den Medien arbeiten nicht automatisch %%neutral%% oder ohne eigene %%Interessen%%. Daher ist es wichtig, dass man gegenüber den Medien eine %%kritische%% %%Haltung%% %%einnimmt%% und %%bereit%% ist, nach %%Möglichkeit%% verschiedene %%Darstellungen%% zu %%vergleichen%%."
         ]
       ]
@@ -270,11 +270,6 @@
       "example": "● Außerdem übernehmen die Massenmedien eine Kontroll- und Kritikfunktion. Sie sollen politische Entscheidungen hinterfra"
     },
     {
-      "key": "Kontrollfunktion",
-      "cn": "监督职能",
-      "phrase": "die Kontrollfunktion, -en"
-    },
-    {
       "key": "Kritikfunktion",
       "cn": "批评职能",
       "phrase": "die Kritikfunktion, -en",
@@ -311,11 +306,6 @@
       "cn": "监督、控制",
       "phrase": "die Regierung / die Macht kontrollieren",
       "example": "Die Presse kontrolliert die Regierung."
-    },
-    {
-      "key": "Bildungsfunktion",
-      "cn": "教育职能",
-      "phrase": "die Bildungsfunktion, -en"
     },
     {
       "key": "Unterhaltungsfunktion",

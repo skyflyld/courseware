@@ -1,0 +1,697 @@
+{
+  "meta": {
+    "lektion": "9",
+    "title": "Fit für die Bewerbung!",
+    "subtitle": "求职与应聘 · 求职信 · 面试",
+    "grammarTopic": "lassen 的用法 + 时间介词",
+    "navLabels": [
+      "首页",
+      "课文讲解",
+      "重点词汇",
+      "语法",
+      "练习"
+    ],
+    "sectionTitles": {
+      "text": "课文 · Bewerbung & Vorstellungsgespräch",
+      "vocab": "重点词汇 · Wortschatz (70+)",
+      "grammar": "语法 · Grammatik",
+      "exercise": "练习 · Übungen"
+    },
+    "objectives": [
+      "理解求职信的结构和常用表达",
+      "掌握简历和求职信的书写要点",
+      "了解面试流程（五阶段）和常见问题",
+      "掌握 lassen 的不同用法和时间介词"
+    ]
+  },
+  "texts": [
+    {
+      "id": "T1",
+      "title": "Anna hat ein Bewerbungsschreiben vorbereitet",
+      "subTitle": "安娜准备好了一封求职信",
+      "by": "Entdecken 1",
+      "summary": "Anna 正在申请文化助理实习岗位，她撰写了包含个人背景、实践经验和能力的求职信。",
+      "paragraphs": [
+        "Anna ist Studentin. Sie studiert %%Sinologie%% und %%Betriebswirtschaft%% an der %%Humboldt-Universität%% zu Berlin. Seit dem letzten %%Wintersemester%% besucht sie die %%Fremdsprachenuniversität%% Sichuan. Während des %%Austauschstudium%%s kann sie ihre %%Kenntnisse%% der chinesischen Sprache und Kultur verbessern und ihre %%interkulturellen Kompetenzen%% ausbauen.",
+        "Durch ihr %%Praktikum%% bei der %%Filiale%% der Bank of China in Frankfurt im Jahr 2021 konnte sie wertvolle %%Erfahrungen%% im Bereich Büromanagement und Marketing %%sammeln%%. Sie hat sich – durch die %%Betreuung%% von sozialen Medien – mit den neuen Medien vertraut gemacht.",
+        "Außerdem hat sie zuvor freiwillig als %%Trainerassistentin%% in einem deutschen %%Sportverein%% sowie als Unterrichtsassistentin am Sprachlernzentrum gearbeitet. Bei all diesen %%Tätigkeiten%% hatte sie die Möglichkeit, durch die vielfältigen %%Aufgaben%% – wie die %%Organisation%% von kreativen %%Veranstaltungen%% – ihre %%Organisationsfähigkeiten%% und %%Kreativität%% sowie ihr %%Verantwortungsbewusstsein%% sowohl zu beweisen als auch fortlaufend zu verbessern.",
+        "Ihr Bewerbungsschreiben hat die folgenden Teile: %%Briefkopf%%, %%Betreff%%, %%Anrede%%, %%Einleitung%%, %%Hauptteil%%, %%Schluss%%, %%Gruß%%, %%Unterschrift%% und %%Anlagen%%. Sie bewirbt sich um die Praktikumsstelle als %%Kultur-Assistenz%% bei der Firma GLOBUS Kulturinstitut. In der Einleitung schreibt sie: »Mit großem Interesse habe ich Ihre Anzeige gelesen und möchte mich um diese Stelle bewerben, da sie optimal zu meinen Interessen und Fähigkeiten passt.« Im Schluss: »Ich bin sicher, dass ich meine Kenntnisse und Erfahrungen gewinnbringend in Ihrer Institution einbringen kann. Über eine Einladung zu einem Vorstellungsgespräch würde ich mich sehr freuen.«"
+      ]
+    },
+    {
+      "id": "T2",
+      "title": "Max kommt nun zum Vorstellungsgespräch",
+      "subTitle": "马克斯现在来参加面试了",
+      "by": "Entdecken 2",
+      "summary": "Max 参加面试，经历五阶段（Begrüßung → Smalltalk → Selbstpräsentation → Rückfragen → Verabschiedung），展示了自己的优势和不足。",
+      "paragraphs": [
+        "Max hat die %%Stellenanzeige%% zur Marketing- und Vertriebsassistenz gelesen und möchte sich um die Stelle %%bewerben%%. Er kommt nun zum %%Vorstellungsgespräch%%.",
+        "Max: Guten Tag, ich heiße Max Baumann. Personalchefin: Guten Tag, Herr Baumann, mein Name ist Schröder. »Nehmen Sie doch bitte Platz! Haben Sie den Weg zu uns gut gefunden?« Max: Danke. Ich habe vorher in der Nähe gewohnt. Daher kenne ich den Weg gut.",
+        "Personalchefin: Nun Herr Baumann, Ihre Bewerbung ist ja ganz interessant. »Warum haben Sie sich gerade bei uns beworben?« Max: Ich will schon immer %%Geschäftsmann%% werden. Besonders die %%Messebranche%% interessiert mich. Ich habe in meinem %%Bachelorstudium%% genau Medien- und Eventmanagement studiert.",
+        "Personalchefin: Und warum sind Sie die richtige Person für diese Stelle? Max: Ich bin sehr %%kreativ%%. Ich habe immer viele tolle Ideen. Außerdem habe ich gute %%Umgangsformen%%, finde schnell %%Kontakt%% zu Menschen, kann gut zuhören und auch überzeugen. Das ist wichtig für %%Geschäftskontakte%%. Ich kann %%Englisch%%, %%Französisch%% und %%Spanisch%%.",
+        "Personalchefin: »Haben Sie auch %%Schwächen%%?« Max: Ich bin %%Berufsanfänger%% und habe noch wenig %%Erfahrung%%. Ich bin etwas %%ungeduldig%%, weil ich Dinge immer schnell voranschreiten sehen will. Aber das ist vielleicht gar nicht so schlecht – ich kann mich schnell in eine neue Firma einarbeiten.",
+        "Max fragt: Finden Sie gut, dass man als Marketingassistenz auch die Gelegenheit hat, andere %%Abteilungen%% kennen zu lernen? Personalchefin: Ja, wir lassen die Angestellten anfangs immer eine Zeit lang in verschiedenen Projekten arbeiten.",
+        "Personalchefin: »Was möchten Sie denn %%verdienen%%?« Max: So zwischen 1800 und 2500 Euro pro Monat. Aber die %%Entscheidung%% über das Gehalt liegt natürlich bei Ihnen. Für mich ist es am wichtigsten, dass ich die Stelle bekomme.",
+        "Personalchefin: Nun, Herr Baumann, vielen Dank. Es war schön, dass wir uns kennen gelernt haben. »Sie werden bald von uns hören.« Max: Ich möchte mich auch für die Einladung zu dem Vorstellungsgespräch bedanken."
+      ]
+    }
+  ],
+  "vocab": [
+    {
+      "key": "Sinologie",
+      "cn": "汉学",
+      "phrase": "die Wissenschaft von der chinesischen Sprache und Kultur",
+      "example": "Anna ist Studentin. Sie studiert Sinologie und Betriebswirtschaft an der Humboldt-Universität zu Berlin. Seit dem letzten Wintersemester besucht sie d"
+    },
+    {
+      "key": "Betriebswirtschaft",
+      "cn": "企业经济学",
+      "phrase": "die Wirtschaftswissenschaft eines Unternehmens",
+      "example": "Anna ist Studentin. Sie studiert Sinologie und Betriebswirtschaft an der Humboldt-Universität zu Berlin. Seit dem letzten Wintersemester besucht sie d"
+    },
+    {
+      "key": "Humboldt-Universität",
+      "cn": "柏林洪堡大学",
+      "phrase": "die Universität zu Berlin",
+      "example": "Anna ist Studentin. Sie studiert Sinologie und Betriebswirtschaft an der Humboldt-Universität zu Berlin. Seit dem letzten Wintersemester besucht sie d"
+    },
+    {
+      "key": "Wintersemester",
+      "cn": "冬季学期",
+      "phrase": "das Semester im Winter",
+      "example": "Anna ist Studentin. Sie studiert Sinologie und Betriebswirtschaft an der Humboldt-Universität zu Berlin. Seit dem letzten Wintersemester besucht sie d"
+    },
+    {
+      "key": "Fremdsprachenuniversität",
+      "cn": "外国语大学",
+      "phrase": "die Universität für Fremdsprachen",
+      "example": "Anna ist Studentin. Sie studiert Sinologie und Betriebswirtschaft an der Humboldt-Universität zu Berlin. Seit dem letzten Wintersemester besucht sie d"
+    },
+    {
+      "key": "Austauschstudium",
+      "cn": "交换留学",
+      "phrase": "das Studium im Ausland",
+      "example": "Während des Austauschstudiums kann sie ihre Kenntnisse der chinesischen Sprache verbessern.",
+      "word": "Austauschstudiums"
+    },
+    {
+      "key": "Kenntnisse",
+      "cn": "知识（复数）",
+      "phrase": "das Wissen, die Fähigkeiten",
+      "example": "Anna ist Studentin. Sie studiert Sinologie und Betriebswirtschaft an der Humboldt-Universität zu Berlin. Seit dem letzten Wintersemester besucht sie d"
+    },
+    {
+      "key": "interkulturellen Kompetenzen",
+      "word": "interkulturelle Kompetenzen",
+      "cn": "跨文化能力",
+      "phrase": "die Fähigkeit, mit verschiedenen Kulturen umzugehen",
+      "example": "Anna ist Studentin. Sie studiert Sinologie und Betriebswirtschaft an der Humboldt-Universität zu Berlin. Seit dem letzten Wintersemester besucht sie d"
+    },
+    {
+      "key": "Praktikum",
+      "cn": "实习",
+      "phrase": "die praktische Arbeit als Teil des Studiums",
+      "example": "Durch ihr Praktikum bei der Filiale der Bank of China in Frankfurt im Jahr 2021 konnte sie wertvolle Erfahrungen im Bereich Büromanagement und Marketi"
+    },
+    {
+      "key": "Filiale",
+      "cn": "分行、分公司",
+      "phrase": "eine Zweigstelle einer Bank oder Firma",
+      "example": "Durch ihr Praktikum bei der Filiale der Bank of China in Frankfurt im Jahr 2021 konnte sie wertvolle Erfahrungen im Bereich Büromanagement und Marketi"
+    },
+    {
+      "key": "Erfahrungen",
+      "word": "Erfahrungen",
+      "cn": "经验（复数）",
+      "phrase": "die Kenntnisse aus der Praxis",
+      "example": "Durch ihr Praktikum bei der Filiale der Bank of China in Frankfurt im Jahr 2021 konnte sie wertvolle Erfahrungen im Bereich Büromanagement und Marketi"
+    },
+    {
+      "key": "sammeln",
+      "cn": "收集、积累",
+      "phrase": "etwas zusammentragen: Erfahrungen sammeln",
+      "example": "Durch ihr Praktikum bei der Filiale der Bank of China in Frankfurt im Jahr 2021 konnte sie wertvolle Erfahrungen im Bereich Büromanagement und Marketi"
+    },
+    {
+      "key": "Betreuung",
+      "cn": "照管、负责",
+      "phrase": "die Verantwortung für etwas",
+      "example": "Durch ihr Praktikum bei der Filiale der Bank of China in Frankfurt im Jahr 2021 konnte sie wertvolle Erfahrungen im Bereich Büromanagement und Marketi"
+    },
+    {
+      "key": "Trainerassistentin",
+      "cn": "教练助理",
+      "phrase": "die Assistentin eines Trainers",
+      "example": "Außerdem hat sie zuvor freiwillig als Trainerassistentin in einem deutschen Sportverein sowie als Unterrichtsassistentin am Sprachlernzentrum gearbeit"
+    },
+    {
+      "key": "Sportverein",
+      "cn": "体育协会",
+      "phrase": "ein Verein für sportliche Aktivitäten",
+      "example": "Außerdem hat sie zuvor freiwillig als Trainerassistentin in einem deutschen Sportverein sowie als Unterrichtsassistentin am Sprachlernzentrum gearbeit"
+    },
+    {
+      "key": "Tätigkeiten",
+      "word": "Tätigkeiten",
+      "cn": "活动、工作（复数）",
+      "phrase": "die Aufgaben, die man macht",
+      "example": "Außerdem hat sie zuvor freiwillig als Trainerassistentin in einem deutschen Sportverein sowie als Unterrichtsassistentin am Sprachlernzentrum gearbeit"
+    },
+    {
+      "key": "Aufgaben",
+      "word": "Aufgaben",
+      "cn": "任务（复数）",
+      "phrase": "die Arbeiten, die zu erledigen sind",
+      "example": "Außerdem hat sie zuvor freiwillig als Trainerassistentin in einem deutschen Sportverein sowie als Unterrichtsassistentin am Sprachlernzentrum gearbeit"
+    },
+    {
+      "key": "Organisation",
+      "cn": "组织、安排",
+      "phrase": "die Planung und Durchführung",
+      "example": "Außerdem hat sie zuvor freiwillig als Trainerassistentin in einem deutschen Sportverein sowie als Unterrichtsassistentin am Sprachlernzentrum gearbeit"
+    },
+    {
+      "key": "Veranstaltungen",
+      "word": "Veranstaltungen",
+      "cn": "活动、事件（复数）",
+      "phrase": "Events, Feste, Konferenzen",
+      "example": "Außerdem hat sie zuvor freiwillig als Trainerassistentin in einem deutschen Sportverein sowie als Unterrichtsassistentin am Sprachlernzentrum gearbeit"
+    },
+    {
+      "key": "Organisationsfähigkeiten",
+      "cn": "组织能力（复数）",
+      "phrase": "die Fähigkeit, Dinge zu organisieren",
+      "example": "Außerdem hat sie zuvor freiwillig als Trainerassistentin in einem deutschen Sportverein sowie als Unterrichtsassistentin am Sprachlernzentrum gearbeit"
+    },
+    {
+      "key": "Kreativität",
+      "cn": "创造力",
+      "phrase": "die Fähigkeit, Neues zu schaffen",
+      "example": "Außerdem hat sie zuvor freiwillig als Trainerassistentin in einem deutschen Sportverein sowie als Unterrichtsassistentin am Sprachlernzentrum gearbeit"
+    },
+    {
+      "key": "Verantwortungsbewusstsein",
+      "cn": "责任感",
+      "phrase": "das Bewusstsein für Verantwortung",
+      "example": "Außerdem hat sie zuvor freiwillig als Trainerassistentin in einem deutschen Sportverein sowie als Unterrichtsassistentin am Sprachlernzentrum gearbeit"
+    },
+    {
+      "key": "Briefkopf",
+      "cn": "信头",
+      "phrase": "der obere Teil eines Briefes mit Absenderangaben",
+      "example": "Ihr Bewerbungsschreiben hat die folgenden Teile: Briefkopf, Betreff, Anrede, Einleitung, Hauptteil, Schluss, Gruß, Unterschrift und Anlagen. Sie bewir"
+    },
+    {
+      "key": "Betreff",
+      "cn": "事由、主题行",
+      "phrase": "der Titel eines Briefes",
+      "example": "Ihr Bewerbungsschreiben hat die folgenden Teile: Briefkopf, Betreff, Anrede, Einleitung, Hauptteil, Schluss, Gruß, Unterschrift und Anlagen. Sie bewir"
+    },
+    {
+      "key": "Anrede",
+      "cn": "称呼",
+      "phrase": "die förmliche Anrede im Brief",
+      "example": "Ihr Bewerbungsschreiben hat die folgenden Teile: Briefkopf, Betreff, Anrede, Einleitung, Hauptteil, Schluss, Gruß, Unterschrift und Anlagen. Sie bewir"
+    },
+    {
+      "key": "Einleitung",
+      "cn": "引言",
+      "phrase": "der erste Teil eines Textes",
+      "example": "Ihr Bewerbungsschreiben hat die folgenden Teile: Briefkopf, Betreff, Anrede, Einleitung, Hauptteil, Schluss, Gruß, Unterschrift und Anlagen. Sie bewir"
+    },
+    {
+      "key": "Hauptteil",
+      "cn": "主体部分",
+      "phrase": "der zentrale Teil eines Textes",
+      "example": "Ihr Bewerbungsschreiben hat die folgenden Teile: Briefkopf, Betreff, Anrede, Einleitung, Hauptteil, Schluss, Gruß, Unterschrift und Anlagen. Sie bewir"
+    },
+    {
+      "key": "Schluss",
+      "cn": "结尾",
+      "phrase": "der letzte Teil eines Textes",
+      "example": "Ihr Bewerbungsschreiben hat die folgenden Teile: Briefkopf, Betreff, Anrede, Einleitung, Hauptteil, Schluss, Gruß, Unterschrift und Anlagen. Sie bewir"
+    },
+    {
+      "key": "Gruß",
+      "cn": "问候",
+      "phrase": "die Grußformel am Ende des Briefes",
+      "example": "Ihr Bewerbungsschreiben hat die folgenden Teile: Briefkopf, Betreff, Anrede, Einleitung, Hauptteil, Schluss, Gruß, Unterschrift und Anlagen. Sie bewir"
+    },
+    {
+      "key": "Unterschrift",
+      "cn": "签名",
+      "phrase": "der eigenhändige Name am Ende",
+      "example": "Ihr Bewerbungsschreiben hat die folgenden Teile: Briefkopf, Betreff, Anrede, Einleitung, Hauptteil, Schluss, Gruß, Unterschrift und Anlagen. Sie bewir"
+    },
+    {
+      "key": "Anlagen",
+      "cn": "附件（复数）",
+      "phrase": "die beigelegten Dokumente",
+      "example": "Ihr Bewerbungsschreiben hat die folgenden Teile: Briefkopf, Betreff, Anrede, Einleitung, Hauptteil, Schluss, Gruß, Unterschrift und Anlagen. Sie bewir"
+    },
+    {
+      "key": "Kultur-Assistenz",
+      "cn": "文化助理",
+      "phrase": "die Assistentin im Kulturbereich",
+      "example": "Ihr Bewerbungsschreiben hat die folgenden Teile: Briefkopf, Betreff, Anrede, Einleitung, Hauptteil, Schluss, Gruß, Unterschrift und Anlagen. Sie bewir"
+    },
+    {
+      "key": "Stellenanzeige",
+      "cn": "招聘广告",
+      "phrase": "die Anzeige für eine freie Stelle",
+      "example": "Max hat die Stellenanzeige zur Marketing- und Vertriebsassistenz gelesen und möchte sich um die Stelle bewerben. Er kommt nun zum Vorstellungsgespräch"
+    },
+    {
+      "key": "bewerben",
+      "word": "sich bewerben",
+      "cn": "申请、求职",
+      "phrase": "sich um eine Stelle bewerben",
+      "example": "Max hat die Stellenanzeige zur Marketing- und Vertriebsassistenz gelesen und möchte sich um die Stelle bewerben. Er kommt nun zum Vorstellungsgespräch"
+    },
+    {
+      "key": "Vorstellungsgespräch",
+      "cn": "面试",
+      "phrase": "das Gespräch mit dem Arbeitgeber",
+      "example": "Max hat die Stellenanzeige zur Marketing- und Vertriebsassistenz gelesen und möchte sich um die Stelle bewerben. Er kommt nun zum Vorstellungsgespräch"
+    },
+    {
+      "key": "Geschäftsmann",
+      "cn": "商人",
+      "phrase": "ein Mann, der im Geschäftsleben arbeitet",
+      "example": "Personalchefin: Nun Herr Baumann, Ihre Bewerbung ist ja ganz interessant. »Warum haben Sie sich gerade bei uns beworben?« Max: Ich will schon immer Ge"
+    },
+    {
+      "key": "Messebranche",
+      "cn": "展会行业",
+      "phrase": "die Branche der Messen und Ausstellungen",
+      "example": "Personalchefin: Nun Herr Baumann, Ihre Bewerbung ist ja ganz interessant. »Warum haben Sie sich gerade bei uns beworben?« Max: Ich will schon immer Ge"
+    },
+    {
+      "key": "Bachelorstudium",
+      "cn": "本科学业",
+      "phrase": "das Studium zum Bachelor-Abschluss",
+      "example": "Personalchefin: Nun Herr Baumann, Ihre Bewerbung ist ja ganz interessant. »Warum haben Sie sich gerade bei uns beworben?« Max: Ich will schon immer Ge"
+    },
+    {
+      "key": "kreativ",
+      "cn": "有创造力的",
+      "phrase": "fähig, Neues zu schaffen",
+      "example": "Personalchefin: Und warum sind Sie die richtige Person für diese Stelle? Max: Ich bin sehr kreativ. Ich habe immer viele tolle Ideen. Außerdem habe ic"
+    },
+    {
+      "key": "Umgangsformen",
+      "cn": "礼仪、举止（复数）",
+      "phrase": "das höfliche Verhalten",
+      "example": "Personalchefin: Und warum sind Sie die richtige Person für diese Stelle? Max: Ich bin sehr kreativ. Ich habe immer viele tolle Ideen. Außerdem habe ic"
+    },
+    {
+      "key": "Kontakt",
+      "cn": "联系、接触",
+      "phrase": "die Verbindung zu Menschen",
+      "example": "Personalchefin: Und warum sind Sie die richtige Person für diese Stelle? Max: Ich bin sehr kreativ. Ich habe immer viele tolle Ideen. Außerdem habe ic"
+    },
+    {
+      "key": "Geschäftskontakte",
+      "cn": "业务联系（复数）",
+      "phrase": "die Verbindungen im Geschäftsleben",
+      "example": "Personalchefin: Und warum sind Sie die richtige Person für diese Stelle? Max: Ich bin sehr kreativ. Ich habe immer viele tolle Ideen. Außerdem habe ic"
+    },
+    {
+      "key": "Englisch",
+      "cn": "英语",
+      "phrase": "die englische Sprache",
+      "example": "Personalchefin: Und warum sind Sie die richtige Person für diese Stelle? Max: Ich bin sehr kreativ. Ich habe immer viele tolle Ideen. Außerdem habe ic"
+    },
+    {
+      "key": "Französisch",
+      "cn": "法语",
+      "phrase": "die französische Sprache",
+      "example": "Personalchefin: Und warum sind Sie die richtige Person für diese Stelle? Max: Ich bin sehr kreativ. Ich habe immer viele tolle Ideen. Außerdem habe ic"
+    },
+    {
+      "key": "Spanisch",
+      "cn": "西班牙语",
+      "phrase": "die spanische Sprache",
+      "example": "Personalchefin: Und warum sind Sie die richtige Person für diese Stelle? Max: Ich bin sehr kreativ. Ich habe immer viele tolle Ideen. Außerdem habe ic"
+    },
+    {
+      "key": "Schwächen",
+      "word": "Schwächen",
+      "cn": "弱点（复数）",
+      "phrase": "die negativen Eigenschaften",
+      "example": "Personalchefin: »Haben Sie auch Schwächen?« Max: Ich bin Berufsanfänger und habe noch wenig Erfahrung. Ich bin etwas ungeduldig, weil ich Dinge immer "
+    },
+    {
+      "key": "Berufsanfänger",
+      "cn": "职场新人",
+      "phrase": "jemand am Anfang seiner Karriere",
+      "example": "Personalchefin: »Haben Sie auch Schwächen?« Max: Ich bin Berufsanfänger und habe noch wenig Erfahrung. Ich bin etwas ungeduldig, weil ich Dinge immer "
+    },
+    {
+      "key": "Erfahrung",
+      "cn": "经验",
+      "phrase": "die Kenntnisse aus der Praxis",
+      "example": "Personalchefin: »Haben Sie auch Schwächen?« Max: Ich bin Berufsanfänger und habe noch wenig Erfahrung. Ich bin etwas ungeduldig, weil ich Dinge immer "
+    },
+    {
+      "key": "ungeduldig",
+      "cn": "不耐烦的、急性子的",
+      "phrase": "nicht warten können",
+      "example": "Personalchefin: »Haben Sie auch Schwächen?« Max: Ich bin Berufsanfänger und habe noch wenig Erfahrung. Ich bin etwas ungeduldig, weil ich Dinge immer "
+    },
+    {
+      "key": "Abteilungen",
+      "word": "Abteilungen",
+      "cn": "部门（复数）",
+      "phrase": "die verschiedenen Bereiche einer Firma",
+      "example": "Max fragt: Finden Sie gut, dass man als Marketingassistenz auch die Gelegenheit hat, andere Abteilungen kennen zu lernen? Personalchefin: Ja, wir lass"
+    },
+    {
+      "key": "verdienen",
+      "cn": "赚钱、挣得",
+      "phrase": "Geld durch Arbeit bekommen",
+      "example": "Personalchefin: »Was möchten Sie denn verdienen?« Max: So zwischen 1800 und 2500 Euro pro Monat. Aber die Entscheidung über das Gehalt liegt natürlich"
+    },
+    {
+      "key": "Entscheidung",
+      "cn": "决定",
+      "phrase": "die Wahl zwischen Möglichkeiten",
+      "example": "Personalchefin: »Was möchten Sie denn verdienen?« Max: So zwischen 1800 und 2500 Euro pro Monat. Aber die Entscheidung über das Gehalt liegt natürlich"
+    }
+  ],
+  "grammar": {
+    "tables": [
+      {
+        "title": "lassen 的四种主要用法",
+        "headers": [
+          "lassen + ...",
+          "含义",
+          "功能",
+          "例句"
+        ],
+        "rows": [
+          [
+            "lassen + Akk + Infinitiv",
+            "让某人做某事",
+            "主语使另一人执行动作",
+            "Die Personalchefin %%lässt%% Max seine Qualifikationen vorstellen."
+          ],
+          [
+            "sich lassen + Infinitiv",
+            "可以……（被动可能）",
+            "表示可能性（≈ können）",
+            "Das Problem %%lässt%% sich leicht %%lösen%%."
+          ],
+          [
+            "lassen + Akk (Ort)",
+            "留下、放在",
+            "表示不移动某物",
+            "%%Lass%% das Handy in der Tasche."
+          ],
+          [
+            "lassen + es + sein",
+            "停下、别做",
+            "表示停止某个行为",
+            "%%Lass%% es %%sein%%, das ist nicht wichtig."
+          ]
+        ]
+      },
+      {
+        "title": "时间介词 · Zeitpräpositionen",
+        "headers": [
+          "介词",
+          "含义",
+          "要求格",
+          "例句"
+        ],
+        "rows": [
+          [
+            "seit",
+            "自从（持续至今）",
+            "Dativ",
+            "Seit dem letzten Wintersemester besucht sie die Uni."
+          ],
+          [
+            "während",
+            "在…期间",
+            "Genitiv",
+            "Während des Austauschstudiums verbessert sie ihre Kenntnisse."
+          ],
+          [
+            "durch",
+            "通过",
+            "Akkusativ",
+            "Durch ihr Praktikum konnte sie Erfahrungen sammeln."
+          ],
+          [
+            "vorher / zuvor",
+            "事先、之前",
+            "—（副词）",
+            "Sie hat zuvor freiwillig gearbeitet."
+          ],
+          [
+            "ab",
+            "从…起",
+            "Dativ",
+            "Ab dem 1. August stehe ich zur Verfügung."
+          ],
+          [
+            "bei",
+            "在……地方",
+            "Dativ",
+            "Durch ihr Praktikum bei der Filiale der Bank of China."
+          ]
+        ]
+      }
+    ],
+    "examples": [
+      {
+        "de": "Während des Austauschstudiums kann ich meine Kenntnisse verbessern.",
+        "zh": "在交换留学期间我可以提高我的知识。"
+      },
+      {
+        "de": "Seit dem letzten Wintersemester besucht sie die Fremdsprachenuniversität Sichuan.",
+        "zh": "自从上个冬季学期以来她在四川外国语大学学习。"
+      },
+      {
+        "de": "Durch ihr Praktikum konnte sie wertvolle Erfahrungen sammeln.",
+        "zh": "通过实习她积累了宝贵的经验。"
+      },
+      {
+        "de": "Ab dem 1. August stehe ich Ihnen gerne zur Verfügung.",
+        "zh": "从8月1日起我很乐意为您效劳。"
+      },
+      {
+        "de": "Bei all diesen Tätigkeiten hatte sie die Möglichkeit, ihre Fähigkeiten zu beweisen.",
+        "zh": "在所有这些工作中她都有机会证明自己的能力。"
+      }
+    ]
+  },
+  "quiz": [
+    {
+      "q": "Welche Teile hat ein Bewerbungsschreiben?",
+      "options": [
+        "Briefkopf, Betreff, Anrede, Einleitung, Hauptteil, Schluss, Gruß, Unterschrift, Anlagen",
+        "Kopf, Einführung, Körper, Ende",
+        "Titel, Vorspann, Kern, Ausklang",
+        "Präambel, Darstellung, Fazit, Anhang"
+      ],
+      "answer": "A"
+    },
+    {
+      "q": "Was studiert Anna an der Humboldt-Universität?",
+      "options": [
+        "Medien- und Eventmanagement",
+        "Sinologie und Betriebswirtschaft",
+        "Marketing und Vertrieb",
+        "Germanistik und Geschichte"
+      ],
+      "answer": "B"
+    },
+    {
+      "q": "Wo hat Anna ein Praktikum gemacht?",
+      "options": [
+        "Bei einer Eventagentur in München",
+        "Bei der Filiale der Bank of China in Frankfurt",
+        "In einem Verlagshaus in Darmstadt",
+        "In einem Sportverein in Berlin"
+      ],
+      "answer": "B"
+    },
+    {
+      "q": "Welche Phase gehört NICHT zu den fünf Phasen eines Vorstellungsgesprächs?",
+      "options": [
+        "Begrüßung",
+        "Selbstpräsentation",
+        "Rückfragen",
+        "Vertragsunterzeichnung"
+      ],
+      "answer": "D"
+    },
+    {
+      "q": "Warum ist Max' Ungeduld vielleicht nicht so schlecht?",
+      "options": [
+        "Weil er schnell Entscheidungen trifft",
+        "Weil er sich schnell in eine neue Firma einarbeiten kann",
+        "Weil er immer pünktlich ist",
+        "Weil er keine Fehler macht"
+      ],
+      "answer": "B"
+    },
+    {
+      "q": "Was ist Max' Gehaltswunsch?",
+      "options": [
+        "1500 bis 2000 Euro",
+        "1800 bis 2500 Euro",
+        "2500 bis 3000 Euro",
+        "3000 bis 3500 Euro"
+      ],
+      "answer": "B"
+    }
+  ],
+  "matchingPairs": [
+    [
+      "das Praktikum",
+      "实习"
+    ],
+    [
+      "die Filiale",
+      "分行"
+    ],
+    [
+      "der Betreff",
+      "事由"
+    ],
+    [
+      "die Anrede",
+      "称呼"
+    ],
+    [
+      "die Einleitung",
+      "引言"
+    ],
+    [
+      "der Hauptteil",
+      "主体部分"
+    ],
+    [
+      "der Schluss",
+      "结尾"
+    ],
+    [
+      "die Unterschrift",
+      "签名"
+    ],
+    [
+      "die Anlagen",
+      "附件"
+    ],
+    [
+      "das Vorstellungsgespräch",
+      "面试"
+    ],
+    [
+      "die Stellenanzeige",
+      "招聘广告"
+    ],
+    [
+      "der Berufsanfänger",
+      "职场新人"
+    ]
+  ],
+  "connectGrids": [
+    {
+      "title": "求职信部分名称配对",
+      "pairs": [
+        [
+          "Briefkopf",
+          "信头（地址信息）"
+        ],
+        [
+          "Betreff",
+          "事由（Bewerbung um ...）"
+        ],
+        [
+          "Anrede",
+          "称呼（Sehr geehrte ...）"
+        ],
+        [
+          "Einleitung",
+          "引言（表达兴趣）"
+        ],
+        [
+          "Hauptteil",
+          "主体（展示能力经验）"
+        ],
+        [
+          "Schluss",
+          "结尾（表达期待）"
+        ],
+        [
+          "Gruß",
+          "问候语（Mit freundlichen Grüßen）"
+        ],
+        [
+          "Anlagen",
+          "附件（Lebenslauf, Zeugnisse）"
+        ]
+      ]
+    },
+    {
+      "title": "面试五阶段配对",
+      "pairs": [
+        [
+          "Begrüßung",
+          "问候"
+        ],
+        [
+          "Smalltalk",
+          "寒暄"
+        ],
+        [
+          "Selbstpräsentation",
+          "自我介绍"
+        ],
+        [
+          "Rückfragen",
+          "反问"
+        ],
+        [
+          "Verabschiedung",
+          "告别"
+        ]
+      ]
+    }
+  ],
+  "fillGaps": [
+    {
+      "title": "填入正确的介词或连词",
+      "items": [
+        {
+          "sentence": "Sie studiert Sinologie ______ der Humboldt-Universität.",
+          "answer": "an"
+        },
+        {
+          "sentence": "______ dem letzten Wintersemester besucht sie die Fremdsprachenuniversität Sichuan.",
+          "answer": "Seit"
+        },
+        {
+          "sentence": "______ ihres Praktikums konnte sie Erfahrungen sammeln.",
+          "answer": "Durch"
+        },
+        {
+          "sentence": "______ des Austauschstudiums verbessert sie ihre Kenntnisse.",
+          "answer": "Während"
+        },
+        {
+          "sentence": "Sie hat zuvor freiwillig ______ einem Sportverein gearbeitet.",
+          "answer": "in"
+        },
+        {
+          "sentence": "______ dem 1. August stehe ich Ihnen zur Verfügung.",
+          "answer": "Ab"
+        }
+      ]
+    }
+  ]
+}

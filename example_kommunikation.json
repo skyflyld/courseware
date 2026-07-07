@@ -37,19 +37,19 @@
       "pages": [
         [
           "Yang Fang und Laura besichtigen heute das Museum für Kommunikation Berlin. Durch einen geführten Rundgang %%werden%% sie über die %%Entwicklung%% der menschlichen Kommunikation %%informiert%%.",
-          "Vor 100 Jahren %%wurden%% viele Briefe %%geschrieben%% und mit der Post %%geschickt%%, wenn man sich %%gegenseitig%% %%Nachrichten%% %%überbringen%% wollte. Die Post %%wurde%% allerdings nicht wie heute mit extrem schnellen Zügen oder sogar mit Flugzeugen %%transportiert%%, sondern mit %%Dampfschiffen%%, %%Eisenbahnen%% oder sogar auch mit Pferden und Kutschen. So dauerte es sehr lange, bis die Briefe ankamen. Die Menschen mussten oft wochenlang auf Antworten warten. Das ist für uns kaum denkbar, oder?"
+          "Vor 100 Jahren %%wurden%% viele Briefe %%geschrieben%% und mit der Post %%geschickt%%, wenn man sich %%gegenseitig%% %%Nachrichten%% %%überbringen%% wollte. Die Post %%wurde%% allerdings nicht wie heute mit extrem schnellen Zügen oder sogar mit Flugzeugen %%transportiert%%, sondern mit Dampfschiffen, %%Eisenbahnen%% oder sogar auch mit Pferden und Kutschen. So dauerte es sehr lange, bis die Briefe ankamen. Die Menschen mussten oft wochenlang auf Antworten warten. Das ist für uns kaum denkbar, oder?"
         ],
         [
           "1923 fand eine %%bahnbrechende%% %%Erfindung%% ihren Weg nach Deutschland: Das Radio. Im Gegensatz zu heute war das Gerät damals nicht für alle %%selbstverständlich%%. Eine gewisse Zeit lang musste jedes Radio %%genehmigt%% %%werden%%. In den 1970er Jahren %%entwickelte%% sich das Radio langsam zu einem üblichen %%Haushaltsgerät%%. Alle hatten so %%Zugang%% zu Musik, %%Nachrichten%% und Hörspielen. Die Familien %%versammelten%% sich rund um das Radio und %%lauschten%% dem Programm. Denn damals gab es zu Hause noch keinen Fernseher."
         ],
         [
-          "Um 1950 begann das Fernsehen, das Radio langsam als beliebtestes Medium %%abzulösen%%. Aber auch das Fernsehen, damals noch in schwarz-weiß, war anfangs nicht für jeden %%zugänglich%%. Viele Familien konnten %%sich%% so ein teures Gerät gar nicht %%leisten%%. In Schaufenstern mancher Läden %%wurden%% Fernseher %%aufgestellt%%. Deshalb standen oft viele Menschen vor den Scheiben und schauten sich die Nachrichten an. Es gab auch nur bestimmte Sender. Diese konnten an einer Hand %%abgezählt%% %%werden%%. Kaum vorstellbar, dass wir heute über 60 Sender zur Auswahl haben, oder?"
+          "Um 1950 begann das Fernsehen, das Radio langsam als beliebtestes Medium %%abzulösen%%. Aber auch das Fernsehen, damals noch in schwarz-weiß, war anfangs nicht für jeden %%zugänglich%%. Viele Familien konnten sich so ein teures Gerät gar nicht leisten. In Schaufenstern mancher Läden %%wurden%% Fernseher %%aufgestellt%%. Deshalb standen oft viele Menschen vor den Scheiben und schauten sich die Nachrichten an. Es gab auch nur bestimmte Sender. Diese konnten an einer Hand %%abgezählt%% %%werden%%. Kaum vorstellbar, dass wir heute über 60 Sender zur Auswahl haben, oder?"
         ],
         [
           "Noch bis 1970 hatten viele deutsche Familien kein eigenes Telefon. Für viele war das ein %%unbezahlbarer%% %%Luxusgegenstand%%. Es %%wurden%% viele öffentliche %%Telefonzellen%% %%errichtet%%. Diese %%prägten%% ab 1920 das %%Straßenbild%%. Heute sieht man kaum noch welche in den deutschen Städten. Denn heute %%wird%% fast immer mit dem Handy %%telefoniert%%."
         ],
         [
-          "Spätestens mit dem globalen %%Durchbruch%% des Internets seit 1990 %%wurde%% die menschliche Kommunikation %%grundlegend%% %%verändert%%. Für viele Menschen war es damals eine große %%Umstellung%%, die neuen technischen Geräte überall im %%Alltag%% zu benutzen. Mittlerweile sind sie aus dem Leben nicht mehr %%wegzudenken%%. Kinder %%wachsen%% mit den digitalen Medien %%auf%% und alte Kommunikationswege, wie das Briefschreiben oder das Radio, %%werden%% immer mehr von neuen Medien %%ersetzt%%."
+          "Spätestens mit dem globalen %%Durchbruch%% des Internets seit 1990 %%wurde%% die menschliche Kommunikation %%grundlegend%% %%verändert%%. Für viele Menschen war es damals eine große %%Umstellung%%, die neuen technischen Geräte überall im %%Alltag%% zu benutzen. Mittlerweile sind sie aus dem Leben nicht mehr %%wegzudenken%%. Kinder wachsen mit den digitalen Medien auf und alte Kommunikationswege, wie das Briefschreiben oder das Radio, %%werden%% immer mehr von neuen Medien %%ersetzt%%."
         ]
       ]
     }
@@ -114,11 +114,6 @@
       "cn": "运输",
       "phrase": "etwas mit Zügen/Flugzeugen transportieren",
       "example": "Vor 100 Jahren wurden viele Briefe geschrieben und mit der Post geschickt, wenn man sich gegenseitig Nachrichten überbri"
-    },
-    {
-      "key": "Dampfschiff",
-      "cn": "蒸汽船",
-      "phrase": "das Dampfschiff (Pl. -e)"
     },
     {
       "key": "Eisenbahnen",
@@ -198,12 +193,6 @@
       "cn": "可接触的、可获得的",
       "phrase": "für jmdn. zugänglich sein",
       "example": "Um 1950 begann das Fernsehen, das Radio langsam als beliebtestes Medium abzulösen. Aber auch das Fernsehen, damals noch "
-    },
-    {
-      "key": "sich ... leisten",
-      "word": "sich etwas leisten",
-      "cn": "负担得起",
-      "phrase": "sich etwas (nicht) leisten können"
     },
     {
       "key": "aufgestellt",
@@ -305,17 +294,32 @@
       "example": "Spätestens mit dem globalen Durchbruch des Internets seit 1990 wurde die menschliche Kommunikation grundlegend verändert"
     },
     {
-      "key": "wachsen ... auf",
-      "word": "aufwachsen",
-      "cn": "长大",
-      "phrase": "mit etwas aufwachsen"
-    },
-    {
       "key": "ersetzt",
       "word": "ersetzen",
       "cn": "取代",
       "phrase": "etwas durch/von etwas ersetzen lassen",
       "example": "Spätestens mit dem globalen Durchbruch des Internets seit 1990 wurde die menschliche Kommunikation grundlegend verändert"
+    },
+    {
+      "key": "wird",
+      "word": "wird",
+      "cn": "被（Präsens Passiv 助动词）",
+      "phrase": "wird + Partizip II",
+      "example": "Der Brief wird geschrieben."
+    },
+    {
+      "key": "wurde",
+      "word": "wurde",
+      "cn": "被（Präteritum Passiv 助动词）",
+      "phrase": "wurde + Partizip II",
+      "example": "Der Brief wurde geschrieben."
+    },
+    {
+      "key": "wurden",
+      "word": "wurden",
+      "cn": "被（Präteritum Passiv 复数）",
+      "phrase": "wurden + Partizip II",
+      "example": "Die Briefe wurden geschrieben."
     }
   ],
   "grammar": {

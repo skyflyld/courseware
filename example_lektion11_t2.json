@@ -1,0 +1,748 @@
+{
+  "meta": {
+    "lektion": "11",
+    "title": "Funktionen der Massenmedien",
+    "subtitle": "大众传媒的功能 · 信息 · 舆论 · 监督 · 教育 · 娱乐",
+    "grammarTopic": "um … zu & damit（目的从句）",
+    "navLabels": [
+      "首页",
+      "课文讲解",
+      "重点词汇",
+      "语法",
+      "练习",
+      "翻译卡片"
+    ],
+    "sectionTitles": {
+      "text": "T2 · Funktionen der Massenmedien",
+      "vocab": "重点词汇 · Massenmedien & Funktionen",
+      "grammar": "语法 · um … zu & damit",
+      "translation": "逐句翻译练习",
+      "exercise": "练习 · Wortschatz"
+    },
+    "objectives": [
+      "理解大众传媒的五大功能：信息/舆论/监督/教育/娱乐",
+      "掌握 um…zu 和 damit 的目的从句用法",
+      "能区分 um…zu（主语一致）和 damit（主语不同）",
+      "能完成德⇄中逐句翻译练习"
+    ]
+  },
+  "texts": [
+    {
+      "id": "T2",
+      "title": "Funktionen der Massenmedien",
+      "subTitle": "大众传媒的五项职能",
+      "summary": "Yang Fang und Laura schauen sich im Museum einen Film über die verschiedenen Funktionen der Massenmedien an.",
+      "paragraphs": [
+        "Yang Fang und Laura schauen sich im Museum einen Film über die verschiedenen Funktionen der Massenmedien an.",
+        "%%Traditionellerweise%% werden %%Presse%%, %%Rundfunk%% und %%Fernsehen%% als %%Massenmedien%% %%bezeichnet%%. Ihr gemeinsames %%Merkmal%% ist, aktuelle %%Inhalte%% mit technischen %%Hilfsmitteln%% einem breiten %%Publikum%% %%zugänglich%% zu machen. In Deutschland sollen die Massenmedien mehrere %%Aufgaben%% %%erfüllen%% und wichtige %%Funktionen%% für die %%Gesellschaft%% %%ausüben%%:",
+        "Zum einen sollen sie %%Informationen%% über Politik, Wirtschaft und Kultur %%verbreiten%%. Die Massenmedien sollen das Publikum so %%vollständig%%, %%sachlich%% und %%verständlich%% wie möglich %%informieren%%, damit ihre %%Nutzerinnen%% und %%Nutzer%% öffentliche %%Ereignisse%% %%verfolgen%% können.",
+        "Bei der %%Meinungsbildung%% sollen die Massenmedien dafür %%sorgen%%, dass Fragen von öffentlichem %%Interesse%% in freier und offener %%Diskussion%% erörtert werden und dass %%Meinungen%% verschiedener %%Interessengruppen%% in die %%Öffentlichkeit%% kommen.",
+        "Außerdem übernehmen die Massenmedien eine %%Kritik- und Kontrollfunktion%%. Sie sollen politische %%Entscheidungen%% %%hinterfragen%% und %%Missstände%% %%aufdecken%%, um dadurch die Arbeit der Politikerinnen und Politiker zu %%kontrollieren%%.",
+        "Zu den weiteren Aufgaben der Massenmedien gehören aber auch %%Bildungsfunktion%% und %%Unterhaltungsfunktion%%. Die Massenmedien bieten viel %%Kultur%%: Im Fernsehen werden z. B. %%Dokumentationen%%, %%Reportagen%% und Magazine, Konzerte, %%Opern%%, %%Theateraufführungen%% und anspruchsvolle Filme gezeigt. Man schaltet ein, um sich einerseits zu %%bilden%% und um sich andererseits auch zu %%unterhalten%% und zu %%entspannen%%.",
+        "Die Medien und die Personen hinter den Medien arbeiten nicht automatisch %%neutral%% oder ohne eigene %%Interessen%%. Daher ist es wichtig, dass man gegenüber den Medien eine %%kritische%% %%Haltung%% %%einnimmt%% und %%bereit%% ist, nach %%Möglichkeit%% verschiedene %%Darstellungen%% zu %%vergleichen%%."
+      ]
+    }
+  ],
+  "vocab": [
+    {
+      "key": "Traditionellerweise",
+      "cn": "传统上来说",
+      "phrase": "traditionellerweise / aus Tradition",
+      "example": "Traditionellerweise werden Presse, Rundfunk und Fernsehen als Massenmedien bezeichnet."
+    },
+    {
+      "key": "Presse",
+      "cn": "新闻界、报刊",
+      "phrase": "die Presse (Sg.) / die freie Presse",
+      "example": "Die Presse informiert die Bürger über aktuelle Ereignisse."
+    },
+    {
+      "key": "Rundfunk",
+      "cn": "广播",
+      "phrase": "der Rundfunk (Sg.) / der öffentlich-rechtliche Rundfunk",
+      "example": "Der Rundfunk sendet Nachrichten und Musik."
+    },
+    {
+      "key": "Fernsehen",
+      "cn": "电视",
+      "phrase": "fernsehen (sieht fern, sah fern, ferngesehen)",
+      "example": "Im Fernsehen laufen viele interessante Sendungen."
+    },
+    {
+      "key": "Massenmedien",
+      "cn": "大众传媒（复数）",
+      "phrase": "die Massenmedien (Pl.)",
+      "example": "Zu den Massenmedien gehören Zeitungen, Radio und Fernsehen."
+    },
+    {
+      "key": "bezeichnet",
+      "word": "bezeichnet",
+      "cn": "称为、被称作",
+      "phrase": "als etwas bezeichnet werden",
+      "example": "Presse, Rundfunk und Fernsehen werden als Massenmedien bezeichnet."
+    },
+    {
+      "key": "Merkmal",
+      "cn": "特征、特点",
+      "phrase": "das Merkmal, -e / gemeinsames Merkmal",
+      "example": "Ihr gemeinsames Merkmal ist die Verbreitung aktueller Inhalte."
+    },
+    {
+      "key": "Inhalte",
+      "word": "Inhalte",
+      "cn": "内容（复数）",
+      "phrase": "die Inhalte (Pl. von der Inhalt)",
+      "example": "Die Medien verbreiten aktuelle Inhalte."
+    },
+    {
+      "key": "Hilfsmitteln",
+      "word": "Hilfsmitteln",
+      "cn": "辅助工具（复数，Dativ）",
+      "phrase": "technische Hilfsmittel (Pl.)",
+      "example": "Mit technischen Hilfsmitteln werden Inhalte einem breiten Publikum zugänglich gemacht."
+    },
+    {
+      "key": "Publikum",
+      "cn": "公众、观众",
+      "phrase": "das Publikum (Sg.) / ein breites Publikum",
+      "example": "Die Inhalte sind einem breiten Publikum zugänglich."
+    },
+    {
+      "key": "zugänglich",
+      "cn": "可获得的、可接触的",
+      "phrase": "jmdm. zugänglich sein / machen",
+      "example": "Die Informationen sind der Öffentlichkeit zugänglich."
+    },
+    {
+      "key": "Aufgaben",
+      "word": "Aufgaben",
+      "cn": "任务（复数）",
+      "phrase": "die Aufgabe, -n / mehrere Aufgaben erfüllen",
+      "example": "Die Massenmedien sollen mehrere Aufgaben erfüllen."
+    },
+    {
+      "key": "erfüllen",
+      "cn": "完成、履行",
+      "phrase": "eine Aufgabe / Pflicht erfüllen",
+      "example": "Die Medien erfüllen wichtige Aufgaben in der Gesellschaft."
+    },
+    {
+      "key": "Funktionen",
+      "word": "Funktionen",
+      "cn": "功能、职能（复数）",
+      "phrase": "die Funktion, -en / eine Funktion ausüben",
+      "example": "Die Massenmedien haben verschiedene Funktionen."
+    },
+    {
+      "key": "Gesellschaft",
+      "cn": "社会",
+      "phrase": "die Gesellschaft, -en",
+      "example": "Die Medien spielen eine wichtige Rolle in der Gesellschaft."
+    },
+    {
+      "key": "ausüben",
+      "cn": "行使、执行",
+      "phrase": "eine Funktion / einen Beruf ausüben",
+      "example": "Die Medien üben wichtige Funktionen für die Gesellschaft aus."
+    },
+    {
+      "key": "Informationen",
+      "word": "Informationen",
+      "cn": "信息（复数）",
+      "phrase": "die Information, -en / Informationen verbreiten",
+      "example": "Die Medien verbreiten Informationen über Politik und Wirtschaft."
+    },
+    {
+      "key": "verbreiten",
+      "cn": "传播、散布",
+      "phrase": "Informationen / Nachrichten verbreiten",
+      "example": "Die Zeitung verbreitet aktuelle Nachrichten."
+    },
+    {
+      "key": "vollständig",
+      "cn": "完整的、全面的",
+      "phrase": "vollständige Informationen",
+      "example": "Das Publikum soll vollständig informiert werden."
+    },
+    {
+      "key": "sachlich",
+      "cn": "客观的、实事求是的",
+      "phrase": "sachlich berichten / informieren",
+      "example": "Die Medien sollten sachlich und neutral berichten."
+    },
+    {
+      "key": "verständlich",
+      "cn": "易懂的、可理解的",
+      "phrase": "verständlich erklären / darstellen",
+      "example": "Die Nachrichten sollen verständlich formuliert sein."
+    },
+    {
+      "key": "informieren",
+      "cn": "通知、告知",
+      "phrase": "jmdn. über etwas informieren / sich informieren",
+      "example": "Die Zeitung informiert die Leser täglich."
+    },
+    {
+      "key": "Nutzerinnen",
+      "word": "Nutzerinnen",
+      "cn": "女性使用者（复数）",
+      "phrase": "die Nutzerin, -nen / die Nutzer und Nutzerinnen",
+      "example": "Die Nutzerinnen verfolgen die Nachrichten online."
+    },
+    {
+      "key": "Ereignisse",
+      "word": "Ereignisse",
+      "cn": "事件（复数）",
+      "phrase": "das Ereignis, -se / aktuelle Ereignisse",
+      "example": "Die Medien berichten über aktuelle Ereignisse."
+    },
+    {
+      "key": "verfolgen",
+      "cn": "跟踪、关注",
+      "phrase": "Nachrichten / ein Ereignis verfolgen",
+      "example": "Das Publikum kann öffentliche Ereignisse verfolgen."
+    },
+    {
+      "key": "Meinungsbildung",
+      "cn": "舆论形成",
+      "phrase": "die Meinungsbildung (Sg.) / zur Meinungsbildung beitragen",
+      "example": "Die Medien tragen zur Meinungsbildung bei."
+    },
+    {
+      "key": "sorgen",
+      "cn": "确保、负责",
+      "phrase": "für etwas sorgen: 例dafür sorgen, dass ...",
+      "example": "Die Medien sorgen dafür, dass Fragen erörtert werden."
+    },
+    {
+      "key": "Interesse",
+      "cn": "兴趣、利益",
+      "phrase": "von öffentlichem Interesse / Interesse an etwas",
+      "example": "Das ist eine Frage von öffentlichem Interesse."
+    },
+    {
+      "key": "Diskussion",
+      "cn": "讨论",
+      "phrase": "die Diskussion, -en / in offener Diskussion",
+      "example": "Die Themen werden in offener Diskussion erörtert."
+    },
+    {
+      "key": "Meinungen",
+      "word": "Meinungen",
+      "cn": "观点、意见（复数）",
+      "phrase": "die Meinung, -en / seine Meinung äußern",
+      "example": "Meinungen verschiedener Gruppen kommen in die Öffentlichkeit."
+    },
+    {
+      "key": "Interessengruppen",
+      "word": "Interessengruppen",
+      "cn": "利益集团（复数）",
+      "phrase": "die Interessengruppe, -n",
+      "example": "Verschiedene Interessengruppen äußern ihre Meinungen."
+    },
+    {
+      "key": "Öffentlichkeit",
+      "cn": "公众、舆论界",
+      "phrase": "die Öffentlichkeit (Sg.) / an die Öffentlichkeit bringen",
+      "example": "Die Meinungen kommen in die Öffentlichkeit."
+    },
+    {
+      "key": "Entscheidungen",
+      "word": "Entscheidungen",
+      "cn": "决定、决策（复数）",
+      "phrase": "die Entscheidung, -en / politische Entscheidungen",
+      "example": "Die Medien hinterfragen politische Entscheidungen."
+    },
+    {
+      "key": "hinterfragen",
+      "cn": "质疑、追问",
+      "phrase": "etwas kritisch hinterfragen",
+      "example": "Die Medien sollen politische Entscheidungen hinterfragen."
+    },
+    {
+      "key": "Missstände",
+      "word": "Missstände",
+      "cn": "弊端、不良状况（复数）",
+      "phrase": "der Missstand, Missstände / Missstände aufdecken",
+      "example": "Journalisten decken Missstände in der Gesellschaft auf."
+    },
+    {
+      "key": "aufdecken",
+      "cn": "揭露、揭示",
+      "phrase": "Missstände / einen Skandal aufdecken",
+      "example": "Die Presse deckt Missstände auf."
+    },
+    {
+      "key": "kontrollieren",
+      "cn": "监督、控制",
+      "phrase": "die Regierung / die Arbeit kontrollieren",
+      "example": "Die Medien kontrollieren die Arbeit der Politiker."
+    },
+    {
+      "key": "Kultur",
+      "cn": "文化",
+      "phrase": "die Kultur (Sg.) / Kultur anbieten",
+      "example": "Die Massenmedien bieten viel Kultur."
+    },
+    {
+      "key": "Dokumentationen",
+      "word": "Dokumentationen",
+      "cn": "纪录片（复数）",
+      "phrase": "die Dokumentation, -en",
+      "example": "Im Fernsehen laufen interessante Dokumentationen."
+    },
+    {
+      "key": "Reportagen",
+      "word": "Reportagen",
+      "cn": "报道、纪实节目（复数）",
+      "phrase": "die Reportage, -n",
+      "example": "Reportagen zeigen das Leben in anderen Ländern."
+    },
+    {
+      "key": "Opern",
+      "cn": "歌剧（复数）",
+      "phrase": "die Oper, -n",
+      "example": "Im Fernsehen werden auch Opern gezeigt."
+    },
+    {
+      "key": "Theateraufführungen",
+      "word": "Theateraufführungen",
+      "cn": "戏剧演出（复数）",
+      "phrase": "die Theateraufführung, -en",
+      "example": "Theateraufführungen sind kulturelle Höhepunkte."
+    },
+    {
+      "key": "bilden",
+      "cn": "教育、培养",
+      "phrase": "jmdn. bilden / sich bilden",
+      "example": "Bildungssendungen helfen, sich zu bilden."
+    },
+    {
+      "key": "unterhalten",
+      "cn": "娱乐",
+      "phrase": "sich unterhalten / jmdn. unterhalten",
+      "example": "Man schaltet das Fernsehen ein, um sich zu unterhalten."
+    },
+    {
+      "key": "entspannen",
+      "cn": "放松",
+      "phrase": "sich entspannen",
+      "example": "Nach der Arbeit möchte ich mich entspannen."
+    },
+    {
+      "key": "neutral",
+      "cn": "中立的、客观的",
+      "phrase": "neutral berichten",
+      "example": "Die Medien sollten neutral und unabhängig sein."
+    },
+    {
+      "key": "kritische",
+      "word": "kritisch",
+      "cn": "批判的（形容词）",
+      "phrase": "eine kritische Haltung einnehmen",
+      "example": "Man sollte Nachrichten kritisch hinterfragen."
+    },
+    {
+      "key": "Haltung",
+      "cn": "态度、立场",
+      "phrase": "eine kritische Haltung einnehmen",
+      "example": "Gegenüber Medien sollte man eine kritische Haltung haben."
+    },
+    {
+      "key": "einnimmt",
+      "word": "einnimmt",
+      "cn": "采取（立场）",
+      "phrase": "eine Haltung einnehmen",
+      "example": "Er nimmt eine kritische Haltung gegenüber den Medien ein."
+    },
+    {
+      "key": "bereit",
+      "cn": "准备好的、愿意的",
+      "phrase": "bereit sein, etwas zu tun",
+      "example": "Man sollte bereit sein, verschiedene Darstellungen zu vergleichen."
+    },
+    {
+      "key": "Möglichkeit",
+      "cn": "可能性",
+      "phrase": "nach Möglichkeit / die Möglichkeit, -en",
+      "example": "Nach Möglichkeit sollte man verschiedene Quellen vergleichen."
+    },
+    {
+      "key": "Darstellungen",
+      "word": "Darstellungen",
+      "cn": "描述、表述（复数）",
+      "phrase": "die Darstellung, -en",
+      "example": "Verschiedene Darstellungen sollten verglichen werden."
+    },
+    {
+      "key": "vergleichen",
+      "cn": "比较",
+      "phrase": "etwas mit etwas vergleichen",
+      "example": "Man sollte verschiedene Nachrichtenquellen vergleichen."
+    },
+    {
+      "key": "Bildungsfunktion",
+      "cn": "教育功能",
+      "phrase": "die Bildungsfunktion der Medien",
+      "example": "Die Massenmedien haben auch eine Bildungsfunktion."
+    },
+    {
+      "key": "Interessen",
+      "word": "Interessen",
+      "cn": "利益、兴趣（复数）",
+      "phrase": "eigene Interessen / ohne Interessen",
+      "example": "Die Medien arbeiten nicht ohne eigene Interessen."
+    },
+    {
+      "key": "Kritik- und Kontrollfunktion",
+      "cn": "批评与监督功能",
+      "phrase": "die Kritik- und Kontrollfunktion",
+      "example": "Die Massenmedien übernehmen eine Kritik- und Kontrollfunktion."
+    },
+    {
+      "key": "Nutzer",
+      "cn": "使用者（单数/复数）",
+      "phrase": "der Nutzer, - / die Nutzer und Nutzerinnen",
+      "example": "Die Nutzer können öffentliche Ereignisse verfolgen."
+    },
+    {
+      "key": "Unterhaltungsfunktion",
+      "cn": "娱乐功能",
+      "phrase": "die Unterhaltungsfunktion der Medien",
+      "example": "Die Unterhaltungsfunktion ist eine wichtige Aufgabe der Medien."
+    }
+  ],
+  "grammar": {
+    "tables": [
+      {
+        "title": "um … zu + Infinitiv（目的从句·主语一致）",
+        "headers": [
+          "结构",
+          "例句",
+          "中文"
+        ],
+        "rows": [
+          [
+            "um … zu + Infinitiv",
+            "Er ist in die Stadt gezogen, um hier zu arbeiten.",
+            "他搬到城市，是为了在这里工作。"
+          ],
+          [
+            "um … zu + Infinitiv",
+            "Man schaltet ein, um sich zu bilden.",
+            "人们打开电视，是为了学习。"
+          ],
+          [
+            "um … zu + Infinitiv",
+            "Man schaltet ein, um sich zu unterhalten.",
+            "人们打开电视，是为了娱乐。"
+          ]
+        ]
+      },
+      {
+        "title": "damit + Nebensatz（目的从句·主语不同）",
+        "headers": [
+          "结构",
+          "例句",
+          "中文"
+        ],
+        "rows": [
+          [
+            "damit + Subjekt + Verb (Ende)",
+            "Er ist in die Stadt gezogen, damit seine Kinder mehr Chancen haben.",
+            "他搬到城市，为了他的孩子有更多机会。"
+          ],
+          [
+            "damit + Subjekt + Verb (Ende)",
+            "Die Medien informieren, damit die Bürger informiert sind.",
+            "媒体报道，以便公民了解情况。"
+          ],
+          [
+            "damit + Subjekt + Verb (Ende)",
+            "Man zeigt Filme, damit sich die Zuschauer unterhalten.",
+            "人们播放电影，为了观众娱乐。"
+          ]
+        ]
+      },
+      {
+        "title": "Gebrauchsunterschied（用法区别）",
+        "headers": [
+          "Ausdruck",
+          "条件",
+          "例句"
+        ],
+        "rows": [
+          [
+            "um … zu",
+            "主句和从句主语相同",
+            "Ich lese Zeitung, um mich zu informieren.（ich = ich）"
+          ],
+          [
+            "damit",
+            "主句和从句主语不同",
+            "Ich lese Zeitung, damit meine Eltern informiert sind.（ich ≠ meine Eltern）"
+          ],
+          [
+            "damit",
+            "主句含情态动词时",
+            "Die Medien sollen sorgen, dass …, damit die Demokratie funktioniert."
+          ]
+        ]
+      }
+    ],
+    "examples": [
+      {
+        "de": "Die Massenmedien informieren das Publikum, damit es öffentliche Ereignisse verfolgen kann.",
+        "zh": "大众传媒告知公众，以便他们能关注公共事件。"
+      },
+      {
+        "de": "Man sollte verschiedene Darstellungen vergleichen, um eine eigene Meinung zu bilden.",
+        "zh": "人们应该比较不同的描述，以形成自己的观点。"
+      },
+      {
+        "de": "Die Medien decken Missstände auf, um die Arbeit der Politiker zu kontrollieren.",
+        "zh": "媒体揭露弊端，以监督政治家的行为。"
+      }
+    ]
+  },
+  "connectGrids": [
+    {
+      "title": "🏛️ 大众传媒 · Massenmedien & Grundbegriffe",
+      "pairs": [
+        [
+          "die Presse",
+          "新闻界、报刊"
+        ],
+        [
+          "der Rundfunk",
+          "广播"
+        ],
+        [
+          "das Fernsehen",
+          "电视"
+        ],
+        [
+          "die Massenmedien",
+          "大众传媒"
+        ],
+        [
+          "das Merkmal",
+          "特征"
+        ],
+        [
+          "das Publikum",
+          "公众"
+        ],
+        [
+          "die Öffentlichkeit",
+          "公众、舆论界"
+        ],
+        [
+          "die Gesellschaft",
+          "社会"
+        ],
+        [
+          "die Kultur",
+          "文化"
+        ]
+      ]
+    },
+    {
+      "title": "🎯 五大职能 · Fünf Funktionen",
+      "pairs": [
+        [
+          "die Informationsfunktion",
+          "信息功能"
+        ],
+        [
+          "die Meinungsbildungsfunktion",
+          "舆论形成功能"
+        ],
+        [
+          "die Kritik- und Kontrollfunktion",
+          "批评与监督功能"
+        ],
+        [
+          "die Bildungsfunktion",
+          "教育功能"
+        ],
+        [
+          "die Unterhaltungsfunktion",
+          "娱乐功能"
+        ]
+      ]
+    },
+    {
+      "title": "🔑 核心动词 · Schlüsselverben",
+      "pairs": [
+        [
+          "bezeichnen",
+          "称为"
+        ],
+        [
+          "erfüllen",
+          "完成、履行"
+        ],
+        [
+          "ausüben",
+          "行使"
+        ],
+        [
+          "verbreiten",
+          "传播"
+        ],
+        [
+          "informieren",
+          "通知"
+        ],
+        [
+          "verfolgen",
+          "跟踪、关注"
+        ],
+        [
+          "hinterfragen",
+          "质疑"
+        ],
+        [
+          "aufdecken",
+          "揭露"
+        ],
+        [
+          "kontrollieren",
+          "监督"
+        ],
+        [
+          "bilden",
+          "教育"
+        ],
+        [
+          "unterhalten",
+          "娱乐"
+        ],
+        [
+          "entspannen",
+          "放松"
+        ],
+        [
+          "vergleichen",
+          "比较"
+        ],
+        [
+          "sorgen für",
+          "确保"
+        ]
+      ]
+    },
+    {
+      "title": "✨ 形容词 & 固定搭配 · Adjektive & Wendungen",
+      "pairs": [
+        [
+          "vollständig",
+          "完整的"
+        ],
+        [
+          "sachlich",
+          "客观的"
+        ],
+        [
+          "verständlich",
+          "易懂的"
+        ],
+        [
+          "neutral",
+          "中立的"
+        ],
+        [
+          "kritisch",
+          "批判的"
+        ],
+        [
+          "zugänglich",
+          "可获得的"
+        ],
+        [
+          "bereit sein zu",
+          "愿意做"
+        ],
+        [
+          "eine Haltung einnehmen",
+          "采取态度"
+        ],
+        [
+          "von öffentlichem Interesse",
+          "符合公众利益的"
+        ],
+        [
+          "Missstände aufdecken",
+          "揭露弊端"
+        ],
+        [
+          "nach Möglichkeit",
+          "尽可能"
+        ]
+      ]
+    }
+  ],
+  "translationCards": [
+    {
+      "de": "Traditionellerweise werden Presse, Rundfunk und Fernsehen als Massenmedien bezeichnet.",
+      "zh": "传统意义上，报纸、广播和电视被认为是大众传媒。",
+      "vocab": "bezeichnet als — 被称为"
+    },
+    {
+      "de": "Ihr gemeinsames Merkmal ist, aktuelle Inhalte mit technischen Hilfsmitteln einem breiten Publikum zugänglich zu machen.",
+      "zh": "它们的共同特征是利用技术手段向广大受众提供时事内容。",
+      "vocab": "zugänglich machen — 使可获得"
+    },
+    {
+      "de": "In Deutschland sollen die Massenmedien mehrere Aufgaben erfüllen und wichtige Funktionen für die Gesellschaft ausüben.",
+      "zh": "在德国，大众传媒应履行多项任务，为社会发挥重要功能。",
+      "vocab": "Aufgaben erfüllen — 完成任务；Funktionen ausüben — 发挥功能"
+    },
+    {
+      "de": "Die Massenmedien sollen das Publikum so vollständig, sachlich und verständlich wie möglich informieren.",
+      "zh": "大众传媒应尽可能全面、客观、易懂地告知公众。",
+      "vocab": "vollständig, sachlich, verständlich — 全面、客观、易懂"
+    },
+    {
+      "de": "Bei der Meinungsbildung sollen die Massenmedien dafür sorgen, dass Fragen von öffentlichem Interesse erörtert werden.",
+      "zh": "在舆论形成方面，大众传媒应确保公众利益问题得到讨论。",
+      "vocab": "die Meinungsbildung — 舆论形成"
+    },
+    {
+      "de": "Die Massenmedien übernehmen eine Kritik- und Kontrollfunktion.",
+      "zh": "大众传媒承担批评与监督职能。",
+      "vocab": "die Kritik- und Kontrollfunktion — 批评与监督功能"
+    },
+    {
+      "de": "Sie sollen politische Entscheidungen hinterfragen und Missstände aufdecken.",
+      "zh": "它们应质疑政治决策并揭露弊端。",
+      "vocab": "hinterfragen — 质疑；aufdecken — 揭露"
+    },
+    {
+      "de": "Man schaltet ein, um sich einerseits zu bilden und um sich andererseits zu unterhalten und zu entspannen.",
+      "zh": "人们打开（电视），一方面为了学习，另一方面为了娱乐和放松。",
+      "vocab": "einerseits … andererseits — 一方面……另一方面"
+    },
+    {
+      "de": "Die Medien und die Personen hinter den Medien arbeiten nicht automatisch neutral oder ohne eigene Interessen.",
+      "zh": "媒体及其背后的人员并非自动中立或没有自身利益。",
+      "vocab": "neutral — 中立的"
+    },
+    {
+      "de": "Es ist wichtig, dass man gegenüber den Medien eine kritische Haltung einnimmt.",
+      "zh": "重要的是对媒体持批判态度。",
+      "vocab": "eine Haltung einnehmen — 采取态度"
+    },
+    {
+      "de": "Man sollte bereit sein, nach Möglichkeit verschiedene Darstellungen zu vergleichen.",
+      "zh": "人们应该愿意尽可能比较不同的描述。",
+      "vocab": "nach Möglichkeit — 尽可能"
+    },
+    {
+      "de": "Zu den weiteren Aufgaben der Massenmedien gehören Bildungsfunktion und Unterhaltungsfunktion.",
+      "zh": "大众传媒的其他任务还包括教育功能和娱乐功能。",
+      "vocab": "die Bildungsfunktion — 教育功能；die Unterhaltungsfunktion — 娱乐功能"
+    }
+  ]
+}

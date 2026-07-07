@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Lektion 11 · Funktionen der Massenmedien · 交互式课件</title>
+<style>
+  /* ===== Reset & Base ===== */
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+    background: #f5f5f7; color: #1d1d1f; line-height: 1.7;
+    padding-top: 76px;
+    font-size: clamp(15px, 2.2vw, 20px);
+  }
+
+  /* ===== Nav ===== */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,.95); backdrop-filter: blur(12px);
+    box-shadow: 0 1px 3px rgba(0,0,0,.08);
+  }
+  .top-nav {
+    max-width: 900px; margin: 0 auto;
+    display: flex; align-items: center;
+    padding: 0 16px; height: 48px; gap: 12px;
+  }
+  .logo { display: flex; align-items: center; gap: 6px; font-weight: 600; font-size: 15px; color: #1d1d1f; flex-shrink: 0; }
+  .logo-icon { font-size: 20px; }
+  .nav-links { display: flex; gap: 4px; overflow-x: auto; flex: 1; }
+  .nav-links button {
+    background: none; border: none; padding: 8px 14px;
+    font-size: clamp(12px, 1.6vw, 16px); color: #666; cursor: pointer; border-radius: 6px;
+    white-space: nowrap; transition: all .15s;
+  }
+  .nav-links button:hover { background: #f0f0f0; }
+  .nav-links button.active { background: #1a73e8; color: #fff; font-weight: 500; }
+  .hamburger { display: none; background: none; border: none; font-size: 20px; cursor: pointer; padding: 4px 8px; color: #333; }
+
+  /* ===== Progress Bar ===== */
+  .progress-bar { height: 3px; background: #e8e8ed; position: relative; }
+  .progress-fill {
+    height: 100%; width: 0%;
+    background: linear-gradient(90deg, #1a73e8, #4285f4);
+    transition: width .4s ease;
+  }
+
+  /* ===== Main Content ===== */
+  .main { max-width: 1100px; margin: 0 auto; padding: 16px; }
+  .container { max-width: min(900px, 95vw); margin: 0 auto; }
+  section { display: none; }
+  section.active { display: block; }
+
+  /* ===== Home ===== */
+  .hero {
+    text-align: center; padding: 32px 16px 24px;
+    background: linear-gradient(135deg, #e8f0fe 0%, #f5f5f7 100%);
+    border-radius: 12px; margin-bottom: 20px;
+  }
+  .hero h1 { font-size: clamp(22px, 3.5vw, 36px); font-weight: 700; margin: 0 0 6px; color: #1d1d1f; }
+  .hero .sub { font-size: clamp(14px, 2vw, 20px); color: #666; margin: 0 0 4px; }
+  .hero .meta { font-size: 13px; color: #999; margin: 0; }
+
+  .home-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+  @media (max-width: 480px) { .home-grid { grid-template-columns: 1fr; } }
+
+  .text-card {
+    background: #fff; border-radius: 10px; padding: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06); transition: box-shadow .2s;
+  }
+  .text-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,.1); }
+  .text-card h3 { font-size: clamp(15px, 2.5vw, 24px); margin: 0 0 6px; color: #1d1d1f; }
+  .text-card p { font-size: 13px; margin: 0; color: #999; }
+
+  .section-title {
+    font-size: clamp(17px, 2.8vw, 28px); font-weight: 700; margin: 24px 0 12px;
+    padding-bottom: 6px; border-bottom: 2px solid #1a73e8;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .section-title .num {
+    background: #1a73e8; color: #fff; border-radius: 50%;
+    width: 28px; height: 28px; display: inline-flex;
+    align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 600; flex-shrink: 0;
+  }
+
+  .obj-box { background: #f8f9fa; border-radius: 8px; padding: 14px 18px; font-size: 14px; }
+  .obj-box strong { color: #333; }
+  .obj-box ul { margin: 6px 0 0 16px; padding: 0; line-height: 1.7; color: #555; }
+
+  /* ===== Text Section ===== */
+  .text-card .zh.sub { font-size: 14px; margin: -4px 0 8px; color: #666; }
+  .text-card .zh.by { font-size: 13px; margin: -4px 0 10px; color: #888; }
+  .text-card .de { font-size: clamp(14px, 2.2vw, 22px); line-height: 1.8; color: #333; }
+  .text-card .de p { margin: 0 0 8px; }
+  .v-word {
+    color: #1a73e8; border-bottom: 1px dashed #1a73e8;
+    cursor: pointer; transition: background .15s;
+  }
+  .v-word:hover { background: #e8f0fe; }
+  .highlight-box {
+    background: #fff8e1; border-left: 3px solid #fbbc04;
+    padding: 10px 14px; border-radius: 0 6px 6px 0;
+    margin: 12px 0 0; font-size: 14px; color: #555;
+  }
+
+  /* ===== Text Pagination ===== */
+  .text-pager-nav {
+    display: flex; align-items: center; justify-content: center;
+    gap: 16px; margin: 14px 0;
+  }
+  .tp-btn {
+    width: 36px; height: 36px; border-radius: 50%;
+    border: 1px solid #ddd; background: #fff;
+    font-size: 18px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all .15s;
+  }
+  .tp-btn:hover:not(:disabled) { background: #e8f0fe; border-color: #1a73e8; }
+  .tp-btn:disabled { opacity: .35; cursor: default; }
+  .tp-info { font-size: 14px; color: #666; min-width: 50px; text-align: center; }
+
+  /* ===== Person Tabs (Vocab) ===== */
+  .person-tabs { display: flex; gap: 4px; margin: 0 0 10px; }
+  .person-btn {
+    padding: 6px 16px; border: 1px solid #ddd; border-radius: 6px;
+    background: #fff; font-size: 13px; cursor: pointer; transition: all .15s;
+  }
+  .person-btn.active { background: #1a73e8; color: #fff; border-color: #1a73e8; font-weight: 500; }
+  .person-content { display: none; }
+  .person-content.active { display: block; }
+
+  /* ===== Vocab Flip Cards ===== */
+  .vc-card {
+    background: transparent;
+    border: none;
+    padding: 0;
+    perspective: 600px;
+    position: relative;
+    min-height: 64px;
+    cursor: pointer;
+  }
+  .vc-inner {
+    position: relative;
+    transition: transform .45s ease;
+    transform-style: preserve-3d;
+    min-height: 64px;
+  }
+  .vc-card.flipped .vc-inner {
+    transform: rotateY(180deg);
+  }
+  .vc-front, .vc-back {
+    position: absolute; inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    display: flex; align-items: center; justify-content: center;
+    padding: 12px 8px;
+    border-radius: 8px;
+    border: 1px solid #e8e8ed;
+    font-size: clamp(13px, 1.8vw, 18px); text-align: center;
+    min-height: 64px;
+  }
+  .vc-front {
+    background: #fff;
+    z-index: 2;
+  }
+  .vc-back {
+    background: #e8f0fe;
+    color: #1a73e8;
+    font-weight: 500;
+    transform: rotateY(180deg);
+    z-index: 1;
+  }
+  .vc-detail {
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    background: #fff;
+    font-size: 10px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0;
+    transition: opacity .2s;
+    z-index: 10;
+    padding: 0; line-height: 1; color: #666;
+  }
+  .vc-card:hover .vc-detail { opacity: 1; }
+
+  /* ===== Vocab Grid ===== */
+  .vocab-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 10px;
+  }
+
+  /* ===== Vocab Overlay Panel ===== */
+  .vocab-overlay {
+    display: none; position: fixed; inset: 0; z-index: 200;
+    background: rgba(0,0,0,.4); backdrop-filter: blur(2px);
+  }
+  .vocab-overlay.show { display: block; }
+
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 201;
+    background: #fff; border-radius: 16px 16px 0 0;
+    padding: 20px; max-height: 50vh; overflow-y: auto;
+    box-shadow: 0 -4px 20px rgba(0,0,0,.12);
+    animation: slideUp .25s ease;
+  }
+  .vocab-panel.show { display: block; }
+
+  @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+
+  .vocab-panel-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+  .vp-word { font-size: 20px; font-weight: 700; color: #1d1d1f; }
+  .vp-close { background: none; border: none; font-size: 22px; cursor: pointer; color: #999; padding: 0 4px; }
+  .vp-zh { font-size: 16px; color: #555; margin-bottom: 10px; }
+  .vp-ex { font-size: 14px; color: #777; line-height: 1.6; padding: 10px 12px; background: #f8f9fa; border-radius: 8px; }
+
+  @media (min-width: 600px) {
+    .vocab-panel {
+      left: 50%; right: auto; bottom: auto; top: 50%;
+      transform: translate(-50%, -50%); width: 420px; max-height: 60vh;
+      border-radius: 16px; animation: fadeIn .2s ease;
+    }
+    .vocab-panel.show { transform: translate(-50%, -50%); }
+    @keyframes fadeIn { from { opacity: 0; transform: translate(-50%, -50%) scale(.95); } to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
+  }
+
+  /* ===== Grammar ===== */
+  .grammar-table-wrapper { overflow-x: auto; margin: 12px 0; }
+  .grammar-table { width: 100%; border-collapse: collapse; font-size: clamp(12px, 1.8vw, 18px); }
+  .grammar-table th, .grammar-table td {
+    border: 1px solid #e8e8ed; padding: 10px 12px; text-align: left; vertical-align: top;
+  }
+  .grammar-table th { background: #f0f4ff; font-weight: 600; color: #333; white-space: nowrap; }
+  .grammar-table td strong { color: #1a73e8; }
+  .grammar-table tr:nth-child(even) td { background: #fafbfc; }
+  .grammar-examples { margin-top: 16px; }
+  .grammar-examples h3 { font-size: 16px; margin: 0 0 8px; }
+  .grammar-example { padding: 10px 14px; margin-bottom: 8px; background: #fff; border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,.06); }
+  .grammar-example .de { font-size: 15px; color: #333; }
+  .grammar-example .zh { font-size: 13px; color: #888; margin-top: 2px; }
+
+  /* ===== Quiz ===== */
+  .quiz-card { background: #fff; border-radius: 10px; padding: 18px; margin-bottom: 14px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+  .q-text { font-size: clamp(14px, 2.2vw, 20px); font-weight: 500; margin-bottom: 10px; line-height: 1.5; }
+  .options { display: flex; flex-direction: column; gap: 6px; }
+  .opt {
+    padding: 10px 14px; border: 1px solid #e8e8ed; border-radius: 6px;
+    cursor: pointer; font-size: clamp(13px, 2vw, 18px); transition: all .15s;
+  }
+  .opt:hover { border-color: #1a73e8; }
+  .opt.correct { background: #e8f8e8; border-color: #27ae60; color: #1e7e34; font-weight: 500; }
+  .opt.wrong { background: #fdecea; border-color: #e74c3c; color: #c0392b; }
+  .q-answer { display: none; margin-top: 8px; padding: 6px 12px; background: #f0f7ff; border-radius: 6px; font-size: 14px; color: #1a73e8; font-weight: 600; text-align: center; }
+  .q-answer.show { display: block; }
+  .show-answer-btn { display: block; margin: 6px auto 0; padding: 4px 14px; background: #1a73e8; color: #fff; border: none; border-radius: 6px; font-size: 13px; cursor: pointer; }
+
+  /* ===== Connect Grid ===== */
+  .connect-game { background: #fff; border-radius: 10px; padding: 18px; margin-bottom: 14px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+  .connect-game h3 { font-size: 16px; margin: 0 0 4px; }
+  .connect-game .zh { font-size: 13px; color: #888; margin: 0 0 12px; }
+  .connect-field { display: flex; gap: 24px; justify-content: center; }
+  .connect-col { display: flex; flex-direction: column; gap: 10px; min-width: 130px; }
+  .c-item {
+    padding: 10px 14px; border: 1px solid #ddd; border-radius: 8px;
+    text-align: center; cursor: pointer; font-size: clamp(13px, 1.8vw, 18px);
+    transition: all .15s; background: #fff;
+  }
+  .c-item:hover { border-color: #1a73e8; }
+  .c-item.selected { border-color: #1a73e8; background: #e8f0fe; font-weight: 500; }
+  .c-item.matched { border-color: #27ae60; background: #e8f8e8; color: #1e7e34; cursor: default; }
+  .connect-score { text-align: center; font-size: 14px; color: #666; margin-top: 12px; }
+
+  /* ===== Fill-gap ===== */
+  .fill-game { background: #fff; border-radius: 10px; padding: 18px; margin-bottom: 14px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+  .fill-game h3 { font-size: 16px; margin: 0 0 4px; }
+  .fill-game .zh { font-size: 13px; color: #888; margin: 0 0 12px; }
+  .fill-item { margin-bottom: 10px; }
+  .fill-sentence { font-size: clamp(13px, 2vw, 19px); color: #333; margin-bottom: 4px; line-height: 1.5; }
+  .fill-input-line { display: flex; align-items: center; gap: 6px; }
+  .fill-input {
+    flex: 1; padding: 6px 10px; border: 1px solid #ddd; border-radius: 6px;
+    font-size: 14px; outline: none; transition: border .15s;
+  }
+  .fill-input:focus { border-color: #1a73e8; }
+  .fill-check {
+    padding: 6px 10px; border: 1px solid #1a73e8; border-radius: 6px;
+    background: #e8f0fe; color: #1a73e8; cursor: pointer; font-size: 14px;
+  }
+  .fill-result { font-size: 16px; min-width: 20px; text-align: center; }
+  .fill-result.correct { color: #27ae60; }
+  .fill-result.wrong { color: #e74c3c; }
+
+  /* ===== Matching Game ===== */
+  .match-game { margin-top: 20px; }
+  .match-game h3 { font-size: 16px; margin: 0 0 4px; }
+  .match-game .zh { font-size: 13px; color: #888; margin: 0 0 12px; }
+  #match-game { display: flex; flex-wrap: wrap; gap: 8px; }
+  .match-card {
+    padding: 8px 14px; border: 1px solid #ddd; border-radius: 8px;
+    cursor: pointer; font-size: 14px; transition: all .15s;
+    background: #fff; text-align: center; flex: 0 0 auto; min-width: 80px;
+  }
+  .match-card:hover { border-color: #1a73e8; }
+  .match-card.selected { border-color: #1a73e8; background: #e8f0fe; }
+  .match-card.matched { border-color: #27ae60; background: #e8f8e8; color: #1e7e34; cursor: default; opacity: .7; }
+  .match-card.de { font-weight: 500; }
+  .match-card.zh { background: #fafbfc; }
+
+  /* ===== Translation Cards ===== */
+  .translation-grid {
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .tc-card {
+    background: transparent;
+    border: none;
+    padding: 0;
+    perspective: 800px;
+    cursor: pointer;
+  }
+  .tc-inner {
+    position: relative;
+    transition: transform .5s ease;
+    transform-style: preserve-3d;
+    min-height: 80px;
+  }
+  .tc-card.flipped .tc-inner {
+    transform: rotateY(180deg);
+  }
+  .tc-front, .tc-back {
+    position: absolute; inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    display: flex; flex-direction: column; align-items: flex-start; justify-content: center;
+    padding: 14px 16px;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    font-size: clamp(14px, 2.2vw, 21px); line-height: 1.5;
+    min-height: 80px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06);
+  }
+  .tc-front {
+    background: #fff;
+    z-index: 2;
+    border-left: 3px solid #1a73e8;
+  }
+  .tc-back {
+    background: linear-gradient(135deg, #e8f0fe, #f5f5ff);
+    color: #1d1d1f;
+    transform: rotateY(180deg);
+    z-index: 1;
+    border-left: 3px solid #27ae60;
+  }
+  .tc-num {
+    display: inline-block;
+    width: 22px; height: 22px; line-height: 22px;
+    text-align: center;
+    background: #1a73e8; color: #fff;
+    border-radius: 50%;
+    font-size: 11px; font-weight: 600;
+    margin-bottom: 4px;
+    flex-shrink: 0;
+  }
+  .tc-back .tc-num {
+    background: #27ae60;
+  }
+  .tc-de {
+    font-size: clamp(14px, 2.2vw, 21px); color: #1d1d1f; font-weight: 500;
+  }
+  .tc-zh {
+    font-size: 16px; color: #1d1d1f;
+  }
+  .tc-vocab {
+    margin-top: 6px;
+    font-size: 12px; color: #888;
+    background: rgba(255,255,255,.7);
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+  .tc-card:hover .tc-front {
+    box-shadow: 0 2px 8px rgba(0,0,0,.1);
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 600px) {
+    .nav-links { position: fixed; top: 48px; left: 0; right: 0; background: #fff; flex-direction: column; padding: 8px; box-shadow: 0 4px 12px rgba(0,0,0,.1); display: none; }
+    .nav-links.show { display: flex; }
+    .hamburger { display: block; }
+    .vocab-grid { grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); }
+    .connect-field { gap: 10px; }
+    .connect-col { min-width: 80px; }
+  }
+</style>
+</head>
+<body>
+<nav><div class="top-nav"><div class="logo" style="cursor:pointer" onclick="switchSection('home')"><span class="logo-icon">🎓</span><span>Lektion 11</span></div><div class="nav-links" id="navLinks"><button onclick="switchSection('home')">首页</button><button onclick="switchSection('text')">课文讲解</button><button onclick="switchSection('vocab')">重点词汇</button><button onclick="switchSection('grammar')">语法</button><button onclick="switchSection('exercise')">练习</button><button onclick="switchSection('translation')">翻译卡片</button></div><button class="hamburger" onclick="toggleNav()">☰</button></div><div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div></nav><div class="main"><div class="container"><div class="text-cards">
+    <section id="home" class="active">
+      <div class="hero">
+        <h1>Lektion 11 · Funktionen der Massenmedien</h1>
+        <p class="sub">大众传媒的功能 · 信息 · 舆论 · 监督 · 教育 · 娱乐</p>
+        <p class="meta">教材课文 · 词汇 · 语法 · 练习</p>
+      </div>
+      <div class="home-grid">
+        <div class="text-card" onclick="switchSection('text')" style="cursor:pointer">
+          <h3>📖 课文讲解</h3>
+          <p>教材原文 + 重点词汇 + 德文概要</p>
+        </div>
+        <div class="text-card" onclick="switchSection('vocab')" style="cursor:pointer">
+          <h3>📝 重点词汇</h3>
+          <p>可点击查词 + 词汇网格</p>
+        </div>
+        <div class="text-card" onclick="switchSection('grammar')" style="cursor:pointer">
+          <h3>🔤 语法·um … zu & damit（目的从句）</h3>
+          <p>并列连词用法详解 + 例句</p>
+        </div>
+        <div class="text-card" onclick="switchSection('exercise')" style="cursor:pointer">
+          <h3>✏️ 练习</h3>
+          <p>词汇练习 + 配对游戏 + 填空</p>
+        </div>
+      </div>
+      <div class="obj-box">
+        <strong>学习目标：</strong>
+        <ul>
+          <li>理解大众传媒的五大功能：信息/舆论/监督/教育/娱乐</li>
+          <li>掌握 um…zu 和 damit 的目的从句用法</li>
+          <li>能区分 um…zu（主语一致）和 damit（主语不同）</li>
+          <li>能完成德⇄中逐句翻译练习</li>
+        </ul>
+      </div>
+    </section>
+    <section id="text">
+      <h2 class="section-title"><span class="num">1</span> T2 · Funktionen der Massenmedien</h2>
+      <div class="text-card">
+        <h3>Funktionen der Massenmedien</h3>
+        <p class="zh sub">大众传媒的五项职能</p>
+        <div class="de">
+          <p>Yang Fang und Laura schauen sich im Museum einen Film über die verschiedenen Funktionen der Massenmedien an.</p>
+          <p><span class="v-word" onclick="showVocab('Traditionellerweise','传统上来说','','traditionellerweise / aus Tradition','Traditionellerweise werden Presse, Rundfunk und Fernsehen als Massenmedien bezeichnet.')">Traditionellerweise</span> werden <span class="v-word" onclick="showVocab('Presse','新闻界、报刊','','die Presse (Sg.) / die freie Presse','Die Presse informiert die Bürger über aktuelle Ereignisse.')">Presse</span>, <span class="v-word" onclick="showVocab('Rundfunk','广播','','der Rundfunk (Sg.) / der öffentlich-rechtliche Rundfunk','Der Rundfunk sendet Nachrichten und Musik.')">Rundfunk</span> und <span class="v-word" onclick="showVocab('Fernsehen','电视','','fernsehen (sieht fern, sah fern, ferngesehen)','Im Fernsehen laufen viele interessante Sendungen.')">Fernsehen</span> als <span class="v-word" onclick="showVocab('Massenmedien','大众传媒（复数）','','die Massenmedien (Pl.)','Zu den Massenmedien gehören Zeitungen, Radio und Fernsehen.')">Massenmedien</span> <span class="v-word" onclick="showVocab('bezeichnet','称为、被称作','','als etwas bezeichnet werden','Presse, Rundfunk und Fernsehen werden als Massenmedien bezeichnet.')">bezeichnet</span>. Ihr gemeinsames <span class="v-word" onclick="showVocab('Merkmal','特征、特点','','das Merkmal, -e / gemeinsames Merkmal','Ihr gemeinsames Merkmal ist die Verbreitung aktueller Inhalte.')">Merkmal</span> ist, aktuelle <span class="v-word" onclick="showVocab('Inhalte','内容（复数）','','die Inhalte (Pl. von der Inhalt)','Die Medien verbreiten aktuelle Inhalte.')">Inhalte</span> mit technischen <span class="v-word" onclick="showVocab('Hilfsmitteln','辅助工具（复数，Dativ）','','technische Hilfsmittel (Pl.)','Mit technischen Hilfsmitteln werden Inhalte einem breiten Publikum zugänglich gemacht.')">Hilfsmitteln</span> einem breiten <span class="v-word" onclick="showVocab('Publikum','公众、观众','','das Publikum (Sg.) / ein breites Publikum','Die Inhalte sind einem breiten Publikum zugänglich.')">Publikum</span> <span class="v-word" onclick="showVocab('zugänglich','可获得的、可接触的','','jmdm. zugänglich sein / machen','Die Informationen sind der Öffentlichkeit zugänglich.')">zugänglich</span> zu machen. In Deutschland sollen die Massenmedien mehrere <span class="v-word" onclick="showVocab('Aufgaben','任务（复数）','','die Aufgabe, -n / mehrere Aufgaben erfüllen','Die Massenmedien sollen mehrere Aufgaben erfüllen.')">Aufgaben</span> <span class="v-word" onclick="showVocab('erfüllen','完成、履行','','eine Aufgabe / Pflicht erfüllen','Die Medien erfüllen wichtige Aufgaben in der Gesellschaft.')">erfüllen</span> und wichtige <span class="v-word" onclick="showVocab('Funktionen','功能、职能（复数）','','die Funktion, -en / eine Funktion ausüben','Die Massenmedien haben verschiedene Funktionen.')">Funktionen</span> für die <span class="v-word" onclick="showVocab('Gesellschaft','社会','','die Gesellschaft, -en','Die Medien spielen eine wichtige Rolle in der Gesellschaft.')">Gesellschaft</span> <span class="v-word" onclick="showVocab('ausüben','行使、执行','','eine Funktion / einen Beruf ausüben','Die Medien üben wichtige Funktionen für die Gesellschaft aus.')">ausüben</span>:</p>
+          <p>Zum einen sollen sie <span class="v-word" onclick="showVocab('Informationen','信息（复数）','','die Information, -en / Informationen verbreiten','Die Medien verbreiten Informationen über Politik und Wirtschaft.')">Informationen</span> über Politik, Wirtschaft und Kultur <span class="v-word" onclick="showVocab('verbreiten','传播、散布','','Informationen / Nachrichten verbreiten','Die Zeitung verbreitet aktuelle Nachrichten.')">verbreiten</span>. Die Massenmedien sollen das Publikum so <span class="v-word" onclick="showVocab('vollständig','完整的、全面的','','vollständige Informationen','Das Publikum soll vollständig informiert werden.')">vollständig</span>, <span class="v-word" onclick="showVocab('sachlich','客观的、实事求是的','','sachlich berichten / informieren','Die Medien sollten sachlich und neutral berichten.')">sachlich</span> und <span class="v-word" onclick="showVocab('verständlich','易懂的、可理解的','','verständlich erklären / darstellen','Die Nachrichten sollen verständlich formuliert sein.')">verständlich</span> wie möglich <span class="v-word" onclick="showVocab('informieren','通知、告知','','jmdn. über etwas informieren / sich informieren','Die Zeitung informiert die Leser täglich.')">informieren</span>, damit ihre <span class="v-word" onclick="showVocab('Nutzerinnen','女性使用者（复数）','','die Nutzerin, -nen / die Nutzer und Nutzerinnen','Die Nutzerinnen verfolgen die Nachrichten online.')">Nutzerinnen</span> und <span class="v-word" onclick="showVocab('Nutzer','使用者（单数/复数）','','der Nutzer, - / die Nutzer und Nutzerinnen','Die Nutzer können öffentliche Ereignisse verfolgen.')">Nutzer</span> öffentliche <span class="v-word" onclick="showVocab('Ereignisse','事件（复数）','','das Ereignis, -se / aktuelle Ereignisse','Die Medien berichten über aktuelle Ereignisse.')">Ereignisse</span> <span class="v-word" onclick="showVocab('verfolgen','跟踪、关注','','Nachrichten / ein Ereignis verfolgen','Das Publikum kann öffentliche Ereignisse verfolgen.')">verfolgen</span> können.</p>
+          <p>Bei der <span class="v-word" onclick="showVocab('Meinungsbildung','舆论形成','','die Meinungsbildung (Sg.) / zur Meinungsbildung beitragen','Die Medien tragen zur Meinungsbildung bei.')">Meinungsbildung</span> sollen die Massenmedien dafür <span class="v-word" onclick="showVocab('sorgen','确保、负责','','für etwas sorgen: 例dafür sorgen, dass ...','Die Medien sorgen dafür, dass Fragen erörtert werden.')">sorgen</span>, dass Fragen von öffentlichem <span class="v-word" onclick="showVocab('Interesse','兴趣、利益','','von öffentlichem Interesse / Interesse an etwas','Das ist eine Frage von öffentlichem Interesse.')">Interesse</span> in freier und offener <span class="v-word" onclick="showVocab('Diskussion','讨论','','die Diskussion, -en / in offener Diskussion','Die Themen werden in offener Diskussion erörtert.')">Diskussion</span> erörtert werden und dass <span class="v-word" onclick="showVocab('Meinungen','观点、意见（复数）','','die Meinung, -en / seine Meinung äußern','Meinungen verschiedener Gruppen kommen in die Öffentlichkeit.')">Meinungen</span> verschiedener <span class="v-word" onclick="showVocab('Interessengruppen','利益集团（复数）','','die Interessengruppe, -n','Verschiedene Interessengruppen äußern ihre Meinungen.')">Interessengruppen</span> in die <span class="v-word" onclick="showVocab('Öffentlichkeit','公众、舆论界','','die Öffentlichkeit (Sg.) / an die Öffentlichkeit bringen','Die Meinungen kommen in die Öffentlichkeit.')">Öffentlichkeit</span> kommen.</p>
+          <p>Außerdem übernehmen die Massenmedien eine <span class="v-word" onclick="showVocab('Kritik- und Kontrollfunktion','批评与监督功能','','die Kritik- und Kontrollfunktion','Die Massenmedien übernehmen eine Kritik- und Kontrollfunktion.')">Kritik- und Kontrollfunktion</span>. Sie sollen politische <span class="v-word" onclick="showVocab('Entscheidungen','决定、决策（复数）','','die Entscheidung, -en / politische Entscheidungen','Die Medien hinterfragen politische Entscheidungen.')">Entscheidungen</span> <span class="v-word" onclick="showVocab('hinterfragen','质疑、追问','','etwas kritisch hinterfragen','Die Medien sollen politische Entscheidungen hinterfragen.')">hinterfragen</span> und <span class="v-word" onclick="showVocab('Missstände','弊端、不良状况（复数）','','der Missstand, Missstände / Missstände aufdecken','Journalisten decken Missstände in der Gesellschaft auf.')">Missstände</span> <span class="v-word" onclick="showVocab('aufdecken','揭露、揭示','','Missstände / einen Skandal aufdecken','Die Presse deckt Missstände auf.')">aufdecken</span>, um dadurch die Arbeit der Politikerinnen und Politiker zu <span class="v-word" onclick="showVocab('kontrollieren','监督、控制','','die Regierung / die Arbeit kontrollieren','Die Medien kontrollieren die Arbeit der Politiker.')">kontrollieren</span>.</p>
+          <p>Zu den weiteren Aufgaben der Massenmedien gehören aber auch <span class="v-word" onclick="showVocab('Bildungsfunktion','教育功能','','die Bildungsfunktion der Medien','Die Massenmedien haben auch eine Bildungsfunktion.')">Bildungsfunktion</span> und <span class="v-word" onclick="showVocab('Unterhaltungsfunktion','娱乐功能','','die Unterhaltungsfunktion der Medien','Die Unterhaltungsfunktion ist eine wichtige Aufgabe der Medien.')">Unterhaltungsfunktion</span>. Die Massenmedien bieten viel <span class="v-word" onclick="showVocab('Kultur','文化','','die Kultur (Sg.) / Kultur anbieten','Die Massenmedien bieten viel Kultur.')">Kultur</span>: Im Fernsehen werden z. B. <span class="v-word" onclick="showVocab('Dokumentationen','纪录片（复数）','','die Dokumentation, -en','Im Fernsehen laufen interessante Dokumentationen.')">Dokumentationen</span>, <span class="v-word" onclick="showVocab('Reportagen','报道、纪实节目（复数）','','die Reportage, -n','Reportagen zeigen das Leben in anderen Ländern.')">Reportagen</span> und Magazine, Konzerte, <span class="v-word" onclick="showVocab('Opern','歌剧（复数）','','die Oper, -n','Im Fernsehen werden auch Opern gezeigt.')">Opern</span>, <span class="v-word" onclick="showVocab('Theateraufführungen','戏剧演出（复数）','','die Theateraufführung, -en','Theateraufführungen sind kulturelle Höhepunkte.')">Theateraufführungen</span> und anspruchsvolle Filme gezeigt. Man schaltet ein, um sich einerseits zu <span class="v-word" onclick="showVocab('bilden','教育、培养','','jmdn. bilden / sich bilden','Bildungssendungen helfen, sich zu bilden.')">bilden</span> und um sich andererseits auch zu <span class="v-word" onclick="showVocab('unterhalten','娱乐','','sich unterhalten / jmdn. unterhalten','Man schaltet das Fernsehen ein, um sich zu unterhalten.')">unterhalten</span> und zu <span class="v-word" onclick="showVocab('entspannen','放松','','sich entspannen','Nach der Arbeit möchte ich mich entspannen.')">entspannen</span>.</p>
+          <p>Die Medien und die Personen hinter den Medien arbeiten nicht automatisch <span class="v-word" onclick="showVocab('neutral','中立的、客观的','','neutral berichten','Die Medien sollten neutral und unabhängig sein.')">neutral</span> oder ohne eigene <span class="v-word" onclick="showVocab('Interessen','利益、兴趣（复数）','','eigene Interessen / ohne Interessen','Die Medien arbeiten nicht ohne eigene Interessen.')">Interessen</span>. Daher ist es wichtig, dass man gegenüber den Medien eine <span class="v-word" onclick="showVocab('kritische','批判的（形容词）','','eine kritische Haltung einnehmen','Man sollte Nachrichten kritisch hinterfragen.')">kritisch</span> <span class="v-word" onclick="showVocab('Haltung','态度、立场','','eine kritische Haltung einnehmen','Gegenüber Medien sollte man eine kritische Haltung haben.')">Haltung</span> <span class="v-word" onclick="showVocab('einnimmt','采取（立场）','','eine Haltung einnehmen','Er nimmt eine kritische Haltung gegenüber den Medien ein.')">einnimmt</span> und <span class="v-word" onclick="showVocab('bereit','准备好的、愿意的','','bereit sein, etwas zu tun','Man sollte bereit sein, verschiedene Darstellungen zu vergleichen.')">bereit</span> ist, nach <span class="v-word" onclick="showVocab('Möglichkeit','可能性','','nach Möglichkeit / die Möglichkeit, -en','Nach Möglichkeit sollte man verschiedene Quellen vergleichen.')">Möglichkeit</span> verschiedene <span class="v-word" onclick="showVocab('Darstellungen','描述、表述（复数）','','die Darstellung, -en','Verschiedene Darstellungen sollten verglichen werden.')">Darstellungen</span> zu <span class="v-word" onclick="showVocab('vergleichen','比较','','etwas mit etwas vergleichen','Man sollte verschiedene Nachrichtenquellen vergleichen.')">vergleichen</span>.</p>
+        </div>
+        <div class="highlight-box">Yang Fang und Laura schauen sich im Museum einen Film über die verschiedenen Funktionen der Massenmedien an.</div>
+      </div>
+    </section>
+    <section id="vocab">
+      <h2 class="section-title"><span class="num">2</span> 重点词汇 · Massenmedien & Funktionen</h2>
+      <div class="person-tabs">
+        <button class="person-btn active" onclick="switchVocabTab('T1')">T2</button>
+      </div>
+      <div class="person-content active" id="vc-T1">
+        <div class="vocab-grid">
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Traditionellerweise</div>
+              <div class="vc-back">传统上来说</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Traditionellerweise','传统上来说','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Presse</div>
+              <div class="vc-back">新闻界、报刊</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Presse','新闻界、报刊','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Rundfunk</div>
+              <div class="vc-back">广播</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Rundfunk','广播','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Fernsehen</div>
+              <div class="vc-back">电视</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Fernsehen','电视','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Massenmedien</div>
+              <div class="vc-back">大众传媒（复数）</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Massenmedien','大众传媒（复数）','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">bezeichnet</div>
+              <div class="vc-back">称为、被称作</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('bezeichnet','称为、被称作','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Merkmal</div>
+              <div class="vc-back">特征、特点</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Merkmal','特征、特点','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Inhalte</div>
+              <div class="vc-back">内容（复数）</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Inhalte','内容（复数）','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Hilfsmitteln</div>
+              <div class="vc-back">辅助工具（复数，Dativ）</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Hilfsmitteln','辅助工具（复数，Dativ）','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Publikum</div>
+              <div class="vc-back">公众、观众</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Publikum','公众、观众','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">zugänglich</div>
+              <div class="vc-back">可获得的、可接触的</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('zugänglich','可获得的、可接触的','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Aufgaben</div>
+              <div class="vc-back">任务（复数）</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Aufgaben','任务（复数）','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">erfüllen</div>
+              <div class="vc-back">完成、履行</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('erfüllen','完成、履行','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Funktionen</div>
+              <div class="vc-back">功能、职能（复数）</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Funktionen','功能、职能（复数）','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Gesellschaft</div>
+              <div class="vc-back">社会</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Gesellschaft','社会','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">ausüben</div>
+              <div class="vc-back">行使、执行</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('ausüben','行使、执行','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Informationen</div>
+              <div class="vc-back">信息（复数）</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Informationen','信息（复数）','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">verbreiten</div>
+              <div class="vc-back">传播、散布</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('verbreiten','传播、散布','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">vollständig</div>
+              <div class="vc-back">完整的、全面的</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('vollständig','完整的、全面的','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">sachlich</div>
+              <div class="vc-back">客观的、实事求是的</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('sachlich','客观的、实事求是的','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">verständlich</div>
+              <div class="vc-back">易懂的、可理解的</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('verständlich','易懂的、可理解的','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">informieren</div>
+              <div class="vc-back">通知、告知</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('informieren','通知、告知','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Nutzerinnen</div>
+              <div class="vc-back">女性使用者（复数）</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Nutzerinnen','女性使用者（复数）','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Ereignisse</div>
+              <div class="vc-back">事件（复数）</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Ereignisse','事件（复数）','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">verfolgen</div>
+              <div class="vc-back">跟踪、关注</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('verfolgen','跟踪、关注','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Meinungsbildung</div>
+              <div class="vc-back">舆论形成</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Meinungsbildung','舆论形成','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">sorgen</div>
+              <div class="vc-back">确保、负责</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('sorgen','确保、负责','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Interesse</div>
+              <div class="vc-back">兴趣、利益</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Interesse','兴趣、利益','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Diskussion</div>
+              <div class="vc-back">讨论</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Diskussion','讨论','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Meinungen</div>
+              <div class="vc-back">观点、意见（复数）</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Meinungen','观点、意见（复数）','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Interessengruppen</div>
+              <div class="vc-back">利益集团（复数）</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Interessengruppen','利益集团（复数）','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Öffentlichkeit</div>
+              <div class="vc-back">公众、舆论界</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Öffentlichkeit','公众、舆论界','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Entscheidungen</div>
+              <div class="vc-back">决定、决策（复数）</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Entscheidungen','决定、决策（复数）','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">hinterfragen</div>
+              <div class="vc-back">质疑、追问</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('hinterfragen','质疑、追问','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Missstände</div>
+              <div class="vc-back">弊端、不良状况（复数）</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Missstände','弊端、不良状况（复数）','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">aufdecken</div>
+              <div class="vc-back">揭露、揭示</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('aufdecken','揭露、揭示','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">kontrollieren</div>
+              <div class="vc-back">监督、控制</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('kontrollieren','监督、控制','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Kultur</div>
+              <div class="vc-back">文化</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Kultur','文化','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Dokumentationen</div>
+              <div class="vc-back">纪录片（复数）</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Dokumentationen','纪录片（复数）','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Reportagen</div>
+              <div class="vc-back">报道、纪实节目（复数）</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Reportagen','报道、纪实节目（复数）','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Opern</div>
+              <div class="vc-back">歌剧（复数）</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Opern','歌剧（复数）','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Theateraufführungen</div>
+              <div class="vc-back">戏剧演出（复数）</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Theateraufführungen','戏剧演出（复数）','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">bilden</div>
+              <div class="vc-back">教育、培养</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('bilden','教育、培养','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">unterhalten</div>
+              <div class="vc-back">娱乐</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('unterhalten','娱乐','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">entspannen</div>
+              <div class="vc-back">放松</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('entspannen','放松','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">neutral</div>
+              <div class="vc-back">中立的、客观的</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('neutral','中立的、客观的','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">kritisch</div>
+              <div class="vc-back">批判的（形容词）</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('kritisch','批判的（形容词）','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Haltung</div>
+              <div class="vc-back">态度、立场</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Haltung','态度、立场','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">einnimmt</div>
+              <div class="vc-back">采取（立场）</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('einnimmt','采取（立场）','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">bereit</div>
+              <div class="vc-back">准备好的、愿意的</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('bereit','准备好的、愿意的','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Möglichkeit</div>
+              <div class="vc-back">可能性</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Möglichkeit','可能性','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Darstellungen</div>
+              <div class="vc-back">描述、表述（复数）</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Darstellungen','描述、表述（复数）','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">vergleichen</div>
+              <div class="vc-back">比较</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('vergleichen','比较','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Bildungsfunktion</div>
+              <div class="vc-back">教育功能</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Bildungsfunktion','教育功能','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Interessen</div>
+              <div class="vc-back">利益、兴趣（复数）</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Interessen','利益、兴趣（复数）','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Kritik- und Kontrollfunktion</div>
+              <div class="vc-back">批评与监督功能</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Kritik- und Kontrollfunktion','批评与监督功能','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Nutzer</div>
+              <div class="vc-back">使用者（单数/复数）</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Nutzer','使用者（单数/复数）','')'>▶</button>
+          </div>
+          <div class="vc-card" onclick="flipCard(this)">
+            <div class="vc-inner">
+              <div class="vc-front">Unterhaltungsfunktion</div>
+              <div class="vc-back">娱乐功能</div>
+            </div>
+            <button class="vc-detail" onclick='event.stopPropagation();showVocab('Unterhaltungsfunktion','娱乐功能','')'>▶</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="grammar">
+      <h2 class="section-title"><span class="num">3</span> 语法 · um … zu & damit</h2>
+      <div class="grammar-table-wrapper">
+        <h3>um … zu + Infinitiv（目的从句·主语一致）</h3>
+        <table class="grammar-table">
+          <thead><tr><th>结构</th><th>例句</th><th>中文</th></tr></thead>
+          <tbody>
+            <tr><td>um … zu + Infinitiv</td><td>Er ist in die Stadt gezogen, um hier zu arbeiten.</td><td>他搬到城市，是为了在这里工作。</td></tr>
+            <tr><td>um … zu + Infinitiv</td><td>Man schaltet ein, um sich zu bilden.</td><td>人们打开电视，是为了学习。</td></tr>
+            <tr><td>um … zu + Infinitiv</td><td>Man schaltet ein, um sich zu unterhalten.</td><td>人们打开电视，是为了娱乐。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="grammar-table-wrapper">
+        <h3>damit + Nebensatz（目的从句·主语不同）</h3>
+        <table class="grammar-table">
+          <thead><tr><th>结构</th><th>例句</th><th>中文</th></tr></thead>
+          <tbody>
+            <tr><td>damit + Subjekt + Verb (Ende)</td><td>Er ist in die Stadt gezogen, damit seine Kinder mehr Chancen haben.</td><td>他搬到城市，为了他的孩子有更多机会。</td></tr>
+            <tr><td>damit + Subjekt + Verb (Ende)</td><td>Die Medien informieren, damit die Bürger informiert sind.</td><td>媒体报道，以便公民了解情况。</td></tr>
+            <tr><td>damit + Subjekt + Verb (Ende)</td><td>Man zeigt Filme, damit sich die Zuschauer unterhalten.</td><td>人们播放电影，为了观众娱乐。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="grammar-table-wrapper">
+        <h3>Gebrauchsunterschied（用法区别）</h3>
+        <table class="grammar-table">
+          <thead><tr><th>Ausdruck</th><th>条件</th><th>例句</th></tr></thead>
+          <tbody>
+            <tr><td>um … zu</td><td>主句和从句主语相同</td><td>Ich lese Zeitung, um mich zu informieren.（ich = ich）</td></tr>
+            <tr><td>damit</td><td>主句和从句主语不同</td><td>Ich lese Zeitung, damit meine Eltern informiert sind.（ich ≠ meine Eltern）</td></tr>
+            <tr><td>damit</td><td>主句含情态动词时</td><td>Die Medien sollen sorgen, dass …, damit die Demokratie funktioniert.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="grammar-examples">
+        <h3>例句</h3>
+        <div class="grammar-example">
+          <div class="de">Die Massenmedien informieren das Publikum, damit es öffentliche Ereignisse verfolgen kann.</div>
+          <div class="zh">大众传媒告知公众，以便他们能关注公共事件。</div>
+        </div>
+        <div class="grammar-example">
+          <div class="de">Man sollte verschiedene Darstellungen vergleichen, um eine eigene Meinung zu bilden.</div>
+          <div class="zh">人们应该比较不同的描述，以形成自己的观点。</div>
+        </div>
+        <div class="grammar-example">
+          <div class="de">Die Medien decken Missstände auf, um die Arbeit der Politiker zu kontrollieren.</div>
+          <div class="zh">媒体揭露弊端，以监督政治家的行为。</div>
+        </div>
+      </div>
+    </section>
+    <section id="exercise">
+      <h2 class="section-title"><span class="num">4</span> 练习 · Wortschatz</h2>
+      <div class="connect-game">
+        <h3>🏛️ 大众传媒 · Massenmedien & Grundbegriffe</h3>
+        <p class="zh">点击左列德文，再点击右列中文进行匹配</p>
+        <div class="connect-field" id="cg-0">
+          <div class="connect-col" id="cg-de-0">
+            <div class="c-item de" data-pair="0" data-gid="0" onclick="cClick(this)">die Presse</div>
+            <div class="c-item de" data-pair="1" data-gid="0" onclick="cClick(this)">der Rundfunk</div>
+            <div class="c-item de" data-pair="2" data-gid="0" onclick="cClick(this)">das Fernsehen</div>
+            <div class="c-item de" data-pair="3" data-gid="0" onclick="cClick(this)">die Massenmedien</div>
+            <div class="c-item de" data-pair="4" data-gid="0" onclick="cClick(this)">das Merkmal</div>
+            <div class="c-item de" data-pair="5" data-gid="0" onclick="cClick(this)">das Publikum</div>
+            <div class="c-item de" data-pair="6" data-gid="0" onclick="cClick(this)">die Öffentlichkeit</div>
+            <div class="c-item de" data-pair="7" data-gid="0" onclick="cClick(this)">die Gesellschaft</div>
+            <div class="c-item de" data-pair="8" data-gid="0" onclick="cClick(this)">die Kultur</div>
+          </div>
+          <div class="connect-col" id="cg-cn-0">
+            <div class="c-item cn" data-pair="1" data-gid="0" onclick="cClick(this)">广播</div>
+            <div class="c-item cn" data-pair="3" data-gid="0" onclick="cClick(this)">大众传媒</div>
+            <div class="c-item cn" data-pair="2" data-gid="0" onclick="cClick(this)">电视</div>
+            <div class="c-item cn" data-pair="8" data-gid="0" onclick="cClick(this)">文化</div>
+            <div class="c-item cn" data-pair="4" data-gid="0" onclick="cClick(this)">特征</div>
+            <div class="c-item cn" data-pair="0" data-gid="0" onclick="cClick(this)">新闻界、报刊</div>
+            <div class="c-item cn" data-pair="5" data-gid="0" onclick="cClick(this)">公众</div>
+            <div class="c-item cn" data-pair="6" data-gid="0" onclick="cClick(this)">公众、舆论界</div>
+            <div class="c-item cn" data-pair="7" data-gid="0" onclick="cClick(this)">社会</div>
+          </div>
+        </div>
+        <div class="connect-score" id="cg-score-0">匹配：<span id="cg-cnt-0">0</span> / 9</div>
+      </div>
+      <div class="connect-game">
+        <h3>🎯 五大职能 · Fünf Funktionen</h3>
+        <p class="zh">点击左列德文，再点击右列中文进行匹配</p>
+        <div class="connect-field" id="cg-1">
+          <div class="connect-col" id="cg-de-1">
+            <div class="c-item de" data-pair="0" data-gid="1" onclick="cClick(this)">die Informationsfunktion</div>
+            <div class="c-item de" data-pair="1" data-gid="1" onclick="cClick(this)">die Meinungsbildungsfunktion</div>
+            <div class="c-item de" data-pair="2" data-gid="1" onclick="cClick(this)">die Kritik- und Kontrollfunktion</div>
+            <div class="c-item de" data-pair="3" data-gid="1" onclick="cClick(this)">die Bildungsfunktion</div>
+            <div class="c-item de" data-pair="4" data-gid="1" onclick="cClick(this)">die Unterhaltungsfunktion</div>
+          </div>
+          <div class="connect-col" id="cg-cn-1">
+            <div class="c-item cn" data-pair="4" data-gid="1" onclick="cClick(this)">娱乐功能</div>
+            <div class="c-item cn" data-pair="2" data-gid="1" onclick="cClick(this)">批评与监督功能</div>
+            <div class="c-item cn" data-pair="0" data-gid="1" onclick="cClick(this)">信息功能</div>
+            <div class="c-item cn" data-pair="3" data-gid="1" onclick="cClick(this)">教育功能</div>
+            <div class="c-item cn" data-pair="1" data-gid="1" onclick="cClick(this)">舆论形成功能</div>
+          </div>
+        </div>
+        <div class="connect-score" id="cg-score-1">匹配：<span id="cg-cnt-1">0</span> / 5</div>
+      </div>
+      <div class="connect-game">
+        <h3>🔑 核心动词 · Schlüsselverben</h3>
+        <p class="zh">点击左列德文，再点击右列中文进行匹配</p>
+        <div class="connect-field" id="cg-2">
+          <div class="connect-col" id="cg-de-2">
+            <div class="c-item de" data-pair="0" data-gid="2" onclick="cClick(this)">bezeichnen</div>
+            <div class="c-item de" data-pair="1" data-gid="2" onclick="cClick(this)">erfüllen</div>
+            <div class="c-item de" data-pair="2" data-gid="2" onclick="cClick(this)">ausüben</div>
+            <div class="c-item de" data-pair="3" data-gid="2" onclick="cClick(this)">verbreiten</div>
+            <div class="c-item de" data-pair="4" data-gid="2" onclick="cClick(this)">informieren</div>
+            <div class="c-item de" data-pair="5" data-gid="2" onclick="cClick(this)">verfolgen</div>
+            <div class="c-item de" data-pair="6" data-gid="2" onclick="cClick(this)">hinterfragen</div>
+            <div class="c-item de" data-pair="7" data-gid="2" onclick="cClick(this)">aufdecken</div>
+            <div class="c-item de" data-pair="8" data-gid="2" onclick="cClick(this)">kontrollieren</div>
+            <div class="c-item de" data-pair="9" data-gid="2" onclick="cClick(this)">bilden</div>
+            <div class="c-item de" data-pair="10" data-gid="2" onclick="cClick(this)">unterhalten</div>
+            <div class="c-item de" data-pair="11" data-gid="2" onclick="cClick(this)">entspannen</div>
+            <div class="c-item de" data-pair="12" data-gid="2" onclick="cClick(this)">vergleichen</div>
+            <div class="c-item de" data-pair="13" data-gid="2" onclick="cClick(this)">sorgen für</div>
+          </div>
+          <div class="connect-col" id="cg-cn-2">
+            <div class="c-item cn" data-pair="4" data-gid="2" onclick="cClick(this)">通知</div>
+            <div class="c-item cn" data-pair="8" data-gid="2" onclick="cClick(this)">监督</div>
+            <div class="c-item cn" data-pair="2" data-gid="2" onclick="cClick(this)">行使</div>
+            <div class="c-item cn" data-pair="11" data-gid="2" onclick="cClick(this)">放松</div>
+            <div class="c-item cn" data-pair="7" data-gid="2" onclick="cClick(this)">揭露</div>
+            <div class="c-item cn" data-pair="13" data-gid="2" onclick="cClick(this)">确保</div>
+            <div class="c-item cn" data-pair="1" data-gid="2" onclick="cClick(this)">完成、履行</div>
+            <div class="c-item cn" data-pair="3" data-gid="2" onclick="cClick(this)">传播</div>
+            <div class="c-item cn" data-pair="9" data-gid="2" onclick="cClick(this)">教育</div>
+            <div class="c-item cn" data-pair="12" data-gid="2" onclick="cClick(this)">比较</div>
+            <div class="c-item cn" data-pair="5" data-gid="2" onclick="cClick(this)">跟踪、关注</div>
+            <div class="c-item cn" data-pair="0" data-gid="2" onclick="cClick(this)">称为</div>
+            <div class="c-item cn" data-pair="6" data-gid="2" onclick="cClick(this)">质疑</div>
+            <div class="c-item cn" data-pair="10" data-gid="2" onclick="cClick(this)">娱乐</div>
+          </div>
+        </div>
+        <div class="connect-score" id="cg-score-2">匹配：<span id="cg-cnt-2">0</span> / 14</div>
+      </div>
+      <div class="connect-game">
+        <h3>✨ 形容词 & 固定搭配 · Adjektive & Wendungen</h3>
+        <p class="zh">点击左列德文，再点击右列中文进行匹配</p>
+        <div class="connect-field" id="cg-3">
+          <div class="connect-col" id="cg-de-3">
+            <div class="c-item de" data-pair="0" data-gid="3" onclick="cClick(this)">vollständig</div>
+            <div class="c-item de" data-pair="1" data-gid="3" onclick="cClick(this)">sachlich</div>
+            <div class="c-item de" data-pair="2" data-gid="3" onclick="cClick(this)">verständlich</div>
+            <div class="c-item de" data-pair="3" data-gid="3" onclick="cClick(this)">neutral</div>
+            <div class="c-item de" data-pair="4" data-gid="3" onclick="cClick(this)">kritisch</div>
+            <div class="c-item de" data-pair="5" data-gid="3" onclick="cClick(this)">zugänglich</div>
+            <div class="c-item de" data-pair="6" data-gid="3" onclick="cClick(this)">bereit sein zu</div>
+            <div class="c-item de" data-pair="7" data-gid="3" onclick="cClick(this)">eine Haltung einnehmen</div>
+            <div class="c-item de" data-pair="8" data-gid="3" onclick="cClick(this)">von öffentlichem Interesse</div>
+            <div class="c-item de" data-pair="9" data-gid="3" onclick="cClick(this)">Missstände aufdecken</div>
+            <div class="c-item de" data-pair="10" data-gid="3" onclick="cClick(this)">nach Möglichkeit</div>
+          </div>
+          <div class="connect-col" id="cg-cn-3">
+            <div class="c-item cn" data-pair="9" data-gid="3" onclick="cClick(this)">揭露弊端</div>
+            <div class="c-item cn" data-pair="10" data-gid="3" onclick="cClick(this)">尽可能</div>
+            <div class="c-item cn" data-pair="0" data-gid="3" onclick="cClick(this)">完整的</div>
+            <div class="c-item cn" data-pair="5" data-gid="3" onclick="cClick(this)">可获得的</div>
+            <div class="c-item cn" data-pair="2" data-gid="3" onclick="cClick(this)">易懂的</div>
+            <div class="c-item cn" data-pair="6" data-gid="3" onclick="cClick(this)">愿意做</div>
+            <div class="c-item cn" data-pair="8" data-gid="3" onclick="cClick(this)">符合公众利益的</div>
+            <div class="c-item cn" data-pair="7" data-gid="3" onclick="cClick(this)">采取态度</div>
+            <div class="c-item cn" data-pair="3" data-gid="3" onclick="cClick(this)">中立的</div>
+            <div class="c-item cn" data-pair="4" data-gid="3" onclick="cClick(this)">批判的</div>
+            <div class="c-item cn" data-pair="1" data-gid="3" onclick="cClick(this)">客观的</div>
+          </div>
+        </div>
+        <div class="connect-score" id="cg-score-3">匹配：<span id="cg-cnt-3">0</span> / 11</div>
+      </div>
+    </section>
+    <section id="translation">
+      <h2 class="section-title"><span class="num">5</span> 逐句翻译练习</h2>
+      <p class="zh" style="margin:0 0 12px;font-size:14px;color:#888">点击卡片查看答案 · 先自己试译，再翻开核对</p>
+      <div class="translation-grid">
+        <div class="tc-card" onclick="flipTrans(this)">
+          <div class="tc-inner">
+            <div class="tc-front">
+              <span class="tc-num">1</span>
+              <div class="tc-de">Traditionellerweise werden Presse, Rundfunk und Fernsehen als Massenmedien bezeichnet.</div>
+            </div>
+            <div class="tc-back">
+              <span class="tc-num">1</span>
+              <div class="tc-zh">传统意义上，报纸、广播和电视被认为是大众传媒。</div>
+              <div class="tc-vocab">组词→ bezeichnet als — 被称为</div>
+            </div>
+          </div>
+        </div>
+        <div class="tc-card" onclick="flipTrans(this)">
+          <div class="tc-inner">
+            <div class="tc-front">
+              <span class="tc-num">2</span>
+              <div class="tc-de">Ihr gemeinsames Merkmal ist, aktuelle Inhalte mit technischen Hilfsmitteln einem breiten Publikum zugänglich zu machen.</div>
+            </div>
+            <div class="tc-back">
+              <span class="tc-num">2</span>
+              <div class="tc-zh">它们的共同特征是利用技术手段向广大受众提供时事内容。</div>
+              <div class="tc-vocab">组词→ zugänglich machen — 使可获得</div>
+            </div>
+          </div>
+        </div>
+        <div class="tc-card" onclick="flipTrans(this)">
+          <div class="tc-inner">
+            <div class="tc-front">
+              <span class="tc-num">3</span>
+              <div class="tc-de">In Deutschland sollen die Massenmedien mehrere Aufgaben erfüllen und wichtige Funktionen für die Gesellschaft ausüben.</div>
+            </div>
+            <div class="tc-back">
+              <span class="tc-num">3</span>
+              <div class="tc-zh">在德国，大众传媒应履行多项任务，为社会发挥重要功能。</div>
+              <div class="tc-vocab">组词→ Aufgaben erfüllen — 完成任务；Funktionen ausüben — 发挥功能</div>
+            </div>
+          </div>
+        </div>
+        <div class="tc-card" onclick="flipTrans(this)">
+          <div class="tc-inner">
+            <div class="tc-front">
+              <span class="tc-num">4</span>
+              <div class="tc-de">Die Massenmedien sollen das Publikum so vollständig, sachlich und verständlich wie möglich informieren.</div>
+            </div>
+            <div class="tc-back">
+              <span class="tc-num">4</span>
+              <div class="tc-zh">大众传媒应尽可能全面、客观、易懂地告知公众。</div>
+              <div class="tc-vocab">组词→ vollständig, sachlich, verständlich — 全面、客观、易懂</div>
+            </div>
+          </div>
+        </div>
+        <div class="tc-card" onclick="flipTrans(this)">
+          <div class="tc-inner">
+            <div class="tc-front">
+              <span class="tc-num">5</span>
+              <div class="tc-de">Bei der Meinungsbildung sollen die Massenmedien dafür sorgen, dass Fragen von öffentlichem Interesse erörtert werden.</div>
+            </div>
+            <div class="tc-back">
+              <span class="tc-num">5</span>
+              <div class="tc-zh">在舆论形成方面，大众传媒应确保公众利益问题得到讨论。</div>
+              <div class="tc-vocab">组词→ die Meinungsbildung — 舆论形成</div>
+            </div>
+          </div>
+        </div>
+        <div class="tc-card" onclick="flipTrans(this)">
+          <div class="tc-inner">
+            <div class="tc-front">
+              <span class="tc-num">6</span>
+              <div class="tc-de">Die Massenmedien übernehmen eine Kritik- und Kontrollfunktion.</div>
+            </div>
+            <div class="tc-back">
+              <span class="tc-num">6</span>
+              <div class="tc-zh">大众传媒承担批评与监督职能。</div>
+              <div class="tc-vocab">组词→ die Kritik- und Kontrollfunktion — 批评与监督功能</div>
+            </div>
+          </div>
+        </div>
+        <div class="tc-card" onclick="flipTrans(this)">
+          <div class="tc-inner">
+            <div class="tc-front">
+              <span class="tc-num">7</span>
+              <div class="tc-de">Sie sollen politische Entscheidungen hinterfragen und Missstände aufdecken.</div>
+            </div>
+            <div class="tc-back">
+              <span class="tc-num">7</span>
+              <div class="tc-zh">它们应质疑政治决策并揭露弊端。</div>
+              <div class="tc-vocab">组词→ hinterfragen — 质疑；aufdecken — 揭露</div>
+            </div>
+          </div>
+        </div>
+        <div class="tc-card" onclick="flipTrans(this)">
+          <div class="tc-inner">
+            <div class="tc-front">
+              <span class="tc-num">8</span>
+              <div class="tc-de">Man schaltet ein, um sich einerseits zu bilden und um sich andererseits zu unterhalten und zu entspannen.</div>
+            </div>
+            <div class="tc-back">
+              <span class="tc-num">8</span>
+              <div class="tc-zh">人们打开（电视），一方面为了学习，另一方面为了娱乐和放松。</div>
+              <div class="tc-vocab">组词→ einerseits … andererseits — 一方面……另一方面</div>
+            </div>
+          </div>
+        </div>
+        <div class="tc-card" onclick="flipTrans(this)">
+          <div class="tc-inner">
+            <div class="tc-front">
+              <span class="tc-num">9</span>
+              <div class="tc-de">Die Medien und die Personen hinter den Medien arbeiten nicht automatisch neutral oder ohne eigene Interessen.</div>
+            </div>
+            <div class="tc-back">
+              <span class="tc-num">9</span>
+              <div class="tc-zh">媒体及其背后的人员并非自动中立或没有自身利益。</div>
+              <div class="tc-vocab">组词→ neutral — 中立的</div>
+            </div>
+          </div>
+        </div>
+        <div class="tc-card" onclick="flipTrans(this)">
+          <div class="tc-inner">
+            <div class="tc-front">
+              <span class="tc-num">10</span>
+              <div class="tc-de">Es ist wichtig, dass man gegenüber den Medien eine kritische Haltung einnimmt.</div>
+            </div>
+            <div class="tc-back">
+              <span class="tc-num">10</span>
+              <div class="tc-zh">重要的是对媒体持批判态度。</div>
+              <div class="tc-vocab">组词→ eine Haltung einnehmen — 采取态度</div>
+            </div>
+          </div>
+        </div>
+        <div class="tc-card" onclick="flipTrans(this)">
+          <div class="tc-inner">
+            <div class="tc-front">
+              <span class="tc-num">11</span>
+              <div class="tc-de">Man sollte bereit sein, nach Möglichkeit verschiedene Darstellungen zu vergleichen.</div>
+            </div>
+            <div class="tc-back">
+              <span class="tc-num">11</span>
+              <div class="tc-zh">人们应该愿意尽可能比较不同的描述。</div>
+              <div class="tc-vocab">组词→ nach Möglichkeit — 尽可能</div>
+            </div>
+          </div>
+        </div>
+        <div class="tc-card" onclick="flipTrans(this)">
+          <div class="tc-inner">
+            <div class="tc-front">
+              <span class="tc-num">12</span>
+              <div class="tc-de">Zu den weiteren Aufgaben der Massenmedien gehören Bildungsfunktion und Unterhaltungsfunktion.</div>
+            </div>
+            <div class="tc-back">
+              <span class="tc-num">12</span>
+              <div class="tc-zh">大众传媒的其他任务还包括教育功能和娱乐功能。</div>
+              <div class="tc-vocab">组词→ die Bildungsfunktion — 教育功能；die Unterhaltungsfunktion — 娱乐功能</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+</div></div></div>
+<div class="vocab-overlay" id="vocabOverlay" onclick="hideVocab()"></div>
+<div class="vocab-panel" id="vocabPanel">
+  <div class="vocab-panel-header">
+    <span id="vpWord" class="vp-word"></span>
+    <button onclick="hideVocab()" class="vp-close">&times;</button>
+  </div>
+  <div id="vpZh" class="vp-zh"></div>
+  <div id="vpPhrase" class="vp-phrase-row"></div>
+  <div id="vpExample" class="vp-example-row"></div>
+  <div id="vpEx" class="vp-ex"></div>
+</div>
+<script>
+// ===== Section Navigation =====
+function switchSection(id) {
+  document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
+
+  const map = { home:0, text:1, vocab:2, grammar:3, exercise:4, translation:5 };
+  const btns = document.querySelectorAll('.nav-links button');
+  if (btns[map[id]]) btns[map[id]].classList.add('active');
+
+  document.querySelector('.nav-links').classList.remove('show');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  updateProgress(id);
+}
+
+function updateProgress(id) {
+  const map = { home:0, text:20, vocab:40, grammar:60, exercise:80, translation:100 };
+  const bar = document.getElementById('progressFill');
+  if (bar) bar.style.width = (map[id] || 0) + '%';
+}
+
+// ===== Mobile Nav Toggle =====
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('show');
+}
+
+// ===== Text Pagination =====
+function prevPage(id) {
+  var container = document.getElementById('tp-' + id);
+  if (!container) return;
+  var pages = container.querySelectorAll('.text-page');
+  var current = 0;
+  pages.forEach(function(p, i) {
+    if (p.style.display !== 'none') current = i;
+    p.style.display = 'none';
+  });
+  if (current > 0) {
+    pages[current - 1].style.display = 'block';
+    updatePager(id, pages.length, current - 1);
+  } else {
+    pages[0].style.display = 'block';
+  }
+}
+
+function nextPage(id) {
+  var container = document.getElementById('tp-' + id);
+  if (!container) return;
+  var pages = container.querySelectorAll('.text-page');
+  var current = 0;
+  pages.forEach(function(p, i) {
+    if (p.style.display !== 'none') current = i;
+    p.style.display = 'none';
+  });
+  if (current < pages.length - 1) {
+    pages[current + 1].style.display = 'block';
+    updatePager(id, pages.length, current + 1);
+  } else {
+    pages[pages.length - 1].style.display = 'block';
+  }
+}
+
+function updatePager(id, total, current) {
+  var prevBtn = document.getElementById('tp-prev-' + id);
+  var nextBtn = document.getElementById('tp-next-' + id);
+  var info = document.getElementById('tp-info-' + id);
+  if (prevBtn) prevBtn.disabled = current === 0;
+  if (nextBtn) nextBtn.disabled = current >= total - 1;
+  if (info) info.textContent = (current + 1) + ' / ' + total;
+}
+
+// ===== Vocab Flip Cards =====
+function flipCard(el) {
+  el.classList.toggle('flipped');
+}
+
+// ===== Translation Flip Cards =====
+function flipTrans(el) {
+  el.classList.toggle('flipped');
+}
+
+// ===== Vocab Panel =====
+function showVocab(word, zh, ex, phrase, example) {
+  document.getElementById('vpWord').textContent = word || '';
+  document.getElementById('vpZh').textContent = zh || '';
+  document.getElementById('vpPhrase').innerHTML = phrase ? '📎 ' + phrase : '';
+  document.getElementById('vpExample').innerHTML = example ? '💬 ' + example : '';
+  document.getElementById('vpEx').textContent = ex || '';
+  document.getElementById('vocabPanel').classList.add('show');
+  document.getElementById('vocabOverlay').classList.add('show');
+}
+
+function hideVocab() {
+  document.getElementById('vocabPanel').classList.remove('show');
+  document.getElementById('vocabOverlay').classList.remove('show');
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') hideVocab();
+});
+
+// ===== Vocab Tabs =====
+function switchVocabTab(id) {
+  document.querySelectorAll('.person-content').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.person-tabs button').forEach(b => b.classList.remove('active'));
+  var content = document.getElementById('vc-' + id);
+  if (content) content.classList.add('active');
+  document.querySelectorAll('.person-tabs button').forEach(function(b) {
+    if (b.getAttribute('onclick') && b.getAttribute('onclick').includes("switchVocabTab('" + id + "')")) {
+      b.classList.add('active');
+    }
+  });
+}
+
+// ===== Quiz =====
+function checkQuiz(el, qId, optIdx) {
+  var card = el.closest('.quiz-card');
+  var answerDiv = card.querySelector('.q-answer');
+  var answer = answerDiv ? answerDiv.textContent.replace('答案：','').trim() : '';
+  var correctLetter = answer.charCodeAt(0) - 65;
+  var options = card.querySelectorAll('.opt');
+  options.forEach(function(o) { o.style.pointerEvents = 'none'; });
+  if (optIdx === correctLetter) {
+    el.classList.add('correct');
+  } else {
+    el.classList.add('wrong');
+    options[correctLetter].classList.add('correct');
+  }
+}
+
+// ===== Connect Grid =====
+var cSelected = null;
+
+function cClick(el) {
+  if (el.classList.contains('matched')) return;
+  if (cSelected === null) {
+    cSelected = el;
+    el.classList.add('selected');
+  } else if (cSelected === el) {
+    cSelected.classList.remove('selected');
+    cSelected = null;
+  } else {
+    var isDe1 = cSelected.classList.contains('de');
+    var isDe2 = el.classList.contains('de');
+    if (isDe1 === isDe2) {
+      cSelected.classList.remove('selected');
+      cSelected = el;
+      el.classList.add('selected');
+    } else if (cSelected.dataset.pair === el.dataset.pair) {
+      cSelected.classList.remove('selected');
+      cSelected.classList.add('matched');
+      el.classList.add('matched');
+      cSelected = null;
+      var gid = el.dataset.gid;
+      var total = document.querySelectorAll('#cg-de-' + gid + ' .c-item').length;
+      var done = document.querySelectorAll('#cg-de-' + gid + ' .c-item.matched').length;
+      document.getElementById('cg-cnt-' + gid).textContent = done;
+      if (done >= total) {
+        setTimeout(function(){ alert('Alle richtig!'); }, 200);
+      }
+    } else {
+      cSelected.classList.remove('selected');
+      var old = cSelected;
+      cSelected = null;
+      old.style.borderColor = '#e74c3c';
+      el.style.borderColor = '#e74c3c';
+      setTimeout(function() {
+        old.style.borderColor = '';
+        el.style.borderColor = '';
+      }, 300);
+    }
+  }
+}
+
+// ===== Fill-gap =====
+function checkFill(gid, idx) {
+  var input = document.getElementById('fg-' + gid + '-' + idx);
+  var result = document.getElementById('fg-res-' + gid + '-' + idx);
+  var answer = input.dataset.answer;
+  var val = input.value.trim().toLowerCase();
+  if (val === answer.toLowerCase()) {
+    input.style.borderColor = '#27ae60';
+    input.style.background = '#e8f8e8';
+    result.textContent = '\u2713';
+    result.className = 'fill-result correct';
+  } else {
+    input.style.borderColor = '#e74c3c';
+    input.style.background = '#fdecea';
+    result.textContent = '\u2717';
+    result.className = 'fill-result wrong';
+  }
+}
+
+// Support Enter key in fill-gap
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') {
+    var input = e.target.closest('.fill-input');
+    if (input) {
+      var parts = input.id.split('-');
+      checkFill(parseInt(parts[1]), parseInt(parts[2]));
+    }
+  }
+});
+
+// ===== Matching Game =====
+var matchSelected = null;
+function matchClick(el) {
+  if (el.classList.contains('matched')) return;
+  if (matchSelected === null) {
+    matchSelected = el;
+    el.classList.add('selected');
+  } else if (matchSelected === el) {
+    matchSelected.classList.remove('selected');
+    matchSelected = null;
+  } else {
+    var d = matchSelected.classList.contains('de');
+    var e = el.classList.contains('de');
+    if (d === e) {
+      matchSelected.classList.remove('selected');
+      matchSelected = el;
+      el.classList.add('selected');
+    } else if (matchSelected.dataset.pair === el.dataset.pair) {
+      matchSelected.classList.remove('selected');
+      matchSelected.classList.add('matched');
+      el.classList.add('matched');
+      matchSelected = null;
+      var remaining = document.querySelectorAll('.match-card:not(.matched)').length;
+      if (remaining === 0) { setTimeout(function(){ alert('Alles richtig!'); }, 200); }
+    } else {
+      matchSelected.classList.remove('selected');
+      var old = matchSelected;
+      matchSelected = null;
+      old.style.borderColor = '#e74c3c';
+      el.style.borderColor = '#e74c3c';
+      setTimeout(function(){old.style.borderColor = ''; el.style.borderColor = '';}, 300);
+    }
+  }
+}
+
+// ===== Keyboard shortcuts =====
+document.addEventListener('keydown', function(e) {
+  if (e.key === '1') switchSection('home');
+  if (e.key === '2') switchSection('text');
+  if (e.key === '3') switchSection('vocab');
+  if (e.key === '4') switchSection('grammar');
+  if (e.key === '5') switchSection('exercise');
+  if (e.key === '6') switchSection('translation');
+});
+
+</script>
+</body>
+</html>

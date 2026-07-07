@@ -11,8 +11,9 @@
   body {
     margin: 0; padding: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
-    background: #f5f5f7; color: #1d1d1f; line-height: 1.6;
+    background: #f5f5f7; color: #1d1d1f; line-height: 1.7;
     padding-top: 76px;
+    font-size: clamp(15px, 2.2vw, 20px);
   }
 
   /* ===== Nav ===== */
@@ -30,8 +31,8 @@
   .logo-icon { font-size: 20px; }
   .nav-links { display: flex; gap: 4px; overflow-x: auto; flex: 1; }
   .nav-links button {
-    background: none; border: none; padding: 6px 12px;
-    font-size: 13px; color: #666; cursor: pointer; border-radius: 6px;
+    background: none; border: none; padding: 8px 14px;
+    font-size: clamp(12px, 1.6vw, 16px); color: #666; cursor: pointer; border-radius: 6px;
     white-space: nowrap; transition: all .15s;
   }
   .nav-links button:hover { background: #f0f0f0; }
@@ -47,8 +48,8 @@
   }
 
   /* ===== Main Content ===== */
-  .main { max-width: 900px; margin: 0 auto; padding: 16px; }
-  .container { max-width: 720px; margin: 0 auto; }
+  .main { max-width: 1100px; margin: 0 auto; padding: 16px; }
+  .container { max-width: min(900px, 95vw); margin: 0 auto; }
   section { display: none; }
   section.active { display: block; }
 
@@ -58,8 +59,8 @@
     background: linear-gradient(135deg, #e8f0fe 0%, #f5f5f7 100%);
     border-radius: 12px; margin-bottom: 20px;
   }
-  .hero h1 { font-size: 24px; font-weight: 700; margin: 0 0 6px; color: #1d1d1f; }
-  .hero .sub { font-size: 15px; color: #666; margin: 0 0 4px; }
+  .hero h1 { font-size: clamp(22px, 3.5vw, 36px); font-weight: 700; margin: 0 0 6px; color: #1d1d1f; }
+  .hero .sub { font-size: clamp(14px, 2vw, 20px); color: #666; margin: 0 0 4px; }
   .hero .meta { font-size: 13px; color: #999; margin: 0; }
 
   .home-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
@@ -70,11 +71,11 @@
     box-shadow: 0 1px 3px rgba(0,0,0,.06); transition: box-shadow .2s;
   }
   .text-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,.1); }
-  .text-card h3 { font-size: 16px; margin: 0 0 6px; color: #1d1d1f; }
+  .text-card h3 { font-size: clamp(15px, 2.5vw, 24px); margin: 0 0 6px; color: #1d1d1f; }
   .text-card p { font-size: 13px; margin: 0; color: #999; }
 
   .section-title {
-    font-size: 20px; font-weight: 700; margin: 24px 0 12px;
+    font-size: clamp(17px, 2.8vw, 28px); font-weight: 700; margin: 24px 0 12px;
     padding-bottom: 6px; border-bottom: 2px solid #1a73e8;
     display: flex; align-items: center; gap: 8px;
   }
@@ -92,7 +93,7 @@
   /* ===== Text Section ===== */
   .text-card .zh.sub { font-size: 14px; margin: -4px 0 8px; color: #666; }
   .text-card .zh.by { font-size: 13px; margin: -4px 0 10px; color: #888; }
-  .text-card .de { font-size: 15px; line-height: 1.8; color: #333; }
+  .text-card .de { font-size: clamp(14px, 2.2vw, 22px); line-height: 1.8; color: #333; }
   .text-card .de p { margin: 0 0 8px; }
   .v-word {
     color: #1a73e8; border-bottom: 1px dashed #1a73e8;
@@ -158,7 +159,7 @@
     padding: 12px 8px;
     border-radius: 8px;
     border: 1px solid #e8e8ed;
-    font-size: 14px; text-align: center;
+    font-size: clamp(13px, 1.8vw, 18px); text-align: center;
     min-height: 64px;
   }
   .vc-front {
@@ -191,7 +192,7 @@
 
   /* ===== Vocab Grid ===== */
   .vocab-grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 8px;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 10px;
   }
 
   /* ===== Vocab Overlay Panel ===== */
@@ -230,7 +231,7 @@
 
   /* ===== Grammar ===== */
   .grammar-table-wrapper { overflow-x: auto; margin: 12px 0; }
-  .grammar-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .grammar-table { width: 100%; border-collapse: collapse; font-size: clamp(12px, 1.8vw, 18px); }
   .grammar-table th, .grammar-table td {
     border: 1px solid #e8e8ed; padding: 10px 12px; text-align: left; vertical-align: top;
   }
@@ -245,11 +246,11 @@
 
   /* ===== Quiz ===== */
   .quiz-card { background: #fff; border-radius: 10px; padding: 18px; margin-bottom: 14px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
-  .q-text { font-size: 15px; font-weight: 500; margin-bottom: 10px; line-height: 1.5; }
+  .q-text { font-size: clamp(14px, 2.2vw, 20px); font-weight: 500; margin-bottom: 10px; line-height: 1.5; }
   .options { display: flex; flex-direction: column; gap: 6px; }
   .opt {
-    padding: 8px 12px; border: 1px solid #e8e8ed; border-radius: 6px;
-    cursor: pointer; font-size: 14px; transition: all .15s;
+    padding: 10px 14px; border: 1px solid #e8e8ed; border-radius: 6px;
+    cursor: pointer; font-size: clamp(13px, 2vw, 18px); transition: all .15s;
   }
   .opt:hover { border-color: #1a73e8; }
   .opt.correct { background: #e8f8e8; border-color: #27ae60; color: #1e7e34; font-weight: 500; }
@@ -262,11 +263,11 @@
   .connect-game { background: #fff; border-radius: 10px; padding: 18px; margin-bottom: 14px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
   .connect-game h3 { font-size: 16px; margin: 0 0 4px; }
   .connect-game .zh { font-size: 13px; color: #888; margin: 0 0 12px; }
-  .connect-field { display: flex; gap: 20px; justify-content: center; }
-  .connect-col { display: flex; flex-direction: column; gap: 8px; min-width: 120px; }
+  .connect-field { display: flex; gap: 24px; justify-content: center; }
+  .connect-col { display: flex; flex-direction: column; gap: 10px; min-width: 130px; }
   .c-item {
     padding: 10px 14px; border: 1px solid #ddd; border-radius: 8px;
-    text-align: center; cursor: pointer; font-size: 14px;
+    text-align: center; cursor: pointer; font-size: clamp(13px, 1.8vw, 18px);
     transition: all .15s; background: #fff;
   }
   .c-item:hover { border-color: #1a73e8; }
@@ -279,7 +280,7 @@
   .fill-game h3 { font-size: 16px; margin: 0 0 4px; }
   .fill-game .zh { font-size: 13px; color: #888; margin: 0 0 12px; }
   .fill-item { margin-bottom: 10px; }
-  .fill-sentence { font-size: 14px; color: #333; margin-bottom: 4px; line-height: 1.5; }
+  .fill-sentence { font-size: clamp(13px, 2vw, 19px); color: #333; margin-bottom: 4px; line-height: 1.5; }
   .fill-input-line { display: flex; align-items: center; gap: 6px; }
   .fill-input {
     flex: 1; padding: 6px 10px; border: 1px solid #ddd; border-radius: 6px;
@@ -338,7 +339,7 @@
     padding: 14px 16px;
     border-radius: 10px;
     border: 1px solid #e0e0e0;
-    font-size: 15px; line-height: 1.5;
+    font-size: clamp(14px, 2.2vw, 21px); line-height: 1.5;
     min-height: 80px;
     box-shadow: 0 1px 3px rgba(0,0,0,.06);
   }
@@ -368,7 +369,7 @@
     background: #27ae60;
   }
   .tc-de {
-    font-size: 15px; color: #1d1d1f; font-weight: 500;
+    font-size: clamp(14px, 2.2vw, 21px); color: #1d1d1f; font-weight: 500;
   }
   .tc-zh {
     font-size: 16px; color: #1d1d1f;
@@ -436,7 +437,6 @@
       <div class="text-card">
         <h3>Kommunikation früher und heute</h3>
         <p class="zh sub">从马车邮递到数字媒体——通信方式的世纪变迁</p>
-        <p class="zh by">—— Entdecken 1 · G1 · T1</p>
         <div class="text-pager" id="tp-T1">
           <div class="text-page" data-page="0" style="display:block">
             <p>Yang Fang und Laura besichtigen heute das Museum für Kommunikation Berlin. Durch einen geführten Rundgang <span class="v-word" onclick="showVocab('werden','被（被动助动词）','Hilfsverb zur Bildung des Passivs')">werden (+ Passiv)</span> sie über die <span class="v-word" onclick="showVocab('Entwicklung','发展','die Entwicklung (Pl. -en)')">Entwicklung</span> der menschlichen Kommunikation <span class="v-word" onclick="showVocab('informiert','通知、告知','jmdn. über etwas informieren')">informieren</span>.</p>

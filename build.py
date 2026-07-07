@@ -8,7 +8,7 @@ Build.py v2.0 — 德语课件生成器
 - 进度条导航
 """
 
-import json, sys, os, re, subprocess
+import json, sys, os, re, subprocess, random
 
 DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -252,8 +252,12 @@ def gen_exercise(data):
                 h += '            <div class="c-item de" data-pair="{i}" data-gid="{id}" onclick="cClick(this)">{d}</div>\n'.format(i=i, id=cgi, d=de)
             h += '          </div>\n'
             h += '          <div class="connect-col" id="cg-cn-{id}">\n'.format(id=cgi)
-            for i, (_, cn) in enumerate(cg['pairs']):
-                h += '            <div class="c-item cn" data-pair="{i}" data-gid="{id}" onclick="cClick(this)">{c}</div>\n'.format(i=i, id=cgi, c=cn)
+            # Shuffle CN side so items don't align by position
+            cn_indices = list(range(len(cg['pairs'])))
+            random.shuffle(cn_indices)
+            for j in cn_indices:
+                (_, cn) = cg['pairs'][j]
+                h += '            <div class="c-item cn" data-pair="{j}" data-gid="{id}" onclick="cClick(this)">{c}</div>\n'.format(j=j, id=cgi, c=cn)
             h += '          </div>\n'
             h += '        </div>\n'
             h += '        <div class="connect-score" id="cg-score-{id}">\u5339\u914d\uff1a<span id="cg-cnt-{id}">0</span> / {t}</div>\n'.format(id=cgi, t=len(cg['pairs']))

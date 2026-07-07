@@ -17,7 +17,7 @@
       "vocab": "重点词汇 · Wendungen & Wortschatz",
       "grammar": "语法 · Passiv & Infinitiv mit zu",
       "translation": "逐句翻译练习",
-      "exercise": "练习 · Übungen"
+      "exercise": "练习 · Wortschatz"
     },
     "objectives": [
       "理解五个时代通信方式的变迁（1900书信 → 2025互联网）",
@@ -31,7 +31,7 @@
       "id": "T1",
       "title": "Kommunikation früher und heute",
       "subTitle": "从马车邮递到数字媒体——通信方式的世纪变迁",
-      "by": "Entdecken 1 · G1 · T1",
+      "by": "",
       "summary": "通过五个时间节点（1900/1923/1950/1970/1990），展示人类通信方式的演变。",
       "paragraphs": [],
       "pages": [
@@ -145,116 +145,78 @@
       {"de": "Digitale Medien sind aus unserem Alltag nicht mehr wegzudenken.", "zh": "数字媒体在我们的日常生活中不可或缺。"}
     ]
   },
-  "quiz": [
-    {
-      "q": "Wie wurden die Briefe vor 100 Jahren transportiert?",
-      "options": [
-        "Mit extrem schnellen Zügen und Flugzeugen",
-        "Mit Dampfschiffen, Eisenbahnen oder Pferden und Kutschen",
-        "Nur mit Fahrrädern",
-        "Mit modernen Lieferwagen"
-      ],
-      "answer": "B"
-    },
-    {
-      "q": "Was musste beim Radio in den ersten Jahren gemacht werden?",
-      "options": [
-        "Es musste gekauft werden",
-        "Es musste repariert werden",
-        "Es musste genehmigt werden",
-        "Es musste versichert werden"
-      ],
-      "answer": "C"
-    },
-    {
-      "q": "Warum standen viele Leute in den 1950ern vor Schaufenstern?",
-      "options": [
-        "Weil sie die neueste Mode sehen wollten",
-        "Weil dort Fernseher aufgestellt wurden",
-        "Weil sie auf den Bus warteten",
-        "Weil sie Zeitungen lasen"
-      ],
-      "answer": "B"
-    },
-    {
-      "q": "Was bedeutet »an einer Hand abzählen können«?",
-      "options": [
-        "Sehr viel – man braucht mehrere Hände zum Zählen",
-        "Sehr wenig – man braucht nur eine Hand",
-        "Man zählt das Geld in der Hand",
-        "Man kann nicht richtig zählen"
-      ],
-      "answer": "B"
-    },
-    {
-      "q": "Welche Wendung bedeutet »nicht genug Geld zum Kauf haben«?",
-      "options": [
-        "Zugang zu etwas haben",
-        "Dem Programm lauschen",
-        "Sich etwas nicht leisten können",
-        "Etwas ablösen"
-      ],
-      "answer": "C"
-    },
-    {
-      "q": "Seit wann veränderte das Internet die Kommunikation grundlegend?",
-      "options": [
-        "Seit 1923",
-        "Seit 1950",
-        "Seit 1970",
-        "Seit 1990"
-      ],
-      "answer": "D"
-    }
-  ],
-  "matchingPairs": [
-    ["der Rundgang", "参观导览"],
-    ["die Entwicklung", "发展"],
-    ["die Nachricht", "消息、通知"],
-    ["die Erfindung", "发明"],
-    ["das Haushaltsgerät", "家用电器"],
-    ["der Luxusgegenstand", "奢侈品"],
-    ["die Telefonzelle", "公用电话亭"],
-    ["das Straßenbild", "街景"],
-    ["der Durchbruch", "突破"],
-    ["der Alltag", "日常生活"],
-    ["das Medium", "媒体（单数）"],
-    ["die Umstellung", "转变、调整"]
-  ],
   "connectGrids": [
     {
-      "title": "Wendungen und ihre Bedeutungen（词组配对）",
+      "title": "🏛️ 通信方式 & 基础概念 · Kommunikationsmittel & Grundbegriffe",
       "pairs": [
-        ["Zugang zu etwas haben", "有机会接触到…"],
-        ["dem Programm lauschen", "仔细收听节目"],
-        ["etwas ablösen", "取代某事物"],
-        ["sich etwas leisten können", "负担得起某物"],
-        ["aus etwas nicht wegzudenken", "不可或缺的"],
-        ["an einer Hand abzählen", "屈指可数"]
-      ]
-    }
-  ],
-  "fillGaps": [
-    {
-      "title": "填入正确的被动语态形式（Passiv）",
-      "items": [
-        {"sentence": "Vor 100 Jahren _____ viele Briefe mit der Post _____ (schicken).", "answer": "wurden ... geschickt"},
-        {"sentence": "Die Post _____ damals mit Dampfschiffen _____ (transportieren).", "answer": "wurde ... transportiert"},
-        {"sentence": "Jedes Radio _____ früher _____ (genehmigen).", "answer": "musste ... genehmigt werden"},
-        {"sentence": "In Schaufenstern _____ Fernseher _____ (aufstellen).", "answer": "wurden ... aufgestellt"},
-        {"sentence": "Alte Medien _____ immer mehr von neuen _____ (ersetzen).", "answer": "werden ... ersetzt"},
-        {"sentence": "Heute _____ fast immer mit dem Handy _____ (telefonieren).", "answer": "wird ... telefoniert"}
+        ["das Dampfschiff", "蒸汽船"],
+        ["die Eisenbahn", "铁路、火车"],
+        ["die Kutsche", "马车"],
+        ["das Flugzeug", "飞机"],
+        ["die Telefonzelle", "公用电话亭"],
+        ["das Haushaltsgerät", "家用电器"],
+        ["das Medium", "媒体"],
+        ["der Sender", "频道、发射台"],
+        ["der Brief", "信"],
+        ["die Nachricht", "消息"],
+        ["das Hörspiel", "广播剧"],
+        ["das Straßenbild", "街景"],
+        ["der Alltag", "日常生活"]
       ]
     },
     {
-      "title": "翻译练习 (Übersetzen Sie)",
-      "items": [
-        {"sentence": "Anfangs hatten nicht alle Zugang zum Radio.", "answer": "最初并不是所有人都能接触到收音机。"},
-        {"sentence": "Viele Familien konnten sich solche Luxusgegenstände nicht leisten.", "answer": "很多家庭负担不起这些奢侈品。"},
-        {"sentence": "Die Sender konnten an einer Hand abgezählt werden.", "answer": "频道屈指可数。"},
-        {"sentence": "Da früher viele Familien kein eigenes Telefon hatten, wurden viele Telefonzellen errichtet.", "answer": "以前很多家庭没有自己的电话，因此建立了许多公用电话亭。"},
-        {"sentence": "Alte Kommunikationswege werden immer mehr von neuen ersetzt.", "answer": "旧的通信方式正被新的方式逐渐取代。"},
-        {"sentence": "Verschiedene digitale Medien sind aus unserem Alltag nicht mehr wegzudenken.", "answer": "各种数字媒体已成为我们日常生活中不可或缺的一部分。"}
+      "title": "🎯 发展历程 & 关键名词 · Entwicklung & Schlüsselnomen",
+      "pairs": [
+        ["die Entwicklung", "发展"],
+        ["die Erfindung", "发明"],
+        ["der Durchbruch", "突破"],
+        ["die Umstellung", "转变、适应"],
+        ["der Zugang", "接触途径"],
+        ["der Luxusgegenstand", "奢侈品"],
+        ["die Antwort", "回答、回复"],
+        ["das Programm", "节目"],
+        ["das Gerät", "设备"],
+        ["die Post", "邮局、邮件"],
+        ["das Publikum", "公众"],
+        ["die Auswahl", "选择"]
+      ]
+    },
+    {
+      "title": "🔑 核心动词 · Schlüsselverben",
+      "pairs": [
+        ["schreiben", "写"],
+        ["schicken", "寄送"],
+        ["transportieren", "运输"],
+        ["informieren", "通知"],
+        ["genehmigen", "批准"],
+        ["entwickeln", "发展"],
+        ["sich versammeln", "聚集"],
+        ["lauschen", "倾听"],
+        ["ablösen", "取代"],
+        ["aufstellen", "放置、安装"],
+        ["errichten", "建立、建造"],
+        ["prägen", "塑造"],
+        ["telefonieren", "打电话"],
+        ["verändern", "改变"],
+        ["aufwachsen", "长大"],
+        ["ersetzen", "取代"],
+        ["abzählen (an einer Hand)", "数出（屈指可数）"]
+      ]
+    },
+    {
+      "title": "✨ 形容词 & 固定搭配 · Adjektive & Wendungen",
+      "pairs": [
+        ["bahnbrechend", "开创性的"],
+        ["selbstverständlich", "理所当然的"],
+        ["zugänglich", "可获得的"],
+        ["unbezahlbar", "昂贵的、买不起的"],
+        ["grundlegend", "根本性的"],
+        ["gegenseitig", "互相的"],
+        ["Zugang zu etwas haben", "有机会接触到"],
+        ["sich etwas leisten können", "能负担得起"],
+        ["aus etwas nicht mehr wegzudenken", "不可或缺的"],
+        ["an einer Hand abzählen können", "屈指可数"],
+        ["so ... wie möglich", "尽可能……"]
       ]
     }
   ],

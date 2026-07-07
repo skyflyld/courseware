@@ -167,64 +167,64 @@
   },
   "quiz": [
     {
-      "q": "Welche Medien werden traditionellerweise als Massenmedien bezeichnet?",
+      "q": "Was ist das gemeinsame Merkmal der Massenmedien?",
       "options": [
-        "Internet, Radio, Fernsehen",
-        "Presse, Rundfunk, Fernsehen",
-        "Zeitungen, Bücher, Radio",
-        "Fernsehen, Internet, Telefon"
+        "Sie sind immer neutral und unabhängig.",
+        "Sie machen aktuelle Inhalte einem breiten Publikum zugänglich.",
+        "Sie finanzieren sich nur durch Werbung.",
+        "Sie zeigen ausschließlich Unterhaltungsprogramme."
       ],
       "answer": "B"
-    },
-    {
-      "q": "Wie viele Funktionen der Massenmedien werden im Text genannt?",
-      "options": [
-        "Zwei: Information und Unterhaltung",
-        "Drei: Information, Kontrolle, Bildung",
-        "Vier: Information, Meinungsbildung, Kontrolle/Kritik, Bildung/Unterhaltung",
-        "Fünf: Information, Meinung, Bildung, Unterhaltung, Werbung"
-      ],
-      "answer": "C"
     },
     {
       "q": "Was sollen die Massenmedien bei der Meinungsbildung sicherstellen?",
       "options": [
-        "Dass nur eine Meinung gehört wird",
-        "Dass Fragen von öffentlichem Interesse in freier Diskussion gehört werden",
-        "Dass die Regierung kontrolliert wird",
-        "Dass Kulturprogramme gesendet werden"
-      ],
-      "answer": "B"
-    },
-    {
-      "q": "Warum ist eine kritische Haltung gegenüber den Medien wichtig?",
-      "options": [
-        "Weil die Medien immer lügen",
-        "Weil die Medien nicht neutral oder ohne eigene Interessen arbeiten",
-        "Weil man alles glauben sollte, was in den Medien steht",
-        "Weil die Medien von der Regierung kontrolliert werden"
-      ],
-      "answer": "B"
-    },
-    {
-      "q": "Wann verwendet man »damit« statt »um … zu«?",
-      "options": [
-        "Wenn der Satz besonders kurz ist",
-        "Wenn Hauptsatz und Nebensatz das gleiche Subjekt haben",
-        "Wenn Hauptsatz und Nebensatz unterschiedliche Subjekte haben",
-        "Immer – man kann beide austauschen"
+        "Dass alle Bürger die offizielle Regierungsmeinung übernehmen.",
+        "Dass nur die Chefredaktion zu Wort kommt.",
+        "Dass Fragen von öffentlichem Interesse in freier Diskussion gehört werden.",
+        "Dass die Medien keinerlei Kritik an der Regierung üben."
       ],
       "answer": "C"
     },
     {
-      "q": "Was bedeutet »so vollständig, sachlich und verständlich wie möglich«?",
+      "q": "Warum ist eine kritische Haltung gegenüber den Medien wichtig?",
       "options": [
-        "Nicht vollständig, aber verständlich",
-        "So vollständig, sachlich und verständlich, wie es geht",
-        "Vollständig, aber nicht sachlich",
-        "Nur verständlich, nicht vollständig"
+        "Weil die Medien und ihre Machen nicht ohne eigene Interessen arbeiten.",
+        "Weil man grundsätzlich nichts glauben sollte, was in den Medien steht.",
+        "Weil die Medien immer politisch links orientiert sind.",
+        "Weil die Medien ausschließlich negative Nachrichten verbreiten."
+      ],
+      "answer": "A"
+    },
+    {
+      "q": "Welche der folgenden Aussagen über die vier Funktionen ist FALSCH?",
+      "options": [
+        "Die Informationsfunktion bedeutet, aktuelle Nachrichten sachlich zu verbreiten.",
+        "Die Kontrollfunktion heißt, die Politik zu überwachen und Missstände aufzuzeigen.",
+        "Die Massenmedien sollen bei der Meinungsbildung sicherstellen, dass die herrschende Meinung verbreitet wird.",
+        "Die Bildungs- und Unterhaltungsfunktion umfasst Kulturagebote wie Dokumentationen und Konzerte."
+      ],
+      "answer": "C"
+    },
+    {
+      "q": "Wann verwendet man »damit« statt »um … zu«?",
+      "options": [
+        "Wenn der Satz im Präsens steht.",
+        "Wenn Hauptsatz und Nebensatz unterschiedliche Subjekte haben.",
+        "Wenn der Nebensatz länger als fünf Wörter ist.",
+        "Wenn man eine Meinung ausdrücken möchte."
       ],
       "answer": "B"
+    },
+    {
+      "q": "Die Medien arbeiten nicht neutral. Welche Haltung soll man daher einnehmen?",
+      "options": [
+        "Man soll alles glauben, was man in den Medien hört.",
+        "Man soll Medien generell boykottieren.",
+        "Man soll eine kritische Haltung einnehmen und verschiedene Darstellungen vergleichen.",
+        "Man soll nur staatliche Nachrichtenquellen nutzen."
+      ],
+      "answer": "C"
     }
   ],
   "matchingPairs": [
@@ -239,49 +239,56 @@
     ["die Haltung", "态度、立场"],
     ["die Öffentlichkeit", "公众领域"],
     ["das Merkmal", "特征"],
-    ["die Diskussion", "讨论"]
+    ["die Diskussion", "讨论"],
+    ["hinterfragen", "质疑"],
+    ["aufdecken", "揭露"],
+    ["verbreiten", "传播"]
   ],
   "connectGrids": [
     {
-      "title": "四种核心功能配对",
+      "title": "句子重组：将主语与对应的谓语/功能配对",
       "pairs": [
-        ["Informationsfunktion", "传播知识、让公众了解时事"],
-        ["Meinungsbildungsfunktion", "促进公开讨论、表达不同观点"],
-        ["Kontroll- und Kritikfunktion", "监督政治决策、揭露弊端"],
-        ["Bildungs- und Unterhaltungsfunktion", "提供文化节目、教育与娱乐"]
+        ["Die Massenmedien verbreiten ...", "Nachrichten über Politik, Wirtschaft und Kultur."],
+        ["Das Publikum wird ...", "so vollständig, sachlich und verständlich wie möglich informiert."],
+        ["In der Meinungsbildung sollen ...", "Fragen von öffentlichem Interesse gehört werden."],
+        ["Die Medien kontrollieren und kritisieren ...", "politische Entscheidungen und Missstände."],
+        ["Das Fernsehen bietet ...", "Dokumentationen, Reportagen und anspruchsvolle Filme."],
+        ["Man schaltet ein, um ...", "sich zu bilden, zu unterhalten und zu entspannen."]
       ]
     },
     {
-      "title": "um … zu / damit 语法练习",
+      "title": "um … zu / damit：判断主语是否相同",
       "pairs": [
-        ["…, um sich zu informieren", "……，以便获取信息"],
-        ["…, um die Politik zu kontrollieren", "……，以便监督政治"],
-        ["…, damit die Nutzer Ereignisse verfolgen können", "……，以便用户能追踪事件"],
-        ["…, um sich zu bilden und zu unterhalten", "……，以便学习和娱乐"]
+        ["Die Medien informieren, ___ das Publikum zu bilden.", "um → 相同主语（die Medien）"],
+        ["Ich lerne Deutsch, ___ ich in Berlin arbeiten kann.", "damit → 不同主语（ich ≠ Berlin/Arbeit）"],
+        ["Die Regierung spricht, ___ die Öffentlichkeit zu informieren.", "um → 相同主语（die Regierung）"],
+        ["Eltern sparen, ___ ihre Kinder studieren können.", "damit → 不同主语（Eltern ≠ Kinder）"],
+        ["Man vergleicht Darstellungen, ___ eine Meinung zu bilden.", "um → 相同主语（man）"],
+        ["Die Medien kritisieren, ___ die Politik besser wird.", "damit → 不同主语（Medien ≠ Politik）"]
       ]
     }
   ],
   "fillGaps": [
     {
-      "title": "填入正确的词汇（Verben zur Massenmedien-Funktion）",
+      "title": "从记忆出发：填入课文中正确的动词（Verben aus dem Text）",
       "items": [
-        {"sentence": "Die Massenmedien sollen Nachrichten über Politik, Wirtschaft und Kultur ______ (verbreiten).", "answer": "verbreiten"},
-        {"sentence": "Sie sollen das Publikum so vollständig wie möglich ______ (informieren).", "answer": "informieren"},
-        {"sentence": "Die Massenmedien sollen politische Entscheidungen ______ (hinterfragen).", "answer": "hinterfragen"},
-        {"sentence": "Sie sollen Missstände ______ (aufdecken).", "answer": "aufdecken"},
-        {"sentence": "Das Publikum schaltet ein, um sich zu ______ (bilden).", "answer": "bilden"},
-        {"sentence": "Man sollte gegenüber den Medien eine kritische Haltung ______ (einnehmen).", "answer": "einnehmen"}
+        {"sentence": "Die Massenmedien sollen Nachrichten über Politik, Wirtschaft und Kultur _____.", "answer": "verbreiten"},
+        {"sentence": "Sie sollen das Publikum so vollständig wie möglich _____.", "answer": "informieren"},
+        {"sentence": "Die Massenmedien sollen politische Entscheidungen _____.", "answer": "hinterfragen"},
+        {"sentence": "Sie sollen Missstände _____.", "answer": "aufdecken"},
+        {"sentence": "Das Publikum schaltet ein, um sich zu _____, zu unterhalten und zu entspannen.", "answer": "bilden"},
+        {"sentence": "Man sollte gegenüber den Medien eine kritische Haltung _____.", "answer": "einnehmen"}
       ]
     },
     {
-      "title": "选择 um … zu 或 damit",
+      "title": "根据中文提示写出完整的德语句子（关键词填入）",
       "items": [
-        {"sentence": "Die Medien verbreiten Nachrichten, ___ das Publikum zu informieren.", "answer": "um"},
-        {"sentence": "Er lernt Deutsch, ___ er in Berlin studieren kann.", "answer": "damit"},
-        {"sentence": "Man schaltet das Fernsehen ein, ___ sich zu entspannen.", "answer": "um"},
-        {"sentence": "Die Massenmedien kontrollieren die Politik, ___ die Demokratie funktioniert.", "answer": "damit"},
-        {"sentence": "Sie sollen Entscheidungen hinterfragen, ___ die Arbeit zu kontrollieren.", "answer": "um"},
-        {"sentence": "Eltern sparen Geld, ___ ihre Kinder bessere Bildungschancen haben.", "answer": "damit"}
+        {"sentence": "传统上，报刊、广播和电视被称为大众传媒。 → Presse, Rundfunk und Fernsehen _____ als Massenmedien bezeichnet.", "answer": "werden"},
+        {"sentence": "它们的共同特征是用技术手段向广大受众传递时事内容。 → Ihr gemeinsames Merkmal ist, aktuelle Inhalte einem breiten Publikum _____ zu machen.", "answer": "zugänglich"},
+        {"sentence": "它们应当传播关于政治、经济和文化的新闻。 → Sie sollen Nachrichten über Politik, Wirtschaft und Kultur _____.", "answer": "verbreiten"},
+        {"sentence": "大众传媒还承担监督和批评的职能。 → Außerdem _____ die Massenmedien eine Kontroll- und Kritikfunktion.", "answer": "übernehmen"},
+        {"sentence": "人们打开电视，为了学习和娱乐。 → Man schaltet ein, um sich zu _____ und zu unterhalten.", "answer": "bilden"},
+        {"sentence": "对媒体保持批判态度是很重要的。 → Es ist wichtig, eine _____ Haltung einzunehmen.", "answer": "kritische"}
       ]
     }
   ],

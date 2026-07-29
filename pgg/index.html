@@ -105,6 +105,7 @@ tr:hover { background: #f5f5f0; }
     <button class="tab-btn" data-tab="writing">✏️ 写作指南</button>
     <button class="tab-btn" data-tab="past">📅 真题详解</button>
     <button class="tab-btn" data-tab="compare">📊 双年对比</button>
+    <button class="tab-btn" data-tab="diagnosis">🔬 学生诊断</button>
   </div>
 
   <!-- ======= EXAM STRUCTURE ======= -->
@@ -459,6 +460,46 @@ tr:hover { background: #f5f5f0; }
       <li><strong>写作结构标准化:</strong> 图表描述+个人经验+观点三段式固定，准备模板句型即可</li>
       <li><strong>改错是语法体检:</strong> 每句2处错，涵盖Kasus/Genus/Verb/Präp./Wortstellung，复习时应做专项改错训练</li>
     </ol></div>
+  </div>
+
+  <!-- DIAGNOSIS -->
+  <div class="section" id="tab-diagnosis">
+    <h2 class="section-title">🔬 学生薄弱环节诊断</h2>
+    <div class="card"><h3>🔥 失分等级 (N=49)</h3>
+    <table><tr><th>等级</th><th>题型</th><th>均分率</th><th>症状</th><th>根因</th></tr>
+    <tr style="background:#ffebee;"><td>🔴 灾难</td><td>Ⅰ听写</td><td>21%</td><td>74%学生&lt;3/10</td><td>语音-拼写弱·复合词不会拆·节奏不适</td></tr>
+    <tr style="background:#fff3e0;"><td>🟠 高危</td><td>Ⅳ语法词汇</td><td>27%</td><td>74→55%学生&lt;30%</td><td>介词搭配·变位·连词辨析，分水岭</td></tr>
+    <tr style="background:#fff8e1;"><td>🟡 薄弱</td><td>Ⅴ写作</td><td>54%</td><td>56%学生&lt;50%(25)</td><td>句型单一·结构散·词数不达标</td></tr>
+    <tr style="background:#e8f5e9;"><td>🟢 良</td><td>Ⅲ阅读</td><td>66%</td><td>45%达70-85%(26)</td><td>词汇够则能力可迁移</td></tr>
+    <tr style="background:#e8f5e9;"><td>🟢 优</td><td>Ⅱ听力</td><td>79%</td><td>64%达85%+(26)</td><td>题型稳定，训练效果好</td></tr></table></div>
+
+    <div class="card"><h3>📊 得分率分布变化 (2025→2026)</h3>
+    <table><tr><th>题型</th><th>2025分布</th><th>2026分布</th><th>变化</th></tr>
+    <tr><td>Ⅰ听写(10%)</td><td>74%≤3分</td><td>73%≤3分</td><td>⚡ 零变化</td></tr>
+    <tr><td>Ⅱ听力(20%)</td><td>33%达85%+</td><td>64%达85%+</td><td>⬆ +31%</td></tr>
+    <tr><td>Ⅲ阅读(20%)</td><td>74%在50-70%</td><td>45%在70-85%</td><td>⬆ 中位提升</td></tr>
+    <tr><td>Ⅳ语法(35%)</td><td>74%&lt;30%</td><td>55%&lt;30%</td><td>⬆ 改善但仍是短板</td></tr>
+    <tr><td>Ⅴ写作(15%)</td><td>56%&lt;50%</td><td>19%&lt;50%</td><td>⬆ 模板训练有效</td></tr></table></div>
+
+    <div class="card"><h3>🚨 三大致命弱点</h3>
+    <div class="collapse-header" onclick="toggleCollapse(this)"><span>🔴 致命1：听写 — 74%学生连3分都拿不到</span><span class="collapse-icon">▼</span></div>
+    <div class="collapse-body"><ol><li><strong>语音-拼写脱节：</strong>长元音/短元音区分，ä/ö/ü拼写，-er/-en/-e词尾频繁错</li>
+    <li><strong>复合词不会拆：</strong>Kindertageseinrichtung这类长词直接放弃</li>
+    <li><strong>节奏不适：</strong>3遍朗读模式(正常→分节→全文)，短期记忆要求高</li>
+    <li><strong>虚词失分：</strong>der/die/das/den/dem+词尾-n/-m/-r最易漏</li></ol>
+    <p><strong>对策：</strong>每周2次专项听写：练变元音+复合词；慢速→常速递进；逐词检查错因</p></div>
+    <div class="collapse-header" onclick="toggleCollapse(this)"><span>🟠 致命2：语法词汇 — 35%权重的分水岭</span><span class="collapse-icon">▼</span></div>
+    <div class="collapse-body"><ol><li><strong>介词搭配是硬伤：</strong>C部分约70%考固定搭配(sich vorbereiten auf, verzichten auf等)</li>
+    <li><strong>连词辨析不扎实：</strong>A部分必考weil/wenn/als/bevor/indem</li>
+    <li><strong>完形两头难：</strong>B部分20题需理解上下文+辨别语法</li>
+    <li><strong>改写+改错暴露系统漏洞</strong></li></ol>
+    <p><strong>对策：</strong>背词必配介词；连词做对比表；每周1次改错+1次改写专项</p></div>
+    <div class="collapse-header" onclick="toggleCollapse(this)"><span>🟡 致命3：写作 — 看似简单陷阱多</span><span class="collapse-icon">▼</span></div>
+    <div class="collapse-body"><ol><li><strong>结构散：</strong>不按3要点组织，写到哪算哪</li>
+    <li><strong>句型单调：</strong>全篇ich denke/man kann，缺从句和衔接词</li>
+    <li><strong>词数不达标：</strong>150-180词写不够或超太多</li>
+    <li><strong>数据描述差：</strong>图表题不会描述趋势和比较</li></ol>
+    <p><strong>对策：</strong>背3套模板(描述/经验/观点)；练数据表达句式；每次写后数词数</p></div></div>
   </div>
 </div>
 

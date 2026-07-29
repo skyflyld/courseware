@@ -68,7 +68,7 @@ tr:hover { background: #f5f5f0; }
 .filter-bar { margin: 12px 0; }
 .filter-btn { padding: 6px 14px; border: 1px solid var(--border); border-radius: 16px; background: var(--card); cursor: pointer; font-size: .82em; margin: 3px; }
 .filter-btn.active { background: var(--accent2); color: #fff; border-color: var(--accent2); }
-.year25, .year26 { display: none; }
+.year24, .year25, .year26 { display: none; }
 .theme-toggle { position: fixed; bottom: 20px; right: 20px; width: 44px; height: 44px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 1.2em; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,.15); z-index: 100; border: none; }
 @media (max-width: 640px) {
   .header h1 { font-size: 1.5em; }
@@ -82,12 +82,12 @@ tr:hover { background: #f5f5f0; }
 <div class="container">
   <div class="header">
     <h1>📚 PGG 德语专四考点知识库</h1>
-    <p>Prüfung für das Germanistik-Grundstudium · 基于2025-2026双年真题的系统化考点梳理</p>
-    <div class="badge">📅 2025 A卷 + 2026 A卷已收录 · 双年对比已上线</div>
+    <p>Prüfung für das Germanistik-Grundstudium · 基于2024-2026三年真题的系统化考点梳理</p>
+    <div class="badge">📅 2024+2025+2026 三卷已收录 · 逐年扩增中</div>
   </div>
 
   <div class="stats">
-    <div class="stat-card"><div class="num">2</div><div class="label">真题年份</div></div>
+    <div class="stat-card"><div class="num">3</div><div class="label">真题年份</div></div>
     <div class="stat-card"><div class="num">5</div><div class="label">题型板块</div></div>
     <div class="stat-card"><div class="num">35%</div><div class="label">语法词汇占比</div></div>
     <div class="stat-card"><div class="num">~4200</div><div class="label">核心词汇量</div></div>
@@ -381,9 +381,23 @@ tr:hover { background: #f5f5f0; }
       <button class="filter-btn active" onclick="filterYear('all',this)">📚 全部</button>
       <button class="filter-btn" onclick="filterYear('25',this)">2025 A</button>
       <button class="filter-btn" onclick="filterYear('26',this)">2026 A</button>
+      <button class="filter-btn" onclick="filterYear('24',this)">2024 A</button>
     </div>
 
-    <!-- 2025 -->
+    <!-- 2024 -->
+    <div class="year24"><div class="card"><h3>2024 Ⅱ 听力: WG/Krankheit/Xuan-Papier</h3>
+    <p>Teil 2: WG mit Opa (正误), Beim Arzt, Gespräch/Weltreise, Xuan-Papier/宣纸(2009非遗)</p></div></div>
+    <div class="year24"><div class="card"><h3>2024 Ⅲ 阅读: Füchse+Kulturpass+ChatGPT</h3>
+    <p>Text A: Füchse in der Stadt — Stadtleben/Verkehrsgefahr<br>
+    Text B: Kulturpass — 200€ für 18-Jährige<br>
+    Text C: ChatGPT — KI-Risiken, Tod der Hausarbeit</p></div></div>
+    <div class="year24"><div class="card"><h3>2024 Ⅳ 语法答案</h3>
+    <p><strong>A</strong> 41.die 42.seien 43.haben 44.Wer 45.mehr 46.Achten Sie 47.enthält 48.Obwohl 49.um 50.könnte<br>
+    <strong>C</strong> Krankenhaus/Lügen/beworben/Gründen/beeilen/wegen/teurer/beginnt/Gedächtnis/Lage/Kälte/Während/verboten/untersuchen/sparen/läuft/Begleitung/Eintritt/wie/Beitrag</p></div></div>
+    <div class="year24"><div class="card"><h3>2024 Ⅴ 写作: Bargeld vs. Zahlungsmittel</h3>
+    <p>Statista: Bargeld 72%(2022)↓. 3要点: 描述+个人经验+取消现金的看法</p></div></div>
+
+
     <div class="year25"><div class="card"><h3>2025 Ⅰ 听写: Kita in Deutschland</h3>
     <p>主题: 德国幼儿园教育制度。8空填写 + 全文听写。关键词: Kindertageseinrichtung, eigenständig, gemeinschaftsfähig, Disziplinübergreifend, Qualitätsstandard, Investition</p></div></div>
     <div class="year25"><div class="card"><h3>2025 Ⅱ 听力: Alltag + 4短文</h3>
@@ -521,7 +535,7 @@ function toggleCollapse(h) {
 function filterYear(y, btn) {
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  document.querySelectorAll('.year25, .year26').forEach(e => e.style.display = y === 'all' ? 'block' : (e.classList.contains('year' + y) ? 'block' : 'none'));
+  document.querySelectorAll('.year24, .year25, .year26').forEach(e => e.style.display = y === 'all' ? 'block' : (e.classList.contains('year' + y) ? 'block' : 'none'));
 }
 
 function toggleTheme() {
@@ -538,7 +552,7 @@ function toggleTheme() {
 }
 
 // Show 2025 content by default
-document.querySelectorAll('.year25').forEach(e => e.style.display = 'block');
+document.querySelectorAll('.year24, .year25').forEach(e => e.style.display = 'block');
 </script>
 </body>
 </html>

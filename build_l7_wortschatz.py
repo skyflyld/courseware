@@ -6,7 +6,8 @@ build_l7_wortschatz.py — Lektion 7 课堂互动课件生成器
 输出: lektion7-wortschatz-spiele.html  (单文件, 自包含 CSS/JS)
 原子原则: 一个脚本 → 一个产物, 不在产物上做增量修补。
 """
-import json, os, sys, random, subprocess
+import json
+import re, os, sys, random, subprocess
 
 DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_FILE = os.path.join(DIR, 'l7-wortschatz-spiele.json')
@@ -114,6 +115,15 @@ def h(s):
 def esc_attr(s):
     return h(s).replace('"', '&quot;')
 
+def word_html(w):
+    """词条渲染：主词加粗，教材括号标注（复数/支配格/词性）降权显示。
+    例：der Schwerpunkt (-e) → <b>der Schwerpunkt</b><span class="vc-note">(-e)</span>"""
+    w = str(w)
+    m = re.match(r'^(.*?)\s*(\(.*\))\s*$', w)
+    if not m:
+        return '<span class="vc-w">%s</span>' % h(w)
+    return '<span class="vc-w">%s</span> <span class="vc-note">%s</span>' % (h(m.group(1).strip()), h(m.group(2)))
+
 # ---------------------------------------------------------------- sections
 def sec_home(d):
     m = d['meta']
@@ -159,13 +169,14 @@ def sec_vocab(d):
                 '<div class="vc-card" onclick="flipCard(this)"><div class="vc-inner">'
                 '<div class="vc-front">%s</div><div class="vc-back">%s</div></div>'
                 '<button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab(\'%s\',\'%s\',\'%s\')">▶</button></div>'
-                % (h(wd['w']), h(wd['cn']), esc_attr(wd['w']), esc_attr(wd['cn']), esc_attr(wd['ex'])))
+                % (word_html(wd['w']), h(wd['cn']), esc_attr(wd['w']), esc_attr(wd['cn']), esc_attr(wd['ex'])))
             e1rows.append('<tr><td class="vt-de">%s</td><td class="vt-cn">%s</td><td class="vt-ex">%s</td></tr>'
-                          % (h(wd['w']), h(wd['cn']), h(wd.get('ex', ''))))
+                          % (word_html(wd['w']), h(wd['cn']), h(wd.get('ex', ''))))
         panels.append('<div class="person-content%s" id="vc-%s"><div class="vocab-grid">%s</div></div>' % (a, grp['id'], ''.join(cards)))
     return '''    <section id="vocab">
       <h2 class="section-title"><span class="num">1</span> 词汇卡片 · Wortschatzkarten <span class="src src-lg">%s</span></h2>
       <p class="zh-hint">点击卡片翻转看中文，点右下 ▶ 看例句。读名词请带冠词，说动词请带支配格。</p>
+      <p class="zh-hint note">括号内为教材标注：<b>( )</b> 词尾/复数形式，<b>¨</b> 变音，<b>... </b> 省略词干。</p>
       <div class="person-tabs">%s</div>%s
       <div class="kw-tools"><button class="btn ghost" onclick="toggleBox('e1Table')">📋 展开全表（48 词 · 投影 / 打印用）</button></div>
       <div id="e1Table" style="display:none"><table class="vocab-table">%s</table></div>
@@ -185,14 +196,15 @@ def sec_vocab2(d):
                       % (esc_attr(wd['w']), esc_attr(wd['cn']), esc_attr(ex))) if ex else ''
             cards.append('<div class="vc-card" onclick="flipCard(this)"><div class="vc-inner">'
                          '<div class="vc-front">%s</div><div class="vc-back">%s</div></div>%s</div>'
-                         % (h(wd['w']), h(wd['cn']), detail))
+                         % (word_html(wd['w']), h(wd['cn']), detail))
             rows.append('<tr><td class="vt-de">%s</td><td class="vt-cn">%s</td></tr>'
-                        % (h(wd['w']), h(wd['cn'])))
+                        % (word_html(wd['w']), h(wd['cn'])))
         panels.append('<div class="person-content%s" id="vc2-%s"><div class="vocab-grid">%s</div></div>'
                       % (a, grp['id'], ''.join(cards)))
     return '''    <section id="vocab2">
       <h2 class="section-title"><span class="num">2</span> 📗 Entdecken 2 · 词汇表 <span class="src src-lg">%s</span></h2>
       <p class="zh-hint">%s</p>
+      <p class="zh-hint note">括号内为教材标注：<b>( )</b> 词尾/复数形式，<b>¨</b> 变音（Ä/Ö/Ü），<b>... </b> 省略词干；<b>nur Sg</b> 仅单数，<b>+A / +D / +zu Dat</b> 动词支配格。</p>
       <div class="person-tabs">%s</div>%s
       <div class="kw-tools">
         <button class="btn" onclick="toggleBox('e2Table')">📋 展开全表（投影 / 打印用）</button>
@@ -446,25 +458,39 @@ EXTRA_CSS = '''
   .vocab-table .src { margin: 0; }
   /* 出处标注（每道题后标课本出处，便于学生快速定位） */
   .src {
-    display: inline-block; font-size: 11.5px; line-height: 1.5; color: #7a808a;
+    display: inline-block; font-size: 12.5px; line-height: 1.5; color: #7a808a;
     background: #f4f6f8; border: 1px solid #e1e5ea; border-radius: 4px;
     padding: 1px 6px; margin: 0 4px; white-space: nowrap; vertical-align: middle; font-weight: 500;
   }
-  .src-lg { font-size: 13px; padding: 2px 9px; color: #5c636e; }
-  /* 投影模式控制（仅宽屏显示，课堂现场调大） */
+  .src-lg { font-size: 13.5px; padding: 2px 9px; color: #5c636e; }
+  .kw-num { font-size: 10px; }
+  .tc-num { font-size: 13px; }
+  .btn.tiny { min-height: 26px; padding: 4px 10px; }
+  /* 投影模式控制（仅宽屏显示；默认收成小圆钮，悬停/点击展开，避免遮挡正文） */
   .proj-ctl {
-    display: none; position: fixed; right: 16px; bottom: 16px; z-index: 150;
-    align-items: center; gap: 6px; padding: 6px 8px;
-    background: rgba(255,255,255,.96); border: 1px solid #e1e5ea; border-radius: 999px;
-    box-shadow: 0 4px 14px rgba(0,0,0,.10);
+    display: none; position: fixed; right: 14px; bottom: 14px; z-index: 150;
+    align-items: center; gap: 6px;
   }
-  .proj-ctl button {
+  .proj-mini {
+    width: 42px; height: 42px; border-radius: 999px; border: 1px solid #e1e5ea;
+    background: rgba(255,255,255,.97); box-shadow: 0 4px 14px rgba(0,0,0,.12);
+    font-size: 13px; font-weight: 700; color: #333; cursor: pointer; padding: 0;
+  }
+  .proj-mini:hover { background: #e8f0fe; color: #1a73e8; }
+  .proj-body {
+    display: none; align-items: center; gap: 6px; padding: 5px 8px;
+    background: rgba(255,255,255,.97); border: 1px solid #e1e5ea; border-radius: 999px;
+    box-shadow: 0 4px 14px rgba(0,0,0,.12);
+  }
+  .proj-ctl.open .proj-body { display: inline-flex; }
+  .proj-ctl.open .proj-mini { display: none; }
+  .proj-body button {
     border: none; background: #f1f3f5; border-radius: 999px; cursor: pointer;
-    font-size: 14px; font-weight: 600; color: #333; padding: 6px 12px;
+    font-size: 15px; font-weight: 600; color: #333; padding: 8px 14px; min-height: 34px;
   }
-  .proj-ctl button:hover { background: #e8f0fe; color: #1a73e8; }
-  .proj-ctl .proj-label { font-size: 12px; color: #888; padding: 0 4px; min-width: 74px; text-align: center; }
-  @media (min-width: 1100px) { .proj-ctl { display: inline-flex; } }
+  .proj-body button:hover { background: #e8f0fe; color: #1a73e8; }
+  .proj-body .proj-label { font-size: 13px; color: #777; padding: 0 4px; min-width: 76px; text-align: center; }
+  @media (min-width: 1100px) { .proj-ctl { display: inline-flex; } body { padding-bottom: 88px; } }
   /* 投影与自适应微调（11 个导航项需要更宽的行、更大的正文衬度） */
   .top-nav { max-width: 1440px; }
   .nav-links button { padding: 8px 11px; }
@@ -485,17 +511,21 @@ EXTRA_CSS = '''
   .kw-table-wrap { max-width: 100%; overflow-x: auto; }
   .kw-left .bank-box { margin: 0; }
   .kw-left .bank-chip { font-size: 13.5px; }
-  /* 窄屏：缩放填字网格，保证全部格子可见（zoom 参与布局，不会留白） */
+  /* 窄屏：缩放填字网格，保证全部格子可见（zoom 参与布局，不会留白）
+     ⚠️ 缩放比不能太小：格子小于 ~22px 在手机上点不中（实测 0.6 时格子报 18px） */
   @media (max-width: 820px) {
-    .kw-table { zoom: 0.82; }
-    .kw-cell input { width: 26px; height: 26px; font-size: 13px; }
-    .kw-black { width: 26px; height: 26px; }
+    .kw-table { zoom: 0.95; }
+    .kw-cell input { width: 28px; height: 28px; font-size: 15px; min-height: 24px; }
+    .kw-black { width: 28px; height: 28px; }
     .connect-field { gap: 12px; }
+    .btn, .person-btn, .bank-chip, .mm-chip, .c-item, .btn.tiny { min-height: 34px; }
+    .vc-detail { min-width: 34px; min-height: 34px; font-size: 16px; }
+    .kw-table .kw-num { font-size: 11px; }
   }
   @media (max-width: 500px) {
-    .kw-table { zoom: 0.6; }
-    .kw-cell input { width: 24px; height: 24px; font-size: 12px; }
-    .kw-black { width: 24px; height: 24px; }
+    .kw-table { zoom: 0.85; }
+    .kw-cell input { width: 28px; height: 28px; font-size: 15px; }
+    .kw-black { width: 28px; height: 28px; }
     .blitz-grid { grid-template-columns: 1fr; }
   }
   /* 手机汉堡菜单：11 项在横屏可能超过屏高，允许内部滚动 */
@@ -526,6 +556,8 @@ EXTRA_CSS = '''
     .vocab-table td { font-size: 19px; }
     .src { font-size: 14px; padding: 2px 8px; }
     .src-lg { font-size: 16px; padding: 3px 11px; }
+    .kw-num { font-size: 11px; }
+    .kw-table .kw-num { font-size: 12px; }
   }
   /* 2K / 4K 大屏与电视（≥2200px） */
   @media (min-width: 2200px) {
@@ -543,6 +575,7 @@ EXTRA_CSS = '''
     .top-nav { max-width: 2100px; }
     .src { font-size: 17px; padding: 3px 10px; }
     .src-lg { font-size: 19px; padding: 4px 13px; }
+    .kw-num { font-size: 12px; }
   }
   /* 触屏设备：点击区不小于 42px（手指比鼠标粗） */
   @media (hover: none) {
@@ -586,7 +619,20 @@ EXTRA_CSS = '''
   .kw-cell input:focus { background: #e8f0fe; border-color: #1a73e8; }
   .kw-cell input.ok { background: #e8f8e8; border-color: #27ae60; }
   .kw-cell input.bad { background: #fdecea; border-color: #e74c3c; }
-  .kw-num { position: absolute; top: -1px; left: 1px; font-size: 8px; color: #999; z-index: 2; }
+  .kw-num { position: absolute; top: -1px; left: 1px; font-size: 10px; color: #999; z-index: 2; }
+  .vc-detail { font-size: 15px; min-width: 28px; min-height: 28px; line-height: 1; }
+  .vc-w { font-weight: 700; }
+  .vc-note { font-size: max(12px, .82em); font-weight: 400; color: #8a9099; }
+  .vt-de .vc-note { font-weight: 400; }
+  /* 触控设备：点击目标不得小于 34px（实测 .vc-detail / .btn.tiny 在手机上只有 20px）
+     ⚠️ 本块必须留在 CSS 最末，否则被前面同权重的 .vc-detail / .btn.tiny 规则覆盖 */
+  @media (hover: none) {
+    .btn, .person-btn, .bank-chip, .mm-chip, .c-item { min-height: 34px; }
+    .btn.tiny { min-height: 34px; padding: 6px 12px; font-size: 13px; }
+    .vc-detail { min-width: 34px; min-height: 34px; font-size: 16px; }
+    .kw-cell input { min-height: 24px; }
+    .kw-table .kw-num { font-size: 11px; }
+  }
   .kw-black { background: #ececf0; width: 30px; height: 30px; }
   .kw-clues h4 { margin: 10px 0 4px; font-size: 14px; color: #1a73e8; }
   .kw-list { list-style: none; margin: 0 0 10px; padding: 0; font-size: 13.5px; line-height: 1.55; }
@@ -994,18 +1040,33 @@ const PROJ_STEPS = [1, 1.15, 1.3, 1.5];
 function applyProj(){
   document.body.style.zoom = projScale;
   const lb = document.getElementById('projLabel');
-  if (lb) { lb.textContent = (projScale === 1 ? '标准' : '投影 ' + Math.round(projScale * 100) + '%%') + ' · A±'; }
+  if (lb) { lb.textContent = (projScale === 1 ? '标准' : '投影 ' + Math.round(projScale * 100) + '%%'); }
   kwAutoFit();
 }
+let projTimer = null;
+function armProj(){
+  clearTimeout(projTimer);
+  projTimer = setTimeout(function(){ document.getElementById('projCtl').classList.remove('open'); }, 8000);
+}
+function projToggle(e){
+  if (e) e.stopPropagation();
+  const c = document.getElementById('projCtl');
+  c.classList.toggle('open');
+  if (c.classList.contains('open')) { armProj(); }
+}
+document.addEventListener('click', function(e){
+  const c = document.getElementById('projCtl');
+  if (c && !c.contains(e.target)) { c.classList.remove('open'); }
+});
 function projStep(d){
   let i = PROJ_STEPS.indexOf(projScale);
   if (i < 0) { i = 0; }
   i = Math.min(PROJ_STEPS.length - 1, Math.max(0, i + d));
   projScale = PROJ_STEPS[i];
   try { localStorage.setItem('l7proj', String(projScale)); } catch (e) {}
-  applyProj();
+  applyProj(); armProj();
 }
-function projReset(){ projScale = 1; try { localStorage.setItem('l7proj', '1'); } catch (e) {} applyProj(); }
+function projReset(){ projScale = 1; try { localStorage.setItem('l7proj', '1'); } catch (e) {} applyProj(); armProj(); }
 /* 导航高度自适应：单行/换行/汉堡三种形态下正文都不被遮住 */
 function syncNavPad(){
   const nav = document.querySelector('.top-nav');
@@ -1054,10 +1115,13 @@ const SECTIONS = %s;
   <div id="vpEx" class="vp-ex"></div>
 </div>
 <div class="proj-ctl" id="projCtl">
-  <button onclick="projStep(-1)" title="缩小">A−</button>
-  <span class="proj-label" id="projLabel">标准 · A±</span>
-  <button onclick="projStep(1)" title="放大（投影用）">A+</button>
-  <button onclick="projReset()" title="回到标准">↺</button>
+  <button class="proj-mini" onclick="projToggle(event)" title="投影放大（A±）">A±</button>
+  <div class="proj-body" id="projBody">
+    <button onclick="projStep(-1)" title="缩小">A−</button>
+    <span class="proj-label" id="projLabel">标准</span>
+    <button onclick="projStep(1)" title="放大（投影用）">A+</button>
+    <button onclick="projReset()" title="回到标准">↺</button>
+  </div>
 </div>
 <script>
 const DOC = %s;

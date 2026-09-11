@@ -116,13 +116,29 @@ def esc_attr(s):
     return h(s).replace('"', '&quot;')
 
 def word_html(w):
-    """词条渲染：主词加粗，教材括号标注（复数/支配格/词性）降权显示。
-    例：der Schwerpunkt (-e) → <b>der Schwerpunkt</b><span class="vc-note">(-e)</span>"""
+    """词条渲染：主词加粗；教材标注降权（小一号 + 灰）。
+    标注形态（教材原样，全部取自 S.201 / S.212 词表）：
+      ( )     复数/变格词尾，如 (-e) (-n) (¨-er)
+      [ ]     读音，如 [kanˈtoːn]
+      +A +D   动词支配格；+mit Dat 介词搭配
+      nur Sg  仅单数
+    从词条尾部反复剥离标注 token，剩余的即主词。"""
     w = str(w)
-    m = re.match(r'^(.*?)\s*(\(.*\))\s*$', w)
-    if not m:
+    tok_re = re.compile(r'\([^()]*\)|\[[^\[\]]*\]|\+\s*(?:A|D|G|Akk|Dat|Gen)(?:\s*(?:\+|/)\s*(?:A|D|G|Akk|Dat|Gen))*|\+\s*mit\s+\w+|nur\s+Sg', re.I)
+    rest, toks = w, []
+    while True:
+        m = re.search(r'\s*(' + tok_re.pattern + r')\s*$', rest, re.I)
+        if not m:
+            break
+        toks.insert(0, m.group(1).strip())
+        rest = rest[:m.start()].strip()
+    if not toks or not rest:
         return '<span class="vc-w">%s</span>' % h(w)
-    return '<span class="vc-w">%s</span> <span class="vc-note">%s</span>' % (h(m.group(1).strip()), h(m.group(2)))
+    notes = ''
+    for tok in toks:
+        cls = 'vc-note vc-phon' if tok.startswith('[') else 'vc-note'
+        notes += '<span class="%s">%s</span>' % (cls, h(tok))
+    return '<span class="vc-w">%s</span>%s' % (h(rest), notes)
 
 # ---------------------------------------------------------------- sections
 def sec_home(d):
@@ -622,7 +638,9 @@ EXTRA_CSS = '''
   .kw-num { position: absolute; top: -1px; left: 1px; font-size: 10px; color: #999; z-index: 2; }
   .vc-detail { font-size: 15px; min-width: 28px; min-height: 28px; line-height: 1; }
   .vc-w { font-weight: 700; }
-  .vc-note { font-size: max(12px, .82em); font-weight: 400; color: #8a9099; }
+  /* 标注整体不换行：否则 (-n) 会在连字符处断成「(-」+「n)」（Sky 截图实测） */
+  .vc-note { font-size: max(12px, .82em); font-weight: 400; color: #8a9099; white-space: nowrap; margin-left: .28em; }
+  .vc-phon { font-style: italic; }
   .vt-de .vc-note { font-weight: 400; }
   /* 触控设备：点击目标不得小于 34px（实测 .vc-detail / .btn.tiny 在手机上只有 20px）
      ⚠️ 本块必须留在 CSS 最末，否则被前面同权重的 .vc-detail / .btn.tiny 规则覆盖 */

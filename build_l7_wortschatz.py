@@ -183,10 +183,10 @@ def sec_vocab(d):
         for wd in grp['words']:
             cards.append(
                 '<div class="vc-card" onclick="flipCard(this)"><div class="vc-inner">'
-                '<div class="vc-front">%s</div><div class="vc-back">%s</div></div>'
+                '<div class="vc-front" lang="de">%s</div><div class="vc-back" lang="de">%s</div></div>'
                 '<button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab(\'%s\',\'%s\',\'%s\')">▶</button></div>'
                 % (word_html(wd['w']), h(wd['cn']), esc_attr(wd['w']), esc_attr(wd['cn']), esc_attr(wd['ex'])))
-            e1rows.append('<tr><td class="vt-de">%s</td><td class="vt-cn">%s</td><td class="vt-ex">%s</td></tr>'
+            e1rows.append('<tr><td class="vt-de" lang="de">%s</td><td class="vt-cn">%s</td><td class="vt-ex" lang="de">%s</td></tr>'
                           % (word_html(wd['w']), h(wd['cn']), h(wd.get('ex', ''))))
         panels.append('<div class="person-content%s" id="vc-%s"><div class="vocab-grid">%s</div></div>' % (a, grp['id'], ''.join(cards)))
     return '''    <section id="vocab">
@@ -211,9 +211,9 @@ def sec_vocab2(d):
             detail = ('<button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab(\'%s\',\'%s\',\'%s\')">▶</button>'
                       % (esc_attr(wd['w']), esc_attr(wd['cn']), esc_attr(ex))) if ex else ''
             cards.append('<div class="vc-card" onclick="flipCard(this)"><div class="vc-inner">'
-                         '<div class="vc-front">%s</div><div class="vc-back">%s</div></div>%s</div>'
+                         '<div class="vc-front" lang="de">%s</div><div class="vc-back" lang="de">%s</div></div>%s</div>'
                          % (word_html(wd['w']), h(wd['cn']), detail))
-            rows.append('<tr><td class="vt-de">%s</td><td class="vt-cn">%s</td></tr>'
+            rows.append('<tr><td class="vt-de" lang="de">%s</td><td class="vt-cn">%s</td></tr>'
                         % (word_html(wd['w']), h(wd['cn'])))
         panels.append('<div class="person-content%s" id="vc2-%s"><div class="vocab-grid">%s</div></div>'
                       % (a, grp['id'], ''.join(cards)))
@@ -293,7 +293,7 @@ def sec_kreuzwort(d, cw):
     neg_clues, pos_clues = [], []
     for w, r, c, dr, n in sorted(numbered, key=lambda x: x[4]):
         cl = ans2clue.get(w, {'n': '', 'clue': w, 'zh': ''})
-        item = ('<li data-word="%s"><b>%d</b> <span class="kw-tag">%s</span> %s <span class="kw-zh">%s</span>'
+        item = ('<li data-word="%s"><b>%d</b> <span class="kw-tag" lang="de">%s</span> %s <span class="kw-zh">%s</span>'
                 '<span class="src">%s</span>'
                 '<button class="btn tiny" onclick="revealWord(this,\'%s\')">揭示</button></li>'
                 % (esc_attr(w), n, h(cl.get('n', '')), h(cl['clue']), h(cl.get('zh', '')), h(cl.get('src', '')), esc_attr(w)))
@@ -303,7 +303,7 @@ def sec_kreuzwort(d, cw):
         n_len = len(c['answer'])
         kw_cards.append('''        <div class="kl-item">
           <div class="kl-top"><span class="kl-num">%s</span><span class="kl-len">%d 个字母</span><span class="src">%s</span></div>
-          <div class="kl-clue">%s</div>
+          <div class="kl-clue" lang="de">%s</div>
           <div class="kl-zh">%s</div>
           <div class="kl-line">
             <input class="kl-input" placeholder="Antwort eingeben…" data-ans="%s" data-alt="%s" onkeydown="if(event.key==='Enter')kwCardOne(this)">
@@ -808,6 +808,34 @@ EXTRA_CSS = '''
   .vc-front, .vc-back { font-size: clamp(16px, 1.6vw, 22px); }
   .vt-cn, .vt-de, .vt-ex { font-size: clamp(15px, 1.42vw, 18px); }
   .vc-note { font-size: max(14px, .86em); }
+  /* ===== 换行质量层 v4.6（Sky 追问「换行有没有优化空间」后量化落地）=====
+     ① 中文段落用 text-wrap: pretty 让浏览器重排，消掉末行只剩一两个字的「孤字行」
+     ② 标题/短标签用 text-wrap: balance，行长相称，不再「末行只剩一个词」
+     ③ 德语长词开连字符（需配合 lang="de"），避免长词撑破行或留大片空白
+     ④ 数字+单位、出处徽标、格号整组不断行（换行点落在组外）
+     ⑤ 编号列表悬挂缩进：第二行对齐到正文列，而不是对齐到序号列
+     ⑥ 中文正文行高 1.85（1.6 在长段中文里发挤），并启用 line-break: strict */
+  p, li, .zh-hint, .kl-clue, .tc-zh, .bz-cn, .mm-zh, .vt-cn, .sb-de, .highlight-box, .text-card p {
+    text-wrap: pretty; line-height: 1.85; line-break: strict;
+  }
+  /* ⚠️ 不要把 .vc-note / .src / .kw-num 等放进 text-wrap 组：
+     text-wrap 是 text-wrap-mode 的简写，会把 white-space:nowrap 顶回 wrap（实测词条标注重新折断 394 处）*/
+  .vc-note, .src, .kw-num, .vt-de, .fl-t, .kw-tag { white-space: nowrap; }
+  h1, h2, h3, h4, .section-title, .card-title, .game-name, .mm-head, .kw-clues h4, .kl-len {
+    text-wrap: balance;
+  }
+  .de, .vt-de, .vt-ex, .vc-w, .sb-de, .kw-tag, .kl-clue, [lang="de"] {
+    hyphens: auto; -webkit-hyphens: auto; overflow-wrap: break-word;
+  }
+  .src, .kw-num, .game-time, .logo-chip, .mm-chip, .kw-tag, .vt-ex, .kl-len, .tc-num {
+    white-space: nowrap;
+  }
+  ol.kw-list li, .game-card ol li, .game-card ul li, .obj-box ul li, .mm-list li, .sb-list li, .rules li {
+    padding-left: 1.5em; text-indent: -1.5em; margin-left: 0;
+  }
+  @media (max-width: 560px) {
+    p, li, .zh-hint, .kl-clue, .tc-zh, .bz-cn, .mm-zh { line-height: 1.9; }
+  }
   /* 卡片行内等高（games / blitz 网格实测行内差 25px） */
   .games-grid, .blitz-grid, .home-grid { grid-auto-rows: 1fr; }
   .game-card, .blitz-card, .text-card { display: flex; flex-direction: column; }

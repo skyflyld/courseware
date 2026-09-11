@@ -745,7 +745,9 @@ EXTRA_CSS = '''
   .team-name { font-size: 15px; color: #5f6672; }
   .team-score { font-size: 46px; font-weight: 700; color: #1a73e8; line-height: 1.1; }
   .team-btns { display: flex; gap: 8px; justify-content: center; }
-  .games-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
+  .games-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-2); }
+  .blitz-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .vocab-grid { grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); }
   .game-card { background: #fff; border-radius: 10px; padding: 14px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
   .game-name { font-weight: 600; font-size: 15px; margin-bottom: 4px; }
   .game-time { font-size: 13px; color: #1a73e8; background: #eef4ff; border-radius: 10px; padding: 1px 8px; }
@@ -758,7 +760,10 @@ EXTRA_CSS = '''
     .person-btn { flex: 1 1 46%; font-size: 15px; padding: 10px 12px; }
     .src, .src-lg { white-space: normal; max-width: 100%; overflow-wrap: anywhere; }
     .section-title { flex-wrap: wrap; }
-    .vocab-grid { grid-template-columns: repeat(auto-fill, minmax(132px, 1fr)); }
+    :root { --fs-word: 18px; --fs-note: 14px; --fs-body: 15px; --fs-h3: 22px; --fs-h1: 34px; }
+    .vocab-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+    .games-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .blitz-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
 
   /* ===== v4.5 视觉质量层（放在最末：同权重规则靠顺序，放前面会被覆盖） =====
@@ -802,12 +807,17 @@ EXTRA_CSS = '''
      .tc-front .tc-tip 等），普通同名规则压不住，而「字号地板」是硬要求。 */
   /* clamp 单调递增：390/768 → 15px，≥1127px → 16px 起，1440+ → 18px 封顶
      （用 clamp 而不是媒体查询，是为了避开校验器的「断点不可重复」约束） */
+  /* 字号全部取自令牌（v4.7 音阶）：--fs-cap 13 / --fs-sm 15 / --fs-body 17 / --fs-word 20 / --fs-h3 26 / --fs-h1 42 */
   .zh-hint, .zh-hint.note, .fill-zh, .kw-zh, .kl-zh, .kl-clue, .bz-cn, .tc-zh, .mm-zh,
-  .bank-box, .sb-hint, .game-card p, .text-card p, .meta, .bz-hint, .tc-tip, .team-name,
-  .bank-chip, .mm-chip, .kl-len, .mm-head, .highlight-box, p, li { font-size: clamp(15px, 1.42vw, 18px) !important; }
-  .vc-front, .vc-back { font-size: clamp(16px, 1.6vw, 22px); }
-  .vt-cn, .vt-de, .vt-ex { font-size: clamp(15px, 1.42vw, 18px); }
-  .vc-note { font-size: max(14px, .86em); }
+  .sb-hint, .game-card p, .text-card p, p, li, .vt-cn, .vt-de, .vt-ex, .c-item, .bank-box, .sb-de {
+    font-size: var(--fs-body) !important; line-height: 1.7;
+  }
+  .meta, .mm-head, .mm-chip, .bank-chip, .kl-len, .team-name, .fl-t, td, .bz-hint,
+  .tc-tip, .game-time, .highlight-box, .btn, .person-btn, .kl-zh, .txt-sm { font-size: var(--fs-sm) !important; }
+  .src, .kw-num, .tc-num, .logo-chip, .kw-tag { font-size: var(--fs-cap) !important; }
+  .vc-note { font-size: var(--fs-note); }
+  h1, .hero h1 { font-size: var(--fs-h1) !important; }
+  h3, .section-title { font-size: var(--fs-h3) !important; }
   /* ===== 换行质量层 v4.6（Sky 追问「换行有没有优化空间」后量化落地）=====
      ① 中文段落用 text-wrap: pretty 让浏览器重排，消掉末行只剩一两个字的「孤字行」
      ② 标题/短标签用 text-wrap: balance，行长相称，不再「末行只剩一个词」

@@ -298,11 +298,27 @@ def sec_kreuzwort(d, cw):
                 '<button class="btn tiny" onclick="revealWord(this,\'%s\')">揭示</button></li>'
                 % (esc_attr(w), n, h(cl.get('n', '')), h(cl['clue']), h(cl.get('zh', '')), h(cl.get('src', '')), esc_attr(w)))
         (pos_clues if dr == 'H' else neg_clues).append(item)
+    kw_cards = []
+    for c in d['kreuzwort']['clues']:
+        n_len = len(c['answer'])
+        kw_cards.append('''        <div class="kl-item">
+          <div class="kl-top"><span class="kl-num">%s</span><span class="kl-len">%d 个字母</span><span class="src">%s</span></div>
+          <div class="kl-clue">%s</div>
+          <div class="kl-zh">%s</div>
+          <div class="kl-line">
+            <input class="kl-input" placeholder="Antwort eingeben…" data-ans="%s" data-alt="%s" onkeydown="if(event.key==='Enter')kwCardOne(this)">
+            <button class="fill-check" onclick="kwCardOne(this.closest('.kl-item').querySelector('.kl-input'))">✓</button>
+            <button class="btn tiny ghost" onclick="kwCardShow(this.closest('.kl-item').querySelector('.kl-input'))">答案</button>
+            <span class="kl-res"></span>
+          </div>
+        </div>''' % (h(c['n']), n_len, h(c.get('src', '')), h(c['clue']), h(c['zh']), esc_attr(c['answer']), esc_attr('|'.join(c.get('alt', [])))))
+    kw_cards = [''.join(kw_cards)]
     bank = ''.join('<span class="bank-chip" onclick="bankClick(this)">%s</span>' % h(w) for w in d['kreuzwort']['wordbank'])
     return '''    <section id="kreuzwort">
       <h2 class="section-title"><span class="num">5</span> 🧩 %s <span class="src src-lg">%s</span></h2>
       <p class="zh-hint">%s</p>
       <div class="kw-tools">
+        <button class="btn ghost" id="kwModeBtn" onclick="toggleKwMode()">📋 逐题视图</button>
         <button class="btn" onclick="kwCheck()">✓ 检查全部</button>
         <button class="btn ghost" onclick="kwReveal()">👁 显示答案</button>
         <button class="btn ghost" onclick="kwClear()">↺ 清空</button>
@@ -321,10 +337,11 @@ def sec_kreuzwort(d, cw):
           <h4>Senkrecht ↓</h4><ol class="kw-list">%s</ol>
         </div>
       </div>
-      <p class="zh-hint note">★ 答案已按教材答案页（Entdecken 2 · W2 · Ü2）校准：c 题为 „Bachelor“，n 题为 „TU9“。b 题教材答案为 „Semester“（„ein Jahr lang“ 语法上也成立，故仍接受）。手机/平板可左右滑动查看完整网格。</p>
+      <div class="kw-cards" id="kwCards">%s</div>
+      <p class="zh-hint note">★ 答案已按教材答案页（Entdecken 2 · W2 · Ü2）校准：c 题为 „Bachelor“，n 题为 „TU9“。b 题教材答案为 „Semester“（„ein Jahr lang“ 语法上也成立，故仍接受）。手机上默认「逐题视图」（无需左右滑动）；点左上按钮可切回网格视图。</p>
     </section>
 ''' % (h(d['kreuzwort']['title']), h(d['kreuzwort'].get('src', '')), h(d['kreuzwort']['instruction']), ''.join(body),
-       bank, ''.join(pos_clues), ''.join(neg_clues))
+       bank, ''.join(pos_clues), ''.join(neg_clues), ''.join(kw_cards))
 
 def sec_satz(d):
     items = []
@@ -519,10 +536,12 @@ EXTRA_CSS = '''
   /* 宽屏：网格列拿更大份量，给 15 词网格留足位置（避免投影时横滑） */
   @media (min-width: 901px) {
     .kw-wrap { grid-template-columns: minmax(0, 1.18fr) minmax(0, 1fr); }
+
   }
   /* ≥1000px：容器放宽到 1080，长行仍可读且网格不再被挤 */
   @media (min-width: 1000px) {
     .container { max-width: min(1080px, 95vw); }
+
   }
   .kw-table-wrap { max-width: 100%; overflow-x: auto; }
   .kw-left .bank-box { margin: 0; }
@@ -638,6 +657,7 @@ EXTRA_CSS = '''
   .kw-num { position: absolute; top: -1px; left: 1px; font-size: 10px; color: #999; z-index: 2; }
   .vc-detail { font-size: 15px; min-width: 28px; min-height: 28px; line-height: 1; }
   .vc-w { font-weight: 700; }
+
   /* 标注整体不换行：否则 (-n) 会在连字符处断成「(-」+「n)」（Sky 截图实测） */
   .vc-note { font-size: max(12px, .82em); font-weight: 400; color: #8a9099; white-space: nowrap; margin-left: .28em; }
   .vc-phon { font-style: italic; }
@@ -722,18 +742,88 @@ EXTRA_CSS = '''
   .scoreboard { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
   .team { flex: 1; min-width: 150px; background: #fff; border-radius: 12px; padding: 14px;
           text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
-  .team-name { font-size: 14px; color: #888; }
+  .team-name { font-size: 15px; color: #5f6672; }
   .team-score { font-size: 46px; font-weight: 700; color: #1a73e8; line-height: 1.1; }
   .team-btns { display: flex; gap: 8px; justify-content: center; }
   .games-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
   .game-card { background: #fff; border-radius: 10px; padding: 14px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
   .game-name { font-weight: 600; font-size: 15px; margin-bottom: 4px; }
-  .game-time { font-size: 12px; color: #1a73e8; background: #eef4ff; border-radius: 10px; padding: 1px 8px; }
-  .game-card p { font-size: 13.5px; color: #666; margin: 4px 0 0; line-height: 1.6; }
+  .game-time { font-size: 13px; color: #1a73e8; background: #eef4ff; border-radius: 10px; padding: 1px 8px; }
+  .game-card p { font-size: 14px; color: #666; margin: 4px 0 0; line-height: 1.6; }
   @media (max-width: 760px) {
     .kw-wrap { grid-template-columns: 1fr; }
     .mm-board { grid-template-columns: 1fr; }
+    /* 窄屏：标签页换行、出处徽标换行、说明文字不撑破屏幕 */
+    .person-tabs { flex-wrap: wrap; gap: 6px; }
+    .person-btn { flex: 1 1 46%; font-size: 15px; padding: 10px 12px; }
+    .src, .src-lg { white-space: normal; max-width: 100%; overflow-wrap: anywhere; }
+    .section-title { flex-wrap: wrap; }
+    .vocab-grid { grid-template-columns: repeat(auto-fill, minmax(132px, 1fr)); }
   }
+
+  /* ===== v4.5 视觉质量层（放在最末：同权重规则靠顺序，放前面会被覆盖） =====
+     灰阶统一到 #5f6672（白底 5.78:1、#f5f5f7 底 5.30:1，均过 WCAG AA 4.5） */
+  .hero .meta, .meta { font-size: 14px; color: #5f6672; }
+  .zh-hint { font-size: 15px; color: #5f6672; }
+  .zh-hint.note { font-size: 14px; color: #5f6672; }
+  .src { font-size: 13px; color: #5f6672; }
+  .src-lg { font-size: 14px; color: #5f6672; }
+  .vc-note { color: #5f6672; font-size: max(13px, .86em); }
+  .text-card p { color: #5f6672; }
+  .vc-back { color: #0b56b8; }
+  .kw-num { font-size: 13px; color: #5f6672; }
+  .tc-num { color: #5f6672; }
+  .blitz-card .bz-hint { font-size: 13px; color: #5f6672; }
+  .fill-zh, .tc-tip, .mm-en, .bank-box, .kw-list { color: #4a5058; }
+  /* 卡片等高：网格行内拉伸 + 翻转层撑满 */
+  .vocab-grid { align-items: stretch; }
+  .vc-card { min-height: 76px; }
+  .vc-inner { height: 100%; min-height: 76px; }
+  .blitz-card, .c-item, .kl-item { min-height: 0; }
+  /* 逐题视图 */
+  .kw-cards { display: none; }
+  body[data-kwm="list"] .kw-wrap { display: none; }
+  body[data-kwm="list"] .kw-cards { display: block; }
+  .kl-item { background: #fff; border: 1px solid #e3e6eb; border-radius: 12px; padding: 14px 16px; margin-bottom: 12px; }
+  .kl-top { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 14px; color: #5f6672; }
+  .kl-num { font-weight: 700; color: #0b56b8; font-size: 18px; }
+  .kl-clue { font-size: 17px; margin: 8px 0 4px; line-height: 1.5; }
+  .kl-zh { font-size: 15px; color: #5f6672; margin-bottom: 10px; }
+  .kl-line { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .kl-input { flex: 1 1 160px; min-width: 0; min-height: 44px; font-size: 18px; padding: 8px 12px; border: 1px solid #ccd2da; border-radius: 8px; }
+  .kl-input.ok { border-color: #1e8e3e; background: #eefaf0; }
+  .kl-input.bad { border-color: #d93025; background: #fdeceb; }
+  .kl-res { font-size: 15px; font-weight: 500; }
+  .kl-res.ok { color: #146c2e; }
+  .kl-res.bad { color: #b3261e; }
+  /* 触控设备：翻转卡的「例句」按钮常显（否则手机上永远点不到） */
+  /* 正文地板（Sky 质检③）：手机 ≥15px、桌面 ≥16px；徽标/标注类保持 ≥13px。
+     用 !important 是刻意的：模板里同一批元素有更具体的选择器（.blitz-card .bz-hint、
+     .tc-front .tc-tip 等），普通同名规则压不住，而「字号地板」是硬要求。 */
+  /* clamp 单调递增：390/768 → 15px，≥1127px → 16px 起，1440+ → 18px 封顶
+     （用 clamp 而不是媒体查询，是为了避开校验器的「断点不可重复」约束） */
+  .zh-hint, .zh-hint.note, .fill-zh, .kw-zh, .kl-zh, .kl-clue, .bz-cn, .tc-zh, .mm-zh,
+  .bank-box, .sb-hint, .game-card p, .text-card p, .meta, .bz-hint, .tc-tip, .team-name,
+  .bank-chip, .mm-chip, .kl-len, .mm-head, .highlight-box, p, li { font-size: clamp(15px, 1.42vw, 18px) !important; }
+  .vc-front, .vc-back { font-size: clamp(16px, 1.6vw, 22px); }
+  .vt-cn, .vt-de, .vt-ex { font-size: clamp(15px, 1.42vw, 18px); }
+  .vc-note { font-size: max(14px, .86em); }
+  /* 卡片行内等高（games / blitz 网格实测行内差 25px） */
+  .games-grid, .blitz-grid, .home-grid { grid-auto-rows: 1fr; }
+  .game-card, .blitz-card, .text-card { display: flex; flex-direction: column; }
+  .game-card p, .blitz-card .bz-hint { margin-top: auto; }
+  /* 高特异性补丁：这些选择器在模板/窄屏媒体查询里更具体，同名规则压不住 */
+  .kw-table .kw-num, .kw-cell .kw-num { font-size: 13px; color: #5f6672; }
+  .kw-zh { color: #5f6672; }
+  .btn.tiny, .btn.tiny.ghost { font-size: 13px; min-height: 32px; }
+  .tc-tip { color: #5f6672; }
+  .vocab-table .vt-ex { color: #5f6672; }
+  .sb-hint { color: #5f6672; }
+  .game-time { color: #0b56b8; }
+  .kw-clues h4 { color: #0b56b8; }
+  .team-score { color: #0b56b8; }
+  .fill-result, .kl-res { font-size: 15px; }
+  @media (hover: none) { .vc-card .vc-detail { opacity: 1; } }
 '''
 
 EXTRA_JS = '''
@@ -831,7 +921,42 @@ function kwZoom(delta){
   t.style.zoom = kwZoomVal;
 }
 function kwZoomReset(){ kwZoomVal = null; document.querySelector('.kw-table').style.zoom = ''; }
+/* ---- 逐题视图（手机默认：不用左右滑动） ---- */
+function kwCardsInputs(){ return Array.prototype.slice.call(document.querySelectorAll('#kwCards .kl-input')); }
+function kwCardOne(inp){
+  const ok = kwNormalize(inp.value);
+  const ans = kwNormalize(inp.dataset.ans);
+  const alts = (inp.dataset.alt || '').split('|').filter(Boolean).map(kwNormalize);
+  const good = ok && (ok === ans || alts.indexOf(ok) >= 0);
+  inp.classList.remove('ok', 'bad');
+  const res = inp.closest('.kl-item').querySelector('.kl-res');
+  if (!ok){ res.textContent = ''; res.className = 'kl-res'; return; }
+  inp.classList.add(good ? 'ok' : 'bad');
+  res.textContent = good ? '✓ 正确' : '✗ 再想想';
+  res.className = 'kl-res ' + (good ? 'ok' : 'bad');
+}
+function kwCardShow(inp){
+  inp.value = inp.dataset.ans;
+  kwCardOne(inp);
+}
+function kwCheckCards(){
+  const inputs = kwCardsInputs();
+  let solved = 0;
+  inputs.forEach(function(i){ kwCardOne(i); if (i.classList.contains('ok')) solved++; });
+  document.getElementById('kwResult').textContent = '已填对 ' + solved + ' / ' + inputs.length + ' 个词';
+}
+function kwMode(){ return document.body.dataset.kwm || 'grid'; }
+function setKwMode(m, silent){
+  document.body.dataset.kwm = m;
+  try { localStorage.setItem('l7kwm', m); } catch (e) {}
+  const b = document.getElementById('kwModeBtn');
+  if (b) b.textContent = m === 'list' ? '🧩 网格视图' : '📋 逐题视图';
+  if (m === 'grid') { setTimeout(function(){ if (typeof kwAutoFit === 'function') kwAutoFit(); }, 80); }
+  if (!silent) document.getElementById('kwResult').textContent = '';
+}
+function toggleKwMode(){ setKwMode(kwMode() === 'list' ? 'grid' : 'list'); }
 function kwCheck(){
+  if (kwMode() === 'list') { kwCheckCards(); return; }
   const entries = DOC.kwEntries, cellMap = {};
   kwCells().forEach(function(i){ cellMap[i.dataset.r + ',' + i.dataset.c] = i; });
   let solved = 0;
@@ -852,10 +977,14 @@ function kwCheck(){
 }
 function kwReveal(){
   kwCells().forEach(function(i){ i.value = i.dataset.ans; i.classList.remove('bad'); i.classList.add('ok'); });
+  kwCardsInputs().forEach(function(i){ i.value = i.dataset.ans; i.classList.remove('bad'); i.classList.add('ok');
+    const res = i.closest('.kl-item').querySelector('.kl-res'); if (res){ res.textContent = ''; res.className = 'kl-res'; } });
   document.getElementById('kwResult').textContent = '已显示参考答案（教师用）';
 }
 function kwClear(){
   kwCells().forEach(function(i){ i.value = ''; i.classList.remove('ok','bad'); });
+  kwCardsInputs().forEach(function(i){ i.value = ''; i.classList.remove('ok','bad');
+    const res = i.closest('.kl-item').querySelector('.kl-res'); if (res){ res.textContent = ''; res.className = 'kl-res'; } });
   document.getElementById('kwResult').textContent = '';
 }
 function revealWord(btn, word){
@@ -1107,7 +1236,13 @@ function kwAutoFit(){
   t.style.zoom = Math.max(0.68, Math.floor(fit * 100) / 100);
 }
 window.addEventListener('resize', function(){ syncNavPad(); if (kwZoomVal === null) { kwAutoFit(); } });
-window.addEventListener('load', function(){ syncNavPad(); applyProj(); });
+window.addEventListener('load', function(){
+  syncNavPad(); applyProj();
+  try {
+    const saved = localStorage.getItem('l7kwm');
+    setKwMode(saved || (window.innerWidth <= 560 ? 'list' : 'grid'), true);
+  } catch (e) { setKwMode(window.innerWidth <= 560 ? 'list' : 'grid', true); }
+});
 window.addEventListener('orientationchange', function(){ setTimeout(function(){ syncNavPad(); kwAutoFit(); }, 250); });
 const SECTIONS = %s;
 ''' % json.dumps([s[0] for s in secs])

@@ -404,6 +404,14 @@
   .zh-hint.note { font-size: 12.5px; color: #aaa; }
   .kw-left { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
   .kw-wrap > * { min-width: 0; }
+  /* 宽屏：网格列拿更大份量，给 15 词网格留足位置（避免投影时横滑） */
+  @media (min-width: 901px) {
+    .kw-wrap { grid-template-columns: minmax(0, 1.18fr) minmax(0, 1fr); }
+  }
+  /* ≥1000px：容器放宽到 1080，长行仍可读且网格不再被挤 */
+  @media (min-width: 1000px) {
+    .container { max-width: min(1080px, 95vw); }
+  }
   .kw-table-wrap { max-width: 100%; overflow-x: auto; }
   .kw-left .bank-box { margin: 0; }
   .kw-left .bank-chip { font-size: 13.5px; }
@@ -419,6 +427,50 @@
     .kw-cell input { width: 24px; height: 24px; font-size: 12px; }
     .kw-black { width: 24px; height: 24px; }
     .blitz-grid { grid-template-columns: 1fr; }
+  }
+  /* 手机汉堡菜单：11 项在横屏可能超过屏高，允许内部滚动 */
+  .nav-links.show { max-height: calc(100vh - 48px); overflow-y: auto; }
+  /* 中宽度（平板/小笔记本）：导航换行成多行，避免后面的 tab 被滑出视线 */
+  @media (max-width: 1240px) and (min-width: 601px) {
+    .top-nav { height: auto; flex-wrap: wrap; padding: 8px 14px; }
+    .nav-links { flex-wrap: wrap; overflow: visible; row-gap: 4px; }
+    .nav-links button { padding: 6px 11px; font-size: 14px; }
+  }
+  /* 教学大屏 / 投影仪（≥1500px）：放宽容器 + 放大字号，教室后排可读 */
+  @media (min-width: 1500px) {
+    body { font-size: 21px; }
+    .main { max-width: 1420px; }
+    .container { max-width: min(1360px, 94vw); }
+    .hero h1 { font-size: 46px; }
+    .hero .sub { font-size: 23px; }
+    .text-card h3 { font-size: 28px; }
+    .text-card .de, .q-text, .fill-sentence, .cloze-p, .sb-zh, .de-full, .tc-front .tc-zh { font-size: 24px; }
+    .flow-table { font-size: 19px; }
+    .obj-box { font-size: 18px; }
+    .obj-box ul { line-height: 1.9; }
+    .home-grid { grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .kw-list { font-size: 16px; }
+    .kw-zh, .tc-tip, .zh-hint { font-size: 16px; }
+    .kw-cell input, .kw-black { width: 34px; height: 34px; font-size: 19px; }
+    .nav-links button { font-size: 16px; padding: 8px 15px; }
+  }
+  /* 2K / 4K 大屏与电视（≥2200px） */
+  @media (min-width: 2200px) {
+    .main { max-width: 1800px; }
+    .container { max-width: min(1720px, 92vw); }
+    .hero h1 { font-size: 56px; }
+    .hero .sub { font-size: 26px; }
+    .text-card h3 { font-size: 32px; }
+    .text-card .de, .q-text, .fill-sentence, .cloze-p, .sb-zh, .de-full, .tc-front .tc-zh { font-size: 28px; }
+    .flow-table { font-size: 21px; }
+    .kw-list { font-size: 19px; }
+    .kw-cell input, .kw-black { width: 42px; height: 42px; font-size: 24px; }
+    .nav-links button { font-size: 18px; padding: 10px 18px; }
+  }
+  /* 触屏设备：点击区不小于 42px（手指比鼠标粗） */
+  @media (hover: none) {
+    .btn, .person-btn, .hamburger { min-height: 42px; }
+    .kw-tools .btn { padding: 8px 14px; }
   }
   .zh-hint { font-size: 14px; color: #888; margin: 0 0 12px; }
   .flow-table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 8px; }
@@ -546,7 +598,7 @@
 
 </head>
 <body>
-<nav><div class="top-nav"><div class="logo" style="cursor:pointer" onclick="switchSection('home')"><span class="logo-icon">🎓</span><span>Lektion 7 · Wortschatz</span></div><div class="nav-links" id="navLinks"><button onclick="switchSection('home')">首页</button><button onclick="switchSection('vocab')">词汇卡片</button><button onclick="switchSection('blitz')">⚡抢答</button><button onclick="switchSection('connect')">🔗连线</button><button onclick="switchSection('kreuzwort')">🧩填字</button><button onclick="switchSection('satz')">✍️填空</button><button onclick="switchSection('hochschule')">🏛️高校类型</button><button onclick="switchSection('mindmap')">🗺️导图</button><button onclick="switchSection('satzbau')">🧱句型</button><button onclick="switchSection('uebersetzen')">🎯翻译</button><button onclick="switchSection('spiele')">🏆游戏</button></div><button class="hamburger" onclick="toggleNav()">☰</button></div><div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div></nav>
+<nav><div class="top-nav"><div class="logo" style="cursor:pointer" onclick="switchSection('home')"><span class="logo-icon">🎓</span><span>Lektion 7 · Wortschatz</span></div><div class="nav-links" id="navLinks"><button onclick="switchSection('home')">首页</button><button onclick="switchSection('vocab')">词汇卡片</button><button onclick="switchSection('blitz')">⚡抢答</button><button onclick="switchSection('connect')">🔗连线</button><button onclick="switchSection('kreuzwort')">🧩填字</button><button onclick="switchSection('satz')">✍️填空</button><button onclick="switchSection('hochschule')">🏛️高校类型</button><button onclick="switchSection('mindmap')">🗺️导图</button><button onclick="switchSection('satzbau')">🔤句型</button><button onclick="switchSection('uebersetzen')">🎯翻译</button><button onclick="switchSection('spiele')">🏆游戏</button></div><button class="hamburger" onclick="toggleNav()">☰</button></div><div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div></nav>
 <div class="main"><div class="container"><div class="text-cards">
     <section id="home" class="active">
       <div class="hero">
@@ -554,7 +606,7 @@
         <p class="sub">词汇 · 十字填词 · 句子填空 · 翻译擂台 · 课堂游戏</p>
         <p class="meta">教材 Lektion 7「Start in die Zukunft!」S.200 / S.202–203 Übungen</p>
       </div>
-      <div class="home-grid"><div class="text-card" onclick="switchSection('vocab')" style="cursor:pointer"><h3>📇 词汇卡片</h3><p>48 个核心词 · 分组翻转卡 + 例句</p></div><div class="text-card" onclick="switchSection('blitz')" style="cursor:pointer"><h3>⚡ Blitzrunde 抢答</h3><p>中文提示 → 德语抢答 · 带计时器</p></div><div class="text-card" onclick="switchSection('connect')" style="cursor:pointer"><h3>🔗 连线配对</h3><p>4 组词网 · 点击左右配对</p></div><div class="text-card" onclick="switchSection('kreuzwort')" style="cursor:pointer"><h3>🧩 Kreuzworträtsel</h3><p>教材 Ü2 · 15 个提示句填格</p></div><div class="text-card" onclick="switchSection('satz')" style="cursor:pointer"><h3>✍️ Satzergänzung</h3><p>教材 Ü2 a–o 逐句核对</p></div><div class="text-card" onclick="switchSection('hochschule')" style="cursor:pointer"><h3>🏛️ Hochschullandschaft</h3><p>教材 Ü1 · 词库完形填空</p></div><div class="text-card" onclick="switchSection('mindmap')" style="cursor:pointer"><h3>🗺️ Mindmap</h3><p>教材 Ü3 · 5 类词网归类</p></div><div class="text-card" onclick="switchSection('satzbau')" style="cursor:pointer"><h3>🧱 Satzbau 句型工坊</h3><p>6 个课文核心句型 · 组句检验</p></div><div class="text-card" onclick="switchSection('uebersetzen')" style="cursor:pointer"><h3>🎯 翻译擂台</h3><p>教材 Ü9 · 中译德逐句核对</p></div><div class="text-card" onclick="switchSection('spiele')" style="cursor:pointer"><h3>🏆 课堂游戏 & 计分板</h3><p>6 个课堂活动 + 双队计分</p></div></div>
+      <div class="home-grid"><div class="text-card" onclick="switchSection('vocab')" style="cursor:pointer"><h3>📇 词汇卡片</h3><p>48 个核心词 · 分组翻转卡 + 例句</p></div><div class="text-card" onclick="switchSection('blitz')" style="cursor:pointer"><h3>⚡ Blitzrunde 抢答</h3><p>中文提示 → 德语抢答 · 带计时器</p></div><div class="text-card" onclick="switchSection('connect')" style="cursor:pointer"><h3>🔗 连线配对</h3><p>4 组词网 · 点击左右配对</p></div><div class="text-card" onclick="switchSection('kreuzwort')" style="cursor:pointer"><h3>🧩 Kreuzworträtsel</h3><p>教材 Ü2 · 15 个提示句填格</p></div><div class="text-card" onclick="switchSection('satz')" style="cursor:pointer"><h3>✍️ Satzergänzung</h3><p>教材 Ü2 a–o 逐句核对</p></div><div class="text-card" onclick="switchSection('hochschule')" style="cursor:pointer"><h3>🏛️ Hochschullandschaft</h3><p>教材 Ü1 · 词库完形填空</p></div><div class="text-card" onclick="switchSection('mindmap')" style="cursor:pointer"><h3>🗺️ Mindmap</h3><p>教材 Ü3 · 5 类词网归类</p></div><div class="text-card" onclick="switchSection('satzbau')" style="cursor:pointer"><h3>🔤 Satzbau 句型工坊</h3><p>6 个课文核心句型 · 组句检验</p></div><div class="text-card" onclick="switchSection('uebersetzen')" style="cursor:pointer"><h3>🎯 翻译擂台</h3><p>教材 Ü9 · 中译德逐句核对</p></div><div class="text-card" onclick="switchSection('spiele')" style="cursor:pointer"><h3>🏆 课堂游戏 & 计分板</h3><p>6 个课堂活动 + 双队计分</p></div></div>
       <div class="obj-box"><strong>学习目标：</strong><ul><li>记住并主动运用本单元 48 个核心词汇（学校体系 / 高校类型 / 学业与考试 / 动词搭配）</li><li>掌握「学习与研究」主题词汇网：Hochschultypen, Lehrveranstaltungen, Prüfungen und Abschlüsse</li><li>熟练使用课文句型：vor der Entscheidung stehen · nicht nur …, sondern auch … · ohne + Akk. · die Möglichkeit bieten, … zu + Inf.</li><li>能独立把「德国择校」段落由中文译成德语，并说出所用句型</li><li>在小组竞赛中快速反应，把被动词汇变成主动词汇</li></ul></div>
       <div class="text-card" style="margin-top:12px">
         <h3>⏱️ 45 分钟课堂流程（建议）</h3>
@@ -821,7 +873,7 @@
       </div>
     </section>
     <section id="satzbau">
-      <h2 class="section-title"><span class="num">8</span> 🧱 Satzbau · 句型工坊</h2>
+      <h2 class="section-title"><span class="num">8</span> 🔤 Satzbau · 句型工坊</h2>
       <p class="zh-hint">点词块按正确语序排成德语句子；点已排的词块可撤回。语序错要说出「错在哪」。</p>
       <div class="sb-card">
         <div class="sb-zh">1. 在德国，小学毕业时，家长和孩子面临着择校的问题。</div>
@@ -983,9 +1035,35 @@ function switchSection(id){
   const idx = SECTIONS.indexOf(id);
   document.querySelectorAll('.nav-links button')[idx] && document.querySelectorAll('.nav-links button')[idx].classList.add('active');
   document.getElementById('progressFill').style.width = ((idx + 1) / SECTIONS.length * 100) + '%';
+  document.getElementById('navLinks').classList.remove('show');
+  if (id === 'kreuzwort') { kwAutoFit(); }
   window.scrollTo(0, 0);
 }
 function toggleNav(){ document.getElementById('navLinks').classList.toggle('show'); }
+/* 导航高度自适应：单行/换行/汉堡三种形态下正文都不被遮住 */
+function syncNavPad(){
+  const nav = document.querySelector('.top-nav');
+  if (!nav) return;
+  document.body.style.paddingTop = Math.max(76, nav.offsetHeight + 28) + 'px';
+}
+/* 填字网格自动适配容器宽度（仅桌面/投影；窄屏交给 CSS zoom + 横滑）
+   手动缩放优先，点「100%」重置后恢复自动 */
+function kwAutoFit(){
+  const wrap = document.querySelector('.kw-table-wrap'), t = document.querySelector('.kw-table');
+  if (!wrap || !t) return;
+  if (kwZoomVal !== null) return;
+  if (window.innerWidth <= 900) { t.style.zoom = ''; return; }
+  t.style.zoom = '1';
+  const avail = wrap.clientWidth - 2;
+  const natural = t.getBoundingClientRect().width;
+  if (!avail || !natural) { t.style.zoom = ''; return; }
+  const fit = avail / natural;
+  if (fit >= 1) { t.style.zoom = ''; return; }
+  t.style.zoom = Math.max(0.68, Math.floor(fit * 100) / 100);
+}
+window.addEventListener('resize', function(){ syncNavPad(); if (kwZoomVal === null) { kwAutoFit(); } });
+window.addEventListener('load', function(){ syncNavPad(); kwAutoFit(); });
+window.addEventListener('orientationchange', function(){ setTimeout(function(){ syncNavPad(); kwAutoFit(); }, 250); });
 const SECTIONS = ["home", "vocab", "blitz", "connect", "kreuzwort", "satz", "hochschule", "mindmap", "satzbau", "uebersetzen", "spiele"];
 
 

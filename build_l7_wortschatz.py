@@ -127,7 +127,7 @@ def sec_home(d):
         ('satz', '✍️ Satzergänzung', '教材 Ü2 a–o 逐句核对'),
         ('hochschule', '🏛️ Hochschullandschaft', '教材 Ü1 · 词库完形填空'),
         ('mindmap', '🗺️ Mindmap', '教材 Ü3 · 5 类词网归类'),
-        ('satzbau', '🧱 Satzbau 句型工坊', '6 个课文核心句型 · 组句检验'),
+        ('satzbau', '🔤 Satzbau 句型工坊', '6 个课文核心句型 · 组句检验'),
         ('uebersetzen', '🎯 翻译擂台', '教材 Ü9 · 中译德逐句核对'),
         ('spiele', '🏆 课堂游戏 & 计分板', '6 个课堂活动 + 双队计分'),
     ]
@@ -354,7 +354,7 @@ def sec_satzbau(d):
         </div>
       </div>''' % (i + 1, h(s['zh']), h(s['pattern']), i, chips, i, i, i, i, i, i))
     return '''    <section id="satzbau">
-      <h2 class="section-title"><span class="num">8</span> 🧱 Satzbau · 句型工坊</h2>
+      <h2 class="section-title"><span class="num">8</span> 🔤 Satzbau · 句型工坊</h2>
       <p class="zh-hint">点词块按正确语序排成德语句子；点已排的词块可撤回。语序错要说出「错在哪」。</p>
 %s
     </section>
@@ -409,6 +409,14 @@ EXTRA_CSS = '''
   .zh-hint.note { font-size: 12.5px; color: #aaa; }
   .kw-left { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
   .kw-wrap > * { min-width: 0; }
+  /* 宽屏：网格列拿更大份量，给 15 词网格留足位置（避免投影时横滑） */
+  @media (min-width: 901px) {
+    .kw-wrap { grid-template-columns: minmax(0, 1.18fr) minmax(0, 1fr); }
+  }
+  /* ≥1000px：容器放宽到 1080，长行仍可读且网格不再被挤 */
+  @media (min-width: 1000px) {
+    .container { max-width: min(1080px, 95vw); }
+  }
   .kw-table-wrap { max-width: 100%; overflow-x: auto; }
   .kw-left .bank-box { margin: 0; }
   .kw-left .bank-chip { font-size: 13.5px; }
@@ -424,6 +432,50 @@ EXTRA_CSS = '''
     .kw-cell input { width: 24px; height: 24px; font-size: 12px; }
     .kw-black { width: 24px; height: 24px; }
     .blitz-grid { grid-template-columns: 1fr; }
+  }
+  /* 手机汉堡菜单：11 项在横屏可能超过屏高，允许内部滚动 */
+  .nav-links.show { max-height: calc(100vh - 48px); overflow-y: auto; }
+  /* 中宽度（平板/小笔记本）：导航换行成多行，避免后面的 tab 被滑出视线 */
+  @media (max-width: 1240px) and (min-width: 601px) {
+    .top-nav { height: auto; flex-wrap: wrap; padding: 8px 14px; }
+    .nav-links { flex-wrap: wrap; overflow: visible; row-gap: 4px; }
+    .nav-links button { padding: 6px 11px; font-size: 14px; }
+  }
+  /* 教学大屏 / 投影仪（≥1500px）：放宽容器 + 放大字号，教室后排可读 */
+  @media (min-width: 1500px) {
+    body { font-size: 21px; }
+    .main { max-width: 1420px; }
+    .container { max-width: min(1360px, 94vw); }
+    .hero h1 { font-size: 46px; }
+    .hero .sub { font-size: 23px; }
+    .text-card h3 { font-size: 28px; }
+    .text-card .de, .q-text, .fill-sentence, .cloze-p, .sb-zh, .de-full, .tc-front .tc-zh { font-size: 24px; }
+    .flow-table { font-size: 19px; }
+    .obj-box { font-size: 18px; }
+    .obj-box ul { line-height: 1.9; }
+    .home-grid { grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .kw-list { font-size: 16px; }
+    .kw-zh, .tc-tip, .zh-hint { font-size: 16px; }
+    .kw-cell input, .kw-black { width: 34px; height: 34px; font-size: 19px; }
+    .nav-links button { font-size: 16px; padding: 8px 15px; }
+  }
+  /* 2K / 4K 大屏与电视（≥2200px） */
+  @media (min-width: 2200px) {
+    .main { max-width: 1800px; }
+    .container { max-width: min(1720px, 92vw); }
+    .hero h1 { font-size: 56px; }
+    .hero .sub { font-size: 26px; }
+    .text-card h3 { font-size: 32px; }
+    .text-card .de, .q-text, .fill-sentence, .cloze-p, .sb-zh, .de-full, .tc-front .tc-zh { font-size: 28px; }
+    .flow-table { font-size: 21px; }
+    .kw-list { font-size: 19px; }
+    .kw-cell input, .kw-black { width: 42px; height: 42px; font-size: 24px; }
+    .nav-links button { font-size: 18px; padding: 10px 18px; }
+  }
+  /* 触屏设备：点击区不小于 42px（手指比鼠标粗） */
+  @media (hover: none) {
+    .btn, .person-btn, .hamburger { min-height: 42px; }
+    .kw-tools .btn { padding: 8px 14px; }
   }
   .zh-hint { font-size: 14px; color: #888; margin: 0 0 12px; }
   .flow-table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 8px; }
@@ -829,7 +881,7 @@ def main():
     # nav
     secs = [('home', '首页'), ('vocab', '词汇卡片'), ('blitz', '⚡抢答'), ('connect', '🔗连线'),
             ('kreuzwort', '🧩填字'), ('satz', '✍️填空'), ('hochschule', '🏛️高校类型'),
-            ('mindmap', '🗺️导图'), ('satzbau', '🧱句型'), ('uebersetzen', '🎯翻译'), ('spiele', '🏆游戏')]
+            ('mindmap', '🗺️导图'), ('satzbau', '🔤句型'), ('uebersetzen', '🎯翻译'), ('spiele', '🏆游戏')]
     nav = '<nav><div class="top-nav"><div class="logo" style="cursor:pointer" onclick="switchSection(\'home\')">' \
           '<span class="logo-icon">🎓</span><span>Lektion 7 · Wortschatz</span></div><div class="nav-links" id="navLinks">'
     for sid, lbl in secs:
@@ -852,9 +904,35 @@ function switchSection(id){
   const idx = SECTIONS.indexOf(id);
   document.querySelectorAll('.nav-links button')[idx] && document.querySelectorAll('.nav-links button')[idx].classList.add('active');
   document.getElementById('progressFill').style.width = ((idx + 1) / SECTIONS.length * 100) + '%%';
+  document.getElementById('navLinks').classList.remove('show');
+  if (id === 'kreuzwort') { kwAutoFit(); }
   window.scrollTo(0, 0);
 }
 function toggleNav(){ document.getElementById('navLinks').classList.toggle('show'); }
+/* 导航高度自适应：单行/换行/汉堡三种形态下正文都不被遮住 */
+function syncNavPad(){
+  const nav = document.querySelector('.top-nav');
+  if (!nav) return;
+  document.body.style.paddingTop = Math.max(76, nav.offsetHeight + 28) + 'px';
+}
+/* 填字网格自动适配容器宽度（仅桌面/投影；窄屏交给 CSS zoom + 横滑）
+   手动缩放优先，点「100%%」重置后恢复自动 */
+function kwAutoFit(){
+  const wrap = document.querySelector('.kw-table-wrap'), t = document.querySelector('.kw-table');
+  if (!wrap || !t) return;
+  if (kwZoomVal !== null) return;
+  if (window.innerWidth <= 900) { t.style.zoom = ''; return; }
+  t.style.zoom = '1';
+  const avail = wrap.clientWidth - 2;
+  const natural = t.getBoundingClientRect().width;
+  if (!avail || !natural) { t.style.zoom = ''; return; }
+  const fit = avail / natural;
+  if (fit >= 1) { t.style.zoom = ''; return; }
+  t.style.zoom = Math.max(0.68, Math.floor(fit * 100) / 100);
+}
+window.addEventListener('resize', function(){ syncNavPad(); if (kwZoomVal === null) { kwAutoFit(); } });
+window.addEventListener('load', function(){ syncNavPad(); kwAutoFit(); });
+window.addEventListener('orientationchange', function(){ setTimeout(function(){ syncNavPad(); kwAutoFit(); }, 250); });
 const SECTIONS = %s;
 ''' % json.dumps([s[0] for s in secs])
 

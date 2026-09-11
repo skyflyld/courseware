@@ -161,11 +161,11 @@ def sec_vocab(d):
                 % (h(wd['w']), h(wd['cn']), esc_attr(wd['w']), esc_attr(wd['cn']), esc_attr(wd['ex'])))
         panels.append('<div class="person-content%s" id="vc-%s"><div class="vocab-grid">%s</div></div>' % (a, grp['id'], ''.join(cards)))
     return '''    <section id="vocab">
-      <h2 class="section-title"><span class="num">1</span> 词汇卡片 · Wortschatzkarten</h2>
+      <h2 class="section-title"><span class="num">1</span> 词汇卡片 · Wortschatzkarten <span class="src src-lg">%s</span></h2>
       <p class="zh-hint">点击卡片翻转看中文，点右下 ▶ 看例句。读名词请带冠词，说动词请带支配格。</p>
       <div class="person-tabs">%s</div>%s
     </section>
-''' % (''.join(tabs), ''.join(panels))
+''' % (h(d['vocabGroups'][0].get('src', '')), ''.join(tabs), ''.join(panels))
 
 def sec_blitz(d):
     cards = ''.join(
@@ -174,7 +174,7 @@ def sec_blitz(d):
         '<div class="bz-de">%s</div></div>' % (h(b['cn']), h(b['hint']), h(b['de']))
         for b in d['blitz'])
     return '''    <section id="blitz">
-      <h2 class="section-title"><span class="num">2</span> ⚡ Blitzrunde · 抢答热身</h2>
+      <h2 class="section-title"><span class="num">2</span> ⚡ Blitzrunde · 抢答热身 <span class="src src-lg">%s</span></h2>
       <p class="zh-hint">老师念中文，学生抢答德语，先说出正确形式（含冠词/支配格）的小组得 1 分。点击卡片揭示答案。</p>
       <div class="timer-bar">
         <span class="timer" id="blitzTimer">30</span>
@@ -184,7 +184,7 @@ def sec_blitz(d):
       </div>
       <div class="blitz-grid">%s</div>
     </section>
-''' % cards
+''' % (h(d['blitz'][0].get('src', '')), cards)
 
 def sec_connect(d):
     out = []
@@ -195,12 +195,12 @@ def sec_connect(d):
         left = ''.join('<div class="c-item de" data-pair="%d" data-gid="%d" onclick="cClick(this)">%s</div>' % (i, gi, h(p[0])) for i, p in enumerate(cg['pairs']))
         right = ''.join('<div class="c-item cn" data-pair="%d" data-gid="%d" onclick="cClick(this)">%s</div>' % (j, gi, h(cg['pairs'][j][1])) for j in idx)
         out.append('''      <div class="connect-game">
-        <h3>%s</h3><p class="zh-hint">点左列德语，再点右列中文</p>
+        <h3>%s <span class="src src-lg">%s</span></h3><p class="zh-hint">点左列德语，再点右列中文</p>
         <div class="connect-field">
           <div class="connect-col">%s</div><div class="connect-col">%s</div>
         </div>
         <div class="connect-score">匹配：<span id="cg-cnt-%d">0</span> / %d</div>
-      </div>''' % (h(cg['title']), left, right, gi, len(cg['pairs'])))
+      </div>''' % (h(cg['title']), h(cg.get('src', '')), left, right, gi, len(cg['pairs'])))
     return '''    <section id="connect">
       <h2 class="section-title"><span class="num">3</span> 🔗 连线配对 · Vernetzen</h2>
       <p class="zh-hint">配对成功变绿；点错会有红闪，可重试。四组全部完成后可让学生朗读整组词。</p>
@@ -230,12 +230,13 @@ def sec_kreuzwort(d, cw):
     for w, r, c, dr, n in sorted(numbered, key=lambda x: x[4]):
         cl = ans2clue.get(w, {'n': '', 'clue': w, 'zh': ''})
         item = ('<li data-word="%s"><b>%d</b> <span class="kw-tag">%s</span> %s <span class="kw-zh">%s</span>'
+                '<span class="src">%s</span>'
                 '<button class="btn tiny" onclick="revealWord(this,\'%s\')">揭示</button></li>'
-                % (esc_attr(w), n, h(cl.get('n', '')), h(cl['clue']), h(cl.get('zh', '')), esc_attr(w)))
+                % (esc_attr(w), n, h(cl.get('n', '')), h(cl['clue']), h(cl.get('zh', '')), h(cl.get('src', '')), esc_attr(w)))
         (pos_clues if dr == 'H' else neg_clues).append(item)
     bank = ''.join('<span class="bank-chip" onclick="bankClick(this)">%s</span>' % h(w) for w in d['kreuzwort']['wordbank'])
     return '''    <section id="kreuzwort">
-      <h2 class="section-title"><span class="num">4</span> 🧩 %s</h2>
+      <h2 class="section-title"><span class="num">4</span> 🧩 %s <span class="src src-lg">%s</span></h2>
       <p class="zh-hint">%s</p>
       <div class="kw-tools">
         <button class="btn" onclick="kwCheck()">✓ 检查全部</button>
@@ -258,7 +259,7 @@ def sec_kreuzwort(d, cw):
       </div>
       <p class="zh-hint note">★ 答案已按教材答案页（Entdecken 2 · W2 · Ü2）校准：c 题为 „Bachelor“，n 题为 „TU9“。b 题教材答案为 „Semester“（„ein Jahr lang“ 语法上也成立，故仍接受）。手机/平板可左右滑动查看完整网格。</p>
     </section>
-''' % (h(d['kreuzwort']['title']), h(d['kreuzwort']['instruction']), ''.join(body),
+''' % (h(d['kreuzwort']['title']), h(d['kreuzwort'].get('src', '')), h(d['kreuzwort']['instruction']), ''.join(body),
        bank, ''.join(pos_clues), ''.join(neg_clues))
 
 def sec_satz(d):
@@ -266,7 +267,7 @@ def sec_satz(d):
     for i, c in enumerate(d['kreuzwort']['clues']):
         alts = c.get('alt', [])
         items.append('''      <div class="fill-item">
-        <div class="fill-sentence"><b>%s)</b> %s</div>
+        <div class="fill-sentence"><b>%s)</b> %s <span class="src">%s</span></div>
         <div class="fill-zh">%s</div>
         <div class="fill-input-line">
           <input type="text" class="fill-input" id="sf-%d" placeholder="Antwort eingeben…" data-ans="%s" data-alt="%s" onkeydown="if(event.key==='Enter')checkSatz(%d)">
@@ -274,9 +275,9 @@ def sec_satz(d):
           <span class="fill-result" id="sf-res-%d"></span>
           <button class="btn tiny ghost" onclick="showOneSatz(%d)">答案</button>
         </div>
-      </div>''' % (h(c['n']), h(c['clue']), h(c['zh']), i, esc_attr(c['answer']), esc_attr('|'.join(alts)), i, i, i, i))
+      </div>''' % (h(c['n']), h(c['clue']), h(c.get('src', '')), h(c['zh']), i, esc_attr(c['answer']), esc_attr('|'.join(alts)), i, i, i, i))
     return '''    <section id="satz">
-      <h2 class="section-title"><span class="num">5</span> ✍️ Satzergänzung · 句子填空（教材 Ü2 a–o）</h2>
+      <h2 class="section-title"><span class="num">5</span> ✍️ Satzergänzung · 句子填空 <span class="src src-lg">教材 S.203–204 · Ü2 a–o</span></h2>
       <p class="zh-hint">输入答案后按回车或点 ✓。大小写、变音符号（ä = ae）不敏感；同义答案也算对。</p>
       <div class="kw-tools">
         <button class="btn ghost" onclick="showAllSatz()">👁 显示全部答案</button>
@@ -298,7 +299,7 @@ def sec_hochschule(d):
     bank = ''.join('<span class="bank-chip" onclick="bankFill(this)">%s</span>' % h(w) for w in hs['bank'])
     logos = ' '.join('<span class="logo-chip">🏛️ %s</span>' % h(l) for l in hs['logos'])
     return '''    <section id="hochschule">
-      <h2 class="section-title"><span class="num">6</span> 🏛️ %s</h2>
+      <h2 class="section-title"><span class="num">6</span> 🏛️ %s <span class="src src-lg">%s</span></h2>
       <p class="zh-hint">%s</p>
       <div class="bank-box"><strong>Logos：</strong>%s</div>
       %s
@@ -310,7 +311,7 @@ def sec_hochschule(d):
       </div>
       <div class="highlight-box">💡 %s</div>
     </section>
-''' % (h(hs['title']), h(hs['instruction']), logos, '\n'.join(paras), bank, h(hs['note']))
+''' % (h(hs['title']), h(hs.get('src', '')), h(hs['instruction']), logos, '\n'.join(paras), bank, h(hs['note']))
 
 def sec_mindmap(d):
     mm = d['mindmap']
@@ -319,7 +320,7 @@ def sec_mindmap(d):
         '<div class="mm-box" data-cat="%s" onclick="mmDrop(this)"><div class="mm-head">%s %s</div><div class="mm-items"></div></div>'
         % (c['id'], c['icon'], h(c['label'])) for c in mm['cats'])
     return '''    <section id="mindmap">
-      <h2 class="section-title"><span class="num">7</span> 🗺️ %s</h2>
+      <h2 class="section-title"><span class="num">7</span> 🗺️ %s <span class="src src-lg">%s</span></h2>
       <p class="zh-hint">%s</p>
       <div class="mm-pool" id="mmPool">%s</div>
       <div class="mm-board">%s</div>
@@ -329,7 +330,7 @@ def sec_mindmap(d):
         <span id="mmResult" class="kw-result"></span>
       </div>
     </section>
-''' % (h(mm['title']), h(mm['instruction']), pool, boxes)
+''' % (h(mm['title']), h(mm.get('src', '')), h(mm['instruction']), pool, boxes)
 
 def sec_satzbau(d):
     out = []
@@ -341,7 +342,7 @@ def sec_satzbau(d):
             rng.shuffle(order)
         chips = ''.join('<span class="sb-chunk" data-i="%d" onclick="sbPick(this,%d)">%s</span>' % (k, i, h(s['chunks'][k])) for k in order)
         out.append('''      <div class="sb-card">
-        <div class="sb-zh">%d. %s</div>
+        <div class="sb-zh">%d. %s <span class="src">%s</span></div>
         <div class="sb-hint">句型：%s</div>
         <div class="sb-pool" id="sb-pool-%d">%s</div>
         <div class="sb-line" id="sb-line-%d"></div>
@@ -352,9 +353,9 @@ def sec_satzbau(d):
           <button class="btn ghost" onclick="sbShow(%d)">👁 答案</button>
           <span class="fill-result" id="sb-res-%d"></span>
         </div>
-      </div>''' % (i + 1, h(s['zh']), h(s['pattern']), i, chips, i, i, i, i, i, i))
+      </div>''' % (i + 1, h(s['zh']), h(s.get('src', '')), h(s['pattern']), i, chips, i, i, i, i, i, i))
     return '''    <section id="satzbau">
-      <h2 class="section-title"><span class="num">8</span> 🔤 Satzbau · 句型工坊</h2>
+      <h2 class="section-title"><span class="num">8</span> 🔤 Satzbau · 句型工坊 <span class="src src-lg">S.200 · Ü9 配套句型</span></h2>
       <p class="zh-hint">点词块按正确语序排成德语句子；点已排的词块可撤回。语序错要说出「错在哪」。</p>
 %s
     </section>
@@ -366,19 +367,19 @@ def sec_uebersetzen(d):
     for i, s in enumerate(u['sentences']):
         cards.append('''        <div class="tc-card" onclick="flipTrans(this)">
           <div class="tc-inner">
-            <div class="tc-front"><span class="tc-num">%d</span><div class="tc-zh">%s</div><div class="tc-tip">💡 %s</div></div>
-            <div class="tc-back"><span class="tc-num">%d</span><div class="tc-de">%s</div></div>
+            <div class="tc-front"><span class="tc-num">%d</span><span class="src">%s</span><div class="tc-zh">%s</div><div class="tc-tip">💡 %s</div></div>
+            <div class="tc-back"><span class="tc-num">%d</span><span class="src">%s</span><div class="tc-de">%s</div></div>
           </div>
-        </div>''' % (i + 1, h(s['zh']), h(s['tip']), i + 1, h(s['de'])))
+        </div>''' % (i + 1, h(s.get('src', '')), h(s['zh']), h(s['tip']), i + 1, h(s.get('src', '')), h(s['de'])))
     return '''    <section id="uebersetzen">
-      <h2 class="section-title"><span class="num">9</span> 🎯 %s</h2>
+      <h2 class="section-title"><span class="num">9</span> 🎯 %s <span class="src src-lg">%s</span></h2>
       <p class="zh-hint">先自己写，再点卡片核对参考译文。译法不唯一，句型正确、意义完整即算对。</p>
       <div class="translation-grid">%s</div>
       <div class="kw-tools"><button class="btn" onclick="toggleBox('fullDe')">👁 整段参考译文</button></div>
       <div class="full-de" id="fullDe" style="display:none"><p class="de-full">%s</p></div>
       <div class="highlight-box">💡 整段中文原文：<br>%s</div>
     </section>
-''' % (h(u['title']), '\n'.join(cards), h(u['deFull']), h(u['zhFull']))
+''' % (h(u['title']), h(u.get('src', '')), '\n'.join(cards), h(u['deFull']), h(u['zhFull']))
 
 def sec_spiele(d):
     games = ''.join('<div class="game-card"><div class="game-name">%s <span class="game-time">%s</span></div><p>%s</p></div>'
@@ -400,6 +401,27 @@ def sec_spiele(d):
 
 # ---------------------------------------------------------------- assemble
 EXTRA_CSS = '''
+  /* 出处标注（每道题后标课本出处，便于学生快速定位） */
+  .src {
+    display: inline-block; font-size: 11.5px; line-height: 1.5; color: #7a808a;
+    background: #f4f6f8; border: 1px solid #e1e5ea; border-radius: 4px;
+    padding: 1px 6px; margin: 0 4px; white-space: nowrap; vertical-align: middle; font-weight: 500;
+  }
+  .src-lg { font-size: 13px; padding: 2px 9px; color: #5c636e; }
+  /* 投影模式控制（仅宽屏显示，课堂现场调大） */
+  .proj-ctl {
+    display: none; position: fixed; right: 16px; bottom: 16px; z-index: 150;
+    align-items: center; gap: 6px; padding: 6px 8px;
+    background: rgba(255,255,255,.96); border: 1px solid #e1e5ea; border-radius: 999px;
+    box-shadow: 0 4px 14px rgba(0,0,0,.10);
+  }
+  .proj-ctl button {
+    border: none; background: #f1f3f5; border-radius: 999px; cursor: pointer;
+    font-size: 14px; font-weight: 600; color: #333; padding: 6px 12px;
+  }
+  .proj-ctl button:hover { background: #e8f0fe; color: #1a73e8; }
+  .proj-ctl .proj-label { font-size: 12px; color: #888; padding: 0 4px; min-width: 74px; text-align: center; }
+  @media (min-width: 1100px) { .proj-ctl { display: inline-flex; } }
   /* 投影与自适应微调（11 个导航项需要更宽的行、更大的正文衬度） */
   .top-nav { max-width: 1440px; }
   .nav-links button { padding: 8px 11px; }
@@ -458,6 +480,8 @@ EXTRA_CSS = '''
     .kw-zh, .tc-tip, .zh-hint { font-size: 16px; }
     .kw-cell input, .kw-black { width: 34px; height: 34px; font-size: 19px; }
     .nav-links button { font-size: 16px; padding: 8px 15px; }
+    .src { font-size: 14px; padding: 2px 8px; }
+    .src-lg { font-size: 16px; padding: 3px 11px; }
   }
   /* 2K / 4K 大屏与电视（≥2200px） */
   @media (min-width: 2200px) {
@@ -471,6 +495,8 @@ EXTRA_CSS = '''
     .kw-list { font-size: 19px; }
     .kw-cell input, .kw-black { width: 42px; height: 42px; font-size: 24px; }
     .nav-links button { font-size: 18px; padding: 10px 18px; }
+    .src { font-size: 17px; padding: 3px 10px; }
+    .src-lg { font-size: 19px; padding: 4px 13px; }
   }
   /* 触屏设备：点击区不小于 42px（手指比鼠标粗） */
   @media (hover: none) {
@@ -909,6 +935,25 @@ function switchSection(id){
   window.scrollTo(0, 0);
 }
 function toggleNav(){ document.getElementById('navLinks').classList.toggle('show'); }
+/* ===== 投影模式：整体放大（课堂现场用，宽屏才显示） ===== */
+let projScale = 1;
+try { projScale = parseFloat(localStorage.getItem('l7proj') || '1') || 1; } catch (e) { projScale = 1; }
+const PROJ_STEPS = [1, 1.15, 1.3, 1.5];
+function applyProj(){
+  document.body.style.zoom = projScale;
+  const lb = document.getElementById('projLabel');
+  if (lb) { lb.textContent = (projScale === 1 ? '标准' : '投影 ' + Math.round(projScale * 100) + '%%') + ' · A±'; }
+  kwAutoFit();
+}
+function projStep(d){
+  let i = PROJ_STEPS.indexOf(projScale);
+  if (i < 0) { i = 0; }
+  i = Math.min(PROJ_STEPS.length - 1, Math.max(0, i + d));
+  projScale = PROJ_STEPS[i];
+  try { localStorage.setItem('l7proj', String(projScale)); } catch (e) {}
+  applyProj();
+}
+function projReset(){ projScale = 1; try { localStorage.setItem('l7proj', '1'); } catch (e) {} applyProj(); }
 /* 导航高度自适应：单行/换行/汉堡三种形态下正文都不被遮住 */
 function syncNavPad(){
   const nav = document.querySelector('.top-nav');
@@ -923,7 +968,7 @@ function kwAutoFit(){
   if (kwZoomVal !== null) return;
   if (window.innerWidth <= 900) { t.style.zoom = ''; return; }
   t.style.zoom = '1';
-  const avail = wrap.clientWidth - 2;
+  const avail = wrap.getBoundingClientRect().width - 2;
   const natural = t.getBoundingClientRect().width;
   if (!avail || !natural) { t.style.zoom = ''; return; }
   const fit = avail / natural;
@@ -931,7 +976,7 @@ function kwAutoFit(){
   t.style.zoom = Math.max(0.68, Math.floor(fit * 100) / 100);
 }
 window.addEventListener('resize', function(){ syncNavPad(); if (kwZoomVal === null) { kwAutoFit(); } });
-window.addEventListener('load', function(){ syncNavPad(); kwAutoFit(); });
+window.addEventListener('load', function(){ syncNavPad(); applyProj(); });
 window.addEventListener('orientationchange', function(){ setTimeout(function(){ syncNavPad(); kwAutoFit(); }, 250); });
 const SECTIONS = %s;
 ''' % json.dumps([s[0] for s in secs])
@@ -955,6 +1000,12 @@ const SECTIONS = %s;
     <button onclick="hideVocab()" class="vp-close">&times;</button></div>
   <div id="vpZh" class="vp-zh"></div>
   <div id="vpEx" class="vp-ex"></div>
+</div>
+<div class="proj-ctl" id="projCtl">
+  <button onclick="projStep(-1)" title="缩小">A−</button>
+  <span class="proj-label" id="projLabel">标准 · A±</span>
+  <button onclick="projStep(1)" title="放大（投影用）">A+</button>
+  <button onclick="projReset()" title="回到标准">↺</button>
 </div>
 <script>
 const DOC = %s;

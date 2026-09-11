@@ -395,6 +395,27 @@
     .connect-col { min-width: 80px; }
   }
 
+  /* 出处标注（每道题后标课本出处，便于学生快速定位） */
+  .src {
+    display: inline-block; font-size: 11.5px; line-height: 1.5; color: #7a808a;
+    background: #f4f6f8; border: 1px solid #e1e5ea; border-radius: 4px;
+    padding: 1px 6px; margin: 0 4px; white-space: nowrap; vertical-align: middle; font-weight: 500;
+  }
+  .src-lg { font-size: 13px; padding: 2px 9px; color: #5c636e; }
+  /* 投影模式控制（仅宽屏显示，课堂现场调大） */
+  .proj-ctl {
+    display: none; position: fixed; right: 16px; bottom: 16px; z-index: 150;
+    align-items: center; gap: 6px; padding: 6px 8px;
+    background: rgba(255,255,255,.96); border: 1px solid #e1e5ea; border-radius: 999px;
+    box-shadow: 0 4px 14px rgba(0,0,0,.10);
+  }
+  .proj-ctl button {
+    border: none; background: #f1f3f5; border-radius: 999px; cursor: pointer;
+    font-size: 14px; font-weight: 600; color: #333; padding: 6px 12px;
+  }
+  .proj-ctl button:hover { background: #e8f0fe; color: #1a73e8; }
+  .proj-ctl .proj-label { font-size: 12px; color: #888; padding: 0 4px; min-width: 74px; text-align: center; }
+  @media (min-width: 1100px) { .proj-ctl { display: inline-flex; } }
   /* 投影与自适应微调（11 个导航项需要更宽的行、更大的正文衬度） */
   .top-nav { max-width: 1440px; }
   .nav-links button { padding: 8px 11px; }
@@ -453,6 +474,8 @@
     .kw-zh, .tc-tip, .zh-hint { font-size: 16px; }
     .kw-cell input, .kw-black { width: 34px; height: 34px; font-size: 19px; }
     .nav-links button { font-size: 16px; padding: 8px 15px; }
+    .src { font-size: 14px; padding: 2px 8px; }
+    .src-lg { font-size: 16px; padding: 3px 11px; }
   }
   /* 2K / 4K 大屏与电视（≥2200px） */
   @media (min-width: 2200px) {
@@ -466,6 +489,8 @@
     .kw-list { font-size: 19px; }
     .kw-cell input, .kw-black { width: 42px; height: 42px; font-size: 24px; }
     .nav-links button { font-size: 18px; padding: 10px 18px; }
+    .src { font-size: 17px; padding: 3px 10px; }
+    .src-lg { font-size: 19px; padding: 4px 13px; }
   }
   /* 触屏设备：点击区不小于 42px（手指比鼠标粗） */
   @media (hover: none) {
@@ -614,12 +639,12 @@
       </div>
     </section>
     <section id="vocab">
-      <h2 class="section-title"><span class="num">1</span> 词汇卡片 · Wortschatzkarten</h2>
+      <h2 class="section-title"><span class="num">1</span> 词汇卡片 · Wortschatzkarten <span class="src src-lg">L7 词汇表 Vokabeln</span></h2>
       <p class="zh-hint">点击卡片翻转看中文，点右下 ▶ 看例句。读名词请带冠词，说动词请带支配格。</p>
       <div class="person-tabs"><button class="person-btn active" onclick="switchVocabTab('G1')">🏫 教育体系与学校类型</button><button class="person-btn" onclick="switchVocabTab('G2')">🎓 学习、教学与研究</button><button class="person-btn" onclick="switchVocabTab('G3')">💼 领域、手艺与选择</button><button class="person-btn" onclick="switchVocabTab('G4')">🔧 动词、形容词与固定搭配</button></div><div class="person-content active" id="vc-G1"><div class="vocab-grid"><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Lehre (-n)</div><div class="vc-back">学徒的学习期；学说</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Lehre (-n)','学徒的学习期；学说','Max beginnt nach der Schule eine Lehre im Handelsbereich.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Primarstufe (-n)</div><div class="vc-back">初等教育阶段</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Primarstufe (-n)','初等教育阶段','Die Primarstufe umfasst in Deutschland die ersten vier Schuljahre.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Mittelschule (-n)</div><div class="vc-back">中学</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Mittelschule (-n)','中学','In der Schweiz heißt eine Schulform Mittelschule.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">der Kanton (-e) [kanˈtoːn]</div><div class="vc-back">［瑞］州</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('der Kanton (-e) [kanˈtoːn]','［瑞］州','In der Schweiz entscheidet jeder Kanton über sein Schulsystem.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Volksschule (-n)</div><div class="vc-back">［奥］小学；［瑞］公立学校</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Volksschule (-n)','［奥］小学；［瑞］公立学校','In Österreich gehen die Kinder in die Volksschule.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Primarschule (-n)</div><div class="vc-back">［瑞］小学</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Primarschule (-n)','［瑞］小学','In Zürich dauert die Primarschule sechs Jahre.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Matura (nur Sg)</div><div class="vc-back">［奥，瑞］（高级中学的）毕业考试</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Matura (nur Sg)','［奥，瑞］（高级中学的）毕业考试','Nach der Matura kann man an der Universität studieren.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Ganztagsschule (-n)</div><div class="vc-back">全日制学校</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Ganztagsschule (-n)','全日制学校','In einer Ganztagsschule bleiben die Kinder bis zum Nachmittag.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Lehrkraft (¨-e)</div><div class="vc-back">教师，师资</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Lehrkraft (¨-e)','教师，师资','Die Lehrkräfte erstellen die Empfehlung für die Eltern.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Pflicht (-en)</div><div class="vc-back">义务，责任，职责</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Pflicht (-en)','义务，责任，职责','In Deutschland ist der Schulbesuch eine Pflicht.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Erlaubnis (-se)</div><div class="vc-back">许可，同意</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Erlaubnis (-se)','许可，同意','Für die Fahrt braucht das Kind die Erlaubnis der Eltern.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Empfehlung (-en)</div><div class="vc-back">介绍，推荐（信）；劝告，忠告</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Empfehlung (-en)','介绍，推荐（信）；劝告，忠告','Die Grundschule gibt den Eltern eine Empfehlung.')">▶</button></div></div></div><div class="person-content" id="vc-G2"><div class="vocab-grid"><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Praxis (nur Sg)</div><div class="vc-back">实践，运用</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Praxis (nur Sg)','实践，运用','An der Fachhochschule spielt die Praxis eine große Rolle.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">praxisorientiert</div><div class="vc-back">以实践为导向的</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('praxisorientiert','以实践为导向的','Ein duales Studium ist besonders praxisorientiert.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Theorie (-n)</div><div class="vc-back">理论，原理；学说</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Theorie (-n)','理论，原理；学说','An der Universität vermittelt man vor allem Theorie.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Grundlage (-n)</div><div class="vc-back">基础；根据；前提；地基</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Grundlage (-n)','基础；根据；前提；地基','Gute Leistungen in den Hauptfächern sind die Grundlage für die Empfehlung.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Tendenz (-en)</div><div class="vc-back">趋势，倾向</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Tendenz (-en)','趋势，倾向','Es gibt die Tendenz, dass mehr Eltern die Gesamtschule wählen.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Voraussetzung (-en)</div><div class="vc-back">前提，先决条件；假设</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Voraussetzung (-en)','前提，先决条件；假设','Das Abitur ist die Voraussetzung für ein Studium.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">der Prozess (-e)</div><div class="vc-back">过程，进程</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('der Prozess (-e)','过程，进程','Die Wahl der Schule ist ein langer Prozess.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">das Profil (-e)</div><div class="vc-back">鲜明的特征；侧面像</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('das Profil (-e)','鲜明的特征；侧面像','Jede Schule hat ein eigenes Profil.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">das Hauptfach (¨-er)</div><div class="vc-back">主要科目，主修学科</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('das Hauptfach (¨-er)','主要科目，主修学科','Deutsch und Mathematik sind Hauptfächer.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Aufgabe (-n)</div><div class="vc-back">作业；习题；任务</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Aufgabe (-n)','作业；习题；任务','Die Aufgabe der Schule ist es, jedes Kind bestmöglich zu fördern.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Schwierigkeit (-en)</div><div class="vc-back">困难</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Schwierigkeit (-en)','困难','Eine Schwierigkeit ist, dass die Schule weit von der Wohnung weg ist.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">der Zeitpunkt (-e)</div><div class="vc-back">时刻，时机</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('der Zeitpunkt (-e)','时刻，时机','Der richtige Zeitpunkt für die Entscheidung ist das Ende der Grundschule.')">▶</button></div></div></div><div class="person-content" id="vc-G3"><div class="vocab-grid"><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">der Handel (nur Sg)</div><div class="vc-back">商业，贸易，买卖，交易</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('der Handel (nur Sg)','商业，贸易，买卖，交易','Der Handel mit anderen Ländern ist wichtig für die Wirtschaft.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">der Bereich (-e)</div><div class="vc-back">范围，区域，领域</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('der Bereich (-e)','范围，区域，领域','Sie arbeitet im Bereich Bildung und Erziehung.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">das Handwerk (nur Sg)</div><div class="vc-back">手艺；手工业</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('das Handwerk (nur Sg)','手艺；手工业','Im Handwerk lernt man vor allem praktische Fähigkeiten.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">der Meister (-)</div><div class="vc-back">工匠，师傅；能手，大师</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('der Meister (-)','工匠，师傅；能手，大师','Nach der Ausbildung kann man noch Meister werden.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">das Projekt (-e)</div><div class="vc-back">工程，项目</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('das Projekt (-e)','工程，项目','Das Projekt „Schule der Zukunft“ läuft seit einem Jahr.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Chance (-n)</div><div class="vc-back">可能性，机会；运气，（成功的）希望</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Chance (-n)','可能性，机会；运气，（成功的）希望','Jedes Kind soll die gleiche Chance bekommen.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Wahl (nur Sg)</div><div class="vc-back">选择，挑选</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Wahl (nur Sg)','选择，挑选','Die Wahl der richtigen Schule ist nicht leicht.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Alternative (-n)</div><div class="vc-back">其他可能性，其他选项，其他途径</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Alternative (-n)','其他可能性，其他选项，其他途径','Die Gesamtschule ist eine gute Alternative zum Gymnasium.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">der Wunsch (¨-e)</div><div class="vc-back">想法，愿望</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('der Wunsch (¨-e)','想法，愿望','Viele Eltern haben den Wunsch, dass ihr Kind das Abitur macht.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">das Gemälde (-n)</div><div class="vc-back">油画</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('das Gemälde (-n)','油画','Lisa interessiert sich für Kunst und mag Gemälde.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">das Niederländisch</div><div class="vc-back">荷兰语</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('das Niederländisch','荷兰语','In der Schule lernt Lisa Niederländisch.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Situation (-en)</div><div class="vc-back">情况，局面，处境，场合</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Situation (-en)','情况，局面，处境，场合','Die Situation der Familie spielt bei der Wahl eine wichtige Rolle.')">▶</button></div></div></div><div class="person-content" id="vc-G4"><div class="vocab-grid"><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">sich beschäftigen + mit Dat.</div><div class="vc-back">从事于，忙于</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('sich beschäftigen + mit Dat.','从事于，忙于','Sie beschäftigt sich mit der Frage, welche Schule die richtige ist.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">sich erinnern + an Akk.</div><div class="vc-back">想起，回忆起</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('sich erinnern + an Akk.','想起，回忆起','Ich erinnere mich gern an meine Schulzeit.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">ab/geben + A</div><div class="vc-back">提交，交给，交出</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('ab/geben + A','提交，交给，交出','Die Eltern geben die Anmeldung bei der Schule ab.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">aus/schalten + A</div><div class="vc-back">使断路，关掉</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('aus/schalten + A','使断路，关掉','Bitte schalten Sie das Handy im Unterricht aus.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">fördern + A</div><div class="vc-back">促进，推进；资助，支持</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('fördern + A','促进，推进；资助，支持','Die Schule fördert jedes Kind nach seinen Fähigkeiten.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">umfassen + A</div><div class="vc-back">包括，包含</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('umfassen + A','包括，包含','Die Grundschule umfasst vier Schuljahre.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">verantwortlich</div><div class="vc-back">有责任的，负责的；责任重大的</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('verantwortlich','有责任的，负责的；责任重大的','Die Eltern sind für die Wahl der Schule verantwortlich.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">gleich</div><div class="vc-back">一样的，相同的</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('gleich','一样的，相同的','Alle Kinder haben die gleichen Chancen.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">eher</div><div class="vc-back">更容易，更可能；宁可，宁愿</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('eher','更容易，更可能；宁可，宁愿','Eher wählen die Eltern ein Gymnasium als eine Hauptschule.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">bestmöglich</div><div class="vc-back">尽可能好的</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('bestmöglich','尽可能好的','Die Schule soll die bestmögliche Förderung bieten.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">eingeschränkt</div><div class="vc-back">有限制的，有约束的</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('eingeschränkt','有限制的，有约束的','Niklas bekommt nur eine eingeschränkte Empfehlung.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">psychologisch</div><div class="vc-back">心理学的，心理的</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('psychologisch','心理学的，心理的','Psychologische Studien zeigen, wie wichtig der Schulweg ist.')">▶</button></div></div></div>
     </section>
     <section id="blitz">
-      <h2 class="section-title"><span class="num">2</span> ⚡ Blitzrunde · 抢答热身</h2>
+      <h2 class="section-title"><span class="num">2</span> ⚡ Blitzrunde · 抢答热身 <span class="src src-lg">L7 词汇表</span></h2>
       <p class="zh-hint">老师念中文，学生抢答德语，先说出正确形式（含冠词/支配格）的小组得 1 分。点击卡片揭示答案。</p>
       <div class="timer-bar">
         <span class="timer" id="blitzTimer">30</span>
@@ -633,28 +658,28 @@
       <h2 class="section-title"><span class="num">3</span> 🔗 连线配对 · Vernetzen</h2>
       <p class="zh-hint">配对成功变绿；点错会有红闪，可重试。四组全部完成后可让学生朗读整组词。</p>
       <div class="connect-game">
-        <h3>🏫 高校类型 · Hochschultypen</h3><p class="zh-hint">点左列德语，再点右列中文</p>
+        <h3>🏫 高校类型 · Hochschultypen <span class="src src-lg">S.202 · Ü1</span></h3><p class="zh-hint">点左列德语，再点右列中文</p>
         <div class="connect-field">
           <div class="connect-col"><div class="c-item de" data-pair="0" data-gid="0" onclick="cClick(this)">die Universität</div><div class="c-item de" data-pair="1" data-gid="0" onclick="cClick(this)">die Technische Universität</div><div class="c-item de" data-pair="2" data-gid="0" onclick="cClick(this)">die Fachhochschule</div><div class="c-item de" data-pair="3" data-gid="0" onclick="cClick(this)">die Kunsthochschule</div><div class="c-item de" data-pair="4" data-gid="0" onclick="cClick(this)">die Musikhochschule</div><div class="c-item de" data-pair="5" data-gid="0" onclick="cClick(this)">die Berufsakademie</div><div class="c-item de" data-pair="6" data-gid="0" onclick="cClick(this)">die Pädagogische Hochschule</div><div class="c-item de" data-pair="7" data-gid="0" onclick="cClick(this)">das duale Studium</div></div><div class="connect-col"><div class="c-item cn" data-pair="0" data-gid="0" onclick="cClick(this)">（综合）大学</div><div class="c-item cn" data-pair="4" data-gid="0" onclick="cClick(this)">音乐学院</div><div class="c-item cn" data-pair="7" data-gid="0" onclick="cClick(this)">双元制学习</div><div class="c-item cn" data-pair="5" data-gid="0" onclick="cClick(this)">（双元制）职业学院</div><div class="c-item cn" data-pair="1" data-gid="0" onclick="cClick(this)">工业大学</div><div class="c-item cn" data-pair="6" data-gid="0" onclick="cClick(this)">师范大学</div><div class="c-item cn" data-pair="3" data-gid="0" onclick="cClick(this)">艺术院校</div><div class="c-item cn" data-pair="2" data-gid="0" onclick="cClick(this)">应用技术大学</div></div>
         </div>
         <div class="connect-score">匹配：<span id="cg-cnt-0">0</span> / 8</div>
       </div>
       <div class="connect-game">
-        <h3>📚 教学活动 · Lehrveranstaltungen</h3><p class="zh-hint">点左列德语，再点右列中文</p>
+        <h3>📚 教学活动 · Lehrveranstaltungen <span class="src src-lg">S.203 · Ü2</span></h3><p class="zh-hint">点左列德语，再点右列中文</p>
         <div class="connect-field">
           <div class="connect-col"><div class="c-item de" data-pair="0" data-gid="1" onclick="cClick(this)">die Vorlesung</div><div class="c-item de" data-pair="1" data-gid="1" onclick="cClick(this)">das Seminar</div><div class="c-item de" data-pair="2" data-gid="1" onclick="cClick(this)">das Referat</div><div class="c-item de" data-pair="3" data-gid="1" onclick="cClick(this)">die Hausarbeit</div><div class="c-item de" data-pair="4" data-gid="1" onclick="cClick(this)">die Klausur</div><div class="c-item de" data-pair="5" data-gid="1" onclick="cClick(this)">der Hörsaal</div><div class="c-item de" data-pair="6" data-gid="1" onclick="cClick(this)">das Semester</div><div class="c-item de" data-pair="7" data-gid="1" onclick="cClick(this)">die Prüfung</div></div><div class="connect-col"><div class="c-item cn" data-pair="1" data-gid="1" onclick="cClick(this)">研讨课</div><div class="c-item cn" data-pair="6" data-gid="1" onclick="cClick(this)">学期</div><div class="c-item cn" data-pair="5" data-gid="1" onclick="cClick(this)">大教室，阶梯教室</div><div class="c-item cn" data-pair="0" data-gid="1" onclick="cClick(this)">大课，讲座</div><div class="c-item cn" data-pair="7" data-gid="1" onclick="cClick(this)">考试</div><div class="c-item cn" data-pair="2" data-gid="1" onclick="cClick(this)">专题报告</div><div class="c-item cn" data-pair="4" data-gid="1" onclick="cClick(this)">闭卷考试</div><div class="c-item cn" data-pair="3" data-gid="1" onclick="cClick(this)">课程论文</div></div>
         </div>
         <div class="connect-score">匹配：<span id="cg-cnt-1">0</span> / 8</div>
       </div>
       <div class="connect-game">
-        <h3>🎓 学业与学位 · Studium &amp; Abschlüsse</h3><p class="zh-hint">点左列德语，再点右列中文</p>
+        <h3>🎓 学业与学位 · Studium &amp; Abschlüsse <span class="src src-lg">S.203–204 · Ü2</span></h3><p class="zh-hint">点左列德语，再点右列中文</p>
         <div class="connect-field">
           <div class="connect-col"><div class="c-item de" data-pair="0" data-gid="2" onclick="cClick(this)">das Studium</div><div class="c-item de" data-pair="1" data-gid="2" onclick="cClick(this)">der Bachelor</div><div class="c-item de" data-pair="2" data-gid="2" onclick="cClick(this)">der Master</div><div class="c-item de" data-pair="3" data-gid="2" onclick="cClick(this)">der Magister</div><div class="c-item de" data-pair="4" data-gid="2" onclick="cClick(this)">das Stipendium</div><div class="c-item de" data-pair="5" data-gid="2" onclick="cClick(this)">das Hauptfach</div><div class="c-item de" data-pair="6" data-gid="2" onclick="cClick(this)">das Nebenfach</div><div class="c-item de" data-pair="7" data-gid="2" onclick="cClick(this)">das Auslandspraktikum</div></div><div class="connect-col"><div class="c-item cn" data-pair="3" data-gid="2" onclick="cClick(this)">（传统）硕士（学位）</div><div class="c-item cn" data-pair="0" data-gid="2" onclick="cClick(this)">大学学习，学业</div><div class="c-item cn" data-pair="6" data-gid="2" onclick="cClick(this)">辅修专业</div><div class="c-item cn" data-pair="1" data-gid="2" onclick="cClick(this)">学士（学位）</div><div class="c-item cn" data-pair="7" data-gid="2" onclick="cClick(this)">海外实习</div><div class="c-item cn" data-pair="4" data-gid="2" onclick="cClick(this)">奖学金</div><div class="c-item cn" data-pair="5" data-gid="2" onclick="cClick(this)">主修专业</div><div class="c-item cn" data-pair="2" data-gid="2" onclick="cClick(this)">硕士（学位）</div></div>
         </div>
         <div class="connect-score">匹配：<span id="cg-cnt-2">0</span> / 8</div>
       </div>
       <div class="connect-game">
-        <h3>✨ 形容词与固定搭配 · Wendungen</h3><p class="zh-hint">点左列德语，再点右列中文</p>
+        <h3>✨ 形容词与固定搭配 · Wendungen <span class="src src-lg">L7 词汇表</span></h3><p class="zh-hint">点左列德语，再点右列中文</p>
         <div class="connect-field">
           <div class="connect-col"><div class="c-item de" data-pair="0" data-gid="3" onclick="cClick(this)">praxisorientiert</div><div class="c-item de" data-pair="1" data-gid="3" onclick="cClick(this)">eingeschränkt</div><div class="c-item de" data-pair="2" data-gid="3" onclick="cClick(this)">bestmöglich</div><div class="c-item de" data-pair="3" data-gid="3" onclick="cClick(this)">verantwortlich für</div><div class="c-item de" data-pair="4" data-gid="3" onclick="cClick(this)">sich beschäftigen mit</div><div class="c-item de" data-pair="5" data-gid="3" onclick="cClick(this)">sich erinnern an</div><div class="c-item de" data-pair="6" data-gid="3" onclick="cClick(this)">ausschalten</div><div class="c-item de" data-pair="7" data-gid="3" onclick="cClick(this)">abgeben</div></div><div class="connect-col"><div class="c-item cn" data-pair="4" data-gid="3" onclick="cClick(this)">从事于、忙于</div><div class="c-item cn" data-pair="3" data-gid="3" onclick="cClick(this)">对……负责</div><div class="c-item cn" data-pair="2" data-gid="3" onclick="cClick(this)">尽可能好的</div><div class="c-item cn" data-pair="0" data-gid="3" onclick="cClick(this)">以实践为导向的</div><div class="c-item cn" data-pair="1" data-gid="3" onclick="cClick(this)">有限制的</div><div class="c-item cn" data-pair="6" data-gid="3" onclick="cClick(this)">关掉，切断</div><div class="c-item cn" data-pair="5" data-gid="3" onclick="cClick(this)">想起、回忆起</div><div class="c-item cn" data-pair="7" data-gid="3" onclick="cClick(this)">提交，交出</div></div>
         </div>
@@ -662,7 +687,7 @@
       </div>
     </section>
     <section id="kreuzwort">
-      <h2 class="section-title"><span class="num">4</span> 🧩 Kreuzworträtsel · Studium und Studentenleben</h2>
+      <h2 class="section-title"><span class="num">4</span> 🧩 Kreuzworträtsel · Studium und Studentenleben <span class="src src-lg">教材 S.203–204 · Ü2</span></h2>
       <p class="zh-hint">教材 Ü2 的 15 个提示句，把答案填进格子（可用右侧词库提示）。</p>
       <div class="kw-tools">
         <button class="btn" onclick="kwCheck()">✓ 检查全部</button>
@@ -679,14 +704,14 @@
           <div class="bank-box"><strong>词语库 Wortbank：</strong><span class="bank-chip" onclick="bankClick(this)">STUDIUM</span><span class="bank-chip" onclick="bankClick(this)">SEMESTER</span><span class="bank-chip" onclick="bankClick(this)">BACHELOR</span><span class="bank-chip" onclick="bankClick(this)">MASTER</span><span class="bank-chip" onclick="bankClick(this)">VORLESUNG</span><span class="bank-chip" onclick="bankClick(this)">SEMINAR</span><span class="bank-chip" onclick="bankClick(this)">KLAUSUR</span><span class="bank-chip" onclick="bankClick(this)">HAUSARBEIT</span><span class="bank-chip" onclick="bankClick(this)">STIPENDIUM</span><span class="bank-chip" onclick="bankClick(this)">AUSLANDSPRAKTIKUM</span><span class="bank-chip" onclick="bankClick(this)">HAUPTFACH</span><span class="bank-chip" onclick="bankClick(this)">NEBENFACH</span><span class="bank-chip" onclick="bankClick(this)">BERUFSAKADEMIEN</span><span class="bank-chip" onclick="bankClick(this)">TU9</span><span class="bank-chip" onclick="bankClick(this)">GERMANISTIK</span></div>
         </div>
         <div class="kw-clues">
-          <h4>Waagerecht →</h4><ol class="kw-list"><li data-word="GERMANISTIK"><b>3</b> <span class="kw-tag">o</span> Im Fach ______ erforscht man die deutsche Sprache und deutschsprachige Literatur. <span class="kw-zh">在日耳曼学专业研究德语与德语文学。</span><button class="btn tiny" onclick="revealWord(this,'GERMANISTIK')">揭示</button></li><li data-word="STUDIUM"><b>5</b> <span class="kw-tag">a</span> Mit dem Abitur / der Matura beginnt man ein ______. <span class="kw-zh">高中毕业后就开始大学学习。</span><button class="btn tiny" onclick="revealWord(this,'STUDIUM')">揭示</button></li><li data-word="STIPENDIUM"><b>6</b> <span class="kw-tag">i</span> Anja bekommt wegen ihrer guten Leistungen ein ______. <span class="kw-zh">Anja 因为成绩优秀获得奖学金。</span><button class="btn tiny" onclick="revealWord(this,'STIPENDIUM')">揭示</button></li><li data-word="HAUSARBEIT"><b>7</b> <span class="kw-tag">h</span> Als eine andere Prüfungsform kann man auch eine ______ schreiben, nämlich eine schriftliche Arbeit. <span class="kw-zh">另一种考试形式是写课程论文。</span><button class="btn tiny" onclick="revealWord(this,'HAUSARBEIT')">揭示</button></li><li data-word="SEMESTER"><b>8</b> <span class="kw-tag">b</span> Ein Freund von Li Tao hat ein ______ lang als Austauschstudent in Deutschland studiert. <span class="kw-zh">李涛的朋友在德国做了一学期的交换生。</span><button class="btn tiny" onclick="revealWord(this,'SEMESTER')">揭示</button></li><li data-word="MASTER"><b>9</b> <span class="kw-tag">d</span> Einige Studenten planen, nach dem Bachelorstudium noch ein ______-studium zu machen. <span class="kw-zh">有些学生计划本科毕业后继续读硕士。</span><button class="btn tiny" onclick="revealWord(this,'MASTER')">揭示</button></li><li data-word="HAUPTFACH"><b>12</b> <span class="kw-tag">k</span> An der Universität muss jeder ein ______ wählen. <span class="kw-zh">在大学每个人必须选一个主修专业。</span><button class="btn tiny" onclick="revealWord(this,'HAUPTFACH')">揭示</button></li><li data-word="VORLESUNG"><b>14</b> <span class="kw-tag">e</span> Die ______ über deutsche Gegenwartsliteratur findet im Hörsaal 3 statt. <span class="kw-zh">关于德国当代文学的讲座在三号阶梯教室举行。</span><button class="btn tiny" onclick="revealWord(this,'VORLESUNG')">揭示</button></li></ol>
-          <h4>Senkrecht ↓</h4><ol class="kw-list"><li data-word="KLAUSUR"><b>1</b> <span class="kw-tag">g</span> Bei vielen Kursen schreiben die Studenten am Semesterende eine ______, d. h. eine schriftliche Prüfung. <span class="kw-zh">许多课程期末写一次闭卷考试。</span><button class="btn tiny" onclick="revealWord(this,'KLAUSUR')">揭示</button></li><li data-word="BERUFSAKADEMIEN"><b>2</b> <span class="kw-tag">m</span> Berufs______ bezeichnet man auch als duale Hochschulen. <span class="kw-zh">职业学院也被称为双元制高校。</span><button class="btn tiny" onclick="revealWord(this,'BERUFSAKADEMIEN')">揭示</button></li><li data-word="AUSLANDSPRAKTIKUM"><b>4</b> <span class="kw-tag">j</span> Für viele medizinische Studenten ist es notwendig, ein ______ zu absolvieren. <span class="kw-zh">很多医学生必须完成一次海外实习。</span><button class="btn tiny" onclick="revealWord(this,'AUSLANDSPRAKTIKUM')">揭示</button></li><li data-word="SEMINAR"><b>5</b> <span class="kw-tag">f</span> Im ______ kann man zum Beispiel ein Referat halten oder aktiv an der Diskussion teilnehmen. <span class="kw-zh">在研讨课上可以做报告或积极参与讨论。</span><button class="btn tiny" onclick="revealWord(this,'SEMINAR')">揭示</button></li><li data-word="TU9"><b>10</b> <span class="kw-tag">n</span> Die Allianz der führenden Technischen ______ in Deutschland heißt TU9. <span class="kw-zh">德国顶尖工科大学联盟叫 TU9。</span><button class="btn tiny" onclick="revealWord(this,'TU9')">揭示</button></li><li data-word="BACHELOR"><b>11</b> <span class="kw-tag">c</span> Das ______-studium an einer Universität dauert normalerweise 6–8 Semester. <span class="kw-zh">大学的本科学习通常 6–8 个学期。</span><button class="btn tiny" onclick="revealWord(this,'BACHELOR')">揭示</button></li><li data-word="NEBENFACH"><b>13</b> <span class="kw-tag">l</span> Viele Studenten studieren neben ihrem Hauptfach noch ein ______. <span class="kw-zh">很多学生除主修外还修一门辅修。</span><button class="btn tiny" onclick="revealWord(this,'NEBENFACH')">揭示</button></li></ol>
+          <h4>Waagerecht →</h4><ol class="kw-list"><li data-word="GERMANISTIK"><b>3</b> <span class="kw-tag">o</span> Im Fach ______ erforscht man die deutsche Sprache und deutschsprachige Literatur. <span class="kw-zh">在日耳曼学专业研究德语与德语文学。</span><span class="src">S.204 · Ü2 o)</span><button class="btn tiny" onclick="revealWord(this,'GERMANISTIK')">揭示</button></li><li data-word="STUDIUM"><b>5</b> <span class="kw-tag">a</span> Mit dem Abitur / der Matura beginnt man ein ______. <span class="kw-zh">高中毕业后就开始大学学习。</span><span class="src">S.203 · Ü2 a)</span><button class="btn tiny" onclick="revealWord(this,'STUDIUM')">揭示</button></li><li data-word="STIPENDIUM"><b>6</b> <span class="kw-tag">i</span> Anja bekommt wegen ihrer guten Leistungen ein ______. <span class="kw-zh">Anja 因为成绩优秀获得奖学金。</span><span class="src">S.203 · Ü2 i)</span><button class="btn tiny" onclick="revealWord(this,'STIPENDIUM')">揭示</button></li><li data-word="HAUSARBEIT"><b>7</b> <span class="kw-tag">h</span> Als eine andere Prüfungsform kann man auch eine ______ schreiben, nämlich eine schriftliche Arbeit. <span class="kw-zh">另一种考试形式是写课程论文。</span><span class="src">S.203 · Ü2 h)</span><button class="btn tiny" onclick="revealWord(this,'HAUSARBEIT')">揭示</button></li><li data-word="SEMESTER"><b>8</b> <span class="kw-tag">b</span> Ein Freund von Li Tao hat ein ______ lang als Austauschstudent in Deutschland studiert. <span class="kw-zh">李涛的朋友在德国做了一学期的交换生。</span><span class="src">S.203 · Ü2 b)</span><button class="btn tiny" onclick="revealWord(this,'SEMESTER')">揭示</button></li><li data-word="MASTER"><b>9</b> <span class="kw-tag">d</span> Einige Studenten planen, nach dem Bachelorstudium noch ein ______-studium zu machen. <span class="kw-zh">有些学生计划本科毕业后继续读硕士。</span><span class="src">S.203 · Ü2 d)</span><button class="btn tiny" onclick="revealWord(this,'MASTER')">揭示</button></li><li data-word="HAUPTFACH"><b>12</b> <span class="kw-tag">k</span> An der Universität muss jeder ein ______ wählen. <span class="kw-zh">在大学每个人必须选一个主修专业。</span><span class="src">S.204 · Ü2 k)</span><button class="btn tiny" onclick="revealWord(this,'HAUPTFACH')">揭示</button></li><li data-word="VORLESUNG"><b>14</b> <span class="kw-tag">e</span> Die ______ über deutsche Gegenwartsliteratur findet im Hörsaal 3 statt. <span class="kw-zh">关于德国当代文学的讲座在三号阶梯教室举行。</span><span class="src">S.203 · Ü2 e)</span><button class="btn tiny" onclick="revealWord(this,'VORLESUNG')">揭示</button></li></ol>
+          <h4>Senkrecht ↓</h4><ol class="kw-list"><li data-word="KLAUSUR"><b>1</b> <span class="kw-tag">g</span> Bei vielen Kursen schreiben die Studenten am Semesterende eine ______, d. h. eine schriftliche Prüfung. <span class="kw-zh">许多课程期末写一次闭卷考试。</span><span class="src">S.203 · Ü2 g)</span><button class="btn tiny" onclick="revealWord(this,'KLAUSUR')">揭示</button></li><li data-word="BERUFSAKADEMIEN"><b>2</b> <span class="kw-tag">m</span> Berufs______ bezeichnet man auch als duale Hochschulen. <span class="kw-zh">职业学院也被称为双元制高校。</span><span class="src">S.204 · Ü2 m)</span><button class="btn tiny" onclick="revealWord(this,'BERUFSAKADEMIEN')">揭示</button></li><li data-word="AUSLANDSPRAKTIKUM"><b>4</b> <span class="kw-tag">j</span> Für viele medizinische Studenten ist es notwendig, ein ______ zu absolvieren. <span class="kw-zh">很多医学生必须完成一次海外实习。</span><span class="src">S.204 · Ü2 j)</span><button class="btn tiny" onclick="revealWord(this,'AUSLANDSPRAKTIKUM')">揭示</button></li><li data-word="SEMINAR"><b>5</b> <span class="kw-tag">f</span> Im ______ kann man zum Beispiel ein Referat halten oder aktiv an der Diskussion teilnehmen. <span class="kw-zh">在研讨课上可以做报告或积极参与讨论。</span><span class="src">S.203 · Ü2 f)</span><button class="btn tiny" onclick="revealWord(this,'SEMINAR')">揭示</button></li><li data-word="TU9"><b>10</b> <span class="kw-tag">n</span> Die Allianz der führenden Technischen ______ in Deutschland heißt TU9. <span class="kw-zh">德国顶尖工科大学联盟叫 TU9。</span><span class="src">S.204 · Ü2 n)</span><button class="btn tiny" onclick="revealWord(this,'TU9')">揭示</button></li><li data-word="BACHELOR"><b>11</b> <span class="kw-tag">c</span> Das ______-studium an einer Universität dauert normalerweise 6–8 Semester. <span class="kw-zh">大学的本科学习通常 6–8 个学期。</span><span class="src">S.203 · Ü2 c)</span><button class="btn tiny" onclick="revealWord(this,'BACHELOR')">揭示</button></li><li data-word="NEBENFACH"><b>13</b> <span class="kw-tag">l</span> Viele Studenten studieren neben ihrem Hauptfach noch ein ______. <span class="kw-zh">很多学生除主修外还修一门辅修。</span><span class="src">S.204 · Ü2 l)</span><button class="btn tiny" onclick="revealWord(this,'NEBENFACH')">揭示</button></li></ol>
         </div>
       </div>
       <p class="zh-hint note">★ 答案已按教材答案页（Entdecken 2 · W2 · Ü2）校准：c 题为 „Bachelor“，n 题为 „TU9“。b 题教材答案为 „Semester“（„ein Jahr lang“ 语法上也成立，故仍接受）。手机/平板可左右滑动查看完整网格。</p>
     </section>
     <section id="satz">
-      <h2 class="section-title"><span class="num">5</span> ✍️ Satzergänzung · 句子填空（教材 Ü2 a–o）</h2>
+      <h2 class="section-title"><span class="num">5</span> ✍️ Satzergänzung · 句子填空 <span class="src src-lg">教材 S.203–204 · Ü2 a–o</span></h2>
       <p class="zh-hint">输入答案后按回车或点 ✓。大小写、变音符号（ä = ae）不敏感；同义答案也算对。</p>
       <div class="kw-tools">
         <button class="btn ghost" onclick="showAllSatz()">👁 显示全部答案</button>
@@ -694,7 +719,7 @@
         <span id="satzScore" class="kw-result"></span>
       </div>
       <div class="fill-item">
-        <div class="fill-sentence"><b>a)</b> Mit dem Abitur / der Matura beginnt man ein ______.</div>
+        <div class="fill-sentence"><b>a)</b> Mit dem Abitur / der Matura beginnt man ein ______. <span class="src">S.203 · Ü2 a)</span></div>
         <div class="fill-zh">高中毕业后就开始大学学习。</div>
         <div class="fill-input-line">
           <input type="text" class="fill-input" id="sf-0" placeholder="Antwort eingeben…" data-ans="STUDIUM" data-alt="" onkeydown="if(event.key==='Enter')checkSatz(0)">
@@ -704,7 +729,7 @@
         </div>
       </div>
       <div class="fill-item">
-        <div class="fill-sentence"><b>b)</b> Ein Freund von Li Tao hat ein ______ lang als Austauschstudent in Deutschland studiert.</div>
+        <div class="fill-sentence"><b>b)</b> Ein Freund von Li Tao hat ein ______ lang als Austauschstudent in Deutschland studiert. <span class="src">S.203 · Ü2 b)</span></div>
         <div class="fill-zh">李涛的朋友在德国做了一学期的交换生。</div>
         <div class="fill-input-line">
           <input type="text" class="fill-input" id="sf-1" placeholder="Antwort eingeben…" data-ans="SEMESTER" data-alt="JAHR" onkeydown="if(event.key==='Enter')checkSatz(1)">
@@ -714,7 +739,7 @@
         </div>
       </div>
       <div class="fill-item">
-        <div class="fill-sentence"><b>c)</b> Das ______-studium an einer Universität dauert normalerweise 6–8 Semester.</div>
+        <div class="fill-sentence"><b>c)</b> Das ______-studium an einer Universität dauert normalerweise 6–8 Semester. <span class="src">S.203 · Ü2 c)</span></div>
         <div class="fill-zh">大学的本科学习通常 6–8 个学期。</div>
         <div class="fill-input-line">
           <input type="text" class="fill-input" id="sf-2" placeholder="Antwort eingeben…" data-ans="BACHELOR" data-alt="" onkeydown="if(event.key==='Enter')checkSatz(2)">
@@ -724,7 +749,7 @@
         </div>
       </div>
       <div class="fill-item">
-        <div class="fill-sentence"><b>d)</b> Einige Studenten planen, nach dem Bachelorstudium noch ein ______-studium zu machen.</div>
+        <div class="fill-sentence"><b>d)</b> Einige Studenten planen, nach dem Bachelorstudium noch ein ______-studium zu machen. <span class="src">S.203 · Ü2 d)</span></div>
         <div class="fill-zh">有些学生计划本科毕业后继续读硕士。</div>
         <div class="fill-input-line">
           <input type="text" class="fill-input" id="sf-3" placeholder="Antwort eingeben…" data-ans="MASTER" data-alt="" onkeydown="if(event.key==='Enter')checkSatz(3)">
@@ -734,7 +759,7 @@
         </div>
       </div>
       <div class="fill-item">
-        <div class="fill-sentence"><b>e)</b> Die ______ über deutsche Gegenwartsliteratur findet im Hörsaal 3 statt.</div>
+        <div class="fill-sentence"><b>e)</b> Die ______ über deutsche Gegenwartsliteratur findet im Hörsaal 3 statt. <span class="src">S.203 · Ü2 e)</span></div>
         <div class="fill-zh">关于德国当代文学的讲座在三号阶梯教室举行。</div>
         <div class="fill-input-line">
           <input type="text" class="fill-input" id="sf-4" placeholder="Antwort eingeben…" data-ans="VORLESUNG" data-alt="" onkeydown="if(event.key==='Enter')checkSatz(4)">
@@ -744,7 +769,7 @@
         </div>
       </div>
       <div class="fill-item">
-        <div class="fill-sentence"><b>f)</b> Im ______ kann man zum Beispiel ein Referat halten oder aktiv an der Diskussion teilnehmen.</div>
+        <div class="fill-sentence"><b>f)</b> Im ______ kann man zum Beispiel ein Referat halten oder aktiv an der Diskussion teilnehmen. <span class="src">S.203 · Ü2 f)</span></div>
         <div class="fill-zh">在研讨课上可以做报告或积极参与讨论。</div>
         <div class="fill-input-line">
           <input type="text" class="fill-input" id="sf-5" placeholder="Antwort eingeben…" data-ans="SEMINAR" data-alt="" onkeydown="if(event.key==='Enter')checkSatz(5)">
@@ -754,7 +779,7 @@
         </div>
       </div>
       <div class="fill-item">
-        <div class="fill-sentence"><b>g)</b> Bei vielen Kursen schreiben die Studenten am Semesterende eine ______, d. h. eine schriftliche Prüfung.</div>
+        <div class="fill-sentence"><b>g)</b> Bei vielen Kursen schreiben die Studenten am Semesterende eine ______, d. h. eine schriftliche Prüfung. <span class="src">S.203 · Ü2 g)</span></div>
         <div class="fill-zh">许多课程期末写一次闭卷考试。</div>
         <div class="fill-input-line">
           <input type="text" class="fill-input" id="sf-6" placeholder="Antwort eingeben…" data-ans="KLAUSUR" data-alt="" onkeydown="if(event.key==='Enter')checkSatz(6)">
@@ -764,7 +789,7 @@
         </div>
       </div>
       <div class="fill-item">
-        <div class="fill-sentence"><b>h)</b> Als eine andere Prüfungsform kann man auch eine ______ schreiben, nämlich eine schriftliche Arbeit.</div>
+        <div class="fill-sentence"><b>h)</b> Als eine andere Prüfungsform kann man auch eine ______ schreiben, nämlich eine schriftliche Arbeit. <span class="src">S.203 · Ü2 h)</span></div>
         <div class="fill-zh">另一种考试形式是写课程论文。</div>
         <div class="fill-input-line">
           <input type="text" class="fill-input" id="sf-7" placeholder="Antwort eingeben…" data-ans="HAUSARBEIT" data-alt="" onkeydown="if(event.key==='Enter')checkSatz(7)">
@@ -774,7 +799,7 @@
         </div>
       </div>
       <div class="fill-item">
-        <div class="fill-sentence"><b>i)</b> Anja bekommt wegen ihrer guten Leistungen ein ______.</div>
+        <div class="fill-sentence"><b>i)</b> Anja bekommt wegen ihrer guten Leistungen ein ______. <span class="src">S.203 · Ü2 i)</span></div>
         <div class="fill-zh">Anja 因为成绩优秀获得奖学金。</div>
         <div class="fill-input-line">
           <input type="text" class="fill-input" id="sf-8" placeholder="Antwort eingeben…" data-ans="STIPENDIUM" data-alt="" onkeydown="if(event.key==='Enter')checkSatz(8)">
@@ -784,7 +809,7 @@
         </div>
       </div>
       <div class="fill-item">
-        <div class="fill-sentence"><b>j)</b> Für viele medizinische Studenten ist es notwendig, ein ______ zu absolvieren.</div>
+        <div class="fill-sentence"><b>j)</b> Für viele medizinische Studenten ist es notwendig, ein ______ zu absolvieren. <span class="src">S.204 · Ü2 j)</span></div>
         <div class="fill-zh">很多医学生必须完成一次海外实习。</div>
         <div class="fill-input-line">
           <input type="text" class="fill-input" id="sf-9" placeholder="Antwort eingeben…" data-ans="AUSLANDSPRAKTIKUM" data-alt="" onkeydown="if(event.key==='Enter')checkSatz(9)">
@@ -794,7 +819,7 @@
         </div>
       </div>
       <div class="fill-item">
-        <div class="fill-sentence"><b>k)</b> An der Universität muss jeder ein ______ wählen.</div>
+        <div class="fill-sentence"><b>k)</b> An der Universität muss jeder ein ______ wählen. <span class="src">S.204 · Ü2 k)</span></div>
         <div class="fill-zh">在大学每个人必须选一个主修专业。</div>
         <div class="fill-input-line">
           <input type="text" class="fill-input" id="sf-10" placeholder="Antwort eingeben…" data-ans="HAUPTFACH" data-alt="" onkeydown="if(event.key==='Enter')checkSatz(10)">
@@ -804,7 +829,7 @@
         </div>
       </div>
       <div class="fill-item">
-        <div class="fill-sentence"><b>l)</b> Viele Studenten studieren neben ihrem Hauptfach noch ein ______.</div>
+        <div class="fill-sentence"><b>l)</b> Viele Studenten studieren neben ihrem Hauptfach noch ein ______. <span class="src">S.204 · Ü2 l)</span></div>
         <div class="fill-zh">很多学生除主修外还修一门辅修。</div>
         <div class="fill-input-line">
           <input type="text" class="fill-input" id="sf-11" placeholder="Antwort eingeben…" data-ans="NEBENFACH" data-alt="" onkeydown="if(event.key==='Enter')checkSatz(11)">
@@ -814,7 +839,7 @@
         </div>
       </div>
       <div class="fill-item">
-        <div class="fill-sentence"><b>m)</b> Berufs______ bezeichnet man auch als duale Hochschulen.</div>
+        <div class="fill-sentence"><b>m)</b> Berufs______ bezeichnet man auch als duale Hochschulen. <span class="src">S.204 · Ü2 m)</span></div>
         <div class="fill-zh">职业学院也被称为双元制高校。</div>
         <div class="fill-input-line">
           <input type="text" class="fill-input" id="sf-12" placeholder="Antwort eingeben…" data-ans="BERUFSAKADEMIEN" data-alt="" onkeydown="if(event.key==='Enter')checkSatz(12)">
@@ -824,7 +849,7 @@
         </div>
       </div>
       <div class="fill-item">
-        <div class="fill-sentence"><b>n)</b> Die Allianz der führenden Technischen ______ in Deutschland heißt TU9.</div>
+        <div class="fill-sentence"><b>n)</b> Die Allianz der führenden Technischen ______ in Deutschland heißt TU9. <span class="src">S.204 · Ü2 n)</span></div>
         <div class="fill-zh">德国顶尖工科大学联盟叫 TU9。</div>
         <div class="fill-input-line">
           <input type="text" class="fill-input" id="sf-13" placeholder="Antwort eingeben…" data-ans="TU9" data-alt="" onkeydown="if(event.key==='Enter')checkSatz(13)">
@@ -834,7 +859,7 @@
         </div>
       </div>
       <div class="fill-item">
-        <div class="fill-sentence"><b>o)</b> Im Fach ______ erforscht man die deutsche Sprache und deutschsprachige Literatur.</div>
+        <div class="fill-sentence"><b>o)</b> Im Fach ______ erforscht man die deutsche Sprache und deutschsprachige Literatur. <span class="src">S.204 · Ü2 o)</span></div>
         <div class="fill-zh">在日耳曼学专业研究德语与德语文学。</div>
         <div class="fill-input-line">
           <input type="text" class="fill-input" id="sf-14" placeholder="Antwort eingeben…" data-ans="GERMANISTIK" data-alt="" onkeydown="if(event.key==='Enter')checkSatz(14)">
@@ -845,7 +870,7 @@
       </div>
     </section>
     <section id="hochschule">
-      <h2 class="section-title"><span class="num">6</span> 🏛️ Hochschullandschaft in Deutschland · 德国高校版图</h2>
+      <h2 class="section-title"><span class="num">6</span> 🏛️ Hochschullandschaft in Deutschland · 德国高校版图 <span class="src src-lg">教材 S.202 · Ü1</span></h2>
       <p class="zh-hint">教材 Ü1：先看 logos 词库，再从词库点词填入空格（点格可撤回）。</p>
       <div class="bank-box"><strong>Logos：</strong><span class="logo-chip">🏛️ Universität Zürich UZH</span> <span class="logo-chip">🏛️ TUM Technische Universität München</span> <span class="logo-chip">🏛️ Fachhochschule Dortmund</span> <span class="logo-chip">🏛️ Kunst uni graz</span> <span class="logo-chip">🏛️ BA BERUFSAKADEMIE SACHSEN</span></div>
       <p class="cloze-p">In den deutschsprachigen Ländern können Studieninteressierte zwischen unterschiedlichen Hochschultypen wählen:</p>
@@ -862,7 +887,7 @@
       <div class="highlight-box">💡 Landeskunde：双元制高校可获 Bachelor / Master 学位，而 Berufsakademie 不能授予官方学位。</div>
     </section>
     <section id="mindmap">
-      <h2 class="section-title"><span class="num">7</span> 🗺️ Mindmap · Wortfeld Studium und Studentenleben</h2>
+      <h2 class="section-title"><span class="num">7</span> 🗺️ Mindmap · Wortfeld Studium und Studentenleben <span class="src src-lg">教材 S.204 · Ü3</span></h2>
       <p class="zh-hint">教材 Ü3：点击一个词，再点它所属的分类框（点错可再点一次改）。</p>
       <div class="mm-pool" id="mmPool"><span class="mm-chip" data-c="C1" onclick="mmSelect(this)">Germanistik</span><span class="mm-chip" data-c="C1" onclick="mmSelect(this)">Informatik</span><span class="mm-chip" data-c="C1" onclick="mmSelect(this)">Medizin</span><span class="mm-chip" data-c="C1" onclick="mmSelect(this)">Bildende Kunst</span><span class="mm-chip" data-c="C2" onclick="mmSelect(this)">Universität</span><span class="mm-chip" data-c="C2" onclick="mmSelect(this)">Fachhochschule</span><span class="mm-chip" data-c="C2" onclick="mmSelect(this)">Kunsthochschule</span><span class="mm-chip" data-c="C2" onclick="mmSelect(this)">Berufsakademie</span><span class="mm-chip" data-c="C3" onclick="mmSelect(this)">Vorlesung</span><span class="mm-chip" data-c="C3" onclick="mmSelect(this)">Seminar</span><span class="mm-chip" data-c="C3" onclick="mmSelect(this)">Referat</span><span class="mm-chip" data-c="C3" onclick="mmSelect(this)">Übung</span><span class="mm-chip" data-c="C4" onclick="mmSelect(this)">Klausur</span><span class="mm-chip" data-c="C4" onclick="mmSelect(this)">Hausarbeit</span><span class="mm-chip" data-c="C4" onclick="mmSelect(this)">Bachelor</span><span class="mm-chip" data-c="C4" onclick="mmSelect(this)">Master</span><span class="mm-chip" data-c="C4" onclick="mmSelect(this)">Abitur</span><span class="mm-chip" data-c="C5" onclick="mmSelect(this)">Stipendium</span><span class="mm-chip" data-c="C5" onclick="mmSelect(this)">Auslandspraktikum</span><span class="mm-chip" data-c="C5" onclick="mmSelect(this)">Semester</span><span class="mm-chip" data-c="C5" onclick="mmSelect(this)">Bibliothek</span><span class="mm-chip" data-c="C5" onclick="mmSelect(this)">Teamarbeit</span></div>
       <div class="mm-board"><div class="mm-box" data-cat="C1" onclick="mmDrop(this)"><div class="mm-head">📘 Studienfächer / Fakultäten</div><div class="mm-items"></div></div><div class="mm-box" data-cat="C2" onclick="mmDrop(this)"><div class="mm-head">🏛️ Typen der Hochschulen</div><div class="mm-items"></div></div><div class="mm-box" data-cat="C3" onclick="mmDrop(this)"><div class="mm-head">🎧 Lehrveranstaltungen</div><div class="mm-items"></div></div><div class="mm-box" data-cat="C4" onclick="mmDrop(this)"><div class="mm-head">🎓 Prüfungen und Abschlüsse</div><div class="mm-items"></div></div><div class="mm-box" data-cat="C5" onclick="mmDrop(this)"><div class="mm-head">🧩 Lerntätigkeiten und Sonstiges</div><div class="mm-items"></div></div></div>
@@ -873,10 +898,10 @@
       </div>
     </section>
     <section id="satzbau">
-      <h2 class="section-title"><span class="num">8</span> 🔤 Satzbau · 句型工坊</h2>
+      <h2 class="section-title"><span class="num">8</span> 🔤 Satzbau · 句型工坊 <span class="src src-lg">S.200 · Ü9 配套句型</span></h2>
       <p class="zh-hint">点词块按正确语序排成德语句子；点已排的词块可撤回。语序错要说出「错在哪」。</p>
       <div class="sb-card">
-        <div class="sb-zh">1. 在德国，小学毕业时，家长和孩子面临着择校的问题。</div>
+        <div class="sb-zh">1. 在德国，小学毕业时，家长和孩子面临着择校的问题。 <span class="src">S.200 · Ü9 配套句型</span></div>
         <div class="sb-hint">句型：vor der Entscheidung stehen → 面临抉择</div>
         <div class="sb-pool" id="sb-pool-0"><span class="sb-chunk" data-i="1" onclick="sbPick(this,0)">stehen Eltern und Kinder</span><span class="sb-chunk" data-i="2" onclick="sbPick(this,0)">vor der Entscheidung,</span><span class="sb-chunk" data-i="3" onclick="sbPick(this,0)">welche Schule sie besuchen sollen.</span><span class="sb-chunk" data-i="0" onclick="sbPick(this,0)">In Deutschland</span></div>
         <div class="sb-line" id="sb-line-0"></div>
@@ -889,7 +914,7 @@
         </div>
       </div>
       <div class="sb-card">
-        <div class="sb-zh">2. 小学会根据孩子的主要科目成绩，提交给家长一份推荐信。</div>
+        <div class="sb-zh">2. 小学会根据孩子的主要科目成绩，提交给家长一份推荐信。 <span class="src">S.200 · Ü9 配套句型</span></div>
         <div class="sb-hint">句型：aufgrund + Gen. → 根据……；eine Empfehlung erstellen → 出具推荐信</div>
         <div class="sb-pool" id="sb-pool-1"><span class="sb-chunk" data-i="3" onclick="sbPick(this,1)">eine Empfehlung für die Eltern.</span><span class="sb-chunk" data-i="1" onclick="sbPick(this,1)">erstellt</span><span class="sb-chunk" data-i="2" onclick="sbPick(this,1)">aufgrund der Leistungen in den Hauptfächern</span><span class="sb-chunk" data-i="0" onclick="sbPick(this,1)">Die Grundschule</span></div>
         <div class="sb-line" id="sb-line-1"></div>
@@ -902,7 +927,7 @@
         </div>
       </div>
       <div class="sb-card">
-        <div class="sb-zh">3. 很多家长都希望孩子上文理中学。</div>
+        <div class="sb-zh">3. 很多家长都希望孩子上文理中学。 <span class="src">S.200 · Ü9 配套句型</span></div>
         <div class="sb-hint">句型：sich wünschen, dass … → 希望（愿望从句）</div>
         <div class="sb-pool" id="sb-pool-2"><span class="sb-chunk" data-i="0" onclick="sbPick(this,2)">Viele Eltern</span><span class="sb-chunk" data-i="2" onclick="sbPick(this,2)">dass ihr Kind auf ein Gymnasium geht.</span><span class="sb-chunk" data-i="1" onclick="sbPick(this,2)">wünschen sich,</span></div>
         <div class="sb-line" id="sb-line-2"></div>
@@ -915,7 +940,7 @@
         </div>
       </div>
       <div class="sb-card">
-        <div class="sb-zh">4. 但是这种愿望并不意味着，文理中学就是适合孩子的“正确”选择。</div>
+        <div class="sb-zh">4. 但是这种愿望并不意味着，文理中学就是适合孩子的“正确”选择。 <span class="src">S.200 · Ü9 配套句型</span></div>
         <div class="sb-hint">句型：nicht zwangsläufig bedeuten, dass … → 并不必然意味着</div>
         <div class="sb-pool" id="sb-pool-3"><span class="sb-chunk" data-i="1" onclick="sbPick(this,3)">bedeutet nicht zwangsläufig,</span><span class="sb-chunk" data-i="2" onclick="sbPick(this,3)">dass das Gymnasium die „richtige“ Wahl für das Kind ist.</span><span class="sb-chunk" data-i="0" onclick="sbPick(this,3)">Aber dieser Wunsch</span></div>
         <div class="sb-line" id="sb-line-3"></div>
@@ -928,7 +953,7 @@
         </div>
       </div>
       <div class="sb-card">
-        <div class="sb-zh">5. 综合中学就是一个不错的选项，它提供了获得三种毕业证书的机会。</div>
+        <div class="sb-zh">5. 综合中学就是一个不错的选项，它提供了获得三种毕业证书的机会。 <span class="src">S.200 · Ü9 配套句型</span></div>
         <div class="sb-hint">句型：die Möglichkeit bieten, … zu + Inf. → 提供……的可能</div>
         <div class="sb-pool" id="sb-pool-4"><span class="sb-chunk" data-i="1" onclick="sbPick(this,4)">ist eine gute Alternative;</span><span class="sb-chunk" data-i="2" onclick="sbPick(this,4)">sie bietet die Möglichkeit,</span><span class="sb-chunk" data-i="0" onclick="sbPick(this,4)">Die Gesamtschule</span><span class="sb-chunk" data-i="3" onclick="sbPick(this,4)">drei verschiedene Abschlüsse zu erwerben.</span></div>
         <div class="sb-line" id="sb-line-4"></div>
@@ -941,7 +966,7 @@
         </div>
       </div>
       <div class="sb-card">
-        <div class="sb-zh">6. 合适的学校不仅应提供尽可能好的学习支持，还应适合孩子和家庭的日常生活。</div>
+        <div class="sb-zh">6. 合适的学校不仅应提供尽可能好的学习支持，还应适合孩子和家庭的日常生活。 <span class="src">S.200 · Ü9 配套句型</span></div>
         <div class="sb-hint">句型：nicht nur …, sondern auch … → 不仅……而且</div>
         <div class="sb-pool" id="sb-pool-5"><span class="sb-chunk" data-i="1" onclick="sbPick(this,5)">sollte nicht nur</span><span class="sb-chunk" data-i="0" onclick="sbPick(this,5)">Die passende Schule</span><span class="sb-chunk" data-i="2" onclick="sbPick(this,5)">die bestmögliche Lernförderung bieten,</span><span class="sb-chunk" data-i="4" onclick="sbPick(this,5)">zum Alltag des Kindes und der Familie passen.</span><span class="sb-chunk" data-i="3" onclick="sbPick(this,5)">sondern auch</span></div>
         <div class="sb-line" id="sb-line-5"></div>
@@ -955,48 +980,48 @@
       </div>
     </section>
     <section id="uebersetzen">
-      <h2 class="section-title"><span class="num">9</span> 🎯 Übersetzen Sie · 中译德擂台（教材 Ü9）</h2>
+      <h2 class="section-title"><span class="num">9</span> 🎯 Übersetzen Sie · 中译德擂台（教材 Ü9） <span class="src src-lg">教材 S.200 · Ü9</span></h2>
       <p class="zh-hint">先自己写，再点卡片核对参考译文。译法不唯一，句型正确、意义完整即算对。</p>
       <div class="translation-grid">        <div class="tc-card" onclick="flipTrans(this)">
           <div class="tc-inner">
-            <div class="tc-front"><span class="tc-num">1</span><div class="tc-zh">在德国，小学毕业时，家长和孩子面临着择校的问题。</div><div class="tc-tip">💡 vor der Entscheidung stehen + 从句；„小学毕业时“ 可用 wenn 从句或 nach der Grundschule</div></div>
-            <div class="tc-back"><span class="tc-num">1</span><div class="tc-de">In Deutschland stehen Eltern und Kinder vor der Entscheidung, welche Schule sie besuchen sollen, wenn die Grundschule abgeschlossen ist.</div></div>
+            <div class="tc-front"><span class="tc-num">1</span><span class="src">S.200 · Ü9 ①</span><div class="tc-zh">在德国，小学毕业时，家长和孩子面临着择校的问题。</div><div class="tc-tip">💡 vor der Entscheidung stehen + 从句；„小学毕业时“ 可用 wenn 从句或 nach der Grundschule</div></div>
+            <div class="tc-back"><span class="tc-num">1</span><span class="src">S.200 · Ü9 ①</span><div class="tc-de">In Deutschland stehen Eltern und Kinder vor der Entscheidung, welche Schule sie besuchen sollen, wenn die Grundschule abgeschlossen ist.</div></div>
           </div>
         </div>
         <div class="tc-card" onclick="flipTrans(this)">
           <div class="tc-inner">
-            <div class="tc-front"><span class="tc-num">2</span><div class="tc-zh">为孩子选择合适的学校并非易事。</div><div class="tc-tip">💡 es ist nicht leicht, … zu + Inf.（形式主语 + zu 不定式）</div></div>
-            <div class="tc-back"><span class="tc-num">2</span><div class="tc-de">Es ist nicht leicht, die richtige Schule für das Kind zu wählen.</div></div>
+            <div class="tc-front"><span class="tc-num">2</span><span class="src">S.200 · Ü9 ②</span><div class="tc-zh">为孩子选择合适的学校并非易事。</div><div class="tc-tip">💡 es ist nicht leicht, … zu + Inf.（形式主语 + zu 不定式）</div></div>
+            <div class="tc-back"><span class="tc-num">2</span><span class="src">S.200 · Ü9 ②</span><div class="tc-de">Es ist nicht leicht, die richtige Schule für das Kind zu wählen.</div></div>
           </div>
         </div>
         <div class="tc-card" onclick="flipTrans(this)">
           <div class="tc-inner">
-            <div class="tc-front"><span class="tc-num">3</span><div class="tc-zh">小学会根据孩子的主要科目成绩，提交给家长一份推荐信。</div><div class="tc-tip">💡 aufgrund + Gen.；die Leistungen in den Hauptfächern</div></div>
-            <div class="tc-back"><span class="tc-num">3</span><div class="tc-de">Die Grundschule erstellt aufgrund der Leistungen in den Hauptfächern eine Empfehlung für die Eltern.</div></div>
+            <div class="tc-front"><span class="tc-num">3</span><span class="src">S.200 · Ü9 ③</span><div class="tc-zh">小学会根据孩子的主要科目成绩，提交给家长一份推荐信。</div><div class="tc-tip">💡 aufgrund + Gen.；die Leistungen in den Hauptfächern</div></div>
+            <div class="tc-back"><span class="tc-num">3</span><span class="src">S.200 · Ü9 ③</span><div class="tc-de">Die Grundschule erstellt aufgrund der Leistungen in den Hauptfächern eine Empfehlung für die Eltern.</div></div>
           </div>
         </div>
         <div class="tc-card" onclick="flipTrans(this)">
           <div class="tc-inner">
-            <div class="tc-front"><span class="tc-num">4</span><div class="tc-zh">很多家长都希望送孩子上文理中学，但是这种愿望并不意味着，文理中学就是适合孩子的“正确”选择。</div><div class="tc-tip">💡 sich wünschen, dass …；nicht zwangsläufig bedeuten, dass …；auf ein Gymnasium gehen</div></div>
-            <div class="tc-back"><span class="tc-num">4</span><div class="tc-de">Viele Eltern wünschen sich, dass ihr Kind auf ein Gymnasium geht, aber dieser Wunsch bedeutet nicht zwangsläufig, dass das Gymnasium die „richtige“ Wahl für das Kind ist.</div></div>
+            <div class="tc-front"><span class="tc-num">4</span><span class="src">S.200 · Ü9 ④</span><div class="tc-zh">很多家长都希望送孩子上文理中学，但是这种愿望并不意味着，文理中学就是适合孩子的“正确”选择。</div><div class="tc-tip">💡 sich wünschen, dass …；nicht zwangsläufig bedeuten, dass …；auf ein Gymnasium gehen</div></div>
+            <div class="tc-back"><span class="tc-num">4</span><span class="src">S.200 · Ü9 ④</span><div class="tc-de">Viele Eltern wünschen sich, dass ihr Kind auf ein Gymnasium geht, aber dieser Wunsch bedeutet nicht zwangsläufig, dass das Gymnasium die „richtige“ Wahl für das Kind ist.</div></div>
           </div>
         </div>
         <div class="tc-card" onclick="flipTrans(this)">
           <div class="tc-inner">
-            <div class="tc-front"><span class="tc-num">5</span><div class="tc-zh">综合中学就是一个不错的选项，它提供了获得三种毕业资格证书的机会。</div><div class="tc-tip">💡 eine gute Alternative sein；die Möglichkeit bieten, … zu + Inf.；Abschlüsse erwerben</div></div>
-            <div class="tc-back"><span class="tc-num">5</span><div class="tc-de">Die Gesamtschule ist eine gute Alternative; sie bietet die Möglichkeit, drei verschiedene Abschlüsse zu erwerben.</div></div>
+            <div class="tc-front"><span class="tc-num">5</span><span class="src">S.200 · Ü9 ⑤</span><div class="tc-zh">综合中学就是一个不错的选项，它提供了获得三种毕业资格证书的机会。</div><div class="tc-tip">💡 eine gute Alternative sein；die Möglichkeit bieten, … zu + Inf.；Abschlüsse erwerben</div></div>
+            <div class="tc-back"><span class="tc-num">5</span><span class="src">S.200 · Ü9 ⑤</span><div class="tc-de">Die Gesamtschule ist eine gute Alternative; sie bietet die Möglichkeit, drei verschiedene Abschlüsse zu erwerben.</div></div>
           </div>
         </div>
         <div class="tc-card" onclick="flipTrans(this)">
           <div class="tc-inner">
-            <div class="tc-front"><span class="tc-num">6</span><div class="tc-zh">另外，在德国，即便没有参加高中毕业考试也可以上大学。</div><div class="tc-tip">💡 ohne + Akk.（ohne Abitur）：无介词冠词</div></div>
-            <div class="tc-back"><span class="tc-num">6</span><div class="tc-de">Außerdem kann man in Deutschland auch ohne Abitur an einer Universität studieren.</div></div>
+            <div class="tc-front"><span class="tc-num">6</span><span class="src">S.200 · Ü9 ⑥</span><div class="tc-zh">另外，在德国，即便没有参加高中毕业考试也可以上大学。</div><div class="tc-tip">💡 ohne + Akk.（ohne Abitur）：无介词冠词</div></div>
+            <div class="tc-back"><span class="tc-num">6</span><span class="src">S.200 · Ü9 ⑥</span><div class="tc-de">Außerdem kann man in Deutschland auch ohne Abitur an einer Universität studieren.</div></div>
           </div>
         </div>
         <div class="tc-card" onclick="flipTrans(this)">
           <div class="tc-inner">
-            <div class="tc-front"><span class="tc-num">7</span><div class="tc-zh">合适的学校不仅应为学生提供尽可能好的学习支持，还应适合孩子和家庭的日常生活。</div><div class="tc-tip">💡 nicht nur …, sondern auch …；zu etw. passen；sollte（建议语气）</div></div>
-            <div class="tc-back"><span class="tc-num">7</span><div class="tc-de">Die passende Schule sollte nicht nur die bestmögliche Lernförderung bieten, sondern auch zum Alltag des Kindes und der Familie passen.</div></div>
+            <div class="tc-front"><span class="tc-num">7</span><span class="src">S.200 · Ü9 ⑦</span><div class="tc-zh">合适的学校不仅应为学生提供尽可能好的学习支持，还应适合孩子和家庭的日常生活。</div><div class="tc-tip">💡 nicht nur …, sondern auch …；zu etw. passen；sollte（建议语气）</div></div>
+            <div class="tc-back"><span class="tc-num">7</span><span class="src">S.200 · Ü9 ⑦</span><div class="tc-de">Die passende Schule sollte nicht nur die bestmögliche Lernförderung bieten, sondern auch zum Alltag des Kindes und der Familie passen.</div></div>
           </div>
         </div></div>
       <div class="kw-tools"><button class="btn" onclick="toggleBox('fullDe')">👁 整段参考译文</button></div>
@@ -1025,6 +1050,12 @@
   <div id="vpZh" class="vp-zh"></div>
   <div id="vpEx" class="vp-ex"></div>
 </div>
+<div class="proj-ctl" id="projCtl">
+  <button onclick="projStep(-1)" title="缩小">A−</button>
+  <span class="proj-label" id="projLabel">标准 · A±</span>
+  <button onclick="projStep(1)" title="放大（投影用）">A+</button>
+  <button onclick="projReset()" title="回到标准">↺</button>
+</div>
 <script>
 const DOC = {"kwEntries": [{"word": "GERMANISTIK", "r": 0, "c": 0, "dir": "H"}, {"word": "AUSLANDSPRAKTIKUM", "r": 0, "c": 4, "dir": "V"}, {"word": "BERUFSAKADEMIEN", "r": -1, "c": 1, "dir": "V"}, {"word": "HAUSARBEIT", "r": 4, "c": 3, "dir": "H"}, {"word": "STIPENDIUM", "r": 2, "c": 4, "dir": "H"}, {"word": "VORLESUNG", "r": 15, "c": -2, "dir": "H"}, {"word": "HAUPTFACH", "r": 10, "c": 3, "dir": "H"}, {"word": "NEBENFACH", "r": 14, "c": 2, "dir": "V"}, {"word": "SEMESTER", "r": 7, "c": 4, "dir": "H"}, {"word": "BACHELOR", "r": 9, "c": -1, "dir": "V"}, {"word": "STUDIUM", "r": 2, "c": -4, "dir": "H"}, {"word": "SEMINAR", "r": 2, "c": -4, "dir": "V"}, {"word": "KLAUSUR", "r": -1, "c": -2, "dir": "V"}, {"word": "MASTER", "r": 8, "c": -9, "dir": "H"}, {"word": "TU9", "r": 8, "c": -6, "dir": "V"}], "satz": ["STUDIUM", "SEMESTER", "BACHELOR", "MASTER", "VORLESUNG", "SEMINAR", "KLAUSUR", "HAUSARBEIT", "STIPENDIUM", "AUSLANDSPRAKTIKUM", "HAUPTFACH", "NEBENFACH", "BERUFSAKADEMIEN", "TU9", "GERMANISTIK"], "satzbau": [{"chunks": ["In Deutschland", "stehen Eltern und Kinder", "vor der Entscheidung,", "welche Schule sie besuchen sollen."]}, {"chunks": ["Die Grundschule", "erstellt", "aufgrund der Leistungen in den Hauptfächern", "eine Empfehlung für die Eltern."]}, {"chunks": ["Viele Eltern", "wünschen sich,", "dass ihr Kind auf ein Gymnasium geht."]}, {"chunks": ["Aber dieser Wunsch", "bedeutet nicht zwangsläufig,", "dass das Gymnasium die „richtige“ Wahl für das Kind ist."]}, {"chunks": ["Die Gesamtschule", "ist eine gute Alternative;", "sie bietet die Möglichkeit,", "drei verschiedene Abschlüsse zu erwerben."]}, {"chunks": ["Die passende Schule", "sollte nicht nur", "die bestmögliche Lernförderung bieten,", "sondern auch", "zum Alltag des Kindes und der Familie passen."]}]};
 
@@ -1040,6 +1071,25 @@ function switchSection(id){
   window.scrollTo(0, 0);
 }
 function toggleNav(){ document.getElementById('navLinks').classList.toggle('show'); }
+/* ===== 投影模式：整体放大（课堂现场用，宽屏才显示） ===== */
+let projScale = 1;
+try { projScale = parseFloat(localStorage.getItem('l7proj') || '1') || 1; } catch (e) { projScale = 1; }
+const PROJ_STEPS = [1, 1.15, 1.3, 1.5];
+function applyProj(){
+  document.body.style.zoom = projScale;
+  const lb = document.getElementById('projLabel');
+  if (lb) { lb.textContent = (projScale === 1 ? '标准' : '投影 ' + Math.round(projScale * 100) + '%') + ' · A±'; }
+  kwAutoFit();
+}
+function projStep(d){
+  let i = PROJ_STEPS.indexOf(projScale);
+  if (i < 0) { i = 0; }
+  i = Math.min(PROJ_STEPS.length - 1, Math.max(0, i + d));
+  projScale = PROJ_STEPS[i];
+  try { localStorage.setItem('l7proj', String(projScale)); } catch (e) {}
+  applyProj();
+}
+function projReset(){ projScale = 1; try { localStorage.setItem('l7proj', '1'); } catch (e) {} applyProj(); }
 /* 导航高度自适应：单行/换行/汉堡三种形态下正文都不被遮住 */
 function syncNavPad(){
   const nav = document.querySelector('.top-nav');
@@ -1054,7 +1104,7 @@ function kwAutoFit(){
   if (kwZoomVal !== null) return;
   if (window.innerWidth <= 900) { t.style.zoom = ''; return; }
   t.style.zoom = '1';
-  const avail = wrap.clientWidth - 2;
+  const avail = wrap.getBoundingClientRect().width - 2;
   const natural = t.getBoundingClientRect().width;
   if (!avail || !natural) { t.style.zoom = ''; return; }
   const fit = avail / natural;
@@ -1062,7 +1112,7 @@ function kwAutoFit(){
   t.style.zoom = Math.max(0.68, Math.floor(fit * 100) / 100);
 }
 window.addEventListener('resize', function(){ syncNavPad(); if (kwZoomVal === null) { kwAutoFit(); } });
-window.addEventListener('load', function(){ syncNavPad(); kwAutoFit(); });
+window.addEventListener('load', function(){ syncNavPad(); applyProj(); });
 window.addEventListener('orientationchange', function(){ setTimeout(function(){ syncNavPad(); kwAutoFit(); }, 250); });
 const SECTIONS = ["home", "vocab", "blitz", "connect", "kreuzwort", "satz", "hochschule", "mindmap", "satzbau", "uebersetzen", "spiele"];
 

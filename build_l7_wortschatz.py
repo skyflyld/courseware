@@ -120,7 +120,8 @@ def sec_home(d):
     o = ''.join('<li>%s</li>' % h(x) for x in m['objectives'])
     rows = ''.join('<tr><td class="fl-t">%s</td><td>%s</td><td>%s</td></tr>' % (h(a), h(b), h(c)) for a, b, c in m['flow'])
     cards = [
-        ('vocab', '📇 词汇卡片', '%d 个核心词 · 分组翻转卡 + 例句' % sum(len(g['words']) for g in d['vocabGroups'])),
+        ('vocab', '📇 词汇卡片 E1', '%d 个核心词 · 分组翻转卡 + 例句' % sum(len(g['words']) for g in d['vocabGroups'])),
+        ('vocab2', '📗 词汇表 E2（S.212）', '%d 词 · Entdecken 2 生词 · 翻转卡 + 全表' % sum(len(g['words']) for g in d['vocabGroupsE2']['groups'])),
         ('blitz', '⚡ Blitzrunde 抢答', '中文提示 → 德语抢答 · 带计时器'),
         ('connect', '🔗 连线配对', '%d 组词网 · 点击左右配对' % len(d['connectGrids'])),
         ('kreuzwort', '🧩 Kreuzworträtsel', '教材 Ü2 · 15 个提示句填格'),
@@ -148,7 +149,7 @@ def sec_home(d):
 ''' % (h(d['meta']['subtitle']), h(d['meta']['source']), g, o, rows)
 
 def sec_vocab(d):
-    tabs, panels = [], []
+    tabs, panels, e1rows = [], [], []
     for i, grp in enumerate(d['vocabGroups']):
         a = ' active' if i == 0 else ''
         tabs.append('<button class="person-btn%s" onclick="switchVocabTab(\'%s\')">%s</button>' % (a, grp['id'], h(grp['label'])))
@@ -159,13 +160,48 @@ def sec_vocab(d):
                 '<div class="vc-front">%s</div><div class="vc-back">%s</div></div>'
                 '<button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab(\'%s\',\'%s\',\'%s\')">▶</button></div>'
                 % (h(wd['w']), h(wd['cn']), esc_attr(wd['w']), esc_attr(wd['cn']), esc_attr(wd['ex'])))
+            e1rows.append('<tr><td class="vt-de">%s</td><td class="vt-cn">%s</td><td class="vt-ex">%s</td></tr>'
+                          % (h(wd['w']), h(wd['cn']), h(wd.get('ex', ''))))
         panels.append('<div class="person-content%s" id="vc-%s"><div class="vocab-grid">%s</div></div>' % (a, grp['id'], ''.join(cards)))
     return '''    <section id="vocab">
       <h2 class="section-title"><span class="num">1</span> 词汇卡片 · Wortschatzkarten <span class="src src-lg">%s</span></h2>
       <p class="zh-hint">点击卡片翻转看中文，点右下 ▶ 看例句。读名词请带冠词，说动词请带支配格。</p>
       <div class="person-tabs">%s</div>%s
+      <div class="kw-tools"><button class="btn ghost" onclick="toggleBox('e1Table')">📋 展开全表（48 词 · 投影 / 打印用）</button></div>
+      <div id="e1Table" style="display:none"><table class="vocab-table">%s</table></div>
     </section>
-''' % (h(d['vocabGroups'][0].get('src', '')), ''.join(tabs), ''.join(panels))
+''' % (h(d['vocabGroups'][0].get('src', '')), ''.join(tabs), ''.join(panels), ''.join(e1rows))
+
+def sec_vocab2(d):
+    v = d['vocabGroupsE2']
+    tabs, panels, rows = [], [], []
+    for i, grp in enumerate(v['groups']):
+        a = ' active' if i == 0 else ''
+        tabs.append('<button class="person-btn%s" onclick="switchVocabTab2(\'%s\')">%s</button>' % (a, grp['id'], h(grp['label'])))
+        cards = []
+        for wd in grp['words']:
+            ex = wd.get('ex', '')
+            detail = ('<button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab(\'%s\',\'%s\',\'%s\')">▶</button>'
+                      % (esc_attr(wd['w']), esc_attr(wd['cn']), esc_attr(ex))) if ex else ''
+            cards.append('<div class="vc-card" onclick="flipCard(this)"><div class="vc-inner">'
+                         '<div class="vc-front">%s</div><div class="vc-back">%s</div></div>%s</div>'
+                         % (h(wd['w']), h(wd['cn']), detail))
+            rows.append('<tr><td class="vt-de">%s</td><td class="vt-cn">%s</td></tr>'
+                        % (h(wd['w']), h(wd['cn'])))
+        panels.append('<div class="person-content%s" id="vc2-%s"><div class="vocab-grid">%s</div></div>'
+                      % (a, grp['id'], ''.join(cards)))
+    return '''    <section id="vocab2">
+      <h2 class="section-title"><span class="num">2</span> 📗 Entdecken 2 · 词汇表 <span class="src src-lg">%s</span></h2>
+      <p class="zh-hint">%s</p>
+      <div class="person-tabs">%s</div>%s
+      <div class="kw-tools">
+        <button class="btn" onclick="toggleBox('e2Table')">📋 展开全表（投影 / 打印用）</button>
+        <span class="zh-hint" style="margin-left:8px">共 %d 词 · 取自教材 S.212 词汇表</span>
+      </div>
+      <div id="e2Table" style="display:none"><table class="vocab-table">%s</table></div>
+    </section>
+''' % (h(v['src']), h(v['instruction']), ''.join(tabs), ''.join(panels),
+       sum(len(g['words']) for g in v['groups']), ''.join(rows))
 
 def sec_blitz(d):
     cards = ''.join(
@@ -174,7 +210,7 @@ def sec_blitz(d):
         '<div class="bz-de">%s</div></div>' % (h(b['cn']), h(b['hint']), h(b['de']))
         for b in d['blitz'])
     return '''    <section id="blitz">
-      <h2 class="section-title"><span class="num">2</span> ⚡ Blitzrunde · 抢答热身 <span class="src src-lg">%s</span></h2>
+      <h2 class="section-title"><span class="num">3</span> ⚡ Blitzrunde · 抢答热身 <span class="src src-lg">%s</span></h2>
       <p class="zh-hint">老师念中文，学生抢答德语，先说出正确形式（含冠词/支配格）的小组得 1 分。点击卡片揭示答案。</p>
       <div class="timer-bar">
         <span class="timer" id="blitzTimer">30</span>
@@ -202,7 +238,7 @@ def sec_connect(d):
         <div class="connect-score">匹配：<span id="cg-cnt-%d">0</span> / %d</div>
       </div>''' % (h(cg['title']), h(cg.get('src', '')), left, right, gi, len(cg['pairs'])))
     return '''    <section id="connect">
-      <h2 class="section-title"><span class="num">3</span> 🔗 连线配对 · Vernetzen</h2>
+      <h2 class="section-title"><span class="num">4</span> 🔗 连线配对 · Vernetzen</h2>
       <p class="zh-hint">配对成功变绿；点错会有红闪，可重试。四组全部完成后可让学生朗读整组词。</p>
 %s
     </section>
@@ -236,7 +272,7 @@ def sec_kreuzwort(d, cw):
         (pos_clues if dr == 'H' else neg_clues).append(item)
     bank = ''.join('<span class="bank-chip" onclick="bankClick(this)">%s</span>' % h(w) for w in d['kreuzwort']['wordbank'])
     return '''    <section id="kreuzwort">
-      <h2 class="section-title"><span class="num">4</span> 🧩 %s <span class="src src-lg">%s</span></h2>
+      <h2 class="section-title"><span class="num">5</span> 🧩 %s <span class="src src-lg">%s</span></h2>
       <p class="zh-hint">%s</p>
       <div class="kw-tools">
         <button class="btn" onclick="kwCheck()">✓ 检查全部</button>
@@ -277,7 +313,7 @@ def sec_satz(d):
         </div>
       </div>''' % (h(c['n']), h(c['clue']), h(c.get('src', '')), h(c['zh']), i, esc_attr(c['answer']), esc_attr('|'.join(alts)), i, i, i, i))
     return '''    <section id="satz">
-      <h2 class="section-title"><span class="num">5</span> ✍️ Satzergänzung · 句子填空 <span class="src src-lg">教材 S.203–204 · Ü2 a–o</span></h2>
+      <h2 class="section-title"><span class="num">6</span> ✍️ Satzergänzung · 句子填空 <span class="src src-lg">教材 S.203–204 · Ü2 a–o</span></h2>
       <p class="zh-hint">输入答案后按回车或点 ✓。大小写、变音符号（ä = ae）不敏感；同义答案也算对。</p>
       <div class="kw-tools">
         <button class="btn ghost" onclick="showAllSatz()">👁 显示全部答案</button>
@@ -299,7 +335,7 @@ def sec_hochschule(d):
     bank = ''.join('<span class="bank-chip" onclick="bankFill(this)">%s</span>' % h(w) for w in hs['bank'])
     logos = ' '.join('<span class="logo-chip">🏛️ %s</span>' % h(l) for l in hs['logos'])
     return '''    <section id="hochschule">
-      <h2 class="section-title"><span class="num">6</span> 🏛️ %s <span class="src src-lg">%s</span></h2>
+      <h2 class="section-title"><span class="num">7</span> 🏛️ %s <span class="src src-lg">%s</span></h2>
       <p class="zh-hint">%s</p>
       <div class="bank-box"><strong>Logos：</strong>%s</div>
       %s
@@ -320,7 +356,7 @@ def sec_mindmap(d):
         '<div class="mm-box" data-cat="%s" onclick="mmDrop(this)"><div class="mm-head">%s %s</div><div class="mm-items"></div></div>'
         % (c['id'], c['icon'], h(c['label'])) for c in mm['cats'])
     return '''    <section id="mindmap">
-      <h2 class="section-title"><span class="num">7</span> 🗺️ %s <span class="src src-lg">%s</span></h2>
+      <h2 class="section-title"><span class="num">8</span> 🗺️ %s <span class="src src-lg">%s</span></h2>
       <p class="zh-hint">%s</p>
       <div class="mm-pool" id="mmPool">%s</div>
       <div class="mm-board">%s</div>
@@ -355,7 +391,7 @@ def sec_satzbau(d):
         </div>
       </div>''' % (i + 1, h(s['zh']), h(s.get('src', '')), h(s['pattern']), i, chips, i, i, i, i, i, i))
     return '''    <section id="satzbau">
-      <h2 class="section-title"><span class="num">8</span> 🔤 Satzbau · 句型工坊 <span class="src src-lg">S.200 · Ü9 配套句型</span></h2>
+      <h2 class="section-title"><span class="num">9</span> 🔤 Satzbau · 句型工坊 <span class="src src-lg">S.200 · Ü9 配套句型</span></h2>
       <p class="zh-hint">点词块按正确语序排成德语句子；点已排的词块可撤回。语序错要说出「错在哪」。</p>
 %s
     </section>
@@ -372,7 +408,7 @@ def sec_uebersetzen(d):
           </div>
         </div>''' % (i + 1, h(s.get('src', '')), h(s['zh']), h(s['tip']), i + 1, h(s.get('src', '')), h(s['de'])))
     return '''    <section id="uebersetzen">
-      <h2 class="section-title"><span class="num">9</span> 🎯 %s <span class="src src-lg">%s</span></h2>
+      <h2 class="section-title"><span class="num">10</span> 🎯 %s <span class="src src-lg">%s</span></h2>
       <p class="zh-hint">先自己写，再点卡片核对参考译文。译法不唯一，句型正确、意义完整即算对。</p>
       <div class="translation-grid">%s</div>
       <div class="kw-tools"><button class="btn" onclick="toggleBox('fullDe')">👁 整段参考译文</button></div>
@@ -385,7 +421,7 @@ def sec_spiele(d):
     games = ''.join('<div class="game-card"><div class="game-name">%s <span class="game-time">%s</span></div><p>%s</p></div>'
                     % (h(g['name']), h(g['time']), h(g['desc'])) for g in d['klassenspiele'])
     return '''    <section id="spiele">
-      <h2 class="section-title"><span class="num">10</span> 🏆 课堂游戏 &amp; 计分板</h2>
+      <h2 class="section-title"><span class="num">11</span> 🏆 课堂游戏 &amp; 计分板</h2>
       <div class="scoreboard">
         <div class="team"><div class="team-name">Team A</div><div class="team-score" id="scoreA">0</div>
           <div class="team-btns"><button class="btn" onclick="addScore('A',1)">+1</button><button class="btn ghost" onclick="addScore('A',-1)">−1</button></div></div>
@@ -401,6 +437,13 @@ def sec_spiele(d):
 
 # ---------------------------------------------------------------- assemble
 EXTRA_CSS = '''
+  /* 词汇全表（S.201 / S.212，投影 / 打印用） */
+  .vocab-table { width: 100%; border-collapse: collapse; margin-top: 10px; background: #fff; }
+  .vocab-table td { border-bottom: 1px solid #eef0f2; padding: 7px 10px; vertical-align: top; font-size: 15px; }
+  .vocab-table .vt-de { color: #111; font-weight: 600; white-space: nowrap; width: 30%%; }
+  .vocab-table .vt-cn { color: #444; }
+  .vocab-table .vt-ex { color: #777; font-style: italic; }
+  .vocab-table .src { margin: 0; }
   /* 出处标注（每道题后标课本出处，便于学生快速定位） */
   .src {
     display: inline-block; font-size: 11.5px; line-height: 1.5; color: #7a808a;
@@ -480,6 +523,7 @@ EXTRA_CSS = '''
     .kw-zh, .tc-tip, .zh-hint { font-size: 16px; }
     .kw-cell input, .kw-black { width: 34px; height: 34px; font-size: 19px; }
     .nav-links button { font-size: 16px; padding: 8px 15px; }
+    .vocab-table td { font-size: 19px; }
     .src { font-size: 14px; padding: 2px 8px; }
     .src-lg { font-size: 16px; padding: 3px 11px; }
   }
@@ -495,6 +539,8 @@ EXTRA_CSS = '''
     .kw-list { font-size: 19px; }
     .kw-cell input, .kw-black { width: 42px; height: 42px; font-size: 24px; }
     .nav-links button { font-size: 18px; padding: 10px 18px; }
+    .vocab-table td { font-size: 23px; }
+    .top-nav { max-width: 2100px; }
     .src { font-size: 17px; padding: 3px 10px; }
     .src-lg { font-size: 19px; padding: 4px 13px; }
   }
@@ -630,9 +676,15 @@ EXTRA_JS = '''
 let selLeft = null, selRight = null;
 function flipCard(el){ el.classList.toggle('flipped'); }
 function switchVocabTab(id){
-  document.querySelectorAll('.person-content').forEach(function(p){ p.classList.remove('active'); });
+  document.querySelectorAll('#vocab > .person-content').forEach(function(p){ p.classList.remove('active'); });
   document.getElementById('vc-'+id).classList.add('active');
-  document.querySelectorAll('#vocab .person-btn').forEach(function(b){ b.classList.remove('active'); });
+  document.querySelectorAll('#vocab > .person-tabs .person-btn').forEach(function(b){ b.classList.remove('active'); });
+  event.currentTarget.classList.add('active');
+}
+function switchVocabTab2(id){
+  document.querySelectorAll('#vocab2 > .person-content').forEach(function(p){ p.classList.remove('active'); });
+  document.getElementById('vc2-'+id).classList.add('active');
+  document.querySelectorAll('#vocab2 > .person-tabs .person-btn').forEach(function(b){ b.classList.remove('active'); });
   event.currentTarget.classList.add('active');
 }
 function showVocab(w, cn, ex){
@@ -905,7 +957,7 @@ def main():
     css = css.replace('</style>', EXTRA_CSS + '</style>')
 
     # nav
-    secs = [('home', '首页'), ('vocab', '词汇卡片'), ('blitz', '⚡抢答'), ('connect', '🔗连线'),
+    secs = [('home', '首页'), ('vocab', 'E1词汇'), ('vocab2', '📗E2词汇'), ('blitz', '⚡抢答'), ('connect', '🔗连线'),
             ('kreuzwort', '🧩填字'), ('satz', '✍️填空'), ('hochschule', '🏛️高校类型'),
             ('mindmap', '🗺️导图'), ('satzbau', '🔤句型'), ('uebersetzen', '🎯翻译'), ('spiele', '🏆游戏')]
     nav = '<nav><div class="top-nav"><div class="logo" style="cursor:pointer" onclick="switchSection(\'home\')">' \
@@ -915,7 +967,7 @@ def main():
     nav += '</div><button class="hamburger" onclick="toggleNav()">☰</button></div>' \
            '<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div></nav>'
 
-    body = (sec_home(d) + sec_vocab(d) + sec_blitz(d) + sec_connect(d) + sec_kreuzwort(d, cw) +
+    body = (sec_home(d) + sec_vocab(d) + sec_vocab2(d) + sec_blitz(d) + sec_connect(d) + sec_kreuzwort(d, cw) +
             sec_satz(d) + sec_hochschule(d) + sec_mindmap(d) + sec_satzbau(d) + sec_uebersetzen(d) + sec_spiele(d))
 
     kw_entries = [{'word': w, 'r': r, 'c': c, 'dir': dr} for (w, r, c, dr) in entries]

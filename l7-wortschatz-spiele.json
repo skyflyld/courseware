@@ -3,7 +3,7 @@
     "lektion": 7,
     "title": "Studium, Schule & Wortschatz · 课堂互动训练",
     "subtitle": "词汇 · 十字填词 · 句子填空 · 翻译擂台 · 课堂游戏",
-    "source": "教材 Lektion 7「Start in die Zukunft!」S.200 / S.202–203 Übungen",
+    "source": "教材 Lektion 7「Start in die Zukunft!」S.200 / S.202–204 Übungen · 词汇表 S.201（Entdecken 1）+ S.212（Entdecken 2）",
     "objectives": [
       "记住并主动运用本单元 48 个核心词汇（学校体系 / 高校类型 / 学业与考试 / 动词搭配）",
       "掌握「学习与研究」主题词汇网：Hochschultypen, Lehrveranstaltungen, Prüfungen und Abschlüsse",
@@ -21,6 +21,11 @@
         "5 min",
         "词汇卡片 Wortschatzkarten",
         "48 张翻转卡，学生点开例句朗读；★标注高频词"
+      ],
+      [
+        "弹性",
+        "词汇表 E2 · S.212（弹性）",
+        "Entdecken 2 生词 57 个：翻转卡速览 / 投影全表带读；视课时取舍，不计入 45 分钟核心"
       ],
       [
         "5 min",
@@ -130,7 +135,7 @@
           "ex": "Die Grundschule gibt den Eltern eine Empfehlung."
         }
       ],
-      "src": "L7 词汇表 Vokabeln"
+      "src": "教材 S.201 · 词汇表（Entdecken 1）"
     },
     {
       "id": "G2",
@@ -197,7 +202,7 @@
           "ex": "Der richtige Zeitpunkt für die Entscheidung ist das Ende der Grundschule."
         }
       ],
-      "src": "L7 词汇表 Vokabeln"
+      "src": "教材 S.201 · 词汇表（Entdecken 1）"
     },
     {
       "id": "G3",
@@ -264,7 +269,7 @@
           "ex": "Die Situation der Familie spielt bei der Wahl eine wichtige Rolle."
         }
       ],
-      "src": "L7 词汇表 Vokabeln"
+      "src": "教材 S.201 · 词汇表（Entdecken 1）"
     },
     {
       "id": "G4",
@@ -331,7 +336,7 @@
           "ex": "Psychologische Studien zeigen, wie wichtig der Schulweg ist."
         }
       ],
-      "src": "L7 词汇表 Vokabeln"
+      "src": "教材 S.201 · 词汇表（Entdecken 1）"
     }
   ],
   "blitz": [
@@ -339,73 +344,73 @@
       "cn": "推荐（信）",
       "de": "die Empfehlung",
       "hint": "die ___ (-en)",
-      "src": "L7 词汇表"
+      "src": "教材 S.201 · 词汇表"
     },
     {
       "cn": "愿望",
       "de": "der Wunsch",
       "hint": "der ___ (¨-e)",
-      "src": "L7 词汇表"
+      "src": "教材 S.201 · 词汇表"
     },
     {
       "cn": "选择，挑选",
       "de": "die Wahl",
       "hint": "die ___ (nur Sg)",
-      "src": "L7 词汇表"
+      "src": "教材 S.201 · 词汇表"
     },
     {
       "cn": "其他选项",
       "de": "die Alternative",
       "hint": "die ___ (-n)",
-      "src": "L7 词汇表"
+      "src": "教材 S.201 · 词汇表"
     },
     {
       "cn": "前提，先决条件",
       "de": "die Voraussetzung",
       "hint": "die ___ (-en)",
-      "src": "L7 词汇表"
+      "src": "教材 S.201 · 词汇表"
     },
     {
       "cn": "全日制学校",
       "de": "die Ganztagsschule",
       "hint": "die ___ (-n)",
-      "src": "L7 词汇表"
+      "src": "教材 S.201 · 词汇表"
     },
     {
       "cn": "主要科目 / 主修学科",
       "de": "das Hauptfach",
       "hint": "das ___ (¨-er)",
-      "src": "L7 词汇表"
+      "src": "教材 S.201 · 词汇表"
     },
     {
       "cn": "尽可能好的",
       "de": "bestmöglich",
       "hint": "形容词",
-      "src": "L7 词汇表"
+      "src": "教材 S.201 · 词汇表"
     },
     {
       "cn": "提交，交给",
       "de": "abgeben",
       "hint": "可分动词 ___ + A",
-      "src": "L7 词汇表"
+      "src": "教材 S.201 · 词汇表"
     },
     {
       "cn": "从事于，忙于",
       "de": "sich beschäftigen mit",
       "hint": "反身动词 + mit Dat.",
-      "src": "L7 词汇表"
+      "src": "教材 S.201 · 词汇表"
     },
     {
       "cn": "想起，回忆起",
       "de": "sich erinnern an",
       "hint": "反身动词 + an Akk.",
-      "src": "L7 词汇表"
+      "src": "教材 S.201 · 词汇表"
     },
     {
       "cn": "心理的",
       "de": "psychologisch",
       "hint": "形容词",
-      "src": "L7 词汇表"
+      "src": "教材 S.201 · 词汇表"
     }
   ],
   "connectGrids": [
@@ -559,7 +564,7 @@
           "提交，交出"
         ]
       ],
-      "src": "L7 词汇表"
+      "src": "教材 S.201 · 词汇表"
     }
   ],
   "kreuzwort": {
@@ -999,5 +1004,282 @@
       "desc": "每人用「3 个新词 + 1 个句型」说一句话，计时器 30 秒。（点击下方计时器开始）",
       "time": "2 min"
     }
-  ]
+  ],
+  "vocabGroupsE2": {
+    "title": "Entdecken 2 · 词汇表",
+    "src": "教材 S.212 · 词汇表（Entdecken 2）",
+    "instruction": "点击卡片翻转看中文，点右下 ▶ 看例句。读名词请带冠词，说动词请带支配格；带 +A / +D / +mit Dat 的是动词支配格，答题时必须说对。",
+    "groups": [
+      {
+        "id": "E1",
+        "label": "📘 学业与学位 · Studium & Abschlüsse",
+        "src": "教材 S.212 · 词汇表",
+        "words": [
+          {
+            "w": "der Schwerpunkt (-e)",
+            "cn": "重点，要点"
+          },
+          {
+            "w": "die Anwendung (-en)",
+            "cn": "使用，应用"
+          },
+          {
+            "w": "der Vertreter (-)",
+            "cn": "代表，替代人"
+          },
+          {
+            "w": "dual",
+            "cn": "二元的"
+          },
+          {
+            "w": "der Bachelor (nur Sg)",
+            "cn": "学士学位"
+          },
+          {
+            "w": "der Master (nur Sg)",
+            "cn": "硕士学位"
+          },
+          {
+            "w": "die Klausur (-en)",
+            "cn": "闭卷考试"
+          },
+          {
+            "w": "die Hausarbeit (-en)",
+            "cn": "家庭作业"
+          },
+          {
+            "w": "das Stipendium (...dien)",
+            "cn": "奖学金"
+          },
+          {
+            "w": "das Nebenfach (¨-er)",
+            "cn": "选修学科，选修课程"
+          },
+          {
+            "w": "die Akademie (-n)",
+            "cn": "科学院，研究院；（高等）专科院校"
+          }
+        ]
+      },
+      {
+        "id": "E2",
+        "label": "🎪 校园活动与仪式 · Campus & Feiern",
+        "src": "教材 S.212 · 词汇表",
+        "words": [
+          {
+            "w": "das Sportfest (-e)",
+            "cn": "运动会"
+          },
+          {
+            "w": "der Zuschauer (-)",
+            "cn": "观众；旁观者"
+          },
+          {
+            "w": "das Schild (-er)",
+            "cn": "牌子；标签，标牌"
+          },
+          {
+            "w": "markieren (+A)",
+            "cn": "强调，使突出；在……上做记号，（用记号）把……标出"
+          },
+          {
+            "w": "sich warm/laufen",
+            "cn": "热身，热身运动"
+          },
+          {
+            "w": "der Rektor (-en)",
+            "cn": "大学校长"
+          },
+          {
+            "w": "auf/fordern (+A +zu Dat)",
+            "cn": "要求，敦促"
+          },
+          {
+            "w": "raten (+D +A / zu Dat)",
+            "cn": "给……出主意，劝告，建议"
+          },
+          {
+            "w": "der Sieg (-e)",
+            "cn": "胜利，战胜"
+          },
+          {
+            "w": "klatschen",
+            "cn": "拍手，鼓掌"
+          }
+        ]
+      },
+      {
+        "id": "E3",
+        "label": "🔬 学科与职业 · Fächer & Berufe",
+        "src": "教材 S.212 · 词汇表",
+        "words": [
+          {
+            "w": "die Informatik (nur Sg)",
+            "cn": "信息学，计算机科学"
+          },
+          {
+            "w": "die Betriebswirtschaft / -lehre (nur Sg)",
+            "cn": "企业管理学，企业经济学，工商管理"
+          },
+          {
+            "w": "der Journalist (-en)",
+            "cn": "记者，新闻工作者"
+          },
+          {
+            "w": "die Präsentation (-en)",
+            "cn": "展示，表演"
+          },
+          {
+            "w": "der Rekord (-e)",
+            "cn": "纪录，成绩"
+          },
+          {
+            "w": "brechen (+A)",
+            "cn": "打碎，压断，折断；打破（纪录）"
+          },
+          {
+            "w": "auf/stellen (+A)",
+            "cn": "创造（新纪录）；搭起，架起；布置，排列"
+          }
+        ]
+      },
+      {
+        "id": "E4",
+        "label": "⏰ 日常与职场 · Alltag & Arbeitswelt",
+        "src": "教材 S.212 · 词汇表",
+        "words": [
+          {
+            "w": "geordnet",
+            "cn": "整齐的，有序的"
+          },
+          {
+            "w": "der Tagesablauf (¨-e)",
+            "cn": "日程表"
+          },
+          {
+            "w": "um/gehen (+mit Dat)",
+            "cn": "（以某种方式）对待，对付"
+          },
+          {
+            "w": "die Überstunde (-n)",
+            "cn": "加班"
+          },
+          {
+            "w": "sich zurecht/finden",
+            "cn": "能适应，熟悉环境"
+          },
+          {
+            "w": "sich bewerben (+um Akk)",
+            "cn": "（通过申请）谋求（职位）"
+          },
+          {
+            "w": "betreuen (+A)",
+            "cn": "照料，照管；关怀"
+          }
+        ]
+      },
+      {
+        "id": "E5",
+        "label": "🤝 团队与能力 · Team & Fähigkeiten",
+        "src": "教材 S.212 · 词汇表",
+        "words": [
+          {
+            "w": "der/das Event (-s)",
+            "cn": "（特别的）事件，活动"
+          },
+          {
+            "w": "die Fähigkeit (-en)",
+            "cn": "能力，才干"
+          },
+          {
+            "w": "der Geist (nur Sg)",
+            "cn": "思想，才智，头脑"
+          },
+          {
+            "w": "fit",
+            "cn": "精力充沛的"
+          },
+          {
+            "w": "das Team (-s)",
+            "cn": "团队，小组"
+          },
+          {
+            "w": "das Mitglied (-er)",
+            "cn": "成员"
+          },
+          {
+            "w": "absolvieren (+A)",
+            "cn": "毕业，结业，修完；完成"
+          },
+          {
+            "w": "der Kaufmann (...leute)",
+            "cn": "商人"
+          },
+          {
+            "w": "das Management (nur Sg)",
+            "cn": "（企业的）管理，经营"
+          }
+        ]
+      },
+      {
+        "id": "E6",
+        "label": "🌍 多元与性格 · Vielfalt & Charakter",
+        "src": "教材 S.212 · 词汇表",
+        "words": [
+          {
+            "w": "-wöchig",
+            "cn": "（形容词后缀）……周的，……星期的"
+          },
+          {
+            "w": "multikulturell",
+            "cn": "多元文化的"
+          },
+          {
+            "w": "die Abteilung (-en)",
+            "cn": "部门，科，室，处，组"
+          },
+          {
+            "w": "Australien",
+            "cn": "澳大利亚"
+          },
+          {
+            "w": "die Kenntnis (-se)",
+            "cn": "知识，认识"
+          },
+          {
+            "w": "der Pfleger (-)",
+            "cn": "（医院的）男护士，护理员"
+          },
+          {
+            "w": "der Aufbau (nur Sg)",
+            "cn": "结构，构造，布局"
+          },
+          {
+            "w": "die Stärke (-n)",
+            "cn": "强项，特长，优点"
+          },
+          {
+            "w": "geduldig",
+            "cn": "有耐心的"
+          },
+          {
+            "w": "kontaktfreudig",
+            "cn": "喜欢交际的，合群的"
+          },
+          {
+            "w": "das Bedürfnis (-se)",
+            "cn": "需求，需要"
+          },
+          {
+            "w": "die Dankbarkeit (nur Sg)",
+            "cn": "谢意"
+          },
+          {
+            "w": "die Zufriedenheit (nur Sg)",
+            "cn": "满意"
+          }
+        ]
+      }
+    ]
+  }
 }

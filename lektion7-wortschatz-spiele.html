@@ -27,11 +27,11 @@
     display: flex; align-items: center;
     padding: 0 16px; height: 48px; gap: 12px;
   }
-  .logo { display: flex; align-items: center; gap: 6px; font-weight: 600; font-size: 15px; color: #1d1d1f; flex-shrink: 0; }
+  .logo { display: flex; align-items: center; gap: 4px; font-weight: 600; font-size: 15px; color: #1d1d1f; flex-shrink: 0; }
   .logo-icon { font-size: 20px; }
   .nav-links { display: flex; gap: 4px; overflow-x: auto; flex: 1; }
   .nav-links button {
-    background: none; border: none; padding: 8px 14px;
+    background: none; border: none; padding: 8px 12px;
     font-size: clamp(12px, 1.6vw, 16px); color: #666; cursor: pointer; border-radius: 6px;
     white-space: nowrap; transition: all .15s;
   }
@@ -57,26 +57,26 @@
   .hero {
     text-align: center; padding: 32px 16px 24px;
     background: linear-gradient(135deg, #e8f0fe 0%, #f5f5f7 100%);
-    border-radius: 12px; margin-bottom: 20px;
+    border-radius: 12px; margin-bottom: 16px;
   }
-  .hero h1 { font-size: clamp(22px, 3.5vw, 36px); font-weight: 700; margin: 0 0 6px; color: #1d1d1f; }
+  .hero h1 { font-size: clamp(22px, 3.5vw, 36px); font-weight: 700; margin: 0 0 4px; color: #1d1d1f; }
   .hero .sub { font-size: clamp(14px, 2vw, 20px); color: #666; margin: 0 0 4px; }
   .hero .meta { font-size: 13px; color: #999; margin: 0; }
 
-  .home-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+  .home-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px; }
   @media (max-width: 480px) { .home-grid { grid-template-columns: 1fr; } }
 
   .text-card {
-    background: #fff; border-radius: 10px; padding: 18px;
+    background: #fff; border-radius: 10px; padding: 16px;
     box-shadow: 0 1px 3px rgba(0,0,0,.06); transition: box-shadow .2s;
   }
   .text-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,.1); }
-  .text-card h3 { font-size: clamp(15px, 2.5vw, 24px); margin: 0 0 6px; color: #1d1d1f; }
+  .text-card h3 { font-size: clamp(15px, 2.5vw, 24px); margin: 0 0 4px; color: #1d1d1f; }
   .text-card p { font-size: 13px; margin: 0; color: #999; }
 
   .section-title {
     font-size: clamp(17px, 2.8vw, 28px); font-weight: 700; margin: 24px 0 12px;
-    padding-bottom: 6px; border-bottom: 2px solid #1a73e8;
+    padding-bottom: 4px; border-bottom: 2px solid #1a73e8;
     display: flex; align-items: center; gap: 8px;
   }
   .section-title .num {
@@ -86,9 +86,9 @@
     font-size: 13px; font-weight: 600; flex-shrink: 0;
   }
 
-  .obj-box { background: #f8f9fa; border-radius: 8px; padding: 14px 18px; font-size: 14px; }
+  .obj-box { background: #f8f9fa; border-radius: 8px; padding: 12px 16px; font-size: 14px; }
   .obj-box strong { color: #333; }
-  .obj-box ul { margin: 6px 0 0 16px; padding: 0; line-height: 1.7; color: #555; }
+  .obj-box ul { margin: 4px 0 0 16px; padding: 0; line-height: 1.7; color: #555; }
 
   /* ===== Text Section ===== */
   .text-card .zh.sub { font-size: 14px; margin: -4px 0 8px; color: #666; }
@@ -102,14 +102,14 @@
   .v-word:hover { background: #e8f0fe; }
   .highlight-box {
     background: #fff8e1; border-left: 3px solid #fbbc04;
-    padding: 10px 14px; border-radius: 0 6px 6px 0;
+    padding: 8px 12px; border-radius: 0 6px 6px 0;
     margin: 12px 0 0; font-size: 14px; color: #555;
   }
 
   /* ===== Text Pagination ===== */
   .text-pager-nav {
     display: flex; align-items: center; justify-content: center;
-    gap: 16px; margin: 14px 0;
+    gap: 16px; margin: 12px 0;
   }
   .tp-btn {
     width: 36px; height: 36px; border-radius: 50%;
@@ -123,9 +123,9 @@
   .tp-info { font-size: 14px; color: #666; min-width: 50px; text-align: center; }
 
   /* ===== Person Tabs (Vocab) ===== */
-  .person-tabs { display: flex; gap: 4px; margin: 0 0 10px; }
+  .person-tabs { display: flex; gap: 4px; margin: 0 0 8px; }
   .person-btn {
-    padding: 6px 16px; border: 1px solid #ddd; border-radius: 6px;
+    padding: 4px 16px; border: 1px solid #ddd; border-radius: 6px;
     background: #fff; font-size: 13px; cursor: pointer; transition: all .15s;
   }
   .person-btn.active { background: #1a73e8; color: #fff; border-color: #1a73e8; font-weight: 500; }
@@ -143,7 +143,7 @@
     --fs-word: 20px;   /* 德语词 / 德语例句（要投影） */
     --fs-h3: 26px;     /* 章节标题 */
     --fs-h1: 42px;     /* 主标题 */
-    --sp-1: 6px; --sp-2: 10px; --sp-3: 14px; --sp-4: 20px; --sp-5: 28px;
+    --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 24px; --sp-6: 32px;
   }
 
   /* ===== Vocab Flip Cards ===== */
@@ -174,8 +174,8 @@
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
-    gap: 2px;
-    padding: 12px 10px;
+    gap: 4px;
+    padding: 12px 8px;
     border-radius: 10px;
     border: 1px solid #e8e8ed;
     font-size: var(--fs-word); line-height: 1.4; text-align: center;
@@ -213,7 +213,7 @@
   /* ===== Vocab Grid ===== */
   /* 列宽下限 = 最长词条（含括号标注）能站住一行 → 12 词正好两行，末行不留孤卡 */
   .vocab-grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px;
   }
 
   /* ===== Vocab Overlay Panel ===== */
@@ -226,7 +226,7 @@
   .vocab-panel {
     display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 201;
     background: #fff; border-radius: 16px 16px 0 0;
-    padding: 20px; max-height: 50vh; overflow-y: auto;
+    padding: 16px; max-height: 50vh; overflow-y: auto;
     box-shadow: 0 -4px 20px rgba(0,0,0,.12);
     animation: slideUp .25s ease;
   }
@@ -234,11 +234,11 @@
 
   @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
 
-  .vocab-panel-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+  .vocab-panel-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
   .vp-word { font-size: 20px; font-weight: 700; color: #1d1d1f; }
   .vp-close { background: none; border: none; font-size: 22px; cursor: pointer; color: #999; padding: 0 4px; }
-  .vp-zh { font-size: 16px; color: #555; margin-bottom: 10px; }
-  .vp-ex { font-size: 14px; color: #777; line-height: 1.6; padding: 10px 12px; background: #f8f9fa; border-radius: 8px; }
+  .vp-zh { font-size: 16px; color: #555; margin-bottom: 8px; }
+  .vp-ex { font-size: 14px; color: #777; line-height: 1.6; padding: 8px 12px; background: #f8f9fa; border-radius: 8px; }
 
   @media (min-width: 600px) {
     .vocab-panel {
@@ -254,40 +254,40 @@
   .grammar-table-wrapper { overflow-x: auto; margin: 12px 0; }
   .grammar-table { width: 100%; border-collapse: collapse; font-size: clamp(12px, 1.8vw, 18px); }
   .grammar-table th, .grammar-table td {
-    border: 1px solid #e8e8ed; padding: 10px 12px; text-align: left; vertical-align: top;
+    border: 1px solid #e8e8ed; padding: 8px 12px; text-align: left; vertical-align: top;
   }
   .grammar-table th { background: #f0f4ff; font-weight: 600; color: #333; white-space: nowrap; }
   .grammar-table td strong { color: #1a73e8; }
   .grammar-table tr:nth-child(even) td { background: #fafbfc; }
   .grammar-examples { margin-top: 16px; }
   .grammar-examples h3 { font-size: 16px; margin: 0 0 8px; }
-  .grammar-example { padding: 10px 14px; margin-bottom: 8px; background: #fff; border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,.06); }
+  .grammar-example { padding: 8px 12px; margin-bottom: 8px; background: #fff; border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,.06); }
   .grammar-example .de { font-size: 15px; color: #333; }
-  .grammar-example .zh { font-size: 13px; color: #888; margin-top: 2px; }
+  .grammar-example .zh { font-size: 13px; color: #888; margin-top: 4px; }
 
   /* ===== Quiz ===== */
-  .quiz-card { background: #fff; border-radius: 10px; padding: 18px; margin-bottom: 14px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
-  .q-text { font-size: clamp(14px, 2.2vw, 20px); font-weight: 500; margin-bottom: 10px; line-height: 1.5; }
-  .options { display: flex; flex-direction: column; gap: 6px; }
+  .quiz-card { background: #fff; border-radius: 10px; padding: 16px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+  .q-text { font-size: clamp(14px, 2.2vw, 20px); font-weight: 500; margin-bottom: 8px; line-height: 1.5; }
+  .options { display: flex; flex-direction: column; gap: 4px; }
   .opt {
-    padding: 10px 14px; border: 1px solid #e8e8ed; border-radius: 6px;
+    padding: 8px 12px; border: 1px solid #e8e8ed; border-radius: 6px;
     cursor: pointer; font-size: clamp(13px, 2vw, 18px); transition: all .15s;
   }
   .opt:hover { border-color: #1a73e8; }
   .opt.correct { background: #e8f8e8; border-color: #27ae60; color: #1e7e34; font-weight: 500; }
   .opt.wrong { background: #fdecea; border-color: #e74c3c; color: #c0392b; }
-  .q-answer { display: none; margin-top: 8px; padding: 6px 12px; background: #f0f7ff; border-radius: 6px; font-size: 14px; color: #1a73e8; font-weight: 600; text-align: center; }
+  .q-answer { display: none; margin-top: 8px; padding: 4px 12px; background: #f0f7ff; border-radius: 6px; font-size: 14px; color: #1a73e8; font-weight: 600; text-align: center; }
   .q-answer.show { display: block; }
-  .show-answer-btn { display: block; margin: 6px auto 0; padding: 4px 14px; background: #1a73e8; color: #fff; border: none; border-radius: 6px; font-size: 13px; cursor: pointer; }
+  .show-answer-btn { display: block; margin: 6px auto 0; padding: 4px 12px; background: #1a73e8; color: #fff; border: none; border-radius: 6px; font-size: 13px; cursor: pointer; }
 
   /* ===== Connect Grid ===== */
-  .connect-game { background: #fff; border-radius: 10px; padding: 18px; margin-bottom: 14px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+  .connect-game { background: #fff; border-radius: 10px; padding: 16px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
   .connect-game h3 { font-size: 16px; margin: 0 0 4px; }
   .connect-game .zh { font-size: 13px; color: #888; margin: 0 0 12px; }
   .connect-field { display: flex; gap: 24px; justify-content: center; }
-  .connect-col { display: flex; flex-direction: column; gap: 10px; min-width: 130px; }
+  .connect-col { display: flex; flex-direction: column; gap: 8px; min-width: 130px; }
   .c-item {
-    padding: 10px 14px; border: 1px solid #ddd; border-radius: 8px;
+    padding: 8px 12px; border: 1px solid #ddd; border-radius: 8px;
     text-align: center; cursor: pointer; font-size: clamp(13px, 1.8vw, 18px);
     transition: all .15s; background: #fff;
   }
@@ -297,19 +297,19 @@
   .connect-score { text-align: center; font-size: 14px; color: #666; margin-top: 12px; }
 
   /* ===== Fill-gap ===== */
-  .fill-game { background: #fff; border-radius: 10px; padding: 18px; margin-bottom: 14px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+  .fill-game { background: #fff; border-radius: 10px; padding: 16px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
   .fill-game h3 { font-size: 16px; margin: 0 0 4px; }
   .fill-game .zh { font-size: 13px; color: #888; margin: 0 0 12px; }
-  .fill-item { margin-bottom: 10px; }
+  .fill-item { margin-bottom: 8px; }
   .fill-sentence { font-size: clamp(13px, 2vw, 19px); color: #333; margin-bottom: 4px; line-height: 1.5; }
-  .fill-input-line { display: flex; align-items: center; gap: 6px; }
+  .fill-input-line { display: flex; align-items: center; gap: 4px; }
   .fill-input {
-    flex: 1; padding: 6px 10px; border: 1px solid #ddd; border-radius: 6px;
+    flex: 1; padding: 4px 8px; border: 1px solid #ddd; border-radius: 6px;
     font-size: 14px; outline: none; transition: border .15s;
   }
   .fill-input:focus { border-color: #1a73e8; }
   .fill-check {
-    padding: 6px 10px; border: 1px solid #1a73e8; border-radius: 6px;
+    padding: 4px 8px; border: 1px solid #1a73e8; border-radius: 6px;
     background: #e8f0fe; color: #1a73e8; cursor: pointer; font-size: 14px;
   }
   .fill-result { font-size: 16px; min-width: 20px; text-align: center; }
@@ -317,12 +317,12 @@
   .fill-result.wrong { color: #e74c3c; }
 
   /* ===== Matching Game ===== */
-  .match-game { margin-top: 20px; }
+  .match-game { margin-top: 16px; }
   .match-game h3 { font-size: 16px; margin: 0 0 4px; }
   .match-game .zh { font-size: 13px; color: #888; margin: 0 0 12px; }
   #match-game { display: flex; flex-wrap: wrap; gap: 8px; }
   .match-card {
-    padding: 8px 14px; border: 1px solid #ddd; border-radius: 8px;
+    padding: 8px 12px; border: 1px solid #ddd; border-radius: 8px;
     cursor: pointer; font-size: 14px; transition: all .15s;
     background: #fff; text-align: center; flex: 0 0 auto; min-width: 80px;
   }
@@ -334,7 +334,7 @@
 
   /* ===== Translation Cards ===== */
   .translation-grid {
-    display: flex; flex-direction: column; gap: 10px;
+    display: flex; flex-direction: column; gap: 8px;
   }
   .tc-card {
     background: transparent;
@@ -358,7 +358,7 @@
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     display: flex; flex-direction: column; align-items: stretch; justify-content: center;
-    padding: 14px 16px;
+    padding: 12px 16px;
     border-radius: 10px;
     border: 1px solid #e0e0e0;
     font-size: var(--fs-body); line-height: 1.6;
@@ -397,10 +397,10 @@
     font-size: var(--fs-body); color: #1d1d1f;
   }
   .tc-vocab {
-    margin-top: 6px;
+    margin-top: 4px;
     font-size: 12px; color: #888;
     background: rgba(255,255,255,.7);
-    padding: 3px 8px;
+    padding: 4px 8px;
     border-radius: 4px;
   }
   .tc-card:hover .tc-front {
@@ -413,13 +413,13 @@
     .nav-links.show { display: flex; }
     .hamburger { display: block; }
     .vocab-grid { grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); }
-    .connect-field { gap: 10px; }
+    .connect-field { gap: 8px; }
     .connect-col { min-width: 80px; }
   }
 
   /* 词汇全表（S.201 / S.212，投影 / 打印用） */
-  .vocab-table { width: 100%; border-collapse: collapse; margin-top: 10px; background: #fff; }
-  .vocab-table td { border-bottom: 1px solid #eef0f2; padding: 7px 10px; vertical-align: top; font-size: 15px; }
+  .vocab-table { width: 100%; border-collapse: collapse; margin-top: 8px; background: #fff; }
+  .vocab-table td { border-bottom: 1px solid #eef0f2; padding: 8px 8px; vertical-align: top; font-size: 15px; }
   .vocab-table .vt-de { color: #111; font-weight: 600; white-space: nowrap; width: 30%%; }
   .vocab-table .vt-cn { color: #444; }
   .vocab-table .vt-ex { color: #777; font-style: italic; }
@@ -428,16 +428,16 @@
   .src {
     display: inline-block; font-size: 12.5px; line-height: 1.5; color: #7a808a;
     background: #f4f6f8; border: 1px solid #e1e5ea; border-radius: 4px;
-    padding: 1px 6px; margin: 0 4px; white-space: nowrap; vertical-align: middle; font-weight: 500;
+    padding: 4px 4px; margin: 0 4px; white-space: nowrap; vertical-align: middle; font-weight: 500;
   }
-  .src-lg { font-size: 13.5px; padding: 2px 9px; color: #5c636e; }
+  .src-lg { font-size: 13.5px; padding: 4px 8px; color: #5c636e; }
   .kw-num { font-size: 10px; }
   .tc-num { font-size: 13px; }
-  .btn.tiny { min-height: 26px; padding: 4px 10px; }
+  .btn.tiny { min-height: 26px; padding: 4px 8px; }
   /* 投影模式控制（仅宽屏显示；默认收成小圆钮，悬停/点击展开，避免遮挡正文） */
   .proj-ctl {
     display: none; position: fixed; right: 14px; bottom: 14px; z-index: 150;
-    align-items: center; gap: 6px;
+    align-items: center; gap: 4px;
   }
   .proj-mini {
     width: 42px; height: 42px; border-radius: 999px; border: 1px solid #e1e5ea;
@@ -446,7 +446,7 @@
   }
   .proj-mini:hover { background: #e8f0fe; color: #1a73e8; }
   .proj-body {
-    display: none; align-items: center; gap: 6px; padding: 5px 8px;
+    display: none; align-items: center; gap: 4px; padding: 4px 8px;
     background: rgba(255,255,255,.97); border: 1px solid #e1e5ea; border-radius: 999px;
     box-shadow: 0 4px 14px rgba(0,0,0,.12);
   }
@@ -454,14 +454,14 @@
   .proj-ctl.open .proj-mini { display: none; }
   .proj-body button {
     border: none; background: #f1f3f5; border-radius: 999px; cursor: pointer;
-    font-size: 15px; font-weight: 600; color: #333; padding: 8px 14px; min-height: 34px;
+    font-size: 15px; font-weight: 600; color: #333; padding: 8px 12px; min-height: 34px;
   }
   .proj-body button:hover { background: #e8f0fe; color: #1a73e8; }
   .proj-body .proj-label { font-size: 13px; color: #777; padding: 0 4px; min-width: 76px; text-align: center; }
   @media (min-width: 1100px) { .proj-ctl { display: inline-flex; } body { padding-bottom: 88px; } }
   /* 投影与自适应微调（11 个导航项需要更宽的行、更大的正文衬度） */
   .top-nav { max-width: 1440px; }
-  .nav-links button { padding: 8px 11px; }
+  .nav-links button { padding: 8px 12px; }
   .flow-table { font-size: 15px; }
   .kw-list { font-size: 14px; }
   .kw-zh, .tc-tip, .zh-hint { font-size: 13.5px; }
@@ -502,9 +502,9 @@
   .nav-links.show { max-height: calc(100vh - 48px); overflow-y: auto; }
   /* 中宽度（平板/小笔记本）：导航换行成多行，避免后面的 tab 被滑出视线 */
   @media (max-width: 1240px) and (min-width: 601px) {
-    .top-nav { height: auto; flex-wrap: wrap; padding: 8px 14px; }
+    .top-nav { height: auto; flex-wrap: wrap; padding: 8px 12px; }
     .nav-links { flex-wrap: wrap; overflow: visible; row-gap: 4px; }
-    .nav-links button { padding: 6px 11px; font-size: 14px; }
+    .nav-links button { padding: 4px 12px; font-size: 14px; }
   }
   /* 教学大屏 / 投影仪（≥1500px）：放宽容器 + 放大字号，教室后排可读 */
   @media (min-width: 1500px) {
@@ -518,14 +518,14 @@
     .flow-table { font-size: 19px; }
     .obj-box { font-size: 18px; }
     .obj-box ul { line-height: 1.9; }
-    .home-grid { grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .home-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
     .kw-list { font-size: 16px; }
     .kw-zh, .tc-tip, .zh-hint { font-size: 16px; }
     .kw-cell input, .kw-black { width: 34px; height: 34px; font-size: 19px; }
-    .nav-links button { font-size: 16px; padding: 8px 15px; }
+    .nav-links button { font-size: 16px; padding: 8px 16px; }
     .vocab-table td { font-size: 19px; }
-    .src { font-size: 14px; padding: 2px 8px; }
-    .src-lg { font-size: 16px; padding: 3px 11px; }
+    .src { font-size: 14px; padding: 4px 8px; }
+    .src-lg { font-size: 16px; padding: 4px 12px; }
     .kw-num { font-size: 11px; }
     .kw-table .kw-num { font-size: 12px; }
   }
@@ -540,45 +540,45 @@
     .flow-table { font-size: 21px; }
     .kw-list { font-size: 19px; }
     .kw-cell input, .kw-black { width: 42px; height: 42px; font-size: 24px; }
-    .nav-links button { font-size: 18px; padding: 10px 18px; }
+    .nav-links button { font-size: 18px; padding: 8px 16px; }
     .vocab-table td { font-size: 23px; }
     .top-nav { max-width: 2100px; }
-    .src { font-size: 17px; padding: 3px 10px; }
-    .src-lg { font-size: 19px; padding: 4px 13px; }
+    .src { font-size: 17px; padding: 4px 8px; }
+    .src-lg { font-size: 19px; padding: 4px 12px; }
     .kw-num { font-size: 12px; }
   }
   /* 触屏设备：点击区不小于 42px（手指比鼠标粗） */
   @media (hover: none) {
     .btn, .person-btn, .hamburger { min-height: 42px; }
-    .kw-tools .btn { padding: 8px 14px; }
+    .kw-tools .btn { padding: 8px 12px; }
   }
   .zh-hint { font-size: 14px; color: #888; margin: 0 0 12px; }
   .flow-table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 8px; }
-  .flow-table td { border-bottom: 1px solid #eee; padding: 7px 6px; vertical-align: top; }
+  .flow-table td { border-bottom: 1px solid #eee; padding: 8px 4px; vertical-align: top; }
   .flow-table .fl-t { color: #1a73e8; font-weight: 600; white-space: nowrap; width: 62px; }
-  .btn { padding: 7px 16px; border-radius: 8px; border: none; background: #1a73e8; color: #fff;
+  .btn { white-space: nowrap; padding: 8px 16px; border-radius: 8px; border: none; background: #1a73e8; color: #fff;
          font-size: 14px; cursor: pointer; transition: all .15s; }
   .btn:hover { filter: brightness(1.08); }
   .btn.ghost { background: #fff; color: #1a73e8; border: 1px solid #c9d9f5; }
-  .btn.tiny { padding: 2px 9px; font-size: 12px; margin-left: 6px; }
+  .btn.tiny { padding: 4px 8px; font-size: 12px; margin-left: 4px; }
   /* Blitz */
-  .blitz-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; }
-  .blitz-card { background: #fff; border-radius: 10px; padding: 14px; cursor: pointer;
+  .blitz-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 8px; }
+  .blitz-card { background: #fff; border-radius: 10px; padding: 12px; cursor: pointer;
                 box-shadow: 0 1px 3px rgba(0,0,0,.06); border-left: 4px solid #fbbc04; transition: all .2s; }
   .blitz-card .bz-cn { font-size: clamp(14px, 2vw, 19px); font-weight: 600; }
-  .blitz-card .bz-hint { font-size: 12px; color: #aaa; margin-top: 2px; }
+  .blitz-card .bz-hint { font-size: 12px; color: #aaa; margin-top: 4px; }
   .blitz-card .bz-de { display: none; margin-top: 8px; padding-top: 8px; border-top: 1px dashed #ddd;
                        color: #1a73e8; font-weight: 700; font-size: clamp(14px, 2vw, 19px); }
   .blitz-card.open { border-left-color: #27ae60; background: #f6fdf7; }
   .blitz-card.open .bz-de { display: block; }
-  .timer-bar { display: flex; align-items: center; gap: 10px; margin: 0 0 14px; flex-wrap: wrap; }
+  .timer-bar { display: flex; align-items: center; gap: 8px; margin: 0 0 12px; flex-wrap: wrap; }
   .timer { font-size: 34px; font-weight: 700; color: #1a73e8; min-width: 68px; text-align: center;
-           background: #eef4ff; border-radius: 10px; padding: 2px 10px; font-variant-numeric: tabular-nums; }
+           background: #eef4ff; border-radius: 10px; padding: 4px 8px; font-variant-numeric: tabular-nums; }
   .timer.warn { color: #e74c3c; background: #fdecea; }
   /* Crossword */
-  .kw-tools { display: flex; align-items: center; gap: 10px; margin: 0 0 12px; flex-wrap: wrap; }
+  .kw-tools { display: flex; align-items: center; gap: 8px; margin: 0 0 12px; flex-wrap: wrap; }
   .kw-result { font-size: 14px; font-weight: 600; color: #1a73e8; }
-  .kw-wrap { display: grid; grid-template-columns: minmax(280px, 1fr) minmax(280px, 1fr); gap: 18px; align-items: start; }
+  .kw-wrap { display: grid; grid-template-columns: minmax(280px, 1fr) minmax(280px, 1fr); gap: 16px; align-items: start; }
   .kw-table-wrap { overflow-x: auto; }
   .kw-table { border-collapse: collapse; margin: 0 auto; }
   .kw-table td { padding: 0; }
@@ -601,30 +601,30 @@
      ⚠️ 本块必须留在 CSS 最末，否则被前面同权重的 .vc-detail / .btn.tiny 规则覆盖 */
   @media (hover: none) {
     .btn, .person-btn, .bank-chip, .mm-chip, .c-item { min-height: 34px; }
-    .btn.tiny { min-height: 34px; padding: 6px 12px; font-size: 13px; }
+    .btn.tiny { min-height: 34px; padding: 4px 12px; font-size: 13px; }
     .vc-detail { min-width: 34px; min-height: 34px; font-size: 16px; }
     .kw-cell input { min-height: 24px; }
     .kw-table .kw-num { font-size: 11px; }
   }
   .kw-black { background: #ececf0; width: 30px; height: 30px; }
-  .kw-clues h4 { margin: 10px 0 4px; font-size: 14px; color: #1a73e8; }
-  .kw-list { list-style: none; margin: 0 0 10px; padding: 0; font-size: 13.5px; line-height: 1.55; }
+  .kw-clues h4 { margin: 8px 0 4px; font-size: 14px; color: #1a73e8; }
+  .kw-list { list-style: none; margin: 0 0 8px; padding: 0; font-size: 13.5px; line-height: 1.55; }
   .kw-list li { padding: 4px 0; border-bottom: 1px dotted #eee; }
   .kw-tag { display: inline-block; min-width: 16px; color: #999; font-size: 12px; }
   .kw-zh { color: #999; font-size: 12px; display: block; }
-  .bank-box { background: #f8f9fa; border-radius: 8px; padding: 10px 14px; font-size: 14px; margin: 12px 0; }
+  .bank-box { background: #f8f9fa; border-radius: 8px; padding: 8px 12px; font-size: 14px; margin: 12px 0; }
   .bank-chip { display: inline-block; background: #fff; border: 1px solid #c9d9f5; color: #1a73e8;
-               border-radius: 14px; padding: 3px 12px; margin: 3px 4px; cursor: pointer; font-size: 14px; }
+               border-radius: 14px; padding: 4px 12px; margin: 4px 4px; cursor: pointer; font-size: 14px; }
   .bank-chip:hover { background: #e8f0fe; }
   .bank-chip.used { opacity: .35; }
   .logo-chip { display: inline-block; background: #fff; border: 1px dashed #ddd; border-radius: 8px;
-               padding: 3px 10px; margin: 3px 4px; font-size: 13px; color: #666; }
+               padding: 4px 8px; margin: 4px 4px; font-size: 13px; color: #666; }
   /* Fill-in */
-  .fill-item { background: #fff; border-radius: 10px; padding: 12px 16px; margin-bottom: 10px;
+  .fill-item { background: #fff; border-radius: 10px; padding: 12px 16px; margin-bottom: 8px;
                box-shadow: 0 1px 3px rgba(0,0,0,.05); }
   .fill-sentence { font-size: clamp(14px, 2vw, 19px); line-height: 1.55; }
-  .fill-zh { font-size: 13px; color: #999; margin: 2px 0 6px; }
-  .fill-input { flex: 1; min-width: 160px; padding: 7px 10px; border: 1px solid #ddd; border-radius: 6px;
+  .fill-zh { font-size: 13px; color: #999; margin: 4px 0 4px; }
+  .fill-input { flex: 1; min-width: 160px; padding: 8px 8px; border: 1px solid #ddd; border-radius: 6px;
                 font-size: 15px; outline: none; }
   .fill-input:focus { border-color: #1a73e8; }
   .fill-input.ok { background: #e8f8e8; border-color: #27ae60; }
@@ -634,48 +634,49 @@
   /* Cloze */
   .cloze-p { font-size: clamp(14px, 2vw, 19px); line-height: 1.9; margin: 0 0 8px; }
   .cloze-blank { display: inline-block; min-width: 96px; text-align: center; border-bottom: 2px solid #1a73e8;
-                 color: #1a73e8; font-weight: 600; cursor: pointer; padding: 0 6px; }
+                 color: #1a73e8; font-weight: 600; cursor: pointer; padding: 0 4px; }
   .cloze-blank.filled { color: #1d1d1f; border-bottom-color: #27ae60; }
   .cloze-blank.ok { background: #e8f8e8; }
   .cloze-blank.bad { background: #fdecea; border-bottom-color: #e74c3c; color: #c0392b; }
   .cloze-blank.sel { background: #e8f0fe; }
   /* Mindmap */
   .mm-pool { display: flex; flex-wrap: wrap; gap: 8px; background: #fff; border-radius: 10px;
-             padding: 14px; box-shadow: 0 1px 3px rgba(0,0,0,.06); margin-bottom: 14px; }
-  .mm-chip { background: #fff; border: 1px solid #ddd; border-radius: 16px; padding: 5px 14px;
+             padding: 12px; box-shadow: 0 1px 3px rgba(0,0,0,.06); margin-bottom: 12px; }
+  .mm-chip { background: #fff; border: 1px solid #ddd; border-radius: 16px; padding: 4px 12px;
              font-size: 15px; cursor: pointer; transition: all .15s; }
   .mm-chip:hover { border-color: #1a73e8; }
   .mm-chip.sel { background: #e8f0fe; border-color: #1a73e8; }
   .mm-chip.ok { background: #e8f8e8; border-color: #27ae60; }
   .mm-chip.bad { background: #fdecea; border-color: #e74c3c; }
-  .mm-board { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; }
-  .mm-box { background: #fff; border: 2px dashed #dcdce2; border-radius: 12px; padding: 10px; min-height: 96px; }
-  .mm-head { font-weight: 600; font-size: 14px; color: #1a73e8; margin-bottom: 6px; }
-  .mm-items { display: flex; flex-wrap: wrap; gap: 6px; min-height: 34px; }
-  .mm-items .mm-chip { font-size: 14px; padding: 3px 10px; }
+  /* auto-fit 而非 auto-fill：空轨道会被收掉，5 个分类正好铺满一行，末行不留孤卡 */
+  .mm-board { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--sp-3); }
+  .mm-box { background: #fff; border: 2px dashed #dcdce2; border-radius: 12px; padding: 8px; min-height: 96px; }
+  .mm-head { font-weight: 600; font-size: 14px; color: #1a73e8; margin-bottom: 4px; }
+  .mm-items { display: flex; flex-wrap: wrap; gap: 4px; min-height: 34px; }
+  .mm-items .mm-chip { font-size: 14px; padding: 4px 8px; }
   /* Satzbau */
   .sb-card { background: #fff; border-radius: 10px; padding: 16px; margin-bottom: 12px;
              box-shadow: 0 1px 3px rgba(0,0,0,.05); }
   .sb-zh { font-size: clamp(14px, 2vw, 19px); font-weight: 500; }
-  .sb-hint { font-size: 13px; color: #888; margin: 2px 0 10px; }
-  .sb-pool { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+  .sb-hint { font-size: 13px; color: #888; margin: 4px 0 8px; }
+  .sb-pool { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
   .sb-chunk { background: #eef4ff; border: 1px solid #c9d9f5; color: #17427f; border-radius: 8px;
-              padding: 6px 12px; font-size: clamp(13px, 1.9vw, 18px); cursor: pointer; }
+              padding: 4px 12px; font-size: clamp(13px, 1.9vw, 18px); cursor: pointer; }
   .sb-chunk:hover { background: #e0ecff; }
-  .sb-line { min-height: 46px; border-bottom: 2px solid #e0e0e6; padding: 6px 4px;
-             display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .sb-line { min-height: 46px; border-bottom: 2px solid #e0e0e6; padding: 4px 4px;
+             display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
   .sb-line .sb-chunk { background: #fff; border-color: #27ae60; color: #1e7e34; }
   .sb-line .sb-chunk:hover { background: #fdecea; border-color: #e74c3c; }
-  .sb-actions { display: flex; align-items: center; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+  .sb-actions { display: flex; align-items: center; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
   .sb-line.ok .sb-chunk { background: #e8f8e8; }
   .sb-line.bad .sb-chunk { background: #fdecea; border-color: #e74c3c; color: #c0392b; }
-  .tc-tip { font-size: 12px; color: #888; margin-top: 6px; }
+  .tc-tip { font-size: 12px; color: #888; margin-top: 4px; }
   .full-de { background: #f6fbf7; border-left: 3px solid #27ae60; border-radius: 0 8px 8px 0;
-             padding: 12px 16px; margin: 10px 0; }
+             padding: 12px 16px; margin: 8px 0; }
   .de-full { font-size: clamp(14px, 2vw, 19px); line-height: 1.8; margin: 0; }
   /* Scoreboard & games */
   .scoreboard { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
-  .team { flex: 1; min-width: 150px; background: #fff; border-radius: 12px; padding: 14px;
+  .team { flex: 1; min-width: 150px; background: #fff; border-radius: 12px; padding: 12px;
           text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
   .team-name { font-size: 15px; color: #5f6672; }
   .team-score { font-size: 46px; font-weight: 700; color: #1a73e8; line-height: 1.1; }
@@ -683,16 +684,16 @@
   .games-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-2); }
   .blitz-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .vocab-grid { grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); }
-  .game-card { background: #fff; border-radius: 10px; padding: 14px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+  .game-card { background: #fff; border-radius: 10px; padding: 12px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
   .game-name { font-weight: 600; font-size: 15px; margin-bottom: 4px; }
-  .game-time { font-size: 13px; color: #1a73e8; background: #eef4ff; border-radius: 10px; padding: 1px 8px; }
+  .game-time { font-size: 13px; color: #1a73e8; background: #eef4ff; border-radius: 10px; padding: 4px 8px; }
   .game-card p { font-size: 14px; color: #666; margin: 4px 0 0; line-height: 1.6; }
   @media (max-width: 760px) {
     .kw-wrap { grid-template-columns: 1fr; }
     .mm-board { grid-template-columns: 1fr; }
     /* 窄屏：标签页换行、出处徽标换行、说明文字不撑破屏幕 */
-    .person-tabs { flex-wrap: wrap; gap: 6px; }
-    .person-btn { flex: 1 1 46%; font-size: 15px; padding: 10px 12px; }
+    .person-tabs { flex-wrap: wrap; gap: 4px; }
+    .person-btn { flex: 1 1 46%; font-size: 15px; padding: 8px 12px; }
     .src, .src-lg { white-space: normal; max-width: 100%; overflow-wrap: anywhere; }
     .section-title { flex-wrap: wrap; }
     :root { --fs-word: 18px; --fs-note: 14px; --fs-body: 15px; --fs-h3: 22px; --fs-h1: 34px; }
@@ -724,11 +725,11 @@
   .kw-cards { display: none; }
   body[data-kwm="list"] .kw-wrap { display: none; }
   body[data-kwm="list"] .kw-cards { display: block; }
-  .kl-item { background: #fff; border: 1px solid #e3e6eb; border-radius: 12px; padding: 14px 16px; margin-bottom: 12px; }
-  .kl-top { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 14px; color: #5f6672; }
+  .kl-item { background: #fff; border: 1px solid #e3e6eb; border-radius: 12px; padding: 12px 16px; margin-bottom: 12px; }
+  .kl-top { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 14px; color: #5f6672; }
   .kl-num { font-weight: 700; color: #0b56b8; font-size: 18px; }
   .kl-clue { font-size: 17px; margin: 8px 0 4px; line-height: 1.5; }
-  .kl-zh { font-size: 15px; color: #5f6672; margin-bottom: 10px; }
+  .kl-zh { font-size: 15px; color: #5f6672; margin-bottom: 8px; }
   .kl-line { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
   .kl-input { flex: 1 1 160px; min-width: 0; min-height: 44px; font-size: 18px; padding: 8px 12px; border: 1px solid #ccd2da; border-radius: 8px; }
   .kl-input.ok { border-color: #1e8e3e; background: #eefaf0; }
@@ -812,7 +813,7 @@
       </div>
       <div class="home-grid"><div class="text-card" onclick="switchSection('vocab')" style="cursor:pointer"><h3>📇 词汇卡片 E1</h3><p>48 个核心词 · 分组翻转卡 + 例句</p></div><div class="text-card" onclick="switchSection('vocab2')" style="cursor:pointer"><h3>📗 词汇表 E2（S.212）</h3><p>57 词 · Entdecken 2 生词 · 翻转卡 + 全表</p></div><div class="text-card" onclick="switchSection('blitz')" style="cursor:pointer"><h3>⚡ Blitzrunde 抢答</h3><p>中文提示 → 德语抢答 · 带计时器</p></div><div class="text-card" onclick="switchSection('connect')" style="cursor:pointer"><h3>🔗 连线配对</h3><p>4 组词网 · 点击左右配对</p></div><div class="text-card" onclick="switchSection('kreuzwort')" style="cursor:pointer"><h3>🧩 Kreuzworträtsel</h3><p>教材 Ü2 · 15 个提示句填格</p></div><div class="text-card" onclick="switchSection('satz')" style="cursor:pointer"><h3>✍️ Satzergänzung</h3><p>教材 Ü2 a–o 逐句核对</p></div><div class="text-card" onclick="switchSection('hochschule')" style="cursor:pointer"><h3>🏛️ Hochschullandschaft</h3><p>教材 Ü1 · 词库完形填空</p></div><div class="text-card" onclick="switchSection('mindmap')" style="cursor:pointer"><h3>🗺️ Mindmap</h3><p>教材 Ü3 · 5 类词网归类</p></div><div class="text-card" onclick="switchSection('satzbau')" style="cursor:pointer"><h3>🔤 Satzbau 句型工坊</h3><p>6 个课文核心句型 · 组句检验</p></div><div class="text-card" onclick="switchSection('uebersetzen')" style="cursor:pointer"><h3>🎯 翻译擂台</h3><p>教材 Ü9 · 中译德逐句核对</p></div><div class="text-card" onclick="switchSection('spiele')" style="cursor:pointer"><h3>🏆 课堂游戏 & 计分板</h3><p>6 个课堂活动 + 双队计分</p></div></div>
       <div class="obj-box"><strong>学习目标：</strong><ul><li>记住并主动运用本单元 48 个核心词汇（学校体系 / 高校类型 / 学业与考试 / 动词搭配）</li><li>掌握「学习与研究」主题词汇网：Hochschultypen, Lehrveranstaltungen, Prüfungen und Abschlüsse</li><li>熟练使用课文句型：vor der Entscheidung stehen · nicht nur …, sondern auch … · ohne + Akk. · die Möglichkeit bieten, … zu + Inf.</li><li>能独立把「德国择校」段落由中文译成德语，并说出所用句型</li><li>在小组竞赛中快速反应，把被动词汇变成主动词汇</li></ul></div>
-      <div class="text-card" style="margin-top:12px">
+      <div class="text-card" style="margin-top: 12px">
         <h3>⏱️ 45 分钟课堂流程（建议）</h3>
         <table class="flow-table"><tr><td class="fl-t">2 min</td><td>热身抢答 Blitzrunde</td><td>中→德抢答，两组计分，唤醒旧词</td></tr><tr><td class="fl-t">5 min</td><td>词汇卡片 Wortschatzkarten</td><td>48 张翻转卡，学生点开例句朗读；★标注高频词</td></tr><tr><td class="fl-t">弹性</td><td>词汇表 E2 · S.212（弹性）</td><td>Entdecken 2 生词 57 个：翻转卡速览 / 投影全表带读；视课时取舍，不计入 45 分钟核心</td></tr><tr><td class="fl-t">5 min</td><td>连线配对 Vernetzen</td><td>4 组词网连线：高校类型 / 教学活动 / 学业学位 / 动词搭配</td></tr><tr><td class="fl-t">8 min</td><td>十字填词 Kreuzworträtsel</td><td>教材 Ü2 的 15 个提示句 → 填格（可用词库提示）</td></tr><tr><td class="fl-t">5 min</td><td>句子填空 Satzergänzung</td><td>教材 Ü2 a–o 逐句输入核对，允许同义答案</td></tr><tr><td class="fl-t">4 min</td><td>思维导图 Mindmap</td><td>把词归入 5 个分类，全班一起补全 Wortfeld</td></tr><tr><td class="fl-t">3 min</td><td>高校类型 Hochschullandschaft</td><td>教材 Ü1 短文完形：先看 logos 词库，再填空</td></tr><tr><td class="fl-t">5 min</td><td>句型工坊 Satzbau</td><td>6 个课文核心句型：点词块组句，检验语序</td></tr><tr><td class="fl-t">6 min</td><td>翻译擂台 Übersetzen</td><td>教材 Ü9 中译德：逐句翻卡核对 + 整段参考译文</td></tr><tr><td class="fl-t">2 min</td><td>收尾 Blitzlicht</td><td>用 3 个新学词 + 1 个句型说一句话（计时器 30 秒/人）</td></tr></table>
       </div>
@@ -822,7 +823,7 @@
       <p class="zh-hint">点击卡片翻转看中文，点右下 ▶ 看例句。读名词请带冠词，说动词请带支配格。</p>
       <p class="zh-hint note">括号内为教材标注：<b>( )</b> 词尾/复数形式，<b>¨</b> 变音，<b>... </b> 省略词干。</p>
       <div class="person-tabs"><button class="person-btn active" onclick="switchVocabTab('G1')">🏫 教育体系与学校类型</button><button class="person-btn" onclick="switchVocabTab('G2')">🎓 学习、教学与研究</button><button class="person-btn" onclick="switchVocabTab('G3')">💼 领域、手艺与选择</button><button class="person-btn" onclick="switchVocabTab('G4')">🔧 动词、形容词与固定搭配</button></div><div class="person-content active" id="vc-G1"><div class="vocab-grid"><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Lehre</span><span class="vc-note">(-n)</span></div><div class="vc-back" lang="de">学徒的学习期；学说</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Lehre (-n)','学徒的学习期；学说','Max beginnt nach der Schule eine Lehre im Handelsbereich.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Primarstufe</span><span class="vc-note">(-n)</span></div><div class="vc-back" lang="de">初等教育阶段</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Primarstufe (-n)','初等教育阶段','Die Primarstufe umfasst in Deutschland die ersten vier Schuljahre.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Mittelschule</span><span class="vc-note">(-n)</span></div><div class="vc-back" lang="de">中学</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Mittelschule (-n)','中学','In der Schweiz heißt eine Schulform Mittelschule.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">der Kanton</span><span class="vc-note">(-e)</span><span class="vc-note vc-phon">[kanˈtoːn]</span></div><div class="vc-back" lang="de">［瑞］州</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('der Kanton (-e) [kanˈtoːn]','［瑞］州','In der Schweiz entscheidet jeder Kanton über sein Schulsystem.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Volksschule</span><span class="vc-note">(-n)</span></div><div class="vc-back" lang="de">［奥］小学；［瑞］公立学校</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Volksschule (-n)','［奥］小学；［瑞］公立学校','In Österreich gehen die Kinder in die Volksschule.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Primarschule</span><span class="vc-note">(-n)</span></div><div class="vc-back" lang="de">［瑞］小学</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Primarschule (-n)','［瑞］小学','In Zürich dauert die Primarschule sechs Jahre.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Matura</span><span class="vc-note">(nur Sg)</span></div><div class="vc-back" lang="de">［奥，瑞］（高级中学的）毕业考试</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Matura (nur Sg)','［奥，瑞］（高级中学的）毕业考试','Nach der Matura kann man an der Universität studieren.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Ganztagsschule</span><span class="vc-note">(-n)</span></div><div class="vc-back" lang="de">全日制学校</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Ganztagsschule (-n)','全日制学校','In einer Ganztagsschule bleiben die Kinder bis zum Nachmittag.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Lehrkraft</span><span class="vc-note">(¨-e)</span></div><div class="vc-back" lang="de">教师，师资</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Lehrkraft (¨-e)','教师，师资','Die Lehrkräfte erstellen die Empfehlung für die Eltern.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Pflicht</span><span class="vc-note">(-en)</span></div><div class="vc-back" lang="de">义务，责任，职责</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Pflicht (-en)','义务，责任，职责','In Deutschland ist der Schulbesuch eine Pflicht.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Erlaubnis</span><span class="vc-note">(-se)</span></div><div class="vc-back" lang="de">许可，同意</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Erlaubnis (-se)','许可，同意','Für die Fahrt braucht das Kind die Erlaubnis der Eltern.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Empfehlung</span><span class="vc-note">(-en)</span></div><div class="vc-back" lang="de">介绍，推荐（信）；劝告，忠告</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Empfehlung (-en)','介绍，推荐（信）；劝告，忠告','Die Grundschule gibt den Eltern eine Empfehlung.')">▶</button></div></div></div><div class="person-content" id="vc-G2"><div class="vocab-grid"><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Praxis</span><span class="vc-note">(nur Sg)</span></div><div class="vc-back" lang="de">实践，运用</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Praxis (nur Sg)','实践，运用','An der Fachhochschule spielt die Praxis eine große Rolle.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">praxisorientiert</span></div><div class="vc-back" lang="de">以实践为导向的</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('praxisorientiert','以实践为导向的','Ein duales Studium ist besonders praxisorientiert.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Theorie</span><span class="vc-note">(-n)</span></div><div class="vc-back" lang="de">理论，原理；学说</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Theorie (-n)','理论，原理；学说','An der Universität vermittelt man vor allem Theorie.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Grundlage</span><span class="vc-note">(-n)</span></div><div class="vc-back" lang="de">基础；根据；前提；地基</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Grundlage (-n)','基础；根据；前提；地基','Gute Leistungen in den Hauptfächern sind die Grundlage für die Empfehlung.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Tendenz</span><span class="vc-note">(-en)</span></div><div class="vc-back" lang="de">趋势，倾向</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Tendenz (-en)','趋势，倾向','Es gibt die Tendenz, dass mehr Eltern die Gesamtschule wählen.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Voraussetzung</span><span class="vc-note">(-en)</span></div><div class="vc-back" lang="de">前提，先决条件；假设</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Voraussetzung (-en)','前提，先决条件；假设','Das Abitur ist die Voraussetzung für ein Studium.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">der Prozess</span><span class="vc-note">(-e)</span></div><div class="vc-back" lang="de">过程，进程</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('der Prozess (-e)','过程，进程','Die Wahl der Schule ist ein langer Prozess.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">das Profil</span><span class="vc-note">(-e)</span></div><div class="vc-back" lang="de">鲜明的特征；侧面像</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('das Profil (-e)','鲜明的特征；侧面像','Jede Schule hat ein eigenes Profil.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">das Hauptfach</span><span class="vc-note">(¨-er)</span></div><div class="vc-back" lang="de">主要科目，主修学科</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('das Hauptfach (¨-er)','主要科目，主修学科','Deutsch und Mathematik sind Hauptfächer.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Aufgabe</span><span class="vc-note">(-n)</span></div><div class="vc-back" lang="de">作业；习题；任务</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Aufgabe (-n)','作业；习题；任务','Die Aufgabe der Schule ist es, jedes Kind bestmöglich zu fördern.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Schwierigkeit</span><span class="vc-note">(-en)</span></div><div class="vc-back" lang="de">困难</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Schwierigkeit (-en)','困难','Eine Schwierigkeit ist, dass die Schule weit von der Wohnung weg ist.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">der Zeitpunkt</span><span class="vc-note">(-e)</span></div><div class="vc-back" lang="de">时刻，时机</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('der Zeitpunkt (-e)','时刻，时机','Der richtige Zeitpunkt für die Entscheidung ist das Ende der Grundschule.')">▶</button></div></div></div><div class="person-content" id="vc-G3"><div class="vocab-grid"><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">der Handel</span><span class="vc-note">(nur Sg)</span></div><div class="vc-back" lang="de">商业，贸易，买卖，交易</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('der Handel (nur Sg)','商业，贸易，买卖，交易','Der Handel mit anderen Ländern ist wichtig für die Wirtschaft.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">der Bereich</span><span class="vc-note">(-e)</span></div><div class="vc-back" lang="de">范围，区域，领域</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('der Bereich (-e)','范围，区域，领域','Sie arbeitet im Bereich Bildung und Erziehung.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">das Handwerk</span><span class="vc-note">(nur Sg)</span></div><div class="vc-back" lang="de">手艺；手工业</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('das Handwerk (nur Sg)','手艺；手工业','Im Handwerk lernt man vor allem praktische Fähigkeiten.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">der Meister</span><span class="vc-note">(-)</span></div><div class="vc-back" lang="de">工匠，师傅；能手，大师</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('der Meister (-)','工匠，师傅；能手，大师','Nach der Ausbildung kann man noch Meister werden.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">das Projekt</span><span class="vc-note">(-e)</span></div><div class="vc-back" lang="de">工程，项目</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('das Projekt (-e)','工程，项目','Das Projekt „Schule der Zukunft“ läuft seit einem Jahr.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Chance</span><span class="vc-note">(-n)</span></div><div class="vc-back" lang="de">可能性，机会；运气，（成功的）希望</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Chance (-n)','可能性，机会；运气，（成功的）希望','Jedes Kind soll die gleiche Chance bekommen.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Wahl</span><span class="vc-note">(nur Sg)</span></div><div class="vc-back" lang="de">选择，挑选</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Wahl (nur Sg)','选择，挑选','Die Wahl der richtigen Schule ist nicht leicht.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Alternative</span><span class="vc-note">(-n)</span></div><div class="vc-back" lang="de">其他可能性，其他选项，其他途径</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Alternative (-n)','其他可能性，其他选项，其他途径','Die Gesamtschule ist eine gute Alternative zum Gymnasium.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">der Wunsch</span><span class="vc-note">(¨-e)</span></div><div class="vc-back" lang="de">想法，愿望</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('der Wunsch (¨-e)','想法，愿望','Viele Eltern haben den Wunsch, dass ihr Kind das Abitur macht.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">das Gemälde</span><span class="vc-note">(-n)</span></div><div class="vc-back" lang="de">油画</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('das Gemälde (-n)','油画','Lisa interessiert sich für Kunst und mag Gemälde.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">das Niederländisch</span></div><div class="vc-back" lang="de">荷兰语</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('das Niederländisch','荷兰语','In der Schule lernt Lisa Niederländisch.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Situation</span><span class="vc-note">(-en)</span></div><div class="vc-back" lang="de">情况，局面，处境，场合</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Situation (-en)','情况，局面，处境，场合','Die Situation der Familie spielt bei der Wahl eine wichtige Rolle.')">▶</button></div></div></div><div class="person-content" id="vc-G4"><div class="vocab-grid"><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">sich beschäftigen + mit Dat.</span></div><div class="vc-back" lang="de">从事于，忙于</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('sich beschäftigen + mit Dat.','从事于，忙于','Sie beschäftigt sich mit der Frage, welche Schule die richtige ist.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">sich erinnern + an Akk.</span></div><div class="vc-back" lang="de">想起，回忆起</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('sich erinnern + an Akk.','想起，回忆起','Ich erinnere mich gern an meine Schulzeit.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">ab/geben</span><span class="vc-note">+ A</span></div><div class="vc-back" lang="de">提交，交给，交出</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('ab/geben + A','提交，交给，交出','Die Eltern geben die Anmeldung bei der Schule ab.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">aus/schalten</span><span class="vc-note">+ A</span></div><div class="vc-back" lang="de">使断路，关掉</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('aus/schalten + A','使断路，关掉','Bitte schalten Sie das Handy im Unterricht aus.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">fördern</span><span class="vc-note">+ A</span></div><div class="vc-back" lang="de">促进，推进；资助，支持</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('fördern + A','促进，推进；资助，支持','Die Schule fördert jedes Kind nach seinen Fähigkeiten.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">umfassen</span><span class="vc-note">+ A</span></div><div class="vc-back" lang="de">包括，包含</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('umfassen + A','包括，包含','Die Grundschule umfasst vier Schuljahre.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">verantwortlich</span></div><div class="vc-back" lang="de">有责任的，负责的；责任重大的</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('verantwortlich','有责任的，负责的；责任重大的','Die Eltern sind für die Wahl der Schule verantwortlich.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">gleich</span></div><div class="vc-back" lang="de">一样的，相同的</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('gleich','一样的，相同的','Alle Kinder haben die gleichen Chancen.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">eher</span></div><div class="vc-back" lang="de">更容易，更可能；宁可，宁愿</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('eher','更容易，更可能；宁可，宁愿','Eher wählen die Eltern ein Gymnasium als eine Hauptschule.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">bestmöglich</span></div><div class="vc-back" lang="de">尽可能好的</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('bestmöglich','尽可能好的','Die Schule soll die bestmögliche Förderung bieten.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">eingeschränkt</span></div><div class="vc-back" lang="de">有限制的，有约束的</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('eingeschränkt','有限制的，有约束的','Niklas bekommt nur eine eingeschränkte Empfehlung.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">psychologisch</span></div><div class="vc-back" lang="de">心理学的，心理的</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('psychologisch','心理学的，心理的','Psychologische Studien zeigen, wie wichtig der Schulweg ist.')">▶</button></div></div></div>
-      <div class="kw-tools"><button class="btn ghost" onclick="toggleBox('e1Table')">📋 展开全表（48 词 · 投影 / 打印用）</button></div>
+      <div class="kw-tools"><button class="btn ghost" onclick="toggleBox('e1Table')">📋 展开全表（48 词）</button></div>
       <div id="e1Table" style="display:none"><table class="vocab-table"><tr><td class="vt-de" lang="de"><span class="vc-w">die Lehre</span><span class="vc-note">(-n)</span></td><td class="vt-cn">学徒的学习期；学说</td><td class="vt-ex" lang="de">Max beginnt nach der Schule eine Lehre im Handelsbereich.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Primarstufe</span><span class="vc-note">(-n)</span></td><td class="vt-cn">初等教育阶段</td><td class="vt-ex" lang="de">Die Primarstufe umfasst in Deutschland die ersten vier Schuljahre.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Mittelschule</span><span class="vc-note">(-n)</span></td><td class="vt-cn">中学</td><td class="vt-ex" lang="de">In der Schweiz heißt eine Schulform Mittelschule.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">der Kanton</span><span class="vc-note">(-e)</span><span class="vc-note vc-phon">[kanˈtoːn]</span></td><td class="vt-cn">［瑞］州</td><td class="vt-ex" lang="de">In der Schweiz entscheidet jeder Kanton über sein Schulsystem.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Volksschule</span><span class="vc-note">(-n)</span></td><td class="vt-cn">［奥］小学；［瑞］公立学校</td><td class="vt-ex" lang="de">In Österreich gehen die Kinder in die Volksschule.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Primarschule</span><span class="vc-note">(-n)</span></td><td class="vt-cn">［瑞］小学</td><td class="vt-ex" lang="de">In Zürich dauert die Primarschule sechs Jahre.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Matura</span><span class="vc-note">(nur Sg)</span></td><td class="vt-cn">［奥，瑞］（高级中学的）毕业考试</td><td class="vt-ex" lang="de">Nach der Matura kann man an der Universität studieren.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Ganztagsschule</span><span class="vc-note">(-n)</span></td><td class="vt-cn">全日制学校</td><td class="vt-ex" lang="de">In einer Ganztagsschule bleiben die Kinder bis zum Nachmittag.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Lehrkraft</span><span class="vc-note">(¨-e)</span></td><td class="vt-cn">教师，师资</td><td class="vt-ex" lang="de">Die Lehrkräfte erstellen die Empfehlung für die Eltern.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Pflicht</span><span class="vc-note">(-en)</span></td><td class="vt-cn">义务，责任，职责</td><td class="vt-ex" lang="de">In Deutschland ist der Schulbesuch eine Pflicht.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Erlaubnis</span><span class="vc-note">(-se)</span></td><td class="vt-cn">许可，同意</td><td class="vt-ex" lang="de">Für die Fahrt braucht das Kind die Erlaubnis der Eltern.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Empfehlung</span><span class="vc-note">(-en)</span></td><td class="vt-cn">介绍，推荐（信）；劝告，忠告</td><td class="vt-ex" lang="de">Die Grundschule gibt den Eltern eine Empfehlung.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Praxis</span><span class="vc-note">(nur Sg)</span></td><td class="vt-cn">实践，运用</td><td class="vt-ex" lang="de">An der Fachhochschule spielt die Praxis eine große Rolle.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">praxisorientiert</span></td><td class="vt-cn">以实践为导向的</td><td class="vt-ex" lang="de">Ein duales Studium ist besonders praxisorientiert.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Theorie</span><span class="vc-note">(-n)</span></td><td class="vt-cn">理论，原理；学说</td><td class="vt-ex" lang="de">An der Universität vermittelt man vor allem Theorie.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Grundlage</span><span class="vc-note">(-n)</span></td><td class="vt-cn">基础；根据；前提；地基</td><td class="vt-ex" lang="de">Gute Leistungen in den Hauptfächern sind die Grundlage für die Empfehlung.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Tendenz</span><span class="vc-note">(-en)</span></td><td class="vt-cn">趋势，倾向</td><td class="vt-ex" lang="de">Es gibt die Tendenz, dass mehr Eltern die Gesamtschule wählen.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Voraussetzung</span><span class="vc-note">(-en)</span></td><td class="vt-cn">前提，先决条件；假设</td><td class="vt-ex" lang="de">Das Abitur ist die Voraussetzung für ein Studium.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">der Prozess</span><span class="vc-note">(-e)</span></td><td class="vt-cn">过程，进程</td><td class="vt-ex" lang="de">Die Wahl der Schule ist ein langer Prozess.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">das Profil</span><span class="vc-note">(-e)</span></td><td class="vt-cn">鲜明的特征；侧面像</td><td class="vt-ex" lang="de">Jede Schule hat ein eigenes Profil.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">das Hauptfach</span><span class="vc-note">(¨-er)</span></td><td class="vt-cn">主要科目，主修学科</td><td class="vt-ex" lang="de">Deutsch und Mathematik sind Hauptfächer.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Aufgabe</span><span class="vc-note">(-n)</span></td><td class="vt-cn">作业；习题；任务</td><td class="vt-ex" lang="de">Die Aufgabe der Schule ist es, jedes Kind bestmöglich zu fördern.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Schwierigkeit</span><span class="vc-note">(-en)</span></td><td class="vt-cn">困难</td><td class="vt-ex" lang="de">Eine Schwierigkeit ist, dass die Schule weit von der Wohnung weg ist.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">der Zeitpunkt</span><span class="vc-note">(-e)</span></td><td class="vt-cn">时刻，时机</td><td class="vt-ex" lang="de">Der richtige Zeitpunkt für die Entscheidung ist das Ende der Grundschule.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">der Handel</span><span class="vc-note">(nur Sg)</span></td><td class="vt-cn">商业，贸易，买卖，交易</td><td class="vt-ex" lang="de">Der Handel mit anderen Ländern ist wichtig für die Wirtschaft.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">der Bereich</span><span class="vc-note">(-e)</span></td><td class="vt-cn">范围，区域，领域</td><td class="vt-ex" lang="de">Sie arbeitet im Bereich Bildung und Erziehung.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">das Handwerk</span><span class="vc-note">(nur Sg)</span></td><td class="vt-cn">手艺；手工业</td><td class="vt-ex" lang="de">Im Handwerk lernt man vor allem praktische Fähigkeiten.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">der Meister</span><span class="vc-note">(-)</span></td><td class="vt-cn">工匠，师傅；能手，大师</td><td class="vt-ex" lang="de">Nach der Ausbildung kann man noch Meister werden.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">das Projekt</span><span class="vc-note">(-e)</span></td><td class="vt-cn">工程，项目</td><td class="vt-ex" lang="de">Das Projekt „Schule der Zukunft“ läuft seit einem Jahr.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Chance</span><span class="vc-note">(-n)</span></td><td class="vt-cn">可能性，机会；运气，（成功的）希望</td><td class="vt-ex" lang="de">Jedes Kind soll die gleiche Chance bekommen.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Wahl</span><span class="vc-note">(nur Sg)</span></td><td class="vt-cn">选择，挑选</td><td class="vt-ex" lang="de">Die Wahl der richtigen Schule ist nicht leicht.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Alternative</span><span class="vc-note">(-n)</span></td><td class="vt-cn">其他可能性，其他选项，其他途径</td><td class="vt-ex" lang="de">Die Gesamtschule ist eine gute Alternative zum Gymnasium.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">der Wunsch</span><span class="vc-note">(¨-e)</span></td><td class="vt-cn">想法，愿望</td><td class="vt-ex" lang="de">Viele Eltern haben den Wunsch, dass ihr Kind das Abitur macht.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">das Gemälde</span><span class="vc-note">(-n)</span></td><td class="vt-cn">油画</td><td class="vt-ex" lang="de">Lisa interessiert sich für Kunst und mag Gemälde.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">das Niederländisch</span></td><td class="vt-cn">荷兰语</td><td class="vt-ex" lang="de">In der Schule lernt Lisa Niederländisch.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Situation</span><span class="vc-note">(-en)</span></td><td class="vt-cn">情况，局面，处境，场合</td><td class="vt-ex" lang="de">Die Situation der Familie spielt bei der Wahl eine wichtige Rolle.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">sich beschäftigen + mit Dat.</span></td><td class="vt-cn">从事于，忙于</td><td class="vt-ex" lang="de">Sie beschäftigt sich mit der Frage, welche Schule die richtige ist.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">sich erinnern + an Akk.</span></td><td class="vt-cn">想起，回忆起</td><td class="vt-ex" lang="de">Ich erinnere mich gern an meine Schulzeit.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">ab/geben</span><span class="vc-note">+ A</span></td><td class="vt-cn">提交，交给，交出</td><td class="vt-ex" lang="de">Die Eltern geben die Anmeldung bei der Schule ab.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">aus/schalten</span><span class="vc-note">+ A</span></td><td class="vt-cn">使断路，关掉</td><td class="vt-ex" lang="de">Bitte schalten Sie das Handy im Unterricht aus.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">fördern</span><span class="vc-note">+ A</span></td><td class="vt-cn">促进，推进；资助，支持</td><td class="vt-ex" lang="de">Die Schule fördert jedes Kind nach seinen Fähigkeiten.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">umfassen</span><span class="vc-note">+ A</span></td><td class="vt-cn">包括，包含</td><td class="vt-ex" lang="de">Die Grundschule umfasst vier Schuljahre.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">verantwortlich</span></td><td class="vt-cn">有责任的，负责的；责任重大的</td><td class="vt-ex" lang="de">Die Eltern sind für die Wahl der Schule verantwortlich.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">gleich</span></td><td class="vt-cn">一样的，相同的</td><td class="vt-ex" lang="de">Alle Kinder haben die gleichen Chancen.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">eher</span></td><td class="vt-cn">更容易，更可能；宁可，宁愿</td><td class="vt-ex" lang="de">Eher wählen die Eltern ein Gymnasium als eine Hauptschule.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">bestmöglich</span></td><td class="vt-cn">尽可能好的</td><td class="vt-ex" lang="de">Die Schule soll die bestmögliche Förderung bieten.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">eingeschränkt</span></td><td class="vt-cn">有限制的，有约束的</td><td class="vt-ex" lang="de">Niklas bekommt nur eine eingeschränkte Empfehlung.</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">psychologisch</span></td><td class="vt-cn">心理学的，心理的</td><td class="vt-ex" lang="de">Psychologische Studien zeigen, wie wichtig der Schulweg ist.</td></tr></table></div>
     </section>
     <section id="vocab2">
@@ -831,7 +832,7 @@
       <p class="zh-hint note">括号内为教材标注：<b>( )</b> 词尾/复数形式，<b>¨</b> 变音（Ä/Ö/Ü），<b>... </b> 省略词干；<b>nur Sg</b> 仅单数，<b>+A / +D / +zu Dat</b> 动词支配格。</p>
       <div class="person-tabs"><button class="person-btn active" onclick="switchVocabTab2('E1')">📘 学业与学位 · Studium &amp; Abschlüsse</button><button class="person-btn" onclick="switchVocabTab2('E2')">🎪 校园活动与仪式 · Campus &amp; Feiern</button><button class="person-btn" onclick="switchVocabTab2('E3')">🔬 学科与职业 · Fächer &amp; Berufe</button><button class="person-btn" onclick="switchVocabTab2('E4')">⏰ 日常与职场 · Alltag &amp; Arbeitswelt</button><button class="person-btn" onclick="switchVocabTab2('E5')">🤝 团队与能力 · Team &amp; Fähigkeiten</button><button class="person-btn" onclick="switchVocabTab2('E6')">🌍 多元与性格 · Vielfalt &amp; Charakter</button></div><div class="person-content active" id="vc2-E1"><div class="vocab-grid"><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">der Schwerpunkt</span><span class="vc-note">(-e)</span></div><div class="vc-back" lang="de">重点，要点</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Anwendung</span><span class="vc-note">(-en)</span></div><div class="vc-back" lang="de">使用，应用</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">der Vertreter</span><span class="vc-note">(-)</span></div><div class="vc-back" lang="de">代表，替代人</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">dual</span></div><div class="vc-back" lang="de">二元的</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">der Bachelor</span><span class="vc-note">(nur Sg)</span></div><div class="vc-back" lang="de">学士学位</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">der Master</span><span class="vc-note">(nur Sg)</span></div><div class="vc-back" lang="de">硕士学位</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Klausur</span><span class="vc-note">(-en)</span></div><div class="vc-back" lang="de">闭卷考试</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Hausarbeit</span><span class="vc-note">(-en)</span></div><div class="vc-back" lang="de">家庭作业</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">das Stipendium</span><span class="vc-note">(...dien)</span></div><div class="vc-back" lang="de">奖学金</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">das Nebenfach</span><span class="vc-note">(¨-er)</span></div><div class="vc-back" lang="de">选修学科，选修课程</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Akademie</span><span class="vc-note">(-n)</span></div><div class="vc-back" lang="de">科学院，研究院；（高等）专科院校</div></div></div></div></div><div class="person-content" id="vc2-E2"><div class="vocab-grid"><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">das Sportfest</span><span class="vc-note">(-e)</span></div><div class="vc-back" lang="de">运动会</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">der Zuschauer</span><span class="vc-note">(-)</span></div><div class="vc-back" lang="de">观众；旁观者</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">das Schild</span><span class="vc-note">(-er)</span></div><div class="vc-back" lang="de">牌子；标签，标牌</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">markieren</span><span class="vc-note">(+A)</span></div><div class="vc-back" lang="de">强调，使突出；在……上做记号，（用记号）把……标出</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">sich warm/laufen</span></div><div class="vc-back" lang="de">热身，热身运动</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">der Rektor</span><span class="vc-note">(-en)</span></div><div class="vc-back" lang="de">大学校长</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">auf/fordern</span><span class="vc-note">(+A +zu Dat)</span></div><div class="vc-back" lang="de">要求，敦促</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">raten</span><span class="vc-note">(+D +A / zu Dat)</span></div><div class="vc-back" lang="de">给……出主意，劝告，建议</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">der Sieg</span><span class="vc-note">(-e)</span></div><div class="vc-back" lang="de">胜利，战胜</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">klatschen</span></div><div class="vc-back" lang="de">拍手，鼓掌</div></div></div></div></div><div class="person-content" id="vc2-E3"><div class="vocab-grid"><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Informatik</span><span class="vc-note">(nur Sg)</span></div><div class="vc-back" lang="de">信息学，计算机科学</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Betriebswirtschaft / -lehre</span><span class="vc-note">(nur Sg)</span></div><div class="vc-back" lang="de">企业管理学，企业经济学，工商管理</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">der Journalist</span><span class="vc-note">(-en)</span></div><div class="vc-back" lang="de">记者，新闻工作者</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Präsentation</span><span class="vc-note">(-en)</span></div><div class="vc-back" lang="de">展示，表演</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">der Rekord</span><span class="vc-note">(-e)</span></div><div class="vc-back" lang="de">纪录，成绩</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">brechen</span><span class="vc-note">(+A)</span></div><div class="vc-back" lang="de">打碎，压断，折断；打破（纪录）</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">auf/stellen</span><span class="vc-note">(+A)</span></div><div class="vc-back" lang="de">创造（新纪录）；搭起，架起；布置，排列</div></div></div></div></div><div class="person-content" id="vc2-E4"><div class="vocab-grid"><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">geordnet</span></div><div class="vc-back" lang="de">整齐的，有序的</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">der Tagesablauf</span><span class="vc-note">(¨-e)</span></div><div class="vc-back" lang="de">日程表</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">um/gehen</span><span class="vc-note">(+mit Dat)</span></div><div class="vc-back" lang="de">（以某种方式）对待，对付</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Überstunde</span><span class="vc-note">(-n)</span></div><div class="vc-back" lang="de">加班</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">sich zurecht/finden</span></div><div class="vc-back" lang="de">能适应，熟悉环境</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">sich bewerben</span><span class="vc-note">(+um Akk)</span></div><div class="vc-back" lang="de">（通过申请）谋求（职位）</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">betreuen</span><span class="vc-note">(+A)</span></div><div class="vc-back" lang="de">照料，照管；关怀</div></div></div></div></div><div class="person-content" id="vc2-E5"><div class="vocab-grid"><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">der/das Event</span><span class="vc-note">(-s)</span></div><div class="vc-back" lang="de">（特别的）事件，活动</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Fähigkeit</span><span class="vc-note">(-en)</span></div><div class="vc-back" lang="de">能力，才干</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">der Geist</span><span class="vc-note">(nur Sg)</span></div><div class="vc-back" lang="de">思想，才智，头脑</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">fit</span></div><div class="vc-back" lang="de">精力充沛的</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">das Team</span><span class="vc-note">(-s)</span></div><div class="vc-back" lang="de">团队，小组</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">das Mitglied</span><span class="vc-note">(-er)</span></div><div class="vc-back" lang="de">成员</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">absolvieren</span><span class="vc-note">(+A)</span></div><div class="vc-back" lang="de">毕业，结业，修完；完成</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">der Kaufmann</span><span class="vc-note">(...leute)</span></div><div class="vc-back" lang="de">商人</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">das Management</span><span class="vc-note">(nur Sg)</span></div><div class="vc-back" lang="de">（企业的）管理，经营</div></div></div></div></div><div class="person-content" id="vc2-E6"><div class="vocab-grid"><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">-wöchig</span></div><div class="vc-back" lang="de">（形容词后缀）……周的，……星期的</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">multikulturell</span></div><div class="vc-back" lang="de">多元文化的</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Abteilung</span><span class="vc-note">(-en)</span></div><div class="vc-back" lang="de">部门，科，室，处，组</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">Australien</span></div><div class="vc-back" lang="de">澳大利亚</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Kenntnis</span><span class="vc-note">(-se)</span></div><div class="vc-back" lang="de">知识，认识</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">der Pfleger</span><span class="vc-note">(-)</span></div><div class="vc-back" lang="de">（医院的）男护士，护理员</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">der Aufbau</span><span class="vc-note">(nur Sg)</span></div><div class="vc-back" lang="de">结构，构造，布局</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Stärke</span><span class="vc-note">(-n)</span></div><div class="vc-back" lang="de">强项，特长，优点</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">geduldig</span></div><div class="vc-back" lang="de">有耐心的</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">kontaktfreudig</span></div><div class="vc-back" lang="de">喜欢交际的，合群的</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">das Bedürfnis</span><span class="vc-note">(-se)</span></div><div class="vc-back" lang="de">需求，需要</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Dankbarkeit</span><span class="vc-note">(nur Sg)</span></div><div class="vc-back" lang="de">谢意</div></div></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Zufriedenheit</span><span class="vc-note">(nur Sg)</span></div><div class="vc-back" lang="de">满意</div></div></div></div></div>
       <div class="kw-tools">
-        <button class="btn" onclick="toggleBox('e2Table')">📋 展开全表（投影 / 打印用）</button>
+        <button class="btn" onclick="toggleBox('e2Table')">📋 展开全表（57 词）</button>
         <span class="zh-hint" style="margin-left:8px">共 57 词 · 取自教材 S.212 词汇表</span>
       </div>
       <div id="e2Table" style="display:none"><table class="vocab-table"><tr><td class="vt-de" lang="de"><span class="vc-w">der Schwerpunkt</span><span class="vc-note">(-e)</span></td><td class="vt-cn">重点，要点</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Anwendung</span><span class="vc-note">(-en)</span></td><td class="vt-cn">使用，应用</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">der Vertreter</span><span class="vc-note">(-)</span></td><td class="vt-cn">代表，替代人</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">dual</span></td><td class="vt-cn">二元的</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">der Bachelor</span><span class="vc-note">(nur Sg)</span></td><td class="vt-cn">学士学位</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">der Master</span><span class="vc-note">(nur Sg)</span></td><td class="vt-cn">硕士学位</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Klausur</span><span class="vc-note">(-en)</span></td><td class="vt-cn">闭卷考试</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Hausarbeit</span><span class="vc-note">(-en)</span></td><td class="vt-cn">家庭作业</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">das Stipendium</span><span class="vc-note">(...dien)</span></td><td class="vt-cn">奖学金</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">das Nebenfach</span><span class="vc-note">(¨-er)</span></td><td class="vt-cn">选修学科，选修课程</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Akademie</span><span class="vc-note">(-n)</span></td><td class="vt-cn">科学院，研究院；（高等）专科院校</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">das Sportfest</span><span class="vc-note">(-e)</span></td><td class="vt-cn">运动会</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">der Zuschauer</span><span class="vc-note">(-)</span></td><td class="vt-cn">观众；旁观者</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">das Schild</span><span class="vc-note">(-er)</span></td><td class="vt-cn">牌子；标签，标牌</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">markieren</span><span class="vc-note">(+A)</span></td><td class="vt-cn">强调，使突出；在……上做记号，（用记号）把……标出</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">sich warm/laufen</span></td><td class="vt-cn">热身，热身运动</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">der Rektor</span><span class="vc-note">(-en)</span></td><td class="vt-cn">大学校长</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">auf/fordern</span><span class="vc-note">(+A +zu Dat)</span></td><td class="vt-cn">要求，敦促</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">raten</span><span class="vc-note">(+D +A / zu Dat)</span></td><td class="vt-cn">给……出主意，劝告，建议</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">der Sieg</span><span class="vc-note">(-e)</span></td><td class="vt-cn">胜利，战胜</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">klatschen</span></td><td class="vt-cn">拍手，鼓掌</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Informatik</span><span class="vc-note">(nur Sg)</span></td><td class="vt-cn">信息学，计算机科学</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Betriebswirtschaft / -lehre</span><span class="vc-note">(nur Sg)</span></td><td class="vt-cn">企业管理学，企业经济学，工商管理</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">der Journalist</span><span class="vc-note">(-en)</span></td><td class="vt-cn">记者，新闻工作者</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Präsentation</span><span class="vc-note">(-en)</span></td><td class="vt-cn">展示，表演</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">der Rekord</span><span class="vc-note">(-e)</span></td><td class="vt-cn">纪录，成绩</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">brechen</span><span class="vc-note">(+A)</span></td><td class="vt-cn">打碎，压断，折断；打破（纪录）</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">auf/stellen</span><span class="vc-note">(+A)</span></td><td class="vt-cn">创造（新纪录）；搭起，架起；布置，排列</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">geordnet</span></td><td class="vt-cn">整齐的，有序的</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">der Tagesablauf</span><span class="vc-note">(¨-e)</span></td><td class="vt-cn">日程表</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">um/gehen</span><span class="vc-note">(+mit Dat)</span></td><td class="vt-cn">（以某种方式）对待，对付</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Überstunde</span><span class="vc-note">(-n)</span></td><td class="vt-cn">加班</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">sich zurecht/finden</span></td><td class="vt-cn">能适应，熟悉环境</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">sich bewerben</span><span class="vc-note">(+um Akk)</span></td><td class="vt-cn">（通过申请）谋求（职位）</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">betreuen</span><span class="vc-note">(+A)</span></td><td class="vt-cn">照料，照管；关怀</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">der/das Event</span><span class="vc-note">(-s)</span></td><td class="vt-cn">（特别的）事件，活动</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Fähigkeit</span><span class="vc-note">(-en)</span></td><td class="vt-cn">能力，才干</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">der Geist</span><span class="vc-note">(nur Sg)</span></td><td class="vt-cn">思想，才智，头脑</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">fit</span></td><td class="vt-cn">精力充沛的</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">das Team</span><span class="vc-note">(-s)</span></td><td class="vt-cn">团队，小组</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">das Mitglied</span><span class="vc-note">(-er)</span></td><td class="vt-cn">成员</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">absolvieren</span><span class="vc-note">(+A)</span></td><td class="vt-cn">毕业，结业，修完；完成</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">der Kaufmann</span><span class="vc-note">(...leute)</span></td><td class="vt-cn">商人</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">das Management</span><span class="vc-note">(nur Sg)</span></td><td class="vt-cn">（企业的）管理，经营</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">-wöchig</span></td><td class="vt-cn">（形容词后缀）……周的，……星期的</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">multikulturell</span></td><td class="vt-cn">多元文化的</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Abteilung</span><span class="vc-note">(-en)</span></td><td class="vt-cn">部门，科，室，处，组</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">Australien</span></td><td class="vt-cn">澳大利亚</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Kenntnis</span><span class="vc-note">(-se)</span></td><td class="vt-cn">知识，认识</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">der Pfleger</span><span class="vc-note">(-)</span></td><td class="vt-cn">（医院的）男护士，护理员</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">der Aufbau</span><span class="vc-note">(nur Sg)</span></td><td class="vt-cn">结构，构造，布局</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Stärke</span><span class="vc-note">(-n)</span></td><td class="vt-cn">强项，特长，优点</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">geduldig</span></td><td class="vt-cn">有耐心的</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">kontaktfreudig</span></td><td class="vt-cn">喜欢交际的，合群的</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">das Bedürfnis</span><span class="vc-note">(-se)</span></td><td class="vt-cn">需求，需要</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Dankbarkeit</span><span class="vc-note">(nur Sg)</span></td><td class="vt-cn">谢意</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Zufriedenheit</span><span class="vc-note">(nur Sg)</span></td><td class="vt-cn">满意</td></tr></table></div>

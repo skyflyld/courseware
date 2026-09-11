@@ -169,11 +169,11 @@
   "kreuzwort": {
     "title": "Kreuzworträtsel · Studium und Studentenleben",
     "instruction": "教材 Ü2 的 15 个提示句，把答案填进格子（可用右侧词库提示）。",
-    "wordbank": ["STUDIUM", "SEMESTER", "MAGISTER", "MASTER", "VORLESUNG", "SEMINAR", "KLAUSUR", "HAUSARBEIT", "STIPENDIUM", "AUSLANDSPRAKTIKUM", "HAUPTFACH", "NEBENFACH", "BERUFSAKADEMIEN", "UNIVERSITÄTEN", "GERMANISTIK"],
+    "wordbank": ["STUDIUM", "SEMESTER", "BACHELOR", "MASTER", "VORLESUNG", "SEMINAR", "KLAUSUR", "HAUSARBEIT", "STIPENDIUM", "AUSLANDSPRAKTIKUM", "HAUPTFACH", "NEBENFACH", "BERUFSAKADEMIEN", "TU9", "GERMANISTIK"],
     "clues": [
       {"n": "a", "clue": "Mit dem Abitur / der Matura beginnt man ein ______.", "zh": "高中毕业后就开始大学学习。", "answer": "STUDIUM"},
       {"n": "b", "clue": "Ein Freund von Li Tao hat ein ______ lang als Austauschstudent in Deutschland studiert.", "zh": "李涛的朋友在德国做了一学期的交换生。", "answer": "SEMESTER", "alt": ["JAHR"]},
-      {"n": "c", "clue": "Das ______-studium an einer Universität dauert normalerweise 6–8 Semester.", "zh": "大学的（传统）硕士学习通常 6–8 个学期。", "answer": "MAGISTER"},
+      {"n": "c", "clue": "Das ______-studium an einer Universität dauert normalerweise 6–8 Semester.", "zh": "大学的本科学习通常 6–8 个学期。", "answer": "BACHELOR"},
       {"n": "d", "clue": "Einige Studenten planen, nach dem Bachelorstudium noch ein ______-studium zu machen.", "zh": "有些学生计划本科毕业后继续读硕士。", "answer": "MASTER"},
       {"n": "e", "clue": "Die ______ über deutsche Gegenwartsliteratur findet im Hörsaal 3 statt.", "zh": "关于德国当代文学的讲座在三号阶梯教室举行。", "answer": "VORLESUNG"},
       {"n": "f", "clue": "Im ______ kann man zum Beispiel ein Referat halten oder aktiv an der Diskussion teilnehmen.", "zh": "在研讨课上可以做报告或积极参与讨论。", "answer": "SEMINAR"},
@@ -184,7 +184,7 @@
       {"n": "k", "clue": "An der Universität muss jeder ein ______ wählen.", "zh": "在大学每个人必须选一个主修专业。", "answer": "HAUPTFACH"},
       {"n": "l", "clue": "Viele Studenten studieren neben ihrem Hauptfach noch ein ______.", "zh": "很多学生除主修外还修一门辅修。", "answer": "NEBENFACH"},
       {"n": "m", "clue": "Berufs______ bezeichnet man auch als duale Hochschulen.", "zh": "职业学院也被称为双元制高校。", "answer": "BERUFSAKADEMIEN"},
-      {"n": "n", "clue": "Die Allianz der führenden Technischen ______ in Deutschland heißt TU9.", "zh": "德国顶尖工科大学联盟叫 TU9。", "answer": "UNIVERSITÄTEN"},
+      {"n": "n", "clue": "Die Allianz der führenden Technischen ______ in Deutschland heißt TU9.", "zh": "德国顶尖工科大学联盟叫 TU9。", "answer": "TU9"},
       {"n": "o", "clue": "Im Fach ______ erforscht man die deutsche Sprache und deutschsprachige Literatur.", "zh": "在日耳曼学专业研究德语与德语文学。", "answer": "GERMANISTIK"}
     ]
   },

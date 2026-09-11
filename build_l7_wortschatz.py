@@ -256,7 +256,7 @@ def sec_kreuzwort(d, cw):
           <h4>Senkrecht ↓</h4><ol class="kw-list">%s</ol>
         </div>
       </div>
-      <p class="zh-hint note">★ 说明：a–o 为教材 Ü2 原提示句；个别句子教材可能接受多个答案（如 b 也可为 „Jahr“），本格使用上表词语库中的写法，以教师用书为准。手机/平板可左右滑动查看完整网格。</p>
+      <p class="zh-hint note">★ 答案已按教材答案页（Entdecken 2 · W2 · Ü2）校准：c 题为 „Bachelor“，n 题为 „TU9“。b 题教材答案为 „Semester“（„ein Jahr lang“ 语法上也成立，故仍接受）。手机/平板可左右滑动查看完整网格。</p>
     </section>
 ''' % (h(d['kreuzwort']['title']), h(d['kreuzwort']['instruction']), ''.join(body),
        bank, ''.join(pos_clues), ''.join(neg_clues))

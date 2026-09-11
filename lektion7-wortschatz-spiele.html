@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-cw-profile="interaction">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Lektion 7 · 词汇与翻译课堂互动课件 · Studium &amp; Schule</title>
+<style>
+  /* ===== Reset & Base ===== */
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+    background: #f5f5f7; color: #1d1d1f; line-height: 1.7;
+    padding-top: 76px;
+    font-size: clamp(15px, 2.2vw, 20px);
+  }
+
+  /* ===== Nav ===== */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,.95); backdrop-filter: blur(12px);
+    box-shadow: 0 1px 3px rgba(0,0,0,.08);
+  }
+  .top-nav {
+    max-width: 900px; margin: 0 auto;
+    display: flex; align-items: center;
+    padding: 0 16px; height: 48px; gap: 12px;
+  }
+  .logo { display: flex; align-items: center; gap: 6px; font-weight: 600; font-size: 15px; color: #1d1d1f; flex-shrink: 0; }
+  .logo-icon { font-size: 20px; }
+  .nav-links { display: flex; gap: 4px; overflow-x: auto; flex: 1; }
+  .nav-links button {
+    background: none; border: none; padding: 8px 14px;
+    font-size: clamp(12px, 1.6vw, 16px); color: #666; cursor: pointer; border-radius: 6px;
+    white-space: nowrap; transition: all .15s;
+  }
+  .nav-links button:hover { background: #f0f0f0; }
+  .nav-links button.active { background: #1a73e8; color: #fff; font-weight: 500; }
+  .hamburger { display: none; background: none; border: none; font-size: 20px; cursor: pointer; padding: 4px 8px; color: #333; }
+
+  /* ===== Progress Bar ===== */
+  .progress-bar { height: 3px; background: #e8e8ed; position: relative; }
+  .progress-fill {
+    height: 100%; width: 0%;
+    background: linear-gradient(90deg, #1a73e8, #4285f4);
+    transition: width .4s ease;
+  }
+
+  /* ===== Main Content ===== */
+  .main { max-width: 1100px; margin: 0 auto; padding: 16px; }
+  .container { max-width: min(900px, 95vw); margin: 0 auto; }
+  section { display: none; }
+  section.active { display: block; }
+
+  /* ===== Home ===== */
+  .hero {
+    text-align: center; padding: 32px 16px 24px;
+    background: linear-gradient(135deg, #e8f0fe 0%, #f5f5f7 100%);
+    border-radius: 12px; margin-bottom: 20px;
+  }
+  .hero h1 { font-size: clamp(22px, 3.5vw, 36px); font-weight: 700; margin: 0 0 6px; color: #1d1d1f; }
+  .hero .sub { font-size: clamp(14px, 2vw, 20px); color: #666; margin: 0 0 4px; }
+  .hero .meta { font-size: 13px; color: #999; margin: 0; }
+
+  .home-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+  @media (max-width: 480px) { .home-grid { grid-template-columns: 1fr; } }
+
+  .text-card {
+    background: #fff; border-radius: 10px; padding: 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06); transition: box-shadow .2s;
+  }
+  .text-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,.1); }
+  .text-card h3 { font-size: clamp(15px, 2.5vw, 24px); margin: 0 0 6px; color: #1d1d1f; }
+  .text-card p { font-size: 13px; margin: 0; color: #999; }
+
+  .section-title {
+    font-size: clamp(17px, 2.8vw, 28px); font-weight: 700; margin: 24px 0 12px;
+    padding-bottom: 6px; border-bottom: 2px solid #1a73e8;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .section-title .num {
+    background: #1a73e8; color: #fff; border-radius: 50%;
+    width: 28px; height: 28px; display: inline-flex;
+    align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 600; flex-shrink: 0;
+  }
+
+  .obj-box { background: #f8f9fa; border-radius: 8px; padding: 14px 18px; font-size: 14px; }
+  .obj-box strong { color: #333; }
+  .obj-box ul { margin: 6px 0 0 16px; padding: 0; line-height: 1.7; color: #555; }
+
+  /* ===== Text Section ===== */
+  .text-card .zh.sub { font-size: 14px; margin: -4px 0 8px; color: #666; }
+  .text-card .zh.by { font-size: 13px; margin: -4px 0 10px; color: #888; }
+  .text-card .de { font-size: clamp(14px, 2.2vw, 22px); line-height: 1.8; color: #333; }
+  .text-card .de p { margin: 0 0 8px; }
+  .v-word {
+    color: #1a73e8; border-bottom: 1px dashed #1a73e8;
+    cursor: pointer; transition: background .15s;
+  }
+  .v-word:hover { background: #e8f0fe; }
+  .highlight-box {
+    background: #fff8e1; border-left: 3px solid #fbbc04;
+    padding: 10px 14px; border-radius: 0 6px 6px 0;
+    margin: 12px 0 0; font-size: 14px; color: #555;
+  }
+
+  /* ===== Text Pagination ===== */
+  .text-pager-nav {
+    display: flex; align-items: center; justify-content: center;
+    gap: 16px; margin: 14px 0;
+  }
+  .tp-btn {
+    width: 36px; height: 36px; border-radius: 50%;
+    border: 1px solid #ddd; background: #fff;
+    font-size: 18px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all .15s;
+  }
+  .tp-btn:hover:not(:disabled) { background: #e8f0fe; border-color: #1a73e8; }
+  .tp-btn:disabled { opacity: .35; cursor: default; }
+  .tp-info { font-size: 14px; color: #666; min-width: 50px; text-align: center; }
+
+  /* ===== Person Tabs (Vocab) ===== */
+  .person-tabs { display: flex; gap: 4px; margin: 0 0 10px; }
+  .person-btn {
+    padding: 6px 16px; border: 1px solid #ddd; border-radius: 6px;
+    background: #fff; font-size: 13px; cursor: pointer; transition: all .15s;
+  }
+  .person-btn.active { background: #1a73e8; color: #fff; border-color: #1a73e8; font-weight: 500; }
+  .person-content { display: none; }
+  .person-content.active { display: block; }
+
+  /* ===== Vocab Flip Cards ===== */
+  .vc-card {
+    background: transparent;
+    border: none;
+    padding: 0;
+    perspective: 600px;
+    position: relative;
+    min-height: 64px;
+    cursor: pointer;
+  }
+  .vc-inner {
+    position: relative;
+    transition: transform .45s ease;
+    transform-style: preserve-3d;
+    min-height: 64px;
+  }
+  .vc-card.flipped .vc-inner {
+    transform: rotateY(180deg);
+  }
+  .vc-front, .vc-back {
+    position: absolute; inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    display: flex; align-items: center; justify-content: center;
+    padding: 12px 8px;
+    border-radius: 8px;
+    border: 1px solid #e8e8ed;
+    font-size: clamp(13px, 1.8vw, 18px); text-align: center;
+    min-height: 64px;
+  }
+  .vc-front {
+    background: #fff;
+    z-index: 2;
+  }
+  .vc-back {
+    background: #e8f0fe;
+    color: #1a73e8;
+    font-weight: 500;
+    transform: rotateY(180deg);
+    z-index: 1;
+  }
+  .vc-detail {
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    background: #fff;
+    font-size: 10px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0;
+    transition: opacity .2s;
+    z-index: 10;
+    padding: 0; line-height: 1; color: #666;
+  }
+  .vc-card:hover .vc-detail { opacity: 1; }
+
+  /* ===== Vocab Grid ===== */
+  .vocab-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 10px;
+  }
+
+  /* ===== Vocab Overlay Panel ===== */
+  .vocab-overlay {
+    display: none; position: fixed; inset: 0; z-index: 200;
+    background: rgba(0,0,0,.4); backdrop-filter: blur(2px);
+  }
+  .vocab-overlay.show { display: block; }
+
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 201;
+    background: #fff; border-radius: 16px 16px 0 0;
+    padding: 20px; max-height: 50vh; overflow-y: auto;
+    box-shadow: 0 -4px 20px rgba(0,0,0,.12);
+    animation: slideUp .25s ease;
+  }
+  .vocab-panel.show { display: block; }
+
+  @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+
+  .vocab-panel-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+  .vp-word { font-size: 20px; font-weight: 700; color: #1d1d1f; }
+  .vp-close { background: none; border: none; font-size: 22px; cursor: pointer; color: #999; padding: 0 4px; }
+  .vp-zh { font-size: 16px; color: #555; margin-bottom: 10px; }
+  .vp-ex { font-size: 14px; color: #777; line-height: 1.6; padding: 10px 12px; background: #f8f9fa; border-radius: 8px; }
+
+  @media (min-width: 600px) {
+    .vocab-panel {
+      left: 50%; right: auto; bottom: auto; top: 50%;
+      transform: translate(-50%, -50%); width: 420px; max-height: 60vh;
+      border-radius: 16px; animation: fadeIn .2s ease;
+    }
+    .vocab-panel.show { transform: translate(-50%, -50%); }
+    @keyframes fadeIn { from { opacity: 0; transform: translate(-50%, -50%) scale(.95); } to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
+  }
+
+  /* ===== Grammar ===== */
+  .grammar-table-wrapper { overflow-x: auto; margin: 12px 0; }
+  .grammar-table { width: 100%; border-collapse: collapse; font-size: clamp(12px, 1.8vw, 18px); }
+  .grammar-table th, .grammar-table td {
+    border: 1px solid #e8e8ed; padding: 10px 12px; text-align: left; vertical-align: top;
+  }
+  .grammar-table th { background: #f0f4ff; font-weight: 600; color: #333; white-space: nowrap; }
+  .grammar-table td strong { color: #1a73e8; }
+  .grammar-table tr:nth-child(even) td { background: #fafbfc; }
+  .grammar-examples { margin-top: 16px; }
+  .grammar-examples h3 { font-size: 16px; margin: 0 0 8px; }
+  .grammar-example { padding: 10px 14px; margin-bottom: 8px; background: #fff; border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,.06); }
+  .grammar-example .de { font-size: 15px; color: #333; }
+  .grammar-example .zh { font-size: 13px; color: #888; margin-top: 2px; }
+
+  /* ===== Quiz ===== */
+  .quiz-card { background: #fff; border-radius: 10px; padding: 18px; margin-bottom: 14px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+  .q-text { font-size: clamp(14px, 2.2vw, 20px); font-weight: 500; margin-bottom: 10px; line-height: 1.5; }
+  .options { display: flex; flex-direction: column; gap: 6px; }
+  .opt {
+    padding: 10px 14px; border: 1px solid #e8e8ed; border-radius: 6px;
+    cursor: pointer; font-size: clamp(13px, 2vw, 18px); transition: all .15s;
+  }
+  .opt:hover { border-color: #1a73e8; }
+  .opt.correct { background: #e8f8e8; border-color: #27ae60; color: #1e7e34; font-weight: 500; }
+  .opt.wrong { background: #fdecea; border-color: #e74c3c; color: #c0392b; }
+  .q-answer { display: none; margin-top: 8px; padding: 6px 12px; background: #f0f7ff; border-radius: 6px; font-size: 14px; color: #1a73e8; font-weight: 600; text-align: center; }
+  .q-answer.show { display: block; }
+  .show-answer-btn { display: block; margin: 6px auto 0; padding: 4px 14px; background: #1a73e8; color: #fff; border: none; border-radius: 6px; font-size: 13px; cursor: pointer; }
+
+  /* ===== Connect Grid ===== */
+  .connect-game { background: #fff; border-radius: 10px; padding: 18px; margin-bottom: 14px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+  .connect-game h3 { font-size: 16px; margin: 0 0 4px; }
+  .connect-game .zh { font-size: 13px; color: #888; margin: 0 0 12px; }
+  .connect-field { display: flex; gap: 24px; justify-content: center; }
+  .connect-col { display: flex; flex-direction: column; gap: 10px; min-width: 130px; }
+  .c-item {
+    padding: 10px 14px; border: 1px solid #ddd; border-radius: 8px;
+    text-align: center; cursor: pointer; font-size: clamp(13px, 1.8vw, 18px);
+    transition: all .15s; background: #fff;
+  }
+  .c-item:hover { border-color: #1a73e8; }
+  .c-item.selected { border-color: #1a73e8; background: #e8f0fe; font-weight: 500; }
+  .c-item.matched { border-color: #27ae60; background: #e8f8e8; color: #1e7e34; cursor: default; }
+  .connect-score { text-align: center; font-size: 14px; color: #666; margin-top: 12px; }
+
+  /* ===== Fill-gap ===== */
+  .fill-game { background: #fff; border-radius: 10px; padding: 18px; margin-bottom: 14px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+  .fill-game h3 { font-size: 16px; margin: 0 0 4px; }
+  .fill-game .zh { font-size: 13px; color: #888; margin: 0 0 12px; }
+  .fill-item { margin-bottom: 10px; }
+  .fill-sentence { font-size: clamp(13px, 2vw, 19px); color: #333; margin-bottom: 4px; line-height: 1.5; }
+  .fill-input-line { display: flex; align-items: center; gap: 6px; }
+  .fill-input {
+    flex: 1; padding: 6px 10px; border: 1px solid #ddd; border-radius: 6px;
+    font-size: 14px; outline: none; transition: border .15s;
+  }
+  .fill-input:focus { border-color: #1a73e8; }
+  .fill-check {
+    padding: 6px 10px; border: 1px solid #1a73e8; border-radius: 6px;
+    background: #e8f0fe; color: #1a73e8; cursor: pointer; font-size: 14px;
+  }
+  .fill-result { font-size: 16px; min-width: 20px; text-align: center; }
+  .fill-result.correct { color: #27ae60; }
+  .fill-result.wrong { color: #e74c3c; }
+
+  /* ===== Matching Game ===== */
+  .match-game { margin-top: 20px; }
+  .match-game h3 { font-size: 16px; margin: 0 0 4px; }
+  .match-game .zh { font-size: 13px; color: #888; margin: 0 0 12px; }
+  #match-game { display: flex; flex-wrap: wrap; gap: 8px; }
+  .match-card {
+    padding: 8px 14px; border: 1px solid #ddd; border-radius: 8px;
+    cursor: pointer; font-size: 14px; transition: all .15s;
+    background: #fff; text-align: center; flex: 0 0 auto; min-width: 80px;
+  }
+  .match-card:hover { border-color: #1a73e8; }
+  .match-card.selected { border-color: #1a73e8; background: #e8f0fe; }
+  .match-card.matched { border-color: #27ae60; background: #e8f8e8; color: #1e7e34; cursor: default; opacity: .7; }
+  .match-card.de { font-weight: 500; }
+  .match-card.zh { background: #fafbfc; }
+
+  /* ===== Translation Cards ===== */
+  .translation-grid {
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .tc-card {
+    background: transparent;
+    border: none;
+    padding: 0;
+    perspective: 800px;
+    cursor: pointer;
+  }
+  .tc-inner {
+    position: relative;
+    transition: transform .5s ease;
+    transform-style: preserve-3d;
+    min-height: 80px;
+  }
+  .tc-card.flipped .tc-inner {
+    transform: rotateY(180deg);
+  }
+  .tc-front, .tc-back {
+    position: absolute; inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    display: flex; flex-direction: column; align-items: flex-start; justify-content: center;
+    padding: 14px 16px;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    font-size: clamp(14px, 2.2vw, 21px); line-height: 1.5;
+    min-height: 80px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06);
+  }
+  .tc-front {
+    background: #fff;
+    z-index: 2;
+    border-left: 3px solid #1a73e8;
+  }
+  .tc-back {
+    background: linear-gradient(135deg, #e8f0fe, #f5f5ff);
+    color: #1d1d1f;
+    transform: rotateY(180deg);
+    z-index: 1;
+    border-left: 3px solid #27ae60;
+  }
+  .tc-num {
+    display: inline-block;
+    width: 22px; height: 22px; line-height: 22px;
+    text-align: center;
+    background: #1a73e8; color: #fff;
+    border-radius: 50%;
+    font-size: 11px; font-weight: 600;
+    margin-bottom: 4px;
+    flex-shrink: 0;
+  }
+  .tc-back .tc-num {
+    background: #27ae60;
+  }
+  .tc-de {
+    font-size: clamp(14px, 2.2vw, 21px); color: #1d1d1f; font-weight: 500;
+  }
+  .tc-zh {
+    font-size: 16px; color: #1d1d1f;
+  }
+  .tc-vocab {
+    margin-top: 6px;
+    font-size: 12px; color: #888;
+    background: rgba(255,255,255,.7);
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+  .tc-card:hover .tc-front {
+    box-shadow: 0 2px 8px rgba(0,0,0,.1);
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 600px) {
+    .nav-links { position: fixed; top: 48px; left: 0; right: 0; background: #fff; flex-direction: column; padding: 8px; box-shadow: 0 4px 12px rgba(0,0,0,.1); display: none; }
+    .nav-links.show { display: flex; }
+    .hamburger { display: block; }
+    .vocab-grid { grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); }
+    .connect-field { gap: 10px; }
+    .connect-col { min-width: 80px; }
+  }
+
+  /* 投影与自适应微调（11 个导航项需要更宽的行、更大的正文衬度） */
+  .top-nav { max-width: 1440px; }
+  .nav-links button { padding: 8px 11px; }
+  .flow-table { font-size: 15px; }
+  .kw-list { font-size: 14px; }
+  .kw-zh, .tc-tip, .zh-hint { font-size: 13.5px; }
+  .zh-hint.note { font-size: 12.5px; color: #aaa; }
+  .kw-left { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+  .kw-wrap > * { min-width: 0; }
+  .kw-table-wrap { max-width: 100%; overflow-x: auto; }
+  .kw-left .bank-box { margin: 0; }
+  .kw-left .bank-chip { font-size: 13.5px; }
+  /* 窄屏：缩放填字网格，保证全部格子可见（zoom 参与布局，不会留白） */
+  @media (max-width: 820px) {
+    .kw-table { zoom: 0.82; }
+    .kw-cell input { width: 26px; height: 26px; font-size: 13px; }
+    .kw-black { width: 26px; height: 26px; }
+    .connect-field { gap: 12px; }
+  }
+  @media (max-width: 500px) {
+    .kw-table { zoom: 0.6; }
+    .kw-cell input { width: 24px; height: 24px; font-size: 12px; }
+    .kw-black { width: 24px; height: 24px; }
+    .blitz-grid { grid-template-columns: 1fr; }
+  }
+  .zh-hint { font-size: 14px; color: #888; margin: 0 0 12px; }
+  .flow-table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 8px; }
+  .flow-table td { border-bottom: 1px solid #eee; padding: 7px 6px; vertical-align: top; }
+  .flow-table .fl-t { color: #1a73e8; font-weight: 600; white-space: nowrap; width: 62px; }
+  .btn { padding: 7px 16px; border-radius: 8px; border: none; background: #1a73e8; color: #fff;
+         font-size: 14px; cursor: pointer; transition: all .15s; }
+  .btn:hover { filter: brightness(1.08); }
+  .btn.ghost { background: #fff; color: #1a73e8; border: 1px solid #c9d9f5; }
+  .btn.tiny { padding: 2px 9px; font-size: 12px; margin-left: 6px; }
+  /* Blitz */
+  .blitz-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; }
+  .blitz-card { background: #fff; border-radius: 10px; padding: 14px; cursor: pointer;
+                box-shadow: 0 1px 3px rgba(0,0,0,.06); border-left: 4px solid #fbbc04; transition: all .2s; }
+  .blitz-card .bz-cn { font-size: clamp(14px, 2vw, 19px); font-weight: 600; }
+  .blitz-card .bz-hint { font-size: 12px; color: #aaa; margin-top: 2px; }
+  .blitz-card .bz-de { display: none; margin-top: 8px; padding-top: 8px; border-top: 1px dashed #ddd;
+                       color: #1a73e8; font-weight: 700; font-size: clamp(14px, 2vw, 19px); }
+  .blitz-card.open { border-left-color: #27ae60; background: #f6fdf7; }
+  .blitz-card.open .bz-de { display: block; }
+  .timer-bar { display: flex; align-items: center; gap: 10px; margin: 0 0 14px; flex-wrap: wrap; }
+  .timer { font-size: 34px; font-weight: 700; color: #1a73e8; min-width: 68px; text-align: center;
+           background: #eef4ff; border-radius: 10px; padding: 2px 10px; font-variant-numeric: tabular-nums; }
+  .timer.warn { color: #e74c3c; background: #fdecea; }
+  /* Crossword */
+  .kw-tools { display: flex; align-items: center; gap: 10px; margin: 0 0 12px; flex-wrap: wrap; }
+  .kw-result { font-size: 14px; font-weight: 600; color: #1a73e8; }
+  .kw-wrap { display: grid; grid-template-columns: minmax(280px, 1fr) minmax(280px, 1fr); gap: 18px; align-items: start; }
+  .kw-table-wrap { overflow-x: auto; }
+  .kw-table { border-collapse: collapse; margin: 0 auto; }
+  .kw-table td { padding: 0; }
+  .kw-cell { position: relative; }
+  .kw-cell input { width: 30px; height: 30px; border: 1px solid #c9c9cf; text-align: center;
+                   font-size: 15px; font-weight: 600; text-transform: uppercase; padding: 0;
+                   background: #fff; outline: none; }
+  .kw-cell input:focus { background: #e8f0fe; border-color: #1a73e8; }
+  .kw-cell input.ok { background: #e8f8e8; border-color: #27ae60; }
+  .kw-cell input.bad { background: #fdecea; border-color: #e74c3c; }
+  .kw-num { position: absolute; top: -1px; left: 1px; font-size: 8px; color: #999; z-index: 2; }
+  .kw-black { background: #ececf0; width: 30px; height: 30px; }
+  .kw-clues h4 { margin: 10px 0 4px; font-size: 14px; color: #1a73e8; }
+  .kw-list { list-style: none; margin: 0 0 10px; padding: 0; font-size: 13.5px; line-height: 1.55; }
+  .kw-list li { padding: 4px 0; border-bottom: 1px dotted #eee; }
+  .kw-tag { display: inline-block; min-width: 16px; color: #999; font-size: 12px; }
+  .kw-zh { color: #999; font-size: 12px; display: block; }
+  .bank-box { background: #f8f9fa; border-radius: 8px; padding: 10px 14px; font-size: 14px; margin: 12px 0; }
+  .bank-chip { display: inline-block; background: #fff; border: 1px solid #c9d9f5; color: #1a73e8;
+               border-radius: 14px; padding: 3px 12px; margin: 3px 4px; cursor: pointer; font-size: 14px; }
+  .bank-chip:hover { background: #e8f0fe; }
+  .bank-chip.used { opacity: .35; }
+  .logo-chip { display: inline-block; background: #fff; border: 1px dashed #ddd; border-radius: 8px;
+               padding: 3px 10px; margin: 3px 4px; font-size: 13px; color: #666; }
+  /* Fill-in */
+  .fill-item { background: #fff; border-radius: 10px; padding: 12px 16px; margin-bottom: 10px;
+               box-shadow: 0 1px 3px rgba(0,0,0,.05); }
+  .fill-sentence { font-size: clamp(14px, 2vw, 19px); line-height: 1.55; }
+  .fill-zh { font-size: 13px; color: #999; margin: 2px 0 6px; }
+  .fill-input { flex: 1; min-width: 160px; padding: 7px 10px; border: 1px solid #ddd; border-radius: 6px;
+                font-size: 15px; outline: none; }
+  .fill-input:focus { border-color: #1a73e8; }
+  .fill-input.ok { background: #e8f8e8; border-color: #27ae60; }
+  .fill-input.bad { background: #fdecea; border-color: #e74c3c; }
+  .fill-result.correct { color: #27ae60; }
+  .fill-result.wrong { color: #e74c3c; }
+  /* Cloze */
+  .cloze-p { font-size: clamp(14px, 2vw, 19px); line-height: 1.9; margin: 0 0 8px; }
+  .cloze-blank { display: inline-block; min-width: 96px; text-align: center; border-bottom: 2px solid #1a73e8;
+                 color: #1a73e8; font-weight: 600; cursor: pointer; padding: 0 6px; }
+  .cloze-blank.filled { color: #1d1d1f; border-bottom-color: #27ae60; }
+  .cloze-blank.ok { background: #e8f8e8; }
+  .cloze-blank.bad { background: #fdecea; border-bottom-color: #e74c3c; color: #c0392b; }
+  .cloze-blank.sel { background: #e8f0fe; }
+  /* Mindmap */
+  .mm-pool { display: flex; flex-wrap: wrap; gap: 8px; background: #fff; border-radius: 10px;
+             padding: 14px; box-shadow: 0 1px 3px rgba(0,0,0,.06); margin-bottom: 14px; }
+  .mm-chip { background: #fff; border: 1px solid #ddd; border-radius: 16px; padding: 5px 14px;
+             font-size: 15px; cursor: pointer; transition: all .15s; }
+  .mm-chip:hover { border-color: #1a73e8; }
+  .mm-chip.sel { background: #e8f0fe; border-color: #1a73e8; }
+  .mm-chip.ok { background: #e8f8e8; border-color: #27ae60; }
+  .mm-chip.bad { background: #fdecea; border-color: #e74c3c; }
+  .mm-board { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; }
+  .mm-box { background: #fff; border: 2px dashed #dcdce2; border-radius: 12px; padding: 10px; min-height: 96px; }
+  .mm-head { font-weight: 600; font-size: 14px; color: #1a73e8; margin-bottom: 6px; }
+  .mm-items { display: flex; flex-wrap: wrap; gap: 6px; min-height: 34px; }
+  .mm-items .mm-chip { font-size: 14px; padding: 3px 10px; }
+  /* Satzbau */
+  .sb-card { background: #fff; border-radius: 10px; padding: 16px; margin-bottom: 12px;
+             box-shadow: 0 1px 3px rgba(0,0,0,.05); }
+  .sb-zh { font-size: clamp(14px, 2vw, 19px); font-weight: 500; }
+  .sb-hint { font-size: 13px; color: #888; margin: 2px 0 10px; }
+  .sb-pool { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+  .sb-chunk { background: #eef4ff; border: 1px solid #c9d9f5; color: #17427f; border-radius: 8px;
+              padding: 6px 12px; font-size: clamp(13px, 1.9vw, 18px); cursor: pointer; }
+  .sb-chunk:hover { background: #e0ecff; }
+  .sb-line { min-height: 46px; border-bottom: 2px solid #e0e0e6; padding: 6px 4px;
+             display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .sb-line .sb-chunk { background: #fff; border-color: #27ae60; color: #1e7e34; }
+  .sb-line .sb-chunk:hover { background: #fdecea; border-color: #e74c3c; }
+  .sb-actions { display: flex; align-items: center; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+  .sb-line.ok .sb-chunk { background: #e8f8e8; }
+  .sb-line.bad .sb-chunk { background: #fdecea; border-color: #e74c3c; color: #c0392b; }
+  .tc-tip { font-size: 12px; color: #888; margin-top: 6px; }
+  .full-de { background: #f6fbf7; border-left: 3px solid #27ae60; border-radius: 0 8px 8px 0;
+             padding: 12px 16px; margin: 10px 0; }
+  .de-full { font-size: clamp(14px, 2vw, 19px); line-height: 1.8; margin: 0; }
+  /* Scoreboard & games */
+  .scoreboard { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+  .team { flex: 1; min-width: 150px; background: #fff; border-radius: 12px; padding: 14px;
+          text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+  .team-name { font-size: 14px; color: #888; }
+  .team-score { font-size: 46px; font-weight: 700; color: #1a73e8; line-height: 1.1; }
+  .team-btns { display: flex; gap: 8px; justify-content: center; }
+  .games-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
+  .game-card { background: #fff; border-radius: 10px; padding: 14px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+  .game-name { font-weight: 600; font-size: 15px; margin-bottom: 4px; }
+  .game-time { font-size: 12px; color: #1a73e8; background: #eef4ff; border-radius: 10px; padding: 1px 8px; }
+  .game-card p { font-size: 13.5px; color: #666; margin: 4px 0 0; line-height: 1.6; }
+  @media (max-width: 760px) {
+    .kw-wrap { grid-template-columns: 1fr; }
+    .mm-board { grid-template-columns: 1fr; }
+  }
+  .badflash { background: #fdecea !important; border-color: #e74c3c !important; }
+</style>
+
+</head>
+<body>
+<nav><div class="top-nav"><div class="logo" style="cursor:pointer" onclick="switchSection('home')"><span class="logo-icon">🎓</span><span>Lektion 7 · Wortschatz</span></div><div class="nav-links" id="navLinks"><button onclick="switchSection('home')">首页</button><button onclick="switchSection('vocab')">词汇卡片</button><button onclick="switchSection('blitz')">⚡抢答</button><button onclick="switchSection('connect')">🔗连线</button><button onclick="switchSection('kreuzwort')">🧩填字</button><button onclick="switchSection('satz')">✍️填空</button><button onclick="switchSection('hochschule')">🏛️高校类型</button><button onclick="switchSection('mindmap')">🗺️导图</button><button onclick="switchSection('satzbau')">🧱句型</button><button onclick="switchSection('uebersetzen')">🎯翻译</button><button onclick="switchSection('spiele')">🏆游戏</button></div><button class="hamburger" onclick="toggleNav()">☰</button></div><div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div></nav>
+<div class="main"><div class="container"><div class="text-cards">
+    <section id="home" class="active">
+      <div class="hero">
+        <h1>Lektion 7 · Studium, Schule &amp; Wortschatz</h1>
+        <p class="sub">词汇 · 十字填词 · 句子填空 · 翻译擂台 · 课堂游戏</p>
+        <p class="meta">教材 Lektion 7「Start in die Zukunft!」S.200 / S.202–203 Übungen</p>
+      </div>
+      <div class="home-grid"><div class="text-card" onclick="switchSection('vocab')" style="cursor:pointer"><h3>📇 词汇卡片</h3><p>48 个核心词 · 分组翻转卡 + 例句</p></div><div class="text-card" onclick="switchSection('blitz')" style="cursor:pointer"><h3>⚡ Blitzrunde 抢答</h3><p>中文提示 → 德语抢答 · 带计时器</p></div><div class="text-card" onclick="switchSection('connect')" style="cursor:pointer"><h3>🔗 连线配对</h3><p>4 组词网 · 点击左右配对</p></div><div class="text-card" onclick="switchSection('kreuzwort')" style="cursor:pointer"><h3>🧩 Kreuzworträtsel</h3><p>教材 Ü2 · 15 个提示句填格</p></div><div class="text-card" onclick="switchSection('satz')" style="cursor:pointer"><h3>✍️ Satzergänzung</h3><p>教材 Ü2 a–o 逐句核对</p></div><div class="text-card" onclick="switchSection('hochschule')" style="cursor:pointer"><h3>🏛️ Hochschullandschaft</h3><p>教材 Ü1 · 词库完形填空</p></div><div class="text-card" onclick="switchSection('mindmap')" style="cursor:pointer"><h3>🗺️ Mindmap</h3><p>教材 Ü3 · 5 类词网归类</p></div><div class="text-card" onclick="switchSection('satzbau')" style="cursor:pointer"><h3>🧱 Satzbau 句型工坊</h3><p>6 个课文核心句型 · 组句检验</p></div><div class="text-card" onclick="switchSection('uebersetzen')" style="cursor:pointer"><h3>🎯 翻译擂台</h3><p>教材 Ü9 · 中译德逐句核对</p></div><div class="text-card" onclick="switchSection('spiele')" style="cursor:pointer"><h3>🏆 课堂游戏 & 计分板</h3><p>6 个课堂活动 + 双队计分</p></div></div>
+      <div class="obj-box"><strong>学习目标：</strong><ul><li>记住并主动运用本单元 48 个核心词汇（学校体系 / 高校类型 / 学业与考试 / 动词搭配）</li><li>掌握「学习与研究」主题词汇网：Hochschultypen, Lehrveranstaltungen, Prüfungen und Abschlüsse</li><li>熟练使用课文句型：vor der Entscheidung stehen · nicht nur …, sondern auch … · ohne + Akk. · die Möglichkeit bieten, … zu + Inf.</li><li>能独立把「德国择校」段落由中文译成德语，并说出所用句型</li><li>在小组竞赛中快速反应，把被动词汇变成主动词汇</li></ul></div>
+      <div class="text-card" style="margin-top:12px">
+        <h3>⏱️ 45 分钟课堂流程（建议）</h3>
+        <table class="flow-table"><tr><td class="fl-t">2 min</td><td>热身抢答 Blitzrunde</td><td>中→德抢答，两组计分，唤醒旧词</td></tr><tr><td class="fl-t">5 min</td><td>词汇卡片 Wortschatzkarten</td><td>48 张翻转卡，学生点开例句朗读；★标注高频词</td></tr><tr><td class="fl-t">5 min</td><td>连线配对 Vernetzen</td><td>4 组词网连线：高校类型 / 教学活动 / 学业学位 / 动词搭配</td></tr><tr><td class="fl-t">8 min</td><td>十字填词 Kreuzworträtsel</td><td>教材 Ü2 的 15 个提示句 → 填格（可用词库提示）</td></tr><tr><td class="fl-t">5 min</td><td>句子填空 Satzergänzung</td><td>教材 Ü2 a–o 逐句输入核对，允许同义答案</td></tr><tr><td class="fl-t">4 min</td><td>思维导图 Mindmap</td><td>把词归入 5 个分类，全班一起补全 Wortfeld</td></tr><tr><td class="fl-t">3 min</td><td>高校类型 Hochschullandschaft</td><td>教材 Ü1 短文完形：先看 logos 词库，再填空</td></tr><tr><td class="fl-t">5 min</td><td>句型工坊 Satzbau</td><td>6 个课文核心句型：点词块组句，检验语序</td></tr><tr><td class="fl-t">6 min</td><td>翻译擂台 Übersetzen</td><td>教材 Ü9 中译德：逐句翻卡核对 + 整段参考译文</td></tr><tr><td class="fl-t">2 min</td><td>收尾 Blitzlicht</td><td>用 3 个新学词 + 1 个句型说一句话（计时器 30 秒/人）</td></tr></table>
+      </div>
+    </section>
+    <section id="vocab">
+      <h2 class="section-title"><span class="num">1</span> 词汇卡片 · Wortschatzkarten</h2>
+      <p class="zh-hint">点击卡片翻转看中文，点右下 ▶ 看例句。读名词请带冠词，说动词请带支配格。</p>
+      <div class="person-tabs"><button class="person-btn active" onclick="switchVocabTab('G1')">🏫 教育体系与学校类型</button><button class="person-btn" onclick="switchVocabTab('G2')">🎓 学习、教学与研究</button><button class="person-btn" onclick="switchVocabTab('G3')">💼 领域、手艺与选择</button><button class="person-btn" onclick="switchVocabTab('G4')">🔧 动词、形容词与固定搭配</button></div><div class="person-content active" id="vc-G1"><div class="vocab-grid"><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Lehre (-n)</div><div class="vc-back">学徒的学习期；学说</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Lehre (-n)','学徒的学习期；学说','Max beginnt nach der Schule eine Lehre im Handelsbereich.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Primarstufe (-n)</div><div class="vc-back">初等教育阶段</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Primarstufe (-n)','初等教育阶段','Die Primarstufe umfasst in Deutschland die ersten vier Schuljahre.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Mittelschule (-n)</div><div class="vc-back">中学</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Mittelschule (-n)','中学','In der Schweiz heißt eine Schulform Mittelschule.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">der Kanton (-e) [kanˈtoːn]</div><div class="vc-back">［瑞］州</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('der Kanton (-e) [kanˈtoːn]','［瑞］州','In der Schweiz entscheidet jeder Kanton über sein Schulsystem.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Volksschule (-n)</div><div class="vc-back">［奥］小学；［瑞］公立学校</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Volksschule (-n)','［奥］小学；［瑞］公立学校','In Österreich gehen die Kinder in die Volksschule.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Primarschule (-n)</div><div class="vc-back">［瑞］小学</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Primarschule (-n)','［瑞］小学','In Zürich dauert die Primarschule sechs Jahre.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Matura (nur Sg)</div><div class="vc-back">［奥，瑞］（高级中学的）毕业考试</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Matura (nur Sg)','［奥，瑞］（高级中学的）毕业考试','Nach der Matura kann man an der Universität studieren.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Ganztagsschule (-n)</div><div class="vc-back">全日制学校</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Ganztagsschule (-n)','全日制学校','In einer Ganztagsschule bleiben die Kinder bis zum Nachmittag.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Lehrkraft (¨-e)</div><div class="vc-back">教师，师资</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Lehrkraft (¨-e)','教师，师资','Die Lehrkräfte erstellen die Empfehlung für die Eltern.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Pflicht (-en)</div><div class="vc-back">义务，责任，职责</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Pflicht (-en)','义务，责任，职责','In Deutschland ist der Schulbesuch eine Pflicht.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Erlaubnis (-se)</div><div class="vc-back">许可，同意</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Erlaubnis (-se)','许可，同意','Für die Fahrt braucht das Kind die Erlaubnis der Eltern.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Empfehlung (-en)</div><div class="vc-back">介绍，推荐（信）；劝告，忠告</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Empfehlung (-en)','介绍，推荐（信）；劝告，忠告','Die Grundschule gibt den Eltern eine Empfehlung.')">▶</button></div></div></div><div class="person-content" id="vc-G2"><div class="vocab-grid"><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Praxis (nur Sg)</div><div class="vc-back">实践，运用</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Praxis (nur Sg)','实践，运用','An der Fachhochschule spielt die Praxis eine große Rolle.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">praxisorientiert</div><div class="vc-back">以实践为导向的</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('praxisorientiert','以实践为导向的','Ein duales Studium ist besonders praxisorientiert.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Theorie (-n)</div><div class="vc-back">理论，原理；学说</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Theorie (-n)','理论，原理；学说','An der Universität vermittelt man vor allem Theorie.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Grundlage (-n)</div><div class="vc-back">基础；根据；前提；地基</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Grundlage (-n)','基础；根据；前提；地基','Gute Leistungen in den Hauptfächern sind die Grundlage für die Empfehlung.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Tendenz (-en)</div><div class="vc-back">趋势，倾向</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Tendenz (-en)','趋势，倾向','Es gibt die Tendenz, dass mehr Eltern die Gesamtschule wählen.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Voraussetzung (-en)</div><div class="vc-back">前提，先决条件；假设</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Voraussetzung (-en)','前提，先决条件；假设','Das Abitur ist die Voraussetzung für ein Studium.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">der Prozess (-e)</div><div class="vc-back">过程，进程</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('der Prozess (-e)','过程，进程','Die Wahl der Schule ist ein langer Prozess.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">das Profil (-e)</div><div class="vc-back">鲜明的特征；侧面像</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('das Profil (-e)','鲜明的特征；侧面像','Jede Schule hat ein eigenes Profil.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">das Hauptfach (¨-er)</div><div class="vc-back">主要科目，主修学科</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('das Hauptfach (¨-er)','主要科目，主修学科','Deutsch und Mathematik sind Hauptfächer.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Aufgabe (-n)</div><div class="vc-back">作业；习题；任务</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Aufgabe (-n)','作业；习题；任务','Die Aufgabe der Schule ist es, jedes Kind bestmöglich zu fördern.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Schwierigkeit (-en)</div><div class="vc-back">困难</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Schwierigkeit (-en)','困难','Eine Schwierigkeit ist, dass die Schule weit von der Wohnung weg ist.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">der Zeitpunkt (-e)</div><div class="vc-back">时刻，时机</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('der Zeitpunkt (-e)','时刻，时机','Der richtige Zeitpunkt für die Entscheidung ist das Ende der Grundschule.')">▶</button></div></div></div><div class="person-content" id="vc-G3"><div class="vocab-grid"><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">der Handel (nur Sg)</div><div class="vc-back">商业，贸易，买卖，交易</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('der Handel (nur Sg)','商业，贸易，买卖，交易','Der Handel mit anderen Ländern ist wichtig für die Wirtschaft.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">der Bereich (-e)</div><div class="vc-back">范围，区域，领域</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('der Bereich (-e)','范围，区域，领域','Sie arbeitet im Bereich Bildung und Erziehung.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">das Handwerk (nur Sg)</div><div class="vc-back">手艺；手工业</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('das Handwerk (nur Sg)','手艺；手工业','Im Handwerk lernt man vor allem praktische Fähigkeiten.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">der Meister (-)</div><div class="vc-back">工匠，师傅；能手，大师</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('der Meister (-)','工匠，师傅；能手，大师','Nach der Ausbildung kann man noch Meister werden.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">das Projekt (-e)</div><div class="vc-back">工程，项目</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('das Projekt (-e)','工程，项目','Das Projekt „Schule der Zukunft“ läuft seit einem Jahr.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Chance (-n)</div><div class="vc-back">可能性，机会；运气，（成功的）希望</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Chance (-n)','可能性，机会；运气，（成功的）希望','Jedes Kind soll die gleiche Chance bekommen.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Wahl (nur Sg)</div><div class="vc-back">选择，挑选</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Wahl (nur Sg)','选择，挑选','Die Wahl der richtigen Schule ist nicht leicht.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Alternative (-n)</div><div class="vc-back">其他可能性，其他选项，其他途径</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Alternative (-n)','其他可能性，其他选项，其他途径','Die Gesamtschule ist eine gute Alternative zum Gymnasium.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">der Wunsch (¨-e)</div><div class="vc-back">想法，愿望</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('der Wunsch (¨-e)','想法，愿望','Viele Eltern haben den Wunsch, dass ihr Kind das Abitur macht.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">das Gemälde (-n)</div><div class="vc-back">油画</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('das Gemälde (-n)','油画','Lisa interessiert sich für Kunst und mag Gemälde.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">das Niederländisch</div><div class="vc-back">荷兰语</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('das Niederländisch','荷兰语','In der Schule lernt Lisa Niederländisch.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">die Situation (-en)</div><div class="vc-back">情况，局面，处境，场合</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('die Situation (-en)','情况，局面，处境，场合','Die Situation der Familie spielt bei der Wahl eine wichtige Rolle.')">▶</button></div></div></div><div class="person-content" id="vc-G4"><div class="vocab-grid"><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">sich beschäftigen + mit Dat.</div><div class="vc-back">从事于，忙于</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('sich beschäftigen + mit Dat.','从事于，忙于','Sie beschäftigt sich mit der Frage, welche Schule die richtige ist.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">sich erinnern + an Akk.</div><div class="vc-back">想起，回忆起</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('sich erinnern + an Akk.','想起，回忆起','Ich erinnere mich gern an meine Schulzeit.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">ab/geben + A</div><div class="vc-back">提交，交给，交出</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('ab/geben + A','提交，交给，交出','Die Eltern geben die Anmeldung bei der Schule ab.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">aus/schalten + A</div><div class="vc-back">使断路，关掉</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('aus/schalten + A','使断路，关掉','Bitte schalten Sie das Handy im Unterricht aus.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">fördern + A</div><div class="vc-back">促进，推进；资助，支持</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('fördern + A','促进，推进；资助，支持','Die Schule fördert jedes Kind nach seinen Fähigkeiten.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">umfassen + A</div><div class="vc-back">包括，包含</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('umfassen + A','包括，包含','Die Grundschule umfasst vier Schuljahre.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">verantwortlich</div><div class="vc-back">有责任的，负责的；责任重大的</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('verantwortlich','有责任的，负责的；责任重大的','Die Eltern sind für die Wahl der Schule verantwortlich.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">gleich</div><div class="vc-back">一样的，相同的</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('gleich','一样的，相同的','Alle Kinder haben die gleichen Chancen.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">eher</div><div class="vc-back">更容易，更可能；宁可，宁愿</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('eher','更容易，更可能；宁可，宁愿','Eher wählen die Eltern ein Gymnasium als eine Hauptschule.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">bestmöglich</div><div class="vc-back">尽可能好的</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('bestmöglich','尽可能好的','Die Schule soll die bestmögliche Förderung bieten.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">eingeschränkt</div><div class="vc-back">有限制的，有约束的</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('eingeschränkt','有限制的，有约束的','Niklas bekommt nur eine eingeschränkte Empfehlung.')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front">psychologisch</div><div class="vc-back">心理学的，心理的</div></div><button class="vc-detail" title="例句" onclick="event.stopPropagation();showVocab('psychologisch','心理学的，心理的','Psychologische Studien zeigen, wie wichtig der Schulweg ist.')">▶</button></div></div></div>
+    </section>
+    <section id="blitz">
+      <h2 class="section-title"><span class="num">2</span> ⚡ Blitzrunde · 抢答热身</h2>
+      <p class="zh-hint">老师念中文，学生抢答德语，先说出正确形式（含冠词/支配格）的小组得 1 分。点击卡片揭示答案。</p>
+      <div class="timer-bar">
+        <span class="timer" id="blitzTimer">30</span>
+        <button class="btn" onclick="startTimer('blitzTimer',30)">▶ 计时开始</button>
+        <button class="btn ghost" onclick="stopTimer('blitzTimer')">■ 停止</button>
+        <button class="btn ghost" onclick="resetTimer('blitzTimer',30)">↺ 重置</button>
+      </div>
+      <div class="blitz-grid"><div class="blitz-card" onclick="this.classList.toggle('open')"><div class="bz-cn">推荐（信）</div><div class="bz-hint">die ___ (-en)</div><div class="bz-de">die Empfehlung</div></div><div class="blitz-card" onclick="this.classList.toggle('open')"><div class="bz-cn">愿望</div><div class="bz-hint">der ___ (¨-e)</div><div class="bz-de">der Wunsch</div></div><div class="blitz-card" onclick="this.classList.toggle('open')"><div class="bz-cn">选择，挑选</div><div class="bz-hint">die ___ (nur Sg)</div><div class="bz-de">die Wahl</div></div><div class="blitz-card" onclick="this.classList.toggle('open')"><div class="bz-cn">其他选项</div><div class="bz-hint">die ___ (-n)</div><div class="bz-de">die Alternative</div></div><div class="blitz-card" onclick="this.classList.toggle('open')"><div class="bz-cn">前提，先决条件</div><div class="bz-hint">die ___ (-en)</div><div class="bz-de">die Voraussetzung</div></div><div class="blitz-card" onclick="this.classList.toggle('open')"><div class="bz-cn">全日制学校</div><div class="bz-hint">die ___ (-n)</div><div class="bz-de">die Ganztagsschule</div></div><div class="blitz-card" onclick="this.classList.toggle('open')"><div class="bz-cn">主要科目 / 主修学科</div><div class="bz-hint">das ___ (¨-er)</div><div class="bz-de">das Hauptfach</div></div><div class="blitz-card" onclick="this.classList.toggle('open')"><div class="bz-cn">尽可能好的</div><div class="bz-hint">形容词</div><div class="bz-de">bestmöglich</div></div><div class="blitz-card" onclick="this.classList.toggle('open')"><div class="bz-cn">提交，交给</div><div class="bz-hint">可分动词 ___ + A</div><div class="bz-de">abgeben</div></div><div class="blitz-card" onclick="this.classList.toggle('open')"><div class="bz-cn">从事于，忙于</div><div class="bz-hint">反身动词 + mit Dat.</div><div class="bz-de">sich beschäftigen mit</div></div><div class="blitz-card" onclick="this.classList.toggle('open')"><div class="bz-cn">想起，回忆起</div><div class="bz-hint">反身动词 + an Akk.</div><div class="bz-de">sich erinnern an</div></div><div class="blitz-card" onclick="this.classList.toggle('open')"><div class="bz-cn">心理的</div><div class="bz-hint">形容词</div><div class="bz-de">psychologisch</div></div></div>
+    </section>
+    <section id="connect">
+      <h2 class="section-title"><span class="num">3</span> 🔗 连线配对 · Vernetzen</h2>
+      <p class="zh-hint">配对成功变绿；点错会有红闪，可重试。四组全部完成后可让学生朗读整组词。</p>
+      <div class="connect-game">
+        <h3>🏫 高校类型 · Hochschultypen</h3><p class="zh-hint">点左列德语，再点右列中文</p>
+        <div class="connect-field">
+          <div class="connect-col"><div class="c-item de" data-pair="0" data-gid="0" onclick="cClick(this)">die Universität</div><div class="c-item de" data-pair="1" data-gid="0" onclick="cClick(this)">die Technische Universität</div><div class="c-item de" data-pair="2" data-gid="0" onclick="cClick(this)">die Fachhochschule</div><div class="c-item de" data-pair="3" data-gid="0" onclick="cClick(this)">die Kunsthochschule</div><div class="c-item de" data-pair="4" data-gid="0" onclick="cClick(this)">die Musikhochschule</div><div class="c-item de" data-pair="5" data-gid="0" onclick="cClick(this)">die Berufsakademie</div><div class="c-item de" data-pair="6" data-gid="0" onclick="cClick(this)">die Pädagogische Hochschule</div><div class="c-item de" data-pair="7" data-gid="0" onclick="cClick(this)">das duale Studium</div></div><div class="connect-col"><div class="c-item cn" data-pair="0" data-gid="0" onclick="cClick(this)">（综合）大学</div><div class="c-item cn" data-pair="4" data-gid="0" onclick="cClick(this)">音乐学院</div><div class="c-item cn" data-pair="7" data-gid="0" onclick="cClick(this)">双元制学习</div><div class="c-item cn" data-pair="5" data-gid="0" onclick="cClick(this)">（双元制）职业学院</div><div class="c-item cn" data-pair="1" data-gid="0" onclick="cClick(this)">工业大学</div><div class="c-item cn" data-pair="6" data-gid="0" onclick="cClick(this)">师范大学</div><div class="c-item cn" data-pair="3" data-gid="0" onclick="cClick(this)">艺术院校</div><div class="c-item cn" data-pair="2" data-gid="0" onclick="cClick(this)">应用技术大学</div></div>
+        </div>
+        <div class="connect-score">匹配：<span id="cg-cnt-0">0</span> / 8</div>
+      </div>
+      <div class="connect-game">
+        <h3>📚 教学活动 · Lehrveranstaltungen</h3><p class="zh-hint">点左列德语，再点右列中文</p>
+        <div class="connect-field">
+          <div class="connect-col"><div class="c-item de" data-pair="0" data-gid="1" onclick="cClick(this)">die Vorlesung</div><div class="c-item de" data-pair="1" data-gid="1" onclick="cClick(this)">das Seminar</div><div class="c-item de" data-pair="2" data-gid="1" onclick="cClick(this)">das Referat</div><div class="c-item de" data-pair="3" data-gid="1" onclick="cClick(this)">die Hausarbeit</div><div class="c-item de" data-pair="4" data-gid="1" onclick="cClick(this)">die Klausur</div><div class="c-item de" data-pair="5" data-gid="1" onclick="cClick(this)">der Hörsaal</div><div class="c-item de" data-pair="6" data-gid="1" onclick="cClick(this)">das Semester</div><div class="c-item de" data-pair="7" data-gid="1" onclick="cClick(this)">die Prüfung</div></div><div class="connect-col"><div class="c-item cn" data-pair="1" data-gid="1" onclick="cClick(this)">研讨课</div><div class="c-item cn" data-pair="6" data-gid="1" onclick="cClick(this)">学期</div><div class="c-item cn" data-pair="5" data-gid="1" onclick="cClick(this)">大教室，阶梯教室</div><div class="c-item cn" data-pair="0" data-gid="1" onclick="cClick(this)">大课，讲座</div><div class="c-item cn" data-pair="7" data-gid="1" onclick="cClick(this)">考试</div><div class="c-item cn" data-pair="2" data-gid="1" onclick="cClick(this)">专题报告</div><div class="c-item cn" data-pair="4" data-gid="1" onclick="cClick(this)">闭卷考试</div><div class="c-item cn" data-pair="3" data-gid="1" onclick="cClick(this)">课程论文</div></div>
+        </div>
+        <div class="connect-score">匹配：<span id="cg-cnt-1">0</span> / 8</div>
+      </div>
+      <div class="connect-game">
+        <h3>🎓 学业与学位 · Studium &amp; Abschlüsse</h3><p class="zh-hint">点左列德语，再点右列中文</p>
+        <div class="connect-field">
+          <div class="connect-col"><div class="c-item de" data-pair="0" data-gid="2" onclick="cClick(this)">das Studium</div><div class="c-item de" data-pair="1" data-gid="2" onclick="cClick(this)">der Bachelor</div><div class="c-item de" data-pair="2" data-gid="2" onclick="cClick(this)">der Master</div><div class="c-item de" data-pair="3" data-gid="2" onclick="cClick(this)">der Magister</div><div class="c-item de" data-pair="4" data-gid="2" onclick="cClick(this)">das Stipendium</div><div class="c-item de" data-pair="5" data-gid="2" onclick="cClick(this)">das Hauptfach</div><div class="c-item de" data-pair="6" data-gid="2" onclick="cClick(this)">das Nebenfach</div><div class="c-item de" data-pair="7" data-gid="2" onclick="cClick(this)">das Auslandspraktikum</div></div><div class="connect-col"><div class="c-item cn" data-pair="3" data-gid="2" onclick="cClick(this)">（传统）硕士（学位）</div><div class="c-item cn" data-pair="0" data-gid="2" onclick="cClick(this)">大学学习，学业</div><div class="c-item cn" data-pair="6" data-gid="2" onclick="cClick(this)">辅修专业</div><div class="c-item cn" data-pair="1" data-gid="2" onclick="cClick(this)">学士（学位）</div><div class="c-item cn" data-pair="7" data-gid="2" onclick="cClick(this)">海外实习</div><div class="c-item cn" data-pair="4" data-gid="2" onclick="cClick(this)">奖学金</div><div class="c-item cn" data-pair="5" data-gid="2" onclick="cClick(this)">主修专业</div><div class="c-item cn" data-pair="2" data-gid="2" onclick="cClick(this)">硕士（学位）</div></div>
+        </div>
+        <div class="connect-score">匹配：<span id="cg-cnt-2">0</span> / 8</div>
+      </div>
+      <div class="connect-game">
+        <h3>✨ 形容词与固定搭配 · Wendungen</h3><p class="zh-hint">点左列德语，再点右列中文</p>
+        <div class="connect-field">
+          <div class="connect-col"><div class="c-item de" data-pair="0" data-gid="3" onclick="cClick(this)">praxisorientiert</div><div class="c-item de" data-pair="1" data-gid="3" onclick="cClick(this)">eingeschränkt</div><div class="c-item de" data-pair="2" data-gid="3" onclick="cClick(this)">bestmöglich</div><div class="c-item de" data-pair="3" data-gid="3" onclick="cClick(this)">verantwortlich für</div><div class="c-item de" data-pair="4" data-gid="3" onclick="cClick(this)">sich beschäftigen mit</div><div class="c-item de" data-pair="5" data-gid="3" onclick="cClick(this)">sich erinnern an</div><div class="c-item de" data-pair="6" data-gid="3" onclick="cClick(this)">ausschalten</div><div class="c-item de" data-pair="7" data-gid="3" onclick="cClick(this)">abgeben</div></div><div class="connect-col"><div class="c-item cn" data-pair="4" data-gid="3" onclick="cClick(this)">从事于、忙于</div><div class="c-item cn" data-pair="3" data-gid="3" onclick="cClick(this)">对……负责</div><div class="c-item cn" data-pair="2" data-gid="3" onclick="cClick(this)">尽可能好的</div><div class="c-item cn" data-pair="0" data-gid="3" onclick="cClick(this)">以实践为导向的</div><div class="c-item cn" data-pair="1" data-gid="3" onclick="cClick(this)">有限制的</div><div class="c-item cn" data-pair="6" data-gid="3" onclick="cClick(this)">关掉，切断</div><div class="c-item cn" data-pair="5" data-gid="3" onclick="cClick(this)">想起、回忆起</div><div class="c-item cn" data-pair="7" data-gid="3" onclick="cClick(this)">提交，交出</div></div>
+        </div>
+        <div class="connect-score">匹配：<span id="cg-cnt-3">0</span> / 8</div>
+      </div>
+    </section>
+    <section id="kreuzwort">
+      <h2 class="section-title"><span class="num">4</span> 🧩 Kreuzworträtsel · Studium und Studentenleben</h2>
+      <p class="zh-hint">教材 Ü2 的 15 个提示句，把答案填进格子（可用右侧词库提示）。</p>
+      <div class="kw-tools">
+        <button class="btn" onclick="kwCheck()">✓ 检查全部</button>
+        <button class="btn ghost" onclick="kwReveal()">👁 显示答案</button>
+        <button class="btn ghost" onclick="kwClear()">↺ 清空</button>
+        <button class="btn ghost" onclick="kwZoom(-0.1)">🔍− 缩小</button>
+        <button class="btn ghost" onclick="kwZoom(0.1)">🔍+ 放大</button>
+        <button class="btn ghost" onclick="kwZoomReset()">100%</button>
+        <span id="kwResult" class="kw-result"></span>
+      </div>
+      <div class="kw-wrap">
+        <div class="kw-left">
+          <div class="kw-table-wrap"><table class="kw-table"><tr><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num">1</span><input maxlength="1" data-r="-8" data-c="-3" data-ans="V" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td></tr><tr><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="-7" data-c="-3" data-ans="O" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td></tr><tr><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="-6" data-c="-3" data-ans="R" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td></tr><tr><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="-5" data-c="-3" data-ans="L" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td></tr><tr><td class="kw-black"></td><td class="kw-cell"><span class="kw-num">2</span><input maxlength="1" data-r="-4" data-c="-9" data-ans="M" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="-4" data-c="-8" data-ans="A" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="-4" data-c="-7" data-ans="G" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="-4" data-c="-6" data-ans="I" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num">3</span><input maxlength="1" data-r="-4" data-c="-5" data-ans="S" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="-4" data-c="-4" data-ans="T" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="-4" data-c="-3" data-ans="E" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="-4" data-c="-2" data-ans="R" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td></tr><tr><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="-3" data-c="-5" data-ans="T" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="-3" data-c="-3" data-ans="S" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num">4</span><input maxlength="1" data-r="-3" data-c="1" data-ans="B" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td></tr><tr><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="-2" data-c="-5" data-ans="U" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num">5</span><input maxlength="1" data-r="-2" data-c="-3" data-ans="U" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="-2" data-c="-2" data-ans="N" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="-2" data-c="-1" data-ans="I" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="-2" data-c="0" data-ans="V" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="-2" data-c="1" data-ans="E" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="-2" data-c="2" data-ans="R" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="-2" data-c="3" data-ans="S" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="-2" data-c="4" data-ans="I" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="-2" data-c="5" data-ans="T" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="-2" data-c="6" data-ans="Ä" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="-2" data-c="7" data-ans="T" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="-2" data-c="8" data-ans="E" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="-2" data-c="9" data-ans="N" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td></tr><tr><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="-1" data-c="-5" data-ans="D" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="-1" data-c="-3" data-ans="N" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="-1" data-c="1" data-ans="R" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td></tr><tr><td class="kw-black"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num">6</span><input maxlength="1" data-r="0" data-c="-8" data-ans="M" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="0" data-c="-5" data-ans="I" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="0" data-c="-3" data-ans="G" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num">7</span><input maxlength="1" data-r="0" data-c="0" data-ans="A" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="0" data-c="1" data-ans="U" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="0" data-c="2" data-ans="S" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="0" data-c="3" data-ans="L" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="0" data-c="4" data-ans="A" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="0" data-c="5" data-ans="N" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="0" data-c="6" data-ans="D" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="0" data-c="7" data-ans="S" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="0" data-c="8" data-ans="P" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="0" data-c="9" data-ans="R" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="0" data-c="10" data-ans="A" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="0" data-c="11" data-ans="K" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="0" data-c="12" data-ans="T" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="0" data-c="13" data-ans="I" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="0" data-c="14" data-ans="K" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="0" data-c="15" data-ans="U" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="0" data-c="16" data-ans="M" oninput="kwInput(this)" onclick="kwSelect(this)"></td></tr><tr><td class="kw-cell"><span class="kw-num">8</span><input maxlength="1" data-r="1" data-c="-10" data-ans="K" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="1" data-c="-9" data-ans="L" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="1" data-c="-8" data-ans="A" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="1" data-c="-7" data-ans="U" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="1" data-c="-6" data-ans="S" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="1" data-c="-5" data-ans="U" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="1" data-c="-4" data-ans="R" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="1" data-c="1" data-ans="F" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td></tr><tr><td class="kw-black"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="2" data-c="-8" data-ans="S" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="2" data-c="-5" data-ans="M" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num">9</span><input maxlength="1" data-r="2" data-c="-2" data-ans="N" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="2" data-c="1" data-ans="S" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td></tr><tr><td class="kw-black"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="3" data-c="-8" data-ans="T" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num">10</span><input maxlength="1" data-r="3" data-c="-3" data-ans="G" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="3" data-c="-2" data-ans="E" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="3" data-c="-1" data-ans="R" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="3" data-c="0" data-ans="M" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="3" data-c="1" data-ans="A" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="3" data-c="2" data-ans="N" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="3" data-c="3" data-ans="I" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="3" data-c="4" data-ans="S" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="3" data-c="5" data-ans="T" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="3" data-c="6" data-ans="I" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="3" data-c="7" data-ans="K" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td></tr><tr><td class="kw-black"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="4" data-c="-8" data-ans="E" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="4" data-c="-2" data-ans="B" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="4" data-c="1" data-ans="K" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td></tr><tr><td class="kw-black"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="5" data-c="-8" data-ans="R" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="5" data-c="-2" data-ans="E" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num">11</span><input maxlength="1" data-r="5" data-c="0" data-ans="H" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="5" data-c="1" data-ans="A" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="5" data-c="2" data-ans="U" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num">12</span><input maxlength="1" data-r="5" data-c="3" data-ans="S" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="5" data-c="4" data-ans="A" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="5" data-c="5" data-ans="R" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="5" data-c="6" data-ans="B" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="5" data-c="7" data-ans="E" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="5" data-c="8" data-ans="I" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="5" data-c="9" data-ans="T" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td></tr><tr><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="6" data-c="-2" data-ans="N" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="6" data-c="1" data-ans="D" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="6" data-c="3" data-ans="T" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td></tr><tr><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="7" data-c="-2" data-ans="F" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="7" data-c="1" data-ans="E" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="7" data-c="3" data-ans="I" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td></tr><tr><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="8" data-c="-2" data-ans="A" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="8" data-c="1" data-ans="M" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="8" data-c="3" data-ans="P" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num">13</span><input maxlength="1" data-r="8" data-c="5" data-ans="S" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="8" data-c="6" data-ans="E" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="8" data-c="7" data-ans="M" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="8" data-c="8" data-ans="I" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="8" data-c="9" data-ans="N" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="8" data-c="10" data-ans="A" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="8" data-c="11" data-ans="R" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td></tr><tr><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="9" data-c="-2" data-ans="C" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="9" data-c="1" data-ans="I" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="9" data-c="3" data-ans="E" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="9" data-c="5" data-ans="E" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td></tr><tr><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="10" data-c="-2" data-ans="H" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="10" data-c="1" data-ans="E" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="10" data-c="3" data-ans="N" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="10" data-c="5" data-ans="M" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td></tr><tr><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="11" data-c="1" data-ans="N" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="11" data-c="3" data-ans="D" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="11" data-c="5" data-ans="E" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td></tr><tr><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="12" data-c="3" data-ans="I" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="12" data-c="5" data-ans="S" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td></tr><tr><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num">14</span><input maxlength="1" data-r="13" data-c="1" data-ans="H" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="13" data-c="2" data-ans="A" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="13" data-c="3" data-ans="U" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="13" data-c="4" data-ans="P" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="13" data-c="5" data-ans="T" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="13" data-c="6" data-ans="F" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="13" data-c="7" data-ans="A" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="13" data-c="8" data-ans="C" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="13" data-c="9" data-ans="H" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td></tr><tr><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="14" data-c="3" data-ans="M" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="14" data-c="5" data-ans="E" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td></tr><tr><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-cell"><span class="kw-num"></span><input maxlength="1" data-r="15" data-c="5" data-ans="R" oninput="kwInput(this)" onclick="kwSelect(this)"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td><td class="kw-black"></td></tr></table></div>
+          <div class="bank-box"><strong>词语库 Wortbank：</strong><span class="bank-chip" onclick="bankClick(this)">STUDIUM</span><span class="bank-chip" onclick="bankClick(this)">SEMESTER</span><span class="bank-chip" onclick="bankClick(this)">MAGISTER</span><span class="bank-chip" onclick="bankClick(this)">MASTER</span><span class="bank-chip" onclick="bankClick(this)">VORLESUNG</span><span class="bank-chip" onclick="bankClick(this)">SEMINAR</span><span class="bank-chip" onclick="bankClick(this)">KLAUSUR</span><span class="bank-chip" onclick="bankClick(this)">HAUSARBEIT</span><span class="bank-chip" onclick="bankClick(this)">STIPENDIUM</span><span class="bank-chip" onclick="bankClick(this)">AUSLANDSPRAKTIKUM</span><span class="bank-chip" onclick="bankClick(this)">HAUPTFACH</span><span class="bank-chip" onclick="bankClick(this)">NEBENFACH</span><span class="bank-chip" onclick="bankClick(this)">BERUFSAKADEMIEN</span><span class="bank-chip" onclick="bankClick(this)">UNIVERSITÄTEN</span><span class="bank-chip" onclick="bankClick(this)">GERMANISTIK</span></div>
+        </div>
+        <div class="kw-clues">
+          <h4>Waagerecht →</h4><ol class="kw-list"><li data-word="MAGISTER"><b>2</b> <span class="kw-tag">c</span> Das ______-studium an einer Universität dauert normalerweise 6–8 Semester. <span class="kw-zh">大学的（传统）硕士学习通常 6–8 个学期。</span><button class="btn tiny" onclick="revealWord(this,'MAGISTER')">揭示</button></li><li data-word="UNIVERSITÄTEN"><b>5</b> <span class="kw-tag">n</span> Die Allianz der führenden Technischen ______ in Deutschland heißt TU9. <span class="kw-zh">德国顶尖工科大学联盟叫 TU9。</span><button class="btn tiny" onclick="revealWord(this,'UNIVERSITÄTEN')">揭示</button></li><li data-word="AUSLANDSPRAKTIKUM"><b>7</b> <span class="kw-tag">j</span> Für viele medizinische Studenten ist es notwendig, ein ______ zu absolvieren. <span class="kw-zh">很多医学生必须完成一次海外实习。</span><button class="btn tiny" onclick="revealWord(this,'AUSLANDSPRAKTIKUM')">揭示</button></li><li data-word="KLAUSUR"><b>8</b> <span class="kw-tag">g</span> Bei vielen Kursen schreiben die Studenten am Semesterende eine ______, d. h. eine schriftliche Prüfung. <span class="kw-zh">许多课程期末写一次闭卷考试。</span><button class="btn tiny" onclick="revealWord(this,'KLAUSUR')">揭示</button></li><li data-word="GERMANISTIK"><b>10</b> <span class="kw-tag">o</span> Im Fach ______ erforscht man die deutsche Sprache und deutschsprachige Literatur. <span class="kw-zh">在日耳曼学专业研究德语与德语文学。</span><button class="btn tiny" onclick="revealWord(this,'GERMANISTIK')">揭示</button></li><li data-word="HAUSARBEIT"><b>11</b> <span class="kw-tag">h</span> Als eine andere Prüfungsform kann man auch eine ______ schreiben, nämlich eine schriftliche Arbeit. <span class="kw-zh">另一种考试形式是写课程论文。</span><button class="btn tiny" onclick="revealWord(this,'HAUSARBEIT')">揭示</button></li><li data-word="SEMINAR"><b>13</b> <span class="kw-tag">f</span> Im ______ kann man zum Beispiel ein Referat halten oder aktiv an der Diskussion teilnehmen. <span class="kw-zh">在研讨课上可以做报告或积极参与讨论。</span><button class="btn tiny" onclick="revealWord(this,'SEMINAR')">揭示</button></li><li data-word="HAUPTFACH"><b>14</b> <span class="kw-tag">k</span> An der Universität muss jeder ein ______ wählen. <span class="kw-zh">在大学每个人必须选一个主修专业。</span><button class="btn tiny" onclick="revealWord(this,'HAUPTFACH')">揭示</button></li></ol>
+          <h4>Senkrecht ↓</h4><ol class="kw-list"><li data-word="VORLESUNG"><b>1</b> <span class="kw-tag">e</span> Die ______ über deutsche Gegenwartsliteratur findet im Hörsaal 3 statt. <span class="kw-zh">关于德国当代文学的讲座在三号阶梯教室举行。</span><button class="btn tiny" onclick="revealWord(this,'VORLESUNG')">揭示</button></li><li data-word="STUDIUM"><b>3</b> <span class="kw-tag">a</span> Mit dem Abitur / der Matura beginnt man ein ______. <span class="kw-zh">高中毕业后就开始大学学习。</span><button class="btn tiny" onclick="revealWord(this,'STUDIUM')">揭示</button></li><li data-word="BERUFSAKADEMIEN"><b>4</b> <span class="kw-tag">m</span> Berufs______ bezeichnet man auch als duale Hochschulen. <span class="kw-zh">职业学院也被称为双元制高校。</span><button class="btn tiny" onclick="revealWord(this,'BERUFSAKADEMIEN')">揭示</button></li><li data-word="MASTER"><b>6</b> <span class="kw-tag">d</span> Einige Studenten planen, nach dem Bachelorstudium noch ein ______-studium zu machen. <span class="kw-zh">有些学生计划本科毕业后继续读硕士。</span><button class="btn tiny" onclick="revealWord(this,'MASTER')">揭示</button></li><li data-word="NEBENFACH"><b>9</b> <span class="kw-tag">l</span> Viele Studenten studieren neben ihrem Hauptfach noch ein ______. <span class="kw-zh">很多学生除主修外还修一门辅修。</span><button class="btn tiny" onclick="revealWord(this,'NEBENFACH')">揭示</button></li><li data-word="STIPENDIUM"><b>12</b> <span class="kw-tag">i</span> Anja bekommt wegen ihrer guten Leistungen ein ______. <span class="kw-zh">Anja 因为成绩优秀获得奖学金。</span><button class="btn tiny" onclick="revealWord(this,'STIPENDIUM')">揭示</button></li><li data-word="SEMESTER"><b>13</b> <span class="kw-tag">b</span> Ein Freund von Li Tao hat ein ______ lang als Austauschstudent in Deutschland studiert. <span class="kw-zh">李涛的朋友在德国做了一学期的交换生。</span><button class="btn tiny" onclick="revealWord(this,'SEMESTER')">揭示</button></li></ol>
+        </div>
+      </div>
+      <p class="zh-hint note">★ 说明：a–o 为教材 Ü2 原提示句；个别句子教材可能接受多个答案（如 b 也可为 „Jahr“），本格使用上表词语库中的写法，以教师用书为准。手机/平板可左右滑动查看完整网格。</p>
+    </section>
+    <section id="satz">
+      <h2 class="section-title"><span class="num">5</span> ✍️ Satzergänzung · 句子填空（教材 Ü2 a–o）</h2>
+      <p class="zh-hint">输入答案后按回车或点 ✓。大小写、变音符号（ä = ae）不敏感；同义答案也算对。</p>
+      <div class="kw-tools">
+        <button class="btn ghost" onclick="showAllSatz()">👁 显示全部答案</button>
+        <button class="btn ghost" onclick="clearAllSatz()">↺ 清空</button>
+        <span id="satzScore" class="kw-result"></span>
+      </div>
+      <div class="fill-item">
+        <div class="fill-sentence"><b>a)</b> Mit dem Abitur / der Matura beginnt man ein ______.</div>
+        <div class="fill-zh">高中毕业后就开始大学学习。</div>
+        <div class="fill-input-line">
+          <input type="text" class="fill-input" id="sf-0" placeholder="Antwort eingeben…" data-ans="STUDIUM" data-alt="" onkeydown="if(event.key==='Enter')checkSatz(0)">
+          <button class="fill-check" onclick="checkSatz(0)">✓</button>
+          <span class="fill-result" id="sf-res-0"></span>
+          <button class="btn tiny ghost" onclick="showOneSatz(0)">答案</button>
+        </div>
+      </div>
+      <div class="fill-item">
+        <div class="fill-sentence"><b>b)</b> Ein Freund von Li Tao hat ein ______ lang als Austauschstudent in Deutschland studiert.</div>
+        <div class="fill-zh">李涛的朋友在德国做了一学期的交换生。</div>
+        <div class="fill-input-line">
+          <input type="text" class="fill-input" id="sf-1" placeholder="Antwort eingeben…" data-ans="SEMESTER" data-alt="JAHR" onkeydown="if(event.key==='Enter')checkSatz(1)">
+          <button class="fill-check" onclick="checkSatz(1)">✓</button>
+          <span class="fill-result" id="sf-res-1"></span>
+          <button class="btn tiny ghost" onclick="showOneSatz(1)">答案</button>
+        </div>
+      </div>
+      <div class="fill-item">
+        <div class="fill-sentence"><b>c)</b> Das ______-studium an einer Universität dauert normalerweise 6–8 Semester.</div>
+        <div class="fill-zh">大学的（传统）硕士学习通常 6–8 个学期。</div>
+        <div class="fill-input-line">
+          <input type="text" class="fill-input" id="sf-2" placeholder="Antwort eingeben…" data-ans="MAGISTER" data-alt="" onkeydown="if(event.key==='Enter')checkSatz(2)">
+          <button class="fill-check" onclick="checkSatz(2)">✓</button>
+          <span class="fill-result" id="sf-res-2"></span>
+          <button class="btn tiny ghost" onclick="showOneSatz(2)">答案</button>
+        </div>
+      </div>
+      <div class="fill-item">
+        <div class="fill-sentence"><b>d)</b> Einige Studenten planen, nach dem Bachelorstudium noch ein ______-studium zu machen.</div>
+        <div class="fill-zh">有些学生计划本科毕业后继续读硕士。</div>
+        <div class="fill-input-line">
+          <input type="text" class="fill-input" id="sf-3" placeholder="Antwort eingeben…" data-ans="MASTER" data-alt="" onkeydown="if(event.key==='Enter')checkSatz(3)">
+          <button class="fill-check" onclick="checkSatz(3)">✓</button>
+          <span class="fill-result" id="sf-res-3"></span>
+          <button class="btn tiny ghost" onclick="showOneSatz(3)">答案</button>
+        </div>
+      </div>
+      <div class="fill-item">
+        <div class="fill-sentence"><b>e)</b> Die ______ über deutsche Gegenwartsliteratur findet im Hörsaal 3 statt.</div>
+        <div class="fill-zh">关于德国当代文学的讲座在三号阶梯教室举行。</div>
+        <div class="fill-input-line">
+          <input type="text" class="fill-input" id="sf-4" placeholder="Antwort eingeben…" data-ans="VORLESUNG" data-alt="" onkeydown="if(event.key==='Enter')checkSatz(4)">
+          <button class="fill-check" onclick="checkSatz(4)">✓</button>
+          <span class="fill-result" id="sf-res-4"></span>
+          <button class="btn tiny ghost" onclick="showOneSatz(4)">答案</button>
+        </div>
+      </div>
+      <div class="fill-item">
+        <div class="fill-sentence"><b>f)</b> Im ______ kann man zum Beispiel ein Referat halten oder aktiv an der Diskussion teilnehmen.</div>
+        <div class="fill-zh">在研讨课上可以做报告或积极参与讨论。</div>
+        <div class="fill-input-line">
+          <input type="text" class="fill-input" id="sf-5" placeholder="Antwort eingeben…" data-ans="SEMINAR" data-alt="" onkeydown="if(event.key==='Enter')checkSatz(5)">
+          <button class="fill-check" onclick="checkSatz(5)">✓</button>
+          <span class="fill-result" id="sf-res-5"></span>
+          <button class="btn tiny ghost" onclick="showOneSatz(5)">答案</button>
+        </div>
+      </div>
+      <div class="fill-item">
+        <div class="fill-sentence"><b>g)</b> Bei vielen Kursen schreiben die Studenten am Semesterende eine ______, d. h. eine schriftliche Prüfung.</div>
+        <div class="fill-zh">许多课程期末写一次闭卷考试。</div>
+        <div class="fill-input-line">
+          <input type="text" class="fill-input" id="sf-6" placeholder="Antwort eingeben…" data-ans="KLAUSUR" data-alt="" onkeydown="if(event.key==='Enter')checkSatz(6)">
+          <button class="fill-check" onclick="checkSatz(6)">✓</button>
+          <span class="fill-result" id="sf-res-6"></span>
+          <button class="btn tiny ghost" onclick="showOneSatz(6)">答案</button>
+        </div>
+      </div>
+      <div class="fill-item">
+        <div class="fill-sentence"><b>h)</b> Als eine andere Prüfungsform kann man auch eine ______ schreiben, nämlich eine schriftliche Arbeit.</div>
+        <div class="fill-zh">另一种考试形式是写课程论文。</div>
+        <div class="fill-input-line">
+          <input type="text" class="fill-input" id="sf-7" placeholder="Antwort eingeben…" data-ans="HAUSARBEIT" data-alt="" onkeydown="if(event.key==='Enter')checkSatz(7)">
+          <button class="fill-check" onclick="checkSatz(7)">✓</button>
+          <span class="fill-result" id="sf-res-7"></span>
+          <button class="btn tiny ghost" onclick="showOneSatz(7)">答案</button>
+        </div>
+      </div>
+      <div class="fill-item">
+        <div class="fill-sentence"><b>i)</b> Anja bekommt wegen ihrer guten Leistungen ein ______.</div>
+        <div class="fill-zh">Anja 因为成绩优秀获得奖学金。</div>
+        <div class="fill-input-line">
+          <input type="text" class="fill-input" id="sf-8" placeholder="Antwort eingeben…" data-ans="STIPENDIUM" data-alt="" onkeydown="if(event.key==='Enter')checkSatz(8)">
+          <button class="fill-check" onclick="checkSatz(8)">✓</button>
+          <span class="fill-result" id="sf-res-8"></span>
+          <button class="btn tiny ghost" onclick="showOneSatz(8)">答案</button>
+        </div>
+      </div>
+      <div class="fill-item">
+        <div class="fill-sentence"><b>j)</b> Für viele medizinische Studenten ist es notwendig, ein ______ zu absolvieren.</div>
+        <div class="fill-zh">很多医学生必须完成一次海外实习。</div>
+        <div class="fill-input-line">
+          <input type="text" class="fill-input" id="sf-9" placeholder="Antwort eingeben…" data-ans="AUSLANDSPRAKTIKUM" data-alt="" onkeydown="if(event.key==='Enter')checkSatz(9)">
+          <button class="fill-check" onclick="checkSatz(9)">✓</button>
+          <span class="fill-result" id="sf-res-9"></span>
+          <button class="btn tiny ghost" onclick="showOneSatz(9)">答案</button>
+        </div>
+      </div>
+      <div class="fill-item">
+        <div class="fill-sentence"><b>k)</b> An der Universität muss jeder ein ______ wählen.</div>
+        <div class="fill-zh">在大学每个人必须选一个主修专业。</div>
+        <div class="fill-input-line">
+          <input type="text" class="fill-input" id="sf-10" placeholder="Antwort eingeben…" data-ans="HAUPTFACH" data-alt="" onkeydown="if(event.key==='Enter')checkSatz(10)">
+          <button class="fill-check" onclick="checkSatz(10)">✓</button>
+          <span class="fill-result" id="sf-res-10"></span>
+          <button class="btn tiny ghost" onclick="showOneSatz(10)">答案</button>
+        </div>
+      </div>
+      <div class="fill-item">
+        <div class="fill-sentence"><b>l)</b> Viele Studenten studieren neben ihrem Hauptfach noch ein ______.</div>
+        <div class="fill-zh">很多学生除主修外还修一门辅修。</div>
+        <div class="fill-input-line">
+          <input type="text" class="fill-input" id="sf-11" placeholder="Antwort eingeben…" data-ans="NEBENFACH" data-alt="" onkeydown="if(event.key==='Enter')checkSatz(11)">
+          <button class="fill-check" onclick="checkSatz(11)">✓</button>
+          <span class="fill-result" id="sf-res-11"></span>
+          <button class="btn tiny ghost" onclick="showOneSatz(11)">答案</button>
+        </div>
+      </div>
+      <div class="fill-item">
+        <div class="fill-sentence"><b>m)</b> Berufs______ bezeichnet man auch als duale Hochschulen.</div>
+        <div class="fill-zh">职业学院也被称为双元制高校。</div>
+        <div class="fill-input-line">
+          <input type="text" class="fill-input" id="sf-12" placeholder="Antwort eingeben…" data-ans="BERUFSAKADEMIEN" data-alt="" onkeydown="if(event.key==='Enter')checkSatz(12)">
+          <button class="fill-check" onclick="checkSatz(12)">✓</button>
+          <span class="fill-result" id="sf-res-12"></span>
+          <button class="btn tiny ghost" onclick="showOneSatz(12)">答案</button>
+        </div>
+      </div>
+      <div class="fill-item">
+        <div class="fill-sentence"><b>n)</b> Die Allianz der führenden Technischen ______ in Deutschland heißt TU9.</div>
+        <div class="fill-zh">德国顶尖工科大学联盟叫 TU9。</div>
+        <div class="fill-input-line">
+          <input type="text" class="fill-input" id="sf-13" placeholder="Antwort eingeben…" data-ans="UNIVERSITÄTEN" data-alt="" onkeydown="if(event.key==='Enter')checkSatz(13)">
+          <button class="fill-check" onclick="checkSatz(13)">✓</button>
+          <span class="fill-result" id="sf-res-13"></span>
+          <button class="btn tiny ghost" onclick="showOneSatz(13)">答案</button>
+        </div>
+      </div>
+      <div class="fill-item">
+        <div class="fill-sentence"><b>o)</b> Im Fach ______ erforscht man die deutsche Sprache und deutschsprachige Literatur.</div>
+        <div class="fill-zh">在日耳曼学专业研究德语与德语文学。</div>
+        <div class="fill-input-line">
+          <input type="text" class="fill-input" id="sf-14" placeholder="Antwort eingeben…" data-ans="GERMANISTIK" data-alt="" onkeydown="if(event.key==='Enter')checkSatz(14)">
+          <button class="fill-check" onclick="checkSatz(14)">✓</button>
+          <span class="fill-result" id="sf-res-14"></span>
+          <button class="btn tiny ghost" onclick="showOneSatz(14)">答案</button>
+        </div>
+      </div>
+    </section>
+    <section id="hochschule">
+      <h2 class="section-title"><span class="num">6</span> 🏛️ Hochschullandschaft in Deutschland · 德国高校版图</h2>
+      <p class="zh-hint">教材 Ü1：先看 logos 词库，再从词库点词填入空格（点格可撤回）。</p>
+      <div class="bank-box"><strong>Logos：</strong><span class="logo-chip">🏛️ Universität Zürich UZH</span> <span class="logo-chip">🏛️ TUM Technische Universität München</span> <span class="logo-chip">🏛️ Fachhochschule Dortmund</span> <span class="logo-chip">🏛️ Kunst uni graz</span> <span class="logo-chip">🏛️ BA BERUFSAKADEMIE SACHSEN</span></div>
+      <p class="cloze-p">In den deutschsprachigen Ländern können Studieninteressierte zwischen unterschiedlichen Hochschultypen wählen:</p>
+<p class="cloze-p"><span class="cloze-blank" data-idx="0" data-ans="Universitäten" onclick="clozeClick(this)">?</span> vermitteln vor allem theoretisches Wissen. Das Studium ist stark wissenschaftlich orientiert und es gibt viele unterschiedliche Fächergruppen. Manche von ihnen konzentrieren sich auf die Forschung in bestimmten Fachgebieten und nennen sich zum Beispiel <span class="cloze-blank" data-idx="1" data-ans="Technische" onclick="clozeClick(this)">?</span> <span class="cloze-blank" data-idx="2" data-ans="Universitäten" onclick="clozeClick(this)">?</span>, Pädagogische Universitäten.</p>
+<p class="cloze-p">An <span class="cloze-blank" data-idx="3" data-ans="Fachhochschulen" onclick="clozeClick(this)">?</span> und Hochschulen für angewandte Wissenschaften ist das Studium sehr praxisorientiert. Der Schwerpunkt liegt stärker auf der beruflichen Anwendung.</p>
+<p class="cloze-p">An <span class="cloze-blank" data-idx="4" data-ans="Kunsthochschulen" onclick="clozeClick(this)">?</span>, Film- und Musikhochschulen kann man künstlerische Fächer studieren, zum Beispiel Musik, Bildende Kunst, Tanz usw.</p>
+<p class="cloze-p">Ein typischer Vertreter des dualen Studiums sind <span class="cloze-blank" data-idx="5" data-ans="Berufsakademien" onclick="clozeClick(this)">?</span> / Duale Hochschulen. Sie verbinden Studium und Ausbildung in einem drei- bis vierjährigen Bildungsgang. Neben dem theoretischen Unterricht macht man eine Berufsausbildung oder Praktika in Unternehmen.</p>
+      <div class="bank-box"><strong>词语库 Wortbank：</strong><span class="bank-chip" onclick="bankFill(this)">Universitäten</span><span class="bank-chip" onclick="bankFill(this)">Technische</span><span class="bank-chip" onclick="bankFill(this)">Fachhochschulen</span><span class="bank-chip" onclick="bankFill(this)">Kunsthochschulen</span><span class="bank-chip" onclick="bankFill(this)">Berufsakademien</span></div>
+      <div class="kw-tools">
+        <button class="btn" onclick="clozeCheck()">✓ 检查</button>
+        <button class="btn ghost" onclick="clozeClear()">↺ 清空</button>
+        <span id="clozeResult" class="kw-result"></span>
+      </div>
+      <div class="highlight-box">💡 Landeskunde：双元制高校可获 Bachelor / Master 学位，而 Berufsakademie 不能授予官方学位。</div>
+    </section>
+    <section id="mindmap">
+      <h2 class="section-title"><span class="num">7</span> 🗺️ Mindmap · Wortfeld Studium und Studentenleben</h2>
+      <p class="zh-hint">教材 Ü3：点击一个词，再点它所属的分类框（点错可再点一次改）。</p>
+      <div class="mm-pool" id="mmPool"><span class="mm-chip" data-c="C1" onclick="mmSelect(this)">Germanistik</span><span class="mm-chip" data-c="C1" onclick="mmSelect(this)">Informatik</span><span class="mm-chip" data-c="C1" onclick="mmSelect(this)">Medizin</span><span class="mm-chip" data-c="C1" onclick="mmSelect(this)">Bildende Kunst</span><span class="mm-chip" data-c="C2" onclick="mmSelect(this)">Universität</span><span class="mm-chip" data-c="C2" onclick="mmSelect(this)">Fachhochschule</span><span class="mm-chip" data-c="C2" onclick="mmSelect(this)">Kunsthochschule</span><span class="mm-chip" data-c="C2" onclick="mmSelect(this)">Berufsakademie</span><span class="mm-chip" data-c="C3" onclick="mmSelect(this)">Vorlesung</span><span class="mm-chip" data-c="C3" onclick="mmSelect(this)">Seminar</span><span class="mm-chip" data-c="C3" onclick="mmSelect(this)">Referat</span><span class="mm-chip" data-c="C3" onclick="mmSelect(this)">Übung</span><span class="mm-chip" data-c="C4" onclick="mmSelect(this)">Klausur</span><span class="mm-chip" data-c="C4" onclick="mmSelect(this)">Hausarbeit</span><span class="mm-chip" data-c="C4" onclick="mmSelect(this)">Bachelor</span><span class="mm-chip" data-c="C4" onclick="mmSelect(this)">Master</span><span class="mm-chip" data-c="C4" onclick="mmSelect(this)">Abitur</span><span class="mm-chip" data-c="C5" onclick="mmSelect(this)">Stipendium</span><span class="mm-chip" data-c="C5" onclick="mmSelect(this)">Auslandspraktikum</span><span class="mm-chip" data-c="C5" onclick="mmSelect(this)">Semester</span><span class="mm-chip" data-c="C5" onclick="mmSelect(this)">Bibliothek</span><span class="mm-chip" data-c="C5" onclick="mmSelect(this)">Teamarbeit</span></div>
+      <div class="mm-board"><div class="mm-box" data-cat="C1" onclick="mmDrop(this)"><div class="mm-head">📘 Studienfächer / Fakultäten</div><div class="mm-items"></div></div><div class="mm-box" data-cat="C2" onclick="mmDrop(this)"><div class="mm-head">🏛️ Typen der Hochschulen</div><div class="mm-items"></div></div><div class="mm-box" data-cat="C3" onclick="mmDrop(this)"><div class="mm-head">🎧 Lehrveranstaltungen</div><div class="mm-items"></div></div><div class="mm-box" data-cat="C4" onclick="mmDrop(this)"><div class="mm-head">🎓 Prüfungen und Abschlüsse</div><div class="mm-items"></div></div><div class="mm-box" data-cat="C5" onclick="mmDrop(this)"><div class="mm-head">🧩 Lerntätigkeiten und Sonstiges</div><div class="mm-items"></div></div></div>
+      <div class="kw-tools">
+        <button class="btn" onclick="mmCheck()">✓ 检查归类</button>
+        <button class="btn ghost" onclick="mmReset()">↺ 重新开始</button>
+        <span id="mmResult" class="kw-result"></span>
+      </div>
+    </section>
+    <section id="satzbau">
+      <h2 class="section-title"><span class="num">8</span> 🧱 Satzbau · 句型工坊</h2>
+      <p class="zh-hint">点词块按正确语序排成德语句子；点已排的词块可撤回。语序错要说出「错在哪」。</p>
+      <div class="sb-card">
+        <div class="sb-zh">1. 在德国，小学毕业时，家长和孩子面临着择校的问题。</div>
+        <div class="sb-hint">句型：vor der Entscheidung stehen → 面临抉择</div>
+        <div class="sb-pool" id="sb-pool-0"><span class="sb-chunk" data-i="1" onclick="sbPick(this,0)">stehen Eltern und Kinder</span><span class="sb-chunk" data-i="2" onclick="sbPick(this,0)">vor der Entscheidung,</span><span class="sb-chunk" data-i="3" onclick="sbPick(this,0)">welche Schule sie besuchen sollen.</span><span class="sb-chunk" data-i="0" onclick="sbPick(this,0)">In Deutschland</span></div>
+        <div class="sb-line" id="sb-line-0"></div>
+        <div class="sb-actions">
+          <button class="btn" onclick="sbCheck(0)">✓ 检查语序</button>
+          <button class="btn ghost" onclick="sbUndo(0)">↶ 撤回</button>
+          <button class="btn ghost" onclick="sbReset(0)">↺ 重排</button>
+          <button class="btn ghost" onclick="sbShow(0)">👁 答案</button>
+          <span class="fill-result" id="sb-res-0"></span>
+        </div>
+      </div>
+      <div class="sb-card">
+        <div class="sb-zh">2. 小学会根据孩子的主要科目成绩，提交给家长一份推荐信。</div>
+        <div class="sb-hint">句型：aufgrund + Gen. → 根据……；eine Empfehlung erstellen → 出具推荐信</div>
+        <div class="sb-pool" id="sb-pool-1"><span class="sb-chunk" data-i="3" onclick="sbPick(this,1)">eine Empfehlung für die Eltern.</span><span class="sb-chunk" data-i="1" onclick="sbPick(this,1)">erstellt</span><span class="sb-chunk" data-i="2" onclick="sbPick(this,1)">aufgrund der Leistungen in den Hauptfächern</span><span class="sb-chunk" data-i="0" onclick="sbPick(this,1)">Die Grundschule</span></div>
+        <div class="sb-line" id="sb-line-1"></div>
+        <div class="sb-actions">
+          <button class="btn" onclick="sbCheck(1)">✓ 检查语序</button>
+          <button class="btn ghost" onclick="sbUndo(1)">↶ 撤回</button>
+          <button class="btn ghost" onclick="sbReset(1)">↺ 重排</button>
+          <button class="btn ghost" onclick="sbShow(1)">👁 答案</button>
+          <span class="fill-result" id="sb-res-1"></span>
+        </div>
+      </div>
+      <div class="sb-card">
+        <div class="sb-zh">3. 很多家长都希望孩子上文理中学。</div>
+        <div class="sb-hint">句型：sich wünschen, dass … → 希望（愿望从句）</div>
+        <div class="sb-pool" id="sb-pool-2"><span class="sb-chunk" data-i="0" onclick="sbPick(this,2)">Viele Eltern</span><span class="sb-chunk" data-i="2" onclick="sbPick(this,2)">dass ihr Kind auf ein Gymnasium geht.</span><span class="sb-chunk" data-i="1" onclick="sbPick(this,2)">wünschen sich,</span></div>
+        <div class="sb-line" id="sb-line-2"></div>
+        <div class="sb-actions">
+          <button class="btn" onclick="sbCheck(2)">✓ 检查语序</button>
+          <button class="btn ghost" onclick="sbUndo(2)">↶ 撤回</button>
+          <button class="btn ghost" onclick="sbReset(2)">↺ 重排</button>
+          <button class="btn ghost" onclick="sbShow(2)">👁 答案</button>
+          <span class="fill-result" id="sb-res-2"></span>
+        </div>
+      </div>
+      <div class="sb-card">
+        <div class="sb-zh">4. 但是这种愿望并不意味着，文理中学就是适合孩子的“正确”选择。</div>
+        <div class="sb-hint">句型：nicht zwangsläufig bedeuten, dass … → 并不必然意味着</div>
+        <div class="sb-pool" id="sb-pool-3"><span class="sb-chunk" data-i="1" onclick="sbPick(this,3)">bedeutet nicht zwangsläufig,</span><span class="sb-chunk" data-i="2" onclick="sbPick(this,3)">dass das Gymnasium die „richtige“ Wahl für das Kind ist.</span><span class="sb-chunk" data-i="0" onclick="sbPick(this,3)">Aber dieser Wunsch</span></div>
+        <div class="sb-line" id="sb-line-3"></div>
+        <div class="sb-actions">
+          <button class="btn" onclick="sbCheck(3)">✓ 检查语序</button>
+          <button class="btn ghost" onclick="sbUndo(3)">↶ 撤回</button>
+          <button class="btn ghost" onclick="sbReset(3)">↺ 重排</button>
+          <button class="btn ghost" onclick="sbShow(3)">👁 答案</button>
+          <span class="fill-result" id="sb-res-3"></span>
+        </div>
+      </div>
+      <div class="sb-card">
+        <div class="sb-zh">5. 综合中学就是一个不错的选项，它提供了获得三种毕业证书的机会。</div>
+        <div class="sb-hint">句型：die Möglichkeit bieten, … zu + Inf. → 提供……的可能</div>
+        <div class="sb-pool" id="sb-pool-4"><span class="sb-chunk" data-i="1" onclick="sbPick(this,4)">ist eine gute Alternative;</span><span class="sb-chunk" data-i="2" onclick="sbPick(this,4)">sie bietet die Möglichkeit,</span><span class="sb-chunk" data-i="0" onclick="sbPick(this,4)">Die Gesamtschule</span><span class="sb-chunk" data-i="3" onclick="sbPick(this,4)">drei verschiedene Abschlüsse zu erwerben.</span></div>
+        <div class="sb-line" id="sb-line-4"></div>
+        <div class="sb-actions">
+          <button class="btn" onclick="sbCheck(4)">✓ 检查语序</button>
+          <button class="btn ghost" onclick="sbUndo(4)">↶ 撤回</button>
+          <button class="btn ghost" onclick="sbReset(4)">↺ 重排</button>
+          <button class="btn ghost" onclick="sbShow(4)">👁 答案</button>
+          <span class="fill-result" id="sb-res-4"></span>
+        </div>
+      </div>
+      <div class="sb-card">
+        <div class="sb-zh">6. 合适的学校不仅应提供尽可能好的学习支持，还应适合孩子和家庭的日常生活。</div>
+        <div class="sb-hint">句型：nicht nur …, sondern auch … → 不仅……而且</div>
+        <div class="sb-pool" id="sb-pool-5"><span class="sb-chunk" data-i="1" onclick="sbPick(this,5)">sollte nicht nur</span><span class="sb-chunk" data-i="0" onclick="sbPick(this,5)">Die passende Schule</span><span class="sb-chunk" data-i="2" onclick="sbPick(this,5)">die bestmögliche Lernförderung bieten,</span><span class="sb-chunk" data-i="4" onclick="sbPick(this,5)">zum Alltag des Kindes und der Familie passen.</span><span class="sb-chunk" data-i="3" onclick="sbPick(this,5)">sondern auch</span></div>
+        <div class="sb-line" id="sb-line-5"></div>
+        <div class="sb-actions">
+          <button class="btn" onclick="sbCheck(5)">✓ 检查语序</button>
+          <button class="btn ghost" onclick="sbUndo(5)">↶ 撤回</button>
+          <button class="btn ghost" onclick="sbReset(5)">↺ 重排</button>
+          <button class="btn ghost" onclick="sbShow(5)">👁 答案</button>
+          <span class="fill-result" id="sb-res-5"></span>
+        </div>
+      </div>
+    </section>
+    <section id="uebersetzen">
+      <h2 class="section-title"><span class="num">9</span> 🎯 Übersetzen Sie · 中译德擂台（教材 Ü9）</h2>
+      <p class="zh-hint">先自己写，再点卡片核对参考译文。译法不唯一，句型正确、意义完整即算对。</p>
+      <div class="translation-grid">        <div class="tc-card" onclick="flipTrans(this)">
+          <div class="tc-inner">
+            <div class="tc-front"><span class="tc-num">1</span><div class="tc-zh">在德国，小学毕业时，家长和孩子面临着择校的问题。</div><div class="tc-tip">💡 vor der Entscheidung stehen + 从句；„小学毕业时“ 可用 wenn 从句或 nach der Grundschule</div></div>
+            <div class="tc-back"><span class="tc-num">1</span><div class="tc-de">In Deutschland stehen Eltern und Kinder vor der Entscheidung, welche Schule sie besuchen sollen, wenn die Grundschule abgeschlossen ist.</div></div>
+          </div>
+        </div>
+        <div class="tc-card" onclick="flipTrans(this)">
+          <div class="tc-inner">
+            <div class="tc-front"><span class="tc-num">2</span><div class="tc-zh">为孩子选择合适的学校并非易事。</div><div class="tc-tip">💡 es ist nicht leicht, … zu + Inf.（形式主语 + zu 不定式）</div></div>
+            <div class="tc-back"><span class="tc-num">2</span><div class="tc-de">Es ist nicht leicht, die richtige Schule für das Kind zu wählen.</div></div>
+          </div>
+        </div>
+        <div class="tc-card" onclick="flipTrans(this)">
+          <div class="tc-inner">
+            <div class="tc-front"><span class="tc-num">3</span><div class="tc-zh">小学会根据孩子的主要科目成绩，提交给家长一份推荐信。</div><div class="tc-tip">💡 aufgrund + Gen.；die Leistungen in den Hauptfächern</div></div>
+            <div class="tc-back"><span class="tc-num">3</span><div class="tc-de">Die Grundschule erstellt aufgrund der Leistungen in den Hauptfächern eine Empfehlung für die Eltern.</div></div>
+          </div>
+        </div>
+        <div class="tc-card" onclick="flipTrans(this)">
+          <div class="tc-inner">
+            <div class="tc-front"><span class="tc-num">4</span><div class="tc-zh">很多家长都希望送孩子上文理中学，但是这种愿望并不意味着，文理中学就是适合孩子的“正确”选择。</div><div class="tc-tip">💡 sich wünschen, dass …；nicht zwangsläufig bedeuten, dass …；auf ein Gymnasium gehen</div></div>
+            <div class="tc-back"><span class="tc-num">4</span><div class="tc-de">Viele Eltern wünschen sich, dass ihr Kind auf ein Gymnasium geht, aber dieser Wunsch bedeutet nicht zwangsläufig, dass das Gymnasium die „richtige“ Wahl für das Kind ist.</div></div>
+          </div>
+        </div>
+        <div class="tc-card" onclick="flipTrans(this)">
+          <div class="tc-inner">
+            <div class="tc-front"><span class="tc-num">5</span><div class="tc-zh">综合中学就是一个不错的选项，它提供了获得三种毕业资格证书的机会。</div><div class="tc-tip">💡 eine gute Alternative sein；die Möglichkeit bieten, … zu + Inf.；Abschlüsse erwerben</div></div>
+            <div class="tc-back"><span class="tc-num">5</span><div class="tc-de">Die Gesamtschule ist eine gute Alternative; sie bietet die Möglichkeit, drei verschiedene Abschlüsse zu erwerben.</div></div>
+          </div>
+        </div>
+        <div class="tc-card" onclick="flipTrans(this)">
+          <div class="tc-inner">
+            <div class="tc-front"><span class="tc-num">6</span><div class="tc-zh">另外，在德国，即便没有参加高中毕业考试也可以上大学。</div><div class="tc-tip">💡 ohne + Akk.（ohne Abitur）：无介词冠词</div></div>
+            <div class="tc-back"><span class="tc-num">6</span><div class="tc-de">Außerdem kann man in Deutschland auch ohne Abitur an einer Universität studieren.</div></div>
+          </div>
+        </div>
+        <div class="tc-card" onclick="flipTrans(this)">
+          <div class="tc-inner">
+            <div class="tc-front"><span class="tc-num">7</span><div class="tc-zh">合适的学校不仅应为学生提供尽可能好的学习支持，还应适合孩子和家庭的日常生活。</div><div class="tc-tip">💡 nicht nur …, sondern auch …；zu etw. passen；sollte（建议语气）</div></div>
+            <div class="tc-back"><span class="tc-num">7</span><div class="tc-de">Die passende Schule sollte nicht nur die bestmögliche Lernförderung bieten, sondern auch zum Alltag des Kindes und der Familie passen.</div></div>
+          </div>
+        </div></div>
+      <div class="kw-tools"><button class="btn" onclick="toggleBox('fullDe')">👁 整段参考译文</button></div>
+      <div class="full-de" id="fullDe" style="display:none"><p class="de-full">In Deutschland stehen Eltern und Kinder vor der Entscheidung, welche Schule sie besuchen sollen, wenn die Grundschule abgeschlossen ist. Es ist nicht leicht, die richtige Schule für das Kind zu wählen. Die Grundschule erstellt aufgrund der Leistungen in den Hauptfächern eine Empfehlung für die Eltern. Viele Eltern wünschen sich, dass ihr Kind auf ein Gymnasium geht, aber dieser Wunsch bedeutet nicht zwangsläufig, dass das Gymnasium die „richtige“ Wahl für das Kind ist. Die Gesamtschule ist eine gute Alternative; sie bietet die Möglichkeit, drei verschiedene Abschlüsse zu erwerben. Außerdem kann man in Deutschland auch ohne Abitur an einer Universität studieren. Die passende Schule sollte nicht nur die bestmögliche Lernförderung bieten, sondern auch zum Alltag des Kindes und der Familie passen.</p></div>
+      <div class="highlight-box">💡 整段中文原文：<br>在德国，小学毕业时，家长和孩子面临着择校的问题。为孩子选择合适的学校并非易事。小学会根据孩子的主要科目成绩，提交给家长一份推荐信。很多家长都希望送孩子上文理中学，但是这种愿望并不意味着，文理中学就是适合孩子的“正确”选择。综合中学就是一个不错的选项，它提供了获得三种毕业资格证书的机会。另外，在德国，即便没有参加高中毕业考试也可以上大学。合适的学校不仅应为学生提供尽可能好的学习支持，还应适合孩子和家庭的日常生活。</div>
+    </section>
+    <section id="spiele">
+      <h2 class="section-title"><span class="num">10</span> 🏆 课堂游戏 &amp; 计分板</h2>
+      <div class="scoreboard">
+        <div class="team"><div class="team-name">Team A</div><div class="team-score" id="scoreA">0</div>
+          <div class="team-btns"><button class="btn" onclick="addScore('A',1)">+1</button><button class="btn ghost" onclick="addScore('A',-1)">−1</button></div></div>
+        <div class="team"><div class="team-name">Team B</div><div class="team-score" id="scoreB">0</div>
+          <div class="team-btns"><button class="btn" onclick="addScore('B',1)">+1</button><button class="btn ghost" onclick="addScore('B',-1)">−1</button></div></div>
+        <div class="team reset-team"><button class="btn ghost" onclick="resetScore()">↺ 比分归零</button>
+          <div class="timer" id="classTimer" style="margin-top:8px">30</div>
+          <button class="btn tiny" onclick="startTimer('classTimer',30)">▶ 30s</button></div>
+      </div>
+      <div class="games-grid"><div class="game-card"><div class="game-name">① Blitzrunde 抢答赛 <span class="game-time">3 min</span></div><p>老师点「Blitzrunde」里的卡片，先说出德语的一组得 1 分（读名词必须带冠词）。</p></div><div class="game-card"><div class="game-name">② Kreuzworträtsel-Staffel 填字接力 <span class="game-time">8 min</span></div><p>分两组，每组派一人上黑板/上前点格子填词，答对继续，答错换人。词语库可给可不给（难组给、易组不给）。</p></div><div class="game-card"><div class="game-name">③ Satzbau-Wettlauf 组句赛跑 <span class="game-time">6 min</span></div><p>点词块组句，先组对者举手，老师用「Satzbau」核对语序；错序要说出错在哪。</p></div><div class="game-card"><div class="game-name">④ Übersetzungs-Duell 翻译对决 <span class="game-time">8 min</span></div><p>中译德逐句：两组各派一人写关键词句，翻卡核对。答案只要句型对就给分，允许不同表达。</p></div><div class="game-card"><div class="game-name">⑤ Mindmap-Lücke 词网补全 <span class="game-time">5 min</span></div><p>白板画出 5 个分类框，两组轮流说一个词并归类，归类错不得分。</p></div><div class="game-card"><div class="game-name">⑥ Blitzlicht 收尾 <span class="game-time">2 min</span></div><p>每人用「3 个新词 + 1 个句型」说一句话，计时器 30 秒。（点击下方计时器开始）</p></div></div>
+    </section>
+
+</div></div></div>
+<div class="vocab-overlay" id="vocabOverlay" onclick="hideVocab()"></div>
+<div class="vocab-panel" id="vocabPanel">
+  <div class="vocab-panel-header"><span id="vpWord" class="vp-word"></span>
+    <button onclick="hideVocab()" class="vp-close">&times;</button></div>
+  <div id="vpZh" class="vp-zh"></div>
+  <div id="vpEx" class="vp-ex"></div>
+</div>
+<script>
+const DOC = {"kwEntries": [{"word": "AUSLANDSPRAKTIKUM", "r": 0, "c": 0, "dir": "H"}, {"word": "BERUFSAKADEMIEN", "r": -3, "c": 1, "dir": "V"}, {"word": "UNIVERSITÄTEN", "r": -2, "c": -3, "dir": "H"}, {"word": "GERMANISTIK", "r": 3, "c": -3, "dir": "H"}, {"word": "HAUSARBEIT", "r": 5, "c": 0, "dir": "H"}, {"word": "STIPENDIUM", "r": 5, "c": 3, "dir": "V"}, {"word": "VORLESUNG", "r": -8, "c": -3, "dir": "V"}, {"word": "HAUPTFACH", "r": 13, "c": 1, "dir": "H"}, {"word": "NEBENFACH", "r": 2, "c": -2, "dir": "V"}, {"word": "SEMESTER", "r": 8, "c": 5, "dir": "V"}, {"word": "MAGISTER", "r": -4, "c": -9, "dir": "H"}, {"word": "STUDIUM", "r": -4, "c": -5, "dir": "V"}, {"word": "SEMINAR", "r": 8, "c": 5, "dir": "H"}, {"word": "KLAUSUR", "r": 1, "c": -10, "dir": "H"}, {"word": "MASTER", "r": 0, "c": -8, "dir": "V"}], "satz": ["STUDIUM", "SEMESTER", "MAGISTER", "MASTER", "VORLESUNG", "SEMINAR", "KLAUSUR", "HAUSARBEIT", "STIPENDIUM", "AUSLANDSPRAKTIKUM", "HAUPTFACH", "NEBENFACH", "BERUFSAKADEMIEN", "UNIVERSITÄTEN", "GERMANISTIK"], "satzbau": [{"chunks": ["In Deutschland", "stehen Eltern und Kinder", "vor der Entscheidung,", "welche Schule sie besuchen sollen."]}, {"chunks": ["Die Grundschule", "erstellt", "aufgrund der Leistungen in den Hauptfächern", "eine Empfehlung für die Eltern."]}, {"chunks": ["Viele Eltern", "wünschen sich,", "dass ihr Kind auf ein Gymnasium geht."]}, {"chunks": ["Aber dieser Wunsch", "bedeutet nicht zwangsläufig,", "dass das Gymnasium die „richtige“ Wahl für das Kind ist."]}, {"chunks": ["Die Gesamtschule", "ist eine gute Alternative;", "sie bietet die Möglichkeit,", "drei verschiedene Abschlüsse zu erwerben."]}, {"chunks": ["Die passende Schule", "sollte nicht nur", "die bestmögliche Lernförderung bieten,", "sondern auch", "zum Alltag des Kindes und der Familie passen."]}]};
+
+function switchSection(id){
+  document.querySelectorAll('section').forEach(function(s){ s.classList.remove('active'); });
+  const el = document.getElementById(id); if (el) el.classList.add('active');
+  document.querySelectorAll('.nav-links button').forEach(function(b){ b.classList.remove('active'); });
+  const idx = SECTIONS.indexOf(id);
+  document.querySelectorAll('.nav-links button')[idx] && document.querySelectorAll('.nav-links button')[idx].classList.add('active');
+  document.getElementById('progressFill').style.width = ((idx + 1) / SECTIONS.length * 100) + '%';
+  window.scrollTo(0, 0);
+}
+function toggleNav(){ document.getElementById('navLinks').classList.toggle('show'); }
+const SECTIONS = ["home", "vocab", "blitz", "connect", "kreuzwort", "satz", "hochschule", "mindmap", "satzbau", "uebersetzen", "spiele"];
+
+
+let selLeft = null, selRight = null;
+function flipCard(el){ el.classList.toggle('flipped'); }
+function switchVocabTab(id){
+  document.querySelectorAll('.person-content').forEach(function(p){ p.classList.remove('active'); });
+  document.getElementById('vc-'+id).classList.add('active');
+  document.querySelectorAll('#vocab .person-btn').forEach(function(b){ b.classList.remove('active'); });
+  event.currentTarget.classList.add('active');
+}
+function showVocab(w, cn, ex){
+  document.getElementById('vpWord').textContent = w;
+  document.getElementById('vpZh').textContent = cn;
+  document.getElementById('vpEx').textContent = ex || '';
+  document.getElementById('vocabPanel').classList.add('show');
+  document.getElementById('vocabOverlay').classList.add('show');
+}
+function hideVocab(){
+  document.getElementById('vocabPanel').classList.remove('show');
+  document.getElementById('vocabOverlay').classList.remove('show');
+}
+/* ---- timer ---- */
+const timers = {};
+function startTimer(id, sec){
+  stopTimer(id);
+  let t = sec;
+  const el = document.getElementById(id);
+  el.textContent = t; el.classList.remove('warn');
+  timers[id] = setInterval(function(){
+    t--; el.textContent = t;
+    if (t <= 5) el.classList.add('warn');
+    if (t <= 0){ stopTimer(id); el.textContent = '0'; }
+  }, 1000);
+}
+function stopTimer(id){ if (timers[id]) { clearInterval(timers[id]); delete timers[id]; } }
+function resetTimer(id, sec){ stopTimer(id); const el = document.getElementById(id); el.textContent = sec; el.classList.remove('warn'); }
+/* ---- connect ---- */
+function cClick(el){
+  if (el.classList.contains('matched')) return;
+  const side = el.classList.contains('de') ? 'L' : 'R';
+  const gid = el.dataset.gid;
+  if (side === 'L'){
+    if (selLeft){ selLeft.classList.remove('selected'); }
+    selLeft = el; el.classList.add('selected');
+  } else {
+    if (selRight){ selRight.classList.remove('selected'); }
+    selRight = el; el.classList.add('selected');
+  }
+  if (selLeft && selRight && selLeft.dataset.gid === selRight.dataset.gid){
+    if (selLeft.dataset.pair === selRight.dataset.pair){
+      selLeft.classList.remove('selected'); selRight.classList.remove('selected');
+      selLeft.classList.add('matched'); selRight.classList.add('matched');
+      const cnt = document.getElementById('cg-cnt-'+gid);
+      cnt.textContent = parseInt(cnt.textContent, 10) + 1;
+      selLeft = null; selRight = null;
+    } else {
+      const a = selLeft, b = selRight;
+      a.classList.add('badflash'); b.classList.add('badflash');
+      setTimeout(function(){ a.classList.remove('badflash','selected'); b.classList.remove('badflash','selected'); }, 420);
+      selLeft = null; selRight = null;
+    }
+  }
+}
+/* ---- crossword ---- */
+function kwNormalize(s){
+  return (s || '').toUpperCase().trim()
+    .replace(/Ä/g,'AE').replace(/Ö/g,'OE').replace(/Ü/g,'UE').replace(/ß/g,'SS');
+}
+function kwCells(){ return Array.prototype.slice.call(document.querySelectorAll('.kw-cell input')); }
+function kwInput(inp){
+  inp.value = inp.value.toUpperCase();
+  inp.classList.remove('ok','bad');
+  if (inp.value){
+    const r = +inp.dataset.r, c = +inp.dataset.c;
+    const next = kwCells().filter(function(x){
+      const rr = +x.dataset.r, cc = +x.dataset.c;
+      return (rr === r && cc === c + 1) || (rr === r + 1 && cc === c);
+    })[0];
+    if (next) next.focus();
+  }
+}
+function kwSelect(){}
+let kwZoomVal = null;
+function kwZoom(delta){
+  const t = document.querySelector('.kw-table');
+  const cur = kwZoomVal === null ? (parseFloat(getComputedStyle(t).zoom) || 1) : kwZoomVal;
+  kwZoomVal = Math.min(1.3, Math.max(0.35, Math.round((cur + delta) * 100) / 100));
+  t.style.zoom = kwZoomVal;
+}
+function kwZoomReset(){ kwZoomVal = null; document.querySelector('.kw-table').style.zoom = ''; }
+function kwCheck(){
+  const entries = DOC.kwEntries, cellMap = {};
+  kwCells().forEach(function(i){ cellMap[i.dataset.r + ',' + i.dataset.c] = i; });
+  let solved = 0;
+  entries.forEach(function(e){
+    let all = true;
+    const cells = [];
+    for (let k = 0; k < e.word.length; k++){
+      const r = e.dir === 'H' ? e.r : e.r + k;
+      const c = e.dir === 'H' ? e.c + k : e.c;
+      const inp = cellMap[r + ',' + c];
+      cells.push(inp);
+      if (!inp || kwNormalize(inp.value) !== kwNormalize(e.word[k])) all = false;
+    }
+    if (all){ solved++; cells.forEach(function(i){ i.classList.remove('bad'); i.classList.add('ok'); }); }
+    else cells.forEach(function(i){ if (!i) return; i.classList.remove('ok'); if (i.value) i.classList.add('bad'); });
+  });
+  document.getElementById('kwResult').textContent = '已填对 ' + solved + ' / ' + entries.length + ' 个词';
+}
+function kwReveal(){
+  kwCells().forEach(function(i){ i.value = i.dataset.ans; i.classList.remove('bad'); i.classList.add('ok'); });
+  document.getElementById('kwResult').textContent = '已显示参考答案（教师用）';
+}
+function kwClear(){
+  kwCells().forEach(function(i){ i.value = ''; i.classList.remove('ok','bad'); });
+  document.getElementById('kwResult').textContent = '';
+}
+function revealWord(btn, word){
+  const cellMap = {};
+  kwCells().forEach(function(i){ cellMap[i.dataset.r + ',' + i.dataset.c] = i; });
+  DOC.kwEntries.filter(function(e){ return e.word === word; }).forEach(function(e){
+    for (let k = 0; k < e.word.length; k++){
+      const r = e.dir === 'H' ? e.r : e.r + k;
+      const c = e.dir === 'H' ? e.c + k : e.c;
+      const inp = cellMap[r + ',' + c];
+      if (inp){ inp.value = e.word[k]; inp.classList.add('ok'); }
+    }
+  });
+}
+/* ---- Satzergänzung ---- */
+function showVocabPanel(){}
+function checkSatz(i){
+  const inp = document.getElementById('sf-' + i);
+  const res = document.getElementById('sf-res-' + i);
+  const ok = kwNormalize(inp.value) === kwNormalize(inp.dataset.ans) ||
+             inp.dataset.alt.split('|').filter(Boolean).some(function(a){ return kwNormalize(a) === kwNormalize(inp.value); });
+  inp.classList.remove('ok','bad'); inp.classList.add(ok ? 'ok' : 'bad');
+  res.textContent = ok ? '✓ richtig' : '✗ 再想想（或点「答案」）';
+  res.className = 'fill-result ' + (ok ? 'correct' : 'wrong');
+}
+function showOneSatz(i){
+  const inp = document.getElementById('sf-' + i);
+  inp.value = inp.dataset.ans; inp.classList.remove('bad'); inp.classList.add('ok');
+}
+function showAllSatz(){ DOC.satz.forEach(function(_, i){ showOneSatz(i); }); }
+function clearAllSatz(){
+  DOC.satz.forEach(function(_, i){
+    const inp = document.getElementById('sf-' + i);
+    inp.value = ''; inp.classList.remove('ok','bad');
+    document.getElementById('sf-res-' + i).textContent = '';
+  });
+}
+/* ---- Hochschullandschaft cloze ---- */
+let clozeSel = null;
+function clozeClick(el){
+  if (el.classList.contains('filled')){ el.textContent = '?'; el.classList.remove('filled','ok','bad'); return; }
+  document.querySelectorAll('.cloze-blank').forEach(function(b){ b.classList.remove('sel'); });
+  clozeSel = el; el.classList.add('sel');
+}
+function bankFill(chip){
+  if (!clozeSel){ alert('请先点一个空格，再点词库里的词。'); return; }
+  clozeSel.textContent = chip.textContent;
+  clozeSel.classList.add('filled'); clozeSel.classList.remove('sel','ok','bad');
+  clozeSel = null;
+}
+function clozeCheck(){
+  let n = 0, tot = 0;
+  document.querySelectorAll('.cloze-blank').forEach(function(b){
+    tot++;
+    const ok = kwNormalize(b.textContent) === kwNormalize(b.dataset.ans);
+    b.classList.remove('ok','bad'); b.classList.add(ok ? 'ok' : 'bad');
+    if (ok) n++;
+  });
+  document.getElementById('clozeResult').textContent = '正确 ' + n + ' / ' + tot + ' 空';
+}
+function clozeClear(){
+  document.querySelectorAll('.cloze-blank').forEach(function(b){
+    b.textContent = '?'; b.classList.remove('filled','ok','bad','sel');
+  });
+  document.getElementById('clozeResult').textContent = '';
+}
+/* ---- Mindmap ---- */
+let mmSel = null;
+function mmSelect(el){
+  if (el.parentNode.classList.contains('mm-items')){   // 从分类框取回
+    document.getElementById('mmPool').appendChild(el);
+    el.classList.remove('ok','bad');
+    return;
+  }
+  if (mmSel) mmSel.classList.remove('sel');
+  mmSel = el; el.classList.add('sel');
+}
+function mmDrop(box){
+  if (!mmSel){ return; }
+  box.querySelector('.mm-items').appendChild(mmSel);
+  mmSel.classList.remove('sel','ok','bad');
+  mmSel = null;
+}
+function mmCheck(){
+  let ok = 0, tot = 0, done = 0;
+  document.querySelectorAll('.mm-board .mm-box').forEach(function(box){
+    const cat = box.dataset.cat;
+    box.querySelectorAll('.mm-chip').forEach(function(ch){
+      tot++;
+      const right = ch.dataset.c === cat;
+      ch.classList.remove('ok','bad'); ch.classList.add(right ? 'ok' : 'bad');
+      if (right) ok++;
+    });
+  });
+  done = document.querySelectorAll('#mmPool .mm-chip').length;
+  document.getElementById('mmResult').textContent = '归类正确 ' + ok + ' / ' + tot + (done ? '（还有 ' + done + ' 个未归类）' : '');
+}
+function mmReset(){
+  const pool = document.getElementById('mmPool');
+  document.querySelectorAll('.mm-board .mm-chip').forEach(function(ch){
+    ch.classList.remove('ok','bad'); pool.appendChild(ch);
+  });
+  document.getElementById('mmResult').textContent = '';
+}
+/* ---- Satzbau ---- */
+function sbPick(el, i){
+  const line = document.getElementById('sb-line-' + i);
+  const pool = document.getElementById('sb-pool-' + i);
+  if (el.parentNode === pool){ line.appendChild(el); }
+  else { pool.appendChild(el); }
+  line.classList.remove('ok','bad');
+}
+function sbUndo(i){ const line = document.getElementById('sb-line-' + i); const last = line.lastElementChild; if (last) sbPick(last, i); }
+function sbReset(i){
+  const pool = document.getElementById('sb-pool-' + i);
+  const line = document.getElementById('sb-line-' + i);
+  Array.prototype.slice.call(line.children).forEach(function(ch){ pool.appendChild(ch); });
+  line.classList.remove('ok','bad');
+  document.getElementById('sb-res-' + i).textContent = '';
+}
+function sbCheck(i){
+  const line = document.getElementById('sb-line-' + i);
+  const got = Array.prototype.slice.call(line.children).map(function(ch){ return ch.textContent.trim(); });
+  const want = DOC.satzbau[i].chunks;
+  const res = document.getElementById('sb-res-' + i);
+  const ok = got.length === want.length && got.every(function(g, k){ return g === want[k].trim(); });
+  line.classList.remove('ok','bad'); line.classList.add(ok ? 'ok' : 'bad');
+  res.textContent = ok ? '✓ 语序正确' : '✗ 语序还不对，检查动词位置和从句语序';
+  res.className = 'fill-result ' + (ok ? 'correct' : 'wrong');
+}
+function sbShow(i){
+  const line = document.getElementById('sb-line-' + i);
+  const pool = document.getElementById('sb-pool-' + i);
+  Array.prototype.slice.call(line.children).forEach(function(ch){ pool.appendChild(ch); });
+  DOC.satzbau[i].chunks.forEach(function(txt){
+    Array.prototype.slice.call(pool.children).forEach(function(ch){
+      if (ch.textContent.trim() === txt.trim() && ch.parentNode === pool) line.appendChild(ch);
+    });
+  });
+  line.classList.remove('bad'); line.classList.add('ok');
+  document.getElementById('sb-res-' + i).textContent = '参考语序';
+  document.getElementById('sb-res-' + i).className = 'fill-result correct';
+}
+/* ---- misc ---- */
+function flipTrans(el){ el.classList.toggle('flipped'); }
+function toggleBox(id){ const b = document.getElementById(id); b.style.display = (b.style.display === 'none' ? 'block' : 'none'); }
+const scores = {A: 0, B: 0};
+function addScore(t, d){ scores[t] = Math.max(0, scores[t] + d); document.getElementById('score' + t).textContent = scores[t]; }
+function resetScore(){ scores.A = 0; scores.B = 0; document.getElementById('scoreA').textContent = '0'; document.getElementById('scoreB').textContent = '0'; }
+
+</script>
+</body>
+</html>

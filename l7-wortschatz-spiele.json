@@ -1,0 +1,271 @@
+{
+  "meta": {
+    "lektion": 7,
+    "title": "Studium, Schule & Wortschatz · 课堂互动训练",
+    "subtitle": "词汇 · 十字填词 · 句子填空 · 翻译擂台 · 课堂游戏",
+    "source": "教材 Lektion 7「Start in die Zukunft!」S.200 / S.202–203 Übungen",
+    "objectives": [
+      "记住并主动运用本单元 48 个核心词汇（学校体系 / 高校类型 / 学业与考试 / 动词搭配）",
+      "掌握「学习与研究」主题词汇网：Hochschultypen, Lehrveranstaltungen, Prüfungen und Abschlüsse",
+      "熟练使用课文句型：vor der Entscheidung stehen · nicht nur …, sondern auch … · ohne + Akk. · die Möglichkeit bieten, … zu + Inf.",
+      "能独立把「德国择校」段落由中文译成德语，并说出所用句型",
+      "在小组竞赛中快速反应，把被动词汇变成主动词汇"
+    ],
+    "flow": [
+      ["2 min", "热身抢答 Blitzrunde", "中→德抢答，两组计分，唤醒旧词"],
+      ["5 min", "词汇卡片 Wortschatzkarten", "48 张翻转卡，学生点开例句朗读；★标注高频词"],
+      ["5 min", "连线配对 Vernetzen", "4 组词网连线：高校类型 / 教学活动 / 学业学位 / 动词搭配"],
+      ["8 min", "十字填词 Kreuzworträtsel", "教材 Ü2 的 15 个提示句 → 填格（可用词库提示）"],
+      ["5 min", "句子填空 Satzergänzung", "教材 Ü2 a–o 逐句输入核对，允许同义答案"],
+      ["4 min", "思维导图 Mindmap", "把词归入 5 个分类，全班一起补全 Wortfeld"],
+      ["3 min", "高校类型 Hochschullandschaft", "教材 Ü1 短文完形：先看 logos 词库，再填空"],
+      ["5 min", "句型工坊 Satzbau", "6 个课文核心句型：点词块组句，检验语序"],
+      ["6 min", "翻译擂台 Übersetzen", "教材 Ü9 中译德：逐句翻卡核对 + 整段参考译文"],
+      ["2 min", "收尾 Blitzlicht", "用 3 个新学词 + 1 个句型说一句话（计时器 30 秒/人）"]
+    ]
+  },
+  "vocabGroups": [
+    {
+      "id": "G1",
+      "label": "🏫 教育体系与学校类型",
+      "words": [
+        {"w": "die Lehre (-n)", "cn": "学徒的学习期；学说", "ex": "Max beginnt nach der Schule eine Lehre im Handelsbereich."},
+        {"w": "die Primarstufe (-n)", "cn": "初等教育阶段", "ex": "Die Primarstufe umfasst in Deutschland die ersten vier Schuljahre."},
+        {"w": "die Mittelschule (-n)", "cn": "中学", "ex": "In der Schweiz heißt eine Schulform Mittelschule."},
+        {"w": "der Kanton (-e) [kanˈtoːn]", "cn": "［瑞］州", "ex": "In der Schweiz entscheidet jeder Kanton über sein Schulsystem."},
+        {"w": "die Volksschule (-n)", "cn": "［奥］小学；［瑞］公立学校", "ex": "In Österreich gehen die Kinder in die Volksschule."},
+        {"w": "die Primarschule (-n)", "cn": "［瑞］小学", "ex": "In Zürich dauert die Primarschule sechs Jahre."},
+        {"w": "die Matura (nur Sg)", "cn": "［奥，瑞］（高级中学的）毕业考试", "ex": "Nach der Matura kann man an der Universität studieren."},
+        {"w": "die Ganztagsschule (-n)", "cn": "全日制学校", "ex": "In einer Ganztagsschule bleiben die Kinder bis zum Nachmittag."},
+        {"w": "die Lehrkraft (¨-e)", "cn": "教师，师资", "ex": "Die Lehrkräfte erstellen die Empfehlung für die Eltern."},
+        {"w": "die Pflicht (-en)", "cn": "义务，责任，职责", "ex": "In Deutschland ist der Schulbesuch eine Pflicht."},
+        {"w": "die Erlaubnis (-se)", "cn": "许可，同意", "ex": "Für die Fahrt braucht das Kind die Erlaubnis der Eltern."},
+        {"w": "die Empfehlung (-en)", "cn": "介绍，推荐（信）；劝告，忠告", "ex": "Die Grundschule gibt den Eltern eine Empfehlung."}
+      ]
+    },
+    {
+      "id": "G2",
+      "label": "🎓 学习、教学与研究",
+      "words": [
+        {"w": "die Praxis (nur Sg)", "cn": "实践，运用", "ex": "An der Fachhochschule spielt die Praxis eine große Rolle."},
+        {"w": "praxisorientiert", "cn": "以实践为导向的", "ex": "Ein duales Studium ist besonders praxisorientiert."},
+        {"w": "die Theorie (-n)", "cn": "理论，原理；学说", "ex": "An der Universität vermittelt man vor allem Theorie."},
+        {"w": "die Grundlage (-n)", "cn": "基础；根据；前提；地基", "ex": "Gute Leistungen in den Hauptfächern sind die Grundlage für die Empfehlung."},
+        {"w": "die Tendenz (-en)", "cn": "趋势，倾向", "ex": "Es gibt die Tendenz, dass mehr Eltern die Gesamtschule wählen."},
+        {"w": "die Voraussetzung (-en)", "cn": "前提，先决条件；假设", "ex": "Das Abitur ist die Voraussetzung für ein Studium."},
+        {"w": "der Prozess (-e)", "cn": "过程，进程", "ex": "Die Wahl der Schule ist ein langer Prozess."},
+        {"w": "das Profil (-e)", "cn": "鲜明的特征；侧面像", "ex": "Jede Schule hat ein eigenes Profil."},
+        {"w": "das Hauptfach (¨-er)", "cn": "主要科目，主修学科", "ex": "Deutsch und Mathematik sind Hauptfächer."},
+        {"w": "die Aufgabe (-n)", "cn": "作业；习题；任务", "ex": "Die Aufgabe der Schule ist es, jedes Kind bestmöglich zu fördern."},
+        {"w": "die Schwierigkeit (-en)", "cn": "困难", "ex": "Eine Schwierigkeit ist, dass die Schule weit von der Wohnung weg ist."},
+        {"w": "der Zeitpunkt (-e)", "cn": "时刻，时机", "ex": "Der richtige Zeitpunkt für die Entscheidung ist das Ende der Grundschule."}
+      ]
+    },
+    {
+      "id": "G3",
+      "label": "💼 领域、手艺与选择",
+      "words": [
+        {"w": "der Handel (nur Sg)", "cn": "商业，贸易，买卖，交易", "ex": "Der Handel mit anderen Ländern ist wichtig für die Wirtschaft."},
+        {"w": "der Bereich (-e)", "cn": "范围，区域，领域", "ex": "Sie arbeitet im Bereich Bildung und Erziehung."},
+        {"w": "das Handwerk (nur Sg)", "cn": "手艺；手工业", "ex": "Im Handwerk lernt man vor allem praktische Fähigkeiten."},
+        {"w": "der Meister (-)", "cn": "工匠，师傅；能手，大师", "ex": "Nach der Ausbildung kann man noch Meister werden."},
+        {"w": "das Projekt (-e)", "cn": "工程，项目", "ex": "Das Projekt „Schule der Zukunft“ läuft seit einem Jahr."},
+        {"w": "die Chance (-n)", "cn": "可能性，机会；运气，（成功的）希望", "ex": "Jedes Kind soll die gleiche Chance bekommen."},
+        {"w": "die Wahl (nur Sg)", "cn": "选择，挑选", "ex": "Die Wahl der richtigen Schule ist nicht leicht."},
+        {"w": "die Alternative (-n)", "cn": "其他可能性，其他选项，其他途径", "ex": "Die Gesamtschule ist eine gute Alternative zum Gymnasium."},
+        {"w": "der Wunsch (¨-e)", "cn": "想法，愿望", "ex": "Viele Eltern haben den Wunsch, dass ihr Kind das Abitur macht."},
+        {"w": "das Gemälde (-n)", "cn": "油画", "ex": "Lisa interessiert sich für Kunst und mag Gemälde."},
+        {"w": "das Niederländisch", "cn": "荷兰语", "ex": "In der Schule lernt Lisa Niederländisch."},
+        {"w": "die Situation (-en)", "cn": "情况，局面，处境，场合", "ex": "Die Situation der Familie spielt bei der Wahl eine wichtige Rolle."}
+      ]
+    },
+    {
+      "id": "G4",
+      "label": "🔧 动词、形容词与固定搭配",
+      "words": [
+        {"w": "sich beschäftigen + mit Dat.", "cn": "从事于，忙于", "ex": "Sie beschäftigt sich mit der Frage, welche Schule die richtige ist."},
+        {"w": "sich erinnern + an Akk.", "cn": "想起，回忆起", "ex": "Ich erinnere mich gern an meine Schulzeit."},
+        {"w": "ab/geben + A", "cn": "提交，交给，交出", "ex": "Die Eltern geben die Anmeldung bei der Schule ab."},
+        {"w": "aus/schalten + A", "cn": "使断路，关掉", "ex": "Bitte schalten Sie das Handy im Unterricht aus."},
+        {"w": "fördern + A", "cn": "促进，推进；资助，支持", "ex": "Die Schule fördert jedes Kind nach seinen Fähigkeiten."},
+        {"w": "umfassen + A", "cn": "包括，包含", "ex": "Die Grundschule umfasst vier Schuljahre."},
+        {"w": "verantwortlich", "cn": "有责任的，负责的；责任重大的", "ex": "Die Eltern sind für die Wahl der Schule verantwortlich."},
+        {"w": "gleich", "cn": "一样的，相同的", "ex": "Alle Kinder haben die gleichen Chancen."},
+        {"w": "eher", "cn": "更容易，更可能；宁可，宁愿", "ex": "Eher wählen die Eltern ein Gymnasium als eine Hauptschule."},
+        {"w": "bestmöglich", "cn": "尽可能好的", "ex": "Die Schule soll die bestmögliche Förderung bieten."},
+        {"w": "eingeschränkt", "cn": "有限制的，有约束的", "ex": "Niklas bekommt nur eine eingeschränkte Empfehlung."},
+        {"w": "psychologisch", "cn": "心理学的，心理的", "ex": "Psychologische Studien zeigen, wie wichtig der Schulweg ist."}
+      ]
+    }
+  ],
+  "blitz": [
+    {"cn": "推荐（信）", "de": "die Empfehlung", "hint": "die ___ (-en)"},
+    {"cn": "愿望", "de": "der Wunsch", "hint": "der ___ (¨-e)"},
+    {"cn": "选择，挑选", "de": "die Wahl", "hint": "die ___ (nur Sg)"},
+    {"cn": "其他选项", "de": "die Alternative", "hint": "die ___ (-n)"},
+    {"cn": "前提，先决条件", "de": "die Voraussetzung", "hint": "die ___ (-en)"},
+    {"cn": "全日制学校", "de": "die Ganztagsschule", "hint": "die ___ (-n)"},
+    {"cn": "主要科目 / 主修学科", "de": "das Hauptfach", "hint": "das ___ (¨-er)"},
+    {"cn": "尽可能好的", "de": "bestmöglich", "hint": "形容词"},
+    {"cn": "提交，交给", "de": "abgeben", "hint": "可分动词 ___ + A"},
+    {"cn": "从事于，忙于", "de": "sich beschäftigen mit", "hint": "反身动词 + mit Dat."},
+    {"cn": "想起，回忆起", "de": "sich erinnern an", "hint": "反身动词 + an Akk."},
+    {"cn": "心理的", "de": "psychologisch", "hint": "形容词"}
+  ],
+  "connectGrids": [
+    {
+      "title": "🏫 高校类型 · Hochschultypen",
+      "pairs": [
+        ["die Universität", "（综合）大学"],
+        ["die Technische Universität", "工业大学"],
+        ["die Fachhochschule", "应用技术大学"],
+        ["die Kunsthochschule", "艺术院校"],
+        ["die Musikhochschule", "音乐学院"],
+        ["die Berufsakademie", "（双元制）职业学院"],
+        ["die Pädagogische Hochschule", "师范大学"],
+        ["das duale Studium", "双元制学习"]
+      ]
+    },
+    {
+      "title": "📚 教学活动 · Lehrveranstaltungen",
+      "pairs": [
+        ["die Vorlesung", "大课，讲座"],
+        ["das Seminar", "研讨课"],
+        ["das Referat", "专题报告"],
+        ["die Hausarbeit", "课程论文"],
+        ["die Klausur", "闭卷考试"],
+        ["der Hörsaal", "大教室，阶梯教室"],
+        ["das Semester", "学期"],
+        ["die Prüfung", "考试"]
+      ]
+    },
+    {
+      "title": "🎓 学业与学位 · Studium & Abschlüsse",
+      "pairs": [
+        ["das Studium", "大学学习，学业"],
+        ["der Bachelor", "学士（学位）"],
+        ["der Master", "硕士（学位）"],
+        ["der Magister", "（传统）硕士（学位）"],
+        ["das Stipendium", "奖学金"],
+        ["das Hauptfach", "主修专业"],
+        ["das Nebenfach", "辅修专业"],
+        ["das Auslandspraktikum", "海外实习"]
+      ]
+    },
+    {
+      "title": "✨ 形容词与固定搭配 · Wendungen",
+      "pairs": [
+        ["praxisorientiert", "以实践为导向的"],
+        ["eingeschränkt", "有限制的"],
+        ["bestmöglich", "尽可能好的"],
+        ["verantwortlich für", "对……负责"],
+        ["sich beschäftigen mit", "从事于、忙于"],
+        ["sich erinnern an", "想起、回忆起"],
+        ["ausschalten", "关掉，切断"],
+        ["abgeben", "提交，交出"]
+      ]
+    }
+  ],
+  "kreuzwort": {
+    "title": "Kreuzworträtsel · Studium und Studentenleben",
+    "instruction": "教材 Ü2 的 15 个提示句，把答案填进格子（可用右侧词库提示）。",
+    "wordbank": ["STUDIUM", "SEMESTER", "MAGISTER", "MASTER", "VORLESUNG", "SEMINAR", "KLAUSUR", "HAUSARBEIT", "STIPENDIUM", "AUSLANDSPRAKTIKUM", "HAUPTFACH", "NEBENFACH", "BERUFSAKADEMIEN", "UNIVERSITÄTEN", "GERMANISTIK"],
+    "clues": [
+      {"n": "a", "clue": "Mit dem Abitur / der Matura beginnt man ein ______.", "zh": "高中毕业后就开始大学学习。", "answer": "STUDIUM"},
+      {"n": "b", "clue": "Ein Freund von Li Tao hat ein ______ lang als Austauschstudent in Deutschland studiert.", "zh": "李涛的朋友在德国做了一学期的交换生。", "answer": "SEMESTER", "alt": ["JAHR"]},
+      {"n": "c", "clue": "Das ______-studium an einer Universität dauert normalerweise 6–8 Semester.", "zh": "大学的（传统）硕士学习通常 6–8 个学期。", "answer": "MAGISTER"},
+      {"n": "d", "clue": "Einige Studenten planen, nach dem Bachelorstudium noch ein ______-studium zu machen.", "zh": "有些学生计划本科毕业后继续读硕士。", "answer": "MASTER"},
+      {"n": "e", "clue": "Die ______ über deutsche Gegenwartsliteratur findet im Hörsaal 3 statt.", "zh": "关于德国当代文学的讲座在三号阶梯教室举行。", "answer": "VORLESUNG"},
+      {"n": "f", "clue": "Im ______ kann man zum Beispiel ein Referat halten oder aktiv an der Diskussion teilnehmen.", "zh": "在研讨课上可以做报告或积极参与讨论。", "answer": "SEMINAR"},
+      {"n": "g", "clue": "Bei vielen Kursen schreiben die Studenten am Semesterende eine ______, d. h. eine schriftliche Prüfung.", "zh": "许多课程期末写一次闭卷考试。", "answer": "KLAUSUR"},
+      {"n": "h", "clue": "Als eine andere Prüfungsform kann man auch eine ______ schreiben, nämlich eine schriftliche Arbeit.", "zh": "另一种考试形式是写课程论文。", "answer": "HAUSARBEIT"},
+      {"n": "i", "clue": "Anja bekommt wegen ihrer guten Leistungen ein ______.", "zh": "Anja 因为成绩优秀获得奖学金。", "answer": "STIPENDIUM"},
+      {"n": "j", "clue": "Für viele medizinische Studenten ist es notwendig, ein ______ zu absolvieren.", "zh": "很多医学生必须完成一次海外实习。", "answer": "AUSLANDSPRAKTIKUM"},
+      {"n": "k", "clue": "An der Universität muss jeder ein ______ wählen.", "zh": "在大学每个人必须选一个主修专业。", "answer": "HAUPTFACH"},
+      {"n": "l", "clue": "Viele Studenten studieren neben ihrem Hauptfach noch ein ______.", "zh": "很多学生除主修外还修一门辅修。", "answer": "NEBENFACH"},
+      {"n": "m", "clue": "Berufs______ bezeichnet man auch als duale Hochschulen.", "zh": "职业学院也被称为双元制高校。", "answer": "BERUFSAKADEMIEN"},
+      {"n": "n", "clue": "Die Allianz der führenden Technischen ______ in Deutschland heißt TU9.", "zh": "德国顶尖工科大学联盟叫 TU9。", "answer": "UNIVERSITÄTEN"},
+      {"n": "o", "clue": "Im Fach ______ erforscht man die deutsche Sprache und deutschsprachige Literatur.", "zh": "在日耳曼学专业研究德语与德语文学。", "answer": "GERMANISTIK"}
+    ]
+  },
+  "hochschule": {
+    "title": "Hochschullandschaft in Deutschland · 德国高校版图",
+    "instruction": "教材 Ü1：先看 logos 词库，再从词库点词填入空格（点格可撤回）。",
+    "bank": ["Universitäten", "Technische", "Fachhochschulen", "Kunsthochschulen", "Berufsakademien"],
+    "logos": ["Universität Zürich UZH", "TUM Technische Universität München", "Fachhochschule Dortmund", "Kunst uni graz", "BA BERUFSAKADEMIE SACHSEN"],
+    "text": [
+      "In den deutschsprachigen Ländern können Studieninteressierte zwischen unterschiedlichen Hochschultypen wählen:",
+      "[[1]] vermitteln vor allem theoretisches Wissen. Das Studium ist stark wissenschaftlich orientiert und es gibt viele unterschiedliche Fächergruppen. Manche von ihnen konzentrieren sich auf die Forschung in bestimmten Fachgebieten und nennen sich zum Beispiel [[2]] [[3]], Pädagogische Universitäten.",
+      "An [[4]] und Hochschulen für angewandte Wissenschaften ist das Studium sehr praxisorientiert. Der Schwerpunkt liegt stärker auf der beruflichen Anwendung.",
+      "An [[5]], Film- und Musikhochschulen kann man künstlerische Fächer studieren, zum Beispiel Musik, Bildende Kunst, Tanz usw.",
+      "Ein typischer Vertreter des dualen Studiums sind [[6]] / Duale Hochschulen. Sie verbinden Studium und Ausbildung in einem drei- bis vierjährigen Bildungsgang. Neben dem theoretischen Unterricht macht man eine Berufsausbildung oder Praktika in Unternehmen."
+    ],
+    "answers": ["Universitäten", "Technische", "Universitäten", "Fachhochschulen", "Kunsthochschulen", "Berufsakademien"],
+    "note": "Landeskunde：双元制高校可获 Bachelor / Master 学位，而 Berufsakademie 不能授予官方学位。"
+  },
+  "mindmap": {
+    "title": "Mindmap · Wortfeld Studium und Studentenleben",
+    "instruction": "教材 Ü3：点击一个词，再点它所属的分类框（点错可再点一次改）。",
+    "cats": [
+      {"id": "C1", "label": "Studienfächer / Fakultäten", "icon": "📘"},
+      {"id": "C2", "label": "Typen der Hochschulen", "icon": "🏛️"},
+      {"id": "C3", "label": "Lehrveranstaltungen", "icon": "🎧"},
+      {"id": "C4", "label": "Prüfungen und Abschlüsse", "icon": "🎓"},
+      {"id": "C5", "label": "Lerntätigkeiten und Sonstiges", "icon": "🧩"}
+    ],
+    "words": [
+      {"w": "Germanistik", "c": "C1"},
+      {"w": "Informatik", "c": "C1"},
+      {"w": "Medizin", "c": "C1"},
+      {"w": "Bildende Kunst", "c": "C1"},
+      {"w": "Universität", "c": "C2"},
+      {"w": "Fachhochschule", "c": "C2"},
+      {"w": "Kunsthochschule", "c": "C2"},
+      {"w": "Berufsakademie", "c": "C2"},
+      {"w": "Vorlesung", "c": "C3"},
+      {"w": "Seminar", "c": "C3"},
+      {"w": "Referat", "c": "C3"},
+      {"w": "Übung", "c": "C3"},
+      {"w": "Klausur", "c": "C4"},
+      {"w": "Hausarbeit", "c": "C4"},
+      {"w": "Bachelor", "c": "C4"},
+      {"w": "Master", "c": "C4"},
+      {"w": "Abitur", "c": "C4"},
+      {"w": "Stipendium", "c": "C5"},
+      {"w": "Auslandspraktikum", "c": "C5"},
+      {"w": "Semester", "c": "C5"},
+      {"w": "Bibliothek", "c": "C5"},
+      {"w": "Teamarbeit", "c": "C5"}
+    ]
+  },
+  "satzbau": [
+    {"zh": "在德国，小学毕业时，家长和孩子面临着择校的问题。", "chunks": ["In Deutschland", "stehen Eltern und Kinder", "vor der Entscheidung,", "welche Schule sie besuchen sollen."], "pattern": "vor der Entscheidung stehen → 面临抉择"},
+    {"zh": "小学会根据孩子的主要科目成绩，提交给家长一份推荐信。", "chunks": ["Die Grundschule", "erstellt", "aufgrund der Leistungen in den Hauptfächern", "eine Empfehlung für die Eltern."], "pattern": "aufgrund + Gen. → 根据……；eine Empfehlung erstellen → 出具推荐信"},
+    {"zh": "很多家长都希望孩子上文理中学。", "chunks": ["Viele Eltern", "wünschen sich,", "dass ihr Kind auf ein Gymnasium geht."], "pattern": "sich wünschen, dass … → 希望（愿望从句）"},
+    {"zh": "但是这种愿望并不意味着，文理中学就是适合孩子的“正确”选择。", "chunks": ["Aber dieser Wunsch", "bedeutet nicht zwangsläufig,", "dass das Gymnasium die „richtige“ Wahl für das Kind ist."], "pattern": "nicht zwangsläufig bedeuten, dass … → 并不必然意味着"},
+    {"zh": "综合中学就是一个不错的选项，它提供了获得三种毕业证书的机会。", "chunks": ["Die Gesamtschule", "ist eine gute Alternative;", "sie bietet die Möglichkeit,", "drei verschiedene Abschlüsse zu erwerben."], "pattern": "die Möglichkeit bieten, … zu + Inf. → 提供……的可能"},
+    {"zh": "合适的学校不仅应提供尽可能好的学习支持，还应适合孩子和家庭的日常生活。", "chunks": ["Die passende Schule", "sollte nicht nur", "die bestmögliche Lernförderung bieten,", "sondern auch", "zum Alltag des Kindes und der Familie passen."], "pattern": "nicht nur …, sondern auch … → 不仅……而且"}
+  ],
+  "uebersetzen": {
+    "title": "Übersetzen Sie · 中译德擂台（教材 Ü9）",
+    "zhFull": "在德国，小学毕业时，家长和孩子面临着择校的问题。为孩子选择合适的学校并非易事。小学会根据孩子的主要科目成绩，提交给家长一份推荐信。很多家长都希望送孩子上文理中学，但是这种愿望并不意味着，文理中学就是适合孩子的“正确”选择。综合中学就是一个不错的选项，它提供了获得三种毕业资格证书的机会。另外，在德国，即便没有参加高中毕业考试也可以上大学。合适的学校不仅应为学生提供尽可能好的学习支持，还应适合孩子和家庭的日常生活。",
+    "deFull": "In Deutschland stehen Eltern und Kinder vor der Entscheidung, welche Schule sie besuchen sollen, wenn die Grundschule abgeschlossen ist. Es ist nicht leicht, die richtige Schule für das Kind zu wählen. Die Grundschule erstellt aufgrund der Leistungen in den Hauptfächern eine Empfehlung für die Eltern. Viele Eltern wünschen sich, dass ihr Kind auf ein Gymnasium geht, aber dieser Wunsch bedeutet nicht zwangsläufig, dass das Gymnasium die „richtige“ Wahl für das Kind ist. Die Gesamtschule ist eine gute Alternative; sie bietet die Möglichkeit, drei verschiedene Abschlüsse zu erwerben. Außerdem kann man in Deutschland auch ohne Abitur an einer Universität studieren. Die passende Schule sollte nicht nur die bestmögliche Lernförderung bieten, sondern auch zum Alltag des Kindes und der Familie passen.",
+    "sentences": [
+      {"zh": "在德国，小学毕业时，家长和孩子面临着择校的问题。", "de": "In Deutschland stehen Eltern und Kinder vor der Entscheidung, welche Schule sie besuchen sollen, wenn die Grundschule abgeschlossen ist.", "tip": "vor der Entscheidung stehen + 从句；„小学毕业时“ 可用 wenn 从句或 nach der Grundschule"},
+      {"zh": "为孩子选择合适的学校并非易事。", "de": "Es ist nicht leicht, die richtige Schule für das Kind zu wählen.", "tip": "es ist nicht leicht, … zu + Inf.（形式主语 + zu 不定式）"},
+      {"zh": "小学会根据孩子的主要科目成绩，提交给家长一份推荐信。", "de": "Die Grundschule erstellt aufgrund der Leistungen in den Hauptfächern eine Empfehlung für die Eltern.", "tip": "aufgrund + Gen.；die Leistungen in den Hauptfächern"},
+      {"zh": "很多家长都希望送孩子上文理中学，但是这种愿望并不意味着，文理中学就是适合孩子的“正确”选择。", "de": "Viele Eltern wünschen sich, dass ihr Kind auf ein Gymnasium geht, aber dieser Wunsch bedeutet nicht zwangsläufig, dass das Gymnasium die „richtige“ Wahl für das Kind ist.", "tip": "sich wünschen, dass …；nicht zwangsläufig bedeuten, dass …；auf ein Gymnasium gehen"},
+      {"zh": "综合中学就是一个不错的选项，它提供了获得三种毕业资格证书的机会。", "de": "Die Gesamtschule ist eine gute Alternative; sie bietet die Möglichkeit, drei verschiedene Abschlüsse zu erwerben.", "tip": "eine gute Alternative sein；die Möglichkeit bieten, … zu + Inf.；Abschlüsse erwerben"},
+      {"zh": "另外，在德国，即便没有参加高中毕业考试也可以上大学。", "de": "Außerdem kann man in Deutschland auch ohne Abitur an einer Universität studieren.", "tip": "ohne + Akk.（ohne Abitur）：无介词冠词"},
+      {"zh": "合适的学校不仅应为学生提供尽可能好的学习支持，还应适合孩子和家庭的日常生活。", "de": "Die passende Schule sollte nicht nur die bestmögliche Lernförderung bieten, sondern auch zum Alltag des Kindes und der Familie passen.", "tip": "nicht nur …, sondern auch …；zu etw. passen；sollte（建议语气）"}
+    ]
+  },
+  "klassenspiele": [
+    {"name": "① Blitzrunde 抢答赛", "desc": "老师点「Blitzrunde」里的卡片，先说出德语的一组得 1 分（读名词必须带冠词）。", "time": "3 min"},
+    {"name": "② Kreuzworträtsel-Staffel 填字接力", "desc": "分两组，每组派一人上黑板/上前点格子填词，答对继续，答错换人。词语库可给可不给（难组给、易组不给）。", "time": "8 min"},
+    {"name": "③ Satzbau-Wettlauf 组句赛跑", "desc": "点词块组句，先组对者举手，老师用「Satzbau」核对语序；错序要说出错在哪。", "time": "6 min"},
+    {"name": "④ Übersetzungs-Duell 翻译对决", "desc": "中译德逐句：两组各派一人写关键词句，翻卡核对。答案只要句型对就给分，允许不同表达。", "time": "8 min"},
+    {"name": "⑤ Mindmap-Lücke 词网补全", "desc": "白板画出 5 个分类框，两组轮流说一个词并归类，归类错不得分。", "time": "5 min"},
+    {"name": "⑥ Blitzlicht 收尾", "desc": "每人用「3 个新词 + 1 个句型」说一句话，计时器 30 秒。（点击下方计时器开始）", "time": "2 min"}
+  ]
+}

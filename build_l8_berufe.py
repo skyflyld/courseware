@@ -30,7 +30,7 @@ def esc_attr(s):
 
 TOK_RE = re.compile(
     r'\([^()]*\)|\[[^\[\]]*\]|\+\s*(?:A|D|G|Akk|Dat|Gen)(?:\s*(?:\+|/)\s*(?:A|D|G|Akk|Dat|Gen))*'
-    r'|\+\s*mit\s+\w+|nur\s+Sg', re.I)
+    r'|\+\s*mit\s+\w+|nur\s+Sg|meist\s+Sg|\s+-\S*', re.I)
 
 
 def word_html(w):
@@ -49,7 +49,14 @@ def word_html(w):
         return '<span class="vc-w">%s</span>' % h(w)
     notes = ''
     for tok in toks:
-        cls = 'vc-note vc-phon' if tok.startswith('[') else 'vc-note'
+        if tok.startswith('['):
+            cls = 'vc-note vc-phon'
+        elif tok.startswith('-'):
+            # 复数词尾（-en / -e/-s / 单个 -）单独包一层禁断，
+            # 否则浏览器会在连字符后折断成「die Anforderung -」+「en」
+            cls = 'vc-note vc-pl'
+        else:
+            cls = 'vc-note'
         notes += '<span class="%s">%s</span>' % (cls, h(tok))
     return '<span class="vc-w">%s</span>%s' % (h(rest), notes)
 
@@ -374,7 +381,7 @@ def sec_umformen(d):
     cards, sb_cards, chunks_doc = [], [], []
     for i, it in enumerate(u['items']):
         cards.append('''      <div class="um-card">
-        <div class="um-top"><span class="um-n">%s)</span><span class="um-pat" lang="de">%s</span><span class="src">%s</span></div>
+        <div class="um-top"><span class="um-n">%s)</span><span class="um-pat" lang="de">%s</span>%s</div>
         <div class="um-src" lang="de">%s</div>
         <div class="um-tip">💡 %s</div>
         <textarea class="um-ta" rows="3" placeholder="Deine Umformung …" lang="de"></textarea>
@@ -383,7 +390,9 @@ def sec_umformen(d):
           <button class="btn ghost" onclick="umClear(%d)">↺ 清空</button>
         </div>
         <div class="um-ans" id="um-ans-%d" style="display:none" lang="de">%s</div>
-      </div>''' % (h(it['n']), h(it['pattern']), h(it.get('src', '')), h(it['src']),
+      </div>''' % (h(it['n']), h(it['pattern']),
+                   ('<span class="src">%s</span>' % h(u.get('src', ''))) if u.get('src') else '',
+                   h(it['src']),
                    h(it['tip']), i, i, i, h(it['ans'])))
         # 语序拼装：词块 = 参考答案首个变体按空格切分（数据原值，不增删词）
         first = it['ans'].split('｜')[0].strip()
@@ -392,7 +401,7 @@ def sec_umformen(d):
         chips = ''.join('<span class="sb-chunk" data-i="%d" onclick="sbPick(this,%d)" lang="de">%s</span>'
                         % (k, i, h(c)) for k, c in enumerate(chunks))
         sb_cards.append('''      <div class="sb-card">
-        <div class="sb-zh"><b>%s)</b> 语序拼装 <span class="src">%s</span></div>
+        <div class="sb-zh"><b>%s)</b> <span class="um-pat" lang="de">%s</span> 语序拼装</div>
         <div class="sb-pool" id="sb-pool-%d">%s</div>
         <div class="sb-line" id="sb-line-%d"></div>
         <div class="sb-actions">
@@ -475,13 +484,12 @@ def sec_uebersetzen(d):
     for i, s in enumerate(u['sentences']):
         cards.append('''        <div class="tc-card" onclick="flipTrans(this)">
           <div class="tc-inner">
-            <div class="tc-front"><span class="tc-num">%d</span><span class="src">%s</span>
+            <div class="tc-front"><span class="tc-num">%d</span>
               <div class="tc-zh">%s</div><div class="tc-tip">💡 %s</div></div>
-            <div class="tc-back"><span class="tc-num">%d</span><span class="src">%s</span>
+            <div class="tc-back"><span class="tc-num">%d</span>
               <div class="tc-de" lang="de">%s</div></div>
           </div>
-        </div>''' % (i + 1, h(s.get('src', '')), h(s['zh']), h(s['tip']),
-                     i + 1, h(s.get('src', '')), h(s['de'])))
+        </div>''' % (i + 1, h(s['zh']), h(s['tip']), i + 1, h(s['de'])))
     return '''    <section id="uebersetzen">
       <h2 class="section-title"><span class="num">12</span> 🎯 %s <span class="src src-lg">%s</span></h2>
       <p class="zh-hint">先自己译，再点卡片翻面核对参考译文。译法不唯一，句型正确、意义完整即算对。</p>
@@ -525,7 +533,8 @@ EXTRA_CSS = '''
   .src {
     display: inline-block; font-size: 13px; line-height: 1.5; color: #5f6672;
     background: #f4f6f8; border: 1px solid #e1e5ea; border-radius: 4px;
-    padding: 4px 6px; margin: 0 4px; white-space: nowrap; vertical-align: middle; font-weight: 500;
+    padding: 4px 6px; margin: 0 4px; max-width: 100%; overflow-wrap: anywhere;
+    vertical-align: middle; font-weight: 500;
   }
   .src-lg { font-size: 14px; padding: 4px 10px; color: #5f6672; }
   .kw-result { font-size: 15px; font-weight: 600; color: #0b56b8; }
@@ -545,8 +554,9 @@ EXTRA_CSS = '''
   .vocab-table .vt-de { color: #111; font-weight: 600; white-space: nowrap; width: 34%; }
   .vocab-table .vt-cn { color: #444; }
   .vc-w { font-weight: 700; }
-  .vc-note { font-size: max(13px, .86em); font-weight: 400; color: #5f6672; white-space: nowrap;
+  .vc-note { font-size: max(13px, .86em); font-weight: 400; color: #5f6672;
              margin-left: .28em; }
+  .vc-note.vc-pl { white-space: nowrap; }
   .vc-phon { font-style: italic; }
 
   /* ===== Blitz 抢答 ===== */
@@ -773,6 +783,9 @@ EXTRA_CSS = '''
     .connect-field { gap: 12px; }
     .rm-grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .es-input { max-width: 100%; }
+    /* 触控设备（窄屏）把词条出处按钮抬到 34px 以上，手指能点到 */
+    .vc-detail { width: 34px; height: 34px; font-size: 15px; opacity: .85; }
+    .vc-card .vc-detail { opacity: .85; }
   }
   @media (max-width: 820px) {
     .mm-board { grid-template-columns: 1fr; }
@@ -784,7 +797,6 @@ EXTRA_CSS = '''
     .c-item { padding: 8px; font-size: 15px; }
   }
   @media (max-width: 700px) {
-    .src, .src-lg { white-space: normal; overflow-wrap: anywhere; max-width: 100%; }
     .person-tabs { flex-wrap: wrap; gap: 4px; }
     .person-btn { flex: 1 1 46%; font-size: 15px; padding: 8px 12px; }
     .section-title { flex-wrap: wrap; }
@@ -796,7 +808,11 @@ EXTRA_CSS = '''
     .connect-col { min-width: 0; }
     .c-item { font-size: 14px; padding: 6px; }
     .games-grid, .blitz-grid, .br-grid { grid-template-columns: 1fr; }
-    .es-table .es-n { width: 46%; }
+    /* 属性表在窄屏改用固定布局，格内自适应换行，彻底消除表格撑宽页面 */
+    .es-table { table-layout: fixed; }
+    .es-table th, .es-table td { padding: 6px 8px; }
+    .es-table .es-n { width: 46%; overflow-wrap: anywhere; }
+    .es-table .es-input { width: 100%; min-width: 0; max-width: 100%; }
   }
   @media (max-width: 560px) {
     p, li, .zh-hint, .cloze-p, .tc-zh, .bz-cn, .um-src, .es-d { line-height: 1.9; }
@@ -833,11 +849,21 @@ EXTRA_CSS = '''
     .btn, .person-btn, .hamburger { min-height: 42px; }
     .bank-chip, .mm-chip, .ss-opt, .c-item, .sb-chunk, .rm-chip { min-height: 34px; }
     .vc-card .vc-detail { opacity: 1; }
+    .vc-detail { width: 36px; height: 36px; font-size: 15px; }
     .fill-check { min-height: 42px; }
   }
 
+  /* ===== 灰阶令牌/对比度 =====
+     模板里的 #999（hero .meta / .text-card p / .vp-close）在浅底上只有 2.6–2.9:1，
+     未达 WCAG AA 4.5:1 → 统一到灰阶令牌 #5f6672（白底 6.4:1） */
+  .hero .meta, .text-card p, .vp-close { color: #5f6672; }
+
   /* ===== 视觉质量层（灰阶统一 #5f6672 / 卡片等高 / 字号令牌）===== */
   .vocab-grid { align-items: stretch; }
+  /* 德语长复合词（如 Verantwortungsbewusstsein）不得把栅格撑宽页面：
+     卡片与词面允许在词内断行，配合 lang=de 的连字符规则优先在音节处断 */
+  .vc-card { min-width: 0; }
+  .vc-front, .vc-back, .vc-w, .vc-note { overflow-wrap: anywhere; }
   .blitz-grid, .games-grid, .home-grid, .br-grid { grid-auto-rows: 1fr; }
   .text-card, .game-card, .blitz-card, .rm-col { height: 100%; }
   .zh-hint, .zh-hint.note, .fill-zh, .ss-zh, .game-card p, .text-card p, p, li, .vt-cn, .vt-de,
@@ -851,6 +877,15 @@ EXTRA_CSS = '''
   h1, .hero h1 { font-size: var(--fs-h1) !important; }
   h2, h3, .section-title, .rm-title, .connect-game h3 { font-size: var(--fs-h3) !important; }
   .vc-w { font-weight: 700; }
+  /* 词条出处按钮：模板里是 20×20 / 10px（悬停才显形）→ 抬高到可读可点 */
+  .vc-detail { width: 28px; height: 28px; font-size: 13px; right: 2px; bottom: 2px; }
+  /* 对比度：模板 .vc-back 的蓝字 #1a73e8 在 #e8f0fe 底上只有 3.93:1（AA 需 4.5）
+     → 背面中文改用正文黑（15:1），蓝底作为「已翻面」的视觉信号仍然保留 */
+  .vc-back { color: #1d1d1f; }
+  /* 对比度：白字在 #27ae60 上只有 2.87:1 → 绿色序号盘改用深绿 #146c2e（6.6:1） */
+  .tc-back .tc-num { background: #146c2e; }
+  /* 句卡序号：模板 22×22 / 11px → 抬到 ≥12px 字号地板 */
+  .tc-num { width: 28px; height: 28px; line-height: 28px; font-size: 13px; }
   .bz-de, .um-pat, .es-table .es-n { font-size: var(--fs-word) !important; }
   .um-pat { font-size: var(--fs-body) !important; font-weight: 600; }
   .es-table .es-n { font-size: var(--fs-body) !important; font-weight: 600; }
@@ -861,8 +896,10 @@ EXTRA_CSS = '''
     text-wrap: pretty; line-height: 1.85; line-break: strict;
   }
   /* 注意：text-wrap 是 text-wrap-mode 的简写，会把 white-space:nowrap 顶回 wrap，
-     所以 nowrap 语义的元素（.src / .vc-note / .vt-de / .fl-t）一律不放进上面的组 */
+     所以 nowrap 语义的元素（.vc-note / .vt-de / .fl-t）一律不放进上面的组 */
   .vc-note, .vt-de, .fl-t, .cloze-blank, .game-time { white-space: nowrap; }
+  .vc-note { white-space: normal; }
+  .vc-note.vc-pl { white-space: nowrap; }
   h1, h2, h3, h4, .section-title, .game-name, .mm-head, .rm-title, .rm-head { text-wrap: balance; }
   .um-src, .um-ans, .es-d, .br-say, .tc-de, .de-full, .sb-chunk, [lang="de"] {
     hyphens: auto; -webkit-hyphens: auto; overflow-wrap: break-word;
@@ -874,6 +911,22 @@ EXTRA_CSS = '''
 # ---------------------------------------------------------------- JS
 EXTRA_JS = '''
 let selLeft = null, selRight = null;
+/* 键盘可用：输入框 / 下拉回车即判题（textarea 回车仍是换行，不劫持） */
+document.addEventListener('keydown', function(e){
+  if (e.key !== 'Enter') return;
+  const el = e.target;
+  if (!el || el.tagName !== 'INPUT') return;
+  if (el.closest('.es-select-line')) return;
+  if (el.dataset.ans !== undefined && el.closest('.fill-input-line')){
+    e.preventDefault();
+    fillCheck(el, '.fill-input-line');
+  }
+});
+document.addEventListener('keydown', function(e){
+  if (e.key !== 'Enter') return;
+  const el = e.target;
+  if (el && el.tagName === 'SELECT' && el.dataset.ans !== undefined){ e.preventDefault(); esMarkSelect(el); }
+});
 function flipCard(el){ el.classList.toggle('flipped'); }
 function flipTrans(el){ el.classList.toggle('flipped'); }
 function toggleBox(id){ const b = document.getElementById(id); if (b) b.style.display = (b.style.display === 'none' ? 'block' : 'none'); }
@@ -974,7 +1027,11 @@ function clozeClick(el){
   clozeSel = el; el.classList.add('sel');
 }
 function bankFill(chip){
-  if (!clozeSel){ alert('请先点句子里的一个空位，再点词库里的词。'); return; }
+  if (!clozeSel){
+    const r = document.getElementById('clozeResult');
+    if (r) r.textContent = '请先点句子里的空位，再点词库里的词（投影时不用弹窗）';
+    return;
+  }
   clozeSel.textContent = chip.textContent;
   clozeSel.classList.add('filled');
   clozeSel.classList.remove('sel', 'ok', 'bad');

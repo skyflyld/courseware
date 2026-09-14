@@ -1,0 +1,1676 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-cw-profile="interaction">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Lektion 8 · Berufe und Berufswahl · 课堂互动课件</title>
+<style>
+  /* ===== Reset & Base ===== */
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+    background: #f5f5f7; color: #1d1d1f; line-height: 1.7;
+    padding-top: 76px;
+    font-size: clamp(15px, 2.2vw, 20px);
+  }
+
+  /* ===== Nav ===== */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,.95); backdrop-filter: blur(12px);
+    box-shadow: 0 1px 3px rgba(0,0,0,.08);
+  }
+  .top-nav {
+    max-width: 900px; margin: 0 auto;
+    display: flex; align-items: center;
+    padding: 0 16px; height: 48px; gap: 12px;
+  }
+  .logo { display: flex; align-items: center; gap: 4px; font-weight: 600; font-size: 15px; color: #1d1d1f; flex-shrink: 0; }
+  .logo-icon { font-size: 20px; }
+  .nav-links { display: flex; gap: 4px; overflow-x: auto; flex: 1; }
+  .nav-links button {
+    background: none; border: none; padding: 8px 12px;
+    font-size: clamp(12px, 1.6vw, 16px); color: #666; cursor: pointer; border-radius: 6px;
+    white-space: nowrap; transition: all .15s;
+  }
+  .nav-links button:hover { background: #f0f0f0; }
+  .nav-links button.active { background: #1a73e8; color: #fff; font-weight: 500; }
+  .hamburger { display: none; background: none; border: none; font-size: 20px; cursor: pointer; padding: 4px 8px; color: #333; }
+
+  /* ===== Progress Bar ===== */
+  .progress-bar { height: 3px; background: #e8e8ed; position: relative; }
+  .progress-fill {
+    height: 100%; width: 0%;
+    background: linear-gradient(90deg, #1a73e8, #4285f4);
+    transition: width .4s ease;
+  }
+
+  /* ===== Main Content ===== */
+  .main { max-width: 1100px; margin: 0 auto; padding: 16px; }
+  .container { max-width: min(900px, 95vw); margin: 0 auto; }
+  section { display: none; }
+  section.active { display: block; }
+
+  /* ===== Home ===== */
+  .hero {
+    text-align: center; padding: 32px 16px 24px;
+    background: linear-gradient(135deg, #e8f0fe 0%, #f5f5f7 100%);
+    border-radius: 12px; margin-bottom: 16px;
+  }
+  .hero h1 { font-size: clamp(22px, 3.5vw, 36px); font-weight: 700; margin: 0 0 4px; color: #1d1d1f; }
+  .hero .sub { font-size: clamp(14px, 2vw, 20px); color: #666; margin: 0 0 4px; }
+  .hero .meta { font-size: 13px; color: #999; margin: 0; }
+
+  .home-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px; }
+  @media (max-width: 480px) { .home-grid { grid-template-columns: 1fr; } }
+
+  .text-card {
+    background: #fff; border-radius: 10px; padding: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06); transition: box-shadow .2s;
+  }
+  .text-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,.1); }
+  .text-card h3 { font-size: clamp(15px, 2.5vw, 24px); margin: 0 0 4px; color: #1d1d1f; }
+  .text-card p { font-size: 13px; margin: 0; color: #999; }
+
+  .section-title {
+    font-size: clamp(17px, 2.8vw, 28px); font-weight: 700; margin: 24px 0 12px;
+    padding-bottom: 4px; border-bottom: 2px solid #1a73e8;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .section-title .num {
+    background: #1a73e8; color: #fff; border-radius: 50%;
+    width: 28px; height: 28px; display: inline-flex;
+    align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 600; flex-shrink: 0;
+  }
+
+  .obj-box { background: #f8f9fa; border-radius: 8px; padding: 12px 16px; font-size: 14px; }
+  .obj-box strong { color: #333; }
+  .obj-box ul { margin: 4px 0 0 16px; padding: 0; line-height: 1.7; color: #555; }
+
+  /* ===== Text Section ===== */
+  .text-card .zh.sub { font-size: 14px; margin: -4px 0 8px; color: #666; }
+  .text-card .zh.by { font-size: 13px; margin: -4px 0 10px; color: #888; }
+  .text-card .de { font-size: clamp(14px, 2.2vw, 22px); line-height: 1.8; color: #333; }
+  .text-card .de p { margin: 0 0 8px; }
+  .v-word {
+    color: #1a73e8; border-bottom: 1px dashed #1a73e8;
+    cursor: pointer; transition: background .15s;
+  }
+  .v-word:hover { background: #e8f0fe; }
+  .highlight-box {
+    background: #fff8e1; border-left: 3px solid #fbbc04;
+    padding: 8px 12px; border-radius: 0 6px 6px 0;
+    margin: 12px 0 0; font-size: 14px; color: #555;
+  }
+
+  /* ===== Text Pagination ===== */
+  .text-pager-nav {
+    display: flex; align-items: center; justify-content: center;
+    gap: 16px; margin: 12px 0;
+  }
+  .tp-btn {
+    width: 36px; height: 36px; border-radius: 50%;
+    border: 1px solid #ddd; background: #fff;
+    font-size: 18px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all .15s;
+  }
+  .tp-btn:hover:not(:disabled) { background: #e8f0fe; border-color: #1a73e8; }
+  .tp-btn:disabled { opacity: .35; cursor: default; }
+  .tp-info { font-size: 14px; color: #666; min-width: 50px; text-align: center; }
+
+  /* ===== Person Tabs (Vocab) ===== */
+  .person-tabs { display: flex; gap: 4px; margin: 0 0 8px; }
+  .person-btn {
+    padding: 4px 16px; border: 1px solid #ddd; border-radius: 6px;
+    background: #fff; font-size: 13px; cursor: pointer; transition: all .15s;
+  }
+  .person-btn.active { background: #1a73e8; color: #fff; border-color: #1a73e8; font-weight: 500; }
+  .person-content { display: none; }
+  .person-content.active { display: block; }
+
+  /* ===== 设计令牌（v4.7 版式系统层）=====
+     初衷：内容长度不可控（中德混排 + 括号标注 + 音标），所以尺寸必须由内容决定；
+     字号必须出自受限音阶，否则同页会出现 13/14/15/16/17/18/19/20/21/22/26/28/46 的散点。 */
+  :root {
+    --fs-cap: 13px;    /* 徽标 / 出处 / 格号 / 表注 */
+    --fs-note: 15px;   /* 词卡括号标注 / 音标 */
+    --fs-sm: 15px;     /* 次要说明 / 按钮 / 中文提示 */
+    --fs-body: 17px;   /* 正文 / 列表 / 中文句子 */
+    --fs-word: 20px;   /* 德语词 / 德语例句（要投影） */
+    --fs-h3: 26px;     /* 章节标题 */
+    --fs-h1: 42px;     /* 主标题 */
+    --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 24px; --sp-6: 32px;
+  }
+
+  /* ===== Vocab Flip Cards ===== */
+  .vc-card {
+    background: transparent;
+    border: none;
+    padding: 0;
+    perspective: 600px;
+    position: relative;
+    min-height: 0;
+    cursor: pointer;
+  }
+  /* grid 叠放：正反面占同一格，卡片高度 = 较高的那一面（内容驱动）。
+     旧写法 position:absolute; inset:0 会把高度钉死在 min-height 上，内容一长就溢出卡片、
+     压到隔壁卡上（Sky 截图实测：Schwerpunkt / Anwendung 粘连、Kanton 音标被切）。 */
+  .vc-inner {
+    display: grid;
+    transition: transform .45s ease;
+    transform-style: preserve-3d;
+    min-height: 0;
+  }
+  .vc-card.flipped .vc-inner {
+    transform: rotateY(180deg);
+  }
+  .vc-front, .vc-back {
+    position: relative; inset: auto;
+    grid-area: 1 / 1;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 4px;
+    padding: 12px 8px;
+    border-radius: 10px;
+    border: 1px solid #e8e8ed;
+    font-size: var(--fs-word); line-height: 1.4; text-align: center;
+    min-height: 96px;
+    overflow-wrap: anywhere;
+  }
+  .vc-front {
+    background: #fff;
+    z-index: 2;
+  }
+  .vc-back {
+    background: #e8f0fe;
+    color: #1a73e8;
+    font-weight: 500;
+    transform: rotateY(180deg);
+    z-index: 1;
+  }
+  .vc-detail {
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    background: #fff;
+    font-size: 10px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0;
+    transition: opacity .2s;
+    z-index: 10;
+    padding: 0; line-height: 1; color: #666;
+  }
+  .vc-card:hover .vc-detail { opacity: 1; }
+
+  /* ===== Vocab Grid ===== */
+  /* 列宽下限 = 最长词条（含括号标注）能站住一行 → 12 词正好两行，末行不留孤卡 */
+  .vocab-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px;
+  }
+
+  /* ===== Vocab Overlay Panel ===== */
+  .vocab-overlay {
+    display: none; position: fixed; inset: 0; z-index: 200;
+    background: rgba(0,0,0,.4); backdrop-filter: blur(2px);
+  }
+  .vocab-overlay.show { display: block; }
+
+  .vocab-panel {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 201;
+    background: #fff; border-radius: 16px 16px 0 0;
+    padding: 16px; max-height: 50vh; overflow-y: auto;
+    box-shadow: 0 -4px 20px rgba(0,0,0,.12);
+    animation: slideUp .25s ease;
+  }
+  .vocab-panel.show { display: block; }
+
+  @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+
+  .vocab-panel-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .vp-word { font-size: 20px; font-weight: 700; color: #1d1d1f; }
+  .vp-close { background: none; border: none; font-size: 22px; cursor: pointer; color: #999; padding: 0 4px; }
+  .vp-zh { font-size: 16px; color: #555; margin-bottom: 8px; }
+  .vp-ex { font-size: 14px; color: #777; line-height: 1.6; padding: 8px 12px; background: #f8f9fa; border-radius: 8px; }
+
+  @media (min-width: 600px) {
+    .vocab-panel {
+      left: 50%; right: auto; bottom: auto; top: 50%;
+      transform: translate(-50%, -50%); width: 420px; max-height: 60vh;
+      border-radius: 16px; animation: fadeIn .2s ease;
+    }
+    .vocab-panel.show { transform: translate(-50%, -50%); }
+    @keyframes fadeIn { from { opacity: 0; transform: translate(-50%, -50%) scale(.95); } to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
+  }
+
+  /* ===== Grammar ===== */
+  .grammar-table-wrapper { overflow-x: auto; margin: 12px 0; }
+  .grammar-table { width: 100%; border-collapse: collapse; font-size: clamp(12px, 1.8vw, 18px); }
+  .grammar-table th, .grammar-table td {
+    border: 1px solid #e8e8ed; padding: 8px 12px; text-align: left; vertical-align: top;
+  }
+  .grammar-table th { background: #f0f4ff; font-weight: 600; color: #333; white-space: nowrap; }
+  .grammar-table td strong { color: #1a73e8; }
+  .grammar-table tr:nth-child(even) td { background: #fafbfc; }
+  .grammar-examples { margin-top: 16px; }
+  .grammar-examples h3 { font-size: 16px; margin: 0 0 8px; }
+  .grammar-example { padding: 8px 12px; margin-bottom: 8px; background: #fff; border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,.06); }
+  .grammar-example .de { font-size: 15px; color: #333; }
+  .grammar-example .zh { font-size: 13px; color: #888; margin-top: 4px; }
+
+  /* ===== Quiz ===== */
+  .quiz-card { background: #fff; border-radius: 10px; padding: 16px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+  .q-text { font-size: clamp(14px, 2.2vw, 20px); font-weight: 500; margin-bottom: 8px; line-height: 1.5; }
+  .options { display: flex; flex-direction: column; gap: 4px; }
+  .opt {
+    padding: 8px 12px; border: 1px solid #e8e8ed; border-radius: 6px;
+    cursor: pointer; font-size: clamp(13px, 2vw, 18px); transition: all .15s;
+  }
+  .opt:hover { border-color: #1a73e8; }
+  .opt.correct { background: #e8f8e8; border-color: #27ae60; color: #1e7e34; font-weight: 500; }
+  .opt.wrong { background: #fdecea; border-color: #e74c3c; color: #c0392b; }
+  .q-answer { display: none; margin-top: 8px; padding: 4px 12px; background: #f0f7ff; border-radius: 6px; font-size: 14px; color: #1a73e8; font-weight: 600; text-align: center; }
+  .q-answer.show { display: block; }
+  .show-answer-btn { display: block; margin: 6px auto 0; padding: 4px 12px; background: #1a73e8; color: #fff; border: none; border-radius: 6px; font-size: 13px; cursor: pointer; }
+
+  /* ===== Connect Grid ===== */
+  .connect-game { background: #fff; border-radius: 10px; padding: 16px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+  .connect-game h3 { font-size: 16px; margin: 0 0 4px; }
+  .connect-game .zh { font-size: 13px; color: #888; margin: 0 0 12px; }
+  .connect-field { display: flex; gap: 24px; justify-content: center; }
+  .connect-col { display: flex; flex-direction: column; gap: 8px; min-width: 130px; }
+  .c-item {
+    padding: 8px 12px; border: 1px solid #ddd; border-radius: 8px;
+    text-align: center; cursor: pointer; font-size: clamp(13px, 1.8vw, 18px);
+    transition: all .15s; background: #fff;
+  }
+  .c-item:hover { border-color: #1a73e8; }
+  .c-item.selected { border-color: #1a73e8; background: #e8f0fe; font-weight: 500; }
+  .c-item.matched { border-color: #27ae60; background: #e8f8e8; color: #1e7e34; cursor: default; }
+  .connect-score { text-align: center; font-size: 14px; color: #666; margin-top: 12px; }
+
+  /* ===== Fill-gap ===== */
+  .fill-game { background: #fff; border-radius: 10px; padding: 16px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+  .fill-game h3 { font-size: 16px; margin: 0 0 4px; }
+  .fill-game .zh { font-size: 13px; color: #888; margin: 0 0 12px; }
+  .fill-item { margin-bottom: 8px; }
+  .fill-sentence { font-size: clamp(13px, 2vw, 19px); color: #333; margin-bottom: 4px; line-height: 1.5; }
+  .fill-input-line { display: flex; align-items: center; gap: 4px; }
+  .fill-input {
+    flex: 1; padding: 4px 8px; border: 1px solid #ddd; border-radius: 6px;
+    font-size: 14px; outline: none; transition: border .15s;
+  }
+  .fill-input:focus { border-color: #1a73e8; }
+  .fill-check {
+    padding: 4px 8px; border: 1px solid #1a73e8; border-radius: 6px;
+    background: #e8f0fe; color: #1a73e8; cursor: pointer; font-size: 14px;
+  }
+  .fill-result { font-size: 16px; min-width: 20px; text-align: center; }
+  .fill-result.correct { color: #27ae60; }
+  .fill-result.wrong { color: #e74c3c; }
+
+  /* ===== Matching Game ===== */
+  .match-game { margin-top: 16px; }
+  .match-game h3 { font-size: 16px; margin: 0 0 4px; }
+  .match-game .zh { font-size: 13px; color: #888; margin: 0 0 12px; }
+  #match-game { display: flex; flex-wrap: wrap; gap: 8px; }
+  .match-card {
+    padding: 8px 12px; border: 1px solid #ddd; border-radius: 8px;
+    cursor: pointer; font-size: 14px; transition: all .15s;
+    background: #fff; text-align: center; flex: 0 0 auto; min-width: 80px;
+  }
+  .match-card:hover { border-color: #1a73e8; }
+  .match-card.selected { border-color: #1a73e8; background: #e8f0fe; }
+  .match-card.matched { border-color: #27ae60; background: #e8f8e8; color: #1e7e34; cursor: default; opacity: .7; }
+  .match-card.de { font-weight: 500; }
+  .match-card.zh { background: #fafbfc; }
+
+  /* ===== Translation Cards ===== */
+  .translation-grid {
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .tc-card {
+    background: transparent;
+    border: none;
+    padding: 0;
+    perspective: 800px;
+    cursor: pointer;
+  }
+  .tc-inner {
+    display: grid;
+    transition: transform .5s ease;
+    transform-style: preserve-3d;
+    min-height: 0;
+  }
+  .tc-card.flipped .tc-inner {
+    transform: rotateY(180deg);
+  }
+  .tc-front, .tc-back {
+    position: relative; inset: auto;
+    grid-area: 1 / 1;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    display: flex; flex-direction: column; align-items: stretch; justify-content: center;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    font-size: var(--fs-body); line-height: 1.6;
+    min-height: 96px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06);
+  }
+  .tc-front {
+    background: #fff;
+    z-index: 2;
+    border-left: 3px solid #1a73e8;
+  }
+  .tc-back {
+    background: linear-gradient(135deg, #e8f0fe, #f5f5ff);
+    color: #1d1d1f;
+    transform: rotateY(180deg);
+    z-index: 1;
+    border-left: 3px solid #27ae60;
+  }
+  .tc-num {
+    display: inline-block;
+    width: 22px; height: 22px; line-height: 22px;
+    text-align: center;
+    background: #1a73e8; color: #fff;
+    border-radius: 50%;
+    font-size: 11px; font-weight: 600;
+    margin-bottom: 4px;
+    flex-shrink: 0;
+  }
+  .tc-back .tc-num {
+    background: #27ae60;
+  }
+  .tc-de {
+    font-size: var(--fs-word); color: #1d1d1f; font-weight: 500; line-height: 1.5;
+  }
+  .tc-zh {
+    font-size: var(--fs-body); color: #1d1d1f;
+  }
+  .tc-vocab {
+    margin-top: 4px;
+    font-size: 12px; color: #888;
+    background: rgba(255,255,255,.7);
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+  .tc-card:hover .tc-front {
+    box-shadow: 0 2px 8px rgba(0,0,0,.1);
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 600px) {
+    .nav-links { position: fixed; top: 48px; left: 0; right: 0; background: #fff; flex-direction: column; padding: 8px; box-shadow: 0 4px 12px rgba(0,0,0,.1); display: none; }
+    .nav-links.show { display: flex; }
+    .hamburger { display: block; }
+    .vocab-grid { grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); }
+    .connect-field { gap: 8px; }
+    .connect-col { min-width: 80px; }
+  }
+
+  /* ===== 出处标注（逐题标教材坐标，投影时可回溯）===== */
+  .src {
+    display: inline-block; font-size: 13px; line-height: 1.5; color: #5f6672;
+    background: #f4f6f8; border: 1px solid #e1e5ea; border-radius: 4px;
+    padding: 4px 6px; margin: 0 4px; white-space: nowrap; vertical-align: middle; font-weight: 500;
+  }
+  .src-lg { font-size: 14px; padding: 4px 10px; color: #5f6672; }
+  .kw-result { font-size: 15px; font-weight: 600; color: #0b56b8; }
+  .btn { white-space: nowrap; padding: 8px 16px; border-radius: 8px; border: none; background: #1a73e8;
+         color: #fff; font-size: 15px; cursor: pointer; transition: background .15s; }
+  .btn:hover { background: #1660c4; }
+  .btn.ghost { background: #fff; color: #0b56b8; border: 1px solid #c9d9f5; }
+  .btn.ghost:hover { background: #e8f0fe; }
+  .btn.tiny { padding: 4px 10px; font-size: 13px; min-height: 32px; }
+  .kw-tools { display: flex; align-items: center; gap: 8px; margin: 12px 0; flex-wrap: wrap; }
+
+  /* ===== 词汇全表 ===== */
+  .vocab-table-wrap { overflow-x: auto; }
+  .vocab-table { width: 100%; border-collapse: collapse; margin-top: 8px; background: #fff; }
+  .vocab-table td { border-bottom: 1px solid #eef0f2; padding: 8px; vertical-align: top;
+                    font-size: var(--fs-body); }
+  .vocab-table .vt-de { color: #111; font-weight: 600; white-space: nowrap; width: 34%; }
+  .vocab-table .vt-cn { color: #444; }
+  .vc-w { font-weight: 700; }
+  .vc-note { font-size: max(13px, .86em); font-weight: 400; color: #5f6672; white-space: nowrap;
+             margin-left: .28em; }
+  .vc-phon { font-style: italic; }
+
+  /* ===== Blitz 抢答 ===== */
+  .blitz-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+  .blitz-card { background: #fff; border-radius: 10px; padding: 12px; cursor: pointer;
+                box-shadow: 0 1px 3px rgba(0,0,0,.06); border-left: 4px solid #fbbc04;
+                transition: background .2s, border-color .2s; display: flex; flex-direction: column; }
+  .blitz-card .bz-cn { font-size: var(--fs-body); font-weight: 600; }
+  .blitz-card .bz-hint { font-size: var(--fs-sm); color: #5f6672; margin-top: 4px; }
+  .blitz-card .bz-de { display: none; margin-top: 8px; padding-top: 8px; border-top: 1px dashed #ddd;
+                       color: #0b56b8; font-weight: 700; font-size: var(--fs-word); }
+  .blitz-card .bz-src { margin-top: auto; padding-top: 8px; }
+  .blitz-card.open { border-left-color: #27ae60; background: #f6fdf7; }
+  .blitz-card.open .bz-de { display: block; }
+
+  /* ===== Timer ===== */
+  .timer-bar { display: flex; align-items: center; gap: 8px; margin: 0 0 12px; flex-wrap: wrap; }
+  .timer { font-size: 34px; font-weight: 700; color: #0b56b8; min-width: 68px; text-align: center;
+           background: #eef4ff; border-radius: 10px; padding: 4px 8px; font-variant-numeric: tabular-nums; }
+  .timer.warn { color: #b3261e; background: #fdecea; }
+
+  /* ===== 填空 / 检查 ===== */
+  .fill-item { background: #fff; border-radius: 10px; padding: 12px 16px; margin-bottom: 8px;
+               box-shadow: 0 1px 3px rgba(0,0,0,.05); }
+  .fill-zh { font-size: var(--fs-body); color: #5f6672; margin: 4px 0; }
+  .fill-input-line { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .fill-input { flex: 1 1 140px; min-width: 0; padding: 8px 10px; border: 1px solid #ccd2da;
+                border-radius: 8px; font-size: var(--fs-body); outline: none; }
+  .fill-input:focus { border-color: #1a73e8; }
+  .fill-input.ok { background: #e8f8e8; border-color: #27ae60; }
+  .fill-input.bad { background: #fdecea; border-color: #e74c3c; }
+  .fill-check { padding: 8px 12px; border: 1px solid #1a73e8; border-radius: 8px; background: #e8f0fe;
+                color: #0b56b8; cursor: pointer; font-size: 15px; min-height: 36px; }
+  .fill-result { font-size: 15px; min-width: 20px; }
+  .fill-result.correct { color: #146c2e; }
+  .fill-result.wrong { color: #b3261e; }
+
+  /* ===== Cloze 完形（Ü2 动词填空）===== */
+  .cloze-p { font-size: var(--fs-body); line-height: 2.1; margin: 0 0 12px; }
+  .cloze-blank { display: inline-block; min-width: 104px; text-align: center; border-bottom: 2px solid #1a73e8;
+                 color: #0b56b8; font-weight: 600; cursor: pointer; padding: 0 4px; }
+  .cloze-blank.filled { color: #1d1d1f; border-bottom-color: #27ae60; }
+  .cloze-blank.ok { background: #e8f8e8; }
+  .cloze-blank.bad { background: #fdecea; border-bottom-color: #e74c3c; color: #b3261e; }
+  .cloze-blank.sel { background: #e8f0fe; }
+  .bank-box { background: #f8f9fa; border-radius: 8px; padding: 8px 12px; font-size: var(--fs-body);
+              margin: 12px 0; }
+  .bank-chip { display: inline-block; background: #fff; border: 1px solid #c9d9f5; color: #0b56b8;
+               border-radius: 14px; padding: 6px 14px; margin: 4px; cursor: pointer; font-size: 15px; }
+  .bank-chip:hover { background: #e8f0fe; }
+  .lk-zh { margin: 8px 0 0; padding-left: 20px; }
+  .lk-zh li { font-size: var(--fs-body); line-height: 1.7; }
+
+  /* ===== Mindmap 词场 ===== */
+  .mm-pool { display: flex; flex-wrap: wrap; gap: 8px; background: #fff; border-radius: 10px;
+             padding: 12px; box-shadow: 0 1px 3px rgba(0,0,0,.06); margin-bottom: 12px; }
+  .mm-chip { background: #fff; border: 1px solid #ddd; border-radius: 16px; padding: 6px 14px;
+             font-size: 15px; cursor: pointer; transition: background .15s, border-color .15s; }
+  .mm-chip:hover { border-color: #1a73e8; }
+  .mm-chip.sel { background: #e8f0fe; border-color: #1a73e8; }
+  .mm-chip.ok { background: #e8f8e8; border-color: #27ae60; }
+  .mm-chip.bad { background: #fdecea; border-color: #e74c3c; }
+  .mm-board { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--sp-3); }
+  .mm-box { background: #fff; border: 2px dashed #dcdce2; border-radius: 12px; padding: 8px; min-height: 96px; }
+  .mm-head { font-weight: 600; font-size: 15px; color: #0b56b8; margin-bottom: 4px; }
+  .mm-items { display: flex; flex-wrap: wrap; gap: 4px; min-height: 34px; }
+  .mm-items .mm-chip { font-size: 14px; padding: 4px 10px; }
+
+  /* ===== Eigenschaften 属性 ===== */
+  .es-table { width: 100%; border-collapse: collapse; background: #fff; margin: 8px 0 16px; }
+  .es-table th { background: #f0f4ff; font-weight: 600; font-size: 15px; text-align: left;
+                 border: 1px solid #e8e8ed; padding: 8px 12px; }
+  .es-table td { border: 1px solid #e8e8ed; padding: 8px 12px; vertical-align: middle; }
+  .es-table .es-n { font-weight: 600; width: 40%; }
+  .es-given { color: #5f6672; background: #fafbfc; }
+  .es-input { max-width: 320px; }
+  .es-match-row { background: #fff; border-radius: 10px; padding: 12px 16px; margin-bottom: 8px;
+                  box-shadow: 0 1px 3px rgba(0,0,0,.05); }
+  .es-d { font-size: var(--fs-body); line-height: 1.7; }
+  .es-sel-line { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+  .es-select { flex: 1 1 200px; min-width: 0; padding: 8px 10px; border: 1px solid #ccd2da;
+               border-radius: 8px; font-size: 15px; background: #fff; }
+  .es-select.ok { background: #e8f8e8; border-color: #27ae60; }
+  .es-select.bad { background: #fdecea; border-color: #e74c3c; }
+
+  /* ===== Soft Skills 三选一 ===== */
+  .ss-slot { color: #0b56b8; font-weight: 600; }
+  .ss-item { border-left: 3px solid #fbbc04; }
+  .ss-head { font-weight: 700; color: #0b56b8; font-size: 15px; }
+  .ss-opts { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0; }
+  .ss-opt { background: #fff; border: 1px solid #c9d9f5; color: #0b56b8; border-radius: 14px;
+            padding: 6px 14px; cursor: pointer; font-size: 15px; }
+  .ss-opt:hover { background: #e8f0fe; }
+  .ss-opt.on { background: #e8f0fe; border-color: #1a73e8; font-weight: 600; }
+  .ss-zh { font-size: var(--fs-sm); color: #5f6672; margin-top: 8px; }
+
+  /* ===== Umformungen 改写 ===== */
+  .um-card { background: #fff; border-radius: 10px; padding: 16px; margin-bottom: 12px;
+             box-shadow: 0 1px 3px rgba(0,0,0,.05); }
+  .um-top { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .um-n { font-weight: 700; color: #0b56b8; font-size: 18px; }
+  .um-pat { background: #eef4ff; color: #17427f; border-radius: 8px; padding: 4px 10px;
+            font-size: 15px; font-weight: 600; }
+  .um-src { font-size: var(--fs-body); line-height: 1.75; margin: 8px 0; }
+  .um-tip { font-size: var(--fs-sm); color: #5f6672; }
+  .um-ta { width: 100%; min-height: 76px; margin-top: 8px; padding: 8px 10px; border: 1px solid #ccd2da;
+           border-radius: 8px; font-size: var(--fs-body); font-family: inherit; resize: vertical; }
+  .um-ans { background: #f6fbf7; border-left: 3px solid #27ae60; border-radius: 0 8px 8px 0;
+            padding: 12px 16px; margin-top: 4px; font-size: var(--fs-body); line-height: 1.75; }
+
+  /* ===== Satzbau 语序拼装 ===== */
+  .sb-card { background: #fff; border-radius: 10px; padding: 16px; margin-bottom: 12px;
+             box-shadow: 0 1px 3px rgba(0,0,0,.05); }
+  .sb-zh { font-size: var(--fs-body); font-weight: 500; }
+  .sb-pool { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0; }
+  .sb-chunk { background: #eef4ff; border: 1px solid #c9d9f5; color: #17427f; border-radius: 8px;
+              padding: 6px 10px; font-size: var(--fs-body); cursor: pointer; }
+  .sb-chunk:hover { background: #e0ecff; }
+  .sb-line { min-height: 52px; border-bottom: 2px solid #e0e0e6; padding: 4px;
+             display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
+  .sb-line .sb-chunk { background: #fff; border-color: #27ae60; color: #146c2e; }
+  .sb-actions { display: flex; align-items: center; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+  .sb-line.ok .sb-chunk { background: #e8f8e8; }
+  .sb-line.bad .sb-chunk { background: #fdecea; border-color: #e74c3c; color: #b3261e; }
+
+  /* ===== Redemittel 表达库 ===== */
+  .rm-title { font-size: var(--fs-h3); margin: 20px 0 8px; }
+  .rm-grid { display: grid; gap: var(--sp-3); }
+  .rm-grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .rm-grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .rm-col { background: #fff; border-radius: 10px; padding: 12px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+  .rm-head { font-weight: 600; font-size: 15px; color: #0b56b8; margin-bottom: 8px;
+             display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .rm-body { display: flex; flex-wrap: wrap; gap: 8px; }
+  .rm-chip { background: #f8f9fa; border: 1px solid #e1e5ea; border-radius: 10px; padding: 8px 12px;
+             font-size: var(--fs-body); cursor: pointer; line-height: 1.5; }
+  .rm-chip:hover { border-color: #1a73e8; }
+  .rm-chip.on { background: #e8f0fe; border-color: #1a73e8; color: #17427f; font-weight: 600; }
+
+  /* ===== Beruferaten 猜职业 ===== */
+  .br-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .br-card .vc-front, .br-card .vc-back { min-height: 82px; font-size: var(--fs-body); font-weight: 600; }
+  .br-line { display: flex; gap: 8px; align-items: flex-start; margin-bottom: 8px; }
+  .br-who { font-weight: 700; color: #0b56b8; flex-shrink: 0; }
+  .br-say { font-size: var(--fs-body); line-height: 1.7; }
+  .br-pc { margin: 8px 0 0; padding-left: 20px; }
+  .br-pc li { font-size: var(--fs-body); line-height: 1.7; }
+
+  /* ===== 计分 & 游戏 ===== */
+  .scoreboard { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+  .team { flex: 1 1 150px; background: #fff; border-radius: 12px; padding: 12px; text-align: center;
+          box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+  .team-name { font-size: 15px; color: #5f6672; }
+  .team-score { font-size: 46px; font-weight: 700; color: #0b56b8; line-height: 1.1; }
+  .team-btns { display: flex; gap: 8px; justify-content: center; }
+  .games-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-2); }
+  .game-card { background: #fff; border-radius: 10px; padding: 12px; box-shadow: 0 1px 3px rgba(0,0,0,.06);
+               display: flex; flex-direction: column; }
+  .game-name { font-weight: 600; font-size: 15px; margin-bottom: 4px; }
+  .game-time { font-size: 13px; color: #0b56b8; background: #eef4ff; border-radius: 10px; padding: 4px 8px;
+               white-space: nowrap; }
+  .game-card p { font-size: var(--fs-body); color: #5f6672; margin: 4px 0 0; line-height: 1.65; }
+
+  /* ===== 连线 ===== */
+  .connect-game { background: #fff; border-radius: 10px; padding: 16px; margin-bottom: 12px;
+                  box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+  .connect-game h3 { font-size: var(--fs-h3); margin: 0 0 4px; }
+  .connect-field { display: flex; gap: 24px; justify-content: center; }
+  .connect-col { display: flex; flex-direction: column; gap: 8px; min-width: 130px; flex: 1 1 0; }
+  .c-item { padding: 8px 12px; border: 1px solid #ddd; border-radius: 8px; text-align: center;
+            cursor: pointer; font-size: var(--fs-body); transition: background .15s, border-color .15s;
+            background: #fff; overflow-wrap: anywhere; }
+  .c-item:hover { border-color: #1a73e8; }
+  .c-item.selected { border-color: #1a73e8; background: #e8f0fe; font-weight: 500; }
+  .c-item.matched { border-color: #27ae60; background: #e8f8e8; color: #146c2e; cursor: default; }
+  .badflash { background: #fdecea !important; border-color: #e74c3c !important; }
+  .connect-score { text-align: center; font-size: 15px; color: #5f6672; margin-top: 12px; }
+
+  /* ===== 译文折叠 ===== */
+  .full-de { background: #f6fbf7; border-left: 3px solid #27ae60; border-radius: 0 8px 8px 0;
+             padding: 12px 16px; margin: 8px 0; }
+  .de-full { font-size: var(--fs-body); line-height: 1.85; margin: 0; }
+  .tc-tip { font-size: var(--fs-sm); color: #5f6672; margin-top: 4px; }
+  .tc-zh { font-size: var(--fs-body); color: #1d1d1f; }
+  .tc-de { font-size: var(--fs-word); color: #1d1d1f; font-weight: 500; line-height: 1.6; }
+  .tc-front .src, .tc-back .src { margin-bottom: 4px; }
+
+  /* ===== 流程表 ===== */
+  .flow-table { width: 100%; border-collapse: collapse; font-size: 15px; margin-top: 8px; }
+  .flow-table td { border-bottom: 1px solid #eee; padding: 8px 4px; vertical-align: top; }
+  .flow-table .fl-t { color: #0b56b8; font-weight: 600; white-space: nowrap; width: 96px; }
+  .home-card { cursor: pointer; }
+  .zh-hint { font-size: var(--fs-body); color: #5f6672; margin: 0 0 12px; }
+  .zh-hint.note { font-size: 15px; color: #5f6672; }
+
+  /* ===== 投影放大控件（仅宽屏；默认收成小圆钮，点击展开、8 秒自动收起）===== */
+  .proj-ctl { display: none; position: fixed; right: 14px; bottom: 14px; z-index: 150; align-items: center; gap: 4px; }
+  .proj-mini { width: 42px; height: 42px; border-radius: 999px; border: 1px solid #e1e5ea;
+               background: rgba(255,255,255,.97); box-shadow: 0 4px 14px rgba(0,0,0,.12);
+               font-size: 13px; font-weight: 700; color: #333; cursor: pointer; padding: 0; }
+  .proj-mini:hover { background: #e8f0fe; color: #1a73e8; }
+  .proj-body { display: none; align-items: center; gap: 4px; padding: 4px 8px; background: rgba(255,255,255,.97);
+               border: 1px solid #e1e5ea; border-radius: 999px; box-shadow: 0 4px 14px rgba(0,0,0,.12); }
+  .proj-ctl.open .proj-body { display: inline-flex; }
+  .proj-ctl.open .proj-mini { display: none; }
+  .proj-body button { border: none; background: #f1f3f5; border-radius: 999px; cursor: pointer;
+                      font-size: 15px; font-weight: 600; color: #333; padding: 8px 12px; min-height: 34px; }
+  .proj-body button:hover { background: #e8f0fe; color: #1a73e8; }
+  .proj-body .proj-label { font-size: 13px; color: #5f6672; padding: 0 4px; min-width: 76px; text-align: center; }
+  @media (min-width: 1100px) { .proj-ctl { display: inline-flex; } body { padding-bottom: 88px; } }
+
+  /* ===== 容器与导航（自适应）===== */
+  .top-nav { max-width: 1440px; }
+  @media (min-width: 1000px) { .container { max-width: min(1080px, 95vw); } }
+  .nav-links.show { max-height: calc(100vh - 48px); overflow-y: auto; }
+  /* 桌面/平板：导航允许换行（14 项在窄桌面放不下一行时自动折行），
+     字号收到 14px 让 1366/1440/1920 仍能单行放下，避免 nav 内部横向滚动 */
+  @media (min-width: 601px) {
+    .top-nav { height: auto; min-height: 48px; flex-wrap: wrap; padding: 8px 12px; }
+    .nav-links { flex-wrap: wrap; overflow: visible; row-gap: 4px; }
+    .nav-links button { padding: 6px 10px; font-size: 14px; }
+  }
+  @media (max-width: 900px) {
+    .connect-field { gap: 12px; }
+    .rm-grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .es-input { max-width: 100%; }
+  }
+  @media (max-width: 820px) {
+    .mm-board { grid-template-columns: 1fr; }
+    .rm-grid-2 { grid-template-columns: 1fr; }
+    .blitz-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .games-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .br-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .connect-col { min-width: 88px; }
+    .c-item { padding: 8px; font-size: 15px; }
+  }
+  @media (max-width: 700px) {
+    .src, .src-lg { white-space: normal; overflow-wrap: anywhere; max-width: 100%; }
+    .person-tabs { flex-wrap: wrap; gap: 4px; }
+    .person-btn { flex: 1 1 46%; font-size: 15px; padding: 8px 12px; }
+    .section-title { flex-wrap: wrap; }
+    .vocab-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+    .cloze-p { line-height: 2.2; }
+    .cloze-blank { min-width: 88px; }
+    .rm-grid-4, .rm-grid-2 { grid-template-columns: 1fr; }
+    .connect-field { gap: 8px; }
+    .connect-col { min-width: 0; }
+    .c-item { font-size: 14px; padding: 6px; }
+    .games-grid, .blitz-grid, .br-grid { grid-template-columns: 1fr; }
+    .es-table .es-n { width: 46%; }
+  }
+  @media (max-width: 560px) {
+    p, li, .zh-hint, .cloze-p, .tc-zh, .bz-cn, .um-src, .es-d { line-height: 1.9; }
+    .team-score { font-size: 38px; }
+    .timer { font-size: 28px; }
+  }
+  @media (min-width: 1500px) {
+    body { font-size: 21px; }
+    .main { max-width: 1420px; }
+    .container { max-width: min(1360px, 94vw); }
+    .hero h1 { font-size: 46px; }
+    .hero .sub { font-size: 23px; }
+    .text-card h3 { font-size: 28px; }
+    .flow-table { font-size: 19px; }
+    .obj-box { font-size: 18px; }
+    .obj-box ul { line-height: 1.9; }
+    .home-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .vocab-table td { font-size: 19px; }
+    .nav-links button { font-size: 16px; padding: 8px 16px; }
+    .vc-front, .vc-back { min-height: 108px; }
+  }
+  @media (min-width: 2200px) {
+    .main { max-width: 1800px; }
+    .container { max-width: min(1720px, 92vw); }
+    .hero h1 { font-size: 56px; }
+    .hero .sub { font-size: 26px; }
+    .text-card h3 { font-size: 32px; }
+    .flow-table { font-size: 21px; }
+    .nav-links button { font-size: 18px; padding: 8px 16px; }
+    .vocab-table td { font-size: 23px; }
+    .top-nav { max-width: 2100px; }
+  }
+  @media (hover: none) {
+    .btn, .person-btn, .hamburger { min-height: 42px; }
+    .bank-chip, .mm-chip, .ss-opt, .c-item, .sb-chunk, .rm-chip { min-height: 34px; }
+    .vc-card .vc-detail { opacity: 1; }
+    .fill-check { min-height: 42px; }
+  }
+
+  /* ===== 视觉质量层（灰阶统一 #5f6672 / 卡片等高 / 字号令牌）===== */
+  .vocab-grid { align-items: stretch; }
+  .blitz-grid, .games-grid, .home-grid, .br-grid { grid-auto-rows: 1fr; }
+  .text-card, .game-card, .blitz-card, .rm-col { height: 100%; }
+  .zh-hint, .zh-hint.note, .fill-zh, .ss-zh, .game-card p, .text-card p, p, li, .vt-cn, .vt-de,
+  .c-item, .bank-box, .br-say, .br-pc li, .lk-zh li, .um-src, .um-tip, .es-d, .sb-zh, .tc-zh,
+  .rm-chip, .ss-opt, .mm-chip, .bank-chip, .cloze-p, .de-full, .tc-de {
+    font-size: var(--fs-body) !important; line-height: 1.7;
+  }
+  .meta, .mm-head, .team-name, .fl-t, td, .game-time, .highlight-box, .btn, .person-btn,
+  .vc-note, .es-select, .fill-input, .fill-check { font-size: var(--fs-sm) !important; }
+  .src, .game-time, .team-name, .vt-de .vc-note { font-size: var(--fs-cap) !important; }
+  h1, .hero h1 { font-size: var(--fs-h1) !important; }
+  h2, h3, .section-title, .rm-title, .connect-game h3 { font-size: var(--fs-h3) !important; }
+  .vc-w { font-weight: 700; }
+  .bz-de, .um-pat, .es-table .es-n { font-size: var(--fs-word) !important; }
+  .um-pat { font-size: var(--fs-body) !important; font-weight: 600; }
+  .es-table .es-n { font-size: var(--fs-body) !important; font-weight: 600; }
+  .vc-front, .vc-back, .tc-de, .blitz-card .bz-de { font-size: var(--fs-word) !important; }
+
+  /* ===== 换行质量层 ===== */
+  p, li, .zh-hint, .tc-zh, .bz-cn, .es-d, .um-src, .de-full, .highlight-box, .text-card p, .game-card p {
+    text-wrap: pretty; line-height: 1.85; line-break: strict;
+  }
+  /* 注意：text-wrap 是 text-wrap-mode 的简写，会把 white-space:nowrap 顶回 wrap，
+     所以 nowrap 语义的元素（.src / .vc-note / .vt-de / .fl-t）一律不放进上面的组 */
+  .vc-note, .vt-de, .fl-t, .cloze-blank, .game-time { white-space: nowrap; }
+  h1, h2, h3, h4, .section-title, .game-name, .mm-head, .rm-title, .rm-head { text-wrap: balance; }
+  .um-src, .um-ans, .es-d, .br-say, .tc-de, .de-full, .sb-chunk, [lang="de"] {
+    hyphens: auto; -webkit-hyphens: auto; overflow-wrap: break-word;
+  }
+  .lk-zh li, .br-pc li, .obj-box ul li, .game-card ul li { padding-left: 1.5em; text-indent: -1.5em; }
+</style>
+
+</head>
+<body>
+<nav><div class="top-nav"><div class="logo" style="cursor:pointer" onclick="switchSection('home')"><span class="logo-icon">🎓</span><span>Lektion 8 · Berufe</span></div><div class="nav-links" id="navLinks"><button onclick="switchSection('home')">首页</button><button onclick="switchSection('vocab')">📇 E1 词汇</button><button onclick="switchSection('vocab2')">📗 E2 词汇</button><button onclick="switchSection('blitz')">⚡ 抢答</button><button onclick="switchSection('connect')">🔗 连线</button><button onclick="switchSection('mindmap')">🗺️ 词场</button><button onclick="switchSection('luecken')">✍️ 动词填空</button><button onclick="switchSection('eigenschaften')">🧩 属性配对</button><button onclick="switchSection('softskills')">🎯 软技能</button><button onclick="switchSection('umformen')">🔤 改写</button><button onclick="switchSection('redemittel')">💬 表达库</button><button onclick="switchSection('berufe')">🃏 猜职业</button><button onclick="switchSection('uebersetzen')">🎯 中译德</button><button onclick="switchSection('spiele')">🏆 游戏</button></div><button class="hamburger" onclick="toggleNav()">☰</button></div><div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div></nav><div class="main"><div class="container">
+    <section id="home" class="active">
+      <div class="hero">
+        <h1>Was will ich werden? Was kann ich werden?</h1>
+        <p class="sub">Lektion 8 · Berufe und Berufswahl · 互动词汇与练习课件</p>
+        <p class="meta">《新经典德语》第二册 Lektion 8 · 教材 S.220–228（8 页照片）+ 教师课件 Lektion 8(2).pptx（曹嘉桢老师，答案页）</p>
+      </div>
+      <div class="highlight-box">🎬 课堂用法：点顶部导航切节，题目右上角标教材出处，点卡片翻面，点「检查」核对答案，投影时点右下 A± 放大。</div>
+      <div class="home-grid"><div class="text-card home-card" onclick="switchSection('vocab')"><h3>📇 E1 词汇卡片</h3><p>54 词 · 四组翻转卡（正面德语，翻面中文）</p></div><div class="text-card home-card" onclick="switchSection('vocab2')"><h3>📗 E2 词汇卡片</h3><p>46 词 · Entdecken 2 · 四组翻转卡</p></div><div class="text-card home-card" onclick="switchSection('blitz')"><h3>⚡ Blitzrunde 抢答</h3><p>18 张中德卡 · 带计时器</p></div><div class="text-card home-card" onclick="switchSection('connect')"><h3>🔗 连线配对</h3><p>3 组 · 40 对（任务 / 利弊 / 名词↔形容词）</p></div><div class="text-card home-card" onclick="switchSection('mindmap')"><h3>🗺️ Wortfeld Beruf 词场</h3><p>5 类 · 30 词块归类</p></div><div class="text-card home-card" onclick="switchSection('luecken')"><h3>✍️ Ü2 动词填空</h3><p>10 空 · 词库选词 + 检查</p></div><div class="text-card home-card" onclick="switchSection('eigenschaften')"><h3>🧩 Eigenschaften 属性</h3><p>12 组名词↔形容词 + 12 条描述配对</p></div><div class="text-card home-card" onclick="switchSection('softskills')"><h3>🎯 Ü2 Soft Skills</h3><p>5 空 · 三选一</p></div><div class="text-card home-card" onclick="switchSection('umformen')"><h3>🔤 Ü9 改写</h3><p>4 句 · zwar … aber 等句型</p></div><div class="text-card home-card" onclick="switchSection('redemittel')"><h3>💬 Redemittel 表达库</h3><p>2 栏优缺点 + 4 栏统计描述</p></div><div class="text-card home-card" onclick="switchSection('berufe')"><h3>🃏 Beruferaten 猜职业</h3><p>17 张任务卡 + 示例对话</p></div><div class="text-card home-card" onclick="switchSection('uebersetzen')"><h3>🎯 Ü11 中译德</h3><p>5 句 · 中文原文 + 参考译文</p></div><div class="text-card home-card" onclick="switchSection('spiele')"><h3>🏆 课堂游戏 & 计分板</h3><p>6 个活动 + A/B 计分 + 计时</p></div></div>
+      <div class="obj-box"><strong>学习目标 Lernziele：</strong><ul><li>Berufe und Berufsfelder benennen und beschreiben（说出并描述职业与职业领域）</li><li>über Vor- und Nachteile von Berufen diskutieren（讨论职业的优缺点）</li><li>über Berufswahl von Frauen und Männern sprechen und eine Statistik beschreiben（谈职业选择的性别差异并描述统计）</li><li>eigene Stärken und Interessen benennen und Tipps zur Berufsberatung geben（说出自身强项与兴趣，给出职业咨询建议）</li><li>Berufswünsche äußern und begründen（表达并论证职业愿望）</li></ul></div>
+      <div class="text-card" style="margin-top:12px">
+        <h3>⏱️ 课堂流程（建议）</h3>
+        <table class="flow-table"><tr><td class="fl-t">① 热身</td><td>Wortfeld Beruf 词场归类</td></tr><tr><td class="fl-t">② 词汇</td><td>Entdecken 1 · 54 词（四组）</td></tr><tr><td class="fl-t">③ 词汇</td><td>Entdecken 2 · 46 词（四组）</td></tr><tr><td class="fl-t">④ 抢答</td><td>中 → 德 18 张</td></tr><tr><td class="fl-t">⑤ 连线</td><td>任务 / 利弊 / 名词↔形容词</td></tr><tr><td class="fl-t">⑥ Ü2 动词填空</td><td>Anstrengende Arbeitstage</td></tr><tr><td class="fl-t">⑦ Entdecken 2 Ü1</td><td>Eigenschaften 名词↔形容词 + 描述配对</td></tr><tr><td class="fl-t">⑧ Ü2</td><td>Ohne Soft Skills geht es nicht（三选一）</td></tr><tr><td class="fl-t">⑨ Ü9</td><td>zwar … aber / nicht nur … sondern auch / sowohl … als auch 改写</td></tr><tr><td class="fl-t">⑩ Redemittel</td><td>优缺点 + 统计描述表达库</td></tr><tr><td class="fl-t">⑪ Ü3</td><td>Beruferaten 任务卡</td></tr><tr><td class="fl-t">⑫ Ü11</td><td>中译德（教材原文 + 参考译文）</td></tr><tr><td class="fl-t">⑬ 课堂游戏 &amp; 计分板</td><td></td></tr></table>
+      </div>
+    </section>
+    <section id="vocab">
+      <h2 class="section-title"><span class="num">1</span> 📇 词汇卡片 E1 · Wortschatzkarten</h2>
+      <p class="zh-hint">点卡片翻面看中文，点右下 ▶ 看词条与出处。读名词请带冠词，说动词请带支配格。</p>
+      <p class="zh-hint note">教材标注：<b>( )</b> 词尾 / 复数形式，<b>¨</b> 变音（Ä/Ö/Ü），<b>...</b> 省略词干，<b>nur Sg</b> 仅单数，<b>+A / +D / +mit Dat</b> 支配格，<b>[ ]</b> 读音。标注部分已降权显示，主词为黑体。</p>
+      <div class="person-tabs"><button class="person-btn active" onclick="switchVocabTab('vc-G1',this)">💼 职业与工作世界 · Beruf &amp; Arbeitswelt</button><button class="person-btn" onclick="switchVocabTab('vc-G2',this)">🛠️ 工作行为动词 · Tätigkeiten &amp; Handlungen</button><button class="person-btn" onclick="switchVocabTab('vc-G3',this)">🔗 连接词与副词 · Konnektoren &amp; Adverbien</button><button class="person-btn" onclick="switchVocabTab('vc-G4',this)">📊 职业选择与统计 · Berufswahl &amp; Statistik</button></div><div class="person-content active" id="vc-G1"><p class="zh-hint note">📖 出处：<span class="src">教材 Entdecken 1 词汇表（页脚未摄入，页码待补）</span></p><div class="vocab-grid"><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Anforderung -en</span></div><div class="vc-back">(对能力等的) 要求</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('die Anforderung -en','(对能力等的) 要求','📖 出处：教材 Entdecken 1 词汇表（页脚未摄入，页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Teilzeit -en meist Sg</span></div><div class="vc-back">兼职</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('die Teilzeit -en meist Sg','兼职','📖 出处：教材 Entdecken 1 词汇表（页脚未摄入，页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">das Homeoffice -s</span></div><div class="vc-back">居家办公</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('das Homeoffice -s','居家办公','📖 出处：教材 Entdecken 1 词汇表（页脚未摄入，页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Bewerbung -en</span></div><div class="vc-back">求职，申请；申请书</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('die Bewerbung -en','求职，申请；申请书','📖 出处：教材 Entdecken 1 词汇表（页脚未摄入，页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">freiwillig</span></div><div class="vc-back">自愿的，志愿的，非义务的</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('freiwillig','自愿的，志愿的，非义务的','📖 出处：教材 Entdecken 1 词汇表（页脚未摄入，页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">ideal</span></div><div class="vc-back">理想的，完美的</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('ideal','理想的，完美的','📖 出处：教材 Entdecken 1 词汇表（页脚未摄入，页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">der Verdienst -e</span></div><div class="vc-back">工资，收入；盈利</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('der Verdienst -e','工资，收入；盈利','📖 出处：教材 Entdecken 1 词汇表（页脚未摄入，页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Methode -n</span></div><div class="vc-back">方法，办法</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('die Methode -n','方法，办法','📖 出处：教材 Entdecken 1 词汇表（页脚未摄入，页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">effektiv</span></div><div class="vc-back">有效的</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('effektiv','有效的','📖 出处：教材 Entdecken 1 词汇表（页脚未摄入，页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Sendung -en</span></div><div class="vc-back">(播送的) 节目；邮寄(的东西)；寄送，运送</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('die Sendung -en','(播送的) 节目；邮寄(的东西)；寄送，运送','📖 出处：教材 Entdecken 1 词汇表（页脚未摄入，页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Technologie -n</span></div><div class="vc-back">工艺，技术</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('die Technologie -n','工艺，技术','📖 出处：教材 Entdecken 1 词汇表（页脚未摄入，页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">der Betrieb -e</span></div><div class="vc-back">企业，工厂</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('der Betrieb -e','企业，工厂','📖 出处：教材 Entdecken 1 词汇表（页脚未摄入，页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">nach/gehen</span><span class="vc-note">+D</span></div><div class="vc-back">从事，经营，致力于</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('nach/gehen +D','从事，经营，致力于','📖 出处：教材 Entdecken 1 词汇表（页脚未摄入，页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Laufbahn -en</span></div><div class="vc-back">生涯；跑道</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('die Laufbahn -en','生涯；跑道','📖 出处：教材 Entdecken 1 词汇表（页脚未摄入，页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">der Anfänger -</span></div><div class="vc-back">初学者，新手</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('der Anfänger -','初学者，新手','📖 出处：教材 Entdecken 1 词汇表（页脚未摄入，页码待补）')">▶</button></div></div></div><div class="person-content" id="vc-G2"><p class="zh-hint note">📖 出处：<span class="src">教材 Entdecken 1 词汇表（页码待补）</span></p><div class="vocab-grid"><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">beraten</span><span class="vc-note">+A</span></div><div class="vc-back">提供建议，给……出主意</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('beraten +A','提供建议，给……出主意','📖 出处：教材 Entdecken 1 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">servieren</span><span class="vc-note">(+A)</span></div><div class="vc-back">端上，上(菜)</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('servieren (+A)','端上，上(菜)','📖 出处：教材 Entdecken 1 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">pflegen</span><span class="vc-note">+A</span></div><div class="vc-back">看护，照料，护理；保养，维护</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('pflegen +A','看护，照料，护理；保养，维护','📖 出处：教材 Entdecken 1 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">reparieren</span><span class="vc-note">+A</span></div><div class="vc-back">修理，修缮</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('reparieren +A','修理，修缮','📖 出处：教材 Entdecken 1 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">schaden</span><span class="vc-note">+D</span></div><div class="vc-back">损害，伤害，危害</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('schaden +D','损害，伤害，危害','📖 出处：教材 Entdecken 1 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">erfordern</span><span class="vc-note">+A</span></div><div class="vc-back">(物作主语) 需要，要求</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('erfordern +A','(物作主语) 需要，要求','📖 出处：教材 Entdecken 1 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">führen +zu Dat</span></div><div class="vc-back">导致，通向</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('führen +zu Dat','导致，通向','📖 出处：教材 Entdecken 1 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">erfahren</span><span class="vc-note">+A</span></div><div class="vc-back">获悉，得知；经历到，体验到</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('erfahren +A','获悉，得知；经历到，体验到','📖 出处：教材 Entdecken 1 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">dominieren</span></div><div class="vc-back">占统治地位，占优势</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('dominieren','占统治地位，占优势','📖 出处：教材 Entdecken 1 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">ermutigen</span><span class="vc-note">+A</span></div><div class="vc-back">鼓励，使鼓起勇气</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('ermutigen +A','鼓励，使鼓起勇气','📖 出处：教材 Entdecken 1 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">vertreten</span></div><div class="vc-back">在场的，出席的</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('vertreten','在场的，出席的','📖 出处：教材 Entdecken 1 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">(an jm/etw.) ist (et)was/nichts auszusetzen</span></div><div class="vc-back">对……有所争议 / 无可非议</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('(an jm/etw.) ist (et)was/nichts auszusetzen','对……有所争议 / 无可非议','📖 出处：教材 Entdecken 1 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">entsprechen</span><span class="vc-note">+D</span></div><div class="vc-back">符合，适应</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('entsprechen +D','符合，适应','📖 出处：教材 Entdecken 1 词汇表（页码待补）')">▶</button></div></div></div><div class="person-content" id="vc-G3"><p class="zh-hint note">📖 出处：<span class="src">教材 Entdecken 1 词汇表（页码待补）</span></p><div class="vocab-grid"><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">abwechslungsreich</span></div><div class="vc-back">变化多样的，不单调的</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('abwechslungsreich','变化多样的，不单调的','📖 出处：教材 Entdecken 1 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">sinnvoll</span></div><div class="vc-back">有意义的</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('sinnvoll','有意义的','📖 出处：教材 Entdecken 1 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">zwar … aber</span></div><div class="vc-back">虽然……但是</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('zwar … aber','虽然……但是','📖 出处：教材 Entdecken 1 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">nicht nur … sondern auch</span></div><div class="vc-back">不仅……而且</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('nicht nur … sondern auch','不仅……而且','📖 出处：教材 Entdecken 1 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">zusätzlich</span></div><div class="vc-back">附加的，补充的，追加的</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('zusätzlich','附加的，补充的，追加的','📖 出处：教材 Entdecken 1 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">dennoch</span></div><div class="vc-back">尽管如此，然而</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('dennoch','尽管如此，然而','📖 出处：教材 Entdecken 1 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">inhaltlich</span></div><div class="vc-back">在内容上，就内容而言</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('inhaltlich','在内容上，就内容而言','📖 出处：教材 Entdecken 1 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">erforderlich</span></div><div class="vc-back">需要的，必需的，不可缺少的</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('erforderlich','需要的，必需的，不可缺少的','📖 出处：教材 Entdecken 1 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">nach wie vor</span></div><div class="vc-back">一如既往，始终</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('nach wie vor','一如既往，始终','📖 出处：教材 Entdecken 1 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">kaum</span></div><div class="vc-back">几乎不</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('kaum','几乎不','📖 出处：教材 Entdecken 1 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">demnach</span></div><div class="vc-back">因此，因而</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('demnach','因此，因而','📖 出处：教材 Entdecken 1 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">jeweilig</span></div><div class="vc-back">各自的，分别的；当时的</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('jeweilig','各自的，分别的；当时的','📖 出处：教材 Entdecken 1 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">stereotyp</span></div><div class="vc-back">刻板的，公式化的，老一套的</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('stereotyp','刻板的，公式化的，老一套的','📖 出处：教材 Entdecken 1 词汇表（页码待补）')">▶</button></div></div></div><div class="person-content" id="vc-G4"><p class="zh-hint note">📖 出处：<span class="src">教材 Entdecken 1 词汇表（页码待补）</span></p><div class="vocab-grid"><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">das Jahrzehnt -e</span></div><div class="vc-back">十年</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('das Jahrzehnt -e','十年','📖 出处：教材 Entdecken 1 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">der Kfz-Mechatroniker -</span></div><div class="vc-back">汽车机电工，汽车机电工程师</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('der Kfz-Mechatroniker -','汽车机电工，汽车机电工程师','📖 出处：教材 Entdecken 1 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">das Geschlecht -er</span></div><div class="vc-back">性别</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('das Geschlecht -er','性别','📖 出处：教材 Entdecken 1 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">das Metall -e</span></div><div class="vc-back">金属</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('das Metall -e','金属','📖 出处：教材 Entdecken 1 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">das Gesundheitswesen</span><span class="vc-note">nur Sg</span></div><div class="vc-back">卫生事业，医疗保健系统</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('das Gesundheitswesen nur Sg','卫生事业，医疗保健系统','📖 出处：教材 Entdecken 1 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">der Maschinenbau</span><span class="vc-note">nur Sg</span></div><div class="vc-back">机械制造，机械工程</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('der Maschinenbau nur Sg','机械制造，机械工程','📖 出处：教材 Entdecken 1 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Psychologie</span><span class="vc-note">nur Sg</span></div><div class="vc-back">心理学</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('die Psychologie nur Sg','心理学','📖 出处：教材 Entdecken 1 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Vorliebe -n</span></div><div class="vc-back">偏好，嗜好</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('die Vorliebe -n','偏好，嗜好','📖 出处：教材 Entdecken 1 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">das Muster -</span></div><div class="vc-back">范式，模式，典范；样本，模型</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('das Muster -','范式，模式，典范；样本，模型','📖 出处：教材 Entdecken 1 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Statistik -en</span></div><div class="vc-back">统计，统计数据</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('die Statistik -en','统计，统计数据','📖 出处：教材 Entdecken 1 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Rangordnung -en</span></div><div class="vc-back">排名，顺序，等级</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('die Rangordnung -en','排名，顺序，等级','📖 出处：教材 Entdecken 1 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">der Kommentar -e</span></div><div class="vc-back">评论</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('der Kommentar -e','评论','📖 出处：教材 Entdecken 1 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">das Fazit -e/-s</span></div><div class="vc-back">结论</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('das Fazit -e/-s','结论','📖 出处：教材 Entdecken 1 词汇表（页码待补）')">▶</button></div></div></div>
+      <div class="kw-tools"><button class="btn ghost" onclick="toggleBox('e1Table')">📋 展开全表（54 词）</button></div>
+      <div id="e1Table" style="display:none"><div class="vocab-table-wrap"><table class="vocab-table"><tr><td class="vt-de" lang="de"><span class="vc-w">die Anforderung -en</span></td><td class="vt-cn">(对能力等的) 要求</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Teilzeit -en meist Sg</span></td><td class="vt-cn">兼职</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">das Homeoffice -s</span></td><td class="vt-cn">居家办公</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Bewerbung -en</span></td><td class="vt-cn">求职，申请；申请书</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">freiwillig</span></td><td class="vt-cn">自愿的，志愿的，非义务的</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">ideal</span></td><td class="vt-cn">理想的，完美的</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">der Verdienst -e</span></td><td class="vt-cn">工资，收入；盈利</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Methode -n</span></td><td class="vt-cn">方法，办法</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">effektiv</span></td><td class="vt-cn">有效的</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Sendung -en</span></td><td class="vt-cn">(播送的) 节目；邮寄(的东西)；寄送，运送</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Technologie -n</span></td><td class="vt-cn">工艺，技术</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">der Betrieb -e</span></td><td class="vt-cn">企业，工厂</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">nach/gehen</span><span class="vc-note">+D</span></td><td class="vt-cn">从事，经营，致力于</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Laufbahn -en</span></td><td class="vt-cn">生涯；跑道</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">der Anfänger -</span></td><td class="vt-cn">初学者，新手</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">beraten</span><span class="vc-note">+A</span></td><td class="vt-cn">提供建议，给……出主意</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">servieren</span><span class="vc-note">(+A)</span></td><td class="vt-cn">端上，上(菜)</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">pflegen</span><span class="vc-note">+A</span></td><td class="vt-cn">看护，照料，护理；保养，维护</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">reparieren</span><span class="vc-note">+A</span></td><td class="vt-cn">修理，修缮</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">schaden</span><span class="vc-note">+D</span></td><td class="vt-cn">损害，伤害，危害</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">erfordern</span><span class="vc-note">+A</span></td><td class="vt-cn">(物作主语) 需要，要求</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">führen +zu Dat</span></td><td class="vt-cn">导致，通向</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">erfahren</span><span class="vc-note">+A</span></td><td class="vt-cn">获悉，得知；经历到，体验到</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">dominieren</span></td><td class="vt-cn">占统治地位，占优势</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">ermutigen</span><span class="vc-note">+A</span></td><td class="vt-cn">鼓励，使鼓起勇气</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">vertreten</span></td><td class="vt-cn">在场的，出席的</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">(an jm/etw.) ist (et)was/nichts auszusetzen</span></td><td class="vt-cn">对……有所争议 / 无可非议</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">entsprechen</span><span class="vc-note">+D</span></td><td class="vt-cn">符合，适应</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">abwechslungsreich</span></td><td class="vt-cn">变化多样的，不单调的</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">sinnvoll</span></td><td class="vt-cn">有意义的</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">zwar … aber</span></td><td class="vt-cn">虽然……但是</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">nicht nur … sondern auch</span></td><td class="vt-cn">不仅……而且</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">zusätzlich</span></td><td class="vt-cn">附加的，补充的，追加的</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">dennoch</span></td><td class="vt-cn">尽管如此，然而</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">inhaltlich</span></td><td class="vt-cn">在内容上，就内容而言</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">erforderlich</span></td><td class="vt-cn">需要的，必需的，不可缺少的</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">nach wie vor</span></td><td class="vt-cn">一如既往，始终</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">kaum</span></td><td class="vt-cn">几乎不</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">demnach</span></td><td class="vt-cn">因此，因而</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">jeweilig</span></td><td class="vt-cn">各自的，分别的；当时的</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">stereotyp</span></td><td class="vt-cn">刻板的，公式化的，老一套的</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">das Jahrzehnt -e</span></td><td class="vt-cn">十年</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">der Kfz-Mechatroniker -</span></td><td class="vt-cn">汽车机电工，汽车机电工程师</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">das Geschlecht -er</span></td><td class="vt-cn">性别</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">das Metall -e</span></td><td class="vt-cn">金属</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">das Gesundheitswesen</span><span class="vc-note">nur Sg</span></td><td class="vt-cn">卫生事业，医疗保健系统</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">der Maschinenbau</span><span class="vc-note">nur Sg</span></td><td class="vt-cn">机械制造，机械工程</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Psychologie</span><span class="vc-note">nur Sg</span></td><td class="vt-cn">心理学</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Vorliebe -n</span></td><td class="vt-cn">偏好，嗜好</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">das Muster -</span></td><td class="vt-cn">范式，模式，典范；样本，模型</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Statistik -en</span></td><td class="vt-cn">统计，统计数据</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Rangordnung -en</span></td><td class="vt-cn">排名，顺序，等级</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">der Kommentar -e</span></td><td class="vt-cn">评论</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">das Fazit -e/-s</span></td><td class="vt-cn">结论</td></tr></table></div></div>
+    </section>
+    <section id="vocab2">
+      <h2 class="section-title"><span class="num">2</span> 📗 词汇卡片 E2 · Entdecken 2 <span class="src src-lg">教材 Entdecken 2 词汇表（页码待补）</span></h2>
+      <p class="zh-hint">点卡片翻面看中文。32 张 E1 核心词 + 本页 46 词 = 全单元 100 词。</p>
+      <div class="person-tabs"><button class="person-btn active" onclick="switchVocabTab('vc2-H1',this)">💪 Soft Skills · 能力名词</button><button class="person-btn" onclick="switchVocabTab('vc2-H2',this)">✨ 属性形容词与搭配 · Eigenschaften</button><button class="person-btn" onclick="switchVocabTab('vc2-H3',this)">🧰 培训与日常用语 · Ausbildung &amp; Alltag</button><button class="person-btn" onclick="switchVocabTab('vc2-H4',this)">🌍 职业与社会 · Beruf &amp; Gesellschaft</button></div><div class="person-content active" id="vc2-H1"><p class="zh-hint note">📖 出处：<span class="src">教材 Entdecken 2 词汇表（页码待补）</span></p><div class="vocab-grid"><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Konfliktbereitschaft</span><span class="vc-note">nur Sg</span></div><div class="vc-back">为冲突做好准备</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('die Konfliktbereitschaft nur Sg','为冲突做好准备','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">das Selbstbewusstsein</span><span class="vc-note">nur Sg</span></div><div class="vc-back">自信，自信心；自我意识</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('das Selbstbewusstsein nur Sg','自信，自信心；自我意识','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">das Verantwortungsbewusstsein</span><span class="vc-note">nur Sg</span></div><div class="vc-back">责任心，责任感</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('das Verantwortungsbewusstsein nur Sg','责任心，责任感','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Sorgfalt</span><span class="vc-note">nur Sg</span></div><div class="vc-back">细心，细致，认真；小心，谨慎</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('die Sorgfalt nur Sg','细心，细致，认真；小心，谨慎','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">der Fleiß</span><span class="vc-note">nur Sg</span></div><div class="vc-back">勤奋，努力</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('der Fleiß nur Sg','勤奋，努力','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Belastbarkeit</span><span class="vc-note">nur Sg</span></div><div class="vc-back">抗压能力</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('die Belastbarkeit nur Sg','抗压能力','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Durchsetzungsfähigkeit -en meist Sg</span></div><div class="vc-back">坚持自我的能力，贯彻自己的意志和主张的能力</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('die Durchsetzungsfähigkeit -en meist Sg','坚持自我的能力，贯彻自己的意志和主张的能力','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Teamfähigkeit -en meist Sg</span></div><div class="vc-back">团队合作能力</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('die Teamfähigkeit -en meist Sg','团队合作能力','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">das Einfühlungsvermögen</span><span class="vc-note">nur Sg</span></div><div class="vc-back">移情能力，同理心</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('das Einfühlungsvermögen nur Sg','移情能力，同理心','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div></div></div><div class="person-content" id="vc2-H2"><p class="zh-hint note">📖 出处：<span class="src">教材 Entdecken 2 词汇表（页码待补）</span></p><div class="vocab-grid"><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">verantwortungsbewusst</span></div><div class="vc-back">有责任感的，负责的</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('verantwortungsbewusst','有责任感的，负责的','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">sorgfältig</span></div><div class="vc-back">认真的，仔细的，细心的</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('sorgfältig','认真的，仔细的，细心的','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">einfühlsam</span></div><div class="vc-back">有移情能力的，善解人意的</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('einfühlsam','有移情能力的，善解人意的','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">fehlerfrei</span></div><div class="vc-back">没有缺陷的，无瑕的</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('fehlerfrei','没有缺陷的，无瑕的','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">gegenüber</span><span class="vc-note">+Dat</span></div><div class="vc-back">面对，在……对面</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('gegenüber +Dat','面对，在……对面','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">vertreten</span><span class="vc-note">+A</span></div><div class="vc-back">代表；维护，为……辩护</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('vertreten +A','代表；维护，为……辩护','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">nach/empfinden</span><span class="vc-note">+A</span></div><div class="vc-back">感同身受，对……抱有同感</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('nach/empfinden +A','感同身受，对……抱有同感','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">fähig +zu Dat</span></div><div class="vc-back">有能力的，能干的；能够做的</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('fähig +zu Dat','有能力的，能干的；能够做的','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">bereit +zu Dat</span></div><div class="vc-back">准备好的；乐意的</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('bereit +zu Dat','准备好的；乐意的','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">überzeugt +von Dat</span></div><div class="vc-back">深信不移的，相信的</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('überzeugt +von Dat','深信不移的，相信的','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">auf/treten</span></div><div class="vc-back">登场，出现；(行为举止)表现出</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('auf/treten','登场，出现；(行为举止)表现出','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div></div></div><div class="person-content" id="vc2-H3"><p class="zh-hint note">📖 出处：<span class="src">教材 Entdecken 2 词汇表（页码待补）</span></p><div class="vocab-grid"><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">der/die Azubi (Abk. für Auszubildende) -s</span></div><div class="vc-back">[aˈtsuːbi], [ˈaːtsubi] 职业培训生，学徒</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('der/die Azubi (Abk. für Auszubildende) -s','[aˈtsuːbi], [ˈaːtsubi] 职业培训生，学徒','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Geduld</span><span class="vc-note">nur Sg</span></div><div class="vc-back">耐心，忍耐</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('die Geduld nur Sg','耐心，忍耐','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">spannend</span></div><div class="vc-back">紧张的，令人兴奋的；引人入胜的</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('spannend','紧张的，令人兴奋的；引人入胜的','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">das Fakt -en</span></div><div class="vc-back">事实</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('das Fakt -en','事实','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">es gut meinen</span><span class="vc-note">+mit Dat</span></div><div class="vc-back">为了……好，出于好意</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('es gut meinen +mit Dat','为了……好，出于好意','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">es eilig haben</span></div><div class="vc-back">急匆匆，急着有事</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('es eilig haben','急匆匆，急着有事','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">es gut haben</span></div><div class="vc-back">日子过得轻松，过得好</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('es gut haben','日子过得轻松，过得好','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Revolution -en</span></div><div class="vc-back">变革，革命</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('die Revolution -en','变革，革命','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Werkstatt ...stätten</span></div><div class="vc-back">车间，作坊，工作室</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('die Werkstatt ...stätten','车间，作坊，工作室','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">statt</span><span class="vc-note">+Gen/Dat</span></div><div class="vc-back">代替，不……而……</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('statt +Gen/Dat','代替，不……而……','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Realität -en</span></div><div class="vc-back">现实，事实，实际</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('die Realität -en','现实，事实，实际','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Radiosprecherin -nen</span></div><div class="vc-back">广播电台女播音员</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('die Radiosprecherin -nen','广播电台女播音员','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Fernsehansagerin -nen</span></div><div class="vc-back">电视台女播音员</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('die Fernsehansagerin -nen','电视台女播音员','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Malerin -nen</span></div><div class="vc-back">女画家</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('die Malerin -nen','女画家','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">das Ministerium ...rien</span></div><div class="vc-back">(政府的) 部，部委</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('das Ministerium ...rien','(政府的) 部，部委','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div></div></div><div class="person-content" id="vc2-H4"><p class="zh-hint note">📖 出处：<span class="src">教材 Entdecken 2 词汇表（页码待补）</span></p><div class="vocab-grid"><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Beleuchtung -en</span><span class="vc-note">(meist Sg)</span></div><div class="vc-back">光线，灯光；照明</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('die Beleuchtung -en (meist Sg)','光线，灯光；照明','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Versorgung -en</span></div><div class="vc-back">补给，供给，供应</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('die Versorgung -en','补给，供给，供应','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">männlich</span></div><div class="vc-back">男性的</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('männlich','男性的','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">der Mut</span><span class="vc-note">nur Sg</span></div><div class="vc-back">勇气，胆量</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('der Mut nur Sg','勇气，胆量','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">folgen</span><span class="vc-note">+D</span></div><div class="vc-back">追寻，遵循；跟上，跟随</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('folgen +D','追寻，遵循；跟上，跟随','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">bewusst</span></div><div class="vc-back">有意识的，清醒的</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('bewusst','有意识的，清醒的','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">der Erzieher -</span></div><div class="vc-back">育儿师，保育员；教育(工作)者</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('der Erzieher -','育儿师，保育员；教育(工作)者','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">die Kreativität</span><span class="vc-note">nur Sg</span></div><div class="vc-back">创造力</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('die Kreativität nur Sg','创造力','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">verwirklichen</span><span class="vc-note">+A</span></div><div class="vc-back">实现</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('verwirklichen +A','实现','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">der Führerschein -e</span></div><div class="vc-back">驾驶证，驾照</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('der Führerschein -e','驾驶证，驾照','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div><div class="vc-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de"><span class="vc-w">durch/setzen</span><span class="vc-note">+A</span></div><div class="vc-back">贯彻，实施，达到</div></div><button class="vc-detail" title="词条与出处" onclick="event.stopPropagation();showVocab('durch/setzen +A','贯彻，实施，达到','📖 出处：教材 Entdecken 2 词汇表（页码待补）')">▶</button></div></div></div>
+      <div class="kw-tools"><button class="btn ghost" onclick="toggleBox('e2Table')">📋 展开全表（46 词）</button></div>
+      <div id="e2Table" style="display:none"><div class="vocab-table-wrap"><table class="vocab-table"><tr><td class="vt-de" lang="de"><span class="vc-w">die Konfliktbereitschaft</span><span class="vc-note">nur Sg</span></td><td class="vt-cn">为冲突做好准备</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">das Selbstbewusstsein</span><span class="vc-note">nur Sg</span></td><td class="vt-cn">自信，自信心；自我意识</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">das Verantwortungsbewusstsein</span><span class="vc-note">nur Sg</span></td><td class="vt-cn">责任心，责任感</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Sorgfalt</span><span class="vc-note">nur Sg</span></td><td class="vt-cn">细心，细致，认真；小心，谨慎</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">der Fleiß</span><span class="vc-note">nur Sg</span></td><td class="vt-cn">勤奋，努力</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Belastbarkeit</span><span class="vc-note">nur Sg</span></td><td class="vt-cn">抗压能力</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Durchsetzungsfähigkeit -en meist Sg</span></td><td class="vt-cn">坚持自我的能力，贯彻自己的意志和主张的能力</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Teamfähigkeit -en meist Sg</span></td><td class="vt-cn">团队合作能力</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">das Einfühlungsvermögen</span><span class="vc-note">nur Sg</span></td><td class="vt-cn">移情能力，同理心</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">verantwortungsbewusst</span></td><td class="vt-cn">有责任感的，负责的</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">sorgfältig</span></td><td class="vt-cn">认真的，仔细的，细心的</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">einfühlsam</span></td><td class="vt-cn">有移情能力的，善解人意的</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">fehlerfrei</span></td><td class="vt-cn">没有缺陷的，无瑕的</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">gegenüber</span><span class="vc-note">+Dat</span></td><td class="vt-cn">面对，在……对面</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">vertreten</span><span class="vc-note">+A</span></td><td class="vt-cn">代表；维护，为……辩护</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">nach/empfinden</span><span class="vc-note">+A</span></td><td class="vt-cn">感同身受，对……抱有同感</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">fähig +zu Dat</span></td><td class="vt-cn">有能力的，能干的；能够做的</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">bereit +zu Dat</span></td><td class="vt-cn">准备好的；乐意的</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">überzeugt +von Dat</span></td><td class="vt-cn">深信不移的，相信的</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">auf/treten</span></td><td class="vt-cn">登场，出现；(行为举止)表现出</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">der/die Azubi (Abk. für Auszubildende) -s</span></td><td class="vt-cn">[aˈtsuːbi], [ˈaːtsubi] 职业培训生，学徒</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Geduld</span><span class="vc-note">nur Sg</span></td><td class="vt-cn">耐心，忍耐</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">spannend</span></td><td class="vt-cn">紧张的，令人兴奋的；引人入胜的</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">das Fakt -en</span></td><td class="vt-cn">事实</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">es gut meinen</span><span class="vc-note">+mit Dat</span></td><td class="vt-cn">为了……好，出于好意</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">es eilig haben</span></td><td class="vt-cn">急匆匆，急着有事</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">es gut haben</span></td><td class="vt-cn">日子过得轻松，过得好</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Revolution -en</span></td><td class="vt-cn">变革，革命</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Werkstatt ...stätten</span></td><td class="vt-cn">车间，作坊，工作室</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">statt</span><span class="vc-note">+Gen/Dat</span></td><td class="vt-cn">代替，不……而……</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Realität -en</span></td><td class="vt-cn">现实，事实，实际</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Radiosprecherin -nen</span></td><td class="vt-cn">广播电台女播音员</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Fernsehansagerin -nen</span></td><td class="vt-cn">电视台女播音员</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Malerin -nen</span></td><td class="vt-cn">女画家</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">das Ministerium ...rien</span></td><td class="vt-cn">(政府的) 部，部委</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Beleuchtung -en</span><span class="vc-note">(meist Sg)</span></td><td class="vt-cn">光线，灯光；照明</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Versorgung -en</span></td><td class="vt-cn">补给，供给，供应</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">männlich</span></td><td class="vt-cn">男性的</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">der Mut</span><span class="vc-note">nur Sg</span></td><td class="vt-cn">勇气，胆量</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">folgen</span><span class="vc-note">+D</span></td><td class="vt-cn">追寻，遵循；跟上，跟随</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">bewusst</span></td><td class="vt-cn">有意识的，清醒的</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">der Erzieher -</span></td><td class="vt-cn">育儿师，保育员；教育(工作)者</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">die Kreativität</span><span class="vc-note">nur Sg</span></td><td class="vt-cn">创造力</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">verwirklichen</span><span class="vc-note">+A</span></td><td class="vt-cn">实现</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">der Führerschein -e</span></td><td class="vt-cn">驾驶证，驾照</td></tr><tr><td class="vt-de" lang="de"><span class="vc-w">durch/setzen</span><span class="vc-note">+A</span></td><td class="vt-cn">贯彻，实施，达到</td></tr></table></div></div>
+    </section>
+    <section id="blitz">
+      <h2 class="section-title"><span class="num">3</span> ⚡ Blitzrunde · 抢答热身</h2>
+      <p class="zh-hint">老师念中文，学生抢答德语；先说出正确形式（含冠词 / 支配格）的小组得 1 分。点卡片揭示答案。</p>
+      <div class="timer-bar">
+        <span class="timer" id="blitzTimer">30</span>
+        <button class="btn" onclick="startTimer('blitzTimer',30)">▶ 计时开始</button>
+        <button class="btn ghost" onclick="stopTimer('blitzTimer')">■ 停止</button>
+        <button class="btn ghost" onclick="resetTimer('blitzTimer',30)">↺ 重置</button>
+      </div>
+      <div class="blitz-grid"><div class="blitz-card" onclick="this.classList.toggle('open')"><div class="bz-cn">(对能力等的) 要求</div><div class="bz-hint">die Anforderung ___</div><div class="bz-de" lang="de">die Anforderung</div><div class="bz-src"><span class="src">E1 词汇表</span></div></div><div class="blitz-card" onclick="this.classList.toggle('open')"><div class="bz-cn">兼职</div><div class="bz-hint">die ___ (meist Sg)</div><div class="bz-de" lang="de">die Teilzeit</div><div class="bz-src"><span class="src">E1 词汇表</span></div></div><div class="blitz-card" onclick="this.classList.toggle('open')"><div class="bz-cn">居家办公</div><div class="bz-hint">das ___ -s</div><div class="bz-de" lang="de">das Homeoffice</div><div class="bz-src"><span class="src">E1 词汇表</span></div></div><div class="blitz-card" onclick="this.classList.toggle('open')"><div class="bz-cn">求职，申请（书）</div><div class="bz-hint">die ___ -en</div><div class="bz-de" lang="de">die Bewerbung</div><div class="bz-src"><span class="src">E1 词汇表</span></div></div><div class="blitz-card" onclick="this.classList.toggle('open')"><div class="bz-cn">工资，收入</div><div class="bz-hint">der ___ -e</div><div class="bz-de" lang="de">der Verdienst</div><div class="bz-src"><span class="src">E1 词汇表</span></div></div><div class="blitz-card" onclick="this.classList.toggle('open')"><div class="bz-cn">变化多样的，不单调的</div><div class="bz-hint">a__________</div><div class="bz-de" lang="de">abwechslungsreich</div><div class="bz-src"><span class="src">E1 词汇表</span></div></div><div class="blitz-card" onclick="this.classList.toggle('open')"><div class="bz-cn">尽管如此，然而</div><div class="bz-hint">d______</div><div class="bz-de" lang="de">dennoch</div><div class="bz-src"><span class="src">E1 词汇表</span></div></div><div class="blitz-card" onclick="this.classList.toggle('open')"><div class="bz-cn">几乎不</div><div class="bz-hint">k____</div><div class="bz-de" lang="de">kaum</div><div class="bz-src"><span class="src">E1 词汇表</span></div></div><div class="blitz-card" onclick="this.classList.toggle('open')"><div class="bz-cn">因此，因而</div><div class="bz-hint">d______</div><div class="bz-de" lang="de">demnach</div><div class="bz-src"><span class="src">E1 词汇表</span></div></div><div class="blitz-card" onclick="this.classList.toggle('open')"><div class="bz-cn">统计（数据）</div><div class="bz-hint">die ___ -en</div><div class="bz-de" lang="de">die Statistik</div><div class="bz-src"><span class="src">E1 词汇表</span></div></div><div class="blitz-card" onclick="this.classList.toggle('open')"><div class="bz-cn">排名，等级</div><div class="bz-hint">die ___ -en</div><div class="bz-de" lang="de">die Rangordnung</div><div class="bz-src"><span class="src">E1 词汇表</span></div></div><div class="blitz-card" onclick="this.classList.toggle('open')"><div class="bz-cn">结论</div><div class="bz-hint">das ___ -e/-s</div><div class="bz-de" lang="de">das Fazit</div><div class="bz-src"><span class="src">E1 词汇表</span></div></div><div class="blitz-card" onclick="this.classList.toggle('open')"><div class="bz-cn">抗压能力</div><div class="bz-hint">die B____________ (nur Sg)</div><div class="bz-de" lang="de">die Belastbarkeit</div><div class="bz-src"><span class="src">E2 词汇表</span></div></div><div class="blitz-card" onclick="this.classList.toggle('open')"><div class="bz-cn">团队合作能力</div><div class="bz-hint">die T___________</div><div class="bz-de" lang="de">die Teamfähigkeit</div><div class="bz-src"><span class="src">E2 词汇表</span></div></div><div class="blitz-card" onclick="this.classList.toggle('open')"><div class="bz-cn">移情能力，同理心</div><div class="bz-hint">das E_________________ (nur Sg)</div><div class="bz-de" lang="de">das Einfühlungsvermögen</div><div class="bz-src"><span class="src">E2 词汇表</span></div></div><div class="blitz-card" onclick="this.classList.toggle('open')"><div class="bz-cn">勤奋，努力</div><div class="bz-hint">der ___ (nur Sg)</div><div class="bz-de" lang="de">der Fleiß</div><div class="bz-src"><span class="src">E2 词汇表</span></div></div><div class="blitz-card" onclick="this.classList.toggle('open')"><div class="bz-cn">细心，细致</div><div class="bz-hint">die ___ (nur Sg)</div><div class="bz-de" lang="de">die Sorgfalt</div><div class="bz-src"><span class="src">E2 词汇表</span></div></div><div class="blitz-card" onclick="this.classList.toggle('open')"><div class="bz-cn">保育员；教育工作者</div><div class="bz-hint">der ___ -</div><div class="bz-de" lang="de">der Erzieher</div><div class="bz-src"><span class="src">E2 词汇表</span></div></div></div>
+    </section>
+    <section id="connect">
+      <h2 class="section-title"><span class="num">4</span> 🔗 连线配对 · Vernetzen</h2>
+      <p class="zh-hint">配对成功变绿；点错会红闪，可重试。整组完成后可让学生朗读整组词。</p>
+      <div class="connect-game">
+        <h3>🩺 典型工作任务 · Typische Aufgaben（Ü3 a） <span class="src src-lg">教材 S.221 · Ü3 a）</span></h3>
+        <p class="zh-hint">点左列德语，再点右列中文，配对成功变绿</p>
+        <div class="connect-field">
+          <div class="connect-col"><div class="c-item de" data-pair="0" data-gid="0" lang="de" onclick="cClick(this)">Fieber messen</div><div class="c-item de" data-pair="1" data-gid="0" lang="de" onclick="cClick(this)">beim Anziehen helfen</div><div class="c-item de" data-pair="2" data-gid="0" lang="de" onclick="cClick(this)">Interviews machen</div><div class="c-item de" data-pair="3" data-gid="0" lang="de" onclick="cClick(this)">eine Spritze geben</div><div class="c-item de" data-pair="4" data-gid="0" lang="de" onclick="cClick(this)">Termine machen</div><div class="c-item de" data-pair="5" data-gid="0" lang="de" onclick="cClick(this)">Schülern helfen</div><div class="c-item de" data-pair="6" data-gid="0" lang="de" onclick="cClick(this)">Reisen machen</div><div class="c-item de" data-pair="7" data-gid="0" lang="de" onclick="cClick(this)">den Unterricht vorbereiten</div><div class="c-item de" data-pair="8" data-gid="0" lang="de" onclick="cClick(this)">Gäste bedienen</div><div class="c-item de" data-pair="9" data-gid="0" lang="de" onclick="cClick(this)">Maschinen reparieren</div><div class="c-item de" data-pair="10" data-gid="0" lang="de" onclick="cClick(this)">ältere Menschen pflegen</div><div class="c-item de" data-pair="11" data-gid="0" lang="de" onclick="cClick(this)">sich um Patienten kümmern</div><div class="c-item de" data-pair="12" data-gid="0" lang="de" onclick="cClick(this)">Diebe und Einbrecher suchen</div><div class="c-item de" data-pair="13" data-gid="0" lang="de" onclick="cClick(this)">Artikel schreiben</div><div class="c-item de" data-pair="14" data-gid="0" lang="de" onclick="cClick(this)">neue Programme entwickeln</div><div class="c-item de" data-pair="15" data-gid="0" lang="de" onclick="cClick(this)">viel von der Welt sehen</div></div><div class="connect-col"><div class="c-item cn" data-pair="1" data-gid="0" onclick="cClick(this)">帮忙穿衣</div><div class="c-item cn" data-pair="9" data-gid="0" onclick="cClick(this)">修理机器</div><div class="c-item cn" data-pair="15" data-gid="0" onclick="cClick(this)">见多识广</div><div class="c-item cn" data-pair="4" data-gid="0" onclick="cClick(this)">安排日程</div><div class="c-item cn" data-pair="12" data-gid="0" onclick="cClick(this)">搜寻盗贼</div><div class="c-item cn" data-pair="3" data-gid="0" onclick="cClick(this)">打针</div><div class="c-item cn" data-pair="13" data-gid="0" onclick="cClick(this)">写文章</div><div class="c-item cn" data-pair="10" data-gid="0" onclick="cClick(this)">护理老人</div><div class="c-item cn" data-pair="2" data-gid="0" onclick="cClick(this)">做采访</div><div class="c-item cn" data-pair="6" data-gid="0" onclick="cClick(this)">出差、跑外</div><div class="c-item cn" data-pair="8" data-gid="0" onclick="cClick(this)">招待客人</div><div class="c-item cn" data-pair="14" data-gid="0" onclick="cClick(this)">开发新程序</div><div class="c-item cn" data-pair="7" data-gid="0" onclick="cClick(this)">备课</div><div class="c-item cn" data-pair="0" data-gid="0" onclick="cClick(this)">量体温</div><div class="c-item cn" data-pair="5" data-gid="0" onclick="cClick(this)">帮助学生</div><div class="c-item cn" data-pair="11" data-gid="0" onclick="cClick(this)">照顾病人</div></div>
+        </div>
+        <div class="connect-score">匹配：<span id="cg-cnt-0">0</span> / 16</div>
+      </div>
+      <div class="connect-game">
+        <h3>⚖️ 优点与缺点 · Vorteile &amp; Nachteile（Ü3 b） <span class="src src-lg">教材 S.221 · Ü3 b）</span></h3>
+        <p class="zh-hint">点左列德语，再点右列中文，配对成功变绿</p>
+        <div class="connect-field">
+          <div class="connect-col"><div class="c-item de" data-pair="0" data-gid="1" lang="de" onclick="cClick(this)">viel Geld verdienen</div><div class="c-item de" data-pair="1" data-gid="1" lang="de" onclick="cClick(this)">abwechslungsreich sein</div><div class="c-item de" data-pair="2" data-gid="1" lang="de" onclick="cClick(this)">ständig etwas Neues lernen</div><div class="c-item de" data-pair="3" data-gid="1" lang="de" onclick="cClick(this)">Überstunden machen</div><div class="c-item de" data-pair="4" data-gid="1" lang="de" onclick="cClick(this)">anstrengend sein</div><div class="c-item de" data-pair="5" data-gid="1" lang="de" onclick="cClick(this)">neue Menschen kennen lernen</div><div class="c-item de" data-pair="6" data-gid="1" lang="de" onclick="cClick(this)">nachts arbeiten</div><div class="c-item de" data-pair="7" data-gid="1" lang="de" onclick="cClick(this)">Sehenswürdigkeiten besichtigen</div><div class="c-item de" data-pair="8" data-gid="1" lang="de" onclick="cClick(this)">viel Freizeit haben</div><div class="c-item de" data-pair="9" data-gid="1" lang="de" onclick="cClick(this)">flexible Arbeitszeiten haben</div><div class="c-item de" data-pair="10" data-gid="1" lang="de" onclick="cClick(this)">kreativ sein können</div><div class="c-item de" data-pair="11" data-gid="1" lang="de" onclick="cClick(this)">am Wochenende arbeiten</div></div><div class="connect-col"><div class="c-item cn" data-pair="11" data-gid="1" onclick="cClick(this)">周末上班</div><div class="c-item cn" data-pair="3" data-gid="1" onclick="cClick(this)">加班</div><div class="c-item cn" data-pair="0" data-gid="1" onclick="cClick(this)">挣很多钱</div><div class="c-item cn" data-pair="2" data-gid="1" onclick="cClick(this)">不断学到新东西</div><div class="c-item cn" data-pair="4" data-gid="1" onclick="cClick(this)">累人、辛苦</div><div class="c-item cn" data-pair="1" data-gid="1" onclick="cClick(this)">工作不单调</div><div class="c-item cn" data-pair="5" data-gid="1" onclick="cClick(this)">结识新朋友</div><div class="c-item cn" data-pair="9" data-gid="1" onclick="cClick(this)">弹性工作时间</div><div class="c-item cn" data-pair="8" data-gid="1" onclick="cClick(this)">空闲时间多</div><div class="c-item cn" data-pair="7" data-gid="1" onclick="cClick(this)">游览名胜</div><div class="c-item cn" data-pair="10" data-gid="1" onclick="cClick(this)">能发挥创意</div><div class="c-item cn" data-pair="6" data-gid="1" onclick="cClick(this)">上夜班</div></div>
+        </div>
+        <div class="connect-score">匹配：<span id="cg-cnt-1">0</span> / 12</div>
+      </div>
+      <div class="connect-game">
+        <h3>🔤 名词 ← 形容词 · Nomen &amp; Adjektive（Entdecken 2 Ü1） <span class="src src-lg">Entdecken 2 · W2 Ü1 ①（答案据教师课件）</span></h3>
+        <p class="zh-hint">点左列德语，再点右列中文，配对成功变绿</p>
+        <div class="connect-field">
+          <div class="connect-col"><div class="c-item de" data-pair="0" data-gid="2" lang="de" onclick="cClick(this)">Hilfsbereitschaft</div><div class="c-item de" data-pair="1" data-gid="2" lang="de" onclick="cClick(this)">Selbstbewusstsein</div><div class="c-item de" data-pair="2" data-gid="2" lang="de" onclick="cClick(this)">Verantwortungsbewusstsein</div><div class="c-item de" data-pair="3" data-gid="2" lang="de" onclick="cClick(this)">Sorgfalt</div><div class="c-item de" data-pair="4" data-gid="2" lang="de" onclick="cClick(this)">Fleiß</div><div class="c-item de" data-pair="5" data-gid="2" lang="de" onclick="cClick(this)">Belastbarkeit</div><div class="c-item de" data-pair="6" data-gid="2" lang="de" onclick="cClick(this)">Selbstständigkeit</div><div class="c-item de" data-pair="7" data-gid="2" lang="de" onclick="cClick(this)">Kontaktfreudigkeit</div><div class="c-item de" data-pair="8" data-gid="2" lang="de" onclick="cClick(this)">Durchsetzungsfähigkeit</div><div class="c-item de" data-pair="9" data-gid="2" lang="de" onclick="cClick(this)">Teamfähigkeit</div><div class="c-item de" data-pair="10" data-gid="2" lang="de" onclick="cClick(this)">Einfühlungsvermögen</div><div class="c-item de" data-pair="11" data-gid="2" lang="de" onclick="cClick(this)">Konfliktbereitschaft</div></div><div class="connect-col"><div class="c-item cn" data-pair="2" data-gid="2" onclick="cClick(this)">verantwortungsbewusst</div><div class="c-item cn" data-pair="9" data-gid="2" onclick="cClick(this)">teamfähig</div><div class="c-item cn" data-pair="5" data-gid="2" onclick="cClick(this)">belastbar</div><div class="c-item cn" data-pair="4" data-gid="2" onclick="cClick(this)">fleißig</div><div class="c-item cn" data-pair="3" data-gid="2" onclick="cClick(this)">sorgfältig</div><div class="c-item cn" data-pair="0" data-gid="2" onclick="cClick(this)">hilfsbereit</div><div class="c-item cn" data-pair="1" data-gid="2" onclick="cClick(this)">selbstbewusst</div><div class="c-item cn" data-pair="7" data-gid="2" onclick="cClick(this)">kontaktfreudig</div><div class="c-item cn" data-pair="6" data-gid="2" onclick="cClick(this)">selbstständig</div><div class="c-item cn" data-pair="10" data-gid="2" onclick="cClick(this)">einfühlsam</div><div class="c-item cn" data-pair="11" data-gid="2" onclick="cClick(this)">konfliktbereit</div><div class="c-item cn" data-pair="8" data-gid="2" onclick="cClick(this)">durchsetzungsfähig</div></div>
+        </div>
+        <div class="connect-score">匹配：<span id="cg-cnt-2">0</span> / 12</div>
+      </div>
+    </section>
+    <section id="mindmap">
+      <h2 class="section-title"><span class="num">5</span> 🗺️ Wortfeld Beruf · 职业词场 <span class="src src-lg">教材 S.220 · Ü1（参考答案据教师课件 slide 12）</span></h2>
+      <p class="zh-hint">把词块拖/点进五个维度：要求 · 工作任务 · 工作时间 · 培训 · 工作地点。</p>
+      <p class="zh-hint note">操作：先点词块（变蓝），再点分类框放进去；点框里的词块可拿回词池。</p>
+      <div class="mm-pool" id="mmPool"><span class="mm-chip" data-c="C1" onclick="mmSelect(this)">Kenntnisse in ...</span><span class="mm-chip" data-c="C1" onclick="mmSelect(this)">Sprachkenntnisse</span><span class="mm-chip" data-c="C1" onclick="mmSelect(this)">Computerkenntnisse</span><span class="mm-chip" data-c="C1" onclick="mmSelect(this)">Führerschein</span><span class="mm-chip" data-c="C1" onclick="mmSelect(this)">Flexibilität</span><span class="mm-chip" data-c="C1" onclick="mmSelect(this)">Zuverlässigkeit</span><span class="mm-chip" data-c="C2" onclick="mmSelect(this)">beraten</span><span class="mm-chip" data-c="C2" onclick="mmSelect(this)">pflegen</span><span class="mm-chip" data-c="C2" onclick="mmSelect(this)">planen</span><span class="mm-chip" data-c="C2" onclick="mmSelect(this)">verkaufen</span><span class="mm-chip" data-c="C2" onclick="mmSelect(this)">reparieren</span><span class="mm-chip" data-c="C2" onclick="mmSelect(this)">bedienen</span><span class="mm-chip" data-c="C2" onclick="mmSelect(this)">Unterricht geben</span><span class="mm-chip" data-c="C2" onclick="mmSelect(this)">schreiben</span><span class="mm-chip" data-c="C2" onclick="mmSelect(this)">entwickeln</span><span class="mm-chip" data-c="C3" onclick="mmSelect(this)">freie / flexible Arbeitszeit</span><span class="mm-chip" data-c="C3" onclick="mmSelect(this)">Teilzeit</span><span class="mm-chip" data-c="C3" onclick="mmSelect(this)">Vollzeit</span><span class="mm-chip" data-c="C3" onclick="mmSelect(this)">Schichtzeit</span><span class="mm-chip" data-c="C3" onclick="mmSelect(this)">Überstunde</span><span class="mm-chip" data-c="C4" onclick="mmSelect(this)">ein Studium in ...</span><span class="mm-chip" data-c="C4" onclick="mmSelect(this)">eine abgeschlossene Ausbildung in ...</span><span class="mm-chip" data-c="C4" onclick="mmSelect(this)">promovieren</span><span class="mm-chip" data-c="C5" onclick="mmSelect(this)">Homeoffice</span><span class="mm-chip" data-c="C5" onclick="mmSelect(this)">Büro</span><span class="mm-chip" data-c="C5" onclick="mmSelect(this)">Fabrik</span><span class="mm-chip" data-c="C5" onclick="mmSelect(this)">Geschäft</span><span class="mm-chip" data-c="C5" onclick="mmSelect(this)">Hotel</span><span class="mm-chip" data-c="C5" onclick="mmSelect(this)">Restaurant</span><span class="mm-chip" data-c="C5" onclick="mmSelect(this)">Schule</span></div>
+      <div class="mm-board"><div class="mm-box" data-cat="C1" onclick="mmDrop(this)"><div class="mm-head">✅ Anforderungen 要求</div><div class="mm-items"></div></div><div class="mm-box" data-cat="C2" onclick="mmDrop(this)"><div class="mm-head">🛠️ Tätigkeiten / Aufgaben 工作任务</div><div class="mm-items"></div></div><div class="mm-box" data-cat="C3" onclick="mmDrop(this)"><div class="mm-head">⏰ Arbeitszeiten 工作时间</div><div class="mm-items"></div></div><div class="mm-box" data-cat="C4" onclick="mmDrop(this)"><div class="mm-head">🎓 Ausbildung 培训</div><div class="mm-items"></div></div><div class="mm-box" data-cat="C5" onclick="mmDrop(this)"><div class="mm-head">📍 Arbeitsorte 工作地点</div><div class="mm-items"></div></div></div>
+      <div class="kw-tools"><button class="btn" onclick="mmCheck()">✓ 检查归类</button><button class="btn ghost" onclick="mmReset()">↺ 重新开始</button><span id="mmResult" class="kw-result"></span></div>
+    </section>
+    <section id="luecken">
+      <h2 class="section-title"><span class="num">6</span> ✍️ Anstrengende Arbeitstage · 用动词的正确形式填空 <span class="src src-lg">教材 S.220 · Ü2（答案据教师课件 slide 13）</span></h2>
+      <p class="zh-hint">从词库里选词，填入正确的人称与时态（Perfekt / 现在时）。</p>
+      <p class="zh-hint note">操作：先点句子里的空位（蓝色下划线），再点词语库里的词填进去；再点空位可清空。</p>
+      <div class="bank-box"><strong>词语库 Wortbank：</strong><span class="bank-chip" onclick="bankFill(this)">ansehen</span><span class="bank-chip" onclick="bankFill(this)">ausruhen</span><span class="bank-chip" onclick="bankFill(this)">bringen</span><span class="bank-chip" onclick="bankFill(this)">entspannen</span><span class="bank-chip" onclick="bankFill(this)">krankschreiben</span><span class="bank-chip" onclick="bankFill(this)">servieren</span><span class="bank-chip" onclick="bankFill(this)">sprechen</span><span class="bank-chip" onclick="bankFill(this)">verschreiben</span><span class="bank-chip" onclick="bankFill(this)">untersuchen</span><span class="bank-chip" onclick="bankFill(this)">zurückgeben</span></div>
+<p class="cloze-p">Alex hatte einen anstrengenden Arbeitstag im Restaurant. Er hat von morgens bis abends das Essen <span class="cloze-blank" data-idx="1" data-ph="(1)" data-ans="serviert" data-alt="hat serviert" onclick="clozeClick(this)">(1)</span>. Am Schluss hat er einem Kunden die Rechnung <span class="cloze-blank" data-idx="2" data-ph="(2)" data-ans="gebracht" data-alt="" onclick="clozeClick(this)">(2)</span> und vor lauter Müdigkeit das Geld falsch <span class="cloze-blank" data-idx="3" data-ph="(3)" data-ans="zurückgegeben" data-alt="" onclick="clozeClick(this)">(3)</span>. Jetzt möchte sich Alex nur noch <span class="cloze-blank" data-idx="4" data-ph="(4)" data-ans="ausruhen" data-alt="" onclick="clozeClick(this)">(4)</span> und sich einen Spielfilm <span class="cloze-blank" data-idx="5" data-ph="(5)" data-ans="ansehen" data-alt="" onclick="clozeClick(this)">(5)</span>.</p>
+<p class="cloze-p">Auch Linda hatte heute viel zu tun. Sie hat in der Praxis viele Patienten <span class="cloze-blank" data-idx="6" data-ph="(6)" data-ans="untersucht" data-alt="" onclick="clozeClick(this)">(6)</span> und Medikamente <span class="cloze-blank" data-idx="7" data-ph="(7)" data-ans="verschrieben" data-alt="" onclick="clozeClick(this)">(7)</span>. Sie hat mit jedem Patienten lange <span class="cloze-blank" data-idx="8" data-ph="(8)" data-ans="gesprochen" data-alt="" onclick="clozeClick(this)">(8)</span> und einige <span class="cloze-blank" data-idx="9" data-ph="(9)" data-ans="krankgeschrieben" data-alt="krank geschrieben" onclick="clozeClick(this)">(9)</span>, weil sie nicht arbeiten konnten. Nach der Arbeit <span class="cloze-blank" data-idx="10" data-ph="(10)" data-ans="entspannt" data-alt="" onclick="clozeClick(this)">(10)</span> sich Linda am besten beim Sport.</p>
+      <div class="kw-tools"><button class="btn" onclick="clozeCheck()">✓ 检查</button><button class="btn ghost" onclick="clozeReveal()">👁 显示答案</button><button class="btn ghost" onclick="clozeClear()">↺ 清空</button><span id="clozeResult" class="kw-result"></span></div>
+      <div class="kw-tools"><button class="btn ghost" onclick="toggleBox('lkZh')">💡 中文提示（逐空）</button></div>
+      <div id="lkZh" style="display:none"><ul class="lk-zh"><li><b>1</b> 他把菜端了一整天。</li><li><b>2</b> 最后他给一位客人送来了账单。</li><li><b>3</b> 累得把找零给错了。</li><li><b>4</b> 现在 Alex 只想歇一歇。</li><li><b>5</b> 看一部电影。</li><li><b>6</b> 她在诊所检查了很多病人。</li><li><b>7</b> 开了药。</li><li><b>8</b> 和每位病人都谈了很长时间。</li><li><b>9</b> 给几个人开了病假条（不能来上班）。</li><li><b>10</b> 下班后 Linda 运动时最放松。</li></ul></div>
+    </section>
+    <section id="eigenschaften">
+      <h2 class="section-title"><span class="num">7</span> 🧩 Eigenschaften · 属性和它的名词形式 <span class="src src-lg">Entdecken 2 · W2 Ü1（答案据教师课件 slide 47 / 48）</span></h2>
+      <p class="zh-hint note">① 把名词的形容词形式填进右栏（灰色的已给出，是示范）。</p>
+      <div class="vocab-table-wrap"><table class="es-table">
+        <thead><tr><th>Nomen 名词</th><th>Adjektiv 形容词</th></tr></thead>
+        <tbody><tr><td class="es-n" lang="de">Hilfsbereitschaft</td><td class="es-a es-given" lang="de">hilfsbereit</td></tr><tr><td class="es-n" lang="de">Konfliktbereitschaft</td><td><div class="fill-input-line"><input class="fill-input es-input" data-ans="konfliktbereit" placeholder="Adjektiv…" lang="de" onkeydown="if(event.key==='Enter')esCheckInput(this)"><button class="fill-check" onclick="esCheckInput(this)">✓</button><span class="fill-result"></span></div></td></tr><tr><td class="es-n" lang="de">Selbstbewusstsein</td><td class="es-a es-given" lang="de">selbstbewusst</td></tr><tr><td class="es-n" lang="de">Verantwortungsbewusstsein</td><td><div class="fill-input-line"><input class="fill-input es-input" data-ans="verantwortungsbewusst" placeholder="Adjektiv…" lang="de" onkeydown="if(event.key==='Enter')esCheckInput(this)"><button class="fill-check" onclick="esCheckInput(this)">✓</button><span class="fill-result"></span></div></td></tr><tr><td class="es-n" lang="de">Sorgfalt</td><td class="es-a es-given" lang="de">sorgfältig</td></tr><tr><td class="es-n" lang="de">Fleiß</td><td><div class="fill-input-line"><input class="fill-input es-input" data-ans="fleißig" placeholder="Adjektiv…" lang="de" onkeydown="if(event.key==='Enter')esCheckInput(this)"><button class="fill-check" onclick="esCheckInput(this)">✓</button><span class="fill-result"></span></div></td></tr><tr><td class="es-n" lang="de">Belastbarkeit</td><td><div class="fill-input-line"><input class="fill-input es-input" data-ans="belastbar" placeholder="Adjektiv…" lang="de" onkeydown="if(event.key==='Enter')esCheckInput(this)"><button class="fill-check" onclick="esCheckInput(this)">✓</button><span class="fill-result"></span></div></td></tr><tr><td class="es-n" lang="de">Selbstständigkeit</td><td class="es-a es-given" lang="de">selbstständig</td></tr><tr><td class="es-n" lang="de">Kontaktfreudigkeit</td><td><div class="fill-input-line"><input class="fill-input es-input" data-ans="kontaktfreudig" placeholder="Adjektiv…" lang="de" onkeydown="if(event.key==='Enter')esCheckInput(this)"><button class="fill-check" onclick="esCheckInput(this)">✓</button><span class="fill-result"></span></div></td></tr><tr><td class="es-n" lang="de">Durchsetzungsfähigkeit</td><td><div class="fill-input-line"><input class="fill-input es-input" data-ans="durchsetzungsfähig" placeholder="Adjektiv…" lang="de" onkeydown="if(event.key==='Enter')esCheckInput(this)"><button class="fill-check" onclick="esCheckInput(this)">✓</button><span class="fill-result"></span></div></td></tr><tr><td class="es-n" lang="de">Teamfähigkeit</td><td class="es-a es-given" lang="de">teamfähig</td></tr><tr><td class="es-n" lang="de">Einfühlungsvermögen</td><td class="es-a es-given" lang="de">einfühlsam</td></tr></tbody></table></div>
+      <p class="zh-hint note">② 读描述，从 12 个名词里选出对应的那个（下拉框）。</p>
+      <div class="es-match-row">
+        <div class="es-d" lang="de"><b>a)</b> Ich kann gut mit Stress umgehen.</div>
+        <div class="es-sel-line">
+          <select class="es-select" data-ans="Belastbarkeit" onchange="esMarkSelect(this)">
+            <option value="">请选择 Nomen …</option><option value="Hilfsbereitschaft">Hilfsbereitschaft</option><option value="Konfliktbereitschaft">Konfliktbereitschaft</option><option value="Selbstbewusstsein">Selbstbewusstsein</option><option value="Verantwortungsbewusstsein">Verantwortungsbewusstsein</option><option value="Sorgfalt">Sorgfalt</option><option value="Fleiß">Fleiß</option><option value="Belastbarkeit">Belastbarkeit</option><option value="Selbstständigkeit">Selbstständigkeit</option><option value="Kontaktfreudigkeit">Kontaktfreudigkeit</option><option value="Durchsetzungsfähigkeit">Durchsetzungsfähigkeit</option><option value="Teamfähigkeit">Teamfähigkeit</option><option value="Einfühlungsvermögen">Einfühlungsvermögen</option>
+          </select>
+          <span class="fill-result"></span>
+        </div>
+      </div>
+      <div class="es-match-row">
+        <div class="es-d" lang="de"><b>b)</b> Ich unterstütze gerne andere Menschen.</div>
+        <div class="es-sel-line">
+          <select class="es-select" data-ans="Hilfsbereitschaft" onchange="esMarkSelect(this)">
+            <option value="">请选择 Nomen …</option><option value="Hilfsbereitschaft">Hilfsbereitschaft</option><option value="Konfliktbereitschaft">Konfliktbereitschaft</option><option value="Selbstbewusstsein">Selbstbewusstsein</option><option value="Verantwortungsbewusstsein">Verantwortungsbewusstsein</option><option value="Sorgfalt">Sorgfalt</option><option value="Fleiß">Fleiß</option><option value="Belastbarkeit">Belastbarkeit</option><option value="Selbstständigkeit">Selbstständigkeit</option><option value="Kontaktfreudigkeit">Kontaktfreudigkeit</option><option value="Durchsetzungsfähigkeit">Durchsetzungsfähigkeit</option><option value="Teamfähigkeit">Teamfähigkeit</option><option value="Einfühlungsvermögen">Einfühlungsvermögen</option>
+          </select>
+          <span class="fill-result"></span>
+        </div>
+      </div>
+      <div class="es-match-row">
+        <div class="es-d" lang="de"><b>c)</b> Ich kann die Arbeit unabhängig von anderen erledigen.</div>
+        <div class="es-sel-line">
+          <select class="es-select" data-ans="Selbstständigkeit" onchange="esMarkSelect(this)">
+            <option value="">请选择 Nomen …</option><option value="Hilfsbereitschaft">Hilfsbereitschaft</option><option value="Konfliktbereitschaft">Konfliktbereitschaft</option><option value="Selbstbewusstsein">Selbstbewusstsein</option><option value="Verantwortungsbewusstsein">Verantwortungsbewusstsein</option><option value="Sorgfalt">Sorgfalt</option><option value="Fleiß">Fleiß</option><option value="Belastbarkeit">Belastbarkeit</option><option value="Selbstständigkeit">Selbstständigkeit</option><option value="Kontaktfreudigkeit">Kontaktfreudigkeit</option><option value="Durchsetzungsfähigkeit">Durchsetzungsfähigkeit</option><option value="Teamfähigkeit">Teamfähigkeit</option><option value="Einfühlungsvermögen">Einfühlungsvermögen</option>
+          </select>
+          <span class="fill-result"></span>
+        </div>
+      </div>
+      <div class="es-match-row">
+        <div class="es-d" lang="de"><b>d)</b> Ich erledige meine Aufgabe genau und fehlerfrei.</div>
+        <div class="es-sel-line">
+          <select class="es-select" data-ans="Sorgfalt" onchange="esMarkSelect(this)">
+            <option value="">请选择 Nomen …</option><option value="Hilfsbereitschaft">Hilfsbereitschaft</option><option value="Konfliktbereitschaft">Konfliktbereitschaft</option><option value="Selbstbewusstsein">Selbstbewusstsein</option><option value="Verantwortungsbewusstsein">Verantwortungsbewusstsein</option><option value="Sorgfalt">Sorgfalt</option><option value="Fleiß">Fleiß</option><option value="Belastbarkeit">Belastbarkeit</option><option value="Selbstständigkeit">Selbstständigkeit</option><option value="Kontaktfreudigkeit">Kontaktfreudigkeit</option><option value="Durchsetzungsfähigkeit">Durchsetzungsfähigkeit</option><option value="Teamfähigkeit">Teamfähigkeit</option><option value="Einfühlungsvermögen">Einfühlungsvermögen</option>
+          </select>
+          <span class="fill-result"></span>
+        </div>
+      </div>
+      <div class="es-match-row">
+        <div class="es-d" lang="de"><b>e)</b> Ich kann meine Interessen anderen gegenüber vertreten.</div>
+        <div class="es-sel-line">
+          <select class="es-select" data-ans="Durchsetzungsfähigkeit" onchange="esMarkSelect(this)">
+            <option value="">请选择 Nomen …</option><option value="Hilfsbereitschaft">Hilfsbereitschaft</option><option value="Konfliktbereitschaft">Konfliktbereitschaft</option><option value="Selbstbewusstsein">Selbstbewusstsein</option><option value="Verantwortungsbewusstsein">Verantwortungsbewusstsein</option><option value="Sorgfalt">Sorgfalt</option><option value="Fleiß">Fleiß</option><option value="Belastbarkeit">Belastbarkeit</option><option value="Selbstständigkeit">Selbstständigkeit</option><option value="Kontaktfreudigkeit">Kontaktfreudigkeit</option><option value="Durchsetzungsfähigkeit">Durchsetzungsfähigkeit</option><option value="Teamfähigkeit">Teamfähigkeit</option><option value="Einfühlungsvermögen">Einfühlungsvermögen</option>
+          </select>
+          <span class="fill-result"></span>
+        </div>
+      </div>
+      <div class="es-match-row">
+        <div class="es-d" lang="de"><b>f)</b> Ich spreche Probleme offen an.</div>
+        <div class="es-sel-line">
+          <select class="es-select" data-ans="Konfliktbereitschaft" onchange="esMarkSelect(this)">
+            <option value="">请选择 Nomen …</option><option value="Hilfsbereitschaft">Hilfsbereitschaft</option><option value="Konfliktbereitschaft">Konfliktbereitschaft</option><option value="Selbstbewusstsein">Selbstbewusstsein</option><option value="Verantwortungsbewusstsein">Verantwortungsbewusstsein</option><option value="Sorgfalt">Sorgfalt</option><option value="Fleiß">Fleiß</option><option value="Belastbarkeit">Belastbarkeit</option><option value="Selbstständigkeit">Selbstständigkeit</option><option value="Kontaktfreudigkeit">Kontaktfreudigkeit</option><option value="Durchsetzungsfähigkeit">Durchsetzungsfähigkeit</option><option value="Teamfähigkeit">Teamfähigkeit</option><option value="Einfühlungsvermögen">Einfühlungsvermögen</option>
+          </select>
+          <span class="fill-result"></span>
+        </div>
+      </div>
+      <div class="es-match-row">
+        <div class="es-d" lang="de"><b>g)</b> Ich arbeite gerne mit anderen in der Gruppe zusammen.</div>
+        <div class="es-sel-line">
+          <select class="es-select" data-ans="Teamfähigkeit" onchange="esMarkSelect(this)">
+            <option value="">请选择 Nomen …</option><option value="Hilfsbereitschaft">Hilfsbereitschaft</option><option value="Konfliktbereitschaft">Konfliktbereitschaft</option><option value="Selbstbewusstsein">Selbstbewusstsein</option><option value="Verantwortungsbewusstsein">Verantwortungsbewusstsein</option><option value="Sorgfalt">Sorgfalt</option><option value="Fleiß">Fleiß</option><option value="Belastbarkeit">Belastbarkeit</option><option value="Selbstständigkeit">Selbstständigkeit</option><option value="Kontaktfreudigkeit">Kontaktfreudigkeit</option><option value="Durchsetzungsfähigkeit">Durchsetzungsfähigkeit</option><option value="Teamfähigkeit">Teamfähigkeit</option><option value="Einfühlungsvermögen">Einfühlungsvermögen</option>
+          </select>
+          <span class="fill-result"></span>
+        </div>
+      </div>
+      <div class="es-match-row">
+        <div class="es-d" lang="de"><b>h)</b> Ich will andere verstehen und kann ihre Gefühle nachempfinden.</div>
+        <div class="es-sel-line">
+          <select class="es-select" data-ans="Einfühlungsvermögen" onchange="esMarkSelect(this)">
+            <option value="">请选择 Nomen …</option><option value="Hilfsbereitschaft">Hilfsbereitschaft</option><option value="Konfliktbereitschaft">Konfliktbereitschaft</option><option value="Selbstbewusstsein">Selbstbewusstsein</option><option value="Verantwortungsbewusstsein">Verantwortungsbewusstsein</option><option value="Sorgfalt">Sorgfalt</option><option value="Fleiß">Fleiß</option><option value="Belastbarkeit">Belastbarkeit</option><option value="Selbstständigkeit">Selbstständigkeit</option><option value="Kontaktfreudigkeit">Kontaktfreudigkeit</option><option value="Durchsetzungsfähigkeit">Durchsetzungsfähigkeit</option><option value="Teamfähigkeit">Teamfähigkeit</option><option value="Einfühlungsvermögen">Einfühlungsvermögen</option>
+          </select>
+          <span class="fill-result"></span>
+        </div>
+      </div>
+      <div class="es-match-row">
+        <div class="es-d" lang="de"><b>i)</b> Ich denke über die Folgen meines Tuns nach und übernehme dafür Verantwortung.</div>
+        <div class="es-sel-line">
+          <select class="es-select" data-ans="Verantwortungsbewusstsein" onchange="esMarkSelect(this)">
+            <option value="">请选择 Nomen …</option><option value="Hilfsbereitschaft">Hilfsbereitschaft</option><option value="Konfliktbereitschaft">Konfliktbereitschaft</option><option value="Selbstbewusstsein">Selbstbewusstsein</option><option value="Verantwortungsbewusstsein">Verantwortungsbewusstsein</option><option value="Sorgfalt">Sorgfalt</option><option value="Fleiß">Fleiß</option><option value="Belastbarkeit">Belastbarkeit</option><option value="Selbstständigkeit">Selbstständigkeit</option><option value="Kontaktfreudigkeit">Kontaktfreudigkeit</option><option value="Durchsetzungsfähigkeit">Durchsetzungsfähigkeit</option><option value="Teamfähigkeit">Teamfähigkeit</option><option value="Einfühlungsvermögen">Einfühlungsvermögen</option>
+          </select>
+          <span class="fill-result"></span>
+        </div>
+      </div>
+      <div class="es-match-row">
+        <div class="es-d" lang="de"><b>j)</b> Ich bin fähig und bereit, mit anderen schnell in Kontakt zu treten.</div>
+        <div class="es-sel-line">
+          <select class="es-select" data-ans="Kontaktfreudigkeit" onchange="esMarkSelect(this)">
+            <option value="">请选择 Nomen …</option><option value="Hilfsbereitschaft">Hilfsbereitschaft</option><option value="Konfliktbereitschaft">Konfliktbereitschaft</option><option value="Selbstbewusstsein">Selbstbewusstsein</option><option value="Verantwortungsbewusstsein">Verantwortungsbewusstsein</option><option value="Sorgfalt">Sorgfalt</option><option value="Fleiß">Fleiß</option><option value="Belastbarkeit">Belastbarkeit</option><option value="Selbstständigkeit">Selbstständigkeit</option><option value="Kontaktfreudigkeit">Kontaktfreudigkeit</option><option value="Durchsetzungsfähigkeit">Durchsetzungsfähigkeit</option><option value="Teamfähigkeit">Teamfähigkeit</option><option value="Einfühlungsvermögen">Einfühlungsvermögen</option>
+          </select>
+          <span class="fill-result"></span>
+        </div>
+      </div>
+      <div class="es-match-row">
+        <div class="es-d" lang="de"><b>k)</b> Ich bin von meinen Fähigkeiten sehr überzeugt und trete selbstsicher auf.</div>
+        <div class="es-sel-line">
+          <select class="es-select" data-ans="Selbstbewusstsein" onchange="esMarkSelect(this)">
+            <option value="">请选择 Nomen …</option><option value="Hilfsbereitschaft">Hilfsbereitschaft</option><option value="Konfliktbereitschaft">Konfliktbereitschaft</option><option value="Selbstbewusstsein">Selbstbewusstsein</option><option value="Verantwortungsbewusstsein">Verantwortungsbewusstsein</option><option value="Sorgfalt">Sorgfalt</option><option value="Fleiß">Fleiß</option><option value="Belastbarkeit">Belastbarkeit</option><option value="Selbstständigkeit">Selbstständigkeit</option><option value="Kontaktfreudigkeit">Kontaktfreudigkeit</option><option value="Durchsetzungsfähigkeit">Durchsetzungsfähigkeit</option><option value="Teamfähigkeit">Teamfähigkeit</option><option value="Einfühlungsvermögen">Einfühlungsvermögen</option>
+          </select>
+          <span class="fill-result"></span>
+        </div>
+      </div>
+      <div class="es-match-row">
+        <div class="es-d" lang="de"><b>l)</b> Ich bin fleißig und mache, was zu tun ist.</div>
+        <div class="es-sel-line">
+          <select class="es-select" data-ans="Fleiß" onchange="esMarkSelect(this)">
+            <option value="">请选择 Nomen …</option><option value="Hilfsbereitschaft">Hilfsbereitschaft</option><option value="Konfliktbereitschaft">Konfliktbereitschaft</option><option value="Selbstbewusstsein">Selbstbewusstsein</option><option value="Verantwortungsbewusstsein">Verantwortungsbewusstsein</option><option value="Sorgfalt">Sorgfalt</option><option value="Fleiß">Fleiß</option><option value="Belastbarkeit">Belastbarkeit</option><option value="Selbstständigkeit">Selbstständigkeit</option><option value="Kontaktfreudigkeit">Kontaktfreudigkeit</option><option value="Durchsetzungsfähigkeit">Durchsetzungsfähigkeit</option><option value="Teamfähigkeit">Teamfähigkeit</option><option value="Einfühlungsvermögen">Einfühlungsvermögen</option>
+          </select>
+          <span class="fill-result"></span>
+        </div>
+      </div>
+      <div class="kw-tools"><button class="btn" onclick="esCheckAll()">✓ 全部检查</button><button class="btn ghost" onclick="esShowAll()">👁 显示答案</button><button class="btn ghost" onclick="esClearAll()">↺ 清空</button><span id="esResult" class="kw-result"></span></div>
+      <div class="highlight-box">📌 「Selbstständigkeit / selbstständig」教材此页写作 selbständig / Selbstständigkeit，两种拼写都通行。</div>
+    </section>
+    <section id="softskills">
+      <h2 class="section-title"><span class="num">8</span> 🎯 Ohne Soft Skills geht es nicht · 三选一填空 <span class="src src-lg">Entdecken 2 · W2 Ü2（答案据教师课件 slide 49）</span></h2>
+      <p class="zh-hint">从括号里的三个选项中选出正确的一个。</p>
+<p class="cloze-p">Der neue Azubi Markus weiß nicht, wie er das Computerprogramm benutzen muss. Elisa ist im 3. Jahr ihrer Ausbildung und weiß es. Sie zeigt ihm, was er machen muss, denn sie ist <span class="ss-slot" data-n="1">(1) ______</span>, Außerdem erinnert sie sich noch gut daran, wie sie sich in den ersten Tagen ihrer Ausbildung gefühlt hat. Elisa ist nämlich <span class="ss-slot" data-n="2">(2) ______</span>. Außerdem kann Markus nur dann <span class="ss-slot" data-n="3">(3) ______</span>, wenn er weiß, wie alles geht. Elisa hilft Markus auch dabei, sich im Team zurechtzufinden. Denn <span class="ss-slot" data-n="4">(4) ______</span> ist wichtig. Sie rät Markus auch, dass er Probleme offen anspricht. Wenn er das tut, ist er <span class="ss-slot" data-n="5">(5) ______</span>.</p>
+      <div class="fill-item ss-item" data-n="1">
+        <div class="ss-head">(1)</div>
+        <div class="ss-opts"><span class="ss-opt" onclick="ssPick(this,1)">hilfsbereit</span><span class="ss-opt" onclick="ssPick(this,1)">sorgfältig</span><span class="ss-opt" onclick="ssPick(this,1)">einfühlsam</span></div>
+        <div class="fill-input-line">
+          <input class="fill-input ss-input" data-ans="hilfsbereit" placeholder="从上面选一个，或自己写…" lang="de"
+                 onkeydown="if(event.key==='Enter')ssCheckInput(this)">
+          <button class="fill-check" onclick="ssCheckInput(this)">✓</button>
+          <span class="fill-result"></span>
+        </div>
+        <div class="ss-zh">💡 她乐于助人。</div>
+      </div>
+      <div class="fill-item ss-item" data-n="2">
+        <div class="ss-head">(2)</div>
+        <div class="ss-opts"><span class="ss-opt" onclick="ssPick(this,2)">verantwortungsbewusst</span><span class="ss-opt" onclick="ssPick(this,2)">spontan</span><span class="ss-opt" onclick="ssPick(this,2)">einfühlsam</span></div>
+        <div class="fill-input-line">
+          <input class="fill-input ss-input" data-ans="einfühlsam" placeholder="从上面选一个，或自己写…" lang="de"
+                 onkeydown="if(event.key==='Enter')ssCheckInput(this)">
+          <button class="fill-check" onclick="ssCheckInput(this)">✓</button>
+          <span class="fill-result"></span>
+        </div>
+        <div class="ss-zh">💡 她有同理心。</div>
+      </div>
+      <div class="fill-item ss-item" data-n="3">
+        <div class="ss-head">(3)</div>
+        <div class="ss-opts"><span class="ss-opt" onclick="ssPick(this,3)">selbstständig arbeiten</span><span class="ss-opt" onclick="ssPick(this,3)">flexibel lernen</span><span class="ss-opt" onclick="ssPick(this,3)">konfliktbereit sein</span></div>
+        <div class="fill-input-line">
+          <input class="fill-input ss-input" data-ans="selbstständig arbeiten" placeholder="从上面选一个，或自己写…" lang="de"
+                 onkeydown="if(event.key==='Enter')ssCheckInput(this)">
+          <button class="fill-check" onclick="ssCheckInput(this)">✓</button>
+          <span class="fill-result"></span>
+        </div>
+        <div class="ss-zh">💡 他才能独立工作。</div>
+      </div>
+      <div class="fill-item ss-item" data-n="4">
+        <div class="ss-head">(4)</div>
+        <div class="ss-opts"><span class="ss-opt" onclick="ssPick(this,4)">Durchsetzungsfähigkeit</span><span class="ss-opt" onclick="ssPick(this,4)">Teamfähigkeit</span><span class="ss-opt" onclick="ssPick(this,4)">Belastbarkeit</span></div>
+        <div class="fill-input-line">
+          <input class="fill-input ss-input" data-ans="Teamfähigkeit" placeholder="从上面选一个，或自己写…" lang="de"
+                 onkeydown="if(event.key==='Enter')ssCheckInput(this)">
+          <button class="fill-check" onclick="ssCheckInput(this)">✓</button>
+          <span class="fill-result"></span>
+        </div>
+        <div class="ss-zh">💡 团队合作能力很重要。</div>
+      </div>
+      <div class="fill-item ss-item" data-n="5">
+        <div class="ss-head">(5)</div>
+        <div class="ss-opts"><span class="ss-opt" onclick="ssPick(this,5)">konfliktbereit</span><span class="ss-opt" onclick="ssPick(this,5)">belastbar</span><span class="ss-opt" onclick="ssPick(this,5)">teamfähig</span></div>
+        <div class="fill-input-line">
+          <input class="fill-input ss-input" data-ans="konfliktbereit" placeholder="从上面选一个，或自己写…" lang="de"
+                 onkeydown="if(event.key==='Enter')ssCheckInput(this)">
+          <button class="fill-check" onclick="ssCheckInput(this)">✓</button>
+          <span class="fill-result"></span>
+        </div>
+        <div class="ss-zh">💡 他就做到了「不回避冲突」。</div>
+      </div>
+      <div class="kw-tools"><button class="btn" onclick="ssCheckAll()">✓ 全部检查</button><button class="btn ghost" onclick="ssShowAll()">👁 显示答案</button><button class="btn ghost" onclick="ssClearAll()">↺ 清空</button><span id="ssResult" class="kw-result"></span></div>
+    </section>
+    <section id="umformen">
+      <h2 class="section-title"><span class="num">9</span> 🔤 Umformungen · zwar … aber / nicht nur … sondern auch / sowohl … als auch <span class="src src-lg">教材 S.228 · Ü9（参考答案据教师课件 slide 39 / 40）</span></h2>
+      <p class="zh-hint">先自己改写，再点开参考答案核对。注意 zwar 的位置（占句首或紧跟主语）与 aber 引导的并列句语序。</p>
+      <div class="um-card">
+        <div class="um-top"><span class="um-n">a)</span><span class="um-pat" lang="de">zwar … aber</span><span class="src">Heute gehen in Deutschland deutlich mehr Frauen einem Beruf nach als vor einigen Jahrzehnten. Dennoch sind Frauen in manchen Branchen noch immer kaum vertreten.</span></div>
+        <div class="um-src" lang="de">Heute gehen in Deutschland deutlich mehr Frauen einem Beruf nach als vor einigen Jahrzehnten. Dennoch sind Frauen in manchen Branchen noch immer kaum vertreten.</div>
+        <div class="um-tip">💡 Dennoch（尽管如此）→ zwar … aber；zwar 占句首后接动词，aber 后的主句语序正常。</div>
+        <textarea class="um-ta" rows="3" placeholder="Deine Umformung …" lang="de"></textarea>
+        <div class="kw-tools">
+          <button class="btn ghost" onclick="umShow(0)">👁 看参考答案</button>
+          <button class="btn ghost" onclick="umClear(0)">↺ 清空</button>
+        </div>
+        <div class="um-ans" id="um-ans-0" style="display:none" lang="de">Zwar gehen heute in Deutschland deutlich mehr Frauen einem Beruf nach als vor einigen Jahrzehnten, aber in manchen Branchen sind Frauen noch immer kaum vertreten.</div>
+      </div>
+      <div class="um-card">
+        <div class="um-top"><span class="um-n">b)</span><span class="um-pat" lang="de">sowohl … als auch / nicht nur … sondern auch</span><span class="src">Unter den Top-5-Ausbildungsberufen waren nur die Kauffrau / der Kaufmann und die Verkäuferin / der Verkäufer im Einzelhandel bei beiden Geschlechtern fast gleich beliebt.</span></div>
+        <div class="um-src" lang="de">Unter den Top-5-Ausbildungsberufen waren nur die Kauffrau / der Kaufmann und die Verkäuferin / der Verkäufer im Einzelhandel bei beiden Geschlechtern fast gleich beliebt.</div>
+        <div class="um-tip">💡 「nur … und …」隐含「两者都」→ sowohl … als auch（等立并列）；改用 nicht nur … sondern auch 强调递进，注意 sondern auch 后不带句框。</div>
+        <textarea class="um-ta" rows="3" placeholder="Deine Umformung …" lang="de"></textarea>
+        <div class="kw-tools">
+          <button class="btn ghost" onclick="umShow(1)">👁 看参考答案</button>
+          <button class="btn ghost" onclick="umClear(1)">↺ 清空</button>
+        </div>
+        <div class="um-ans" id="um-ans-1" style="display:none" lang="de">Unter den Top-5-Ausbildungsberufen gehörten sowohl die Kauffrau / der Kaufmann als auch die Verkäuferin / der Verkäufer im Einzelhandel bei beiden Geschlechtern zu den beliebtesten Ausbildungsberufen. ｜ 也可：… war nicht nur die Kauffrau / der Kaufmann, sondern auch die Verkäuferin / der Verkäufer im Einzelhandel bei beiden Geschlechtern beliebt.</div>
+      </div>
+      <div class="um-card">
+        <div class="um-top"><span class="um-n">c)</span><span class="um-pat" lang="de">zwar … aber</span><span class="src">Während in einigen der Bau- und Metallberufe deutlich weniger als 10 Prozent der Beschäftigten Frauen waren, betrug ihr Anteil vor allem in den Berufen des Erziehungs- und Gesundheitswesens mehr als 80 Prozent.</span></div>
+        <div class="um-src" lang="de">Während in einigen der Bau- und Metallberufe deutlich weniger als 10 Prozent der Beschäftigten Frauen waren, betrug ihr Anteil vor allem in den Berufen des Erziehungs- und Gesundheitswesens mehr als 80 Prozent.</div>
+        <div class="um-tip">💡 Während（对比从句）改为 zwar … aber 时：原主句变成 zwar 引导的独立句，原从句内容移入 aber 分句；注意「war(en)」在 zwar 后紧随。</div>
+        <textarea class="um-ta" rows="3" placeholder="Deine Umformung …" lang="de"></textarea>
+        <div class="kw-tools">
+          <button class="btn ghost" onclick="umShow(2)">👁 看参考答案</button>
+          <button class="btn ghost" onclick="umClear(2)">↺ 清空</button>
+        </div>
+        <div class="um-ans" id="um-ans-2" style="display:none" lang="de">Zwar waren in einigen der Bau- und Metallberufe deutlich weniger als 10 Prozent der Beschäftigten Frauen, aber ihr Anteil betrug vor allem in den Berufen des Erziehungs- und Gesundheitswesens mehr als 80 Prozent.</div>
+      </div>
+      <div class="um-card">
+        <div class="um-top"><span class="um-n">d)</span><span class="um-pat" lang="de">zwar … aber</span><span class="src">Heute entscheiden sich mehr Frauen für eine akademische Laufbahn. Trotzdem zeigen sich bei der Studienwahl noch immer deutliche Unterschiede.</span></div>
+        <div class="um-src" lang="de">Heute entscheiden sich mehr Frauen für eine akademische Laufbahn. Trotzdem zeigen sich bei der Studienwahl noch immer deutliche Unterschiede.</div>
+        <div class="um-tip">💡 Trotzdem → aber。本句 zwar 不占句首，而是插在动词之后（Heute entscheiden sich zwar mehr Frauen …）。</div>
+        <textarea class="um-ta" rows="3" placeholder="Deine Umformung …" lang="de"></textarea>
+        <div class="kw-tools">
+          <button class="btn ghost" onclick="umShow(3)">👁 看参考答案</button>
+          <button class="btn ghost" onclick="umClear(3)">↺ 清空</button>
+        </div>
+        <div class="um-ans" id="um-ans-3" style="display:none" lang="de">Heute entscheiden sich zwar mehr Frauen für eine akademische Laufbahn, aber bei der Studienwahl zeigen sich noch immer deutliche Unterschiede.</div>
+      </div>
+      <div class="kw-tools"><button class="btn ghost" onclick="toggleBox('umSb')">🔤 语序拼装（选做）</button></div>
+      <div id="umSb" style="display:none">
+        <p class="zh-hint note">词块取自参考答案（教材 / 教师课件原文），按空格切分，未增删任何词。德语语序常有多解，核对时以参考译文为准。</p>
+      <div class="sb-card">
+        <div class="sb-zh"><b>a)</b> 语序拼装 <span class="src">zwar … aber</span></div>
+        <div class="sb-pool" id="sb-pool-0"><span class="sb-chunk" data-i="0" onclick="sbPick(this,0)" lang="de">Zwar</span><span class="sb-chunk" data-i="1" onclick="sbPick(this,0)" lang="de">gehen</span><span class="sb-chunk" data-i="2" onclick="sbPick(this,0)" lang="de">heute</span><span class="sb-chunk" data-i="3" onclick="sbPick(this,0)" lang="de">in</span><span class="sb-chunk" data-i="4" onclick="sbPick(this,0)" lang="de">Deutschland</span><span class="sb-chunk" data-i="5" onclick="sbPick(this,0)" lang="de">deutlich</span><span class="sb-chunk" data-i="6" onclick="sbPick(this,0)" lang="de">mehr</span><span class="sb-chunk" data-i="7" onclick="sbPick(this,0)" lang="de">Frauen</span><span class="sb-chunk" data-i="8" onclick="sbPick(this,0)" lang="de">einem</span><span class="sb-chunk" data-i="9" onclick="sbPick(this,0)" lang="de">Beruf</span><span class="sb-chunk" data-i="10" onclick="sbPick(this,0)" lang="de">nach</span><span class="sb-chunk" data-i="11" onclick="sbPick(this,0)" lang="de">als</span><span class="sb-chunk" data-i="12" onclick="sbPick(this,0)" lang="de">vor</span><span class="sb-chunk" data-i="13" onclick="sbPick(this,0)" lang="de">einigen</span><span class="sb-chunk" data-i="14" onclick="sbPick(this,0)" lang="de">Jahrzehnten,</span><span class="sb-chunk" data-i="15" onclick="sbPick(this,0)" lang="de">aber</span><span class="sb-chunk" data-i="16" onclick="sbPick(this,0)" lang="de">in</span><span class="sb-chunk" data-i="17" onclick="sbPick(this,0)" lang="de">manchen</span><span class="sb-chunk" data-i="18" onclick="sbPick(this,0)" lang="de">Branchen</span><span class="sb-chunk" data-i="19" onclick="sbPick(this,0)" lang="de">sind</span><span class="sb-chunk" data-i="20" onclick="sbPick(this,0)" lang="de">Frauen</span><span class="sb-chunk" data-i="21" onclick="sbPick(this,0)" lang="de">noch</span><span class="sb-chunk" data-i="22" onclick="sbPick(this,0)" lang="de">immer</span><span class="sb-chunk" data-i="23" onclick="sbPick(this,0)" lang="de">kaum</span><span class="sb-chunk" data-i="24" onclick="sbPick(this,0)" lang="de">vertreten.</span></div>
+        <div class="sb-line" id="sb-line-0"></div>
+        <div class="sb-actions">
+          <button class="btn" onclick="sbCheck(0)">✓ 检查语序</button>
+          <button class="btn ghost" onclick="sbUndo(0)">↶ 撤回</button>
+          <button class="btn ghost" onclick="sbReset(0)">↺ 重排</button>
+          <button class="btn ghost" onclick="sbShow(0)">👁 参考语序</button>
+          <span class="fill-result" id="sb-res-0"></span>
+        </div>
+      </div>
+      <div class="sb-card">
+        <div class="sb-zh"><b>b)</b> 语序拼装 <span class="src">sowohl … als auch / nicht nur … sondern auch</span></div>
+        <div class="sb-pool" id="sb-pool-1"><span class="sb-chunk" data-i="0" onclick="sbPick(this,1)" lang="de">Unter</span><span class="sb-chunk" data-i="1" onclick="sbPick(this,1)" lang="de">den</span><span class="sb-chunk" data-i="2" onclick="sbPick(this,1)" lang="de">Top-5-Ausbildungsberufen</span><span class="sb-chunk" data-i="3" onclick="sbPick(this,1)" lang="de">gehörten</span><span class="sb-chunk" data-i="4" onclick="sbPick(this,1)" lang="de">sowohl</span><span class="sb-chunk" data-i="5" onclick="sbPick(this,1)" lang="de">die</span><span class="sb-chunk" data-i="6" onclick="sbPick(this,1)" lang="de">Kauffrau</span><span class="sb-chunk" data-i="7" onclick="sbPick(this,1)" lang="de">/</span><span class="sb-chunk" data-i="8" onclick="sbPick(this,1)" lang="de">der</span><span class="sb-chunk" data-i="9" onclick="sbPick(this,1)" lang="de">Kaufmann</span><span class="sb-chunk" data-i="10" onclick="sbPick(this,1)" lang="de">als</span><span class="sb-chunk" data-i="11" onclick="sbPick(this,1)" lang="de">auch</span><span class="sb-chunk" data-i="12" onclick="sbPick(this,1)" lang="de">die</span><span class="sb-chunk" data-i="13" onclick="sbPick(this,1)" lang="de">Verkäuferin</span><span class="sb-chunk" data-i="14" onclick="sbPick(this,1)" lang="de">/</span><span class="sb-chunk" data-i="15" onclick="sbPick(this,1)" lang="de">der</span><span class="sb-chunk" data-i="16" onclick="sbPick(this,1)" lang="de">Verkäufer</span><span class="sb-chunk" data-i="17" onclick="sbPick(this,1)" lang="de">im</span><span class="sb-chunk" data-i="18" onclick="sbPick(this,1)" lang="de">Einzelhandel</span><span class="sb-chunk" data-i="19" onclick="sbPick(this,1)" lang="de">bei</span><span class="sb-chunk" data-i="20" onclick="sbPick(this,1)" lang="de">beiden</span><span class="sb-chunk" data-i="21" onclick="sbPick(this,1)" lang="de">Geschlechtern</span><span class="sb-chunk" data-i="22" onclick="sbPick(this,1)" lang="de">zu</span><span class="sb-chunk" data-i="23" onclick="sbPick(this,1)" lang="de">den</span><span class="sb-chunk" data-i="24" onclick="sbPick(this,1)" lang="de">beliebtesten</span><span class="sb-chunk" data-i="25" onclick="sbPick(this,1)" lang="de">Ausbildungsberufen.</span></div>
+        <div class="sb-line" id="sb-line-1"></div>
+        <div class="sb-actions">
+          <button class="btn" onclick="sbCheck(1)">✓ 检查语序</button>
+          <button class="btn ghost" onclick="sbUndo(1)">↶ 撤回</button>
+          <button class="btn ghost" onclick="sbReset(1)">↺ 重排</button>
+          <button class="btn ghost" onclick="sbShow(1)">👁 参考语序</button>
+          <span class="fill-result" id="sb-res-1"></span>
+        </div>
+      </div>
+      <div class="sb-card">
+        <div class="sb-zh"><b>c)</b> 语序拼装 <span class="src">zwar … aber</span></div>
+        <div class="sb-pool" id="sb-pool-2"><span class="sb-chunk" data-i="0" onclick="sbPick(this,2)" lang="de">Zwar</span><span class="sb-chunk" data-i="1" onclick="sbPick(this,2)" lang="de">waren</span><span class="sb-chunk" data-i="2" onclick="sbPick(this,2)" lang="de">in</span><span class="sb-chunk" data-i="3" onclick="sbPick(this,2)" lang="de">einigen</span><span class="sb-chunk" data-i="4" onclick="sbPick(this,2)" lang="de">der</span><span class="sb-chunk" data-i="5" onclick="sbPick(this,2)" lang="de">Bau-</span><span class="sb-chunk" data-i="6" onclick="sbPick(this,2)" lang="de">und</span><span class="sb-chunk" data-i="7" onclick="sbPick(this,2)" lang="de">Metallberufe</span><span class="sb-chunk" data-i="8" onclick="sbPick(this,2)" lang="de">deutlich</span><span class="sb-chunk" data-i="9" onclick="sbPick(this,2)" lang="de">weniger</span><span class="sb-chunk" data-i="10" onclick="sbPick(this,2)" lang="de">als</span><span class="sb-chunk" data-i="11" onclick="sbPick(this,2)" lang="de">10</span><span class="sb-chunk" data-i="12" onclick="sbPick(this,2)" lang="de">Prozent</span><span class="sb-chunk" data-i="13" onclick="sbPick(this,2)" lang="de">der</span><span class="sb-chunk" data-i="14" onclick="sbPick(this,2)" lang="de">Beschäftigten</span><span class="sb-chunk" data-i="15" onclick="sbPick(this,2)" lang="de">Frauen,</span><span class="sb-chunk" data-i="16" onclick="sbPick(this,2)" lang="de">aber</span><span class="sb-chunk" data-i="17" onclick="sbPick(this,2)" lang="de">ihr</span><span class="sb-chunk" data-i="18" onclick="sbPick(this,2)" lang="de">Anteil</span><span class="sb-chunk" data-i="19" onclick="sbPick(this,2)" lang="de">betrug</span><span class="sb-chunk" data-i="20" onclick="sbPick(this,2)" lang="de">vor</span><span class="sb-chunk" data-i="21" onclick="sbPick(this,2)" lang="de">allem</span><span class="sb-chunk" data-i="22" onclick="sbPick(this,2)" lang="de">in</span><span class="sb-chunk" data-i="23" onclick="sbPick(this,2)" lang="de">den</span><span class="sb-chunk" data-i="24" onclick="sbPick(this,2)" lang="de">Berufen</span><span class="sb-chunk" data-i="25" onclick="sbPick(this,2)" lang="de">des</span><span class="sb-chunk" data-i="26" onclick="sbPick(this,2)" lang="de">Erziehungs-</span><span class="sb-chunk" data-i="27" onclick="sbPick(this,2)" lang="de">und</span><span class="sb-chunk" data-i="28" onclick="sbPick(this,2)" lang="de">Gesundheitswesens</span><span class="sb-chunk" data-i="29" onclick="sbPick(this,2)" lang="de">mehr</span><span class="sb-chunk" data-i="30" onclick="sbPick(this,2)" lang="de">als</span><span class="sb-chunk" data-i="31" onclick="sbPick(this,2)" lang="de">80</span><span class="sb-chunk" data-i="32" onclick="sbPick(this,2)" lang="de">Prozent.</span></div>
+        <div class="sb-line" id="sb-line-2"></div>
+        <div class="sb-actions">
+          <button class="btn" onclick="sbCheck(2)">✓ 检查语序</button>
+          <button class="btn ghost" onclick="sbUndo(2)">↶ 撤回</button>
+          <button class="btn ghost" onclick="sbReset(2)">↺ 重排</button>
+          <button class="btn ghost" onclick="sbShow(2)">👁 参考语序</button>
+          <span class="fill-result" id="sb-res-2"></span>
+        </div>
+      </div>
+      <div class="sb-card">
+        <div class="sb-zh"><b>d)</b> 语序拼装 <span class="src">zwar … aber</span></div>
+        <div class="sb-pool" id="sb-pool-3"><span class="sb-chunk" data-i="0" onclick="sbPick(this,3)" lang="de">Heute</span><span class="sb-chunk" data-i="1" onclick="sbPick(this,3)" lang="de">entscheiden</span><span class="sb-chunk" data-i="2" onclick="sbPick(this,3)" lang="de">sich</span><span class="sb-chunk" data-i="3" onclick="sbPick(this,3)" lang="de">zwar</span><span class="sb-chunk" data-i="4" onclick="sbPick(this,3)" lang="de">mehr</span><span class="sb-chunk" data-i="5" onclick="sbPick(this,3)" lang="de">Frauen</span><span class="sb-chunk" data-i="6" onclick="sbPick(this,3)" lang="de">für</span><span class="sb-chunk" data-i="7" onclick="sbPick(this,3)" lang="de">eine</span><span class="sb-chunk" data-i="8" onclick="sbPick(this,3)" lang="de">akademische</span><span class="sb-chunk" data-i="9" onclick="sbPick(this,3)" lang="de">Laufbahn,</span><span class="sb-chunk" data-i="10" onclick="sbPick(this,3)" lang="de">aber</span><span class="sb-chunk" data-i="11" onclick="sbPick(this,3)" lang="de">bei</span><span class="sb-chunk" data-i="12" onclick="sbPick(this,3)" lang="de">der</span><span class="sb-chunk" data-i="13" onclick="sbPick(this,3)" lang="de">Studienwahl</span><span class="sb-chunk" data-i="14" onclick="sbPick(this,3)" lang="de">zeigen</span><span class="sb-chunk" data-i="15" onclick="sbPick(this,3)" lang="de">sich</span><span class="sb-chunk" data-i="16" onclick="sbPick(this,3)" lang="de">noch</span><span class="sb-chunk" data-i="17" onclick="sbPick(this,3)" lang="de">immer</span><span class="sb-chunk" data-i="18" onclick="sbPick(this,3)" lang="de">deutliche</span><span class="sb-chunk" data-i="19" onclick="sbPick(this,3)" lang="de">Unterschiede.</span></div>
+        <div class="sb-line" id="sb-line-3"></div>
+        <div class="sb-actions">
+          <button class="btn" onclick="sbCheck(3)">✓ 检查语序</button>
+          <button class="btn ghost" onclick="sbUndo(3)">↶ 撤回</button>
+          <button class="btn ghost" onclick="sbReset(3)">↺ 重排</button>
+          <button class="btn ghost" onclick="sbShow(3)">👁 参考语序</button>
+          <span class="fill-result" id="sb-res-3"></span>
+        </div>
+      </div>
+      </div>
+    </section>
+    <section id="redemittel">
+      <h2 class="section-title"><span class="num">10</span> 💬 表达库 · Redemittel</h2>
+      <p class="zh-hint">点一条表达高亮，方便学生跟读；老师可点「复制」把整栏拿去做板书。表达全部取自教材 / 教师课件原文。</p>
+      <h3 class="rm-title">Vorteile und Nachteile von Berufen <span class="src">教材 Redemittel 框「Vorteile und Nachteile von Berufen」（页脚未摄入，页码待补）</span></h3>
+      <div class="rm-grid rm-grid-2"><div class="rm-col" id="rmV0"><div class="rm-head">✅ Vorteile nennen 说优点<button class="btn tiny ghost" onclick="rmCopy('rmV0',this)">📋 复制</button></div><div class="rm-body"><span class="rm-chip" onclick="rmPick(this)">Für diesen Beruf spricht, dass …</span><span class="rm-chip" onclick="rmPick(this)">… ist gut / schön.</span><span class="rm-chip" onclick="rmPick(this)">Ich finde, das ist eine gute Arbeit, weil …</span><span class="rm-chip" onclick="rmPick(this)">Es ist gut / sinnvoll / interessant, dass …</span><span class="rm-chip" onclick="rmPick(this)">Mir gefällt, dass …</span><span class="rm-chip" onclick="rmPick(this)">Die Vorteile sind …</span></div></div><div class="rm-col" id="rmV1"><div class="rm-head">❌ Nachteile nennen 说缺点<button class="btn tiny ghost" onclick="rmCopy('rmV1',this)">📋 复制</button></div><div class="rm-body"><span class="rm-chip" onclick="rmPick(this)">Gegen diese Arbeit spricht, dass …</span><span class="rm-chip" onclick="rmPick(this)">In diesem Beruf kann man nicht …</span><span class="rm-chip" onclick="rmPick(this)">… muss man …</span><span class="rm-chip" onclick="rmPick(this)">… ist nicht gut / schlecht / langweilig.</span><span class="rm-chip" onclick="rmPick(this)">Ich finde den Beruf anstrengend / …</span><span class="rm-chip" onclick="rmPick(this)">Man braucht unbedingt …</span><span class="rm-chip" onclick="rmPick(this)">Die Nachteile sind …</span></div></div></div>
+      <h3 class="rm-title">eine Statistik beschreiben · 描述统计 <span class="src">教材 S.228 · Ü10（完整表达据教师课件 slide 42–44）</span></h3>
+      <div class="rm-grid rm-grid-4"><div class="rm-col" id="rmS0"><div class="rm-head">🔁 比较 / 发展<button class="btn tiny ghost" onclick="rmCopy('rmS0',this)">📋 复制</button></div><div class="rm-body"><span class="rm-chip" onclick="rmPick(this)">Das Berufswahlverhalten von … hat sich wenig verändert.</span><span class="rm-chip" onclick="rmPick(this)">Frauen und Männer entscheiden sich nach wie vor für …</span><span class="rm-chip" onclick="rmPick(this)">Das ist im Vergleich zu … unverändert geblieben.</span><span class="rm-chip" onclick="rmPick(this)">Im Gegensatz / Im Unterschied zu …</span><span class="rm-chip" onclick="rmPick(this)">Verglichen mit … / Gegenüber …</span><span class="rm-chip" onclick="rmPick(this)">Unter den Top-5-Ausbildungsberufen waren … bei beiden Geschlechtern fast gleich beliebt.</span><span class="rm-chip" onclick="rmPick(this)">Heute gehen in Deutschland deutlich mehr Frauen einem Beruf nach als vor einigen Jahrzehnten.</span><span class="rm-chip" onclick="rmPick(this)">… unterscheiden sich Frauen und Männer in ihrer Berufswahl demnach noch immer stark voneinander.</span><span class="rm-chip" onclick="rmPick(this)">Dennoch sind Frauen … noch immer kaum vertreten.</span><span class="rm-chip" onclick="rmPick(this)">Männer wählten dagegen am häufigsten …</span><span class="rm-chip" onclick="rmPick(this)">Trotzdem zeigen sich … noch immer deutliche Unterschiede.</span><span class="rm-chip" onclick="rmPick(this)">Zwar liegt … bei den Studienanfängern beider Geschlechter auf Platz eins, danach dominieren bei den Männern aber …</span></div></div><div class="rm-col" id="rmS1"><div class="rm-head">📊 百分比<button class="btn tiny ghost" onclick="rmCopy('rmS1',this)">📋 复制</button></div><div class="rm-body"><span class="rm-chip" onclick="rmPick(this)">In den … waren deutlich weniger als 10 Prozent der Beschäftigten …</span><span class="rm-chip" onclick="rmPick(this)">Ihr Anteil betrug … mehr als 80 Prozent.</span><span class="rm-chip" onclick="rmPick(this)">Besonders hoch liegt der Anteil von … bei … %.</span><span class="rm-chip" onclick="rmPick(this)">… % aller … sind / haben …</span><span class="rm-chip" onclick="rmPick(this)">… gehörten … zu den beliebtesten Ausbildungsberufen von Frauen.</span><span class="rm-chip" onclick="rmPick(this)">… die beliebtesten Ausbildungsberufe …</span><span class="rm-chip" onclick="rmPick(this)">… am häufigsten …</span></div></div><div class="rm-col" id="rmS2"><div class="rm-head">🥇 排名<button class="btn tiny ghost" onclick="rmCopy('rmS2',this)">📋 复制</button></div><div class="rm-body"><span class="rm-chip" onclick="rmPick(this)">Auf Platz eins / An der Spitze liegen / stehen …</span><span class="rm-chip" onclick="rmPick(this)">An erster Stelle / An der ersten Stelle stehen …</span><span class="rm-chip" onclick="rmPick(this)">Der Spitzenreiter ist …</span><span class="rm-chip" onclick="rmPick(this)">Danach dominieren / folgen …</span><span class="rm-chip" onclick="rmPick(this)">Es folgt / folgen …</span><span class="rm-chip" onclick="rmPick(this)">gefolgt von …</span><span class="rm-chip" onclick="rmPick(this)">An letzter / vorletzter Stelle stehen …</span><span class="rm-chip" onclick="rmPick(this)">Das Schlusslicht ist / bilden …</span></div></div><div class="rm-col" id="rmS3"><div class="rm-head">✍️ 评论 / 结论<button class="btn tiny ghost" onclick="rmCopy('rmS3',this)">📋 复制</button></div><div class="rm-body"><span class="rm-chip" onclick="rmPick(this)">Insgesamt unterscheiden sich Frauen und Männer in ihrer Berufswahl demnach noch immer stark voneinander.</span><span class="rm-chip" onclick="rmPick(this)">Abschließend / Zusammenfassend kann man sagen / feststellen / erkennen, dass …</span><span class="rm-chip" onclick="rmPick(this)">Abschließend / Zusammenfassend lässt sich sagen / feststellen / erkennen, dass …</span><span class="rm-chip" onclick="rmPick(this)">Es ist festzustellen / erkennen, dass …</span><span class="rm-chip" onclick="rmPick(this)">Es fällt auf / Überraschend ist, dass …</span></div></div></div>
+    </section>
+    <section id="berufe">
+      <h2 class="section-title"><span class="num">11</span> 🃏 Beruferaten · 猜职业 <span class="src src-lg">教材 S.221 · Ü3</span></h2>
+      <p class="zh-hint">任务卡背面是这个任务的中文。A 方只说优点，B 方只说缺点，其余人猜职业；猜对前不能说出职业名。</p>
+      <p class="zh-hint note">操作：点卡片翻面看中文任务；说出职业名之前不许把职业说出来。</p>
+      <div class="vocab-grid br-grid"><div class="vc-card br-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de">Fieber messen</div><div class="vc-back">量体温</div></div></div><div class="vc-card br-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de">beim Anziehen helfen</div><div class="vc-back">帮人穿衣</div></div></div><div class="vc-card br-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de">Interviews machen</div><div class="vc-back">做采访</div></div></div><div class="vc-card br-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de">eine Spritze geben</div><div class="vc-back">打针</div></div></div><div class="vc-card br-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de">Termine machen</div><div class="vc-back">安排日程</div></div></div><div class="vc-card br-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de">Schülern helfen</div><div class="vc-back">帮助学生</div></div></div><div class="vc-card br-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de">Reisen machen</div><div class="vc-back">出差、跑外</div></div></div><div class="vc-card br-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de">den Unterricht vorbereiten</div><div class="vc-back">备课</div></div></div><div class="vc-card br-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de">verkaufen</div><div class="vc-back">销售</div></div></div><div class="vc-card br-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de">ältere Menschen pflegen</div><div class="vc-back">护理老人</div></div></div><div class="vc-card br-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de">sich um Patienten kümmern</div><div class="vc-back">照护病人</div></div></div><div class="vc-card br-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de">Diebe und Einbrecher suchen</div><div class="vc-back">搜寻盗贼</div></div></div><div class="vc-card br-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de">Artikel schreiben</div><div class="vc-back">写文章</div></div></div><div class="vc-card br-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de">neue Programme entwickeln</div><div class="vc-back">开发新程序</div></div></div><div class="vc-card br-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de">viel von der Welt sehen</div><div class="vc-back">见多识广</div></div></div><div class="vc-card br-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de">Gäste bedienen</div><div class="vc-back">招待客人</div></div></div><div class="vc-card br-card" onclick="flipCard(this)"><div class="vc-inner"><div class="vc-front" lang="de">Maschinen reparieren</div><div class="vc-back">修理机器</div></div></div></div>
+      <div class="text-card" style="margin-top:12px">
+        <h3>🗨️ 示例对话 Beispiel</h3><div class="br-line"><span class="br-who">A</span><span class="br-say" lang="de">Hast du bei dem Patienten Fieber gemessen?</span></div><div class="br-line"><span class="br-who">B</span><span class="br-say" lang="de">Ja, er hat 38 Grad.</span></div>
+      </div>
+      <div class="text-card" style="margin-top:12px">
+        <h3>⚖️ 优缺点示例（Pros &amp; Contras）</h3><ul class="br-pc"><li lang="de">Sehenswürdigkeiten zu besichtigen und neue Menschen kennen zu lernen sprechen für diesen Beruf.</li><li lang="de">Ein Nachteil ist, dass man in der Saison oft am Wochenende arbeiten muss.</li></ul>
+      </div>
+    </section>
+    <section id="uebersetzen">
+      <h2 class="section-title"><span class="num">12</span> 🎯 Übersetzen · 中译德（奥地利职业选择报告） <span class="src src-lg">教材 S.228 · Ü11（中文原文与参考译文均据教材 / 教师课件，非我拟作）</span></h2>
+      <p class="zh-hint">先自己译，再点卡片翻面核对参考译文。译法不唯一，句型正确、意义完整即算对。</p>
+      <div class="highlight-box">📄 中文原文：<br>奥地利的年轻人在选择培训职业时，经常会根据自己的性别选择特定的职业。许多年轻女性偏爱商务或医疗类的职业培训，而年轻男性则对技术类职业更感兴趣。根据最新的报告《奥地利学徒学习——双元制职业培训》，2023年奥地利女性最常选择零售业培训，而最受男性欢迎的培训职业是电气技术员，其次是金属技术员和汽车机电工。尽管女性和男性在职业选择上仍有较大差异，但在十大培训职业中，金属技术员在两性中受到同样的欢迎，位居第六。这表明，年轻女性在选择职业时开始放弃传统的女性角色模式，并打破职业刻板印象。</div>
+      <div class="translation-grid">        <div class="tc-card" onclick="flipTrans(this)">
+          <div class="tc-inner">
+            <div class="tc-front"><span class="tc-num">1</span><span class="src">教材 S.228 · Ü11 ①</span>
+              <div class="tc-zh">奥地利的年轻人在选择培训职业时，经常会根据自己的性别选择特定的职业。</div><div class="tc-tip">💡 「根据自己的性别」→ je nach Geschlecht（介词短语，不用 Possessiv）；sich entscheiden für +A。</div></div>
+            <div class="tc-back"><span class="tc-num">1</span><span class="src">教材 S.228 · Ü11 ①</span>
+              <div class="tc-de" lang="de">Bei der Wahl des Ausbildungsberufs entscheiden sich junge Menschen in Österreich oft je nach Geschlecht für ganz bestimmte Berufe.</div></div>
+          </div>
+        </div>
+        <div class="tc-card" onclick="flipTrans(this)">
+          <div class="tc-inner">
+            <div class="tc-front"><span class="tc-num">2</span><span class="src">教材 S.228 · Ü11 ②</span>
+              <div class="tc-zh">许多年轻女性偏爱商务或医疗类的职业培训，而年轻男性则对技术类职业更感兴趣。</div><div class="tc-tip">💡 「而」表对比 → Während 从句；bevorzugen +A 偏爱；sich interessieren für +A。</div></div>
+            <div class="tc-back"><span class="tc-num">2</span><span class="src">教材 S.228 · Ü11 ②</span>
+              <div class="tc-de" lang="de">Während viele junge Frauen eine kaufmännische oder medizinische Ausbildung bevorzugen, interessieren sich junge Männer mehr für technische Berufe.</div></div>
+          </div>
+        </div>
+        <div class="tc-card" onclick="flipTrans(this)">
+          <div class="tc-inner">
+            <div class="tc-front"><span class="tc-num">3</span><span class="src">教材 S.228 · Ü11 ③</span>
+              <div class="tc-zh">根据最新的报告《奥地利学徒学习——双元制职业培训》，2023年奥地利女性最常选择零售业培训，而最受男性欢迎的培训职业是电气技术员，其次是金属技术员和汽车机电工。</div><div class="tc-tip">💡 报告名用引号书名号照抄；「最常」→ am häufigsten；「其次是」→ danach folgten …（注意动词第二位）。</div></div>
+            <div class="tc-back"><span class="tc-num">3</span><span class="src">教材 S.228 · Ü11 ③</span>
+              <div class="tc-de" lang="de">Nach dem neuesten Bericht „Die Lehre – Duale Berufsausbildung in Österreich“ wählten Frauen im Jahr 2023 am häufigsten eine Ausbildung im Einzelhandel, während der beliebteste Ausbildungsberuf von Männern der Elektrotechniker war, danach folgten die Ausbildungen zum Metalltechniker und Kraftfahrzeugmechatroniker / Kfz-Mechatroniker.</div></div>
+          </div>
+        </div>
+        <div class="tc-card" onclick="flipTrans(this)">
+          <div class="tc-inner">
+            <div class="tc-front"><span class="tc-num">4</span><span class="src">教材 S.228 · Ü11 ④</span>
+              <div class="tc-zh">尽管女性和男性在职业选择上仍有较大差异，但在十大培训职业中，金属技术员在两性中受到同样的欢迎，位居第六。</div><div class="tc-tip">💡 「尽管……但……」→ zwar … aber；sich von einander unterscheiden；位居第六 → auf Platz 6 liegen。</div></div>
+            <div class="tc-back"><span class="tc-num">4</span><span class="src">教材 S.228 · Ü11 ④</span>
+              <div class="tc-de" lang="de">Zwar unterscheiden sich Frauen und Männer in ihrer Berufswahl noch immer stark voneinander, aber unter den Top-10-Ausbildungsberufen war Metalltechnikerin / Metalltechnik bei beiden Geschlechtern gleich beliebt und lag auf Platz 6.</div></div>
+          </div>
+        </div>
+        <div class="tc-card" onclick="flipTrans(this)">
+          <div class="tc-inner">
+            <div class="tc-front"><span class="tc-num">5</span><span class="src">教材 S.228 · Ü11 ⑤</span>
+              <div class="tc-zh">这表明，年轻女性在选择职业时开始放弃传统的女性角色模式，并打破职业刻板印象。</div><div class="tc-tip">💡 「这表明……」→ Das zeigt, dass …；beginnen … zu +Inf.；sich von … lösen 摆脱。</div></div>
+            <div class="tc-back"><span class="tc-num">5</span><span class="src">教材 S.228 · Ü11 ⑤</span>
+              <div class="tc-de" lang="de">Das zeigt, dass junge Frauen bei ihrer Berufswahl beginnen, das traditionelle Frauenrollenmuster zu verlassen und sich von stereotypen Berufsvorstellungen zu lösen.</div></div>
+          </div>
+        </div></div>
+      <div class="kw-tools"><button class="btn ghost" onclick="toggleBox('fullDe')">👁 整段参考译文</button></div>
+      <div class="full-de" id="fullDe" style="display:none"><p class="de-full" lang="de">Bei der Wahl des Ausbildungsberufs entscheiden sich junge Menschen in Österreich oft je nach Geschlecht für ganz bestimmte Berufe. Während viele junge Frauen eine kaufmännische oder medizinische Ausbildung bevorzugen, interessieren sich junge Männer mehr für technische Berufe. Nach dem neuesten Bericht „Die Lehre – Duale Berufsausbildung in Österreich“ wählten Frauen im Jahr 2023 am häufigsten eine Ausbildung im Einzelhandel, während der beliebteste Ausbildungsberuf von Männern der Elektrotechniker war, danach folgten die Ausbildungen zum Metalltechniker und Kraftfahrzeugmechatroniker / Kfz-Mechatroniker. Zwar unterscheiden sich Frauen und Männer in ihrer Berufswahl noch immer stark voneinander, aber unter den Top-10-Ausbildungsberufen war Metalltechnikerin / Metalltechnik bei beiden Geschlechtern gleich beliebt und lag auf Platz 6. Das zeigt, dass junge Frauen bei ihrer Berufswahl beginnen, das traditionelle Frauenrollenmuster zu verlassen und sich von stereotypen Berufsvorstellungen zu lösen.</p></div>
+    </section>
+    <section id="spiele">
+      <h2 class="section-title"><span class="num">13</span> 🏆 课堂游戏 &amp; 计分板</h2>
+      <p class="zh-hint">点「+1 / −1」记分，比分在投影上实时可见；计时器用于控场。</p>
+      <div class="scoreboard">
+        <div class="team"><div class="team-name">Team A</div><div class="team-score" id="scoreA">0</div>
+          <div class="team-btns"><button class="btn" onclick="addScore('A',1)">+1</button>
+          <button class="btn ghost" onclick="addScore('A',-1)">−1</button></div></div>
+        <div class="team"><div class="team-name">Team B</div><div class="team-score" id="scoreB">0</div>
+          <div class="team-btns"><button class="btn" onclick="addScore('B',1)">+1</button>
+          <button class="btn ghost" onclick="addScore('B',-1)">−1</button></div></div>
+        <div class="team reset-team"><button class="btn ghost" onclick="resetScore()">↺ 比分归零</button>
+          <div class="timer" id="classTimer">30</div>
+          <button class="btn tiny" onclick="startTimer('classTimer',30)">▶ 30s</button></div>
+      </div>
+      <div class="games-grid"><div class="game-card"><div class="game-name">① Blitzrunde 抢答赛 <span class="game-time">3 min</span></div><p>老师点「抢答」里的卡片，先说出德语的一组得 1 分（名词必须带冠词）。</p></div><div class="game-card"><div class="game-name">② Wortfeld-Rennen 词场接力 <span class="game-time">5 min</span></div><p>两队轮流把一个词块归入正确维度，归错换人；先清空词池的队伍得分。</p></div><div class="game-card"><div class="game-name">③ Arbeitstag-Puzzle 动词还原 <span class="game-time">6 min</span></div><p>把 Ü2 的十个动词原形打乱贴在黑板上，学生上台写正确形式，写对得 1 分。</p></div><div class="game-card"><div class="game-name">④ Beruferaten 猜职业 <span class="game-time">8 min</span></div><p>A 说优点、B 说缺点，其他人猜职业；说出职业名即结束该轮（用 Redemittel 必须成句）。</p></div><div class="game-card"><div class="game-name">⑤ Umform-Duell 改写对决 <span class="game-time">6 min</span></div><p>Ü9 四句改写，每队各写一句上台对比；语序错（zwar 位置、aber 后语序）不得分。</p></div><div class="game-card"><div class="game-name">⑥ Statistik-Dolmetscher 数据口译 <span class="game-time">8 min</span></div><p>给一张真实的职业性别统计图，用 S.228 表达做 60 秒口头描述，必须含一个百分比、一个排名、一个结论。</p></div></div>
+    </section>
+
+</div></div>
+<div class="vocab-overlay" id="vocabOverlay" onclick="hideVocab()"></div>
+<div class="vocab-panel" id="vocabPanel">
+  <div class="vocab-panel-header"><span id="vpWord" class="vp-word"></span>
+    <button onclick="hideVocab()" class="vp-close">&times;</button></div>
+  <div id="vpZh" class="vp-zh"></div>
+  <div id="vpEx" class="vp-ex"></div>
+</div>
+<div class="proj-ctl" id="projCtl">
+  <button class="proj-mini" onclick="projToggle(event)" title="投影放大">A±</button>
+  <div class="proj-body" id="projBody">
+    <button onclick="projStep(-1)" title="缩小">A−</button>
+    <span class="proj-label" id="projLabel">标准</span>
+    <button onclick="projStep(1)" title="放大（投影用）">A+</button>
+    <button onclick="projReset()" title="回到标准">↺</button>
+  </div>
+</div>
+<script>
+const DOC = {"sb": [["Zwar", "gehen", "heute", "in", "Deutschland", "deutlich", "mehr", "Frauen", "einem", "Beruf", "nach", "als", "vor", "einigen", "Jahrzehnten,", "aber", "in", "manchen", "Branchen", "sind", "Frauen", "noch", "immer", "kaum", "vertreten."], ["Unter", "den", "Top-5-Ausbildungsberufen", "gehörten", "sowohl", "die", "Kauffrau", "/", "der", "Kaufmann", "als", "auch", "die", "Verkäuferin", "/", "der", "Verkäufer", "im", "Einzelhandel", "bei", "beiden", "Geschlechtern", "zu", "den", "beliebtesten", "Ausbildungsberufen."], ["Zwar", "waren", "in", "einigen", "der", "Bau-", "und", "Metallberufe", "deutlich", "weniger", "als", "10", "Prozent", "der", "Beschäftigten", "Frauen,", "aber", "ihr", "Anteil", "betrug", "vor", "allem", "in", "den", "Berufen", "des", "Erziehungs-", "und", "Gesundheitswesens", "mehr", "als", "80", "Prozent."], ["Heute", "entscheiden", "sich", "zwar", "mehr", "Frauen", "für", "eine", "akademische", "Laufbahn,", "aber", "bei", "der", "Studienwahl", "zeigen", "sich", "noch", "immer", "deutliche", "Unterschiede."]]};
+
+function switchSection(id){
+  document.querySelectorAll('section').forEach(function(s){ s.classList.remove('active'); });
+  const el = document.getElementById(id);
+  if (el) el.classList.add('active');
+  document.querySelectorAll('.nav-links button').forEach(function(b){ b.classList.remove('active'); });
+  const idx = SECTIONS.indexOf(id);
+  const btns = document.querySelectorAll('.nav-links button');
+  if (btns[idx]) btns[idx].classList.add('active');
+  const pf = document.getElementById('progressFill');
+  if (pf) pf.style.width = ((idx + 1) / SECTIONS.length * 100) + '%';
+  const nl = document.getElementById('navLinks');
+  if (nl) nl.classList.remove('show');
+  window.scrollTo(0, 0);
+}
+function toggleNav(){
+  const nl = document.getElementById('navLinks');
+  if (nl) nl.classList.toggle('show');
+}
+/* ===== 投影模式：整体放大（课堂现场用，宽屏才显示） ===== */
+let projScale = 1;
+try { projScale = parseFloat(localStorage.getItem('l8proj') || '1') || 1; } catch (e) { projScale = 1; }
+const PROJ_STEPS = [1, 1.15, 1.3, 1.5];
+function applyProj(){
+  document.body.style.zoom = projScale;
+  const lb = document.getElementById('projLabel');
+  if (lb) lb.textContent = (projScale === 1 ? '标准' : '投影 ' + Math.round(projScale * 100) + '%');
+}
+let projTimer = null;
+function armProj(){
+  clearTimeout(projTimer);
+  projTimer = setTimeout(function(){ document.getElementById('projCtl').classList.remove('open'); }, 8000);
+}
+function projToggle(e){
+  if (e) e.stopPropagation();
+  const c = document.getElementById('projCtl');
+  c.classList.toggle('open');
+  if (c.classList.contains('open')) armProj();
+}
+document.addEventListener('click', function(e){
+  const c = document.getElementById('projCtl');
+  if (c && !c.contains(e.target)) c.classList.remove('open');
+});
+function projStep(d){
+  let i = PROJ_STEPS.indexOf(projScale);
+  if (i < 0) i = 0;
+  i = Math.min(PROJ_STEPS.length - 1, Math.max(0, i + d));
+  projScale = PROJ_STEPS[i];
+  try { localStorage.setItem('l8proj', String(projScale)); } catch (e) {}
+  applyProj(); armProj();
+}
+function projReset(){
+  projScale = 1;
+  try { localStorage.setItem('l8proj', '1'); } catch (e) {}
+  applyProj(); armProj();
+}
+/* 导航高度自适应：单行 / 换行 / 汉堡三种形态下正文都不被遮住 */
+function syncNavPad(){
+  const nav = document.querySelector('.top-nav');
+  if (!nav) return;
+  document.body.style.paddingTop = Math.max(76, nav.offsetHeight + 28) + 'px';
+}
+window.addEventListener('resize', syncNavPad);
+window.addEventListener('load', function(){ syncNavPad(); applyProj(); });
+window.addEventListener('orientationchange', function(){ setTimeout(syncNavPad, 250); });
+const SECTIONS = ["home", "vocab", "vocab2", "blitz", "connect", "mindmap", "luecken", "eigenschaften", "softskills", "umformen", "redemittel", "berufe", "uebersetzen", "spiele"];
+
+
+let selLeft = null, selRight = null;
+function flipCard(el){ el.classList.toggle('flipped'); }
+function flipTrans(el){ el.classList.toggle('flipped'); }
+function toggleBox(id){ const b = document.getElementById(id); if (b) b.style.display = (b.style.display === 'none' ? 'block' : 'none'); }
+function norm(s){
+  return (s === undefined || s === null ? '' : String(s)).toUpperCase().trim()
+    .replace(/\s+/g, ' ')
+    .replace(/Ä/g, 'AE').replace(/Ö/g, 'OE').replace(/Ü/g, 'UE').replace(/ß/g, 'SS');
+}
+/* ---- 词汇分组 tab ---- */
+function switchVocabTab(id, btn){
+  const sec = btn.closest('section');
+  sec.querySelectorAll(':scope > .person-content').forEach(function(p){ p.classList.remove('active'); });
+  const panel = sec.querySelector('#' + id);
+  if (panel) panel.classList.add('active');
+  sec.querySelectorAll(':scope > .person-tabs .person-btn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+}
+/* ---- 词条面板 ---- */
+function showVocab(w, cn, ex){
+  document.getElementById('vpWord').textContent = w;
+  document.getElementById('vpZh').textContent = cn;
+  document.getElementById('vpEx').textContent = ex || '';
+  document.getElementById('vocabPanel').classList.add('show');
+  document.getElementById('vocabOverlay').classList.add('show');
+}
+function hideVocab(){
+  document.getElementById('vocabPanel').classList.remove('show');
+  document.getElementById('vocabOverlay').classList.remove('show');
+}
+/* ---- 计时器 ---- */
+const timers = {};
+function startTimer(id, sec){
+  stopTimer(id);
+  let t = sec;
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.textContent = t; el.classList.remove('warn');
+  timers[id] = setInterval(function(){
+    t--; el.textContent = t;
+    if (t <= 5) el.classList.add('warn');
+    if (t <= 0){ stopTimer(id); el.textContent = '0'; }
+  }, 1000);
+}
+function stopTimer(id){ if (timers[id]) { clearInterval(timers[id]); delete timers[id]; } }
+function resetTimer(id, sec){
+  stopTimer(id);
+  const el = document.getElementById(id);
+  if (el){ el.textContent = sec; el.classList.remove('warn'); }
+}
+/* ---- 计分板 ---- */
+const scores = {A: 0, B: 0};
+function addScore(t, d){
+  scores[t] = Math.max(0, scores[t] + d);
+  document.getElementById('score' + t).textContent = scores[t];
+}
+function resetScore(){
+  scores.A = 0; scores.B = 0;
+  document.getElementById('scoreA').textContent = '0';
+  document.getElementById('scoreB').textContent = '0';
+}
+/* ---- 连线配对 ---- */
+function cClick(el){
+  if (el.classList.contains('matched')) return;
+  const side = el.classList.contains('de') ? 'L' : 'R';
+  const gid = el.dataset.gid;
+  if (side === 'L'){
+    if (selLeft) selLeft.classList.remove('selected');
+    selLeft = el; el.classList.add('selected');
+  } else {
+    if (selRight) selRight.classList.remove('selected');
+    selRight = el; el.classList.add('selected');
+  }
+  if (selLeft && selRight && selLeft.dataset.gid === selRight.dataset.gid){
+    if (selLeft.dataset.pair === selRight.dataset.pair){
+      selLeft.classList.remove('selected'); selRight.classList.remove('selected');
+      selLeft.classList.add('matched'); selRight.classList.add('matched');
+      const cnt = document.getElementById('cg-cnt-' + gid);
+      cnt.textContent = parseInt(cnt.textContent, 10) + 1;
+      selLeft = null; selRight = null;
+    } else {
+      const a = selLeft, b = selRight;
+      a.classList.add('badflash'); b.classList.add('badflash');
+      setTimeout(function(){ a.classList.remove('badflash', 'selected'); b.classList.remove('badflash', 'selected'); }, 420);
+      selLeft = null; selRight = null;
+    }
+  }
+}
+/* ---- Ü2 完形（词库填词）---- */
+let clozeSel = null;
+function clozeClick(el){
+  if (el.classList.contains('filled')){
+    el.textContent = el.dataset.ph;
+    el.classList.remove('filled', 'ok', 'bad', 'sel');
+    clozeSel = null;
+    return;
+  }
+  document.querySelectorAll('#luecken .cloze-blank').forEach(function(b){ b.classList.remove('sel'); });
+  clozeSel = el; el.classList.add('sel');
+}
+function bankFill(chip){
+  if (!clozeSel){ alert('请先点句子里的一个空位，再点词库里的词。'); return; }
+  clozeSel.textContent = chip.textContent;
+  clozeSel.classList.add('filled');
+  clozeSel.classList.remove('sel', 'ok', 'bad');
+  clozeSel = null;
+}
+function clozeCheck(){
+  let n = 0, tot = 0, empty = 0;
+  document.querySelectorAll('#luecken .cloze-blank').forEach(function(b){
+    tot++;
+    if (!b.classList.contains('filled')){ empty++; b.classList.remove('ok', 'bad'); return; }
+    const alts = (b.dataset.alt || '').split('|').filter(Boolean).map(norm);
+    const ok = norm(b.textContent) === norm(b.dataset.ans) || alts.indexOf(norm(b.textContent)) >= 0;
+    b.classList.remove('ok', 'bad'); b.classList.add(ok ? 'ok' : 'bad');
+    if (ok) n++;
+  });
+  document.getElementById('clozeResult').textContent =
+    '正确 ' + n + ' / ' + tot + ' 空' + (empty ? '（还有 ' + empty + ' 空未填）' : '');
+}
+function clozeReveal(){
+  document.querySelectorAll('#luecken .cloze-blank').forEach(function(b){
+    b.textContent = b.dataset.ans;
+    b.classList.add('filled'); b.classList.remove('bad', 'sel'); b.classList.add('ok');
+  });
+  document.getElementById('clozeResult').textContent = '已显示参考答案（教师用）';
+}
+function clozeClear(){
+  document.querySelectorAll('#luecken .cloze-blank').forEach(function(b){
+    b.textContent = b.dataset.ph;
+    b.classList.remove('filled', 'ok', 'bad', 'sel');
+  });
+  clozeSel = null;
+  document.getElementById('clozeResult').textContent = '';
+}
+/* ---- 词场归类 ---- */
+let mmSel = null;
+function mmSelect(el){
+  if (el.parentNode.classList.contains('mm-items')){
+    document.getElementById('mmPool').appendChild(el);
+    el.classList.remove('ok', 'bad');
+    return;
+  }
+  if (mmSel) mmSel.classList.remove('sel');
+  mmSel = el; el.classList.add('sel');
+}
+function mmDrop(box){
+  if (!mmSel) return;
+  box.querySelector('.mm-items').appendChild(mmSel);
+  mmSel.classList.remove('sel', 'ok', 'bad');
+  mmSel = null;
+}
+function mmCheck(){
+  let ok = 0, tot = 0;
+  document.querySelectorAll('#mindmap .mm-board .mm-box').forEach(function(box){
+    const cat = box.dataset.cat;
+    box.querySelectorAll('.mm-chip').forEach(function(ch){
+      tot++;
+      const right = ch.dataset.c === cat;
+      ch.classList.remove('ok', 'bad'); ch.classList.add(right ? 'ok' : 'bad');
+      if (right) ok++;
+    });
+  });
+  const left = document.querySelectorAll('#mmPool .mm-chip').length;
+  document.getElementById('mmResult').textContent =
+    '归类正确 ' + ok + ' / ' + tot + (left ? '（还有 ' + left + ' 个未归类）' : '');
+}
+function mmReset(){
+  const pool = document.getElementById('mmPool');
+  document.querySelectorAll('#mindmap .mm-board .mm-chip').forEach(function(ch){
+    ch.classList.remove('ok', 'bad'); pool.appendChild(ch);
+  });
+  document.getElementById('mmResult').textContent = '';
+}
+/* ---- Eigenschaften ---- */
+function fillCheck(el, scopeSel){
+  const scope = el.closest(scopeSel);
+  const inp = el.tagName === 'INPUT' ? el : scope.querySelector('input');
+  const res = scope.querySelector('.fill-result');
+  const val = inp.value.trim();
+  const ok = !!val && norm(val) === norm(inp.dataset.ans);
+  inp.classList.remove('ok', 'bad'); inp.classList.add(ok ? 'ok' : 'bad');
+  if (res){
+    res.textContent = ok ? '✓ richtig' : '✗ 再想想';
+    res.className = 'fill-result ' + (ok ? 'correct' : 'wrong');
+  }
+  return ok;
+}
+function esCheckInput(el){ fillCheck(el, '.fill-input-line'); }
+function esMarkSelect(sel){
+  const val = sel.value;
+  sel.classList.remove('ok', 'bad');
+  if (!val) return;
+  sel.classList.add(norm(val) === norm(sel.dataset.ans) ? 'ok' : 'bad');
+}
+function esCheckAll(){
+  let ok = 0, tot = 0;
+  document.querySelectorAll('#eigenschaften .es-input').forEach(function(inp){
+    tot++;
+    const good = !!inp.value.trim() && norm(inp.value) === norm(inp.dataset.ans);
+    inp.classList.remove('ok', 'bad'); inp.classList.add(good ? 'ok' : 'bad');
+    const res = inp.closest('.fill-input-line').querySelector('.fill-result');
+    if (res){ res.textContent = good ? '✓' : (inp.value.trim() ? '✗' : ''); res.className = 'fill-result ' + (good ? 'correct' : 'wrong'); }
+    if (good) ok++;
+  });
+  document.querySelectorAll('#eigenschaften .es-select').forEach(function(sel){
+    tot++;
+    const good = !!sel.value && norm(sel.value) === norm(sel.dataset.ans);
+    sel.classList.remove('ok', 'bad'); sel.classList.add(good ? 'ok' : 'bad');
+    if (good) ok++;
+  });
+  document.getElementById('esResult').textContent = '正确 ' + ok + ' / ' + tot + ' 题';
+}
+function esShowAll(){
+  document.querySelectorAll('#eigenschaften .es-input').forEach(function(inp){
+    inp.value = inp.dataset.ans; inp.classList.remove('bad'); inp.classList.add('ok');
+    const res = inp.closest('.fill-input-line').querySelector('.fill-result');
+    if (res){ res.textContent = ''; res.className = 'fill-result'; }
+  });
+  document.querySelectorAll('#eigenschaften .es-select').forEach(function(sel){
+    sel.value = sel.dataset.ans; sel.classList.remove('bad'); sel.classList.add('ok');
+  });
+  document.getElementById('esResult').textContent = '已显示参考答案';
+}
+function esClearAll(){
+  document.querySelectorAll('#eigenschaften .es-input').forEach(function(inp){
+    inp.value = ''; inp.classList.remove('ok', 'bad');
+    const res = inp.closest('.fill-input-line').querySelector('.fill-result');
+    if (res){ res.textContent = ''; res.className = 'fill-result'; }
+  });
+  document.querySelectorAll('#eigenschaften .es-select').forEach(function(sel){
+    sel.value = ''; sel.classList.remove('ok', 'bad');
+  });
+  document.getElementById('esResult').textContent = '';
+}
+/* ---- Soft Skills 三选一 ---- */
+function ssItem(el){ return el.closest('.ss-item'); }
+function ssPick(chip, n){
+  const item = document.querySelector('#softskills .ss-item[data-n="' + n + '"]');
+  if (!item) return;
+  item.querySelectorAll('.ss-opt').forEach(function(c){ c.classList.remove('on'); });
+  chip.classList.add('on');
+  const inp = item.querySelector('input');
+  inp.value = chip.textContent.trim();
+  inp.classList.remove('ok', 'bad');
+  const res = item.querySelector('.fill-result');
+  if (res){ res.textContent = ''; res.className = 'fill-result'; }
+}
+function ssCheckInput(el){ fillCheck(el, '.fill-input-line'); }
+function ssCheckAll(){
+  let ok = 0, tot = 0;
+  document.querySelectorAll('#softskills .ss-item').forEach(function(item){
+    tot++;
+    const inp = item.querySelector('input');
+    const good = !!inp.value.trim() && norm(inp.value) === norm(inp.dataset.ans);
+    inp.classList.remove('ok', 'bad'); inp.classList.add(good ? 'ok' : 'bad');
+    const res = item.querySelector('.fill-result');
+    if (res){
+      res.textContent = good ? '✓ richtig' : (inp.value.trim() ? '✗ 再想想' : '');
+      res.className = 'fill-result ' + (good ? 'correct' : 'wrong');
+    }
+    if (good) ok++;
+  });
+  document.getElementById('ssResult').textContent = '正确 ' + ok + ' / ' + tot + ' 空';
+}
+function ssShowAll(){
+  document.querySelectorAll('#softskills .ss-item').forEach(function(item){
+    const inp = item.querySelector('input');
+    inp.value = inp.dataset.ans; inp.classList.remove('bad'); inp.classList.add('ok');
+    item.querySelectorAll('.ss-opt').forEach(function(c){
+      c.classList.toggle('on', norm(c.textContent) === norm(inp.dataset.ans));
+    });
+    const res = item.querySelector('.fill-result');
+    if (res){ res.textContent = ''; res.className = 'fill-result'; }
+  });
+  document.getElementById('ssResult').textContent = '已显示参考答案';
+}
+function ssClearAll(){
+  document.querySelectorAll('#softskills .ss-item').forEach(function(item){
+    const inp = item.querySelector('input');
+    inp.value = ''; inp.classList.remove('ok', 'bad');
+    item.querySelectorAll('.ss-opt').forEach(function(c){ c.classList.remove('on'); });
+    const res = item.querySelector('.fill-result');
+    if (res){ res.textContent = ''; res.className = 'fill-result'; }
+  });
+  document.getElementById('ssResult').textContent = '';
+}
+/* ---- Ü9 改写 ---- */
+function umShow(i){ const b = document.getElementById('um-ans-' + i); if (b) b.style.display = 'block'; }
+function umClear(i){
+  const b = document.getElementById('um-ans-' + i);
+  if (b) b.style.display = 'none';
+  const card = b ? b.closest('.um-card') : null;
+  if (card){ const ta = card.querySelector('.um-ta'); if (ta) ta.value = ''; }
+}
+/* ---- 语序拼装 ---- */
+function sbPick(el, i){
+  const line = document.getElementById('sb-line-' + i);
+  const pool = document.getElementById('sb-pool-' + i);
+  if (el.parentNode === pool) line.appendChild(el); else pool.appendChild(el);
+  line.classList.remove('ok', 'bad');
+}
+function sbUndo(i){
+  const line = document.getElementById('sb-line-' + i);
+  const last = line.lastElementChild;
+  if (last) sbPick(last, i);
+}
+function sbReset(i){
+  const pool = document.getElementById('sb-pool-' + i);
+  const line = document.getElementById('sb-line-' + i);
+  Array.prototype.slice.call(line.children).forEach(function(ch){ pool.appendChild(ch); });
+  line.classList.remove('ok', 'bad');
+  document.getElementById('sb-res-' + i).textContent = '';
+}
+function sbCheck(i){
+  const line = document.getElementById('sb-line-' + i);
+  const got = Array.prototype.slice.call(line.children).map(function(ch){ return ch.textContent.trim(); });
+  const want = DOC.sb[i];
+  const left = document.getElementById('sb-pool-' + i).children.length;
+  const res = document.getElementById('sb-res-' + i);
+  const same = got.length === want.length && got.every(function(g, k){ return g === want[k]; });
+  line.classList.remove('ok', 'bad'); line.classList.add(same ? 'ok' : 'bad');
+  res.textContent = same ? '✓ 与参考译文一致' : (left ? '⚠ 还有 ' + left + ' 个词块没放上（语序常有多解，请对照参考语序）' : '⚠ 与参考译文语序不同（德语语序常有多解，请对照参考语序）');
+  res.className = 'fill-result ' + (same ? 'correct' : 'wrong');
+}
+function sbShow(i){
+  const line = document.getElementById('sb-line-' + i);
+  const pool = document.getElementById('sb-pool-' + i);
+  Array.prototype.slice.call(line.children).forEach(function(ch){ pool.appendChild(ch); });
+  DOC.sb[i].forEach(function(txt){
+    Array.prototype.slice.call(pool.children).some(function(ch){
+      if (ch.textContent.trim() === txt && ch.parentNode === pool){ line.appendChild(ch); return true; }
+      return false;
+    });
+  });
+  line.classList.remove('bad'); line.classList.add('ok');
+  const res = document.getElementById('sb-res-' + i);
+  res.textContent = '参考语序';
+  res.className = 'fill-result correct';
+}
+/* ---- Redemittel ---- */
+function rmPick(el){ el.classList.toggle('on'); }
+function rmCopy(id, btn){
+  const el = document.getElementById(id);
+  if (!el) return;
+  const txt = Array.prototype.slice.call(el.querySelectorAll('.rm-chip'))
+    .map(function(c){ return c.textContent.trim(); }).join('\n');
+  const done = function(){
+    if (!btn) return;
+    const old = btn.textContent;
+    btn.textContent = '✓ 已复制';
+    setTimeout(function(){ btn.textContent = old; }, 1500);
+  };
+  const fallback = function(){
+    try {
+      const ta = document.createElement('textarea');
+      ta.value = txt; document.body.appendChild(ta); ta.select();
+      document.execCommand('copy'); document.body.removeChild(ta); done();
+    } catch (e) { alert('复制失败，请手动选择文本'); }
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(done, fallback);
+  } else { fallback(); }
+}
+
+</script>
+</body>
+</html>

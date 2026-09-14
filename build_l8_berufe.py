@@ -99,10 +99,8 @@ def sec_home(d):
         ('eigenschaften', '🧩 Eigenschaften 属性', '%d 组名词↔形容词 + %d 条描述配对' % (len(d['eigenschaften']['table']), len(d['eigenschaften']['match']))),
         ('softskills', '🎯 Ü2 Soft Skills', '%d 空 · 三选一' % len(d['softskills']['gaps'])),
         ('umformen', '🔤 Ü9 改写', '%d 句 · zwar … aber 等句型' % len(d['umformen']['items'])),
-        ('redemittel', '💬 Redemittel 表达库', '%d 栏优缺点 + %d 栏统计描述' % (len(d['redemittel']['vorteile']['cols']), len(d['redemittel']['statistik']['cols']))),
         ('berufe', '🃏 Beruferaten 猜职业', '%d 张任务卡 + 示例对话' % len(d['berufe']['tasks'])),
         ('uebersetzen', '🎯 Ü11 中译德', '%d 句 · 中文原文 + 参考译文' % len(d['uebersetzen']['sentences'])),
-        ('spiele', '🏆 课堂游戏 & 计分板', '%d 个活动 + A/B 计分 + 计时' % len(d['klassenspiele'])),
     ]
     g = ''.join('<div class="text-card home-card" onclick="switchSection(\'%s\')"><h3>%s</h3><p>%s</p></div>'
                 % (i, t, s) for i, t, s in cards)
@@ -427,31 +425,7 @@ def sec_umformen(d):
        '\n'.join(sb_cards))
 
 
-# ---------------------------------------------------------------- 11 redemittel
-def sec_redemittel(d):
-    r = d['redemittel']
-
-    def col(c, cid):
-        chips = ''.join('<span class="rm-chip" onclick="rmPick(this)">%s</span>' % h(x) for x in c['items'])
-        return ('<div class="rm-col" id="%s"><div class="rm-head">%s'
-                '<button class="btn tiny ghost" onclick="rmCopy(\'%s\',this)">📋 复制</button></div>'
-                '<div class="rm-body">%s</div></div>' % (cid, h(c['label']), cid, chips))
-
-    vor = ''.join(col(c, 'rmV%d' % i) for i, c in enumerate(r['vorteile']['cols']))
-    sta = ''.join(col(c, 'rmS%d' % i) for i, c in enumerate(r['statistik']['cols']))
-    return '''    <section id="redemittel">
-      <h2 class="section-title"><span class="num">10</span> 💬 表达库 · Redemittel</h2>
-      <p class="zh-hint">点一条表达高亮，方便学生跟读；老师可点「复制」把整栏拿去做板书。表达全部取自教材 / 教师课件原文。</p>
-      <h3 class="rm-title">%s <span class="src">%s</span></h3>
-      <div class="rm-grid rm-grid-2">%s</div>
-      <h3 class="rm-title">%s <span class="src">%s</span></h3>
-      <div class="rm-grid rm-grid-4">%s</div>
-    </section>
-''' % (h(r['vorteile']['title']), h(r['vorteile'].get('src', '')), vor,
-       h(r['statistik']['title']), h(r['statistik'].get('src', '')), sta)
-
-
-# ---------------------------------------------------------------- 12 berufe (Ü3)
+# ---------------------------------------------------------------- 10 berufe (Ü3)
 def sec_berufe(d):
     b = d['berufe']
     cards = ''.join('<div class="vc-card br-card" onclick="flipCard(this)"><div class="vc-inner">'
@@ -463,7 +437,7 @@ def sec_berufe(d):
                  for a, t in b['example'])
     pc = ''.join('<li lang="de">%s</li>' % h(x) for x in b['procontra_example'])
     return '''    <section id="berufe">
-      <h2 class="section-title"><span class="num">11</span> 🃏 %s <span class="src src-lg">%s</span></h2>
+      <h2 class="section-title"><span class="num">10</span> 🃏 %s <span class="src src-lg">%s</span></h2>
       <p class="zh-hint">%s</p>
       <p class="zh-hint note">操作：点卡片翻面看中文任务；说出职业名之前不许把职业说出来。</p>
       <div class="vocab-grid br-grid">%s</div>
@@ -491,7 +465,7 @@ def sec_uebersetzen(d):
           </div>
         </div>''' % (i + 1, h(s['zh']), h(s['tip']), i + 1, h(s['de'])))
     return '''    <section id="uebersetzen">
-      <h2 class="section-title"><span class="num">12</span> 🎯 %s <span class="src src-lg">%s</span></h2>
+      <h2 class="section-title"><span class="num">11</span> 🎯 %s <span class="src src-lg">%s</span></h2>
       <p class="zh-hint">先自己译，再点卡片翻面核对参考译文。译法不唯一，句型正确、意义完整即算对。</p>
       <div class="highlight-box">📄 中文原文：<br>%s</div>
       <div class="translation-grid">%s</div>
@@ -501,30 +475,6 @@ def sec_uebersetzen(d):
 ''' % (h(u['title']), h(u.get('src', '')), h(u['zhFull']), '\n'.join(cards),
        tools_buttons(['<button class="btn ghost" onclick="toggleBox(\'fullDe\')">👁 整段参考译文</button>']),
        h(u['deFull']))
-
-
-# ---------------------------------------------------------------- 14 spiele
-def sec_spiele(d):
-    games = ''.join('<div class="game-card"><div class="game-name">%s <span class="game-time">%s</span></div>'
-                    '<p>%s</p></div>' % (h(g['name']), h(g['time']), h(g['desc']))
-                    for g in d['klassenspiele'])
-    return '''    <section id="spiele">
-      <h2 class="section-title"><span class="num">13</span> 🏆 课堂游戏 &amp; 计分板</h2>
-      <p class="zh-hint">点「+1 / −1」记分，比分在投影上实时可见；计时器用于控场。</p>
-      <div class="scoreboard">
-        <div class="team"><div class="team-name">Team A</div><div class="team-score" id="scoreA">0</div>
-          <div class="team-btns"><button class="btn" onclick="addScore('A',1)">+1</button>
-          <button class="btn ghost" onclick="addScore('A',-1)">−1</button></div></div>
-        <div class="team"><div class="team-name">Team B</div><div class="team-score" id="scoreB">0</div>
-          <div class="team-btns"><button class="btn" onclick="addScore('B',1)">+1</button>
-          <button class="btn ghost" onclick="addScore('B',-1)">−1</button></div></div>
-        <div class="team reset-team"><button class="btn ghost" onclick="resetScore()">↺ 比分归零</button>
-          <div class="timer" id="classTimer">30</div>
-          <button class="btn tiny" onclick="startTimer('classTimer',30)">▶ 30s</button></div>
-      </div>
-      <div class="games-grid">%s</div>
-    </section>
-''' % games
 
 
 # ---------------------------------------------------------------- CSS
@@ -682,19 +632,6 @@ EXTRA_CSS = '''
   .sb-line.ok .sb-chunk { background: #e8f8e8; }
   .sb-line.bad .sb-chunk { background: #fdecea; border-color: #e74c3c; color: #b3261e; }
 
-  /* ===== Redemittel 表达库 ===== */
-  .rm-title { font-size: var(--fs-h3); margin: 20px 0 8px; }
-  .rm-grid { display: grid; gap: var(--sp-3); }
-  .rm-grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .rm-grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-  .rm-col { background: #fff; border-radius: 10px; padding: 12px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
-  .rm-head { font-weight: 600; font-size: 15px; color: #0b56b8; margin-bottom: 8px;
-             display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-  .rm-body { display: flex; flex-wrap: wrap; gap: 8px; }
-  .rm-chip { background: #f8f9fa; border: 1px solid #e1e5ea; border-radius: 10px; padding: 8px 12px;
-             font-size: var(--fs-body); cursor: pointer; line-height: 1.5; }
-  .rm-chip:hover { border-color: #1a73e8; }
-  .rm-chip.on { background: #e8f0fe; border-color: #1a73e8; color: #17427f; font-weight: 600; }
 
   /* ===== Beruferaten 猜职业 ===== */
   .br-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -705,20 +642,6 @@ EXTRA_CSS = '''
   .br-pc { margin: 8px 0 0; padding-left: 20px; }
   .br-pc li { font-size: var(--fs-body); line-height: 1.7; }
 
-  /* ===== 计分 & 游戏 ===== */
-  .scoreboard { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
-  .team { flex: 1 1 150px; background: #fff; border-radius: 12px; padding: 12px; text-align: center;
-          box-shadow: 0 1px 3px rgba(0,0,0,.06); }
-  .team-name { font-size: 15px; color: #5f6672; }
-  .team-score { font-size: 46px; font-weight: 700; color: #0b56b8; line-height: 1.1; }
-  .team-btns { display: flex; gap: 8px; justify-content: center; }
-  .games-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-2); }
-  .game-card { background: #fff; border-radius: 10px; padding: 12px; box-shadow: 0 1px 3px rgba(0,0,0,.06);
-               display: flex; flex-direction: column; }
-  .game-name { font-weight: 600; font-size: 15px; margin-bottom: 4px; }
-  .game-time { font-size: 13px; color: #0b56b8; background: #eef4ff; border-radius: 10px; padding: 4px 8px;
-               white-space: nowrap; }
-  .game-card p { font-size: var(--fs-body); color: #5f6672; margin: 4px 0 0; line-height: 1.65; }
 
   /* ===== 连线 ===== */
   .connect-game { background: #fff; border-radius: 10px; padding: 16px; margin-bottom: 12px;
@@ -781,7 +704,6 @@ EXTRA_CSS = '''
   }
   @media (max-width: 900px) {
     .connect-field { gap: 12px; }
-    .rm-grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .es-input { max-width: 100%; }
     /* 触控设备（窄屏）把词条出处按钮抬到 34px 以上，手指能点到 */
     .vc-detail { width: 34px; height: 34px; font-size: 15px; opacity: .85; }
@@ -789,9 +711,7 @@ EXTRA_CSS = '''
   }
   @media (max-width: 820px) {
     .mm-board { grid-template-columns: 1fr; }
-    .rm-grid-2 { grid-template-columns: 1fr; }
     .blitz-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .games-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .br-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .connect-col { min-width: 88px; }
     .c-item { padding: 8px; font-size: 15px; }
@@ -803,11 +723,10 @@ EXTRA_CSS = '''
     .vocab-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
     .cloze-p { line-height: 2.2; }
     .cloze-blank { min-width: 88px; }
-    .rm-grid-4, .rm-grid-2 { grid-template-columns: 1fr; }
     .connect-field { gap: 8px; }
     .connect-col { min-width: 0; }
     .c-item { font-size: 14px; padding: 6px; }
-    .games-grid, .blitz-grid, .br-grid { grid-template-columns: 1fr; }
+    .blitz-grid, .br-grid { grid-template-columns: 1fr; }
     /* 属性表在窄屏改用固定布局，格内自适应换行，彻底消除表格撑宽页面 */
     .es-table { table-layout: fixed; }
     .es-table th, .es-table td { padding: 6px 8px; }
@@ -816,7 +735,6 @@ EXTRA_CSS = '''
   }
   @media (max-width: 560px) {
     p, li, .zh-hint, .cloze-p, .tc-zh, .bz-cn, .um-src, .es-d { line-height: 1.9; }
-    .team-score { font-size: 38px; }
     .timer { font-size: 28px; }
   }
   @media (min-width: 1500px) {
@@ -847,7 +765,7 @@ EXTRA_CSS = '''
   }
   @media (hover: none) {
     .btn, .person-btn, .hamburger { min-height: 42px; }
-    .bank-chip, .mm-chip, .ss-opt, .c-item, .sb-chunk, .rm-chip { min-height: 34px; }
+    .bank-chip, .mm-chip, .ss-opt, .c-item, .sb-chunk { min-height: 34px; }
     .vc-card .vc-detail { opacity: 1; }
     .vc-detail { width: 36px; height: 36px; font-size: 15px; }
     .fill-check { min-height: 42px; }
@@ -864,18 +782,17 @@ EXTRA_CSS = '''
      卡片与词面允许在词内断行，配合 lang=de 的连字符规则优先在音节处断 */
   .vc-card { min-width: 0; }
   .vc-front, .vc-back, .vc-w, .vc-note { overflow-wrap: anywhere; }
-  .blitz-grid, .games-grid, .home-grid, .br-grid { grid-auto-rows: 1fr; }
-  .text-card, .game-card, .blitz-card, .rm-col { height: 100%; }
-  .zh-hint, .zh-hint.note, .fill-zh, .ss-zh, .game-card p, .text-card p, p, li, .vt-cn, .vt-de,
-  .c-item, .bank-box, .br-say, .br-pc li, .lk-zh li, .um-src, .um-tip, .es-d, .sb-zh, .tc-zh,
-  .rm-chip, .ss-opt, .mm-chip, .bank-chip, .cloze-p, .de-full, .tc-de {
+  .blitz-grid, .home-grid, .br-grid { grid-auto-rows: 1fr; }
+  .text-card, .blitz-card { height: 100%; }
+  .zh-hint, .zh-hint.note, .fill-zh, .ss-zh, .text-card p, p, li, .vt-cn, .vt-de,
+  .c-item, .bank-box, .br-say, .br-pc li, .lk-zh li, .um-src, .um-tip, .es-d, .sb-zh, .tc-zh, .ss-opt, .mm-chip, .bank-chip, .cloze-p, .de-full, .tc-de {
     font-size: var(--fs-body) !important; line-height: 1.7;
   }
-  .meta, .mm-head, .team-name, .fl-t, td, .game-time, .highlight-box, .btn, .person-btn,
+  .meta, .mm-head, .fl-t, td, .highlight-box, .btn, .person-btn,
   .vc-note, .es-select, .fill-input, .fill-check { font-size: var(--fs-sm) !important; }
-  .src, .game-time, .team-name, .vt-de .vc-note { font-size: var(--fs-cap) !important; }
+  .src, .vt-de .vc-note { font-size: var(--fs-cap) !important; }
   h1, .hero h1 { font-size: var(--fs-h1) !important; }
-  h2, h3, .section-title, .rm-title, .connect-game h3 { font-size: var(--fs-h3) !important; }
+  h2, h3, .section-title, .connect-game h3 { font-size: var(--fs-h3) !important; }
   .vc-w { font-weight: 700; }
   /* 词条出处按钮：模板里是 20×20 / 10px（悬停才显形）→ 抬高到可读可点 */
   .vc-detail { width: 28px; height: 28px; font-size: 13px; right: 2px; bottom: 2px; }
@@ -892,19 +809,19 @@ EXTRA_CSS = '''
   .vc-front, .vc-back, .tc-de, .blitz-card .bz-de { font-size: var(--fs-word) !important; }
 
   /* ===== 换行质量层 ===== */
-  p, li, .zh-hint, .tc-zh, .bz-cn, .es-d, .um-src, .de-full, .highlight-box, .text-card p, .game-card p {
+  p, li, .zh-hint, .tc-zh, .bz-cn, .es-d, .um-src, .de-full, .highlight-box, .text-card p {
     text-wrap: pretty; line-height: 1.85; line-break: strict;
   }
   /* 注意：text-wrap 是 text-wrap-mode 的简写，会把 white-space:nowrap 顶回 wrap，
      所以 nowrap 语义的元素（.vc-note / .vt-de / .fl-t）一律不放进上面的组 */
-  .vc-note, .vt-de, .fl-t, .cloze-blank, .game-time { white-space: nowrap; }
+  .vc-note, .vt-de, .fl-t, .cloze-blank { white-space: nowrap; }
   .vc-note { white-space: normal; }
   .vc-note.vc-pl { white-space: nowrap; }
-  h1, h2, h3, h4, .section-title, .game-name, .mm-head, .rm-title, .rm-head { text-wrap: balance; }
+  h1, h2, h3, h4, .section-title, .mm-head { text-wrap: balance; }
   .um-src, .um-ans, .es-d, .br-say, .tc-de, .de-full, .sb-chunk, [lang="de"] {
     hyphens: auto; -webkit-hyphens: auto; overflow-wrap: break-word;
   }
-  .lk-zh li, .br-pc li, .obj-box ul li, .game-card ul li { padding-left: 1.5em; text-indent: -1.5em; }
+  .lk-zh li, .br-pc li, .obj-box ul li li { padding-left: 1.5em; text-indent: -1.5em; }
 '''
 
 
@@ -975,17 +892,6 @@ function resetTimer(id, sec){
   stopTimer(id);
   const el = document.getElementById(id);
   if (el){ el.textContent = sec; el.classList.remove('warn'); }
-}
-/* ---- 计分板 ---- */
-const scores = {A: 0, B: 0};
-function addScore(t, d){
-  scores[t] = Math.max(0, scores[t] + d);
-  document.getElementById('score' + t).textContent = scores[t];
-}
-function resetScore(){
-  scores.A = 0; scores.B = 0;
-  document.getElementById('scoreA').textContent = '0';
-  document.getElementById('scoreB').textContent = '0';
 }
 /* ---- 连线配对 ---- */
 function cClick(el){
@@ -1270,30 +1176,6 @@ function sbShow(i){
   res.textContent = '参考语序';
   res.className = 'fill-result correct';
 }
-/* ---- Redemittel ---- */
-function rmPick(el){ el.classList.toggle('on'); }
-function rmCopy(id, btn){
-  const el = document.getElementById(id);
-  if (!el) return;
-  const txt = Array.prototype.slice.call(el.querySelectorAll('.rm-chip'))
-    .map(function(c){ return c.textContent.trim(); }).join('\\n');
-  const done = function(){
-    if (!btn) return;
-    const old = btn.textContent;
-    btn.textContent = '✓ 已复制';
-    setTimeout(function(){ btn.textContent = old; }, 1500);
-  };
-  const fallback = function(){
-    try {
-      const ta = document.createElement('textarea');
-      ta.value = txt; document.body.appendChild(ta); ta.select();
-      document.execCommand('copy'); document.body.removeChild(ta); done();
-    } catch (e) { alert('复制失败，请手动选择文本'); }
-  };
-  if (navigator.clipboard && navigator.clipboard.writeText){
-    navigator.clipboard.writeText(txt).then(done, fallback);
-  } else { fallback(); }
-}
 '''
 
 
@@ -1374,8 +1256,7 @@ def main():
     secs = [('home', '首页'), ('vocab', '📇 E1 词汇'), ('vocab2', '📗 E2 词汇'), ('blitz', '⚡ 抢答'),
             ('connect', '🔗 连线'), ('mindmap', '🗺️ 词场'), ('luecken', '✍️ 动词填空'),
             ('eigenschaften', '🧩 属性配对'), ('softskills', '🎯 软技能'), ('umformen', '🔤 改写'),
-            ('redemittel', '💬 表达库'), ('berufe', '🃏 猜职业'), ('uebersetzen', '🎯 中译德'),
-            ('spiele', '🏆 游戏')]
+            ('berufe', '🃏 猜职业'), ('uebersetzen', '🎯 中译德')]
 
     css = open(os.path.join(DIR, 'template_css.css'), encoding='utf-8').read()
     css = css.replace('</style>', EXTRA_CSS + '</style>')
@@ -1390,7 +1271,7 @@ def main():
 
     body = (sec_home(d) + sec_vocab(d) + sec_vocab2(d) + sec_blitz(d) + sec_connect(d) +
             sec_mindmap(d) + sec_luecken(d) + sec_eigenschaften(d) + sec_softskills(d) +
-            sec_umformen(d) + sec_redemittel(d) + sec_berufe(d) + sec_uebersetzen(d) + sec_spiele(d))
+            sec_umformen(d) + sec_berufe(d) + sec_uebersetzen(d))
 
     sb = [it['ans'].split('｜')[0].strip().split() for it in d['umformen']['items']]
     data_js = json.dumps({'sb': sb}, ensure_ascii=False)
@@ -1452,10 +1333,9 @@ def main():
           % (len(d['luecken']['gaps']), len(d['luecken']['bank']),
              len(d['eigenschaften']['table']), len(d['eigenschaften']['match']),
              len(d['softskills']['gaps'])))
-    print('umformen = %d | redemittel cols = %d+%d | berufe tasks = %d | uebersetzung sentences = %d | games = %d'
-          % (len(d['umformen']['items']), len(d['redemittel']['vorteile']['cols']),
-             len(d['redemittel']['statistik']['cols']), len(d['berufe']['tasks']),
-             len(d['uebersetzen']['sentences']), len(d['klassenspiele'])))
+    print('umformen = %d | berufe tasks = %d | uebersetzung sentences = %d'
+          % (len(d['umformen']['items']), len(d['berufe']['tasks']),
+             len(d['uebersetzen']['sentences'])))
     print('vc-card = %d | cloze-blank = %d | input[data-ans] = %d | css %d bytes'
           % (html.count('class="vc-card'), html.count('cloze-blank'),
              html.count('data-ans='), len(css)))

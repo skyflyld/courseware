@@ -1,1501 +1,1378 @@
 {
- "meta": {
-  "lektion": 8,
-  "title": "Was will ich werden? Was kann ich werden?",
-  "subtitle": "Lektion 8 · Berufe und Berufswahl · 互动词汇与练习课件",
-  "source": "《新经典德语》第二册 Lektion 8 · 教材 S.220–228（8 页照片）+ 教师课件 Lektion 8(2).pptx（曹嘉桢老师，答案页）",
-  "objectives": [
-   "Berufe und Berufsfelder benennen und beschreiben（说出并描述职业与职业领域）",
-   "über Vor- und Nachteile von Berufen diskutieren（讨论职业的优缺点）",
-   "über Berufswahl von Frauen und Männern sprechen und eine Statistik beschreiben（谈职业选择的性别差异并描述统计）",
-   "eigene Stärken und Interessen benennen und Tipps zur Berufsberatung geben（说出自身强项与兴趣，给出职业咨询建议）",
-   "Berufswünsche äußern und begründen（表达并论证职业愿望）"
+  "meta": {
+    "lektion": 8,
+    "title": "Was will ich werden? Was kann ich werden?",
+    "subtitle": "Lektion 8 · Berufe und Berufswahl · 互动词汇与练习课件",
+    "source": "《新经典德语》第二册 Lektion 8 · 教材 S.220–228（8 页照片）+ 教师课件 Lektion 8(2).pptx（曹嘉桢老师，答案页）",
+    "objectives": [
+      "Berufe und Berufsfelder benennen und beschreiben（说出并描述职业与职业领域）",
+      "über Vor- und Nachteile von Berufen diskutieren（讨论职业的优缺点）",
+      "über Berufswahl von Frauen und Männern sprechen und eine Statistik beschreiben（谈职业选择的性别差异并描述统计）",
+      "eigene Stärken und Interessen benennen und Tipps zur Berufsberatung geben（说出自身强项与兴趣，给出职业咨询建议）",
+      "Berufswünsche äußern und begründen（表达并论证职业愿望）"
+    ],
+    "flow": [
+      "① 热身：Wortfeld Beruf 词场归类",
+      "② 词汇：Entdecken 1 · 54 词（四组）",
+      "③ 词汇：Entdecken 2 · 46 词（四组）",
+      "④ 抢答：中 → 德 18 张",
+      "⑤ 连线：任务 / 利弊 / 名词↔形容词",
+      "⑥ Ü2 动词填空：Anstrengende Arbeitstage",
+      "⑦ Entdecken 2 Ü1：Eigenschaften 名词↔形容词 + 描述配对",
+      "⑧ Ü2：Ohne Soft Skills geht es nicht（三选一）",
+      "⑨ Ü9：zwar … aber / nicht nur … sondern auch / sowohl … als auch 改写",
+      "⑩ Ü3：Beruferaten 任务卡",
+      "⑪ Ü11：中译德（教材原文 + 参考译文）"
+    ]
+  },
+  "vocabGroups": [
+    {
+      "id": "G1",
+      "label": "💼 职业与工作世界 · Beruf & Arbeitswelt",
+      "src": "教材 S.229 · Entdecken 1 词汇表",
+      "words": [
+        {
+          "w": "die Anforderung -en",
+          "cn": "(对能力等的) 要求"
+        },
+        {
+          "w": "die Teilzeit -en meist Sg",
+          "cn": "兼职"
+        },
+        {
+          "w": "das Homeoffice -s",
+          "cn": "居家办公"
+        },
+        {
+          "w": "die Bewerbung -en",
+          "cn": "求职，申请；申请书"
+        },
+        {
+          "w": "freiwillig",
+          "cn": "自愿的，志愿的，非义务的"
+        },
+        {
+          "w": "ideal",
+          "cn": "理想的，完美的"
+        },
+        {
+          "w": "der Verdienst -e",
+          "cn": "工资，收入；盈利"
+        },
+        {
+          "w": "die Methode -n",
+          "cn": "方法，办法"
+        },
+        {
+          "w": "effektiv",
+          "cn": "有效的"
+        },
+        {
+          "w": "die Sendung -en",
+          "cn": "(播送的) 节目；邮寄(的东西)；寄送，运送"
+        },
+        {
+          "w": "die Technologie -n",
+          "cn": "工艺，技术"
+        },
+        {
+          "w": "der Betrieb -e",
+          "cn": "企业，工厂"
+        },
+        {
+          "w": "nach/gehen +D",
+          "cn": "从事，经营，致力于"
+        },
+        {
+          "w": "die Laufbahn -en",
+          "cn": "生涯；跑道"
+        },
+        {
+          "w": "der Anfänger -",
+          "cn": "初学者，新手"
+        }
+      ]
+    },
+    {
+      "id": "G2",
+      "label": "🛠️ 工作行为动词 · Tätigkeiten & Handlungen",
+      "src": "教材 S.229 · Entdecken 1 词汇表",
+      "words": [
+        {
+          "w": "beraten +A",
+          "cn": "提供建议，给……出主意"
+        },
+        {
+          "w": "servieren (+A)",
+          "cn": "端上，上(菜)"
+        },
+        {
+          "w": "pflegen +A",
+          "cn": "看护，照料，护理；保养，维护"
+        },
+        {
+          "w": "reparieren +A",
+          "cn": "修理，修缮"
+        },
+        {
+          "w": "schaden +D",
+          "cn": "损害，伤害，危害"
+        },
+        {
+          "w": "erfordern +A",
+          "cn": "(物作主语) 需要，要求"
+        },
+        {
+          "w": "führen +zu Dat",
+          "cn": "导致，通向"
+        },
+        {
+          "w": "erfahren +A",
+          "cn": "获悉，得知；经历到，体验到"
+        },
+        {
+          "w": "dominieren",
+          "cn": "占统治地位，占优势"
+        },
+        {
+          "w": "ermutigen +A",
+          "cn": "鼓励，使鼓起勇气"
+        },
+        {
+          "w": "vertreten",
+          "cn": "在场的，出席的"
+        },
+        {
+          "w": "(an jm/etw.) ist (et)was/nichts auszusetzen",
+          "cn": "对……有所争议 / 无可非议"
+        },
+        {
+          "w": "entsprechen +D",
+          "cn": "符合，适应"
+        }
+      ]
+    },
+    {
+      "id": "G3",
+      "label": "🔗 连接词与副词 · Konnektoren & Adverbien",
+      "src": "教材 S.229 · Entdecken 1 词汇表",
+      "words": [
+        {
+          "w": "abwechslungsreich",
+          "cn": "变化多样的，不单调的"
+        },
+        {
+          "w": "sinnvoll",
+          "cn": "有意义的"
+        },
+        {
+          "w": "zwar … aber",
+          "cn": "虽然……但是"
+        },
+        {
+          "w": "nicht nur … sondern auch",
+          "cn": "不仅……而且"
+        },
+        {
+          "w": "zusätzlich",
+          "cn": "附加的，补充的，追加的"
+        },
+        {
+          "w": "dennoch",
+          "cn": "尽管如此，然而"
+        },
+        {
+          "w": "inhaltlich",
+          "cn": "在内容上，就内容而言"
+        },
+        {
+          "w": "erforderlich",
+          "cn": "需要的，必需的，不可缺少的"
+        },
+        {
+          "w": "nach wie vor",
+          "cn": "一如既往，始终"
+        },
+        {
+          "w": "kaum",
+          "cn": "几乎不"
+        },
+        {
+          "w": "demnach",
+          "cn": "因此，因而"
+        },
+        {
+          "w": "jeweilig",
+          "cn": "各自的，分别的；当时的"
+        },
+        {
+          "w": "stereotyp",
+          "cn": "刻板的，公式化的，老一套的"
+        }
+      ]
+    },
+    {
+      "id": "G4",
+      "label": "📊 职业选择与统计 · Berufswahl & Statistik",
+      "src": "教材 S.229 · Entdecken 1 词汇表",
+      "words": [
+        {
+          "w": "das Jahrzehnt -e",
+          "cn": "十年"
+        },
+        {
+          "w": "der Kfz-Mechatroniker -",
+          "cn": "汽车机电工，汽车机电工程师"
+        },
+        {
+          "w": "das Geschlecht -er",
+          "cn": "性别"
+        },
+        {
+          "w": "das Metall -e",
+          "cn": "金属"
+        },
+        {
+          "w": "das Gesundheitswesen nur Sg",
+          "cn": "卫生事业，医疗保健系统"
+        },
+        {
+          "w": "der Maschinenbau nur Sg",
+          "cn": "机械制造，机械工程"
+        },
+        {
+          "w": "die Psychologie nur Sg",
+          "cn": "心理学"
+        },
+        {
+          "w": "die Vorliebe -n",
+          "cn": "偏好，嗜好"
+        },
+        {
+          "w": "das Muster -",
+          "cn": "范式，模式，典范；样本，模型"
+        },
+        {
+          "w": "die Statistik -en",
+          "cn": "统计，统计数据"
+        },
+        {
+          "w": "die Rangordnung -en",
+          "cn": "排名，顺序，等级"
+        },
+        {
+          "w": "der Kommentar -e",
+          "cn": "评论"
+        },
+        {
+          "w": "das Fazit -e/-s",
+          "cn": "结论"
+        }
+      ]
+    }
   ],
-  "flow": [
-   "① 热身：Wortfeld Beruf 词场归类",
-   "② 词汇：Entdecken 1 · 54 词（四组）",
-   "③ 词汇：Entdecken 2 · 46 词（四组）",
-   "④ 抢答：中 → 德 18 张",
-   "⑤ 连线：任务 / 利弊 / 名词↔形容词",
-   "⑥ Ü2 动词填空：Anstrengende Arbeitstage",
-   "⑦ Entdecken 2 Ü1：Eigenschaften 名词↔形容词 + 描述配对",
-   "⑧ Ü2：Ohne Soft Skills geht es nicht（三选一）",
-   "⑨ Ü9：zwar … aber / nicht nur … sondern auch / sowohl … als auch 改写",
-   "⑩ Redemittel：优缺点 + 统计描述表达库",
-   "⑪ Ü3：Beruferaten 任务卡",
-   "⑫ Ü11：中译德（教材原文 + 参考译文）",
-   "⑬ 课堂游戏 & 计分板"
-  ]
- },
- "vocabGroups": [
-  {
-   "id": "G1",
-   "label": "💼 职业与工作世界 · Beruf & Arbeitswelt",
-   "src": "教材 Entdecken 1 词汇表（页脚未摄入，页码待补）",
-   "words": [
-    {
-     "w": "die Anforderung -en",
-     "cn": "(对能力等的) 要求"
-    },
-    {
-     "w": "die Teilzeit -en meist Sg",
-     "cn": "兼职"
-    },
-    {
-     "w": "das Homeoffice -s",
-     "cn": "居家办公"
-    },
-    {
-     "w": "die Bewerbung -en",
-     "cn": "求职，申请；申请书"
-    },
-    {
-     "w": "freiwillig",
-     "cn": "自愿的，志愿的，非义务的"
-    },
-    {
-     "w": "ideal",
-     "cn": "理想的，完美的"
-    },
-    {
-     "w": "der Verdienst -e",
-     "cn": "工资，收入；盈利"
-    },
-    {
-     "w": "die Methode -n",
-     "cn": "方法，办法"
-    },
-    {
-     "w": "effektiv",
-     "cn": "有效的"
-    },
-    {
-     "w": "die Sendung -en",
-     "cn": "(播送的) 节目；邮寄(的东西)；寄送，运送"
-    },
-    {
-     "w": "die Technologie -n",
-     "cn": "工艺，技术"
-    },
-    {
-     "w": "der Betrieb -e",
-     "cn": "企业，工厂"
-    },
-    {
-     "w": "nach/gehen +D",
-     "cn": "从事，经营，致力于"
-    },
-    {
-     "w": "die Laufbahn -en",
-     "cn": "生涯；跑道"
-    },
-    {
-     "w": "der Anfänger -",
-     "cn": "初学者，新手"
-    }
-   ]
+  "vocabGroupsE2": {
+    "title": "Entdecken 2 · Stärken und Interessen",
+    "src": "教材 S.240 · Entdecken 2 词汇表",
+    "instruction": "点卡片翻面看中文。32 张 E1 核心词 + 本页 46 词 = 全单元 100 词。",
+    "groups": [
+      {
+        "id": "H1",
+        "label": "💪 Soft Skills · 能力名词",
+        "src": "教材 Entdecken 2 词汇表（页码待补）",
+        "words": [
+          {
+            "w": "die Konfliktbereitschaft nur Sg",
+            "cn": "为冲突做好准备"
+          },
+          {
+            "w": "das Selbstbewusstsein nur Sg",
+            "cn": "自信，自信心；自我意识"
+          },
+          {
+            "w": "das Verantwortungsbewusstsein nur Sg",
+            "cn": "责任心，责任感"
+          },
+          {
+            "w": "die Sorgfalt nur Sg",
+            "cn": "细心，细致，认真；小心，谨慎"
+          },
+          {
+            "w": "der Fleiß nur Sg",
+            "cn": "勤奋，努力"
+          },
+          {
+            "w": "die Belastbarkeit nur Sg",
+            "cn": "抗压能力"
+          },
+          {
+            "w": "die Durchsetzungsfähigkeit -en meist Sg",
+            "cn": "坚持自我的能力，贯彻自己的意志和主张的能力"
+          },
+          {
+            "w": "die Teamfähigkeit -en meist Sg",
+            "cn": "团队合作能力"
+          },
+          {
+            "w": "das Einfühlungsvermögen nur Sg",
+            "cn": "移情能力，同理心"
+          }
+        ]
+      },
+      {
+        "id": "H2",
+        "label": "✨ 属性形容词与搭配 · Eigenschaften",
+        "src": "教材 Entdecken 2 词汇表（页码待补）",
+        "words": [
+          {
+            "w": "verantwortungsbewusst",
+            "cn": "有责任感的，负责的"
+          },
+          {
+            "w": "sorgfältig",
+            "cn": "认真的，仔细的，细心的"
+          },
+          {
+            "w": "einfühlsam",
+            "cn": "有移情能力的，善解人意的"
+          },
+          {
+            "w": "fehlerfrei",
+            "cn": "没有缺陷的，无瑕的"
+          },
+          {
+            "w": "gegenüber +Dat",
+            "cn": "面对，在……对面"
+          },
+          {
+            "w": "vertreten +A",
+            "cn": "代表；维护，为……辩护"
+          },
+          {
+            "w": "nach/empfinden +A",
+            "cn": "感同身受，对……抱有同感"
+          },
+          {
+            "w": "fähig +zu Dat",
+            "cn": "有能力的，能干的；能够做的"
+          },
+          {
+            "w": "bereit +zu Dat",
+            "cn": "准备好的；乐意的"
+          },
+          {
+            "w": "überzeugt +von Dat",
+            "cn": "深信不移的，相信的"
+          },
+          {
+            "w": "auf/treten",
+            "cn": "登场，出现；(行为举止)表现出"
+          }
+        ]
+      },
+      {
+        "id": "H3",
+        "label": "🧰 培训与日常用语 · Ausbildung & Alltag",
+        "src": "教材 Entdecken 2 词汇表（页码待补）",
+        "words": [
+          {
+            "w": "der/die Azubi (Abk. für Auszubildende) -s",
+            "cn": "[aˈtsuːbi], [ˈaːtsubi] 职业培训生，学徒"
+          },
+          {
+            "w": "die Geduld nur Sg",
+            "cn": "耐心，忍耐"
+          },
+          {
+            "w": "spannend",
+            "cn": "紧张的，令人兴奋的；引人入胜的"
+          },
+          {
+            "w": "das Fakt -en",
+            "cn": "事实"
+          },
+          {
+            "w": "es gut meinen +mit Dat",
+            "cn": "为了……好，出于好意"
+          },
+          {
+            "w": "es eilig haben",
+            "cn": "急匆匆，急着有事"
+          },
+          {
+            "w": "es gut haben",
+            "cn": "日子过得轻松，过得好"
+          },
+          {
+            "w": "die Revolution -en",
+            "cn": "变革，革命"
+          },
+          {
+            "w": "die Werkstatt ...stätten",
+            "cn": "车间，作坊，工作室"
+          },
+          {
+            "w": "statt +Gen/Dat",
+            "cn": "代替，不……而……"
+          },
+          {
+            "w": "die Realität -en",
+            "cn": "现实，事实，实际"
+          },
+          {
+            "w": "die Radiosprecherin -nen",
+            "cn": "广播电台女播音员"
+          },
+          {
+            "w": "die Fernsehansagerin -nen",
+            "cn": "电视台女播音员"
+          },
+          {
+            "w": "die Malerin -nen",
+            "cn": "女画家"
+          },
+          {
+            "w": "das Ministerium ...rien",
+            "cn": "(政府的) 部，部委"
+          }
+        ]
+      },
+      {
+        "id": "H4",
+        "label": "🌍 职业与社会 · Beruf & Gesellschaft",
+        "src": "教材 Entdecken 2 词汇表（页码待补）",
+        "words": [
+          {
+            "w": "die Beleuchtung -en (meist Sg)",
+            "cn": "光线，灯光；照明"
+          },
+          {
+            "w": "die Versorgung -en",
+            "cn": "补给，供给，供应"
+          },
+          {
+            "w": "männlich",
+            "cn": "男性的"
+          },
+          {
+            "w": "der Mut nur Sg",
+            "cn": "勇气，胆量"
+          },
+          {
+            "w": "folgen +D",
+            "cn": "追寻，遵循；跟上，跟随"
+          },
+          {
+            "w": "bewusst",
+            "cn": "有意识的，清醒的"
+          },
+          {
+            "w": "der Erzieher -",
+            "cn": "育儿师，保育员；教育(工作)者"
+          },
+          {
+            "w": "die Kreativität nur Sg",
+            "cn": "创造力"
+          },
+          {
+            "w": "verwirklichen +A",
+            "cn": "实现"
+          },
+          {
+            "w": "der Führerschein -e",
+            "cn": "驾驶证，驾照"
+          },
+          {
+            "w": "durch/setzen +A",
+            "cn": "贯彻，实施，达到"
+          }
+        ]
+      }
+    ]
   },
-  {
-   "id": "G2",
-   "label": "🛠️ 工作行为动词 · Tätigkeiten & Handlungen",
-   "src": "教材 Entdecken 1 词汇表（页码待补）",
-   "words": [
+  "blitz": [
     {
-     "w": "beraten +A",
-     "cn": "提供建议，给……出主意"
+      "cn": "(对能力等的) 要求",
+      "de": "die Anforderung",
+      "hint": "die Anforderung ___",
+      "src": "E1 词汇表"
     },
     {
-     "w": "servieren (+A)",
-     "cn": "端上，上(菜)"
+      "cn": "兼职",
+      "de": "die Teilzeit",
+      "hint": "die ___ (meist Sg)",
+      "src": "E1 词汇表"
     },
     {
-     "w": "pflegen +A",
-     "cn": "看护，照料，护理；保养，维护"
+      "cn": "居家办公",
+      "de": "das Homeoffice",
+      "hint": "das ___ -s",
+      "src": "E1 词汇表"
     },
     {
-     "w": "reparieren +A",
-     "cn": "修理，修缮"
+      "cn": "求职，申请（书）",
+      "de": "die Bewerbung",
+      "hint": "die ___ -en",
+      "src": "E1 词汇表"
     },
     {
-     "w": "schaden +D",
-     "cn": "损害，伤害，危害"
+      "cn": "工资，收入",
+      "de": "der Verdienst",
+      "hint": "der ___ -e",
+      "src": "E1 词汇表"
     },
     {
-     "w": "erfordern +A",
-     "cn": "(物作主语) 需要，要求"
+      "cn": "变化多样的，不单调的",
+      "de": "abwechslungsreich",
+      "hint": "a__________",
+      "src": "E1 词汇表"
     },
     {
-     "w": "führen +zu Dat",
-     "cn": "导致，通向"
+      "cn": "尽管如此，然而",
+      "de": "dennoch",
+      "hint": "d______",
+      "src": "E1 词汇表"
     },
     {
-     "w": "erfahren +A",
-     "cn": "获悉，得知；经历到，体验到"
+      "cn": "几乎不",
+      "de": "kaum",
+      "hint": "k____",
+      "src": "E1 词汇表"
     },
     {
-     "w": "dominieren",
-     "cn": "占统治地位，占优势"
+      "cn": "因此，因而",
+      "de": "demnach",
+      "hint": "d______",
+      "src": "E1 词汇表"
     },
     {
-     "w": "ermutigen +A",
-     "cn": "鼓励，使鼓起勇气"
+      "cn": "统计（数据）",
+      "de": "die Statistik",
+      "hint": "die ___ -en",
+      "src": "E1 词汇表"
     },
     {
-     "w": "vertreten",
-     "cn": "在场的，出席的"
+      "cn": "排名，等级",
+      "de": "die Rangordnung",
+      "hint": "die ___ -en",
+      "src": "E1 词汇表"
     },
     {
-     "w": "(an jm/etw.) ist (et)was/nichts auszusetzen",
-     "cn": "对……有所争议 / 无可非议"
+      "cn": "结论",
+      "de": "das Fazit",
+      "hint": "das ___ -e/-s",
+      "src": "E1 词汇表"
     },
     {
-     "w": "entsprechen +D",
-     "cn": "符合，适应"
+      "cn": "抗压能力",
+      "de": "die Belastbarkeit",
+      "hint": "die B____________ (nur Sg)",
+      "src": "E2 词汇表"
+    },
+    {
+      "cn": "团队合作能力",
+      "de": "die Teamfähigkeit",
+      "hint": "die T___________",
+      "src": "E2 词汇表"
+    },
+    {
+      "cn": "移情能力，同理心",
+      "de": "das Einfühlungsvermögen",
+      "hint": "das E_________________ (nur Sg)",
+      "src": "E2 词汇表"
+    },
+    {
+      "cn": "勤奋，努力",
+      "de": "der Fleiß",
+      "hint": "der ___ (nur Sg)",
+      "src": "E2 词汇表"
+    },
+    {
+      "cn": "细心，细致",
+      "de": "die Sorgfalt",
+      "hint": "die ___ (nur Sg)",
+      "src": "E2 词汇表"
+    },
+    {
+      "cn": "保育员；教育工作者",
+      "de": "der Erzieher",
+      "hint": "der ___ -",
+      "src": "E2 词汇表"
     }
-   ]
-  },
-  {
-   "id": "G3",
-   "label": "🔗 连接词与副词 · Konnektoren & Adverbien",
-   "src": "教材 Entdecken 1 词汇表（页码待补）",
-   "words": [
+  ],
+  "connectGrids": [
     {
-     "w": "abwechslungsreich",
-     "cn": "变化多样的，不单调的"
+      "title": "🩺 典型工作任务 · Typische Aufgaben（Ü3 a）",
+      "pairs": [
+        [
+          "Fieber messen",
+          "量体温"
+        ],
+        [
+          "beim Anziehen helfen",
+          "帮忙穿衣"
+        ],
+        [
+          "Interviews machen",
+          "做采访"
+        ],
+        [
+          "eine Spritze geben",
+          "打针"
+        ],
+        [
+          "Termine machen",
+          "安排日程"
+        ],
+        [
+          "Schülern helfen",
+          "帮助学生"
+        ],
+        [
+          "Reisen machen",
+          "出差、跑外"
+        ],
+        [
+          "den Unterricht vorbereiten",
+          "备课"
+        ],
+        [
+          "Gäste bedienen",
+          "招待客人"
+        ],
+        [
+          "Maschinen reparieren",
+          "修理机器"
+        ],
+        [
+          "ältere Menschen pflegen",
+          "护理老人"
+        ],
+        [
+          "sich um Patienten kümmern",
+          "照顾病人"
+        ],
+        [
+          "Diebe und Einbrecher suchen",
+          "搜寻盗贼"
+        ],
+        [
+          "Artikel schreiben",
+          "写文章"
+        ],
+        [
+          "neue Programme entwickeln",
+          "开发新程序"
+        ],
+        [
+          "viel von der Welt sehen",
+          "见多识广"
+        ]
+      ],
+      "src": "教材 S.221 · Ü3 a）"
     },
     {
-     "w": "sinnvoll",
-     "cn": "有意义的"
+      "title": "⚖️ 优点与缺点 · Vorteile & Nachteile（Ü3 b）",
+      "pairs": [
+        [
+          "viel Geld verdienen",
+          "挣很多钱"
+        ],
+        [
+          "abwechslungsreich sein",
+          "工作不单调"
+        ],
+        [
+          "ständig etwas Neues lernen",
+          "不断学到新东西"
+        ],
+        [
+          "Überstunden machen",
+          "加班"
+        ],
+        [
+          "anstrengend sein",
+          "累人、辛苦"
+        ],
+        [
+          "neue Menschen kennen lernen",
+          "结识新朋友"
+        ],
+        [
+          "nachts arbeiten",
+          "上夜班"
+        ],
+        [
+          "Sehenswürdigkeiten besichtigen",
+          "游览名胜"
+        ],
+        [
+          "viel Freizeit haben",
+          "空闲时间多"
+        ],
+        [
+          "flexible Arbeitszeiten haben",
+          "弹性工作时间"
+        ],
+        [
+          "kreativ sein können",
+          "能发挥创意"
+        ],
+        [
+          "am Wochenende arbeiten",
+          "周末上班"
+        ]
+      ],
+      "src": "教材 S.221 · Ü3 b）"
     },
     {
-     "w": "zwar … aber",
-     "cn": "虽然……但是"
-    },
-    {
-     "w": "nicht nur … sondern auch",
-     "cn": "不仅……而且"
-    },
-    {
-     "w": "zusätzlich",
-     "cn": "附加的，补充的，追加的"
-    },
-    {
-     "w": "dennoch",
-     "cn": "尽管如此，然而"
-    },
-    {
-     "w": "inhaltlich",
-     "cn": "在内容上，就内容而言"
-    },
-    {
-     "w": "erforderlich",
-     "cn": "需要的，必需的，不可缺少的"
-    },
-    {
-     "w": "nach wie vor",
-     "cn": "一如既往，始终"
-    },
-    {
-     "w": "kaum",
-     "cn": "几乎不"
-    },
-    {
-     "w": "demnach",
-     "cn": "因此，因而"
-    },
-    {
-     "w": "jeweilig",
-     "cn": "各自的，分别的；当时的"
-    },
-    {
-     "w": "stereotyp",
-     "cn": "刻板的，公式化的，老一套的"
+      "title": "🔤 名词 ← 形容词 · Nomen & Adjektive（Entdecken 2 Ü1）",
+      "pairs": [
+        [
+          "Hilfsbereitschaft",
+          "hilfsbereit"
+        ],
+        [
+          "Selbstbewusstsein",
+          "selbstbewusst"
+        ],
+        [
+          "Verantwortungsbewusstsein",
+          "verantwortungsbewusst"
+        ],
+        [
+          "Sorgfalt",
+          "sorgfältig"
+        ],
+        [
+          "Fleiß",
+          "fleißig"
+        ],
+        [
+          "Belastbarkeit",
+          "belastbar"
+        ],
+        [
+          "Selbstständigkeit",
+          "selbstständig"
+        ],
+        [
+          "Kontaktfreudigkeit",
+          "kontaktfreudig"
+        ],
+        [
+          "Durchsetzungsfähigkeit",
+          "durchsetzungsfähig"
+        ],
+        [
+          "Teamfähigkeit",
+          "teamfähig"
+        ],
+        [
+          "Einfühlungsvermögen",
+          "einfühlsam"
+        ],
+        [
+          "Konfliktbereitschaft",
+          "konfliktbereit"
+        ]
+      ],
+      "src": "Entdecken 2 · W2 Ü1 ①"
     }
-   ]
-  },
-  {
-   "id": "G4",
-   "label": "📊 职业选择与统计 · Berufswahl & Statistik",
-   "src": "教材 Entdecken 1 词汇表（页码待补）",
-   "words": [
-    {
-     "w": "das Jahrzehnt -e",
-     "cn": "十年"
-    },
-    {
-     "w": "der Kfz-Mechatroniker -",
-     "cn": "汽车机电工，汽车机电工程师"
-    },
-    {
-     "w": "das Geschlecht -er",
-     "cn": "性别"
-    },
-    {
-     "w": "das Metall -e",
-     "cn": "金属"
-    },
-    {
-     "w": "das Gesundheitswesen nur Sg",
-     "cn": "卫生事业，医疗保健系统"
-    },
-    {
-     "w": "der Maschinenbau nur Sg",
-     "cn": "机械制造，机械工程"
-    },
-    {
-     "w": "die Psychologie nur Sg",
-     "cn": "心理学"
-    },
-    {
-     "w": "die Vorliebe -n",
-     "cn": "偏好，嗜好"
-    },
-    {
-     "w": "das Muster -",
-     "cn": "范式，模式，典范；样本，模型"
-    },
-    {
-     "w": "die Statistik -en",
-     "cn": "统计，统计数据"
-    },
-    {
-     "w": "die Rangordnung -en",
-     "cn": "排名，顺序，等级"
-    },
-    {
-     "w": "der Kommentar -e",
-     "cn": "评论"
-    },
-    {
-     "w": "das Fazit -e/-s",
-     "cn": "结论"
-    }
-   ]
-  }
- ],
- "vocabGroupsE2": {
-  "title": "Entdecken 2 · Stärken und Interessen",
-  "src": "教材 Entdecken 2 词汇表（页码待补）",
-  "instruction": "点卡片翻面看中文。32 张 E1 核心词 + 本页 46 词 = 全单元 100 词。",
-  "groups": [
-   {
-    "id": "H1",
-    "label": "💪 Soft Skills · 能力名词",
-    "src": "教材 Entdecken 2 词汇表（页码待补）",
+  ],
+  "mindmap": {
+    "title": "Wortfeld Beruf · 职业词场",
+    "instruction": "把词块拖/点进五个维度：要求 · 工作任务 · 工作时间 · 培训 · 工作地点。",
+    "cats": [
+      {
+        "id": "C1",
+        "label": "Anforderungen 要求",
+        "icon": "✅"
+      },
+      {
+        "id": "C2",
+        "label": "Tätigkeiten / Aufgaben 工作任务",
+        "icon": "🛠️"
+      },
+      {
+        "id": "C3",
+        "label": "Arbeitszeiten 工作时间",
+        "icon": "⏰"
+      },
+      {
+        "id": "C4",
+        "label": "Ausbildung 培训",
+        "icon": "🎓"
+      },
+      {
+        "id": "C5",
+        "label": "Arbeitsorte 工作地点",
+        "icon": "📍"
+      }
+    ],
     "words": [
-     {
-      "w": "die Konfliktbereitschaft nur Sg",
-      "cn": "为冲突做好准备"
-     },
-     {
-      "w": "das Selbstbewusstsein nur Sg",
-      "cn": "自信，自信心；自我意识"
-     },
-     {
-      "w": "das Verantwortungsbewusstsein nur Sg",
-      "cn": "责任心，责任感"
-     },
-     {
-      "w": "die Sorgfalt nur Sg",
-      "cn": "细心，细致，认真；小心，谨慎"
-     },
-     {
-      "w": "der Fleiß nur Sg",
-      "cn": "勤奋，努力"
-     },
-     {
-      "w": "die Belastbarkeit nur Sg",
-      "cn": "抗压能力"
-     },
-     {
-      "w": "die Durchsetzungsfähigkeit -en meist Sg",
-      "cn": "坚持自我的能力，贯彻自己的意志和主张的能力"
-     },
-     {
-      "w": "die Teamfähigkeit -en meist Sg",
-      "cn": "团队合作能力"
-     },
-     {
-      "w": "das Einfühlungsvermögen nur Sg",
-      "cn": "移情能力，同理心"
-     }
+      {
+        "w": "Kenntnisse in ...",
+        "c": "C1"
+      },
+      {
+        "w": "Sprachkenntnisse",
+        "c": "C1"
+      },
+      {
+        "w": "Computerkenntnisse",
+        "c": "C1"
+      },
+      {
+        "w": "Führerschein",
+        "c": "C1"
+      },
+      {
+        "w": "Flexibilität",
+        "c": "C1"
+      },
+      {
+        "w": "Zuverlässigkeit",
+        "c": "C1"
+      },
+      {
+        "w": "beraten",
+        "c": "C2"
+      },
+      {
+        "w": "pflegen",
+        "c": "C2"
+      },
+      {
+        "w": "planen",
+        "c": "C2"
+      },
+      {
+        "w": "verkaufen",
+        "c": "C2"
+      },
+      {
+        "w": "reparieren",
+        "c": "C2"
+      },
+      {
+        "w": "bedienen",
+        "c": "C2"
+      },
+      {
+        "w": "Unterricht geben",
+        "c": "C2"
+      },
+      {
+        "w": "schreiben",
+        "c": "C2"
+      },
+      {
+        "w": "entwickeln",
+        "c": "C2"
+      },
+      {
+        "w": "freie / flexible Arbeitszeit",
+        "c": "C3"
+      },
+      {
+        "w": "Teilzeit",
+        "c": "C3"
+      },
+      {
+        "w": "Vollzeit",
+        "c": "C3"
+      },
+      {
+        "w": "Schichtzeit",
+        "c": "C3"
+      },
+      {
+        "w": "Überstunde",
+        "c": "C3"
+      },
+      {
+        "w": "ein Studium in ...",
+        "c": "C4"
+      },
+      {
+        "w": "eine abgeschlossene Ausbildung in ...",
+        "c": "C4"
+      },
+      {
+        "w": "promovieren",
+        "c": "C4"
+      },
+      {
+        "w": "Homeoffice",
+        "c": "C5"
+      },
+      {
+        "w": "Büro",
+        "c": "C5"
+      },
+      {
+        "w": "Fabrik",
+        "c": "C5"
+      },
+      {
+        "w": "Geschäft",
+        "c": "C5"
+      },
+      {
+        "w": "Hotel",
+        "c": "C5"
+      },
+      {
+        "w": "Restaurant",
+        "c": "C5"
+      },
+      {
+        "w": "Schule",
+        "c": "C5"
+      }
+    ],
+    "src": "教材 S.220 · Ü1"
+  },
+  "luecken": {
+    "title": "Anstrengende Arbeitstage · 用动词的正确形式填空",
+    "instruction": "从词库里选词，填入正确的人称与时态（Perfekt / 现在时）。",
+    "bank": [
+      "ansehen",
+      "ausruhen",
+      "bringen",
+      "entspannen",
+      "krankschreiben",
+      "servieren",
+      "sprechen",
+      "verschreiben",
+      "untersuchen",
+      "zurückgeben"
+    ],
+    "text": [
+      "Alex hatte einen anstrengenden Arbeitstag im Restaurant. Er hat von morgens bis abends das Essen {{1}}. Am Schluss hat er einem Kunden die Rechnung {{2}} und vor lauter Müdigkeit das Geld falsch {{3}}. Jetzt möchte sich Alex nur noch {{4}} und sich einen Spielfilm {{5}}.",
+      "Auch Linda hatte heute viel zu tun. Sie hat in der Praxis viele Patienten {{6}} und Medikamente {{7}}. Sie hat mit jedem Patienten lange {{8}} und einige {{9}}, weil sie nicht arbeiten konnten. Nach der Arbeit {{10}} sich Linda am besten beim Sport."
+    ],
+    "gaps": [
+      {
+        "n": 1,
+        "answer": "serviert",
+        "alt": [
+          "hat serviert"
+        ],
+        "zh": "他把菜端了一整天。"
+      },
+      {
+        "n": 2,
+        "answer": "gebracht",
+        "alt": [],
+        "zh": "最后他给一位客人送来了账单。"
+      },
+      {
+        "n": 3,
+        "answer": "zurückgegeben",
+        "alt": [],
+        "zh": "累得把找零给错了。"
+      },
+      {
+        "n": 4,
+        "answer": "ausruhen",
+        "alt": [],
+        "zh": "现在 Alex 只想歇一歇。"
+      },
+      {
+        "n": 5,
+        "answer": "ansehen",
+        "alt": [],
+        "zh": "看一部电影。"
+      },
+      {
+        "n": 6,
+        "answer": "untersucht",
+        "alt": [],
+        "zh": "她在诊所检查了很多病人。"
+      },
+      {
+        "n": 7,
+        "answer": "verschrieben",
+        "alt": [],
+        "zh": "开了药。"
+      },
+      {
+        "n": 8,
+        "answer": "gesprochen",
+        "alt": [],
+        "zh": "和每位病人都谈了很长时间。"
+      },
+      {
+        "n": 9,
+        "answer": "krankgeschrieben",
+        "alt": [
+          "krank geschrieben"
+        ],
+        "zh": "给几个人开了病假条（不能来上班）。"
+      },
+      {
+        "n": 10,
+        "answer": "entspannt",
+        "alt": [],
+        "zh": "下班后 Linda 运动时最放松。"
+      }
+    ],
+    "src": "教材 S.220 · Ü2"
+  },
+  "eigenschaften": {
+    "title": "Eigenschaften · 属性和它的名词形式",
+    "src": "Entdecken 2 · W2 Ü1",
+    "table": [
+      {
+        "n": "Hilfsbereitschaft",
+        "a": "hilfsbereit",
+        "given": true
+      },
+      {
+        "n": "Konfliktbereitschaft",
+        "a": "konfliktbereit",
+        "given": false
+      },
+      {
+        "n": "Selbstbewusstsein",
+        "a": "selbstbewusst",
+        "given": true
+      },
+      {
+        "n": "Verantwortungsbewusstsein",
+        "a": "verantwortungsbewusst",
+        "given": false
+      },
+      {
+        "n": "Sorgfalt",
+        "a": "sorgfältig",
+        "given": true
+      },
+      {
+        "n": "Fleiß",
+        "a": "fleißig",
+        "given": false
+      },
+      {
+        "n": "Belastbarkeit",
+        "a": "belastbar",
+        "given": false
+      },
+      {
+        "n": "Selbstständigkeit",
+        "a": "selbstständig",
+        "given": true
+      },
+      {
+        "n": "Kontaktfreudigkeit",
+        "a": "kontaktfreudig",
+        "given": false
+      },
+      {
+        "n": "Durchsetzungsfähigkeit",
+        "a": "durchsetzungsfähig",
+        "given": false
+      },
+      {
+        "n": "Teamfähigkeit",
+        "a": "teamfähig",
+        "given": true
+      },
+      {
+        "n": "Einfühlungsvermögen",
+        "a": "einfühlsam",
+        "given": true
+      }
+    ],
+    "match": [
+      {
+        "n": "a",
+        "d": "Ich kann gut mit Stress umgehen.",
+        "ans": "Belastbarkeit"
+      },
+      {
+        "n": "b",
+        "d": "Ich unterstütze gerne andere Menschen.",
+        "ans": "Hilfsbereitschaft"
+      },
+      {
+        "n": "c",
+        "d": "Ich kann die Arbeit unabhängig von anderen erledigen.",
+        "ans": "Selbstständigkeit"
+      },
+      {
+        "n": "d",
+        "ans": "Sorgfalt",
+        "d": "Ich erledige meine Aufgabe genau und fehlerfrei."
+      },
+      {
+        "n": "e",
+        "d": "Ich kann meine Interessen anderen gegenüber vertreten.",
+        "ans": "Durchsetzungsfähigkeit"
+      },
+      {
+        "n": "f",
+        "d": "Ich spreche Probleme offen an.",
+        "ans": "Konfliktbereitschaft"
+      },
+      {
+        "n": "g",
+        "d": "Ich arbeite gerne mit anderen in der Gruppe zusammen.",
+        "ans": "Teamfähigkeit"
+      },
+      {
+        "n": "h",
+        "d": "Ich will andere verstehen und kann ihre Gefühle nachempfinden.",
+        "ans": "Einfühlungsvermögen"
+      },
+      {
+        "n": "i",
+        "d": "Ich denke über die Folgen meines Tuns nach und übernehme dafür Verantwortung.",
+        "ans": "Verantwortungsbewusstsein"
+      },
+      {
+        "n": "j",
+        "d": "Ich bin fähig und bereit, mit anderen schnell in Kontakt zu treten.",
+        "ans": "Kontaktfreudigkeit"
+      },
+      {
+        "n": "k",
+        "d": "Ich bin von meinen Fähigkeiten sehr überzeugt und trete selbstsicher auf.",
+        "ans": "Selbstbewusstsein"
+      },
+      {
+        "n": "l",
+        "d": "Ich bin fleißig und mache, was zu tun ist.",
+        "ans": "Fleiß"
+      }
+    ],
+    "note": "「Selbstständigkeit / selbstständig」教材此页写作 selbständig / Selbstständigkeit，两种拼写都通行。"
+  },
+  "softskills": {
+    "title": "Ohne Soft Skills geht es nicht · 三选一填空",
+    "instruction": "从括号里的三个选项中选出正确的一个。",
+    "text": [
+      "Der neue Azubi Markus weiß nicht, wie er das Computerprogramm benutzen muss. Elisa ist im 3. Jahr ihrer Ausbildung und weiß es. Sie zeigt ihm, was er machen muss, denn sie ist {{1}}, Außerdem erinnert sie sich noch gut daran, wie sie sich in den ersten Tagen ihrer Ausbildung gefühlt hat. Elisa ist nämlich {{2}}. Außerdem kann Markus nur dann {{3}}, wenn er weiß, wie alles geht. Elisa hilft Markus auch dabei, sich im Team zurechtzufinden. Denn {{4}} ist wichtig. Sie rät Markus auch, dass er Probleme offen anspricht. Wenn er das tut, ist er {{5}}."
+    ],
+    "gaps": [
+      {
+        "n": 1,
+        "options": [
+          "hilfsbereit",
+          "sorgfältig",
+          "einfühlsam"
+        ],
+        "answer": "hilfsbereit",
+        "zh": "她乐于助人。"
+      },
+      {
+        "n": 2,
+        "options": [
+          "verantwortungsbewusst",
+          "spontan",
+          "einfühlsam"
+        ],
+        "answer": "einfühlsam",
+        "zh": "她有同理心。"
+      },
+      {
+        "n": 3,
+        "options": [
+          "selbstständig arbeiten",
+          "flexibel lernen",
+          "konfliktbereit sein"
+        ],
+        "answer": "selbstständig arbeiten",
+        "zh": "他才能独立工作。"
+      },
+      {
+        "n": 4,
+        "options": [
+          "Durchsetzungsfähigkeit",
+          "Teamfähigkeit",
+          "Belastbarkeit"
+        ],
+        "answer": "Teamfähigkeit",
+        "zh": "团队合作能力很重要。"
+      },
+      {
+        "n": 5,
+        "options": [
+          "konfliktbereit",
+          "belastbar",
+          "teamfähig"
+        ],
+        "answer": "konfliktbereit",
+        "zh": "他就做到了「不回避冲突」。"
+      }
+    ],
+    "src": "Entdecken 2 · W2 Ü2"
+  },
+  "umformen": {
+    "title": "Umformungen · zwar … aber / nicht nur … sondern auch / sowohl … als auch",
+    "instruction": "先自己改写，再点开参考答案核对。注意 zwar 的位置（占句首或紧跟主语）与 aber 引导的并列句语序。",
+    "items": [
+      {
+        "n": "a",
+        "pattern": "zwar … aber",
+        "src": "Heute gehen in Deutschland deutlich mehr Frauen einem Beruf nach als vor einigen Jahrzehnten. Dennoch sind Frauen in manchen Branchen noch immer kaum vertreten.",
+        "ans": "Zwar gehen heute in Deutschland deutlich mehr Frauen einem Beruf nach als vor einigen Jahrzehnten, aber in manchen Branchen sind Frauen noch immer kaum vertreten.",
+        "tip": "Dennoch（尽管如此）→ zwar … aber；zwar 占句首后接动词，aber 后的主句语序正常。"
+      },
+      {
+        "n": "b",
+        "pattern": "sowohl … als auch / nicht nur … sondern auch",
+        "src": "Unter den Top-5-Ausbildungsberufen waren nur die Kauffrau / der Kaufmann und die Verkäuferin / der Verkäufer im Einzelhandel bei beiden Geschlechtern fast gleich beliebt.",
+        "ans": "Unter den Top-5-Ausbildungsberufen gehörten sowohl die Kauffrau / der Kaufmann als auch die Verkäuferin / der Verkäufer im Einzelhandel bei beiden Geschlechtern zu den beliebtesten Ausbildungsberufen. ｜ 也可：… war nicht nur die Kauffrau / der Kaufmann, sondern auch die Verkäuferin / der Verkäufer im Einzelhandel bei beiden Geschlechtern beliebt.",
+        "tip": "「nur … und …」隐含「两者都」→ sowohl … als auch（等立并列）；改用 nicht nur … sondern auch 强调递进，注意 sondern auch 后不带句框。"
+      },
+      {
+        "n": "c",
+        "pattern": "zwar … aber",
+        "src": "Während in einigen der Bau- und Metallberufe deutlich weniger als 10 Prozent der Beschäftigten Frauen waren, betrug ihr Anteil vor allem in den Berufen des Erziehungs- und Gesundheitswesens mehr als 80 Prozent.",
+        "ans": "Zwar waren in einigen der Bau- und Metallberufe deutlich weniger als 10 Prozent der Beschäftigten Frauen, aber ihr Anteil betrug vor allem in den Berufen des Erziehungs- und Gesundheitswesens mehr als 80 Prozent.",
+        "tip": "Während（对比从句）改为 zwar … aber 时：原主句变成 zwar 引导的独立句，原从句内容移入 aber 分句；注意「war(en)」在 zwar 后紧随。"
+      },
+      {
+        "n": "d",
+        "pattern": "zwar … aber",
+        "src": "Heute entscheiden sich mehr Frauen für eine akademische Laufbahn. Trotzdem zeigen sich bei der Studienwahl noch immer deutliche Unterschiede.",
+        "ans": "Heute entscheiden sich zwar mehr Frauen für eine akademische Laufbahn, aber bei der Studienwahl zeigen sich noch immer deutliche Unterschiede.",
+        "tip": "Trotzdem → aber。本句 zwar 不占句首，而是插在动词之后（Heute entscheiden sich zwar mehr Frauen …）。"
+      }
+    ],
+    "src": "教材 S.228 · Ü9"
+  },
+  "berufe": {
+    "title": "Beruferaten · 猜职业",
+    "instruction": "任务卡背面是这个任务的中文。A 方只说优点，B 方只说缺点，其余人猜职业；猜对前不能说出职业名。",
+    "tasks": [
+      {
+        "de": "Fieber messen",
+        "cn": "量体温"
+      },
+      {
+        "de": "beim Anziehen helfen",
+        "cn": "帮人穿衣"
+      },
+      {
+        "de": "Interviews machen",
+        "cn": "做采访"
+      },
+      {
+        "de": "eine Spritze geben",
+        "cn": "打针"
+      },
+      {
+        "de": "Termine machen",
+        "cn": "安排日程"
+      },
+      {
+        "de": "Schülern helfen",
+        "cn": "帮助学生"
+      },
+      {
+        "de": "Reisen machen",
+        "cn": "出差、跑外"
+      },
+      {
+        "de": "den Unterricht vorbereiten",
+        "cn": "备课"
+      },
+      {
+        "de": "verkaufen",
+        "cn": "销售"
+      },
+      {
+        "de": "ältere Menschen pflegen",
+        "cn": "护理老人"
+      },
+      {
+        "de": "sich um Patienten kümmern",
+        "cn": "照护病人"
+      },
+      {
+        "de": "Diebe und Einbrecher suchen",
+        "cn": "搜寻盗贼"
+      },
+      {
+        "de": "Artikel schreiben",
+        "cn": "写文章"
+      },
+      {
+        "de": "neue Programme entwickeln",
+        "cn": "开发新程序"
+      },
+      {
+        "de": "viel von der Welt sehen",
+        "cn": "见多识广"
+      },
+      {
+        "de": "Gäste bedienen",
+        "cn": "招待客人"
+      },
+      {
+        "de": "Maschinen reparieren",
+        "cn": "修理机器"
+      }
+    ],
+    "example": [
+      [
+        "A",
+        "Hast du bei dem Patienten Fieber gemessen?"
+      ],
+      [
+        "B",
+        "Ja, er hat 38 Grad."
+      ]
+    ],
+    "procontra_example": [
+      "Sehenswürdigkeiten zu besichtigen und neue Menschen kennen zu lernen sprechen für diesen Beruf.",
+      "Ein Nachteil ist, dass man in der Saison oft am Wochenende arbeiten muss."
+    ],
+    "src": "教材 S.221 · Ü3"
+  },
+  "uebersetzen": {
+    "title": "Übersetzen · 中译德（奥地利职业选择报告）",
+    "src": "教材 S.228 · Ü11",
+    "zhFull": "奥地利的年轻人在选择培训职业时，经常会根据自己的性别选择特定的职业。许多年轻女性偏爱商务或医疗类的职业培训，而年轻男性则对技术类职业更感兴趣。根据最新的报告《奥地利学徒学习——双元制职业培训》，2023年奥地利女性最常选择零售业培训，而最受男性欢迎的培训职业是电气技术员，其次是金属技术员和汽车机电工。尽管女性和男性在职业选择上仍有较大差异，但在十大培训职业中，金属技术员在两性中受到同样的欢迎，位居第六。这表明，年轻女性在选择职业时开始放弃传统的女性角色模式，并打破职业刻板印象。",
+    "deFull": "Bei der Wahl des Ausbildungsberufs entscheiden sich junge Menschen in Österreich oft je nach Geschlecht für ganz bestimmte Berufe. Während viele junge Frauen eine kaufmännische oder medizinische Ausbildung bevorzugen, interessieren sich junge Männer mehr für technische Berufe. Nach dem neuesten Bericht „Die Lehre – Duale Berufsausbildung in Österreich“ wählten Frauen im Jahr 2023 am häufigsten eine Ausbildung im Einzelhandel, während der beliebteste Ausbildungsberuf von Männern der Elektrotechniker war, danach folgten die Ausbildungen zum Metalltechniker und Kraftfahrzeugmechatroniker / Kfz-Mechatroniker. Zwar unterscheiden sich Frauen und Männer in ihrer Berufswahl noch immer stark voneinander, aber unter den Top-10-Ausbildungsberufen war Metalltechnikerin / Metalltechnik bei beiden Geschlechtern gleich beliebt und lag auf Platz 6. Das zeigt, dass junge Frauen bei ihrer Berufswahl beginnen, das traditionelle Frauenrollenmuster zu verlassen und sich von stereotypen Berufsvorstellungen zu lösen.",
+    "sentences": [
+      {
+        "zh": "奥地利的年轻人在选择培训职业时，经常会根据自己的性别选择特定的职业。",
+        "de": "Bei der Wahl des Ausbildungsberufs entscheiden sich junge Menschen in Österreich oft je nach Geschlecht für ganz bestimmte Berufe.",
+        "tip": "「根据自己的性别」→ je nach Geschlecht（介词短语，不用 Possessiv）；sich entscheiden für +A。",
+        "src": "教材 S.228 · Ü11 ①"
+      },
+      {
+        "zh": "许多年轻女性偏爱商务或医疗类的职业培训，而年轻男性则对技术类职业更感兴趣。",
+        "de": "Während viele junge Frauen eine kaufmännische oder medizinische Ausbildung bevorzugen, interessieren sich junge Männer mehr für technische Berufe.",
+        "tip": "「而」表对比 → Während 从句；bevorzugen +A 偏爱；sich interessieren für +A。",
+        "src": "教材 S.228 · Ü11 ②"
+      },
+      {
+        "zh": "根据最新的报告《奥地利学徒学习——双元制职业培训》，2023年奥地利女性最常选择零售业培训，而最受男性欢迎的培训职业是电气技术员，其次是金属技术员和汽车机电工。",
+        "de": "Nach dem neuesten Bericht „Die Lehre – Duale Berufsausbildung in Österreich“ wählten Frauen im Jahr 2023 am häufigsten eine Ausbildung im Einzelhandel, während der beliebteste Ausbildungsberuf von Männern der Elektrotechniker war, danach folgten die Ausbildungen zum Metalltechniker und Kraftfahrzeugmechatroniker / Kfz-Mechatroniker.",
+        "tip": "报告名用引号书名号照抄；「最常」→ am häufigsten；「其次是」→ danach folgten …（注意动词第二位）。",
+        "src": "教材 S.228 · Ü11 ③"
+      },
+      {
+        "zh": "尽管女性和男性在职业选择上仍有较大差异，但在十大培训职业中，金属技术员在两性中受到同样的欢迎，位居第六。",
+        "de": "Zwar unterscheiden sich Frauen und Männer in ihrer Berufswahl noch immer stark voneinander, aber unter den Top-10-Ausbildungsberufen war Metalltechnikerin / Metalltechnik bei beiden Geschlechtern gleich beliebt und lag auf Platz 6.",
+        "tip": "「尽管……但……」→ zwar … aber；sich von einander unterscheiden；位居第六 → auf Platz 6 liegen。",
+        "src": "教材 S.228 · Ü11 ④"
+      },
+      {
+        "zh": "这表明，年轻女性在选择职业时开始放弃传统的女性角色模式，并打破职业刻板印象。",
+        "de": "Das zeigt, dass junge Frauen bei ihrer Berufswahl beginnen, das traditionelle Frauenrollenmuster zu verlassen und sich von stereotypen Berufsvorstellungen zu lösen.",
+        "tip": "「这表明……」→ Das zeigt, dass …；beginnen … zu +Inf.；sich von … lösen 摆脱。",
+        "src": "教材 S.228 · Ü11 ⑤"
+      }
     ]
-   },
-   {
-    "id": "H2",
-    "label": "✨ 属性形容词与搭配 · Eigenschaften",
-    "src": "教材 Entdecken 2 词汇表（页码待补）",
-    "words": [
-     {
-      "w": "verantwortungsbewusst",
-      "cn": "有责任感的，负责的"
-     },
-     {
-      "w": "sorgfältig",
-      "cn": "认真的，仔细的，细心的"
-     },
-     {
-      "w": "einfühlsam",
-      "cn": "有移情能力的，善解人意的"
-     },
-     {
-      "w": "fehlerfrei",
-      "cn": "没有缺陷的，无瑕的"
-     },
-     {
-      "w": "gegenüber +Dat",
-      "cn": "面对，在……对面"
-     },
-     {
-      "w": "vertreten +A",
-      "cn": "代表；维护，为……辩护"
-     },
-     {
-      "w": "nach/empfinden +A",
-      "cn": "感同身受，对……抱有同感"
-     },
-     {
-      "w": "fähig +zu Dat",
-      "cn": "有能力的，能干的；能够做的"
-     },
-     {
-      "w": "bereit +zu Dat",
-      "cn": "准备好的；乐意的"
-     },
-     {
-      "w": "überzeugt +von Dat",
-      "cn": "深信不移的，相信的"
-     },
-     {
-      "w": "auf/treten",
-      "cn": "登场，出现；(行为举止)表现出"
-     }
-    ]
-   },
-   {
-    "id": "H3",
-    "label": "🧰 培训与日常用语 · Ausbildung & Alltag",
-    "src": "教材 Entdecken 2 词汇表（页码待补）",
-    "words": [
-     {
-      "w": "der/die Azubi (Abk. für Auszubildende) -s",
-      "cn": "[aˈtsuːbi], [ˈaːtsubi] 职业培训生，学徒"
-     },
-     {
-      "w": "die Geduld nur Sg",
-      "cn": "耐心，忍耐"
-     },
-     {
-      "w": "spannend",
-      "cn": "紧张的，令人兴奋的；引人入胜的"
-     },
-     {
-      "w": "das Fakt -en",
-      "cn": "事实"
-     },
-     {
-      "w": "es gut meinen +mit Dat",
-      "cn": "为了……好，出于好意"
-     },
-     {
-      "w": "es eilig haben",
-      "cn": "急匆匆，急着有事"
-     },
-     {
-      "w": "es gut haben",
-      "cn": "日子过得轻松，过得好"
-     },
-     {
-      "w": "die Revolution -en",
-      "cn": "变革，革命"
-     },
-     {
-      "w": "die Werkstatt ...stätten",
-      "cn": "车间，作坊，工作室"
-     },
-     {
-      "w": "statt +Gen/Dat",
-      "cn": "代替，不……而……"
-     },
-     {
-      "w": "die Realität -en",
-      "cn": "现实，事实，实际"
-     },
-     {
-      "w": "die Radiosprecherin -nen",
-      "cn": "广播电台女播音员"
-     },
-     {
-      "w": "die Fernsehansagerin -nen",
-      "cn": "电视台女播音员"
-     },
-     {
-      "w": "die Malerin -nen",
-      "cn": "女画家"
-     },
-     {
-      "w": "das Ministerium ...rien",
-      "cn": "(政府的) 部，部委"
-     }
-    ]
-   },
-   {
-    "id": "H4",
-    "label": "🌍 职业与社会 · Beruf & Gesellschaft",
-    "src": "教材 Entdecken 2 词汇表（页码待补）",
-    "words": [
-     {
-      "w": "die Beleuchtung -en (meist Sg)",
-      "cn": "光线，灯光；照明"
-     },
-     {
-      "w": "die Versorgung -en",
-      "cn": "补给，供给，供应"
-     },
-     {
-      "w": "männlich",
-      "cn": "男性的"
-     },
-     {
-      "w": "der Mut nur Sg",
-      "cn": "勇气，胆量"
-     },
-     {
-      "w": "folgen +D",
-      "cn": "追寻，遵循；跟上，跟随"
-     },
-     {
-      "w": "bewusst",
-      "cn": "有意识的，清醒的"
-     },
-     {
-      "w": "der Erzieher -",
-      "cn": "育儿师，保育员；教育(工作)者"
-     },
-     {
-      "w": "die Kreativität nur Sg",
-      "cn": "创造力"
-     },
-     {
-      "w": "verwirklichen +A",
-      "cn": "实现"
-     },
-     {
-      "w": "der Führerschein -e",
-      "cn": "驾驶证，驾照"
-     },
-     {
-      "w": "durch/setzen +A",
-      "cn": "贯彻，实施，达到"
-     }
-    ]
-   }
-  ]
- },
- "blitz": [
-  {
-   "cn": "(对能力等的) 要求",
-   "de": "die Anforderung",
-   "hint": "die Anforderung ___",
-   "src": "E1 词汇表"
   },
-  {
-   "cn": "兼职",
-   "de": "die Teilzeit",
-   "hint": "die ___ (meist Sg)",
-   "src": "E1 词汇表"
-  },
-  {
-   "cn": "居家办公",
-   "de": "das Homeoffice",
-   "hint": "das ___ -s",
-   "src": "E1 词汇表"
-  },
-  {
-   "cn": "求职，申请（书）",
-   "de": "die Bewerbung",
-   "hint": "die ___ -en",
-   "src": "E1 词汇表"
-  },
-  {
-   "cn": "工资，收入",
-   "de": "der Verdienst",
-   "hint": "der ___ -e",
-   "src": "E1 词汇表"
-  },
-  {
-   "cn": "变化多样的，不单调的",
-   "de": "abwechslungsreich",
-   "hint": "a__________",
-   "src": "E1 词汇表"
-  },
-  {
-   "cn": "尽管如此，然而",
-   "de": "dennoch",
-   "hint": "d______",
-   "src": "E1 词汇表"
-  },
-  {
-   "cn": "几乎不",
-   "de": "kaum",
-   "hint": "k____",
-   "src": "E1 词汇表"
-  },
-  {
-   "cn": "因此，因而",
-   "de": "demnach",
-   "hint": "d______",
-   "src": "E1 词汇表"
-  },
-  {
-   "cn": "统计（数据）",
-   "de": "die Statistik",
-   "hint": "die ___ -en",
-   "src": "E1 词汇表"
-  },
-  {
-   "cn": "排名，等级",
-   "de": "die Rangordnung",
-   "hint": "die ___ -en",
-   "src": "E1 词汇表"
-  },
-  {
-   "cn": "结论",
-   "de": "das Fazit",
-   "hint": "das ___ -e/-s",
-   "src": "E1 词汇表"
-  },
-  {
-   "cn": "抗压能力",
-   "de": "die Belastbarkeit",
-   "hint": "die B____________ (nur Sg)",
-   "src": "E2 词汇表"
-  },
-  {
-   "cn": "团队合作能力",
-   "de": "die Teamfähigkeit",
-   "hint": "die T___________",
-   "src": "E2 词汇表"
-  },
-  {
-   "cn": "移情能力，同理心",
-   "de": "das Einfühlungsvermögen",
-   "hint": "das E_________________ (nur Sg)",
-   "src": "E2 词汇表"
-  },
-  {
-   "cn": "勤奋，努力",
-   "de": "der Fleiß",
-   "hint": "der ___ (nur Sg)",
-   "src": "E2 词汇表"
-  },
-  {
-   "cn": "细心，细致",
-   "de": "die Sorgfalt",
-   "hint": "die ___ (nur Sg)",
-   "src": "E2 词汇表"
-  },
-  {
-   "cn": "保育员；教育工作者",
-   "de": "der Erzieher",
-   "hint": "der ___ -",
-   "src": "E2 词汇表"
+  "answers": {
+    "source": "答案页来源：教师课件 Lektion 8(2).pptx（曹嘉桢，海南比勒费尔德应用科学大学）slide 13 / 39 / 40 / 45 / 47 / 48 / 49；教材页码 220 / 221 / 228 由照片页脚读出。其余页码未摄入，标注「页码待补」而非猜测。"
   }
- ],
- "connectGrids": [
-  {
-   "title": "🩺 典型工作任务 · Typische Aufgaben（Ü3 a）",
-   "pairs": [
-    [
-     "Fieber messen",
-     "量体温"
-    ],
-    [
-     "beim Anziehen helfen",
-     "帮忙穿衣"
-    ],
-    [
-     "Interviews machen",
-     "做采访"
-    ],
-    [
-     "eine Spritze geben",
-     "打针"
-    ],
-    [
-     "Termine machen",
-     "安排日程"
-    ],
-    [
-     "Schülern helfen",
-     "帮助学生"
-    ],
-    [
-     "Reisen machen",
-     "出差、跑外"
-    ],
-    [
-     "den Unterricht vorbereiten",
-     "备课"
-    ],
-    [
-     "Gäste bedienen",
-     "招待客人"
-    ],
-    [
-     "Maschinen reparieren",
-     "修理机器"
-    ],
-    [
-     "ältere Menschen pflegen",
-     "护理老人"
-    ],
-    [
-     "sich um Patienten kümmern",
-     "照顾病人"
-    ],
-    [
-     "Diebe und Einbrecher suchen",
-     "搜寻盗贼"
-    ],
-    [
-     "Artikel schreiben",
-     "写文章"
-    ],
-    [
-     "neue Programme entwickeln",
-     "开发新程序"
-    ],
-    [
-     "viel von der Welt sehen",
-     "见多识广"
-    ]
-   ],
-   "src": "教材 S.221 · Ü3 a）"
-  },
-  {
-   "title": "⚖️ 优点与缺点 · Vorteile & Nachteile（Ü3 b）",
-   "pairs": [
-    [
-     "viel Geld verdienen",
-     "挣很多钱"
-    ],
-    [
-     "abwechslungsreich sein",
-     "工作不单调"
-    ],
-    [
-     "ständig etwas Neues lernen",
-     "不断学到新东西"
-    ],
-    [
-     "Überstunden machen",
-     "加班"
-    ],
-    [
-     "anstrengend sein",
-     "累人、辛苦"
-    ],
-    [
-     "neue Menschen kennen lernen",
-     "结识新朋友"
-    ],
-    [
-     "nachts arbeiten",
-     "上夜班"
-    ],
-    [
-     "Sehenswürdigkeiten besichtigen",
-     "游览名胜"
-    ],
-    [
-     "viel Freizeit haben",
-     "空闲时间多"
-    ],
-    [
-     "flexible Arbeitszeiten haben",
-     "弹性工作时间"
-    ],
-    [
-     "kreativ sein können",
-     "能发挥创意"
-    ],
-    [
-     "am Wochenende arbeiten",
-     "周末上班"
-    ]
-   ],
-   "src": "教材 S.221 · Ü3 b）"
-  },
-  {
-   "title": "🔤 名词 ← 形容词 · Nomen & Adjektive（Entdecken 2 Ü1）",
-   "pairs": [
-    [
-     "Hilfsbereitschaft",
-     "hilfsbereit"
-    ],
-    [
-     "Selbstbewusstsein",
-     "selbstbewusst"
-    ],
-    [
-     "Verantwortungsbewusstsein",
-     "verantwortungsbewusst"
-    ],
-    [
-     "Sorgfalt",
-     "sorgfältig"
-    ],
-    [
-     "Fleiß",
-     "fleißig"
-    ],
-    [
-     "Belastbarkeit",
-     "belastbar"
-    ],
-    [
-     "Selbstständigkeit",
-     "selbstständig"
-    ],
-    [
-     "Kontaktfreudigkeit",
-     "kontaktfreudig"
-    ],
-    [
-     "Durchsetzungsfähigkeit",
-     "durchsetzungsfähig"
-    ],
-    [
-     "Teamfähigkeit",
-     "teamfähig"
-    ],
-    [
-     "Einfühlungsvermögen",
-     "einfühlsam"
-    ],
-    [
-     "Konfliktbereitschaft",
-     "konfliktbereit"
-    ]
-   ],
-   "src": "Entdecken 2 · W2 Ü1 ①（答案据教师课件）"
-  }
- ],
- "mindmap": {
-  "title": "Wortfeld Beruf · 职业词场",
-  "instruction": "把词块拖/点进五个维度：要求 · 工作任务 · 工作时间 · 培训 · 工作地点。",
-  "cats": [
-   {
-    "id": "C1",
-    "label": "Anforderungen 要求",
-    "icon": "✅"
-   },
-   {
-    "id": "C2",
-    "label": "Tätigkeiten / Aufgaben 工作任务",
-    "icon": "🛠️"
-   },
-   {
-    "id": "C3",
-    "label": "Arbeitszeiten 工作时间",
-    "icon": "⏰"
-   },
-   {
-    "id": "C4",
-    "label": "Ausbildung 培训",
-    "icon": "🎓"
-   },
-   {
-    "id": "C5",
-    "label": "Arbeitsorte 工作地点",
-    "icon": "📍"
-   }
-  ],
-  "words": [
-   {
-    "w": "Kenntnisse in ...",
-    "c": "C1"
-   },
-   {
-    "w": "Sprachkenntnisse",
-    "c": "C1"
-   },
-   {
-    "w": "Computerkenntnisse",
-    "c": "C1"
-   },
-   {
-    "w": "Führerschein",
-    "c": "C1"
-   },
-   {
-    "w": "Flexibilität",
-    "c": "C1"
-   },
-   {
-    "w": "Zuverlässigkeit",
-    "c": "C1"
-   },
-   {
-    "w": "beraten",
-    "c": "C2"
-   },
-   {
-    "w": "pflegen",
-    "c": "C2"
-   },
-   {
-    "w": "planen",
-    "c": "C2"
-   },
-   {
-    "w": "verkaufen",
-    "c": "C2"
-   },
-   {
-    "w": "reparieren",
-    "c": "C2"
-   },
-   {
-    "w": "bedienen",
-    "c": "C2"
-   },
-   {
-    "w": "Unterricht geben",
-    "c": "C2"
-   },
-   {
-    "w": "schreiben",
-    "c": "C2"
-   },
-   {
-    "w": "entwickeln",
-    "c": "C2"
-   },
-   {
-    "w": "freie / flexible Arbeitszeit",
-    "c": "C3"
-   },
-   {
-    "w": "Teilzeit",
-    "c": "C3"
-   },
-   {
-    "w": "Vollzeit",
-    "c": "C3"
-   },
-   {
-    "w": "Schichtzeit",
-    "c": "C3"
-   },
-   {
-    "w": "Überstunde",
-    "c": "C3"
-   },
-   {
-    "w": "ein Studium in ...",
-    "c": "C4"
-   },
-   {
-    "w": "eine abgeschlossene Ausbildung in ...",
-    "c": "C4"
-   },
-   {
-    "w": "promovieren",
-    "c": "C4"
-   },
-   {
-    "w": "Homeoffice",
-    "c": "C5"
-   },
-   {
-    "w": "Büro",
-    "c": "C5"
-   },
-   {
-    "w": "Fabrik",
-    "c": "C5"
-   },
-   {
-    "w": "Geschäft",
-    "c": "C5"
-   },
-   {
-    "w": "Hotel",
-    "c": "C5"
-   },
-   {
-    "w": "Restaurant",
-    "c": "C5"
-   },
-   {
-    "w": "Schule",
-    "c": "C5"
-   }
-  ],
-  "src": "教材 S.220 · Ü1（参考答案据教师课件 slide 12）"
- },
- "luecken": {
-  "title": "Anstrengende Arbeitstage · 用动词的正确形式填空",
-  "instruction": "从词库里选词，填入正确的人称与时态（Perfekt / 现在时）。",
-  "bank": [
-   "ansehen",
-   "ausruhen",
-   "bringen",
-   "entspannen",
-   "krankschreiben",
-   "servieren",
-   "sprechen",
-   "verschreiben",
-   "untersuchen",
-   "zurückgeben"
-  ],
-  "text": [
-   "Alex hatte einen anstrengenden Arbeitstag im Restaurant. Er hat von morgens bis abends das Essen {{1}}. Am Schluss hat er einem Kunden die Rechnung {{2}} und vor lauter Müdigkeit das Geld falsch {{3}}. Jetzt möchte sich Alex nur noch {{4}} und sich einen Spielfilm {{5}}.",
-   "Auch Linda hatte heute viel zu tun. Sie hat in der Praxis viele Patienten {{6}} und Medikamente {{7}}. Sie hat mit jedem Patienten lange {{8}} und einige {{9}}, weil sie nicht arbeiten konnten. Nach der Arbeit {{10}} sich Linda am besten beim Sport."
-  ],
-  "gaps": [
-   {
-    "n": 1,
-    "answer": "serviert",
-    "alt": [
-     "hat serviert"
-    ],
-    "zh": "他把菜端了一整天。"
-   },
-   {
-    "n": 2,
-    "answer": "gebracht",
-    "alt": [],
-    "zh": "最后他给一位客人送来了账单。"
-   },
-   {
-    "n": 3,
-    "answer": "zurückgegeben",
-    "alt": [],
-    "zh": "累得把找零给错了。"
-   },
-   {
-    "n": 4,
-    "answer": "ausruhen",
-    "alt": [],
-    "zh": "现在 Alex 只想歇一歇。"
-   },
-   {
-    "n": 5,
-    "answer": "ansehen",
-    "alt": [],
-    "zh": "看一部电影。"
-   },
-   {
-    "n": 6,
-    "answer": "untersucht",
-    "alt": [],
-    "zh": "她在诊所检查了很多病人。"
-   },
-   {
-    "n": 7,
-    "answer": "verschrieben",
-    "alt": [],
-    "zh": "开了药。"
-   },
-   {
-    "n": 8,
-    "answer": "gesprochen",
-    "alt": [],
-    "zh": "和每位病人都谈了很长时间。"
-   },
-   {
-    "n": 9,
-    "answer": "krankgeschrieben",
-    "alt": [
-     "krank geschrieben"
-    ],
-    "zh": "给几个人开了病假条（不能来上班）。"
-   },
-   {
-    "n": 10,
-    "answer": "entspannt",
-    "alt": [],
-    "zh": "下班后 Linda 运动时最放松。"
-   }
-  ],
-  "src": "教材 S.220 · Ü2（答案据教师课件 slide 13）"
- },
- "eigenschaften": {
-  "title": "Eigenschaften · 属性和它的名词形式",
-  "src": "Entdecken 2 · W2 Ü1（答案据教师课件 slide 47 / 48）",
-  "table": [
-   {
-    "n": "Hilfsbereitschaft",
-    "a": "hilfsbereit",
-    "given": true
-   },
-   {
-    "n": "Konfliktbereitschaft",
-    "a": "konfliktbereit",
-    "given": false
-   },
-   {
-    "n": "Selbstbewusstsein",
-    "a": "selbstbewusst",
-    "given": true
-   },
-   {
-    "n": "Verantwortungsbewusstsein",
-    "a": "verantwortungsbewusst",
-    "given": false
-   },
-   {
-    "n": "Sorgfalt",
-    "a": "sorgfältig",
-    "given": true
-   },
-   {
-    "n": "Fleiß",
-    "a": "fleißig",
-    "given": false
-   },
-   {
-    "n": "Belastbarkeit",
-    "a": "belastbar",
-    "given": false
-   },
-   {
-    "n": "Selbstständigkeit",
-    "a": "selbstständig",
-    "given": true
-   },
-   {
-    "n": "Kontaktfreudigkeit",
-    "a": "kontaktfreudig",
-    "given": false
-   },
-   {
-    "n": "Durchsetzungsfähigkeit",
-    "a": "durchsetzungsfähig",
-    "given": false
-   },
-   {
-    "n": "Teamfähigkeit",
-    "a": "teamfähig",
-    "given": true
-   },
-   {
-    "n": "Einfühlungsvermögen",
-    "a": "einfühlsam",
-    "given": true
-   }
-  ],
-  "match": [
-   {
-    "n": "a",
-    "d": "Ich kann gut mit Stress umgehen.",
-    "ans": "Belastbarkeit"
-   },
-   {
-    "n": "b",
-    "d": "Ich unterstütze gerne andere Menschen.",
-    "ans": "Hilfsbereitschaft"
-   },
-   {
-    "n": "c",
-    "d": "Ich kann die Arbeit unabhängig von anderen erledigen.",
-    "ans": "Selbstständigkeit"
-   },
-   {
-    "n": "d",
-    "ans": "Sorgfalt",
-    "d": "Ich erledige meine Aufgabe genau und fehlerfrei."
-   },
-   {
-    "n": "e",
-    "d": "Ich kann meine Interessen anderen gegenüber vertreten.",
-    "ans": "Durchsetzungsfähigkeit"
-   },
-   {
-    "n": "f",
-    "d": "Ich spreche Probleme offen an.",
-    "ans": "Konfliktbereitschaft"
-   },
-   {
-    "n": "g",
-    "d": "Ich arbeite gerne mit anderen in der Gruppe zusammen.",
-    "ans": "Teamfähigkeit"
-   },
-   {
-    "n": "h",
-    "d": "Ich will andere verstehen und kann ihre Gefühle nachempfinden.",
-    "ans": "Einfühlungsvermögen"
-   },
-   {
-    "n": "i",
-    "d": "Ich denke über die Folgen meines Tuns nach und übernehme dafür Verantwortung.",
-    "ans": "Verantwortungsbewusstsein"
-   },
-   {
-    "n": "j",
-    "d": "Ich bin fähig und bereit, mit anderen schnell in Kontakt zu treten.",
-    "ans": "Kontaktfreudigkeit"
-   },
-   {
-    "n": "k",
-    "d": "Ich bin von meinen Fähigkeiten sehr überzeugt und trete selbstsicher auf.",
-    "ans": "Selbstbewusstsein"
-   },
-   {
-    "n": "l",
-    "d": "Ich bin fleißig und mache, was zu tun ist.",
-    "ans": "Fleiß"
-   }
-  ],
-  "note": "「Selbstständigkeit / selbstständig」教材此页写作 selbständig / Selbstständigkeit，两种拼写都通行。"
- },
- "softskills": {
-  "title": "Ohne Soft Skills geht es nicht · 三选一填空",
-  "instruction": "从括号里的三个选项中选出正确的一个。",
-  "text": [
-   "Der neue Azubi Markus weiß nicht, wie er das Computerprogramm benutzen muss. Elisa ist im 3. Jahr ihrer Ausbildung und weiß es. Sie zeigt ihm, was er machen muss, denn sie ist {{1}}, Außerdem erinnert sie sich noch gut daran, wie sie sich in den ersten Tagen ihrer Ausbildung gefühlt hat. Elisa ist nämlich {{2}}. Außerdem kann Markus nur dann {{3}}, wenn er weiß, wie alles geht. Elisa hilft Markus auch dabei, sich im Team zurechtzufinden. Denn {{4}} ist wichtig. Sie rät Markus auch, dass er Probleme offen anspricht. Wenn er das tut, ist er {{5}}."
-  ],
-  "gaps": [
-   {
-    "n": 1,
-    "options": [
-     "hilfsbereit",
-     "sorgfältig",
-     "einfühlsam"
-    ],
-    "answer": "hilfsbereit",
-    "zh": "她乐于助人。"
-   },
-   {
-    "n": 2,
-    "options": [
-     "verantwortungsbewusst",
-     "spontan",
-     "einfühlsam"
-    ],
-    "answer": "einfühlsam",
-    "zh": "她有同理心。"
-   },
-   {
-    "n": 3,
-    "options": [
-     "selbstständig arbeiten",
-     "flexibel lernen",
-     "konfliktbereit sein"
-    ],
-    "answer": "selbstständig arbeiten",
-    "zh": "他才能独立工作。"
-   },
-   {
-    "n": 4,
-    "options": [
-     "Durchsetzungsfähigkeit",
-     "Teamfähigkeit",
-     "Belastbarkeit"
-    ],
-    "answer": "Teamfähigkeit",
-    "zh": "团队合作能力很重要。"
-   },
-   {
-    "n": 5,
-    "options": [
-     "konfliktbereit",
-     "belastbar",
-     "teamfähig"
-    ],
-    "answer": "konfliktbereit",
-    "zh": "他就做到了「不回避冲突」。"
-   }
-  ],
-  "src": "Entdecken 2 · W2 Ü2（答案据教师课件 slide 49）"
- },
- "umformen": {
-  "title": "Umformungen · zwar … aber / nicht nur … sondern auch / sowohl … als auch",
-  "instruction": "先自己改写，再点开参考答案核对。注意 zwar 的位置（占句首或紧跟主语）与 aber 引导的并列句语序。",
-  "items": [
-   {
-    "n": "a",
-    "pattern": "zwar … aber",
-    "src": "Heute gehen in Deutschland deutlich mehr Frauen einem Beruf nach als vor einigen Jahrzehnten. Dennoch sind Frauen in manchen Branchen noch immer kaum vertreten.",
-    "ans": "Zwar gehen heute in Deutschland deutlich mehr Frauen einem Beruf nach als vor einigen Jahrzehnten, aber in manchen Branchen sind Frauen noch immer kaum vertreten.",
-    "tip": "Dennoch（尽管如此）→ zwar … aber；zwar 占句首后接动词，aber 后的主句语序正常。"
-   },
-   {
-    "n": "b",
-    "pattern": "sowohl … als auch / nicht nur … sondern auch",
-    "src": "Unter den Top-5-Ausbildungsberufen waren nur die Kauffrau / der Kaufmann und die Verkäuferin / der Verkäufer im Einzelhandel bei beiden Geschlechtern fast gleich beliebt.",
-    "ans": "Unter den Top-5-Ausbildungsberufen gehörten sowohl die Kauffrau / der Kaufmann als auch die Verkäuferin / der Verkäufer im Einzelhandel bei beiden Geschlechtern zu den beliebtesten Ausbildungsberufen. ｜ 也可：… war nicht nur die Kauffrau / der Kaufmann, sondern auch die Verkäuferin / der Verkäufer im Einzelhandel bei beiden Geschlechtern beliebt.",
-    "tip": "「nur … und …」隐含「两者都」→ sowohl … als auch（等立并列）；改用 nicht nur … sondern auch 强调递进，注意 sondern auch 后不带句框。"
-   },
-   {
-    "n": "c",
-    "pattern": "zwar … aber",
-    "src": "Während in einigen der Bau- und Metallberufe deutlich weniger als 10 Prozent der Beschäftigten Frauen waren, betrug ihr Anteil vor allem in den Berufen des Erziehungs- und Gesundheitswesens mehr als 80 Prozent.",
-    "ans": "Zwar waren in einigen der Bau- und Metallberufe deutlich weniger als 10 Prozent der Beschäftigten Frauen, aber ihr Anteil betrug vor allem in den Berufen des Erziehungs- und Gesundheitswesens mehr als 80 Prozent.",
-    "tip": "Während（对比从句）改为 zwar … aber 时：原主句变成 zwar 引导的独立句，原从句内容移入 aber 分句；注意「war(en)」在 zwar 后紧随。"
-   },
-   {
-    "n": "d",
-    "pattern": "zwar … aber",
-    "src": "Heute entscheiden sich mehr Frauen für eine akademische Laufbahn. Trotzdem zeigen sich bei der Studienwahl noch immer deutliche Unterschiede.",
-    "ans": "Heute entscheiden sich zwar mehr Frauen für eine akademische Laufbahn, aber bei der Studienwahl zeigen sich noch immer deutliche Unterschiede.",
-    "tip": "Trotzdem → aber。本句 zwar 不占句首，而是插在动词之后（Heute entscheiden sich zwar mehr Frauen …）。"
-   }
-  ],
-  "src": "教材 S.228 · Ü9（参考答案据教师课件 slide 39 / 40）"
- },
- "redemittel": {
-  "vorteile": {
-   "title": "Vorteile und Nachteile von Berufen",
-   "src": "教材 Redemittel 框「Vorteile und Nachteile von Berufen」（页脚未摄入，页码待补）",
-   "cols": [
-    {
-     "label": "✅ Vorteile nennen 说优点",
-     "items": [
-      "Für diesen Beruf spricht, dass …",
-      "… ist gut / schön.",
-      "Ich finde, das ist eine gute Arbeit, weil …",
-      "Es ist gut / sinnvoll / interessant, dass …",
-      "Mir gefällt, dass …",
-      "Die Vorteile sind …"
-     ]
-    },
-    {
-     "label": "❌ Nachteile nennen 说缺点",
-     "items": [
-      "Gegen diese Arbeit spricht, dass …",
-      "In diesem Beruf kann man nicht …",
-      "… muss man …",
-      "… ist nicht gut / schlecht / langweilig.",
-      "Ich finde den Beruf anstrengend / …",
-      "Man braucht unbedingt …",
-      "Die Nachteile sind …"
-     ]
-    }
-   ]
-  },
-  "statistik": {
-   "title": "eine Statistik beschreiben · 描述统计",
-   "src": "教材 S.228 · Ü10（完整表达据教师课件 slide 42–44）",
-   "cols": [
-    {
-     "label": "🔁 比较 / 发展",
-     "items": [
-      "Das Berufswahlverhalten von … hat sich wenig verändert.",
-      "Frauen und Männer entscheiden sich nach wie vor für …",
-      "Das ist im Vergleich zu … unverändert geblieben.",
-      "Im Gegensatz / Im Unterschied zu …",
-      "Verglichen mit … / Gegenüber …",
-      "Unter den Top-5-Ausbildungsberufen waren … bei beiden Geschlechtern fast gleich beliebt.",
-      "Heute gehen in Deutschland deutlich mehr Frauen einem Beruf nach als vor einigen Jahrzehnten.",
-      "… unterscheiden sich Frauen und Männer in ihrer Berufswahl demnach noch immer stark voneinander.",
-      "Dennoch sind Frauen … noch immer kaum vertreten.",
-      "Männer wählten dagegen am häufigsten …",
-      "Trotzdem zeigen sich … noch immer deutliche Unterschiede.",
-      "Zwar liegt … bei den Studienanfängern beider Geschlechter auf Platz eins, danach dominieren bei den Männern aber …"
-     ]
-    },
-    {
-     "label": "📊 百分比",
-     "items": [
-      "In den … waren deutlich weniger als 10 Prozent der Beschäftigten …",
-      "Ihr Anteil betrug … mehr als 80 Prozent.",
-      "Besonders hoch liegt der Anteil von … bei … %.",
-      "… % aller … sind / haben …",
-      "… gehörten … zu den beliebtesten Ausbildungsberufen von Frauen.",
-      "… die beliebtesten Ausbildungsberufe …",
-      "… am häufigsten …"
-     ]
-    },
-    {
-     "label": "🥇 排名",
-     "items": [
-      "Auf Platz eins / An der Spitze liegen / stehen …",
-      "An erster Stelle / An der ersten Stelle stehen …",
-      "Der Spitzenreiter ist …",
-      "Danach dominieren / folgen …",
-      "Es folgt / folgen …",
-      "gefolgt von …",
-      "An letzter / vorletzter Stelle stehen …",
-      "Das Schlusslicht ist / bilden …"
-     ]
-    },
-    {
-     "label": "✍️ 评论 / 结论",
-     "items": [
-      "Insgesamt unterscheiden sich Frauen und Männer in ihrer Berufswahl demnach noch immer stark voneinander.",
-      "Abschließend / Zusammenfassend kann man sagen / feststellen / erkennen, dass …",
-      "Abschließend / Zusammenfassend lässt sich sagen / feststellen / erkennen, dass …",
-      "Es ist festzustellen / erkennen, dass …",
-      "Es fällt auf / Überraschend ist, dass …"
-     ]
-    }
-   ]
-  }
- },
- "berufe": {
-  "title": "Beruferaten · 猜职业",
-  "instruction": "任务卡背面是这个任务的中文。A 方只说优点，B 方只说缺点，其余人猜职业；猜对前不能说出职业名。",
-  "tasks": [
-   {
-    "de": "Fieber messen",
-    "cn": "量体温"
-   },
-   {
-    "de": "beim Anziehen helfen",
-    "cn": "帮人穿衣"
-   },
-   {
-    "de": "Interviews machen",
-    "cn": "做采访"
-   },
-   {
-    "de": "eine Spritze geben",
-    "cn": "打针"
-   },
-   {
-    "de": "Termine machen",
-    "cn": "安排日程"
-   },
-   {
-    "de": "Schülern helfen",
-    "cn": "帮助学生"
-   },
-   {
-    "de": "Reisen machen",
-    "cn": "出差、跑外"
-   },
-   {
-    "de": "den Unterricht vorbereiten",
-    "cn": "备课"
-   },
-   {
-    "de": "verkaufen",
-    "cn": "销售"
-   },
-   {
-    "de": "ältere Menschen pflegen",
-    "cn": "护理老人"
-   },
-   {
-    "de": "sich um Patienten kümmern",
-    "cn": "照护病人"
-   },
-   {
-    "de": "Diebe und Einbrecher suchen",
-    "cn": "搜寻盗贼"
-   },
-   {
-    "de": "Artikel schreiben",
-    "cn": "写文章"
-   },
-   {
-    "de": "neue Programme entwickeln",
-    "cn": "开发新程序"
-   },
-   {
-    "de": "viel von der Welt sehen",
-    "cn": "见多识广"
-   },
-   {
-    "de": "Gäste bedienen",
-    "cn": "招待客人"
-   },
-   {
-    "de": "Maschinen reparieren",
-    "cn": "修理机器"
-   }
-  ],
-  "example": [
-   [
-    "A",
-    "Hast du bei dem Patienten Fieber gemessen?"
-   ],
-   [
-    "B",
-    "Ja, er hat 38 Grad."
-   ]
-  ],
-  "procontra_example": [
-   "Sehenswürdigkeiten zu besichtigen und neue Menschen kennen zu lernen sprechen für diesen Beruf.",
-   "Ein Nachteil ist, dass man in der Saison oft am Wochenende arbeiten muss."
-  ],
-  "src": "教材 S.221 · Ü3"
- },
- "uebersetzen": {
-  "title": "Übersetzen · 中译德（奥地利职业选择报告）",
-  "src": "教材 S.228 · Ü11（中文原文与参考译文均据教材 / 教师课件，非我拟作）",
-  "zhFull": "奥地利的年轻人在选择培训职业时，经常会根据自己的性别选择特定的职业。许多年轻女性偏爱商务或医疗类的职业培训，而年轻男性则对技术类职业更感兴趣。根据最新的报告《奥地利学徒学习——双元制职业培训》，2023年奥地利女性最常选择零售业培训，而最受男性欢迎的培训职业是电气技术员，其次是金属技术员和汽车机电工。尽管女性和男性在职业选择上仍有较大差异，但在十大培训职业中，金属技术员在两性中受到同样的欢迎，位居第六。这表明，年轻女性在选择职业时开始放弃传统的女性角色模式，并打破职业刻板印象。",
-  "deFull": "Bei der Wahl des Ausbildungsberufs entscheiden sich junge Menschen in Österreich oft je nach Geschlecht für ganz bestimmte Berufe. Während viele junge Frauen eine kaufmännische oder medizinische Ausbildung bevorzugen, interessieren sich junge Männer mehr für technische Berufe. Nach dem neuesten Bericht „Die Lehre – Duale Berufsausbildung in Österreich“ wählten Frauen im Jahr 2023 am häufigsten eine Ausbildung im Einzelhandel, während der beliebteste Ausbildungsberuf von Männern der Elektrotechniker war, danach folgten die Ausbildungen zum Metalltechniker und Kraftfahrzeugmechatroniker / Kfz-Mechatroniker. Zwar unterscheiden sich Frauen und Männer in ihrer Berufswahl noch immer stark voneinander, aber unter den Top-10-Ausbildungsberufen war Metalltechnikerin / Metalltechnik bei beiden Geschlechtern gleich beliebt und lag auf Platz 6. Das zeigt, dass junge Frauen bei ihrer Berufswahl beginnen, das traditionelle Frauenrollenmuster zu verlassen und sich von stereotypen Berufsvorstellungen zu lösen.",
-  "sentences": [
-   {
-    "zh": "奥地利的年轻人在选择培训职业时，经常会根据自己的性别选择特定的职业。",
-    "de": "Bei der Wahl des Ausbildungsberufs entscheiden sich junge Menschen in Österreich oft je nach Geschlecht für ganz bestimmte Berufe.",
-    "tip": "「根据自己的性别」→ je nach Geschlecht（介词短语，不用 Possessiv）；sich entscheiden für +A。",
-    "src": "教材 S.228 · Ü11 ①"
-   },
-   {
-    "zh": "许多年轻女性偏爱商务或医疗类的职业培训，而年轻男性则对技术类职业更感兴趣。",
-    "de": "Während viele junge Frauen eine kaufmännische oder medizinische Ausbildung bevorzugen, interessieren sich junge Männer mehr für technische Berufe.",
-    "tip": "「而」表对比 → Während 从句；bevorzugen +A 偏爱；sich interessieren für +A。",
-    "src": "教材 S.228 · Ü11 ②"
-   },
-   {
-    "zh": "根据最新的报告《奥地利学徒学习——双元制职业培训》，2023年奥地利女性最常选择零售业培训，而最受男性欢迎的培训职业是电气技术员，其次是金属技术员和汽车机电工。",
-    "de": "Nach dem neuesten Bericht „Die Lehre – Duale Berufsausbildung in Österreich“ wählten Frauen im Jahr 2023 am häufigsten eine Ausbildung im Einzelhandel, während der beliebteste Ausbildungsberuf von Männern der Elektrotechniker war, danach folgten die Ausbildungen zum Metalltechniker und Kraftfahrzeugmechatroniker / Kfz-Mechatroniker.",
-    "tip": "报告名用引号书名号照抄；「最常」→ am häufigsten；「其次是」→ danach folgten …（注意动词第二位）。",
-    "src": "教材 S.228 · Ü11 ③"
-   },
-   {
-    "zh": "尽管女性和男性在职业选择上仍有较大差异，但在十大培训职业中，金属技术员在两性中受到同样的欢迎，位居第六。",
-    "de": "Zwar unterscheiden sich Frauen und Männer in ihrer Berufswahl noch immer stark voneinander, aber unter den Top-10-Ausbildungsberufen war Metalltechnikerin / Metalltechnik bei beiden Geschlechtern gleich beliebt und lag auf Platz 6.",
-    "tip": "「尽管……但……」→ zwar … aber；sich von einander unterscheiden；位居第六 → auf Platz 6 liegen。",
-    "src": "教材 S.228 · Ü11 ④"
-   },
-   {
-    "zh": "这表明，年轻女性在选择职业时开始放弃传统的女性角色模式，并打破职业刻板印象。",
-    "de": "Das zeigt, dass junge Frauen bei ihrer Berufswahl beginnen, das traditionelle Frauenrollenmuster zu verlassen und sich von stereotypen Berufsvorstellungen zu lösen.",
-    "tip": "「这表明……」→ Das zeigt, dass …；beginnen … zu +Inf.；sich von … lösen 摆脱。",
-    "src": "教材 S.228 · Ü11 ⑤"
-   }
-  ]
- },
- "klassenspiele": [
-  {
-   "name": "① Blitzrunde 抢答赛",
-   "desc": "老师点「抢答」里的卡片，先说出德语的一组得 1 分（名词必须带冠词）。",
-   "time": "3 min"
-  },
-  {
-   "name": "② Wortfeld-Rennen 词场接力",
-   "desc": "两队轮流把一个词块归入正确维度，归错换人；先清空词池的队伍得分。",
-   "time": "5 min"
-  },
-  {
-   "name": "③ Arbeitstag-Puzzle 动词还原",
-   "desc": "把 Ü2 的十个动词原形打乱贴在黑板上，学生上台写正确形式，写对得 1 分。",
-   "time": "6 min"
-  },
-  {
-   "name": "④ Beruferaten 猜职业",
-   "desc": "A 说优点、B 说缺点，其他人猜职业；说出职业名即结束该轮（用 Redemittel 必须成句）。",
-   "time": "8 min"
-  },
-  {
-   "name": "⑤ Umform-Duell 改写对决",
-   "desc": "Ü9 四句改写，每队各写一句上台对比；语序错（zwar 位置、aber 后语序）不得分。",
-   "time": "6 min"
-  },
-  {
-   "name": "⑥ Statistik-Dolmetscher 数据口译",
-   "desc": "给一张真实的职业性别统计图，用 S.228 表达做 60 秒口头描述，必须含一个百分比、一个排名、一个结论。",
-   "time": "8 min"
-  }
- ],
- "answers": {
-  "source": "答案页来源：教师课件 Lektion 8(2).pptx（曹嘉桢，海南比勒费尔德应用科学大学）slide 13 / 39 / 40 / 45 / 47 / 48 / 49；教材页码 220 / 221 / 228 由照片页脚读出。其余页码未摄入，标注「页码待补」而非猜测。"
- }
 }

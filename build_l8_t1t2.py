@@ -10,6 +10,7 @@ build_l8_t1t2.py — Lektion 8 · Text 1 & Text 2 + Schaubild beschreiben 课件
 import json
 import os
 import random
+import re
 import subprocess
 
 import build_l8_berufe as base
@@ -22,6 +23,60 @@ OUT = os.path.join(DIR, 'lektion8-t1t2-schaubild.html')
 h = base.h
 esc_attr = base.esc_attr
 tools_buttons = base.tools_buttons
+
+
+# ---------------------------------------------------------------- 查词（点词看义）
+def gloss_index(entries):
+    """把 glossar 展开成 [(surface, entry)]，长形在前，避免短形先吃掉长形"""
+    pairs = []
+    for e in entries or []:
+        for f in e.get('forms', []):
+            pairs.append((f, e))
+    pairs.sort(key=lambda x: -len(x[0]))
+    return pairs
+
+
+def _js_str(s):
+    return "'%s'" % (str(s).replace('\\', '\\\\').replace("'", "\\'")
+                      .replace('\n', '\\n').replace('\r', ' '))
+
+
+def _gloss_span(e, surface):
+    ex = e.get('ex', '')
+    if e.get('exZh'):
+        ex = ex + '\n→ ' + e['exZh']
+    args = ','.join(_js_str(x) for x in (e.get('w', ''), e.get('zh', ''), ex))
+    return '<span class="gl" title="点一下看释义与例句" onclick="event.stopPropagation();showVocab(%s)">%s</span>' % (args, surface)
+
+
+def gloss_word(word, pairs):
+    """单个词／短语：命中就包成可点，否则原样返回"""
+    for f, e in pairs:
+        if word == f:
+            return _gloss_span(e, word)
+    return word
+
+
+def gloss_text(raw, pairs):
+    """正文加查词：先用占位符替换，全部处理完再回填，避免后续匹配吃到已插入的 HTML"""
+    if not pairs:
+        return raw
+    store = []
+
+    def rep(m):
+        f = m.group(0)
+        for sf, e in pairs:
+            if sf == f:
+                store.append(_gloss_span(e, f))
+                return '\u0000G%d\u0000' % (len(store) - 1)
+        return f
+
+    pat = '|'.join(re.escape(f) for f, _ in pairs)
+    out = re.sub(r'(?<![A-Za-z\u00c4\u00d6\u00dc\u00e4\u00f6\u00fc\u00df])(?:' + pat +
+                 r')(?![A-Za-z\u00c4\u00d6\u00dc\u00e4\u00f6\u00fc\u00df])', rep, raw)
+    for i, s in enumerate(store):
+        out = out.replace('\u0000G%d\u0000' % i, s)
+    return out
 
 CSS_EXTRA = '''
   /* ===== Schaubild / Text 1 & 2 专用件 ===== */
@@ -41,6 +96,16 @@ CSS_EXTRA = '''
   .chart-bar.sel { outline: 3px solid #146c2e; outline-offset: 2px; }
   .chart-detail { margin-top: 12px; min-height: 44px; background: #f7f8fa; border-left: 4px solid #1a73e8;
     border-radius: 8px; padding: 8px 12px; font-size: var(--fs-sm); }
+  /* ===== 课文：印在横线上的答案 + 点词查义 ===== */
+  .read-card .cloze-p { margin: 0 0 14px; }
+  .read-card .cloze-p:last-child { margin-bottom: 0; }
+  .ans-w { border-bottom: 2px solid #0b56b8; font-weight: 700; color: #123a72; padding-bottom: 1px; }
+  .gl { cursor: pointer; border-bottom: 1px dashed #8a94a6; }
+  .gl:hover, .gl:focus { background: #fff3c4; border-bottom-color: #b8860b; }
+  .ans-w .gl { border-bottom: 0; }
+  #vpEx { white-space: pre-line; }
+  .vp-zh { font-size: var(--fs-sm); }
+  .vp-ex { font-size: var(--fs-cap); color: #3c4450; margin-top: 6px; }
   .rm-tabs { display: flex; flex-wrap: wrap; gap: 4px; margin: 8px 0 12px; }
   .rm-item { background: #fff; border: 1px solid #e3e6eb; border-radius: 8px; padding: 8px 12px; margin: 6px 0; }
   .rm-de { font-size: var(--fs-body); font-weight: 600; }
@@ -509,21 +574,16 @@ def sec_vocab(d):
 # ---------------------------------------------------------------- 6 T1
 def sec_t1(d):
     t = d['t1']
-    bank = ''.join('<span class="bank-chip" onclick="clzFill(\'clz-t1\', this)">%s</span>' % h(w) for w in t['bank'])
+    pairs = gloss_index(t.get('glossar'))
     paras = []
     n = 0
     for blk in t['cloze']:
-        txt = blk['p']
+        txt = gloss_text(blk['p'], pairs)
         for a in blk['ans']:
             n += 1
             txt = txt.replace('[[%d]]' % n,
-                              '<span class="cloze-blank" data-ph="(%d)" data-ans="%s" onclick="clzClick(this)">(%d)</span>'
-                              % (n, esc_attr(a), n), 1)
+                              '<span class="ans-w">%s</span>' % gloss_word(a, pairs), 1)
         paras.append(f'<p class="cloze-p" lang="de">{txt}</p>')
-    btns = tools_buttons(['<button class="btn" onclick="clzCheck(\'clz-t1\')">✓ 检查</button>',
-                          '<button class="btn ghost" onclick="clzReveal(\'clz-t1\')">👁 显示答案</button>',
-                          '<button class="btn ghost" onclick="clzClear(\'clz-t1\')">↺ 清空</button>',
-                          '<span id="clz-t1-res" class="kw-result"></span>'])
     struct = ''.join(
         '<div class="stp"><span class="stp-n">%s</span><span class="stp-fn">%s</span>'
         '<div class="es-d" lang="de">%s</div><div class="rm-cn">%s</div></div>'
@@ -535,10 +595,9 @@ def sec_t1(d):
     return f'''    <section id="t1">
       <h2 class="section-title"><span class="num">6</span> 📖 {h(t['title'])} <span class="src src-lg">{h(t['kind'])}</span></h2>
       <p class="zh-hint">{h(t['lead'])}</p>
-      <div class="clz-box" id="clz-t1">
-        <div class="bank-box"><strong>Wortbank：</strong>{bank}</div>
+      <p class="zh-hint">✏️ 画了横线的词是原题的填空词，已直接印在横线上；<b>点正文里任何一个德文词</b>，右侧弹出中文释义与一则实用例句。</p>
+      <div class="text-card read-card">
         {''.join(paras)}
-        {btns}
       </div>
       <p class="zh-hint note">📌 {h(t['provenance'])}</p>
       <div class="text-card">
@@ -570,8 +629,9 @@ def sec_t2(d, key, num):
                      '答案与依据见本页下方说明。</p>')
     paras = []
     n = 0
+    pairs = gloss_index(t.get('glossar'))
     for blk in t['cloze']:
-        txt = blk['p']
+        txt = gloss_text(blk['p'], pairs)
         for a in blk['ans']:
             n += 1
             txt = txt.replace('[[%d]]' % n,

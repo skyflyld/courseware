@@ -2,7 +2,7 @@
   "t1": {
     "title": "Text 1 · Vergiss „typische“ Männer- oder Frauenberufe!",
     "kind": "教材 S.226–227 · Übung 7",
-    "lead": "统计文三段：第一段说趋势（Entwicklung），第二段给排名与比例（Rangordnung / Prozentanteile），第三段转到大学专业（Studienwahl）并收在号召上（ermutigen）。填空先看搭配，再看时态。",
+    "lead": "统计文三段：第一段说趋势（Entwicklung），第二段给排名与比例（Rangordnung / Prozentanteile），第三段转到大学专业（Studienwahl）并收在号召上（ermutigen）。画线的词就是原题的填空词，读的时候留意它们的搭配与时态。",
     "provenance": "教材原文页照录（S.226–227，Übung 7：Hören Sie den Text und füllen Sie die Lücken）。全文共 13 空、词库 12 词，一个词都不多不少：第 3、4 空共用 nachgehen（可分动词拆成 gehen … nach），其余各空一词。第 6、10 空需变形：gehören → gehörten，betragen → betrug。",
     "bank": [
       "Fachinformatiker",
@@ -155,6 +155,157 @@
         "sent": "... deutlich weniger als 10 Prozent der Beschäftigten Frauen waren, betrug ihr Anteil ... mehr als 80 Prozent.",
         "map": "图外背景数据（bau-/metallberufe vs. Erziehungs-/Gesundheitswesen）"
       }
+    ],
+    "glossar": [
+      {
+        "w": "Berufswahlverhalten",
+        "zh": "职业选择行为",
+        "forms": [
+          "Berufswahlverhalten"
+        ],
+        "ex": "Das Berufswahlverhalten von Frauen und Männern hat sich wenig verändert.",
+        "exZh": "男女的职业选择行为几乎没有变化。"
+      },
+      {
+        "w": "sich entscheiden für + A.",
+        "zh": "决定选择……",
+        "forms": [
+          "entscheiden",
+          "entschied"
+        ],
+        "ex": "Frauen entscheiden sich nach wie vor für soziale und medizinische Berufe.",
+        "exZh": "女性一如既往地选择社会和医疗类职业。"
+      },
+      {
+        "w": "einem Beruf nachgehen",
+        "zh": "从事某一职业（可分动词）",
+        "forms": [
+          "gehen"
+        ],
+        "ex": "Heute gehen in Deutschland deutlich mehr Frauen einem Beruf nach als vor einigen Jahrzehnten.",
+        "exZh": "如今德国从事职业的女性明显多于几十年前。"
+      },
+      {
+        "w": "Branche, -n",
+        "zh": "行业",
+        "forms": [
+          "Branchen"
+        ],
+        "ex": "In technischen Branchen sind Frauen noch immer kaum vertreten.",
+        "exZh": "在技术行业，女性仍然几乎难见踪影。"
+      },
+      {
+        "w": "kaum vertreten sein",
+        "zh": "几乎见不到（代表性极低）",
+        "forms": [
+          "vertreten"
+        ],
+        "ex": "Frauen sind in manchen Branchen noch immer kaum vertreten.",
+        "exZh": "女性在某些行业仍然几乎难见踪影。"
+      },
+      {
+        "w": "zu + D. gehören",
+        "zh": "属于……之列",
+        "forms": [
+          "gehörten",
+          "gehört"
+        ],
+        "ex": "Die Kauffrau für Büromanagement gehört zu den beliebtesten Ausbildungsberufen von Frauen.",
+        "exZh": "商务管理文员属于女性最受欢迎的职业培训之列。"
+      },
+      {
+        "w": "im Vergleich zu + D.",
+        "zh": "与……相比",
+        "forms": [
+          "Vergleich"
+        ],
+        "ex": "Im Vergleich zu den Vorjahren ist die Rangfolge unverändert geblieben.",
+        "exZh": "与前几年相比，排名没有变化。"
+      },
+      {
+        "w": "Fachinformatiker/-in",
+        "zh": "信息技术专员（IT 专业人员）",
+        "forms": [
+          "Fachinformatiker"
+        ],
+        "ex": "Fachinformatiker liegen bei den Männern auf Platz zwei.",
+        "exZh": "IT 专员在男性榜上排第二位。"
+      },
+      {
+        "w": "Beschäftigte, -n",
+        "zh": "从业人员",
+        "forms": [
+          "Beschäftigten",
+          "Beschäftigte"
+        ],
+        "ex": "In den Bau- und Metallberufen waren weniger als 10 Prozent der Beschäftigten Frauen.",
+        "exZh": "在建筑与金属类职业中，从业人员里女性不足 10%。"
+      },
+      {
+        "w": "betragen",
+        "zh": "（数额）达到",
+        "forms": [
+          "betrug",
+          "beträgt",
+          "betragen"
+        ],
+        "ex": "Ihr Anteil betrug mehr als 80 Prozent.",
+        "exZh": "她们的占比超过 80%。"
+      },
+      {
+        "w": "Studienwahl",
+        "zh": "高校专业选择",
+        "forms": [
+          "Studienwahl"
+        ],
+        "ex": "Bei der Studienwahl zeigen sich noch immer deutliche Unterschiede.",
+        "exZh": "在专业选择上仍然存在明显差异。"
+      },
+      {
+        "w": "dominieren",
+        "zh": "占主导地位",
+        "forms": [
+          "dominieren"
+        ],
+        "ex": "Danach dominieren bei den Männern technische und naturwissenschaftliche Fächer.",
+        "exZh": "之后在男性中占主导的是技术和自然科学类专业。"
+      },
+      {
+        "w": "jdn. zu etw. ermutigen",
+        "zh": "鼓励某人做某事",
+        "forms": [
+          "ermutigen"
+        ],
+        "ex": "Es gibt gute Gründe, junge Menschen zu ermutigen, neue Wege zu gehen.",
+        "exZh": "有充分理由鼓励年轻人走新的路。"
+      },
+      {
+        "w": "Rollenmuster, -",
+        "zh": "角色模式（性别分工的固有模式）",
+        "forms": [
+          "Rollenmuster"
+        ],
+        "ex": "Traditionelle Rollenmuster verändern sich nur langsam.",
+        "exZh": "传统角色模式变化得很慢。"
+      },
+      {
+        "w": "stereotype Vorstellungen",
+        "zh": "刻板印象、成见",
+        "forms": [
+          "stereotypen"
+        ],
+        "ex": "Man sollte sich von stereotypen Vorstellungen lösen.",
+        "exZh": "人应当摆脱刻板观念。"
+      },
+      {
+        "w": "sich von etw. lösen",
+        "zh": "摆脱、脱离……",
+        "forms": [
+          "lösen"
+        ],
+        "ex": "Sie will sich von alten Vorstellungen lösen.",
+        "exZh": "她想摆脱旧观念。"
+      }
     ]
   },
   "t2a": {
@@ -231,7 +382,108 @@
         ]
       ],
       "src": "教材 Ü8 表格（S.237）的结构；表内答案为教师课件答案页内容，非教材原文。"
-    }
+    },
+    "glossar": [
+      {
+        "w": "Gymnasium, Gymnasien",
+        "zh": "文理中学（德国高中类型之一）",
+        "forms": [
+          "Gymnasium"
+        ],
+        "ex": "Zunächst besuchte Erika ein Gymnasium.",
+        "exZh": "起初 Erika 上的是文理中学。"
+      },
+      {
+        "w": "feststellen",
+        "zh": "发现、认识到",
+        "forms": [
+          "stellte"
+        ],
+        "ex": "Jedoch stellte sie fest, dass sie lieber in der Werkstatt arbeitete.",
+        "exZh": "但她发现，自己更愿意在车间里工作。"
+      },
+      {
+        "w": "Elektronik-Werkstatt",
+        "zh": "电子（器）车间",
+        "forms": [
+          "Elektronik"
+        ],
+        "ex": "Sie verbrachte den Nachmittag in der Elektronik-Werkstatt ihres Vaters.",
+        "exZh": "她下午都在父亲的电子车间度过。"
+      },
+      {
+        "w": "betreuen",
+        "zh": "照管、服务（客户）",
+        "forms": [
+          "betreut"
+        ],
+        "ex": "Nun betreut sie Kundinnen und Kunden und plant die Beleuchtung in Gebäuden.",
+        "exZh": "现在她负责接待客户，并规划楼宇照明。"
+      },
+      {
+        "w": "Beleuchtung",
+        "zh": "照明（设备）",
+        "forms": [
+          "Beleuchtung"
+        ],
+        "ex": "Sie plant die Beleuchtung in Gebäuden.",
+        "exZh": "她负责规划建筑里的照明。"
+      },
+      {
+        "w": "es kommt darauf an, ... zu + Inf.",
+        "zh": "关键在于……",
+        "forms": [
+          "kommt"
+        ],
+        "ex": "In ihrer Arbeit kommt es darauf an, nachhaltige Systeme mitzugestalten.",
+        "exZh": "她的工作关键在于参与设计可持续的系统。"
+      },
+      {
+        "w": "Fähigkeiten (Pl.)",
+        "zh": "能力（复数）",
+        "forms": [
+          "Fähigkeiten"
+        ],
+        "ex": "Erika hat auch ihre persönlichen Fähigkeiten weiterentwickelt.",
+        "exZh": "Erika 也进一步提升了自己的个人能力。"
+      },
+      {
+        "w": "durchsetzungsfähig",
+        "zh": "能坚持自己的、有执行力的",
+        "forms": [
+          "durchsetzungsfähiger"
+        ],
+        "ex": "Ich bin durchsetzungsfähiger geworden, weil ich meistens als einzige Frau mit Männern zusammenarbeite.",
+        "exZh": "我变得更能坚持自己了，因为我大多时候是唯一和男性一起工作的女性。"
+      },
+      {
+        "w": "Berufswunsch, -̈e",
+        "zh": "职业愿望、理想职业",
+        "forms": [
+          "Berufswunsch"
+        ],
+        "ex": "Sie freut sich, wenn Mädchen ihrem eigenen Berufswunsch folgen.",
+        "exZh": "当女孩们追随自己的职业愿望时，她很高兴。"
+      },
+      {
+        "w": "Energieversorgung",
+        "zh": "能源供应",
+        "forms": [
+          "Energieversorgung"
+        ],
+        "ex": "Smart-Home-Systeme helfen bei der nachhaltigen Energieversorgung.",
+        "exZh": "智能家居系统有助于可持续的能源供应。"
+      },
+      {
+        "w": "Klimaschutz",
+        "zh": "气候保护",
+        "forms": [
+          "Klimaschutz"
+        ],
+        "ex": "Smart-Home-Systeme tragen zum Klimaschutz bei.",
+        "exZh": "智能家居系统对气候保护有贡献。"
+      }
+    ]
   },
   "t2b": {
     "title": "Text 2b · Mit Kopf und Herz dabei sein",
@@ -303,7 +555,100 @@
         ]
       ],
       "src": "教材 Ü8 表格（S.237）的结构；表内答案为教师课件答案页内容，非教材原文。"
-    }
+    },
+    "glossar": [
+      {
+        "w": "Lust auf + A. haben",
+        "zh": "对……有兴趣、愿意做……",
+        "forms": [
+          "Lust"
+        ],
+        "ex": "Ich habe Lust darauf, mit Kindern und Jugendlichen zu arbeiten.",
+        "exZh": "我很愿意和儿童、青少年一起工作。"
+      },
+      {
+        "w": "sozialer Bereich",
+        "zh": "社会（服务）领域",
+        "forms": [
+          "soziale"
+        ],
+        "ex": "Der soziale Bereich hat ihn schon immer interessiert.",
+        "exZh": "他一直对社会领域感兴趣。"
+      },
+      {
+        "w": "Praktikum, Praktika",
+        "zh": "实习",
+        "forms": [
+          "Praktika"
+        ],
+        "ex": "Während seiner Schulzeit hat er zwei Praktika im Kindergarten gemacht.",
+        "exZh": "上学期间他在幼儿园做过两次实习。"
+      },
+      {
+        "w": "betreuen",
+        "zh": "照看、照料",
+        "forms": [
+          "betreuen"
+        ],
+        "ex": "Es gehört zu seinen Aufgaben, Kinder zu betreuen und zu unterstützen.",
+        "exZh": "照看和支持孩子是他的任务之一。"
+      },
+      {
+        "w": "achten auf + A.",
+        "zh": "注意、留意……",
+        "forms": [
+          "achten"
+        ],
+        "ex": "Erzieher müssen auf das Verhalten der Kinder achten.",
+        "exZh": "幼教要留意孩子的行为。"
+      },
+      {
+        "w": "Geduld",
+        "zh": "耐心",
+        "forms": [
+          "Geduld"
+        ],
+        "ex": "Geduld und Kreativität sind für Erzieher sehr wichtig.",
+        "exZh": "耐心和创造力对幼教非常重要。"
+      },
+      {
+        "w": "Einfühlungsvermögen",
+        "zh": "共情能力、体察他人的能力",
+        "forms": [
+          "Einfühlungsvermögen"
+        ],
+        "ex": "Einfühlungsvermögen heißt, zu merken, wenn es einem Kind nicht gut geht.",
+        "exZh": "共情能力是指能觉察到孩子什么时候状态不好。"
+      },
+      {
+        "w": "Stärken (Pl.)",
+        "zh": "强项、长处",
+        "forms": [
+          "Stärken"
+        ],
+        "ex": "Auf die Frage, welche Stärken er mitbringt, nennt Simon Geduld und Kreativität.",
+        "exZh": "被问到自己的强项时，Simon 提到了耐心和创造力。"
+      },
+      {
+        "w": "Erzieher/-in",
+        "zh": "幼教、保育员",
+        "forms": [
+          "Erzieher",
+          "Erziehern"
+        ],
+        "ex": "Simon hat sich für eine Ausbildung zum Erzieher entschieden.",
+        "exZh": "Simon 选择了接受幼教培训。"
+      },
+      {
+        "w": "mit dem Herzen dabei sein",
+        "zh": "用心投入",
+        "forms": [
+          "Herzen"
+        ],
+        "ex": "Man sollte mit dem Herzen dabei sein, nicht nur mit dem Kopf.",
+        "exZh": "人应当用心投入，而不只是用脑。"
+      }
+    ]
   },
   "traum": {
     "title": "Von der Person zum Schaubild · Traumberufe",

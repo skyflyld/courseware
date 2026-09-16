@@ -334,7 +334,7 @@ def sec_chart(d):
       <div class="chart-card">
         <p class="chart-title" lang="de">{h(c['title'])}</p>
         <p class="chart-sub" lang="de">{h(c['sub'])}</p>
-        <p class="chart-sub"><b>单位</b>：{h(c['unit'])}</p>
+        <p class="chart-sub"><b>{h(c.get('legend', ''))}</b>　<b>单位</b>：{h(c['unit'])}</p>
         {''.join(blocks)}
         <div class="chart-detail" id="chartDetail">点任一条形，这里显示该职位的名次与人数。</div>
         <p class="chart-quelle" lang="de">{h(c['quelle'])}</p>
@@ -560,7 +560,14 @@ def sec_t1(d):
 # ---------------------------------------------------------------- 8/9 T2
 def sec_t2(d, key, num):
     t = d[key]
-    bank = ''.join('<span class="bank-chip" onclick="clzFill(\'clz-%s\', this)">%s</span>' % (key, h(w)) for w in t['bank'])
+    if t['bank']:
+        bank_head = '<strong>Wortbank：</strong>' if key == 't1' else '<strong>Wortbank（课堂便利，非原题）：</strong>'
+        bank_html = '<div class="bank-box">%s%s</div>' % (
+            bank_head, ''.join('<span class="bank-chip" onclick="clzFill(\'clz-%s\', this)">%s</span>'
+                               % (key, h(w)) for w in t['bank']))
+    else:
+        bank_html = ('<p class="zh-hint note">原题为听力填空，<b>教材没有词库</b>：先听/读一遍再说答案，'
+                     '答案与依据见本页下方说明。</p>')
     paras = []
     n = 0
     for blk in t['cloze']:
@@ -585,7 +592,7 @@ def sec_t2(d, key, num):
       <h2 class="section-title"><span class="num">{num}</span> 👤 {h(t['title'])} <span class="src src-lg">{h(t['kind'])} · {h(t['sub'])}</span></h2>
       <p class="zh-hint">{h(t['lead'])}</p>
       <div class="clz-box" id="clz-{key}">
-        <div class="bank-box"><strong>Wortbank（课堂便利，非原题）：</strong>{bank}</div>
+        {bank_html}
         {''.join(paras)}
         {btns}
       </div>

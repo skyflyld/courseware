@@ -1,9 +1,9 @@
 {
   "t1": {
-    "title": "Text 1 · Berufswahlverhalten in Deutschland",
-    "kind": "Statistik-Text（图表描述文）",
-    "lead": "统计文的读法：第一段说趋势（Entwicklung），第二段给排名与比例（Rangordnung / Prozentanteile）。填空先看搭配，再看时态。",
-    "provenance": "挖空文本与词库均按练习页逐字转录（词库 12 词，其中 dominieren / ermutigen / Studienwahl 三个是干扰词，不填）。两个要点：① 第 3、4 空共用同一个词库词 nachgehen，教材考的是可分动词拆开（gehen ... nach）；② 第 6、10 空要按时态变形：gehören → gehörten，betragen → betrug。",
+    "title": "Text 1 · Vergiss „typische“ Männer- oder Frauenberufe!",
+    "kind": "教材 S.226–227 · Übung 7",
+    "lead": "统计文三段：第一段说趋势（Entwicklung），第二段给排名与比例（Rangordnung / Prozentanteile），第三段转到大学专业（Studienwahl）并收在号召上（ermutigen）。填空先看搭配，再看时态。",
+    "provenance": "教材原文页照录（S.226–227，Übung 7：Hören Sie den Text und füllen Sie die Lücken）。全文共 13 空、词库 12 词，一个词都不多不少：第 3、4 空共用 nachgehen（可分动词拆成 gehen … nach），其余各空一词。第 6、10 空需变形：gehören → gehörten，betragen → betrug。",
     "bank": [
       "Fachinformatiker",
       "betragen",
@@ -27,8 +27,7 @@
           "gehen",
           "nach",
           "Branchen"
-        ],
-        "src": "教材 Ü（听力填空）第 1 段"
+        ]
       },
       {
         "p": "Im vergangenen Jahr [[6]] die Kauffrau für Büromanagement, die medizinische und zahnmedizinische Fachangestellte zu den beliebtesten Ausbildungsberufen von Frauen. Das ist im [[7]] zu den Vorjahren unverändert geblieben. Männer wählten dagegen am häufigsten die Ausbildung zum Kfz-Mechatroniker, [[8]] und Elektroniker. Unter den Top-5-Ausbildungsberufen waren nur die Kauffrau / der Kaufmann und die Verkäuferin / der Verkäufer im Einzelhandel bei beiden Geschlechtern fast gleich beliebt. Während in einigen der Bau- und Metallberufe deutlich weniger als 10 Prozent der [[9]] Frauen waren, [[10]] ihr Anteil vor allem in den Berufen des Erziehungs- und Gesundheitswesens mehr als 80 Prozent.",
@@ -38,8 +37,15 @@
           "Fachinformatiker",
           "Beschäftigten",
           "betrug"
-        ],
-        "src": "教材 Ü（听力填空）第 2 段"
+        ]
+      },
+      {
+        "p": "Heute entscheiden sich mehr Frauen für eine akademische Laufbahn. Trotzdem zeigen sich bei der [[11]] noch immer deutliche Unterschiede: Zwar liegt Betriebswirtschaftslehre (BWL) bei den Studienanfängern beider Geschlechter auf Platz eins, danach [[12]] bei den Männern aber technische und naturwissenschaftliche Fächer wie Informatik und Maschinenbau. Bei den Frauen sind nach BWL vor allem Rechtswissenschaften, Psychologie sowie Erziehungswissenschaften beliebt. Insgesamt unterscheiden sich Frauen und Männer in ihrer Berufswahl demnach noch immer stark voneinander. Daran ist nichts auszusetzen, wenn die Wahl den jeweiligen Vorlieben entspricht. Dennoch gibt es gute Gründe dafür, junge Menschen zu [[13]], die traditionellen Rollenmuster zu verlassen und sich von stereotypen Vorstellungen zu lösen.",
+        "ans": [
+          "Studienwahl",
+          "dominieren",
+          "ermutigen"
+        ]
       }
     ],
     "structure": [
@@ -153,21 +159,26 @@
   },
   "t2a": {
     "title": "Text 2a · Lieber Werkstatt statt Schreibtisch",
-    "kind": "Porträt-Text（人物文）",
+    "kind": "教材 S.235–236 · Übung 7",
     "sub": "Erika (21), Deutsche",
-    "lead": "人物文的读法：先抓转折点（zunächst … jedoch … dadurch … daher），再抓自我评价。一段话四个阶段，合起来就是作文里的「经历 + 选择 + 理由」。",
-    "provenance": "原题是听力填空（Hören Sie den Text und füllen Sie die Lücken），教材在这一段只挖 1 个空；本页词库为课堂便利所加（含 3 个干扰项，原题没有词库）。答案 Elektronik 由后文 zur Elektronikerin 得到。",
-    "bank": [
-      "Elektronik",
-      "Mechanik",
-      "Schreinerei",
-      "Gymnasium"
-    ],
+    "lead": "人物文的读法：先抓转折点（zunächst … jedoch … dadurch … daher），再抓自我评价，最后抓她「为什么喜欢」和「想对后来人说什么」。",
+    "provenance": "教材原文页照录（S.235–236），原题为听力填空、**没有词库**，全篇共 6 空。答案分层标注：第 4、6 空（durchsetzungsfähiger / Berufswunsch）见教师课件答案页与教材 Ü8 的 Stärken 说明；第 1、2 空（es kommt darauf an）为固定搭配；第 3 空 Fähigkeiten 按上下文推定（Stärken 亦可说得通）。",
+    "bank": [],
     "cloze": [
       {
         "p": "Zunächst besuchte Erika ein Gymnasium. Jedoch stellte sie fest, dass sie den Nachmittag lieber in der [[1]]-Werkstatt ihres Vaters verbrachte, als nur am Schreibtisch zu sitzen. Dadurch wurde ihr klar: „Ich muss nicht studieren wie meine Freundinnen.“ Sie entschied sich daher für die Ausbildung zur Elektronikerin – aus dem Traum wurde Realität. Nun betreut sie Kundinnen und Kunden und plant die Beleuchtung in Gebäuden.",
         "ans": [
           "Elektronik"
+        ]
+      },
+      {
+        "p": "In ihrer Arbeit [[2]] es darauf [[3]], sogenannte Smart-Home-Systeme für die nachhaltige Energieversorgung und den Klimaschutz mitzugestalten. Dabei hat Erika auch ihre persönlichen [[4]] weiterentwickelt. „Ich bin [[5]] geworden, weil ich meistens als einzige Frau mit Männern zusammenarbeite.“ Sie lachte, als sie sagte: „Ich mache das gerne, es ist ein sehr angenehmes Arbeiten. Meine männlichen Kollegen sprechen Probleme immer direkt an. Das finde ich gut.“ Sie freut sich, wenn Mädchen den Mut haben, ihrem eigenen [[6]] zu folgen.",
+        "ans": [
+          "kommt",
+          "an",
+          "Fähigkeiten",
+          "durchsetzungsfähiger",
+          "Berufswunsch"
         ]
       }
     ],
@@ -219,23 +230,16 @@
           "Kundinnen und Kunden betreuen, die Beleuchtung in Gebäuden planen, sogenannte Smart-Home-Systeme mitgestalten"
         ]
       ],
-      "src": "教材 Textarbeit 表（原文照抄）"
+      "src": "教材 Ü8 表格（S.237）的结构；表内答案为教师课件答案页内容，非教材原文。"
     }
   },
   "t2b": {
     "title": "Text 2b · Mit Kopf und Herz dabei sein",
-    "kind": "Porträt-Text（人物文）",
+    "kind": "教材 S.236 · Übung 7",
     "sub": "Simon (22), Schweizer",
     "lead": "第二篇人物文的结构与 Erika 篇平行：早年兴趣 → 实习 → 岗位任务 → 强项 → 建议。填空注意形容词与名词的固定搭配。",
-    "provenance": "挖空文本按教材练习逐字转录（原题无词库，此处词库为课堂便利所加）；填空答案按搭配与上下文推定，课堂可先让学生说理由。",
-    "bank": [
-      "Lust",
-      "soziale",
-      "betreuen",
-      "achten",
-      "Geduld",
-      "Einfühlungsvermögen"
-    ],
+    "provenance": "教材原文页照录（S.236），原题为听力填空、没有词库，全篇 6 空；此处答案按上下文与搭配给出（Lust / soziale / betreuen / achten / Geduld / Einfühlungsvermögen），课堂请学生先说出理由。",
+    "bank": [],
     "cloze": [
       {
         "p": "Simon wusste früh, was er werden wollte. „Ich habe [[1]] darauf, mit Kindern und Jugendlichen zu arbeiten“, erzählt Simon. Deshalb hat er sich bewusst für eine Ausbildung zum Erzieher entschieden. Der [[2]] Bereich hat ihn schon immer interessiert. Während seiner Schulzeit hat er zwei Praktika im Kindergarten gemacht und dadurch die Aufgaben von Erziehern kennen gelernt. Es gehört z. B. zu seinen Aufgaben, Kinder zu [[3]] und zu unterstützen sowie auf ihr Verhalten zu [[4]]. Auf die Frage, welche Stärken er für den Beruf mitbringt, meint Simon: „[[5]], Kreativität und Einfühlungsvermögen sind sehr wichtig – die wichtigste Fähigkeit für Erzieher ist also [[6]]. Das heißt, ich merke, wenn es einem Kind nicht gut geht. Ich höre ihm zu und helfe ihm.“ Simon rät: „Wenn man Erzieher werden möchte, sollte man mit dem Herzen dabei sein, nicht nur mit dem Kopf.“",
@@ -298,7 +302,7 @@
           "Kinder betreuen und unterstützen sowie auf ihr Verhalten achten, Kindern zuhören und helfen (mit Kopf und Herz dabei sein)"
         ]
       ],
-      "src": "教材 Textarbeit 表（原文照抄）"
+      "src": "教材 Ü8 表格（S.237）的结构；表内答案为教师课件答案页内容，非教材原文。"
     }
   },
   "traum": {

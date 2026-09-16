@@ -26,14 +26,13 @@
   },
   "chart": {
     "title": "Ausbildungsberufe: Zweimal Top Fünf",
-    "sub": "So viel Prozent aller Ausbildungsanfänger waren Frauen / Männer",
-    "quelle": "Quelle: Bundesinstitut für Berufsbildung · © 2021 IW Medien / iwd",
-    "unit": "Anzahl der Ausbildungsanfänger（条形上的数字是绝对人数；图注原文用 Prozent 说明男女结构，两个口径不要混着说：报数字用 Anzahl，报结构才用 Prozent）",
+    "sub": "So viel Prozent aller Ausbildungsanfänger waren ■ Frauen ■ Männer",
+    "quelle": "Quelle: Bundesinstitut für Berufsbildung · © 2021 iwd / IW Medien",
+    "unit": "Anzahl der Ausbildungsanfänger（条形上的数字是绝对人数，取自图表；副标题原文用 Prozent 说明男女结构，两个口径不要混着说）",
     "groups": [
       {
         "key": "m",
         "label": "Top-5-Ausbildungsberufe von Männern",
-        "short": "Männer",
         "bars": [
           {
             "name": "Kraftfahrzeugmechatroniker/-in",
@@ -60,7 +59,6 @@
       {
         "key": "f",
         "label": "Top-5-Ausbildungsberufe von Frauen",
-        "short": "Frauen",
         "bars": [
           {
             "name": "Kaufmann/-frau für Büromanagement",
@@ -188,7 +186,8 @@
         "a": 1,
         "src": "榜单构成"
       }
-    ]
+    ],
+    "legend": "■ Frauen　■ Männer"
   },
   "redemittel": [
     {

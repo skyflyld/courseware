@@ -1,0 +1,862 @@
+{
+  "meta": {
+    "lektion": 8,
+    "title": "Schaubilder beschreiben: Text 1 & Text 2",
+    "subtitle": "Lektion 8 · Berufswahl · 课文精读 + 图表描述句型专项",
+    "source": "《新经典德语》第二册 Lektion 8 · Text 1 / Text 2（听读课文与练习）· 图表数据 Quelle: Bundesinstitut für Berufsbildung（© 2021 IW Medien / iwd）",
+    "objectives": [
+      "ein Schaubild in vier Schritten beschreiben: Zahlen lesen, ordnen, vergleichen, kommentieren（四步描述图表：读数、排序、比较、评论）",
+      "die vier Redemittel-Gruppen aktiv benutzen: Rangordnung, Prozentanteile, Vergleiche/Entwicklung, Kommentar/Fazit（四类句型主动使用）",
+      "Text 1 (Statistik-Text) und Text 2 (Porträt-Text) inhaltlich und strukturell erschließen（读懂统计文与人物文的结构）",
+      "typische Fehler in Schaubild-Beschreibungen erkennen und vermeiden（识别并避免图表描述常见错误）",
+      "für die Prüfungsaufgabe „Schaubild beschreiben“ ein belastbares Gerüst aufbauen（为专四图表作文建立可套用骨架）"
+    ],
+    "flow": [
+      "① 热身：先看图，不看字（读数字）",
+      "② 句型库：四类 Redemittel 过一遍",
+      "③ 变形金刚：同一组数据四种说法",
+      "④ 阶梯四关：读→排→比→评",
+      "⑤ Text 1 精读：挖空 + 段落功能 + 句型标注",
+      "⑥ Text 2 精读：Erika / Simon 人物文",
+      "⑦ 从人物文到统计文：Traumberufe 调查",
+      "⑧ 找错侦探：三段有问题的描述",
+      "⑨ 计时播报员：30 秒 ≥4 个句型",
+      "⑩ 作文卡：四段式骨架，考场直接套"
+    ]
+  },
+  "chart": {
+    "title": "Ausbildungsberufe: Zweimal Top Fünf",
+    "sub": "So viel Prozent aller Ausbildungsanfänger waren Frauen / Männer",
+    "quelle": "Quelle: Bundesinstitut für Berufsbildung · © 2021 IW Medien / iwd",
+    "unit": "Anzahl der Ausbildungsanfänger（条形上的数字是绝对人数；图注原文用 Prozent 说明男女结构，两个口径不要混着说：报数字用 Anzahl，报结构才用 Prozent）",
+    "groups": [
+      {
+        "key": "m",
+        "label": "Top-5-Ausbildungsberufe von Männern",
+        "short": "Männer",
+        "bars": [
+          {
+            "name": "Kraftfahrzeugmechatroniker/-in",
+            "value": 19170
+          },
+          {
+            "name": "Fachinformatiker/in",
+            "value": 13836
+          },
+          {
+            "name": "Elektroniker/in",
+            "value": 13698
+          },
+          {
+            "name": "Anlagenmechaniker/-in für Sanitär-, Heizungs- und Klimatechnik",
+            "value": 13119
+          },
+          {
+            "name": "Verkäufer/in",
+            "value": 10878
+          }
+        ]
+      },
+      {
+        "key": "f",
+        "label": "Top-5-Ausbildungsberufe von Frauen",
+        "short": "Frauen",
+        "bars": [
+          {
+            "name": "Kaufmann/-frau für Büromanagement",
+            "value": 16692
+          },
+          {
+            "name": "Medizinische/-r Fachangestellte/-r",
+            "value": 15138
+          },
+          {
+            "name": "Zahnmedizinische/-r Fachangestellte/-r",
+            "value": 12411
+          },
+          {
+            "name": "Verkäufer/-in",
+            "value": 10581
+          },
+          {
+            "name": "Kaufmann/-frau im Einzelhandel",
+            "value": 9663
+          }
+        ]
+      }
+    ],
+    "facts": [
+      {
+        "de": "Auf Platz eins der Männer steht der Kraftfahrzeugmechatroniker mit 19.170 Ausbildungsanfängern.",
+        "cn": "男生榜首：Kfz-Mechatroniker，19.170 人（全图最大值）"
+      },
+      {
+        "de": "Bei den Frauen liegt die Kauffrau für Büromanagement mit 16.692 an der Spitze.",
+        "cn": "女生榜首：Büromanagement 文员，16.692 人"
+      },
+      {
+        "de": "Nur die Verkäufer/-in steht in beiden Top-5-Listen: 10.878 Männer und 10.581 Frauen.",
+        "cn": "唯一同时进两榜的职业：Verkäufer/in（男 10.878 / 女 10.581，差 297 人）"
+      },
+      {
+        "de": "Die technischen Berufe dominieren bei den Männern, die kaufmännischen und medizinischen Berufe bei den Frauen.",
+        "cn": "榜单的性别分界：男=技术类，女=商务与医疗类"
+      },
+      {
+        "de": "Das Schlusslicht beider Listen liegen dicht zusammen: 10.878 bzw. 9.663.",
+        "cn": "两榜末位都在一万上下，说明 Top-5 内部差距不大"
+      }
+    ],
+    "quiz": [
+      {
+        "q": "Wer steht bei den Männern an der Spitze?",
+        "opts": [
+          "Fachinformatiker/in",
+          "Kraftfahrzeugmechatroniker/-in",
+          "Elektroniker/in"
+        ],
+        "a": 1,
+        "src": "图表 Männer 榜首"
+      },
+      {
+        "q": "Welcher Beruf steht in beiden Top-5-Listen?",
+        "opts": [
+          "Kaufmann/-frau im Einzelhandel",
+          "Verkäufer/-in",
+          "Elektroniker/in"
+        ],
+        "a": 1,
+        "src": "两榜对照"
+      },
+      {
+        "q": "Wie viele weibliche Ausbildungsanfänger hatte die Zahnmedizinische Fachangestellte?",
+        "opts": [
+          "12.411",
+          "15.138",
+          "12.441"
+        ],
+        "a": 0,
+        "src": "图表 Frauen 第 3 位"
+      },
+      {
+        "q": "Wie viele Ausbildungsanfänger hat der Fachinformatiker?",
+        "opts": [
+          "13.698",
+          "13.836",
+          "13.386"
+        ],
+        "a": 1,
+        "src": "图表 Männer 第 2 位"
+      },
+      {
+        "q": "Welche Zahl gehört zur Kauffrau für Büromanagement?",
+        "opts": [
+          "16.692",
+          "16.962",
+          "16.296"
+        ],
+        "a": 0,
+        "src": "图表 Frauen 第 1 位"
+      },
+      {
+        "q": "Was steht bei den Männern an letzter Stelle der Top-5?",
+        "opts": [
+          "Anlagenmechaniker/-in",
+          "Verkäufer/in",
+          "Elektroniker/in"
+        ],
+        "a": 1,
+        "src": "图表 Männer 第 5 位"
+      },
+      {
+        "q": "Wie groß ist der Unterschied zwischen den beiden Verkäufer/-in-Zahlen?",
+        "opts": [
+          "etwa 300",
+          "etwa 3.000",
+          "etwa 30"
+        ],
+        "a": 0,
+        "src": "10.878 − 10.581 = 297"
+      },
+      {
+        "q": "Welche Berufsgruppe dominiert in der Frauen-Liste?",
+        "opts": [
+          "technische Berufe",
+          "kaufmännische und medizinische Berufe",
+          "Bauberufe"
+        ],
+        "a": 1,
+        "src": "榜单构成"
+      }
+    ]
+  },
+  "redemittel": [
+    {
+      "key": "rang",
+      "cat": "Rangordnung · 排名",
+      "note": "说名次用。注意动词位置：An der Spitze stehen / liegen + 主语；Danach folgen + 第三格。",
+      "items": [
+        {
+          "de": "Auf Platz eins / An der Spitze liegen / stehen ...",
+          "cn": "排在第一位／位居榜首的是……"
+        },
+        {
+          "de": "An erster Stelle / An der ersten Stelle stehen ...",
+          "cn": "排在首位的是……"
+        },
+        {
+          "de": "Der Spitzenreiter ist ...",
+          "cn": "榜首（领头羊）是……",
+          "tip": "口语感强，作文里用一次即可"
+        },
+        {
+          "de": "Danach dominieren / folgen ... nach ...",
+          "cn": "之后占主导／紧随其后的是……"
+        },
+        {
+          "de": "Es folgt / folgen ...",
+          "cn": "紧随其后的是……",
+          "tip": "单数 es folgt，复数 es folgen"
+        },
+        {
+          "de": "gefolgt von ...",
+          "cn": "紧随其后的是……",
+          "tip": "做后置成分：A, gefolgt von B"
+        },
+        {
+          "de": "An letzter / vorletzter Stelle stehen ...",
+          "cn": "排在最后／倒数第二的是……"
+        },
+        {
+          "de": "Das Schlusslicht ist / bilden ...",
+          "cn": "垫底的是……",
+          "tip": "单数 ist，复数 bilden"
+        }
+      ]
+    },
+    {
+      "key": "proz",
+      "cat": "Prozentanteile · 比例",
+      "note": "数字与百分比的说法。低于 10%、高于 80% 这种区间表达比精确数字更好用。",
+      "items": [
+        {
+          "de": "In den ... waren deutlich weniger als 10 Prozent der Beschäftigten ...",
+          "cn": "在……领域，从业人员中女性／男性明显不足 10%"
+        },
+        {
+          "de": "Ihr Anteil betrug ... mehr als 80 Prozent.",
+          "cn": "其占比超过 80%",
+          "tip": "Anteil betrug 是固定搭配"
+        },
+        {
+          "de": "Besonders hoch liegt der Anteil von ... bei ... %.",
+          "cn": "……的比例特别高，达到……%"
+        },
+        {
+          "de": "... % aller ... sind / haben ...",
+          "cn": "全部……中有……% 是／拥有……"
+        },
+        {
+          "de": "... gehörten ... zu den beliebtesten Ausbildungsberufen von Frauen.",
+          "cn": "……属于女性最受欢迎的职业培训之列"
+        },
+        {
+          "de": "... die beliebtesten Ausbildungsberufe ...",
+          "cn": "最受欢迎的职业培训是……",
+          "tip": "名词化写法，作文更紧凑"
+        },
+        {
+          "de": "... am häufigsten ...",
+          "cn": "最常选择的是……",
+          "tip": "副词最高级，动词搭配 wählen/entscheiden sich für"
+        }
+      ]
+    },
+    {
+      "key": "verg",
+      "cat": "Vergleiche / Entwicklung · 比较与发展",
+      "note": "图表描述的高分点：不只报数，还要说变化和对比。注意 zwar ... aber 与 während 的对举结构。",
+      "items": [
+        {
+          "de": "Das Berufswahlverhalten von ... hat sich wenig verändert.",
+          "cn": "……的职业选择行为几乎没有变化"
+        },
+        {
+          "de": "Frauen und Männer entscheiden sich nach wie vor für ...",
+          "cn": "男女一如既往地选择……",
+          "tip": "nach wie vor = 一如既往"
+        },
+        {
+          "de": "Das ist im Vergleich zu ... unverändert geblieben. / Damit haben sich ... im Vergleich zu den Vorjahren nicht verändert.",
+          "cn": "与……相比保持不变／与前几年相比没有变化"
+        },
+        {
+          "de": "Im Gegensatz / Im Unterschied zu ...",
+          "cn": "与……相反／不同",
+          "tip": "后面接第三格"
+        },
+        {
+          "de": "Verglichen mit ... / Gegenüber ...",
+          "cn": "与……相比"
+        },
+        {
+          "de": "Unter den Top-5-Ausbildungsberufen waren ... bei beiden Geschlechtern fast gleich beliebt.",
+          "cn": "在 Top-5 里，……在男女两性中受欢迎程度几乎相同"
+        },
+        {
+          "de": "Heute gehen in Deutschland deutlich mehr Frauen einem Beruf nach als vor einigen Jahrzehnten.",
+          "cn": "如今德国从业女性明显多于几十年前",
+          "tip": "比较级 + als 结构"
+        },
+        {
+          "de": "... unterscheiden sich Frauen und Männer in ihrer Berufswahl demnach noch immer stark voneinander.",
+          "cn": "由此可见，男女在职业选择上仍差异显著"
+        },
+        {
+          "de": "Dennoch sind Frauen ... noch immer kaum vertreten.",
+          "cn": "尽管如此，女性在……仍几乎难见踪影"
+        },
+        {
+          "de": "Männer wählten dagegen am häufigsten ...",
+          "cn": "男性则最常选择……",
+          "tip": "dagegen 做对比转折"
+        },
+        {
+          "de": "Trotzdem zeigen sich ... noch immer deutliche Unterschiede.",
+          "cn": "尽管如此，仍存在明显差异"
+        },
+        {
+          "de": "Während in einigen ... Frauen waren, betrug ihr Anteil vor allem ...",
+          "cn": "虽然一些领域……女性（很少），但其占比尤其在……"
+        }
+      ]
+    },
+    {
+      "key": "fazit",
+      "cat": "Kommentar / Fazit · 评论与结论",
+      "note": "作文最后一段必备。三个公式：Insgesamt... / Zusammenfassend lässt sich sagen, dass... / Es fällt auf, dass...",
+      "items": [
+        {
+          "de": "Insgesamt unterscheiden sich Frauen und Männer in ihrer Berufswahl demnach noch immer stark voneinander.",
+          "cn": "总体而言，男女在职业选择上仍存在明显差异"
+        },
+        {
+          "de": "Abschließend / Zusammenfassend kann man sagen / feststellen / erkennen, dass ...",
+          "cn": "最后可以说／可以确认的是……"
+        },
+        {
+          "de": "Abschließend / Zusammenfassend lässt sich sagen / feststellen / erkennen, dass ...",
+          "cn": "最后可以说／可以确认的是……（被动替代式）",
+          "tip": "比 kann man 更书面"
+        },
+        {
+          "de": "Es ist festzustellen / erkennen, dass ...",
+          "cn": "可以看出／可以确认的是……"
+        },
+        {
+          "de": "Es fällt auf / Überraschend ist, dass ...",
+          "cn": "引人注目的是／令人意外的是……"
+        }
+      ]
+    }
+  ],
+  "satzbau": {
+    "note": "把打乱的词块拼成一句图表描述。拼完点「检查」，注意动词位置和第三格。",
+    "items": [
+      {
+        "id": 1,
+        "cat": "Rangordnung",
+        "zh": "在男性榜上，位居榜首的是汽车机电工，共有 19.170 名受训者。",
+        "chunks": [
+          "An der Spitze",
+          "der männlichen",
+          "Ausbildungsanfänger",
+          "steht",
+          "der Kraftfahrzeugmechatroniker",
+          "mit 19.170"
+        ],
+        "ans": "An der Spitze der männlichen Ausbildungsanfänger steht der Kraftfahrzeugmechatroniker mit 19.170.",
+        "src": "句型：An der Spitze ... steht ...（数据取自图表）"
+      },
+      {
+        "id": 2,
+        "cat": "Rangordnung",
+        "zh": "在女性榜上，紧随其后的是医疗助理，共有 15.138 人。",
+        "chunks": [
+          "Danach",
+          "folgt",
+          "bei den Frauen",
+          "die medizinische Fachangestellte",
+          "mit 15.138"
+        ],
+        "ans": "Danach folgt bei den Frauen die medizinische Fachangestellte mit 15.138.",
+        "src": "句型：Danach folgt ...（数据取自图表）"
+      },
+      {
+        "id": 3,
+        "cat": "Prozentanteile",
+        "zh": "在若干建筑和金属职业中，从业人员里女性明显不足 10%。",
+        "chunks": [
+          "In einigen",
+          "der Bau- und Metallberufe",
+          "waren",
+          "deutlich weniger als 10 Prozent",
+          "der Beschäftigten",
+          "Frauen"
+        ],
+        "ans": "In einigen der Bau- und Metallberufe waren deutlich weniger als 10 Prozent der Beschäftigten Frauen.",
+        "src": "Text 1（图：Ü9 语境句，教材原句）"
+      },
+      {
+        "id": 4,
+        "cat": "Vergleiche",
+        "zh": "只有销售员一职同时出现在男女两榜中。",
+        "chunks": [
+          "Nur",
+          "die Verkäuferin",
+          "steht",
+          "in beiden Top-5-Listen",
+          "der Frauen und der Männer"
+        ],
+        "ans": "Nur die Verkäuferin steht in beiden Top-5-Listen der Frauen und der Männer.",
+        "src": "句型：nur ... steht in beiden ...（数据取自图表）"
+      },
+      {
+        "id": 5,
+        "cat": "Vergleiche",
+        "zh": "如今德国从业女性明显多于几十年前。",
+        "chunks": [
+          "Heute",
+          "gehen",
+          "in Deutschland",
+          "deutlich mehr Frauen",
+          "einem Beruf nach",
+          "als vor einigen Jahrzehnten"
+        ],
+        "ans": "Heute gehen in Deutschland deutlich mehr Frauen einem Beruf nach als vor einigen Jahrzehnten.",
+        "src": "Text 1（教材原句）"
+      },
+      {
+        "id": 6,
+        "cat": "Fazit",
+        "zh": "总结来说，可以看出男女在职业选择上仍差异明显。",
+        "chunks": [
+          "Zusammenfassend",
+          "lässt sich",
+          "feststellen,",
+          "dass sich Frauen und Männer",
+          "in ihrer Berufswahl",
+          "noch immer stark unterscheiden"
+        ],
+        "ans": "Zusammenfassend lässt sich feststellen, dass sich Frauen und Männer in ihrer Berufswahl noch immer stark unterscheiden.",
+        "src": "句型：Zusammenfassend lässt sich feststellen, dass ..."
+      },
+      {
+        "id": 7,
+        "cat": "Kommentar",
+        "zh": "引人注目的是，职场中的典型性别分工依然存在。",
+        "chunks": [
+          "Es fällt auf,",
+          "dass",
+          "die typische",
+          "geschlechtsspezifische Arbeitsteilung",
+          "in den Berufen",
+          "noch immer besteht"
+        ],
+        "ans": "Es fällt auf, dass die typische geschlechtsspezifische Arbeitsteilung in den Berufen noch immer besteht.",
+        "src": "句型：Es fällt auf, dass ..."
+      }
+    ]
+  },
+  "ladder": {
+    "note": "四层阶梯：先读得准，再排得对，然后比得出，最后评得上。每层独立计分。",
+    "levels": [
+      {
+        "n": 1,
+        "title": "Zahlen lesen · 读数字",
+        "task": "把数字与职业配对（点左列再点右列）。",
+        "pairs": [
+          {
+            "a": "Kraftfahrzeugmechatroniker/-in",
+            "b": "19.170"
+          },
+          {
+            "a": "Fachinformatiker/in",
+            "b": "13.836"
+          },
+          {
+            "a": "Kauffrau/-mann für Büromanagement",
+            "b": "16.692"
+          },
+          {
+            "a": "Medizinische/-r Fachangestellte/-r",
+            "b": "15.138"
+          },
+          {
+            "a": "Verkäufer/-in (Männer)",
+            "b": "10.878"
+          },
+          {
+            "a": "Verkäufer/-in (Frauen)",
+            "b": "10.581"
+          }
+        ]
+      },
+      {
+        "n": 2,
+        "title": "Ordnen · 排序",
+        "task": "把男生榜按人数从高到低排好（点顺序号）。",
+        "items": [
+          {
+            "name": "Kraftfahrzeugmechatroniker/-in",
+            "rank": 1
+          },
+          {
+            "name": "Fachinformatiker/in",
+            "rank": 2
+          },
+          {
+            "name": "Elektroniker/in",
+            "rank": 3
+          },
+          {
+            "name": "Anlagenmechaniker/-in für Sanitär-, Heizungs- und Klimatechnik",
+            "rank": 4
+          },
+          {
+            "name": "Verkäufer/in",
+            "rank": 5
+          }
+        ]
+      },
+      {
+        "n": 3,
+        "title": "Vergleichen · 比较",
+        "task": "选正确的比较句。",
+        "items": [
+          {
+            "q": "哪个职业的男性受训者多于女性？",
+            "opts": [
+              "Verkäufer/in",
+              "Kauffrau/-mann für Büromanagement",
+              "Zahnmedizinische/-r Fachangestellte/-r"
+            ],
+            "a": 0,
+            "src": "10.878 > 10.581"
+          },
+          {
+            "q": "哪一栏的榜首人数更高？",
+            "opts": [
+              "Männer",
+              "Frauen",
+              "一样高"
+            ],
+            "a": 0,
+            "src": "19.170 > 16.692"
+          },
+          {
+            "q": "下列哪句比较句语法正确？",
+            "opts": [
+              "Verglichen mit den Frauen, die Männer wählen technische Berufe.",
+              "Verglichen mit den Frauen wählen die Männer technische Berufe.",
+              "Verglichen mit die Frauen wählen die Männer technische Berufe."
+            ],
+            "a": 1,
+            "src": "vergleichen mit + Dativ；主句动词第二位"
+          },
+          {
+            "q": "哪句正确表达了「女生榜第三位是牙医助理」？",
+            "opts": [
+              "An dritter Stelle steht bei den Frauen die zahnmedizinische Fachangestellte.",
+              "An dritter Stelle stehen bei den Frauen die zahnmedizinische Fachangestellte.",
+              "An dritte Stelle steht bei den Frauen die zahnmedizinische Fachangestellte."
+            ],
+            "a": 0,
+            "src": "An dritter Stelle + 单数动词"
+          }
+        ]
+      },
+      {
+        "n": 4,
+        "title": "Kommentieren · 评论",
+        "task": "给这段数据配一个恰当的 Fazit（可多选后检查）。",
+        "items": [
+          {
+            "q": "哪句最适合做这张图的总结句？",
+            "opts": [
+              "Zusammenfassend lässt sich sagen, dass die Berufswahl von Frauen und Männern noch immer stark vom Geschlecht geprägt ist.",
+              "Zusammenfassend lässt sich sagen, dass alle Berufe bei beiden Geschlechtern gleich beliebt sind.",
+              "Zusammenfassend lässt sich sagen, dass es keine Unterschiede mehr gibt."
+            ],
+            "a": 0,
+            "src": "数据支持：技术类在男榜、商务医疗类在女榜"
+          },
+          {
+            "q": "哪句是「注意到的现象」而不是「结论」？",
+            "opts": [
+              "Es fällt auf, dass nur ein Beruf in beiden Listen steht.",
+              "Deshalb sollten Frauen technische Berufe wählen.",
+              "Insgesamt gibt es keine Unterschiede."
+            ],
+            "a": 0,
+            "src": "Es fällt auf 引出观察；不应替读者下价值判断"
+          }
+        ]
+      }
+    ]
+  },
+  "detect": {
+    "note": "三段「看起来像作文」的图表描述，每段藏了错。找出错误片段（点错处），再点「检查」。错误类型：数字错 / 比较对象错 / 句型错。",
+    "items": [
+      {
+        "id": 1,
+        "title": "Beschreibung A",
+        "text": "Die Grafik zeigt die Top-5-Ausbildungsberufe von Männern und Frauen. An der Spitze der Männer steht der Fachinformatiker mit 19.170 Ausbildungsanfängern.",
+        "errors": [
+          {
+            "frag": "Fachinformatiker mit 19.170",
+            "why": "数字错：19.170 属于 Kraftfahrzeugmechatroniker；Fachinformatiker 是 13.836",
+            "type": "Zahl"
+          }
+        ],
+        "fix": "An der Spitze der Männer steht der Kraftfahrzeugmechatroniker mit 19.170 Ausbildungsanfängern."
+      },
+      {
+        "id": 2,
+        "title": "Beschreibung B",
+        "text": "Im Vergleich zu den Männern wählen die Frauen häufiger technische Berufe. Bei den Frauen dominieren Informatik und Maschinenbau.",
+        "errors": [
+          {
+            "frag": "wählen die Frauen häufiger technische Berufe",
+            "why": "比较对象错：图上女生榜是商务与医疗类，技术类在男生榜",
+            "type": "Vergleich"
+          },
+          {
+            "frag": "dominieren Informatik und Maschinenbau",
+            "why": "事实错：女生榜前三是 Büromanagement / medizinische / zahnmedizinische Fachangestellte",
+            "type": "Zahl"
+          }
+        ],
+        "fix": "Im Vergleich zu den Frauen wählen die Männer häufiger technische Berufe. Bei den Männern dominieren Kraftfahrzeugmechatronik, Informatik und Elektronik."
+      },
+      {
+        "id": 3,
+        "title": "Beschreibung C",
+        "text": "Danach folgt die medizinische Fachangestellte bei den Frauen mit 15.138. Es folgen bei den Männern die Verkäufer mit 10.878 Ausbildungsanfängern. Das Schlusslicht ist die Kauffrau für Büromanagement.",
+        "errors": [
+          {
+            "frag": "Das Schlusslicht ist die Kauffrau für Büromanagement",
+            "why": "排名错：Kauffrau für Büromanagement 是女生榜第一（16.692），垫底的是 Kauffrau im Einzelhandel（9.663）",
+            "type": "Rang"
+          },
+          {
+            "frag": "Es folgen bei den Männern die Verkäufer",
+            "why": "语法错：Verkäufer 在男生榜是末位，不是「紧随其后」；且复数应为 die Verkäufer（此处指该职业时常用单数 Verkäufer/in）",
+            "type": "Grammatik"
+          }
+        ],
+        "fix": "… Das Schlusslicht bildet die Kauffrau im Einzelhandel mit 9.663 Ausbildungsanfängerinnen."
+      }
+    ]
+  },
+  "essay": {
+    "note": "专四作文「图表描述」四段式骨架。每段先给功能，再给可套用句型，最后填空练习。",
+    "parts": [
+      {
+        "part": "① Einleitung · 起",
+        "fn": "说出图是什么、什么时候、谁的数据，不评论。",
+        "rm": [
+          "Die Grafik / Das Schaubild zeigt ...",
+          "Die Statistik gibt Auskunft über ...",
+          "Die Daten stammen von ... aus dem Jahr ..."
+        ],
+        "example": "Die Grafik zeigt die Top-5-Ausbildungsberufe von Männern und Frauen in Deutschland im Jahr 2020."
+      },
+      {
+        "part": "② Beschreibung · 述",
+        "fn": "按名次或比例把主要数据说清楚，用 Rangordnung + Prozentanteile 句型。",
+        "rm": [
+          "An der Spitze steht ...",
+          "Danach folgen ...",
+          "An letzter Stelle steht ...",
+          "Ihr Anteil betrug ... Prozent."
+        ],
+        "example": "An der Spitze der Männer steht der Kraftfahrzeugmechatroniker mit 19.170 Ausbildungsanfängern, danach folgen der Fachinformatiker und der Elektroniker."
+      },
+      {
+        "part": "③ Vergleich und Deutung · 比与解",
+        "fn": "把两组数据对照，指出相同与不同，用 Vergleich 句型。",
+        "rm": [
+          "Im Unterschied zu ...",
+          "Während ... , ...",
+          "Auffällig ist, dass ...",
+          "Nur ... steht in beiden Listen."
+        ],
+        "example": "Während bei den Männern technische Berufe dominieren, wählen Frauen vor allem kaufmännische und medizinische Berufe."
+      },
+      {
+        "part": "④ Fazit · 结",
+        "fn": "一句话总结趋势，不喊口号、不给无依据的建议。",
+        "rm": [
+          "Zusammenfassend lässt sich sagen, dass ...",
+          "Insgesamt zeigt sich, dass ...",
+          "Es fällt auf, dass ..."
+        ],
+        "example": "Zusammenfassend lässt sich sagen, dass die Berufswahl von Frauen und Männern noch immer stark vom Geschlecht geprägt ist."
+      }
+    ],
+    "fill": [
+      {
+        "zh": "这张图展示了德国男女最受欢迎的五种职业培训。",
+        "ans": "Die Grafik zeigt die Top-5-Ausbildungsberufe von Männern und Frauen in Deutschland.",
+        "hint": "zeigen + 第四格"
+      },
+      {
+        "zh": "在男性榜上，位居榜首的是汽车机电工，共有 19.170 名受训者。",
+        "ans": "An der Spitze der Männer steht der Kraftfahrzeugmechatroniker mit 19.170 Ausbildungsanfängern.",
+        "hint": "An der Spitze ... steht ..."
+      },
+      {
+        "zh": "在女性榜上，商务管理文员以 16.692 人排在第一。",
+        "ans": "Bei den Frauen liegt die Kauffrau für Büromanagement mit 16.692 an der Spitze.",
+        "hint": "liegen an der Spitze"
+      },
+      {
+        "zh": "只有销售员一职同时出现在两榜之中。",
+        "ans": "Nur die Verkäuferin steht in beiden Top-5-Listen.",
+        "hint": "nur ... steht in beiden"
+      },
+      {
+        "zh": "与女性相比，男性更多地选择技术类职业。",
+        "ans": "Im Vergleich zu den Frauen wählen die Männer häufiger technische Berufe.",
+        "hint": "im Vergleich zu + Dativ"
+      },
+      {
+        "zh": "在若干建筑和金属职业中，从业人员里女性明显不足 10%。",
+        "ans": "In einigen der Bau- und Metallberufe waren deutlich weniger als 10 Prozent der Beschäftigten Frauen.",
+        "hint": "教材原句"
+      },
+      {
+        "zh": "与此相对，她们在教育和卫生领域的占比超过 80%。",
+        "ans": "Dagegen betrug ihr Anteil in den Berufen des Erziehungs- und Gesundheitswesens mehr als 80 Prozent.",
+        "hint": "Dagegen 起句，动词第二位"
+      },
+      {
+        "zh": "总结来说，男女的职业选择仍存在明显差异。",
+        "ans": "Zusammenfassend lässt sich sagen, dass sich Frauen und Männer in ihrer Berufswahl noch immer deutlich unterscheiden.",
+        "hint": "Zusammenfassend lässt sich sagen, dass ..."
+      }
+    ]
+  },
+  "vocab": {
+    "title": "Wortschatz · 图表描述必备词（26 张）",
+    "instruction": "点卡片翻面看中文。课堂用法：投影状态下随机抽卡，学生说出一个用这个词的句子；动词卡必须带出完整句型（如 betragen → Die Zahl beträgt 19.170.）。",
+    "src": "词表按 L8 图表与 Redemittel 的主题词整理，德文词形与教材/图表用词一致。",
+    "items": [
+      {
+        "de": "das Schaubild, -er",
+        "cn": "图表（柱状/条形图）"
+      },
+      {
+        "de": "die Grafik, -en",
+        "cn": "图表（图形）"
+      },
+      {
+        "de": "das Balkendiagramm, -e",
+        "cn": "条形图"
+      },
+      {
+        "de": "die Statistik, -en",
+        "cn": "统计；统计数据"
+      },
+      {
+        "de": "die Quelle, -n",
+        "cn": "来源（图注 Quelle: …）"
+      },
+      {
+        "de": "der Anteil, -e",
+        "cn": "份额、比例（Anteil an D.）"
+      },
+      {
+        "de": "der Prozentsatz, -̈e",
+        "cn": "百分比"
+      },
+      {
+        "de": "der Durchschnitt, -̈e",
+        "cn": "平均值（im Durchschnitt 平均）"
+      },
+      {
+        "de": "betragen",
+        "cn": "达到（数额）: X beträgt 19.170"
+      },
+      {
+        "de": "liegen bei",
+        "cn": "处于（数值）: liegt bei 13.836"
+      },
+      {
+        "de": "an der Spitze stehen",
+        "cn": "位居榜首"
+      },
+      {
+        "de": "anführen",
+        "cn": "领跑、居首位"
+      },
+      {
+        "de": "dominieren",
+        "cn": "占主导地位"
+      },
+      {
+        "de": "gehören zu",
+        "cn": "属于（某一类）"
+      },
+      {
+        "de": "zunehmen",
+        "cn": "增长"
+      },
+      {
+        "de": "abnehmen",
+        "cn": "减少"
+      },
+      {
+        "de": "steigen",
+        "cn": "上升"
+      },
+      {
+        "de": "sinken",
+        "cn": "下降"
+      },
+      {
+        "de": "der Zuwachs",
+        "cn": "增长（量）"
+      },
+      {
+        "de": "der Rückgang",
+        "cn": "下降（量）"
+      },
+      {
+        "de": "die Rangordnung",
+        "cn": "排名、位次"
+      },
+      {
+        "de": "der Vergleich",
+        "cn": "比较（im Vergleich zu 与…相比）"
+      },
+      {
+        "de": "die Branche, -n",
+        "cn": "行业"
+      },
+      {
+        "de": "die Ausbildung, -en",
+        "cn": "职业培训；教育"
+      },
+      {
+        "de": "der Ausbildungsanfänger",
+        "cn": "职业培训新生（受训新人）"
+      },
+      {
+        "de": "die Beschäftigten",
+        "cn": "从业人员（复数）"
+      }
+    ]
+  }
+}

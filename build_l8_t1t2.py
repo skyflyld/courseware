@@ -170,7 +170,7 @@ function clzReveal(id){
     b.classList.remove('bad', 'sel');
   });
   const r = document.getElementById(id + '-res');
-  if (r) r.textContent = '已显示参考答案（教师用）';
+  if (r) r.textContent = '已显示参考答案';
   clzSel = null;
 }
 function clzClear(id){
@@ -206,7 +206,7 @@ function dtReveal(id){
   const box = document.getElementById(id);
   box.querySelectorAll('.dt-seg[data-err="1"]').forEach(function(s){ s.classList.add('hit', 'marked'); });
   const r = document.getElementById(id + '-res');
-  if (r) r.textContent = '已标出全部错误（教师用）';
+  if (r) r.textContent = '已标出全部错误';
 }
 function dtClear(id){
   const box = document.getElementById(id);
@@ -283,16 +283,16 @@ def sec_home(d):
         <p class="sub">{h(m['subtitle'])}</p>
         <p class="meta">{h(m['source'])}</p>
       </div>
-      <div class="highlight-box">🎬 课堂用法：先看图说数（不写句子），再上句型库，最后拼句子。顶部导航切节，右下 A± 投影放大。习题右上角标来源：教材原句 / 图表数据 / 句型示例。</div>
+      <div class="highlight-box">🎬 怎么用：先看图说数（不写句子），再上句型库，最后拼句子。顶部导航切节，右下 A± 放大。习题右上角标来源：教材原句 / 图表数据 / 句型示例。</div>
       <div class="home-grid">{grid}</div>
       <div class="obj-box"><strong>学习目标 Lernziele：</strong><ul>{objs}</ul></div>
       <div class="text-card" style="margin-top:12px">
-        <h3>⏱️ 课堂流程（45 分钟建议）</h3>
+        <h3>🗺️ 学习路线（建议 45 分钟走完）</h3>
         <table class="flow-table">{flow}</table>
       </div>
       <div class="text-card" style="margin-top:12px">
         <h3>⚠️ 素材边界（先说清楚）</h3>
-        <p class="zh-hint">Text 1 / Text 2 的挖空文本与词库、教材答案句、图表数字，全部按素材逐字转录；Text 2 的两段人物文原题未给词库，此处词库为课堂便利所加，答案按上下文推定；Traumberufe 调查只给绝对数，<b>故意不算百分比</b>（分母不明）。教材课文全文页未提供，若拿到原文页可一键替换数据层。</p>
+        <p class="zh-hint">Text 1 / Text 2 的挖空文本与词库、教材答案句、图表数字，全部按教材原文页与教材图表逐字转录；Text 2 的两段人物文原题未给词库，此处词库为练习方便所加，答案按上下文与搭配给出；Traumberufe 调查只给绝对数，<b>故意不算百分比</b>（分母不明）。</p>
       </div>
     </section>
 '''
@@ -330,7 +330,7 @@ def sec_chart(d):
                           '<span id="qz-chart-res" class="kw-result"></span>'])
     return f'''    <section id="chart">
       <h2 class="section-title"><span class="num">1</span> 📊 Schaubild lesen · 先读懂图</h2>
-      <p class="zh-hint">先别写句子。让学生只看图说三件事：榜首是谁、两榜的交集是谁、哪一栏的榜首更高。点条形看该条数据明细。</p>
+      <p class="zh-hint">先别写句子。只看图说三件事：榜首是谁、两榜的交集是谁、哪一栏的榜首更高。点条形看该条数据明细。</p>
       <div class="chart-card">
         <p class="chart-title" lang="de">{h(c['title'])}</p>
         <p class="chart-sub" lang="de">{h(c['sub'])}</p>
@@ -363,7 +363,7 @@ def sec_chart(d):
         </svg>
       </div>
       <div class="text-card">
-        <h3>🔎 读图结论（可直接当课堂口述素材）</h3>
+        <h3>🔎 读图结论（可直接当口述素材）</h3>
         {facts}
       </div>
       <div class="text-card">
@@ -390,7 +390,7 @@ def sec_redemittel(d):
         panels.append('<div class="%s" id="rm-%s"><p class="zh-hint note">%s</p>%s</div>' % (cls2, g['key'], h(g['note']), items))
     return f'''    <section id="redemittel">
       <h2 class="section-title"><span class="num">2</span> 🧭 Redemittel · 图表描述句型库</h2>
-      <p class="zh-hint">四类句型按作文里的出场顺序排：先排名，再比例，然后比较，最后结论。课堂做法：每类挑 2 条，当场套到图上说一遍。</p>
+      <p class="zh-hint">四类句型按作文里的出场顺序排：先排名，再比例，然后比较，最后结论。练法：每类挑 2 条，直接套到图上说一遍。</p>
       <div class="person-tabs rm-tabs">{''.join(tabs)}</div>
       {''.join(panels)}
     </section>
@@ -561,7 +561,7 @@ def sec_t1(d):
 def sec_t2(d, key, num):
     t = d[key]
     if t['bank']:
-        bank_head = '<strong>Wortbank：</strong>' if key == 't1' else '<strong>Wortbank（课堂便利，非原题）：</strong>'
+        bank_head = '<strong>Wortbank：</strong>' if key == 't1' else '<strong>Wortbank（原题未给词库，此处为练习所加）：</strong>'
         bank_html = '<div class="bank-box">%s%s</div>' % (
             bank_head, ''.join('<span class="bank-chip" onclick="clzFill(\'clz-%s\', this)">%s</span>'
                                % (key, h(w)) for w in t['bank']))
@@ -599,7 +599,7 @@ def sec_t2(d, key, num):
       <p class="zh-hint note">📌 {h(t['provenance'])}</p>
       <p class="highlight-box" lang="de">💬 {h(t['quote'])}</p>
       <div class="text-card">
-        <h3>🧱 人物文结构（与统计文对照着讲）</h3>
+        <h3>🧱 人物文结构（与统计文对照）</h3>
         {struct}
       </div>
       <div class="text-card">
@@ -736,8 +736,8 @@ def sec_essay(d):
         {fill}
       </div>
       <div class="text-card">
-        <h3>⏱️ 计时播报员（课堂活动）</h3>
-        <p class="zh-hint">30 秒内用 ≥4 个不同类别的 Redemittel 描述本图（至少一个 Rangordnung + 一个 Prozentanteile/Vergleich + 一个 Fazit）。同桌计数。</p>
+        <h3>⏱️ 计时播报员（30 秒挑战）</h3>
+        <p class="zh-hint">30 秒内用 ≥4 个不同类别的 Redemittel 描述本图（至少一个 Rangordnung + 一个 Prozentanteile/Vergleich + 一个 Fazit）。说给同伴听，让对方数用了几个句型。</p>
         <div class="kw-tools"><button class="btn" onclick="startTimer('tm-bc', 30)">▶ 30 秒计时</button>
           <button class="btn ghost" onclick="resetTimer('tm-bc', 30)">↺ 重置</button>
           <span class="kw-result" id="tm-bc">30</span></div>
@@ -801,6 +801,12 @@ def main():
             '</div>\n'
             '<script>\nconst DOC = ' + data_js + ';\n' + core_js + '\n' + base.EXTRA_JS + '\n' + JS_EXTRA + '\n</script>\n'
             '</body>\n</html>\n')
+
+    # 学生向措辞归一化（本页是课上展示 + 课下复习用的学生课件，不写教师向提示）。
+    # base 模块（build_l8_berufe.py）的共享 JS/CSS 里带有旧措辞，那页不归本次改动管，故在此定点替换产出。
+    for _a, _b in [('已显示参考答案（教师用）', '已显示参考答案'),
+                   ('（课堂现场用，宽屏才显示）', '（宽屏才显示）')]:
+        html = html.replace(_a, _b)
 
     with open(OUT, 'w', encoding='utf-8') as f:
         f.write(html)

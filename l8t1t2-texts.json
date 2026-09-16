@@ -238,7 +238,7 @@
     "kind": "教材 S.236 · Übung 7",
     "sub": "Simon (22), Schweizer",
     "lead": "第二篇人物文的结构与 Erika 篇平行：早年兴趣 → 实习 → 岗位任务 → 强项 → 建议。填空注意形容词与名词的固定搭配。",
-    "provenance": "教材原文页照录（S.236），原题为听力填空、没有词库，全篇 6 空；此处答案按上下文与搭配给出（Lust / soziale / betreuen / achten / Geduld / Einfühlungsvermögen），课堂请学生先说出理由。",
+    "provenance": "教材原文页照录（S.236），原题为听力填空、没有词库，全篇 6 空；此处答案按上下文与搭配给出（Lust / soziale / betreuen / achten / Geduld / Einfühlungsvermögen）；填之前先想一下为什么是这个词，再看答案。",
     "bank": [],
     "cloze": [
       {
@@ -344,7 +344,7 @@
         "nicht quantifiziert"
       ]
     ],
-    "tableNote": "可数提名合计 22（1+2+3+3+3+10），原文另有「viele, viele Fragezeichen」未给数字。⚠️ 基数不明 → 本表故意不算百分比：图表描述里算不出基数就不要写 Prozentangabe，这是诚实边界，也是课堂上要讲的一条纪律。",
+    "tableNote": "可数提名合计 22（1+2+3+3+3+10），原文另有「viele, viele Fragezeichen」未给数字。⚠️ 基数不明 → 本表故意不算百分比：图表描述里算不出基数就不要写 Prozentangabe，这是图表描述的诚实边界。",
     "tasks": [
       {
         "zh": "在榜首的是……（Rangordnung）",

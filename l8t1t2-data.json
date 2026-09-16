@@ -749,7 +749,7 @@
   },
   "vocab": {
     "title": "Wortschatz · 图表描述必备词（26 张）",
-    "instruction": "点卡片翻面看中文。课堂用法：投影状态下随机抽卡，学生说出一个用这个词的句子；动词卡必须带出完整句型（如 betragen → Die Zahl beträgt 19.170.）。",
+    "instruction": "点卡片翻面看中文。盖住中文，自己说一个用这个词的句子；动词卡要说完整句型（如 betragen → Die Zahl beträgt 19.170.）。",
     "src": "词表按 L8 图表与 Redemittel 的主题词整理，德文词形与教材/图表用词一致。",
     "items": [
       {

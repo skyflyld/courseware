@@ -846,6 +846,9 @@
   .ms-why { margin: 6px 0 0; padding-left: 18px; font-size: var(--fs-cap); color: #3c4450; }
   .lv-note { font-size: var(--fs-sm); color: #3c4450; }
   .lv-points li { margin: 4px 0; }
+  .ref-box { margin-top: 6px; padding: 8px 10px; background: #f3f7fd; border-left: 3px solid #17427f;
+    border-radius: 0 6px 6px 0; font-size: var(--fs-body); line-height: 1.55; }
+  .ref-lbl { font-weight: 700; color: #123a72; font-size: var(--fs-cap); }
 </style>
 
 </head>
@@ -1171,79 +1174,72 @@
         <p class="zh-hint note">课文难度指标（词数 / 句数 / 最长句）由本页脚本按教材原文统计，不是估的。</p>
       </div>
       <div class="text-card">
-        <h3>✍️ 八个句子（写完点 ✓，按参考答案判）</h3>
+        <h3>✍️ 八个句子（先自己写，再对参考写法）</h3>
+        <p class="zh-hint">写句子没有唯一答案，这里给的是<b>参考写法，不是判分标准</b>。先自己写一句，再点开对照：只要句式对、数据对，写得跟参考不一样也是对的。</p>
               <div class="fill-item">
         <div class="fill-zh">1. 这张图展示了德国男女最受欢迎的五种职业培训。</div>
         <div class="fill-input-line">
-          <input class="fill-input" data-ans="Die Grafik zeigt die Top-5-Ausbildungsberufe von Männern und Frauen in Deutschland." placeholder="Dein Satz …" lang="de"
-                 onkeydown="if(event.key==='Enter')fillCheck(this,'.fill-item')">
-          <button class="fill-check" onclick="fillCheck(this,'.fill-item')">✓</button>
-          <span class="fill-result"></span>
+          <input class="fill-input" data-ref="1" placeholder="先自己写一句德语 …" lang="de">
+          <button class="fill-check" onclick="refShow(this)">💬 参考写法</button>
         </div>
         <div class="um-tip">💡 zeigen + 第四格</div>
+        <div class="ref-box" style="display:none"><span class="ref-lbl">参考写法</span> <span lang="de">Die Grafik zeigt die Top-5-Ausbildungsberufe von Männern und Frauen in Deutschland.</span></div>
       </div>      <div class="fill-item">
         <div class="fill-zh">2. 在男性榜上，位居榜首的是汽车机电工，共有 19.170 名受训者。</div>
         <div class="fill-input-line">
-          <input class="fill-input" data-ans="An der Spitze der Männer steht der Kraftfahrzeugmechatroniker mit 19.170 Ausbildungsanfängern." placeholder="Dein Satz …" lang="de"
-                 onkeydown="if(event.key==='Enter')fillCheck(this,'.fill-item')">
-          <button class="fill-check" onclick="fillCheck(this,'.fill-item')">✓</button>
-          <span class="fill-result"></span>
+          <input class="fill-input" data-ref="1" placeholder="先自己写一句德语 …" lang="de">
+          <button class="fill-check" onclick="refShow(this)">💬 参考写法</button>
         </div>
         <div class="um-tip">💡 An der Spitze ... steht ...</div>
+        <div class="ref-box" style="display:none"><span class="ref-lbl">参考写法</span> <span lang="de">An der Spitze der Männer steht der Kraftfahrzeugmechatroniker mit 19.170 Ausbildungsanfängern.</span></div>
       </div>      <div class="fill-item">
         <div class="fill-zh">3. 在女性榜上，商务管理文员以 16.692 人排在第一。</div>
         <div class="fill-input-line">
-          <input class="fill-input" data-ans="Bei den Frauen liegt die Kauffrau für Büromanagement mit 16.692 an der Spitze." placeholder="Dein Satz …" lang="de"
-                 onkeydown="if(event.key==='Enter')fillCheck(this,'.fill-item')">
-          <button class="fill-check" onclick="fillCheck(this,'.fill-item')">✓</button>
-          <span class="fill-result"></span>
+          <input class="fill-input" data-ref="1" placeholder="先自己写一句德语 …" lang="de">
+          <button class="fill-check" onclick="refShow(this)">💬 参考写法</button>
         </div>
         <div class="um-tip">💡 liegen an der Spitze</div>
+        <div class="ref-box" style="display:none"><span class="ref-lbl">参考写法</span> <span lang="de">Bei den Frauen liegt die Kauffrau für Büromanagement mit 16.692 an der Spitze.</span></div>
       </div>      <div class="fill-item">
         <div class="fill-zh">4. 只有销售员一职同时出现在两榜之中。</div>
         <div class="fill-input-line">
-          <input class="fill-input" data-ans="Nur die Verkäuferin steht in beiden Top-5-Listen." placeholder="Dein Satz …" lang="de"
-                 onkeydown="if(event.key==='Enter')fillCheck(this,'.fill-item')">
-          <button class="fill-check" onclick="fillCheck(this,'.fill-item')">✓</button>
-          <span class="fill-result"></span>
+          <input class="fill-input" data-ref="1" placeholder="先自己写一句德语 …" lang="de">
+          <button class="fill-check" onclick="refShow(this)">💬 参考写法</button>
         </div>
         <div class="um-tip">💡 nur ... steht in beiden</div>
+        <div class="ref-box" style="display:none"><span class="ref-lbl">参考写法</span> <span lang="de">Nur die Verkäuferin steht in beiden Top-5-Listen.</span></div>
       </div>      <div class="fill-item">
         <div class="fill-zh">5. 与女性相比，男性更多地选择技术类职业。</div>
         <div class="fill-input-line">
-          <input class="fill-input" data-ans="Im Vergleich zu den Frauen wählen die Männer häufiger technische Berufe." placeholder="Dein Satz …" lang="de"
-                 onkeydown="if(event.key==='Enter')fillCheck(this,'.fill-item')">
-          <button class="fill-check" onclick="fillCheck(this,'.fill-item')">✓</button>
-          <span class="fill-result"></span>
+          <input class="fill-input" data-ref="1" placeholder="先自己写一句德语 …" lang="de">
+          <button class="fill-check" onclick="refShow(this)">💬 参考写法</button>
         </div>
         <div class="um-tip">💡 im Vergleich zu + Dativ</div>
+        <div class="ref-box" style="display:none"><span class="ref-lbl">参考写法</span> <span lang="de">Im Vergleich zu den Frauen wählen die Männer häufiger technische Berufe.</span></div>
       </div>      <div class="fill-item">
         <div class="fill-zh">6. 在若干建筑和金属职业中，从业人员里女性明显不足 10%。</div>
         <div class="fill-input-line">
-          <input class="fill-input" data-ans="In einigen der Bau- und Metallberufe waren deutlich weniger als 10 Prozent der Beschäftigten Frauen." placeholder="Dein Satz …" lang="de"
-                 onkeydown="if(event.key==='Enter')fillCheck(this,'.fill-item')">
-          <button class="fill-check" onclick="fillCheck(this,'.fill-item')">✓</button>
-          <span class="fill-result"></span>
+          <input class="fill-input" data-ref="1" placeholder="先自己写一句德语 …" lang="de">
+          <button class="fill-check" onclick="refShow(this)">💬 参考写法</button>
         </div>
         <div class="um-tip">💡 教材原句</div>
+        <div class="ref-box" style="display:none"><span class="ref-lbl">参考写法</span> <span lang="de">In einigen der Bau- und Metallberufe waren deutlich weniger als 10 Prozent der Beschäftigten Frauen.</span></div>
       </div>      <div class="fill-item">
         <div class="fill-zh">7. 与此相对，她们在教育和卫生领域的占比超过 80%。</div>
         <div class="fill-input-line">
-          <input class="fill-input" data-ans="Dagegen betrug ihr Anteil in den Berufen des Erziehungs- und Gesundheitswesens mehr als 80 Prozent." placeholder="Dein Satz …" lang="de"
-                 onkeydown="if(event.key==='Enter')fillCheck(this,'.fill-item')">
-          <button class="fill-check" onclick="fillCheck(this,'.fill-item')">✓</button>
-          <span class="fill-result"></span>
+          <input class="fill-input" data-ref="1" placeholder="先自己写一句德语 …" lang="de">
+          <button class="fill-check" onclick="refShow(this)">💬 参考写法</button>
         </div>
         <div class="um-tip">💡 Dagegen 起句，动词第二位</div>
+        <div class="ref-box" style="display:none"><span class="ref-lbl">参考写法</span> <span lang="de">Dagegen betrug ihr Anteil in den Berufen des Erziehungs- und Gesundheitswesens mehr als 80 Prozent.</span></div>
       </div>      <div class="fill-item">
         <div class="fill-zh">8. 总结来说，男女的职业选择仍存在明显差异。</div>
         <div class="fill-input-line">
-          <input class="fill-input" data-ans="Zusammenfassend lässt sich sagen, dass sich Frauen und Männer in ihrer Berufswahl noch immer deutlich unterscheiden." placeholder="Dein Satz …" lang="de"
-                 onkeydown="if(event.key==='Enter')fillCheck(this,'.fill-item')">
-          <button class="fill-check" onclick="fillCheck(this,'.fill-item')">✓</button>
-          <span class="fill-result"></span>
+          <input class="fill-input" data-ref="1" placeholder="先自己写一句德语 …" lang="de">
+          <button class="fill-check" onclick="refShow(this)">💬 参考写法</button>
         </div>
         <div class="um-tip">💡 Zusammenfassend lässt sich sagen, dass ...</div>
+        <div class="ref-box" style="display:none"><span class="ref-lbl">参考写法</span> <span lang="de">Zusammenfassend lässt sich sagen, dass sich Frauen und Männer in ihrer Berufswahl noch immer deutlich unterscheiden.</span></div>
       </div>
       </div>
     </section>
@@ -1686,6 +1682,16 @@ function sbShow(i){
 }
 
 
+/* ===== 参考写法展开（作文卡八个句子：不判对错，只给参考）2026-09-18 ===== */
+function refShow(btn){
+  var item = btn.closest('.fill-item');
+  if (!item) return;
+  var box = item.querySelector('.ref-box');
+  if (!box) return;
+  var open = box.style.display !== 'none' && box.style.display !== '';
+  box.style.display = open ? 'none' : 'block';
+  btn.textContent = open ? '💬 参考写法' : '↺ 收起来';
+}
 /* ===== 图表高亮 ===== */
 function chHi(el){
   document.querySelectorAll('#chart .chart-bar').forEach(function(b){ b.classList.remove('sel'); });

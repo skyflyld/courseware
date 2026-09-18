@@ -179,9 +179,22 @@ CSS_EXTRA = '''
   .ms-why { margin: 6px 0 0; padding-left: 18px; font-size: var(--fs-cap); color: #3c4450; }
   .lv-note { font-size: var(--fs-sm); color: #3c4450; }
   .lv-points li { margin: 4px 0; }
+  .ref-box { margin-top: 6px; padding: 8px 10px; background: #f3f7fd; border-left: 3px solid #17427f;
+    border-radius: 0 6px 6px 0; font-size: var(--fs-body); line-height: 1.55; }
+  .ref-lbl { font-weight: 700; color: #123a72; font-size: var(--fs-cap); }
 '''
 
 JS_EXTRA = '''
+/* ===== 参考写法展开（作文卡八个句子：不判对错，只给参考）2026-09-18 ===== */
+function refShow(btn){
+  var item = btn.closest('.fill-item');
+  if (!item) return;
+  var box = item.querySelector('.ref-box');
+  if (!box) return;
+  var open = box.style.display !== 'none' && box.style.display !== '';
+  box.style.display = open ? 'none' : 'block';
+  btn.textContent = open ? '💬 参考写法' : '↺ 收起来';
+}
 /* ===== 图表高亮 ===== */
 function chHi(el){
   document.querySelectorAll('#chart .chart-bar').forEach(function(b){ b.classList.remove('sel'); });
@@ -846,12 +859,11 @@ def sec_essay(d):
         f'''      <div class="fill-item">
         <div class="fill-zh">{i + 1}. {h(x['zh'])}</div>
         <div class="fill-input-line">
-          <input class="fill-input" data-ans="{esc_attr(x['ans'])}" placeholder="Dein Satz …" lang="de"
-                 onkeydown="if(event.key==='Enter')fillCheck(this,'.fill-item')">
-          <button class="fill-check" onclick="fillCheck(this,'.fill-item')">✓</button>
-          <span class="fill-result"></span>
+          <input class="fill-input" data-ref="1" placeholder="先自己写一句德语 …" lang="de">
+          <button class="fill-check" onclick="refShow(this)">💬 参考写法</button>
         </div>
         <div class="um-tip">💡 {h(x['hint'])}</div>
+        <div class="ref-box" style="display:none"><span class="ref-lbl">参考写法</span> <span lang="de">{h(x['ans'])}</span></div>
       </div>''' for i, x in enumerate(e['fill']))
     return f'''    <section id="essay">
       <h2 class="section-title"><span class="num">8</span> 🎯 Prüfungskarte · 专四图表作文卡</h2>
@@ -875,7 +887,8 @@ def sec_essay(d):
         <p class="zh-hint note">{h(lv['trust'])}</p>
       </div>
       <div class="text-card">
-        <h3>✍️ 八个句子（写完点 ✓，按参考答案判）</h3>
+        <h3>✍️ 八个句子（先自己写，再对参考写法）</h3>
+        <p class="zh-hint">写句子没有唯一答案，这里给的是<b>参考写法，不是判分标准</b>。先自己写一句，再点开对照：只要句式对、数据对，写得跟参考不一样也是对的。</p>
         {fill}
       </div>
     </section>
@@ -975,6 +988,7 @@ def main():
     assert 'id="redemittel"' not in html and 'id="ladder"' not in html, '句型库/阶梯未移除'
     assert 'id="detect"' not in html, '找错节未并入图表节'
     assert '图的解剖图' not in html, '解剖图未替换'
+    assert '按参考答案判' not in html and 'ref-box' in html, '作文卡八个句子未改为参考写法模式'
 
 
 if __name__ == '__main__':

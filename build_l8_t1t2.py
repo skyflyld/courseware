@@ -359,14 +359,13 @@ def sec_home(d):
     objs = ''.join('<li>%s</li>' % h(o) for o in m['objectives'])
     flow = ''.join('<tr><td class="fl-t">%s</td></tr>' % h(f) for f in m['flow'])
     cards = [
-        ('chart', '📊 Schaubild', '真实图表：Top-5 职业培训，男女各五'),
+        ('chart', '📊 Schaubild', '真实图表 + 对照图找错（三段有问题的描述）'),
         ('t1', '📖 Text 1', '统计文：13 个填空词印在横线上 + 点词查义'),
         ('vocab', '🃏 词汇卡', '26 张图表描述词卡（点卡翻面）'),
         ('satzbau', '🔧 变形', '同一组数据，四种说法（语序拼装）'),
         ('t2a', '👤 Text 2a', 'Erika：人物文结构与转折点'),
         ('t2b', '👤 Text 2b', 'Simon：人物文与强项自述'),
         ('traum', '📈 调查改写', '把 Traumberufe 调查改写成图表语言'),
-        ('detect', '🕵️ 找错侦探', '三段描述，找出数字错 / 比较错 / 句型错'),
         ('essay', '🎯 作文卡', '四段式骨架 + 两篇范文 + 课文难度对照'),
     ]
     grid = ''.join('<div class="text-card home-card" onclick="switchSection(\'%s\')"><h3>%s</h3><p>%s</p></div>'
@@ -424,7 +423,7 @@ def sec_chart(d):
                           '<span id="qz-chart-res" class="kw-result"></span>'])
     return f'''    <section id="chart">
       <h2 class="section-title"><span class="num">1</span> 📊 Schaubild lesen · 先读懂图</h2>
-      <p class="zh-hint">先别写句子。只看图说三件事：榜首是谁、两榜的交集是谁、哪一栏的榜首更高。点条形看该条数据明细。</p>
+      <p class="zh-hint">先别写句子。只看图说三件事：榜首是谁、两榜的交集是谁、哪一栏的榜首更高。点条形看该条数据明细。图下面还有三段「看着像作文」的描述，都藏着错，对着图把错处找出来。</p>
       <div class="chart-card">
         <p class="chart-title" lang="de">{h(c['title'])}</p>
         <p class="chart-sub" lang="de">{h(c['sub'])}</p>
@@ -433,29 +432,11 @@ def sec_chart(d):
         <div class="chart-detail" id="chartDetail">点任一条形，这里显示该职位的名次与人数。</div>
         <p class="chart-quelle" lang="de">{h(c['quelle'])}</p>
       </div>
-      <div class="anat">
-        <p class="zh-hint"><b>图的解剖图</b>：写作文前先在图里指位置说清楚名称（德语专四阅卷喜欢看你点出 Achse / Quelle）。</p>
-        <svg viewBox="0 0 640 300" role="img" aria-label="Balkendiagramm: Aufbau">
-          <line x1="70" y1="40" x2="70" y2="240" stroke="#17427f" stroke-width="2"/>
-          <line x1="70" y1="240" x2="600" y2="240" stroke="#17427f" stroke-width="2"/>
-          <rect x="110" y="120" width="54" height="120" fill="#1a73e8"/>
-          <rect x="190" y="170" width="54" height="70" fill="#1a73e8"/>
-          <rect x="270" y="200" width="54" height="40" fill="#1a73e8"/>
-          <rect x="350" y="150" width="54" height="90" fill="#6a1b9a"/>
-          <rect x="430" y="190" width="54" height="50" fill="#6a1b9a"/>
-          <rect x="510" y="215" width="54" height="25" fill="#6a1b9a"/>
-          <text class="anat-lbl" x="80" y="30">Titel / Überschrift</text>
-          <text class="anat-lbl" x="12" y="150">y-Achse</text>
-          <text class="anat-cap" x="12" y="168">Anzahl / Prozent</text>
-          <text class="anat-lbl" x="330" y="268">x-Achse</text>
-          <text class="anat-cap" x="405" y="268">Berufe / Kategorien</text>
-          <text class="anat-lbl" x="110" y="112">Balken</text>
-          <text class="anat-lbl" x="350" y="142">zweite Gruppe</text>
-          <text class="anat-cap" x="70" y="292">Quelle: Bundesinstitut für Berufsbildung</text>
-          <line x1="70" y1="245" x2="70" y2="255" stroke="#5f6672"/>
-          <line x1="600" y1="245" x2="600" y2="255" stroke="#5f6672"/>
-        </svg>
+      <div class="text-card">
+        <h3>🕵️ Fehlerjagd · 对照上面的图找错（三段描述）</h3>
+        <p class="zh-hint">{h(d['detect']['note'])}</p>
       </div>
+      {detect_blocks(d)}
       <div class="text-card">
         <h3>🔎 读图结论（可直接当口述素材）</h3>
         {facts}
@@ -741,7 +722,8 @@ def sec_traum(d):
 
 
 # ---------------------------------------------------------------- 10 detect
-def sec_detect(d):
+def detect_blocks(d):
+    """找错练习的卡片集（2026-09-18 由「找错」独立节移入「图表」节，方便学生对着图找错）"""
     dt = d['detect']
     blocks = []
     for it in dt['items']:
@@ -786,6 +768,13 @@ def sec_detect(d):
         <div class="kw-tools"><button class="btn ghost" onclick="toggleBox('dtWhy-{did}')">💡 错误类型与解析</button></div>
         <div id="dtWhy-{did}" style="display:none"><ul class="lk-zh">{why}<li><b>[改法]</b> <span lang="de">{h(it['fix'])}</span></li></ul></div>
       </div>''')
+    return ''.join(blocks)
+
+
+# 【未渲染】2026-09-18 Sky 指令：找错内容已移入「图表」节（detect_blocks）；本函数保留以便恢复。
+def sec_detect(d):
+    dt = d['detect']
+    blocks = detect_blocks(d)
     return f'''    <section id="detect">
       <h2 class="section-title"><span class="num">8</span> 🕵️ Fehlerjagd · 找错侦探</h2>
       <p class="zh-hint">{h(dt['note'])}</p>
@@ -865,7 +854,7 @@ def sec_essay(d):
         <div class="um-tip">💡 {h(x['hint'])}</div>
       </div>''' for i, x in enumerate(e['fill']))
     return f'''    <section id="essay">
-      <h2 class="section-title"><span class="num">9</span> 🎯 Prüfungskarte · 专四图表作文卡</h2>
+      <h2 class="section-title"><span class="num">8</span> 🎯 Prüfungskarte · 专四图表作文卡</h2>
       <p class="zh-hint">{h(e['note'])}</p>
       <div class="text-card">
         <h3>🧱 四段式骨架</h3>
@@ -903,7 +892,7 @@ def main():
 
     secs = [('home', '首页'), ('chart', '📊 图表'), ('t1', '📖 T1'), ('vocab', '🃏 词汇卡'),
             ('satzbau', '🔧 变形'), ('t2a', '👤 Erika'), ('t2b', '👤 Simon'),
-            ('traum', '📈 调查改写'), ('detect', '🕵️ 找错'), ('essay', '🎯 作文卡')]
+            ('traum', '📈 调查改写'), ('essay', '🎯 作文卡')]
 
     css = open(os.path.join(DIR, 'template_css.css'), encoding='utf-8').read()
     css = css.replace('</style>', base.EXTRA_CSS + CSS_EXTRA + '</style>')
@@ -916,11 +905,11 @@ def main():
     nav += ('</div><button class="hamburger" onclick="toggleNav()">☰</button></div>'
             '<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div></nav>')
 
-    # 句型库（redemittel）与四层阶梯（ladder）两节按 Sky 2026-09-18 指令从导航与页面移除；
-    # 生成函数 sec_redemittel / sec_ladder 保留在下方，需要时可一行加回。
+    # 找错节（detect）2026-09-18 按 Sky 指令并入「图表」节（见 sec_chart）；
+    # 生成函数 sec_detect 保留在下方，需要时可一行加回。
     body = (sec_home(d) + sec_chart(d) + sec_t1(d) + sec_vocab(d) + sec_satzbau(d) +
             sec_t2(d, 't2a', 5) + sec_t2(d, 't2b', 6) +
-            sec_traum(d) + sec_detect(d) + sec_essay(d))
+            sec_traum(d) + sec_essay(d))
 
     sb = [[c for c in it['chunks']] for it in d['satzbau']['items']]
     data_js = json.dumps({'sb': sb}, ensure_ascii=False)
@@ -984,6 +973,8 @@ def main():
         de_metrics([blk['p'] for blk in d['t1']['cloze']])))
     assert 'tm-bc' not in html and '计时播报' not in html, '计时播报未移除'
     assert 'id="redemittel"' not in html and 'id="ladder"' not in html, '句型库/阶梯未移除'
+    assert 'id="detect"' not in html, '找错节未并入图表节'
+    assert '图的解剖图' not in html, '解剖图未替换'
 
 
 if __name__ == '__main__':

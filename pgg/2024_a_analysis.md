@@ -10,12 +10,25 @@
 | 时间 | ~170分钟 |
 
 ## Ⅰ 听写 Diktat (10%) — 15 min
-待补充（首页OCR不完整，需重新提取）
+
+### A) Lückendiktat (填空听写, 4P)
+**主题**: 德国非全日制在读生 22.33 万人（联邦统计局 / CHE 报告）
+> Laut Statistischem Bundesamt studierten derzeit rund 223.300 1) ______ in Deutschland in Teilzeit. Das seien 7.560 Personen weniger als 2) ______ Vorjahr, wie aus einem Bericht des 3) ______ „Centrums für Hochschulentwicklung" (CHE) hervorgeht. Damit wäre der 4) ______ von Studierenden in Teilzeit leicht gesunken, 5) ______ von 7,8 auf 7,6 Prozent. Dem CHE-Bericht zufolge befinden sich die meisten Teilzeitstudierenden in Hamburg, 6) ______ von Nordrhein-Westfalen und Mecklenburg-Vorpommern. Die meisten Teilzeitstudierenden unter allen Hochschulen bundesweit seien nach dem Bericht an der FernUniversität in Hagen 7) ______. Rund die Hälfte aller Teilzeitstudierenden studiert an privaten Hochschulen, obwohl diese insgesamt nur 12,6 Prozent aller Studierenden in Deutschland 8) ______.
+
+（空位答案需听力音频；本卷扫描件不含答案页）
+
+### B) Satz-Schreibdiktat (全文听写, 6P)
+标准流程：先听全文一次 → 逐句听写（长句分节）→ 最后核对一次
 
 ## Ⅱ 听力 Hörverstehen (20%) — 20 min
 
-### Teil 1: Alltagssituationen (6短对话, 仅听一遍)
-待补充
+### Teil 1: Alltagssituationen (6短对话, 仅听一遍, 6P)
+1. 时间？(Um vier / Um halb vier / Um halb fünf)
+2. 东西在哪里？(In der Kommode / In der Tasche / In der Schublade)
+3. 天气？(Es regnet / Es schneit / Das Wetter ist schön)
+4. 多少钱？(6 Euro / 10 Euro / 20 Euro)
+5. 电视怎么了？(keinen Fernseher bestellt / eine Bestätigung bekommen / keinen Fernseher bekommen)
+6. 抱怨什么？(Nachlässigkeit / Unpünktlichkeit / Unhöflichkeit der neuen Sekretärin)
 
 ### Teil 2: Kurztexte (4篇, 听两遍, 14P)
 **Text A** — WG mit Opa oder Oma (richtig/falsch): 大学生与老人合住

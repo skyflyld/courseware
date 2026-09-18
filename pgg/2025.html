@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PGG 2025 A卷 · 完整真题原文</title>
+<style>
+<style>
+:root {
+  --bg: #f8f6f0;
+  --card: #ffffff;
+  --accent: #1a5276;
+  --accent2: #2e86c1;
+  --gold: #d4a017;
+  --text: #1a1a2e;
+  --text2: #4a4a5a;
+  --border: #e0ddd5;
+  --tag-g: #e8f4f8;
+  --tag-v: #f0e6f6;
+  --tag-r: #e8f5e9;
+  --tag-w: #fff3e0;
+  --tag-l: #fce4ec;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+.container { max-width: 960px; margin: 0 auto; padding: 20px; }
+.header { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; padding: 40px 20px; text-align: center; border-radius: 16px; margin-bottom: 30px; }
+.header h1 { font-size: 2em; margin-bottom: 8px; }
+.header p { opacity: .85; }
+.header .badge { display: inline-block; background: rgba(255,255,255,.15); padding: 4px 14px; border-radius: 20px; font-size: .8em; margin-top: 12px; }
+.tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px; }
+.tab-btn { padding: 10px 20px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; cursor: pointer; font-size: .9em; transition: .2s; }
+.tab-btn:hover { background: #eef0eb; }
+.tab-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+.section { display: none; }
+.section.active { display: block; }
+.section-title { font-size: 1.5em; color: var(--accent); margin-bottom: 16px; padding-bottom: 8px; border-bottom: 3px solid var(--accent); }
+.card { background: var(--card); border-radius: 12px; padding: 20px; margin-bottom: 16px; border: 1px solid var(--border); }
+.card h3 { font-size: 1.1em; margin-bottom: 10px; color: var(--accent2); }
+.tag { display: inline-block; padding: 2px 10px; border-radius: 10px; font-size: .75em; margin: 2px; }
+.tag-g { background: var(--tag-g); color: #1a5276; }
+.tag-v { background: var(--tag-v); color: #6a1b9a; }
+.tag-r { background: var(--tag-r); color: #2e7d32; }
+.tag-w { background: var(--tag-w); color: #e65100; }
+.tag-l { background: var(--tag-l); color: #c62828; }
+table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+th { background: var(--accent); color: #fff; font-size: .85em; }
+tr:hover { background: #f5f5f0; }
+.de { background: #f0f0e8; padding: 2px 6px; border-radius: 4px; font-size: .9em; }
+.zh { color: var(--text2); font-size: .85em; }
+.beispiel { background: #fafaf5; border-left: 4px solid var(--accent2); padding: 12px 16px; margin: 8px 0; border-radius: 0 8px 8px 0; font-size: .9em; }
+.cloud { display: flex; flex-wrap: wrap; gap: 8px; }
+.cloud span { padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border); background: var(--card); font-size: .85em; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 16px 0; }
+.stat-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; text-align: center; }
+.stat-card .num { font-size: 1.8em; font-weight: 700; color: var(--accent2); }
+.stat-card .label { font-size: .8em; color: var(--text2); }
+.bar-chart { margin: 12px 0; }
+.bar-item { display: flex; align-items: center; margin: 6px 0; gap: 10px; }
+.bar-label { width: 120px; font-size: .85em; flex-shrink: 0; }
+.bar-fill { height: 24px; border-radius: 12px; min-width: 4px; }
+.collapse-header { cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 10px 0; user-select: none; }
+.collapse-header:hover { color: var(--accent2); }
+.collapse-body { overflow: hidden; max-height: 0; transition: max-height .3s ease; }
+.collapse-body.open { max-height: 2000px; }
+.collapse-icon { transition: transform .3s; }
+.collapse-icon.open { transform: rotate(180deg); }
+.filter-bar { margin: 12px 0; }
+.filter-btn { padding: 6px 14px; border: 1px solid var(--border); border-radius: 16px; background: var(--card); cursor: pointer; font-size: .82em; margin: 3px; }
+.filter-btn.active { background: var(--accent2); color: #fff; border-color: var(--accent2); }
+.year23, .year24, .year25, .year26 { display: none; }
+.theme-toggle { position: fixed; bottom: 20px; right: 20px; width: 44px; height: 44px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 1.2em; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,.15); z-index: 100; border: none; }
+@media (max-width: 640px) {
+  .header h1 { font-size: 1.5em; }
+  .tab-btn { padding: 8px 12px; font-size: .8em; }
+  .bar-label { width: 80px; font-size: .75em; }
+}
+</style>
+.yearnav { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:18px; font-size:.9em; }
+.yearnav a { padding:6px 14px; border:1px solid var(--border); border-radius:16px; background:var(--card); color:var(--accent); text-decoration:none; }
+.yearnav a.cur { background:var(--accent); color:#fff; border-color:var(--accent); }
+.container { max-width: 900px; }
+.pagemark { margin:26px 0 8px; padding:6px 12px; background:var(--tag-g); color:var(--accent);
+  border-radius:8px; font-size:.78em; letter-spacing:.5px; }
+h1 { font-size:1.7em; color:var(--accent); margin:6px 0 14px; }
+h2 { font-size:1.35em; color:var(--accent); margin:26px 0 10px; padding-bottom:6px; border-bottom:2px solid var(--border); }
+h3 { font-size:1.12em; color:var(--accent2); margin:20px 0 8px; }
+h4 { font-size:1em; color:var(--text); margin:14px 0 6px; }
+p, li { line-height:1.75; }
+ol, ul { margin:8px 0 8px 22px; }
+blockquote { border-left:3px solid var(--accent2); background:#fafaf5; padding:10px 14px; border-radius:0 8px 8px 0;
+  color:var(--text2); font-size:.88em; margin:10px 0; }
+code { background:#f0f0e8; padding:1px 5px; border-radius:4px; font-size:.9em; }
+hr { border:none; border-top:1px dashed var(--border); margin:20px 0; }
+</style>
+</head>
+<body>
+<div class="container">
+<nav class="yearnav">
+<a href="index.html">← 返回考点知识库</a>
+<a href="2023.html">PGG 2023</a><a href="2024.html">PGG 2024</a><a href="2025.html" class="cur">PGG 2025</a><a href="2026.html">PGG 2026</a>
+</nav>
+<h2>PGG 2025 年 A 卷 · 完整真题（原文逐字转录）</h2>
+<blockquote>来源：考生提供的扫描件 <code>skyflyld/pgg-raw/PGG_2025_A.pdf</code>（10 页）</blockquote>
+<blockquote>转录：逐页德文 OCR（DeepSeek V4.1 Flash 原生视觉，dpi=200）</blockquote>
+<blockquote>纪律：逐字原文，未翻译、未改写；无法辨认处标 <code>[?]</code>；不确定处不补全</blockquote>
+<blockquote>生成：2026-09-18 23:42 UTC</blockquote>
+<div class="pagemark">📄 第 1 页</div>
+<h3>PRÜFUNG FÜR DAS GERMANISTIK-GRUNDSTUDIUM</h3>
+<h4>(PGG 2025 A)</h4>
+<p>I. Diktat (10%) (15 Minuten)</p>
+<p>[4] Füllen Sie die Lücken aus.</p>
+<p>Sie hören den folgenden Text dreimal in normalem Tempo und dann füllen Sie die Lücken aus.</p>
+<p>Fast jedes Kind in Deutschland besucht vor dem Schuleintritt eine Kindertageseinrichtung (Kita). Was und 1)________ die Kinder dort lernen, spielen und sich zu eigenständigen und gemeinschaftsfähigen Persönlichkeiten 2)________, ist in den vergangenen Jahrzehnten immer stärker in den 3)________ des politischen, gesellschaftlichen und wissenschaftlichen Interesses gerückt. Disziplinübergreifend wird 4)________, wie sich die frühe Bildungsbeteiligung von Kindern auf ihr 5)________ Leben auswirkt und welche Rolle die Kita dabei spielt. Aktuelle politische 6)________ drehen sich unter anderem um die Frage, ob bundesweit einheitliche Qualitätsstandards für die Frühe Bildung und mehr Investitionen in diese 7)________ sind, gesellschaftliche Ungleichheiten 8)________.</p>
+<p>[3] Schreiben Sie den Text Satz für Satz auf den Antwortbogen.</p>
+<p>Sie hören den folgenden Text dreimal. Zuerst hören Sie sich den ganzen Text einmal an. Dann hören Sie sich den Text mit Satzzeichen noch einmal an. Die längeren Sätze werden in Teilen vorgelesen. Zuletzt hören Sie den ganzen Text noch einmal.</p>
+<p>II. Hörverstehen (20%) (20 Minuten)</p>
+<h4>Teil 1 Alltagssituationen</h4>
+<p>Sie hören im Folgenden 6 Minidialoge nur einmal. Markieren Sie die Lösungen auf dem Antwortbogen. (6P)</p>
+<ol>
+<li>a. Ins Kino. b. Ins Konzert. c. Ins Theater.</li>
+<li>a. Von der Arbeit. b. Vom Arzt. c. Von der Schule.</li>
+<li>a. Vor dem Essen. b. Beim Essen. c. Nach dem Essen.</li>
+<li>a. Zwei Cent. b. Acht Cent. c. Zehn Cent.</li>
+<li>a. Am Telefon.</li>
+</ol>
+<p>b. In einem Geschäft für Mobiltelefone.</p>
+<p>c. In einer Reparaturwerkstatt für Mobiltelefone.</p>
+<ol>
+<li>a. Er hat sich beim Verkehrsunfall den Arm verletzt.</li>
+</ol>
+<p>b. Er hat sich beim Verkehrsunfall das Bein gebrochen.</p>
+<p>c. Sein Auto ist gegen einen Baum gestoßen.</p>
+<h4>Teil 2 Kurztexte</h4>
+<p>Nun hören Sie vier Texte. Jeden Text hören Sie zuerst einmal, dann lesen Sie die Aufgaben und danach hören Sie ihn noch einmal. Markieren Sie die richtigen Lösungen auf dem Antwortbogen. (14P)</p>
+<p>Text A Interview mit einem chinesischen Studenten in Berlin (a=richtig, b=falsch)</p>
+<div class="pagemark">📄 第 2 页</div>
+<h3>7. Gao Jin studiert in Berlin seit sechs Monaten.</h3>
+<h3>8. Gao Jin hat schon das Brandenburger Tor und den Berliner Dom besichtigt.</h3>
+<h3>9. Das Charlottenburg-Schloss hat Gao Jin besonders beeindruckt.</h3>
+<h3>10. Ein Freund von Gao Jin hat Probleme mit dem deutschen Essen.</h3>
+<h4>Text B Die Zukunft der Fahrzeuge: Selbstfahrende Autos</h4>
+<ol>
+<li>Ein selbstfahrendes Auto ist ein Auto, ________.</li>
+</ol>
+<p>a. das ohne Benzin fahren kann</p>
+<p>b. das ohne menschliche Fahrer fahren kann</p>
+<p>c. das nur in der Stadt fahren kann</p>
+<ol>
+<li>Die im Text erwähnten Technologien der selbstfahrenden Autos sind ________.</li>
+</ol>
+<p>a. Sensoren und KI</p>
+<p>b. Radio und GPS</p>
+<p>c. Bluetooth und WLAN</p>
+<ol>
+<li>Ein Vorteil von den selbstfahrenden Autos liegt darin, dass sie ________.</li>
+</ol>
+<p>a. nicht sehr teuer sind</p>
+<p>b. an Ampeln warten können</p>
+<p>c. die Anzahl der Unfälle reduzieren können</p>
+<ol>
+<li>Was gehört zu den Herausforderungen?</li>
+</ol>
+<p>a. Teure Technologie.      b. Hohe Geschwindigkeit.      c. Zu viele Arbeitsplätze.</p>
+<h4>Text C Das chinesische Frühlingsfest</h4>
+<ol>
+<li>Zum Frühlingsfest hängt man ________ auf.</li>
+</ol>
+<p>a. rote Laternen und Feuerwerke</p>
+<p>b. Glocken und Kalender</p>
+<p>c. rote Laternen und Frühlingspaare</p>
+<ol>
+<li>Das Essen von Fisch und Jiaozi symbolisiert ________.</li>
+</ol>
+<p>a. Überfluss und Reichtum</p>
+<p>b. Glück und Frieden</p>
+<p>c. Gesundheit und Erfolg</p>
+<ol>
+<li>________ wurde das Frühlingsfest zum immateriellen Weltkulturerbe erklärt.</li>
+</ol>
+<p>a. Am 4. Dezember 2014</p>
+<p>b. Am 4. Dezember 2024</p>
+<p>c. Am 4. November 2024</p>
+<h4>Text D Geschichte des deutschen Bahnverkehrs</h4>
+<ol>
+<li>In welchem Jahr startete die erste Zugverbindung in Deutschland?</li>
+</ol>
+<p>a. 1853.      b. 1846.      c. 1835.</p>
+<ol>
+<li>Welches Merkmal hatte der damalige deutsche Bahnverkehr?</li>
+</ol>
+<p>a. Der Bahnverkehr wurde von privaten Firmen investiert.</p>
+<p>b. Zwischen allen großen Städten gab es eine Zugverbindung.</p>
+<p>c. Der Zug fuhr mindestens 30 Kilometer pro Stunde.</p>
+<ol>
+<li>Welche Beschwerden hatte man zu dieser Zeit nach einer Zugfahrt?</li>
+</ol>
+<p>a. Man konnte sich nicht bewegen.</p>
+<p>b. Man hatte Schlaflosigkeit.</p>
+<p>c. Man hatte Rückenschmerzen.</p>
+<p>2</p>
+<div class="pagemark">📄 第 3 页</div>
+<h3>III. Leseverstehen (20%) (50 Minuten)</h3>
+<h4>Teil 1</h4>
+<ul>
+<li>A. Lesen Sie die folgenden Überschriften und Texte. Ordnen Sie dann den Texten (21-22) die passende Überschrift (a-d) zu. (2P)</li>
+</ul>
+<p>Überschriften</p>
+<p>a. Klimawandel bedroht Nahrungsmittelsicherheit in Entwicklungsländern</p>
+<p>b. Klimawandel führt zu besseren Ernten in Afrika</p>
+<p>c. Klimawandel lässt Pole und Gletscher schmelzen</p>
+<p>d. Klimawandel stärkt die Gletscher in den Alpen</p>
+<ol>
+<li>Durch die Veränderung der Regenmenge, der Temperatur und des CO2-Gehaltes der Luft wird zum Beispiel damit gerechnet, dass in manchen Ländern Afrikas in den nächsten 15 Jahren nur noch die Hälfte geerntet werden kann. Das hat zur Folge, dass es weniger Nahrungsmittel gibt und Hungerkatastrophen drohen. Entwicklungsländer werden am stärksten vom Klimawandel betroffen sein, da sie nicht genügend technische und finanzielle Möglichkeiten haben, um sich vor den bevorstehenden Veränderungen ausreichend zu schützen.</li>
+</ol>
+<ol>
+<li>Am deutlichsten zeigen sich die Folgen des Klimawandels am Nord- und Südpol. Der Nordpol könnte schon in 34 Jahren eisfrei sein. Mit dem Packeis würden auch Tierarten wie die Eisbären verschwinden. Die Alpen könnten noch vor Ende dieses Jahrhunderts eisfrei sein. Es brechen riesige Felsen ab und geraten ins Rutschen, weil das Eis die Hänge rings um den Gletscher nicht mehr stützen kann.</li>
+</ol>
+<ul>
+<li>B. Lesen Sie die folgenden Überschriften und Texte. Ordnen Sie dann den Texten (23-24) die passende Überschrift (a-d) zu. (2P)</li>
+</ul>
+<p>Überschriften</p>
+<p>a. Mehr Sicherheit im Verkehr</p>
+<p>b. Hilfe für junge Fahranfänger</p>
+<p>c. Verkehrsunternehmen unzufrieden mit Klimaschutzprogramm</p>
+<p>d. Der Umwelt zuliebe das Auto stehen lassen und Geld sparen</p>
+<ol>
+<li>Jährlich werden etwa 130.000 junge Menschen zu stolzen Führerscheinbesitzern. Doch leider sind es gerade die Fahranfänger, die ein erhöhtes Unfallrisiko haben. Sie überschätzen gerne ihr eigenes Fahrvermögen und beurteilen kritische Situationen oft falsch. So gibt es leider an jedem Wochenende tödliche Unfälle von jungen Menschen. Das Bundesland Bayern startet deshalb den Modellversuch „Zweite Phase der Fahrausbildung“. Es handelt sich um freiwillige Fortbildungsseminare in Fahrschulen, in denen u. a. Sicherheitsübungen durchgeführt werden, um das Problembewusstsein gerade junger Fahranfänger im Straßenverkehr zu erhöhen.</li>
+</ol>
+<ol>
+<li>Der Verband Deutscher Verkehrsunternehmen (VDV) kritisiert, dass die Bundesregierung beim Klimaschutz das große Potenzial des öffentlichen Personennahverkehrs (ÖPNV) nicht beachtet. So würden im Klimaschutzprogramm der Regierung Busse und Bahnen gar nicht erwähnt. „Busse und Bahnen produzieren für die gleiche Leistung etwa zwei Drittel weniger CO2 als der PKW“, so ein Sprecher des Verbandes. Wenn nur ein Prozent des Autoverkehrs vom ÖPNV übernommen würde, könnte man über eine Million Tonnen Kohlendioxid einsparen.</li>
+</ol>
+<p>3</p>
+<div class="pagemark">📄 第 4 页</div>
+<h3>Teil 2</h3>
+<p><strong>Lesen Sie die folgenden Texte und markieren Sie die richtigen Lösungen auf dem Antwortbogen. (16P)</strong></p>
+<h4>Text A</h4>
+<h4>Jugendstudie 2024</h4>
+<p>Die alle vier Jahre durchgeführte Studie „Wie denken Jugendliche?“ untersucht das Leben von 14- bis 17-Jährigen in Deutschland.</p>
+<p>Trotz der vielen Herausforderungen behalten die Jugendlichen eine positive Haltung und zeigen Widerstandskraft. Die Studie stellt fest, dass die meisten Jugendlichen mit ihrem Alltag zufrieden sind, obwohl Begeisterung selten ist. Ihr Leben ist stark von einem realistischen Blick geprägt, der sich in ihren Zukunftsplänen zeigt. Viele möchten ein „normales Leben“ führen, das Sicherheit, Geborgenheit, Familie und stabile Lebensverhältnisse umfasst.</p>
+<p>Ein wachsender Trend ist die Akzeptanz von Vielfalt. Jugendliche sind zunehmend aufmerksam gegenüber der Gleichbehandlung von Geschlechtern und zeigen Offenheit gegenüber Menschen, die sich keinem bestimmten Geschlecht zuordnen. Gleichzeitig ist das Bewusstsein für Ungerechtigkeit groß. Viele Jugendliche geben in der Studie an, dass sie selbst Ungerechtigkeit erlebt oder gesehen haben, besonders in der Schule, wo die Bildung zu Mitbestimmung und Teilhabe oft als unzureichend wahrgenommen wird.</p>
+<p>Sport und Bewegung sind für Jugendliche wichtig, um Stress im Alltag abzubauen und Probleme zu vergessen. Sie berichten von einem guten Gefühl während und nach dem Sport, unabhängig von Geschlecht und Bildung. Sporteinrichtungen sind wichtige soziale Treffpunkte. Ein Mangel an öffentlichen Sportplätzen wird jedoch kritisiert, was regelmäßigen Sport erschwert. Die Bedeutung von Sport für das Wohlbefinden und den sozialen Zusammenhalt wird hervorgehoben.</p>
+<p>Die Studie basiert auf 72 detaillierten Fallstudien und wurde deutschlandweit von Juni bis September 2024 durchgeführt. Neben Interviews enthält der Forschungsbericht zahlreiche persönliche Erlebnisse und Fotos, die echte Einblicke in das Leben der Jugendlichen geben.</p>
+<p><strong>Aufgaben: Markieren Sie die richtigen Lösungen auf dem Antwortbogen.</strong></p>
+<ol>
+<li>Die Studie „Wie denken Jugendliche?“ untersucht ________.</li>
+</ol>
+<p>a. das Leben von 14- bis 17-Jährigen in Deutschland</p>
+<p>b. die sportlichen Aktivitäten von Jugendlichen weltweit</p>
+<p>c. die schulischen Leistungen von Jugendlichen in Deutschland</p>
+<ol>
+<li>Viele Jugendliche möchten ein „normales Leben“ führen, ________.</li>
+</ol>
+<p>a. das Abenteuer und Reisen umfasst</p>
+<p>b. das Sicherheit, Geborgenheit, Familie und stabile Lebensverhältnisse beinhaltet</p>
+<p>c. das Freiheit und Unabhängigkeit betont</p>
+<ol>
+<li>Das Phänomen der ________ wird unter Jugendlichen häufiger beobachtet.</li>
+</ol>
+<p>a. Akzeptanz von Vielfalt</p>
+<p>b. Ablehnung von Diversität</p>
+<p>c. Isolation von anderen Menschen</p>
+<ol>
+<li>In Bezug auf Ungerechtigkeit haben viele Jugendliche sie ________.</li>
+</ol>
+<p>a. selber erfahren oder gesehen</p>
+<p>b. nie bemerkt</p>
+<p>c. in den Medien unzureichend wahrgenommen</p>
+<ol>
+<li>Sport und Bewegung sind für Jugendliche wichtig, ________.</li>
+</ol>
+<p>a. um ihre schulischen Leistungen zu verbessern</p>
+<p>b. um sich vom Stress des Alltags zu erholen und ihre Probleme hinter sich zu lassen</p>
+<p>4</p>
+<div class="pagemark">📄 第 5 页</div>
+<p>c. um ihre sozialen Netzwerke zu erweitern</p>
+<ol>
+<li>Es wird in der Studie bezüglich der öffentlichen Sportplätze gezeigt, dass __________.</li>
+</ol>
+<p>a. es zu viele Sportplätze gibt, die nicht genutzt werden</p>
+<p>b. Sportplätze in der Regel schlecht ausgestattet sind</p>
+<p>c. der Mangel an öffentlichen Sportplätzen regelmäßigen Sport schwer macht</p>
+<h3>Text B</h3>
+<h4>Gibt es bald zu wenig Kaffee?</h4>
+<p>Ein Kaffee am Morgen gehört für viele zum Start in den Tag dazu. Doch bevor der Kaffee getrunken werden kann, muss er erst einmal angebaut und geerntet werden. Und die Kaffeepflanze ist empfindlich, wie die Klimawandelforscherin Sophie von Loeben weiß: „Sie mag es einfach nicht zu heiß, nicht zu trocken und zu nass. Sie braucht ganz bestimmte Schattenverhältnisse und einen nährstoffreichen Boden.“</p>
+<p>Bedingungen, die es bisher zum Beispiel in Brasilien und Vietnam gibt, machen die beiden Länder zu den größten Kaffeeproduzenten der Welt. Rund um den Äquator bleiben die Temperaturen das Jahr über ungefähr gleich, außerdem gibt es dort eine Regenzeit. Doch der Klimawandel zerstört dieses Gleichgewicht, so Friedel Hütz-Adams, der zum Thema Nachhaltigkeit forscht. „Jetzt gibt es plötzlich Starkregen, Monate ohne Regen und Hitzeperioden. Das vertragen Kaffeepflanzen nicht.“</p>
+<p>Laut der australischen Forschungsorganisation CSIRO wird die Fläche, auf der Kaffeeanbau möglich ist, bis 2050 um die Hälfte sinken. Allerdings entstehen durch den Klimawandel auch neue Regionen, die für den Kaffeeanbau geeignet sind. Ihn einfach dorthin zu verlagern, ist jedoch meistens nicht möglich, weil das Land in der Regel schon jemandem gehört. Außerdem muss man für neue Anbauflächen oft Wälder abholzen, so Hütz-Adams. Dadurch verschärft sich der Klimawandel noch.</p>
+<p>Eine mögliche Alternative ist der Anbau von Kaffeesorten, die an die veränderten Klimabedingungen angepasst sind. Doch auch dies ist keine einfache Lösung. Denn eine neue Kaffeesorte zu züchten, dauert Jahre. Kaffeebauern, die meistens nur sehr wenig Geld verdienen, können so lange nicht ohne Einnahmen leben. Hütz-Adams fordert daher mehr Unterstützung für sie – und feste Abnahmepreise, damit sie weiter Kaffee anbauen können.</p>
+<p>&lt;u&gt;<strong>Aufgaben: Markieren Sie die richtigen Lösungen auf dem Antwortbogen.</strong>&lt;/u&gt;</p>
+<ol>
+<li>Die Kaffeepflanze __________.</li>
+</ol>
+<p>a. kann leicht krank werden und absterben</p>
+<p>b. kann überall in der Welt angebaut werden</p>
+<p>c. kann man am Morgen zum Start in den Tag benutzen</p>
+<ol>
+<li>Warum sind Brasilien und Vietnam die größten Kaffeeproduzenten in der Welt?</li>
+</ol>
+<p>a. Weil sie die Temperaturen des Jahres kontrollieren können.</p>
+<p>b. Weil dort die Lebensbedingungen der Kaffeepflanzen verbessert werden können.</p>
+<p>c. Weil diese Länder über ideale Bedingungen für die Kaffeepflanzen verfügen.</p>
+<ol>
+<li>Die Temperaturen um den Äquator __________.</li>
+</ol>
+<p>a. führen zum Klimawandel und zerstören das Gleichgewicht</p>
+<p>b. sind gut für das Wachsen der Kaffeepflanzen</p>
+<p>c. vertragen Kaffeepflanzen nicht</p>
+<ol>
+<li>Laut der australischen Forschungsorganisation CSIRO __________.</li>
+</ol>
+<p>a. muss man Wälder abholzen, um neue Anbauflächen zu gewinnen</p>
+<p>b. wird 2050 der Kaffeeanbau in neue Regionen, die dafür geeignet sind, verlagert</p>
+<p>c. wird die Kaffeeanbaufläche im Jahr 2050 halb so groß wie die heutige</p>
+<p>5</p>
+<div class="pagemark">📄 第 6 页</div>
+<ol>
+<li>Um auf den Klimawandel zu reagieren, sollte man nach dem Text ________.</li>
+</ol>
+<p>a. Kaffeeppflanzen neu züchten, sodass sie das veränderte Wetter vertragen können</p>
+<p>b. mehr Kaffeebauern, die meistens nur sehr wenig Geld verdienen, beschäftigen</p>
+<p>c. Kaffeeppflanzen zu anderen Jahreszeiten als bisher anbauen</p>
+<h3>Text C</h3>
+<h4>Ist die Arbeitsmoral der Deutschen gesunken?</h4>
+<p>International gilt der Deutsche als Arbeitstier. Doch nun machen Daten der OECD dieses Bild unsicher: Im Jahr 2022 hat der durchschnittliche Deutsche nur 1340 Stunden gearbeitet. Das liegt deutlich unter dem Durchschnitt der Europäischen Union mit 1570 Stunden und ist weit entfernt von 1810 Stunden in Amerika. Sieht es mit der Arbeitsmoral der Deutschen so schlecht aus?</p>
+<p>Nein! Arbeitsmarktexperte Enzo Weber sagt: „Die Zahlen bedeuten nicht, dass in Deutschland weniger gearbeitet wird. Ganz im Gegenteil, es wird mehr gearbeitet.“ Wie kann das sein? „Deutschland hat eine sehr hohe Frauenerwerbsquote im Vergleich zu den meisten anderen Ländern“, erklärt er. Sie liegt bei 77 Prozent. Doch Frauen arbeiten häufig in Teilzeit, und das drückt die durchschnittliche Jahresarbeitszeit pro Person nach unten.</p>
+<p>Tatsache ist allerdings, dass die Deutschen gern weniger arbeiten möchten. „Ich glaube, alle wollen möglichst viel Freizeit und hohe Gehälter haben“, so Enzo Weber. Ein Wunsch, den auch schon frühere Generationen hatten. Doch die Lebensmodelle der Deutschen haben sich verändert: Oft arbeiten beide Partner und brauchen daher mehr Flexibilität. „Jeder sollte frei wählen können, in welchem Lebensabschnitt und wie viel er arbeitet“, meint Weber daher.</p>
+<p>Wie aber passt der Wunsch, weniger zu arbeiten, mit dem Wunsch zusammen, den Wohlstand im Land zu sichern? Laut Enzo Weber muss die Produktivität erhöht werden: durch Fortbildungen und mehr Digitalisierung. Außerdem müssen Deutsche ohne Schul- oder Berufsabschluss und Migranten für den Arbeitsmarkt fit gemacht werden, um etwas gegen Fachkräftemangel zu tun. Ob das klappt, wird die Zukunft zeigen.</p>
+<hr>
+<p><strong>Aufgaben: Markieren Sie die richtigen Lösungen auf dem Antwortbogen.</strong></p>
+<hr>
+<ol>
+<li>Daten der OECD zeigen, dass ________.</li>
+</ol>
+<p>a. die Deutschen nicht so viele Stunden pro Jahr arbeiten wie die US-Amerikaner</p>
+<p>b. die Deutschen fleißiger sind als die Bürger anderer EU-Länder</p>
+<p>c. US-Amerikaner fauler sind als die Deutschen, aber fleißiger als die Bürger anderer EU-Länder</p>
+<ol>
+<li>Nach dem Arbeitsmarktexperten Enzo Weber ________.</li>
+</ol>
+<p>a. wird in Deutschland weniger gearbeitet</p>
+<p>b. arbeiten die Frauen meistens nicht, was die durchschnittliche Jahresarbeitszeit pro Person nach unten drückt</p>
+<p>c. arbeiten Frauen in Deutschland oft in Teilzeit</p>
+<ol>
+<li>Die Deutschen ________.</li>
+</ol>
+<p>a. wollen genau wie ihre Eltern möglichst viel Freizeit und hohe Gehälter haben</p>
+<p>b. möchten gern weniger arbeiten, weil sie das Lebensmodell verändern wollen</p>
+<p>c. wählen in jedem Lebensabschnitt immer nur die Arbeit mit weniger Arbeitsstunden</p>
+<ol>
+<li>Wie passt der Wunsch, weniger zu arbeiten, mit dem Wunsch zusammen, den Wohlstand im Land zu sichern?</li>
+</ol>
+<p>a. Die Deutschen müssen die Arbeitszeit verlängern.</p>
+<p>b. Die Deutschen müssen sich fortbilden und durch Digitalisierung die Leistungsfähigkeit erhöhen.</p>
+<p>c. Die Deutschen können mehr Migranten beschäftigen und dann das schöne Leben genießen.</p>
+<p>6</p>
+<div class="pagemark">📄 第 7 页</div>
+<h3>40.</h3>
+<p>Deutsche ohne Schul- oder Berufsabschluss __________.</p>
+<p>a. werden in Zukunft immer weniger</p>
+<p>b. sind auf dem Arbeitsmarkt viel gefragter als Migranten</p>
+<p>c. müssen zu Fachkräften ausgebildet werden</p>
+<h3>IV. Grammatik und Wortschatz (35%) (45 Minuten)</h3>
+<p><strong>A. Markieren Sie die Lösungen nach entsprechenden grammatischen Regeln auf dem Antwortbogen. (5P)</strong></p>
+<ol>
+<li>__________ die Schulaufgaben fertig sind, dürft ihr nicht spielen.</li>
+</ol>
+<p>a. Bevor</p>
+<p>b. Vor</p>
+<p>c. Vorher</p>
+<ol>
+<li>__________ einen Managementvortrag zu halten, erzählte der Professor die ganze Zeit von seinem Urlaub in Italien.</li>
+</ol>
+<p>a. Um</p>
+<p>b. Ohne</p>
+<p>c. Statt</p>
+<ol>
+<li>Es mehren sich die Stimmen in der Welt, __________ für eine neue Energiepolitik eintreten.</li>
+</ol>
+<p>a. was</p>
+<p>b. die</p>
+<p>c. dass</p>
+<ol>
+<li>__________ zu viel arbeitet, dem fehlt die Zeit, sich auszuruhen.</li>
+</ol>
+<p>a. Wenn</p>
+<p>b. Wer</p>
+<p>c. Man</p>
+<ol>
+<li>Er hat das Rauchen abgewöhnt, __________ er viel Tee trinkt.</li>
+</ol>
+<p>a. indem</p>
+<p>b. in dem</p>
+<p>c. im</p>
+<ol>
+<li>Er sagte, er wollte __________ mit mir besprechen.</li>
+</ol>
+<p>a. etwa Dringendes</p>
+<p>b. etwas Dringendes</p>
+<p>c. etwas Dringende</p>
+<ol>
+<li>Der Grund liegt __________ einer unterschiedlichen Vorstellung von Raum und Zeit.</li>
+</ol>
+<p>a. an</p>
+<p>b. auf</p>
+<p>c. in</p>
+<ol>
+<li>Der US-amerikanische Präsident ist also nicht auf eine Mehrheit im Parlament __________ wie der deutsche Kanzler.</li>
+</ol>
+<p>a. angewiesen</p>
+<p>b. aufgewiesen</p>
+<p>c. abgewiesen</p>
+<ol>
+<li>Es ist, als __________ wir füreinander bestimmt wären.</li>
+</ol>
+<p>a. dass</p>
+<p>b. würden</p>
+<p>c. ob</p>
+<ol>
+<li>__________ ihm noch mir ist es gelungen, sie zu überreden.</li>
+</ol>
+<p>a. Weder</p>
+<p>b. Wieder</p>
+<p>c. Wider</p>
+<p><strong>B. Bitte markieren Sie die Lösungen im Text A) auf dem Antwortbogen und schreiben Sie die Lösungen vom Text B) auch auf dem Antwortbogen. (10P)</strong></p>
+<h4>Text A</h4>
+<p><strong>Waldbrände in Los Angeles</strong></p>
+<p>In der US-Metropole Los Angeles wüten verheerende Waldbrände. Laut Feuerschutzbehörde (51) sich am Mittwochvormittag vier Feuer (52) mindestens 23 Quadratkilometern ausgebreitet. Alle Brände waren demnach noch vollständig außer (53). Der Feuerwehrchef bestätigte zwei Tote, sagte aber, dass die genaue Todesursache noch (54) werde. US-Präsident Joe Biden schickte die Nationalgarde in die Brandgebiete.</p>
+<p>Mehr als 70.000 Menschen, (55) viele Prominente, wurden dazu aufgerufen, ihr (56) zu verlassen. Schwere Winde fachten die Feuer immer weiter an und erschwerten die Löscharbeiten. Brandbekämpfung aus der Luft sei nur sehr schwer möglich, teilten die Behörden (57). Mehrere Menschen, unter anderem auch eine Feuerwehrfrau, erlitten Brandverletzungen, berichtete der US-Sender ABC. In einer ersten Schätzung (58) die US-Großbank JP Morgan von einem</p>
+<p>7</p>
+<div class="pagemark">📄 第 8 页</div>
+<h3>Versicherungsschaden von (59) zu zehn Milliarden Dollar aus. Laut der Los Angeles Times (60) bereits mehr als 1000 Häuser, Geschäfte und andere Gebäude vom Feuer zerstört.</h3>
+<ol>
+<li>a) haben b) wurden c) waren</li>
+<li>a) an b) auf c) in</li>
+<li>a) Betrieb b) Dienst c) Kontrolle</li>
+<li>a) untergesucht b) geuntersucht c) untersucht</li>
+<li>a) darunter b) darüber c) damit</li>
+<li>a) zu Hause b) zuhause c) Zuhause</li>
+<li>a) mit b) auf c) ab</li>
+<li>a) hing b) ging c) kam</li>
+<li>a) über b) unter c) bis</li>
+<li>a) wurden b) haben c) waren</li>
+</ol>
+<h4>Text B</h4>
+<p><strong>Jede Zigarette kostet 20 Minuten Lebenszeit</strong></p>
+<p>Raucher verkürzen ihr eigenes Leben mit jeder Zigarette (61) Schnitt um 20 Minuten. Zu diesem Schluss (62) eine neue Studie des University College in London. Das Forschungsteam (63) dafür Daten von zwei britischen Langzeitstudien ausgewertet. Insgesamt sterben Raucher demnach durchschnittlich zehn Jahre (64) als Nichtraucher, bei Frauen sind es sogar elf Jahre.</p>
+<p>Den Widerspruch, dass (65) trotz der schädlichen Wirkung von Zigaretten Menschen gibt, die rauchen und trotzdem lange leben, erklärt das Forschungsteam damit, (66) es viele verschiedene Einflussfaktoren gibt. Wichtig sei vor allem, (67) tief Raucher Zigarettenqualm einatmen, welche Zigaretten sie rauchen oder wie anfällig sie generell für giftige Stoffe sind.</p>
+<p>Bei einer anderen Studie der Heinrich-Heine-Universität in Düsseldorf mit Daten aus Deutschland kam heraus, dass (68) Raucher auch weniger bewegen als Nichtraucher. Mangelnde (69) ist auch ein wichtiger Faktor, der die Gesundheit verschlechtert und die Lebensdauer (70).</p>
+<p><strong>C. Bitte ergänzen Sie die passenden Wörter! Schreiben Sie sie dann auf den Antwortbogen. (10P)</strong></p>
+<ol>
+<li>Ich ______ es für bedenklich, dass man alles mit dem Handy macht.</li>
+<li>Meine Eltern sind ______ auf mich, weil ich den Wettbewerb gewonnen habe.</li>
+<li>Laura ______ davon, eines Tages eine berühmte Schriftstellerin zu werden.</li>
+<li>In zwei Wochen habe ich ein Vorstellungsgespräch. Auf welche Fragen sollte ich mich ______?</li>
+<li>Die Frage nach den Stärken und ______ gehört zu den häufigsten Fragen im Vorstellungsgespräch.</li>
+<li>Die Wahl des Studiengangs ist von deinem Interesse und deinen Fähigkeiten ______.</li>
+<li>Schau mal, Peter hat es geschafft! Er ist ______ wie ein Fuchs.</li>
+<li>Künstliche Intelligenz ______ heutzutage fast in allen Bereichen Anwendung.</li>
+<li>Maria ______ sich herzlich bei den Lehrern für die Hilfe beim Chinesischlernen.</li>
+<li>Dank der Gastfreundlichkeit der Menschen ______ ich mich in dieser Stadt wie zu Hause.</li>
+<li>Das neue Gesetz gilt ab nächstem Monat. Das heißt, dass das neue Gesetz am 1. Juli in ______ tritt.</li>
+</ol>
+<p>8</p>
+<div class="pagemark">📄 第 9 页</div>
+<h3>82.</h3>
+<p>Es gibt viele Gründe, auf Süßigkeiten zu ________: abnehmen oder fitter werden.</p>
+<h3>83.</h3>
+<p>Ich wohne im Stadtzentrum. Am Wochenende fahre ich oft mit meiner Familie aufs ________, um die schöne Natur zu genießen.</p>
+<h3>84.</h3>
+<p>Studierende sollten versuchen, ihren Horizont durch soziales Engagement zu ________.</p>
+<h3>85.</h3>
+<p>Um das Problem zu ________, muss eine nachhaltige Alternative gefunden werden.</p>
+<h3>86.</h3>
+<p>Man sollte sich ________ darüber machen, wie man seine Präsentation visualisiert.</p>
+<h3>87.</h3>
+<p>________ muss ich achten, wenn ich mein eigenes Unternehmen gründe?</p>
+<h3>88.</h3>
+<p>Der Unternehmer ist verantwortlich, alle erforderlichen Maßnahmen des Arbeitsschutzes zu ________.</p>
+<h3>89.</h3>
+<p>Das ist leichter gesagt als ________, denn die Projektpartner sind über mehrere Standorte verteilt.</p>
+<h3>90.</h3>
+<p>Viele Menschen ziehen es vor, mit dem Aufzug zu fahren, statt die ________ selbst zu steigen.</p>
+<hr>
+<h4>D. Formen Sie die unterstrichenen Ausdrücke so um, dass sie zu den vorgegebenen Satzteilen passen. Sinn und Zeit sollen nicht verändert werden. Schreiben Sie die Sätze auf den Antwortbogen. (5P)</h4>
+<p><em>Beispiel:</em> Das Handy ist sofort zu reparieren. → Das Handy muss/kann sofort repariert werden.</p>
+<h3>91.</h3>
+<p>Die Wiederherstellung von Ökosystemen tragen zur Sicherung der Wasserversorgung bei.</p>
+<p>→ Die Wiederherstellung von Ökosystemen tragen dazu bei, ________.</p>
+<h3>92.</h3>
+<p>Die Menschen sind dazu bereit, in innovative Technologien und Infrastrukturen zu investieren.</p>
+<p>→ Die Menschen sind zur ________ bereit.</p>
+<h3>93.</h3>
+<p>Nur durch eine Kombination von Maßnahmen kann eine nachhaltige Lösung für die von Wasserknappheit betroffenen Gemeinschaften erreicht werden.</p>
+<p>→ Nur durch eine Kombination von Maßnahmen kann man ________.</p>
+<h3>94.</h3>
+<p>Wie die Experten schätzten, gibt es in unserem Sonnensystem zahlreiche Asteroiden, die in die Nähe der Erde gelangen könnten.</p>
+<p>→ ________ gibt es in unserem Sonnensystem zahlreiche Asteroiden, die in die Nähe der Erde gelangen könnten.</p>
+<h3>95.</h3>
+<p>Weil ich gestern vom Fahrrad abgestürzt bin, muss ich heute im Krankenhaus liegen.</p>
+<p>→ Wenn ________, müsste ich heute nicht im Krankenhaus liegen.</p>
+<hr>
+<h4>E. Suchen Sie die Fehler (an zwei Stellen in jeder Aufgabe) in den folgenden Sätzen heraus und schreiben Sie die richtigen Sätze auf den Antwortbogen. (5P)</h4>
+<h3>96.</h3>
+<p>Herr Schmidt hat seit drei Jahren in Nanjing gelebt, weil er für China interessiert.</p>
+<h3>97.</h3>
+<p>Warum fallen wir Veränderungen so schwer? Warum haben wir so viel Angst vor Risike?</p>
+<h3>98.</h3>
+<p>Viele Menschen haben eine tiefe Sehnsucht zur Ruhe und die Yoga-Kultur ist zu einem großen Geschäft geworden.</p>
+<h3>99.</h3>
+<p>In der vierten Klasse wird in einigen Bundesländern anhand die Noten entscheiden, ob ein Kind das Gymnasium besuchen wird.</p>
+<h3>100.</h3>
+<p>In der USA haben Forscher ein spezielles Haus gebaut und untersuchen die Auswirkung von Tageslicht über die Gesundheit von Menschen.</p>
+<p>9</p>
+<div class="pagemark">📄 第 10 页</div>
+<h3>V. Schriftlicher Ausdruck (15%) (40 Minuten)</h3>
+<h4>Kleidung, Medien und Schuhe gehen auch Secondhand</h4>
+<p>Anteil der Befragten, die folgende Produkte in den letzten 12 Monaten Secondhand gekauft haben (in %)</p>
+<table><thead><tr><th>Produkt</th><th>%</th></tr></thead><tbody>
+<tr><td>Kleidung</td><td>21</td></tr>
+<tr><td>Bücher, Filme, Musik &amp; Games</td><td>16</td></tr>
+<tr><td>Schuhe</td><td>14</td></tr>
+<tr><td>Unterhaltungselektronik</td><td>11</td></tr>
+<tr><td>Möbel &amp; Haushaltswaren</td><td>11</td></tr>
+<tr><td>Spielzeug und Babyartikel</td><td>10</td></tr>
+<tr><td>Accessoires</td><td>9</td></tr>
+<tr><td>Taschen &amp; Gepäckstücke</td><td>8</td></tr>
+<tr><td>Haushaltsgeräte</td><td>8</td></tr>
+<tr><td>Nichts Secondhand gekauft</td><td>45</td></tr>
+</tbody></table>
+<p>Basis: 5.984 Befragte (18-64 Jahre) in Deutschland; Mehrfachantworten möglich; Okt 2023-Sep 2024</p>
+<p>Quelle: Statista Consumer Insights</p>
+<p>statista</p>
+<p><em>Quelle:</em></p>
+<p>https://de.statista.com/infografik/27355/umfrage-zum-kauf-von-secondhand-produkten/</p>
+<h4>Aufgabe</h4>
+<p><em>Sie sehen in einem Internetforum das obige Schaubild. Schreiben Sie bitte einen Text zum Thema „gebrauchte Produkte“. Gehen Sie dabei auf folgende Punkte ein:</em></p>
+<ol>
+<li>Beschreiben Sie, was Sie in dem Schaubild erfahren haben.</li>
+<li>Welche Erfahrungen haben Sie mit Secondhand-Produkten gemacht?</li>
+<li>Was halten Sie von Secondhand-Produkten?</li>
+</ol>
+<p><em>Ihr Text sollte 150-180 Wörter haben.</em></p>
+<p>10</p>
+<p style="margin:36px 0 8px;color:var(--text2);font-size:.8em;text-align:center">
+原文由考生提供的扫描件逐页 OCR 转录，仅作教学参考 · © 版权归考试中心所有
+</p>
+</div>
+</body>
+</html>

@@ -82,12 +82,13 @@ tr:hover { background: #f5f5f0; }
 <div class="container">
   <div class="header">
     <h1>📚 PGG 德语专四考点知识库</h1>
-    <p>Prüfung für das Germanistik-Grundstudium · 基于2024-2026三年真题的系统化考点梳理</p>
-    <div class="badge">📅 2024+2025+2026 三卷已收录 · 逐年扩增中</div>
+    <p>Prüfung für das Germanistik-Grundstudium · 基于 2023-2026 四年真题的系统化考点梳理</p>
+    <div class="badge">📅 2023+2024+2025+2026 四卷全收录 · 含原文逐字转录</div>
   </div>
 
   <div class="stats">
-    <div class="stat-card"><div class="num">3</div><div class="label">真题年份</div></div>
+    <div class="stat-card"><div class="num">4</div><div class="label">真题年份</div></div>
+    <div class="stat-card"><div class="num">40</div><div class="label">真题原文页</div></div>
     <div class="stat-card"><div class="num">5</div><div class="label">题型板块</div></div>
     <div class="stat-card"><div class="num">35%</div><div class="label">语法词汇占比</div></div>
     <div class="stat-card"><div class="num">~4200</div><div class="label">核心词汇量</div></div>
@@ -104,6 +105,7 @@ tr:hover { background: #f5f5f0; }
     <button class="tab-btn" data-tab="reading">📰 阅读专题</button>
     <button class="tab-btn" data-tab="writing">✏️ 写作指南</button>
     <button class="tab-btn" data-tab="past">📅 真题详解</button>
+    <button class="tab-btn" data-tab="fulltext">📚 四年真题原文</button>
     <button class="tab-btn" data-tab="compare">📊 双年对比</button>
     <button class="tab-btn" data-tab="diagnosis">🔬 学生诊断</button>
   </div>
@@ -341,7 +343,7 @@ tr:hover { background: #f5f5f0; }
     <div class="card">
       <h3>2025 A卷：Secondhand-Produkte</h3>
       <div class="beispiel">
-        <strong>图表:</strong> Statista — 5984 Befragte, Oct 2023-Sep 2024<br>
+        <strong>图表:</strong> Statista · 5984 Befragte, Oct 2023-Sep 2024<br>
         数据: Kleidung 21%, Bücher 16%, Schuhe 14%, 45% nichts gekauft<br>
         <strong>3要点:</strong> ①描述图表  ②个人经验  ③个人观点<br>
         <strong>字数:</strong> 150-180 Wörter
@@ -350,7 +352,7 @@ tr:hover { background: #f5f5f0; }
     <div class="card">
       <h3>2026 A卷：Tägliche Zeit am Smartphone</h3>
       <div class="beispiel">
-        <strong>图表:</strong> Bitkom 2025 — 日均使用分钟数<br>
+        <strong>图表:</strong> Bitkom 2025 · 日均使用分钟数<br>
         数据: 16-29岁 212min | 39-49岁 158min | 50-64岁 148min | ab 65 103min<br>
         <strong>3要点:</strong> ①描述图表  ②个人手机使用  ③如何限制使用时间<br>
         <strong>字数:</strong> 150-180 Wörter
@@ -377,6 +379,9 @@ tr:hover { background: #f5f5f0; }
   <!-- ======= PAST PAPERS ======= -->
   <div class="section" id="tab-past">
     <h2 class="section-title">📅 历年真题详解</h2>
+    <div class="card"><h3>🔎 需要看原句原文？</h3>
+      <p>这里是考点梳理（提炼+对比）。要核对德语原句、查题目原文、做精读，请去
+      <a href="#" onclick="switchTo('fulltext');return false;"><strong>📚 四年真题原文</strong></a>：2023 / 2024 / 2025 / 2026 四份逐字转录全text。</p></div>
     <div class="filter-bar">
       <button class="filter-btn active" onclick="filterYear('all',this)">📚 全部</button>
       <button class="filter-btn" onclick="filterYear('25',this)">2025 A</button>
@@ -406,9 +411,9 @@ tr:hover { background: #f5f5f0; }
     <div class="year24"><div class="card"><h3>2024 Ⅱ 听力: WG/Krankheit/Xuan-Papier</h3>
     <p>Teil 2: WG mit Opa (正误), Beim Arzt, Gespräch/Weltreise, Xuan-Papier/宣纸(2009非遗)</p></div></div>
     <div class="year24"><div class="card"><h3>2024 Ⅲ 阅读: Füchse+Kulturpass+ChatGPT</h3>
-    <p>Text A: Füchse in der Stadt — Stadtleben/Verkehrsgefahr<br>
-    Text B: Kulturpass — 200€ für 18-Jährige<br>
-    Text C: ChatGPT — KI-Risiken, Tod der Hausarbeit</p></div></div>
+    <p>Text A: Füchse in der Stadt · Stadtleben/Verkehrsgefahr<br>
+    Text B: Kulturpass · 200€ für 18-Jährige<br>
+    Text C: ChatGPT · KI-Risiken, Tod der Hausarbeit</p></div></div>
     <div class="year24"><div class="card"><h3>2024 Ⅳ 语法答案</h3>
     <p><strong>A</strong> 41.die 42.seien 43.haben 44.Wer 45.mehr 46.Achten Sie 47.enthält 48.Obwohl 49.um 50.könnte<br>
     <strong>C</strong> Krankenhaus/Lügen/beworben/Gründen/beeilen/wegen/teurer/beginnt/Gedächtnis/Lage/Kälte/Während/verboten/untersuchen/sparen/läuft/Begleitung/Eintritt/wie/Beitrag</p></div></div>
@@ -423,9 +428,9 @@ tr:hover { background: #f5f5f0; }
     Teil 2: Chinese in Berlin (正误), Selbstfahrende Autos, Frühlingsfest (中国), Bahngeschichte</p></div></div>
     <div class="year25"><div class="card"><h3>2025 Ⅲ 阅读: 环境+社会</h3>
     <p>Teil 1: Klimawandel Nahrung/Gletscher + Fahranfänger/ÖPNV<br>
-    Text A: Jugendstudie 2024 — Widerstandskraft, Vielfalt, Sport<br>
-    Text B: Kaffee und Klimawandel — Brasilien/Vietnam, CSIRO, Züchtung<br>
-    Text C: Arbeitsmoral — OECD, Teilzeit, Produktivität, Digitalisierung</p></div></div>
+    Text A: Jugendstudie 2024 · Widerstandskraft, Vielfalt, Sport<br>
+    Text B: Kaffee und Klimawandel · Brasilien/Vietnam, CSIRO, Züchtung<br>
+    Text C: Arbeitsmoral · OECD, Teilzeit, Produktivität, Digitalisierung</p></div></div>
     <div class="year25"><div class="card"><h3>2025 Ⅳ 语法词汇 (答案速查)</h3>
     <p><strong>A</strong> 41.bevor 42.Statt 43.die 44.Wer 45.indem 46.Dringendes 47.in 48.angewiesen 49.ob 50.Weder<br>
     <strong>B</strong> haben/auf/Kontrolle/untersucht/darunter/Zuhause/mit/kam/über/wurden + im/kam/hat/früher/dass/dass/wie/die/Bewegung/verkürzt<br>
@@ -435,7 +440,7 @@ tr:hover { background: #f5f5f0; }
 
     <!-- 2026 -->
     <div class="year26"><div class="card"><h3>2026 Ⅰ 听写: 心态与健康</h3>
-    <p>主题: "Man ist so alt, wie man sich fühlt" — 心态如何影响身体健康和寿命。关键词: Risiko, Krankheit, Einstellung, Stress, geistige Fitness, körperliche/emotionale Fitness</p></div></div>
+    <p>主题: "Man ist so alt, wie man sich fühlt" · 心态如何影响身体健康和寿命。关键词: Risiko, Krankheit, Einstellung, Stress, geistige Fitness, körperliche/emotionale Fitness</p></div></div>
     <div class="year26"><div class="card"><h3>2026 Ⅱ 听力: Alltag + 4短文</h3>
     <p>Teil 1: Spazieren/Kino/Restaurant, U-Bahn/Bus/Fahrrad, Uhrzeit, Bio-Markt/Post, Alterspanne<br>
     Teil 2: Gesunde Ernährung (正误), Das blaue Sofa, Smart Home, Neue Seidenstraße (中国)</p></div></div>
@@ -450,6 +455,45 @@ tr:hover { background: #f5f5f0; }
     <strong>C</strong> Leben/geträumt/macht/auf/weiblichen/Anfang/entschieden/Internet/Suche/bewegen/Bühne/schlechtes/erreicht/aufgenommen + Stärken/gewöhnt/verantwortlich/nächsten/Gründen/Hilfe</p></div></div>
     <div class="year26"><div class="card"><h3>2026 Ⅴ 写作: Smartphone-Nutzung</h3>
     <p>Bitkom 2025图表: 16-29岁212min, ab 65 103min. 3要点: 描述+个人使用+限制方案</p></div></div>
+  </div>
+
+  <!-- ======= FULL PAPERS (2023-2026 原文) ======= -->
+  <div class="section" id="tab-fulltext">
+    <h2 class="section-title">📚 2023-2026 四年真题原文（逐字转录）</h2>
+    <div class="card">
+      <h3>怎么用这个库</h3>
+      <p>下面四份是考生提供的扫描件逐页 OCR 出来的<strong>原文</strong>：德语原样、题号原样，未翻译、未改写。
+      考点梳理看「真题详解」「语法考点」两个页签，需要查原句、核对答案、做精读时进这里。</p>
+      <p class="zh">结构统一为五段：Ⅰ 听写 Diktat → Ⅱ 听力 Hörverstehen（6 短对话 + 4 短文）→ Ⅲ 阅读 Leseverstehen（标题匹配 + 3 长文）→ Ⅳ 语法词汇（选择/完形/词汇/改写/改错）→ Ⅴ 写作。
+      无法辨认处用 <code>[?]</code> 标注（不补全、不猜）。</p>
+    </div>
+
+    <div class="card"><h3>📅 2023 A 卷</h3>
+      <p>听写：挪威 13 岁少年用重金属音乐吓退四只狼<br>
+      听力：电话/足球/爬楼/西藏经济 · 阅读：Matterhorn 振动 / 塑料袋禁令 / 二手赠送箱<br>
+      语法：反身代词 · 从句 · 虚拟 · 写作：Homeoffice</p>
+      <p><a href="2023.html">→ 打开 2023 完整原文</a></p></div>
+
+    <div class="card"><h3>📅 2024 A 卷</h3>
+      <p>听写：德国非全日制在读生 22.33 万（CHE 报告）<br>
+      听力：WG 与老人同住 / 就诊 / 旅行 / 宣纸 · 阅读：城市狐狸 / Kulturpass / ChatGPT 风险<br>
+      语法：关系代词 · 命令式 · 虚拟 · 写作：现金 vs 支付方式</p>
+      <p><a href="2024.html">→ 打开 2024 完整原文</a></p></div>
+
+    <div class="card"><h3>📅 2025 A 卷</h3>
+      <p>听写：Kita in Deutschland（幼教机构）<br>
+      听力：日常情境 + 留德中国学生 / 自动驾驶 / 春节 / 德国铁路史 · 阅读：青少年研究 / 咖啡 / 劳动伦理<br>
+      语法：从句连词 · 虚拟式 · 写作：Secondhand-Produkte</p>
+      <p><a href="2025.html">→ 打开 2025 完整原文</a></p></div>
+
+    <div class="card"><h3>📅 2026 A 卷</h3>
+      <p>听写：„Man ist so alt, wie man sich fühlt"（心态与健康）<br>
+      听力：日常情境 + 健康饮食 / 蓝色沙发 / 智能家居 / 新丝绸之路 · 阅读：康德 / 故宫 / 人为何歌唱<br>
+      语法：dass 从句 · 属格 · 情态动词 · 写作：手机使用时长（Bitkom 2025）</p>
+      <p><a href="2026.html">→ 打开 2026 完整原文</a></p></div>
+
+    <div class="card"><h3>📄 关于原始扫描件与版权</h3>
+      <p class="zh">本页为扫描件的逐字转录，仅供教学参考，© 版权归考试中心所有。原始 PDF 扫描件不放公开仓（避免版权分发风险），需要对照原图核校时找维护者索取。</p></div>
   </div>
 
   <!-- ======= COMPARE ======= -->
@@ -534,19 +578,19 @@ tr:hover { background: #f5f5f0; }
     <tr><td>Ⅴ写作(15%)</td><td>56%&lt;50%</td><td>19%&lt;50%</td><td>⬆ 模板训练有效</td></tr></table></div>
 
     <div class="card"><h3>🚨 三大致命弱点</h3>
-    <div class="collapse-header" onclick="toggleCollapse(this)"><span>🔴 致命1：听写 — 74%学生连3分都拿不到</span><span class="collapse-icon">▼</span></div>
+    <div class="collapse-header" onclick="toggleCollapse(this)"><span>🔴 致命1：听写 · 74%学生连3分都拿不到</span><span class="collapse-icon">▼</span></div>
     <div class="collapse-body"><ol><li><strong>语音-拼写脱节：</strong>长元音/短元音区分，ä/ö/ü拼写，-er/-en/-e词尾频繁错</li>
     <li><strong>复合词不会拆：</strong>Kindertageseinrichtung这类长词直接放弃</li>
     <li><strong>节奏不适：</strong>3遍朗读模式(正常→分节→全文)，短期记忆要求高</li>
     <li><strong>虚词失分：</strong>der/die/das/den/dem+词尾-n/-m/-r最易漏</li></ol>
     <p><strong>对策：</strong>每周2次专项听写：练变元音+复合词；慢速→常速递进；逐词检查错因</p></div>
-    <div class="collapse-header" onclick="toggleCollapse(this)"><span>🟠 致命2：语法词汇 — 35%权重的分水岭</span><span class="collapse-icon">▼</span></div>
+    <div class="collapse-header" onclick="toggleCollapse(this)"><span>🟠 致命2：语法词汇 · 35%权重的分水岭</span><span class="collapse-icon">▼</span></div>
     <div class="collapse-body"><ol><li><strong>介词搭配是硬伤：</strong>C部分约70%考固定搭配(sich vorbereiten auf, verzichten auf等)</li>
     <li><strong>连词辨析不扎实：</strong>A部分必考weil/wenn/als/bevor/indem</li>
     <li><strong>完形两头难：</strong>B部分20题需理解上下文+辨别语法</li>
     <li><strong>改写+改错暴露系统漏洞</strong></li></ol>
     <p><strong>对策：</strong>背词必配介词；连词做对比表；每周1次改错+1次改写专项</p></div>
-    <div class="collapse-header" onclick="toggleCollapse(this)"><span>🟡 致命3：写作 — 看似简单陷阱多</span><span class="collapse-icon">▼</span></div>
+    <div class="collapse-header" onclick="toggleCollapse(this)"><span>🟡 致命3：写作 · 看似简单陷阱多</span><span class="collapse-icon">▼</span></div>
     <div class="collapse-body"><ol><li><strong>结构散：</strong>不按3要点组织，写到哪算哪</li>
     <li><strong>句型单调：</strong>全篇ich denke/man kann，缺从句和衔接词</li>
     <li><strong>词数不达标：</strong>150-180词写不够或超太多</li>
@@ -591,6 +635,11 @@ function toggleTheme() {
 
 // Show 2025 content by default
 document.querySelectorAll('.year23, .year24, .year25').forEach(e => e.style.display = 'block');
+
+function switchTo(tab) {
+  const btn = document.querySelector('.tab-btn[data-tab="' + tab + '"]');
+  if (btn) { btn.click(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+}
 </script>
 </body>
 </html>

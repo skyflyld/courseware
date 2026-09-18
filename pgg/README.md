@@ -1,37 +1,44 @@
 # PGG 德语专四考点知识库
 
-> Prüfung für das Germanistik-Grundstudium
+> Prüfung für das Germanistik-Grundstudium（全国高校德语专业四级考试）
+
+## 在线访问（两个入口都能开）
+
+- **主入口**: https://skyflyld.github.io/pgg/
+- 备用入口: https://skyflyld.github.io/courseware/pgg/
 
 ## 内容
 
-| 文件 | 说明 | 格式 |
-|------|------|------|
-| `index.html` | 交互式考点知识库 | 🌐 HTML (GitHub Pages) |
-| `2025_a_analysis.md` | 2025 A卷完整真题分析 | 📄 Markdown |
-| `2026_a_analysis.md` | 2026 A卷完整真题分析 | 📄 Markdown |
-| `pgg_vocab_list.md` | 核心词汇表+固定搭配 | 📄 Markdown |
+| 文件 | 说明 |
+|------|------|
+| `index.html` | 交互式考点知识库（8 个页签：结构/语法/词汇/阅读/写作/真题详解/四年原文/双年对比/学生诊断） |
+| `2023.html` `2024.html` `2025.html` `2026.html` | **四年真题原文逐字转录**（各 10 页扫描件 → 德文 OCR，统一五段结构） |
+| `2023_a_analysis.md` ~ `2026_a_analysis.md` | 各年真题分析（题型/考点/答案） |
+| `pgg_vocab_list.md` | 核心词汇表 + 固定搭配 |
+| `pgg_mock_2027_*.md` / `PGG_Mock_2027_*.docx` | 2027 预测模拟卷（A/B 卷 + 答案 + 教师用书 + 出题方案） |
+| `pgg-kb-loop` 闭环图 | 知识库信息架构（考点库 → 诊断 → 回流的闭环） |
 
-## 访问
+## 真题原文库（2026-09 重建）
 
-- GitHub Pages: https://skyflyld.github.io/courseware/pgg/
-- GitHub Source: https://github.com/skyflyld/courseware/tree/main/pgg
+四份考生提供的扫描件（10 页/年，纯图像、无文字层）逐页 OCR 转录，**德语原样、题号原样、不翻译不改写**，无法辨认处标 `[?]`。
+
+```
+Ⅰ Diktat 10%        听写：A 填空听写（8空） + B 全文听写
+Ⅱ Hörverstehen 20%  听力：Teil1 6 短对话（听1遍）+ Teil2 4 短文（听2遍）
+Ⅲ Leseverstehen 20% 阅读：Teil1 标题匹配 21-24 + Teil2 长文 A/B/C
+Ⅳ Grammatik 35%     语法词汇：A 选择41-50 / B 完形51-70 / C 词汇71-90 / D 改写91-95 / E 改错96-100
+Ⅴ Schriftlicher Ausdruck 15%  写作：图表描述 150-180 词
+```
+
+> ⚠️ 版权：真题 © 考试中心所有，本站仅作教学研究参考。原始扫描件不公开分发。
 
 ## 说明
 
-当前知识库基于 **PGG 2025 A卷 + 2026 A卷** 双份完整真题文本提取分析，包含两年的考点对比和出题趋势分析。
+- 考点梳理基于 **2023 / 2024 / 2025 / 2026 四年 A 卷**，含四年趋势对比与学生诊断
+- 官方网站: http://pgg.sflep.com/
+- 反馈 / 勘误 / 更多年份资料：找维护者
 
-## PGG考试概况
+## 维护记录
 
-- 全称: 全国高校德语专业四级考试 (Prüfung für das Germanistik-Grundstudium)
-- 主办: 教育部高校外语专业教学指导委员会德语分委员会
-- 官网: http://pgg.sflep.com/
-- 总分: 100%
-- 五大板块: 听写(10%)→听力(20%)→阅读(20%)→语法词汇(35%)→写作(15%)
-
-## 更新计划
-
-- [x] 2025 A卷完整分析
-- [x] 2026 A卷完整分析
-- [ ] 2024/2023/2022/2021年真题分析 (待提供资料)
-- [ ] 互动语法测验模块
-- [ ] 词汇闪卡功能
+- 2026-09：修复 `skyflyld.github.io/pgg/` 404（入口跳转断链），四年真题扫描件全部 OCR 入库
+- 2026-07：知识库初建（2025+2026 双卷分析 → 补齐 2023/2024 → 四年整合）

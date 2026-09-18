@@ -10,9 +10,25 @@
 | 时间 | ~170分钟 |
 
 ## Ⅰ 听写 Diktat (10%) — 15 min
-待补充
+
+### A) Lückendiktat (填空听写, 4P)
+**主题**: 挪威少年用重金属音乐吓退狼群
+> In Norwegen hat ein 13-Jähriger mit Heavy-Metal-Musik vier Wölfe verjagt. Thomas war auf dem Weg nach Hause, als er die Tiere 2) ______. Da in dieser Gegend 3) ______ Wölfe gesehen werden, wissen alle Kinder ganz genau, 4) ______ sie nicht weglaufen dürfen, weil das sehr 5) ______ werden kann. So zog Thomas seine 6) ______ aus dem Handy und stellte die Musik ganz laut, schrie und machte mit 7) ______ und Beinen wilde Bewegungen, um die Wölfe zu 8) ______. Er hatte Erfolg. Die Tiere liefen weg.
+
+（空位答案需听力音频；本卷扫描件不含答案页）
+
+### B) Satz-Schreibdiktat (全文听写, 6P)
+标准流程：先听全文一次 → 逐句听写（长句分节）→ 最后核对一次
 
 ## Ⅱ 听力 Hörverstehen (20%)
+
+### Teil 1: Alltagssituationen (6短对话, 仅听一遍, 6P)
+1. 她想做什么？(Kuchen backen / Kaffee mit Milch / Sahne machen)
+2. 多长时间？(Zehn Stunden / Zwei Stunden / Fünf Stunden)
+3. 发生了什么？(Ihm ist etwas passiert / Unfall in der Buchhandlung / Unfall in der Fußgängerzone der Friedrichstraße)
+4. 订了什么房？(Einzelzimmer ohne Bad ruhige Rückseite / Einzelzimmer mit Bad ruhige Rückseite / Doppelzimmer mit Frühstück)
+5. 涉及哪本书？(Der Zauberberg, Thomas Mann / Der Vorleser, Bernhard Schlink / Unterm Rad, Hermann Hesse)
+6. 在哪里买？(Shopping City West / Shoppingcenter Nord / Übers Internet)
 
 ### Teil 2: Kurztexte (4篇)
 **Text A** — Ein Telefongespräch (richtig/falsch): 朋友生日派对计划，取消改为Neusiedlersee露营

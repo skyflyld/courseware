@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PGG 2023 A卷 · 完整真题原文</title>
+<style>
+<style>
+:root {
+  --bg: #f8f6f0;
+  --card: #ffffff;
+  --accent: #1a5276;
+  --accent2: #2e86c1;
+  --gold: #d4a017;
+  --text: #1a1a2e;
+  --text2: #4a4a5a;
+  --border: #e0ddd5;
+  --tag-g: #e8f4f8;
+  --tag-v: #f0e6f6;
+  --tag-r: #e8f5e9;
+  --tag-w: #fff3e0;
+  --tag-l: #fce4ec;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+.container { max-width: 960px; margin: 0 auto; padding: 20px; }
+.header { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; padding: 40px 20px; text-align: center; border-radius: 16px; margin-bottom: 30px; }
+.header h1 { font-size: 2em; margin-bottom: 8px; }
+.header p { opacity: .85; }
+.header .badge { display: inline-block; background: rgba(255,255,255,.15); padding: 4px 14px; border-radius: 20px; font-size: .8em; margin-top: 12px; }
+.tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px; }
+.tab-btn { padding: 10px 20px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; cursor: pointer; font-size: .9em; transition: .2s; }
+.tab-btn:hover { background: #eef0eb; }
+.tab-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+.section { display: none; }
+.section.active { display: block; }
+.section-title { font-size: 1.5em; color: var(--accent); margin-bottom: 16px; padding-bottom: 8px; border-bottom: 3px solid var(--accent); }
+.card { background: var(--card); border-radius: 12px; padding: 20px; margin-bottom: 16px; border: 1px solid var(--border); }
+.card h3 { font-size: 1.1em; margin-bottom: 10px; color: var(--accent2); }
+.tag { display: inline-block; padding: 2px 10px; border-radius: 10px; font-size: .75em; margin: 2px; }
+.tag-g { background: var(--tag-g); color: #1a5276; }
+.tag-v { background: var(--tag-v); color: #6a1b9a; }
+.tag-r { background: var(--tag-r); color: #2e7d32; }
+.tag-w { background: var(--tag-w); color: #e65100; }
+.tag-l { background: var(--tag-l); color: #c62828; }
+table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+th { background: var(--accent); color: #fff; font-size: .85em; }
+tr:hover { background: #f5f5f0; }
+.de { background: #f0f0e8; padding: 2px 6px; border-radius: 4px; font-size: .9em; }
+.zh { color: var(--text2); font-size: .85em; }
+.beispiel { background: #fafaf5; border-left: 4px solid var(--accent2); padding: 12px 16px; margin: 8px 0; border-radius: 0 8px 8px 0; font-size: .9em; }
+.cloud { display: flex; flex-wrap: wrap; gap: 8px; }
+.cloud span { padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border); background: var(--card); font-size: .85em; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 16px 0; }
+.stat-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; text-align: center; }
+.stat-card .num { font-size: 1.8em; font-weight: 700; color: var(--accent2); }
+.stat-card .label { font-size: .8em; color: var(--text2); }
+.bar-chart { margin: 12px 0; }
+.bar-item { display: flex; align-items: center; margin: 6px 0; gap: 10px; }
+.bar-label { width: 120px; font-size: .85em; flex-shrink: 0; }
+.bar-fill { height: 24px; border-radius: 12px; min-width: 4px; }
+.collapse-header { cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 10px 0; user-select: none; }
+.collapse-header:hover { color: var(--accent2); }
+.collapse-body { overflow: hidden; max-height: 0; transition: max-height .3s ease; }
+.collapse-body.open { max-height: 2000px; }
+.collapse-icon { transition: transform .3s; }
+.collapse-icon.open { transform: rotate(180deg); }
+.filter-bar { margin: 12px 0; }
+.filter-btn { padding: 6px 14px; border: 1px solid var(--border); border-radius: 16px; background: var(--card); cursor: pointer; font-size: .82em; margin: 3px; }
+.filter-btn.active { background: var(--accent2); color: #fff; border-color: var(--accent2); }
+.year23, .year24, .year25, .year26 { display: none; }
+.theme-toggle { position: fixed; bottom: 20px; right: 20px; width: 44px; height: 44px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 1.2em; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,.15); z-index: 100; border: none; }
+@media (max-width: 640px) {
+  .header h1 { font-size: 1.5em; }
+  .tab-btn { padding: 8px 12px; font-size: .8em; }
+  .bar-label { width: 80px; font-size: .75em; }
+}
+</style>
+.yearnav { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:18px; font-size:.9em; }
+.yearnav a { padding:6px 14px; border:1px solid var(--border); border-radius:16px; background:var(--card); color:var(--accent); text-decoration:none; }
+.yearnav a.cur { background:var(--accent); color:#fff; border-color:var(--accent); }
+.container { max-width: 900px; }
+.pagemark { margin:26px 0 8px; padding:6px 12px; background:var(--tag-g); color:var(--accent);
+  border-radius:8px; font-size:.78em; letter-spacing:.5px; }
+h1 { font-size:1.7em; color:var(--accent); margin:6px 0 14px; }
+h2 { font-size:1.35em; color:var(--accent); margin:26px 0 10px; padding-bottom:6px; border-bottom:2px solid var(--border); }
+h3 { font-size:1.12em; color:var(--accent2); margin:20px 0 8px; }
+h4 { font-size:1em; color:var(--text); margin:14px 0 6px; }
+p, li { line-height:1.75; }
+ol, ul { margin:8px 0 8px 22px; }
+blockquote { border-left:3px solid var(--accent2); background:#fafaf5; padding:10px 14px; border-radius:0 8px 8px 0;
+  color:var(--text2); font-size:.88em; margin:10px 0; }
+code { background:#f0f0e8; padding:1px 5px; border-radius:4px; font-size:.9em; }
+hr { border:none; border-top:1px dashed var(--border); margin:20px 0; }
+</style>
+</head>
+<body>
+<div class="container">
+<nav class="yearnav">
+<a href="index.html">← 返回考点知识库</a>
+<a href="2023.html" class="cur">PGG 2023</a><a href="2024.html">PGG 2024</a><a href="2025.html">PGG 2025</a><a href="2026.html">PGG 2026</a>
+</nav>
+<h2>PGG 2023 年 A 卷 · 完整真题（原文逐字转录）</h2>
+<blockquote>来源：考生提供的扫描件 <code>skyflyld/pgg-raw/PGG_2023_A.pdf</code>（10 页）</blockquote>
+<blockquote>转录：逐页德文 OCR（DeepSeek V4.1 Flash 原生视觉，dpi=200）</blockquote>
+<blockquote>纪律：逐字原文，未翻译、未改写；无法辨认处标 <code>[?]</code>；不确定处不补全</blockquote>
+<blockquote>生成：2026-09-18 23:42 UTC</blockquote>
+<div class="pagemark">📄 第 1 页</div>
+<h3>©版权归考试中心所有</h3>
+<h2>PRÜFUNG FÜR DAS GERMANISTIK-GRUNDSTUDIUM</h2>
+<h3>(PGG 2023 A)</h3>
+<h4>I. Diktat (10%) (15 Minuten)</h4>
+<p><strong>A) Füllen Sie die Lücken aus.</strong></p>
+<p>Sie hören den folgenden Text dreimal in normalem Tempo und dann füllen Sie die Lücken aus.</p>
+<p>In Norwegen hat ein 1) 13-______ mit Heavy-Metal-Musik vier Wölfe verjagt. Thomas war auf dem Weg nach Hause, als er die Tiere 2) ______. Da in dieser Gegend 3) ______ Wölfe gesehen werden, wissen alle Kinder ganz genau, 4) ______ sie nicht weglaufen dürfen, weil das sehr 5) ______ werden kann. So zog Thomas seine 6) ______ aus dem Handy und stellte die Musik ganz laut, schrie und machte mit 7) ______ und Beinen wilde Bewegungen, um die Wölfe zu 8) ______. Er hatte Erfolg. Die Tiere liefen weg.</p>
+<p><strong>B) Schreiben Sie den Text Satz für Satz auf den Antwortbogen.</strong></p>
+<p>Sie hören den folgenden Text dreimal. Zuerst hören Sie sich den ganzen Text einmal an. Dann hören Sie sich den Text mit Satzzeichen noch einmal an. Die längeren Sätze werden in Teilen vorgelesen. Zuletzt hören Sie den ganzen Text noch einmal.</p>
+<h4>II. Hörverstehen (20%) (20 Minuten)</h4>
+<h5>Teil 1 Alltagssituationen</h5>
+<p>Sie hören im Folgenden 6 Minidialoge nur einmal. Markieren Sie die Lösungen auf dem Antwortbogen.</p>
+<ol>
+<li>a. Sie möchte einen Kuchen backen.</li>
+</ol>
+<p>b. Sie möchte Kaffee mit Milch trinken.</p>
+<p>c. Sie möchte Sahne machen.</p>
+<ol>
+<li>a. Zehn Stunden.</li>
+</ol>
+<p>b. Zwei Stunden.</p>
+<p>c. Fünf Stunden.</p>
+<ol>
+<li>a. Ihm ist etwas passiert.</li>
+</ol>
+<p>b. Ein Unfall ist in der Buchhandlung passiert.</p>
+<p>c. In der Fußgängerzone der Friedrichstraße ist ein Unfall passiert.</p>
+<ol>
+<li>a. Ein Einzelzimmer ohne Bad auf der ruhigen Rückseite.</li>
+</ol>
+<p>b. Ein Einzelzimmer mit Bad auf der ruhigen Rückseite.</p>
+<p>c. Ein Doppelzimmer mit Frühstück.</p>
+<ol>
+<li>a. „Der Zauberberg“, Thomas Mann.</li>
+</ol>
+<p>b. „Der Vorleser“, Bernhard Schlink.</p>
+<p>c. „Unterm Rad“, Hermann Hesse.</p>
+<ol>
+<li>a. In der Shopping City West.</li>
+</ol>
+<p>b. Im Shoppingcenter Nord.</p>
+<p>c. Übers Internet.</p>
+<p>1</p>
+<div class="pagemark">📄 第 2 页</div>
+<h3>Teil 2 Kurztexte</h3>
+<p>Nun hören Sie vier Texte. Jeden Text hören Sie zuerst einmal, dann lesen Sie die Aufgaben und danach hören Sie ihn noch einmal. Markieren Sie die richtigen Lösungen auf dem Antwortbogen.</p>
+<h4>Text A Ein Telefongespräch (a=richtig, b=falsch)</h4>
+<ol>
+<li>Toni und Ursula wollen dieses Jahr keine Geburtstagsparty, weil die Party sie zu müde macht.</li>
+<li>Statt eines Gartenfestes möchten Toni und Ursula mit Freunden am Neusiedlersee campen.</li>
+<li>David hat vom 30. Juli bis zum 13. August Urlaub in Kroatien.</li>
+<li>Die Einladung von Toni und Ursula wurde per E-Mail geschickt.</li>
+</ol>
+<h4>Text B Fußball schauen</h4>
+<ol>
+<li>Seiner Mutter war sehr wichtig, dass Gregor und sein Vater ________ spazieren gingen.</li>
+</ol>
+<p>a. nach dem Abendessen</p>
+<p>b. vor dem Mittagessen</p>
+<p>c. nach dem Mittagessen</p>
+<ol>
+<li>Sein Vater hat immer beim Abendessen über die Spiele gesprochen, was Gregor toll fand, weil er ________.</li>
+</ol>
+<p>a. sich für die Spiele interessierte</p>
+<p>b. in der Schule zeigen konnte, dass er viel über Fußball wusste</p>
+<p>c. selbst gerne Fußball spielte</p>
+<ol>
+<li>Seitdem Gregor in Dortmund wohnt, geht er ________ zum Fußballgucken.</li>
+</ol>
+<p>a. in die Kneipe</p>
+<p>b. in die Universität</p>
+<p>c. nach Hause</p>
+<ol>
+<li>Gregor und seine Freunde jubeln und umarmen sich, wenn ________.</li>
+</ol>
+<p>a. sie selbst beim Fußballspielen gewonnen haben</p>
+<p>b. ihr Lieblingsspieler ein Tor schießt</p>
+<p>c. ihr Lieblingsverein ein Tor schießt</p>
+<h4>Text C Treppenläufer</h4>
+<ol>
+<li>Christian benutzt immer die Treppe, weil er mit dem Treppenlaufen ________.</li>
+</ol>
+<p>a. langsamer ist als mit dem Lift</p>
+<p>b. vermeidet, im Lift stecken zu bleiben</p>
+<p>c. schnell ankommt und eine schöne Aussicht hat</p>
+<ol>
+<li>Christian schaffte und gewann beim Lauf im New Yorker Empire State Building die ________ Stufen in nur 10 Minuten und 16 Sekunden.</li>
+</ol>
+<p>a. 1576</p>
+<p>b. 1567</p>
+<p>c. 1570</p>
+<ol>
+<li>Seine Frau unterstützt ihn sehr, indem sie ________.</li>
+</ol>
+<p>a. mit ihm zusammen die Treppen läuft</p>
+<p>b. ihm das Essen anbietet</p>
+<p>c. ihn zu den Trainingsläufen in Treppenhäusern begleitet und für ihn Essen und Getränke vorbereitet</p>
+<hr>
+<p>©版权归考试中心所有</p>
+<div class="pagemark">📄 第 3 页</div>
+<h3>Text D Tibets wirtschaftliche Entwicklung</h3>
+<ol>
+<li>Das Bruttosozialprodukt von Tibet lag im Jahr 2020 bei ______ Yuan.</li>
+</ol>
+<p>a. 190,2 Milliarden</p>
+<p>b. 192 Milliarden</p>
+<p>c. 321,5 Milliarden</p>
+<ol>
+<li>Durch ______ wächst die Wirtschaft in Tibet.</li>
+</ol>
+<p>a. die Steigerung des Autonomen Gebietes</p>
+<p>b. die Optimierung der Industriestruktur</p>
+<p>c. die Anpassung des Gebietes</p>
+<ol>
+<li>Wie entwickeln sich welche Sektoren? Welche Aussage ist richtig?</li>
+</ol>
+<p>a. Die Landwirtschaft wird ganz industrialisiert.</p>
+<p>b. Die Industrie legt mehr Wert auf die Umwelt und Ökologie.</p>
+<p>c. Das Schienennetz und das Straßennetz sind mit dem Ausbau schon fertig.</p>
+<h4>III. Leseverstehen (20%) (50 Minuten)</h4>
+<h5>Teil 1</h5>
+<p>A. Lesen Sie die folgenden Überschriften und Texte. Ordnen Sie dann den Texten (21-22) die passende Überschrift (a-d) zu. (2P)</p>
+<p><strong>Überschriften</strong></p>
+<p>a. Das Matterhorn schwingt hin und her</p>
+<p>b. Deutsche Bahn: so pünktlich wie noch nie</p>
+<p>c. Das Matterhorn wächst</p>
+<p>d. Deutsche Bahn: Pünktlichkeit so schlecht wie seit 2010 nicht</p>
+<ol>
+<li>Das Matterhorn steht nur scheinbar starr und unbeweglich in der Schweizer Landschaft. In Wirklichkeit schwingt es. Das haben Forscher jetzt in der Fachzeitschrift „Earth and Planetary Science Letters“ beschrieben. In gut zwei Sekunden bewegt der Gipfel sich demnach aber nur um wenige Nanobis Mikrometer, was mit dem bloßen Auge nicht zu erkennen ist. Ein Nanometer ist der millionste Teil eines Millimeters, ein Mikrometer entspricht einem tausendstel Millimeter.</li>
+</ol>
+<ol>
+<li>2022 war wieder kein gutes Jahr für die Deutsche Bahn. Die Pünktlichkeitsquote der Züge hat im abgelaufenen Jahr einen neuen historischen Tiefstwert erreicht. Sie lag in den zurückliegenden zwölf Monaten bei 65,2 Prozent, wie der Konzern am Montag mitteilte. Schlechter waren die Werte zuletzt im Jahr 2010, als Deutschland im Winter ein Schneechaos erlebte und viele Züge ausfielen oder deutlich verspätet ankamen. 2021 waren noch 75,2 Prozent aller Fernzüge rechtzeitig am Ziel, im ersten Corona-Jahr 2020 sogar fast 82 Prozent.</li>
+</ol>
+<p>B. Lesen Sie die folgenden Überschriften und Texte. Ordnen Sie dann den Texten (23-24) die passende Überschrift (a-d) zu. (2P)</p>
+<p><strong>Überschriften</strong></p>
+<p>a. Sonnenlicht als größter Risikofaktor für Hautkrebs</p>
+<p>b. Immer weniger Frauen in Führungspositionen</p>
+<p>c. Sonne im Übermaß ist gefährlich</p>
+<p>d. Frauen auf Führungsebene weiterhin unterrepräsentiert</p>
+<p>3</p>
+<div class="pagemark">📄 第 4 页</div>
+<h3>23.</h3>
+<p>Der Frauenanteil in Führungspositionen ist 2018 nicht gewachsen. Seit 2016 liegt der Anteil von Frauen an der Spitze privatwirtschaftlicher Betriebe in Deutschland unverändert bei 26 Prozent. Das ist das Ergebnis einer Studie des Instituts für Arbeitsmarkt- und Berufsforschung. Bundesweit sind 44 Prozent aller Beschäftigten Frauen. Auf Führungsebene ist ihr Anteil jedoch deutlich geringer: Frauen stellen 26 Prozent der Beschäftigten auf erster Führungsebene und 40 Prozent derer auf zweiter Führungsebene. In Ostdeutschland fallen die Anteile jeweils etwas höher aus: 31 Prozent der Führungskräfte auf erster Ebene und 45 Prozent auf zweiter Führungsebene sind Frauen. In Westdeutschland sind es jeweils nur 25 beziehungsweise 39 Prozent.</p>
+<h3>24.</h3>
+<p>Der Frühling ist vorbei, der Sommer startet durch. Der Mensch dürstet nach Sonnenlicht und blauem Himmel, weil es ihn glücklich zu machen scheint. Allerdings ist Vorsicht geboten. Sonne im Übermaß ist sogar gefährlich. Im schlimmsten Fall kann zu viel Strahlung Hautkrebs verursachen. „Sonnenlicht ist wichtig für das psychische Wohlbefinden“, sagt der Münchner Dermatologe Dr. Christoph Liebich. So wird etwa das Glückshormon Serotonin ausgeschüttet. Es sei allerdings ein Irrglaube, dass man sich für diesen Effekt dem direkten Sonnenlicht aussetzen muss. „Ein ganz normaler Spaziergang bei Tageslicht ist ausreichend.“ Denn mit dem Sonnenlicht prasselt auch jede Menge UV-Strahlung auf die Haut. „Diese Strahlung ist sehr aggressiv“, warnt Liebich. „Je länger man UV-Licht ausgesetzt ist, desto größer ist das Risiko eines Sonnenbrands und somit von Hautkrebs.“</p>
+<h3>Teil 2</h3>
+<p>Lesen Sie die folgenden Texte und markieren Sie die richtigen Lösungen auf dem Antwortbogen.</p>
+<h4>Text A</h4>
+<h5>Meine Stadt</h5>
+<p>Ich liebe meine Stadt. Sie ist groß und schön und hat eine reiche Geschichte. Die Stadt wurde 1650 als eine Festung gegründet. Noch heute kann man im Stadtzentrum die alten Mauern und Türme sehen. Das ist der historische Teil unserer Stadt, und den nennt man „Die alte Stadt“.</p>
+<p>Das Stadtzentrum liegt auf einem Hügel, und von dort aus ist die ganze Stadt zu sehen. Hier gibt es immer viele Touristen. Im Sommer sitzen sie dann in den Straßencafés, trinken Saft, Bier oder Kaffee, sprechen miteinander und genießen die schöne Aussicht und den warmen Tag. Die Kinder fahren Rad oder Rollschuhe. In der alten Stadt gibt es viele kleine Geschäfte, wo man Spielzeuge, Bücher und Souvenirs kaufen kann. Der Fluss ist schiffbar, und im Hafen kann man deshalb Schiffe und Jachten sehen.</p>
+<p>Die Stadt ist aber auch modern. Hier gibt es Banken und Hotels, moderne Einkaufszentren und Sporteinrichtungen, Kindergärten und Krankenhäuser. Die Stadt hat viele Schulen und Universitäten. Hier wird Musik, Medizin, Technik, Landwirtschaft, Jura und vieles mehr studiert. Manche Studenten kommen aus anderen Gegenden und wohnen in Studentenheimen.</p>
+<p>In der Stadt ist auch die Industrie stark entwickelt. Hier gibt es Maschinen- und Textilwerke und chemische Industrie. Aber auch das Kulturleben ist in unserer Stadt interessant. Wir haben Museen, Ausstellungen und Theater. In der Stadt finden auch oft Konzerte statt. Abends kann man Kinos, Diskos, Klubs und Restaurants besuchen.</p>
+<p>In der Stadt gibt es viele Parks und Grünanlagen. Im Sommer kann man hier spazieren gehen und im Winter Ski laufen.</p>
+<p>Aufgaben: Markieren Sie die richtigen Lösungen auf dem Antwortbogen.</p>
+<h3>25. Die Stadt ______________________</h3>
+<p>a. ist groß und hat eine kurze Geschichte</p>
+<p>b. wurde 1650 als eine Mauer gebaut</p>
+<p>c. hat einen alten Teil mit alten Mauern und Türmen</p>
+<p>4</p>
+<h3>26. Im Stadtzentrum ______________________</h3>
+<p>a. sind immer viele Touristen</p>
+<p>b. fahren die Kinder Rollschu[?]</p>
+<p>c. sitzen die Touristen in den[?]</p>
+<h3>27. Welche Aussage ist richtig?</h3>
+<p>a. In der alten Stadt gibt es v[?]</p>
+<p>b. Man kann auf dem Fluss[?]</p>
+<p>c. Die Touristen können kle[?]</p>
+<h3>28. Die Stadt hat viele Universi[?]</h3>
+<p>a. kann man alles studieren</p>
+<p>b. studieren auch Studenten[?]</p>
+<p>c. studieren alle Studenten[?]</p>
+<h3>29. Das Kulturleben ist in uns[?]</h3>
+<p>a. es in der Stadt viele Fe[?]</p>
+<p>b. man hier viele Museen[?]</p>
+<p>c. es in der Stadt viele Par[?]</p>
+<h4>Text B</h4>
+<p>Noch 2018 haben die Mensc[?]</p>
+<p>Diese stehen wie kaum ein[?]</p>
+<p>Klimaschädigung und Umw[?]</p>
+<p>61 Länder haben schon Pla[?]</p>
+<p>Deshalb ist das Plastiktüte[?]</p>
+<p>Abfall zu produzieren.</p>
+<p>Jeden Tag zeigen Million[?]</p>
+<p>möglich ist. Sie benutzen a[?]</p>
+<p>Einkaufssituationen gibt es[?]</p>
+<p>aus Polyester-Kunststoff, d[?]</p>
+<p>Zwar sind Plastiktüten nur[?]</p>
+<p>dafür sein, jeden Tag unnö[?]</p>
+<p>beginnen. Die Plastiktüte[?]</p>
+<p>Teile des Handels ve[?]</p>
+<p>Plastiktütenverbrauch in[?]</p>
+<p>Plastiktüten.</p>
+<p>Supermärkte und einige[?]</p>
+<p>genommen. Und die[?]</p>
+<p>Plastiktütenverbot dem E[?]</p>
+<p>Aufgaben: Markieren Si[?]</p>
+<ol>
+<li>Einwegplastiktüten _[?]</li>
+</ol>
+<p>a. wurden 2018 für c[?]</p>
+<p>b. werden in keinen[?]</p>
+<p>c. gelten als Symbo[?]</p>
+<div class="pagemark">📄 第 5 页</div>
+<p>©版权归考试中心所有</p>
+<ol>
+<li>Im Stadtzentrum _______________________.</li>
+</ol>
+<p>a. sind immer viele Touristen zu sehen</p>
+<p>b. fahren die Kinder Rollschuhe im Hafen</p>
+<p>c. sitzen die Touristen in den Restaurants und trinken Tee</p>
+<ol>
+<li>Welche Aussage ist richtig?</li>
+</ol>
+<p>a. In der alten Stadt gibt es viele große Kaufhäuser.</p>
+<p>b. Man kann auf dem Fluss der Stadt nicht Schiff fahren.</p>
+<p>c. Die Touristen können kleine Sachen zum Andenken kaufen.</p>
+<ol>
+<li>Die Stadt hat viele Universitäten. Dort _______________________.</li>
+</ol>
+<p>a. kann man alles studieren</p>
+<p>b. studieren auch Studenten, die aus anderen Städten kommen</p>
+<p>c. studieren alle Studenten in Studentenheimen</p>
+<ol>
+<li>Das Kulturleben ist in unserer Stadt interessant, weil _______________________.</li>
+</ol>
+<p>a. es in der Stadt viele Fernsehsender gibt</p>
+<p>b. man hier viele Museen und Ausstellungen besuchen kann</p>
+<p>c. es in der Stadt viele Parks und Grünanlagen gibt</p>
+<h4>Text B</h4>
+<h4>Das Verbot von Plastiktüten</h4>
+<p>Noch 2018 haben die Menschen in Deutschland zwei Milliarden Einwegplastiktüten im Jahr verbraucht. Diese stehen wie kaum ein anderes Einwegprodukt als ein Symbol für Ressourcenverschwendung, Klimaschädigung und Umweltverschmutzung.</p>
+<p>61 Länder haben schon Plastiktüten verboten. Diese Nationen haben gezeigt, dass es auch ohne geht. Deshalb ist das Plastiktütenverbot in Deutschland ein richtiger und konsequenter Schritt, um weniger Abfall zu produzieren.</p>
+<p>Jeden Tag zeigen Millionen Verbraucherinnen und Verbraucher, dass ein Leben ohne das Einwegprodukt möglich ist. Sie benutzen alles: verschiedene Arten von Taschen, Rucksäcke, Kisten. Für unterschiedliche Einkaufssituationen gibt es die große Tasche mit stabilem Boden oder für den spontanen Einkauf die Tüte aus Polyester-Kunststoff, die man zusammenlegen kann.</p>
+<p>Zwar sind Plastiktüten nur ein Bruchteil der deutschen Abfallmenge. Das kann jedoch keine Begründung dafür sein, jeden Tag unnötigen Plastikmüll zu akzeptieren. Irgendwo muss man mit dem Umweltschutz beginnen. Die Plastiktüte ist ein Anfang, um das eigene Einkaufsverhalten kritisch zu prüfen.</p>
+<p>Teile des Handels verwenden das Argument, dass ihre freiwillige Selbstverpflichtung den Plastiktütenverbrauch in Deutschland reduziert hat. Aber das zeigt vor allem eines: Wir brauchen keine Plastiktüten.</p>
+<p>Supermärkte und einige Kaufhäuser haben Plastiktüten schon vor dem Verbot aus dem Sortiment genommen. Und die Kundinnen und Kunden kommen trotzdem wieder. Deswegen wird das Plastiktütenverbot dem Handel überhaupt keine Probleme verursachen.</p>
+<p>Aufgaben: Markieren Sie die richtigen Lösungen auf dem Antwortbogen.</p>
+<ol>
+<li>Einwegplastiktüten _______________________.</li>
+</ol>
+<p>a. wurden 2018 für eine Menge von zwei Millionen in Deutschland verbraucht</p>
+<p>b. werden in keinem anderen Land als in Deutschland so streng verboten</p>
+<p>c. gelten als Symbol für Ressourcenverschwendung und Umweltverschmutzung</p>
+<p>5</p>
+<div class="pagemark">📄 第 6 页</div>
+<h3>31. Das Plastiktütenverbot in Deutschland ist ein richtiger und konsequenter Schritt, _______________________.</h3>
+<p>a. um weniger Abfall zu erzeugen</p>
+<p>b. um weniger Abfall zu vermeiden</p>
+<p>c. um weniger Abfall zu verwerten</p>
+<h3>32. Millionen Verbraucherinnen und Verbraucher _______________________.</h3>
+<p>a. können schon ein Leben ohne Plastiktüten führen</p>
+<p>b. benutzen nach dem Text verschiedene Arten von Plastiktüten</p>
+<p>c. verwenden für unterschiedliche Einkaufssituationen verschiedene Plastiktüten</p>
+<h3>33. Welche Meinung vertritt der Verfasser des Textes?</h3>
+<p>a. Der Anteil der Plastiktüten an der deutschen Abfallmenge ist gering, deshalb sollte man das Problem nicht ernst nehmen.</p>
+<p>b. Als Einzelbürger sollte man im alltäglichen Leben endlich etwas tun für den Umweltschutz.</p>
+<p>c. Man sollte seinem eigenen Einkaufsverhalten gegenüber toleranter sein.</p>
+<h3>34. In Deutschland _______________________.</h3>
+<p>a. hat der Einzelhandel keinen Beitrag geleistet, um die Menge an Plastiktüten zu reduzieren</p>
+<p>b. haben Supermärkte und einige Kaufhäuser schon vor dem Verbot begonnen, keine Plastiktüten anzubieten</p>
+<p>c. wird das Plastiktütenverbot dem Handel großen Schaden zufügen</p>
+<hr>
+<h4>Text C</h4>
+<h5>Das muss weg!</h5>
+<p>Geschirr, CDs und Bücher liegen in einer Kiste auf dem Fußgängerweg. Ein kleiner Schrank und zwei Stühle stehen neben einer Haustür. Ein Spaziergang durch den Münchner Stadtteil Haidhausen ist ein bisschen wie der Besuch eines Gebrauchtwarenkaufhauses. Aber mit dem Unterschied: Hier ist alles „zu verschenken“. Das steht auf Zetteln und Schildern neben den Sachen. So wie in München stellen die Menschen in vielen deutschen Städten Gegenstände an den Straßenrand. Manches davon ist eigentlich Müll. Aber schöne Sachen nehmen Passantinnen und Passanten sofort mit. Sind die „Zu-verschenken“-Kisten also eine komfortable Option, zum Anfang des neuen Jahres seine Wohnung zu reinigen?</p>
+<p>Leider nein, wie Evi Thiermann vom Abfallwirtschaftsbetrieb München erklärt. Die Kisten am Straßenrand sind im Prinzip verboten. Denn was passiert zum Beispiel mit alten Büchern im Regen? Haben Eltern mit Kinderwagen oder Menschen im Rollstuhl noch genug Platz auf den Wegen? Und wer räumt das auf, was keiner haben will? Außerdem gibt es eine Menge Alternativen zu den Kisten.</p>
+<p>Die Reinigung der Wohnung beginnt für viele beim Kleiderschrank. Gut erhaltene Altkleider kann man zum Beispiel an Internetplattformen wie <em>Kleiderkorb</em>, <em>Vinted</em> oder <em>Momox</em> verkaufen. Auch beim Onlineshop <em>Zalando</em> ist das möglich. Für Designmode sind Plattformen wie <em>Rebelle</em> und <em>Vestiaire Collective</em> die richtigen Adressen.</p>
+<p>Altkleider und Schuhe kann man auch spenden. Dafür gibt es Container und Sammlungen. Aber nicht alle Firmen helfen mit dem Profit wirklich armen Menschen. Deshalb informiert man sich am besten vorher über die Organisation – und darüber, was sie mit den gespendeten Sachen macht.</p>
+<p>Weitere Kandidaten sind gebrauchte Elektrogeräte wie Smartphones und Tablets. Oft bekommt man mit dem neuen Handyvertrag ein neues Smartphone – aber das alte funktioniert noch prima. Diese Geräte kaufen viele verschiedene Portale, zum Beispiel <em>Clevertronic</em>, <em>Wirkaufen</em> und <em>ZOXS</em>. Die gezahlten Preise sind aber sehr unterschiedlich.</p>
+<p>Will man Elektrogeräte wegwerfen, dann ist der Recyclinghof der richtige Ort – und nicht der Hausmüll. Es finden außerdem immer wieder Aktionen für Handy-Recycling statt, zum Beispiel vom Bund für</p>
+<hr>
+<h4>右侧栏内容</h4>
+<p>Umwelt und Naturschutz. Info</p>
+<p>Emotional werden manche M[?]</p>
+<p>entsorgen. Aber das tut schon [?</p>
+<p>sie zum Beispiel einer Bib[?</p>
+<p>Bücherschränke. Dort stellt n[?</p>
+<p><em>Rebuy</em> oder <em>Momox</em>. Sie nehm[?</p>
+<p>Aufgaben: Markieren Sie die [?</p>
+<ol>
+<li>Wenn man einen Spazierg[?</li>
+</ol>
+<p>a. kann man einen kleinen</p>
+<p>b. hat man das Gefühl, ein</p>
+<p>c. kann man die Gegenstä[?</p>
+<ol>
+<li>Warum sind die „Zu-vers[?</li>
+</ol>
+<p>a. Weil die Kisten am Str[?</p>
+<p>b. Weil sie viele Problem[?</p>
+<p>c. Weil sie alle anderen A[?</p>
+<ol>
+<li>Zur Reinigung des Kleid[?</li>
+</ol>
+<p>a. kann man Altkleider a[?</p>
+<p>b. kann man Altkleider a[?</p>
+<p>c. darf man nur bei einer</p>
+<ol>
+<li>Welche Internetplattfor[?</li>
+</ol>
+<p>a. <em>Vinted</em>.</p>
+<ol>
+<li>Wenn man Elektrogeräte[?</li>
+</ol>
+<p>a. sollte man sie im Hau[?</p>
+<p>b. ist der Recyclinghof [?</p>
+<p>c. sollte man sie an Bur[?</p>
+<ol>
+<li>Zum Wegwerfen von B[?</li>
+</ol>
+<p>a. ist es verboten, sie in[?</p>
+<p>b. kann man sie bei öff[?</p>
+<p>c. kann man sie einer E[?</p>
+<hr>
+<h4>IV. Grammatik und V[?]</h4>
+<p>A. Markieren Sie die Lösun[?</p>
+<ol>
+<li>Ich habe ________</li>
+</ol>
+<p>a. mir</p>
+<ol>
+<li>Das Gespräch ist nich[?</li>
+</ol>
+<p>a. über</p>
+<ol>
+<li>Der Betrieb braucht [?</li>
+</ol>
+<p>a. für</p>
+<ol>
+<li>Mir kommt es so vor[?</li>
+</ol>
+<p>a. als ob</p>
+<ol>
+<li>Der Baum, ________</li>
+</ol>
+<p>a. deren</p>
+<ol>
+<li>Mit diesen ________</li>
+</ol>
+<p>a. Herr</p>
+<hr>
+<p>6</p>
+<div class="pagemark">📄 第 7 页</div>
+<h3>©版权归考试中心所有</h3>
+<p>Umwelt und Naturschutz. Informationen dazu publiziert die Organisation auf ihren Websites.</p>
+<p>Emotional werden manche Menschen bei ihren Büchern. In der Theorie kann man sie im Papiermüll entsorgen. Aber das tut schon ein bisschen weh. Und es gibt viele Alternativen zum Wegwerfen. Man kann sie zum Beispiel einer Bibliothek schenken. Auch gibt es an vielen Orten im Land öffentliche Bücherschränke. Dort stellt man sie einfach hinein. Verkaufen kann man Bücher an Internetportale wie <em>Rebuy</em> oder <em>Momox</em>. Sie nehmen besonders gern aktuelle Bestseller.</p>
+<p><em>Aufgaben: Markieren Sie die richtigen Lösungen auf dem Antwortbogen.</em></p>
+<ol>
+<li>Wenn man einen Spaziergang durch den Münchener Stadtteil Haidhausen macht, _______________________.</li>
+</ol>
+<p>a. kann man einen kleinen Schrank und zwei Stühle auf dem Fußgängerweg finden</p>
+<p>b. hat man das Gefühl, ein Gebrauchtwarenkaufhaus zu besuchen</p>
+<p>c. kann man die Gegenstände zu einem niedrigen Preis bekommen</p>
+<ol>
+<li>Warum sind die „Zu-verschenken“-Kisten keine komfortable Option, die Wohnung zu reinigen?</li>
+</ol>
+<p>a. Weil die Kisten am Straßenrand im Prinzip nur bei Behinderten erlaubt sind.</p>
+<p>b. Weil sie viele Probleme mit sich bringen können.</p>
+<p>c. Weil sie alle anderen Alternativen vernichtet haben.</p>
+<ol>
+<li>Zur Reinigung des Kleiderschranks _______________________.</li>
+</ol>
+<p>a. kann man Altkleider an Internetplattformen verkaufen</p>
+<p>b. kann man Altkleider an Onlineshops vernieten</p>
+<p>c. darf man nur bei einer einzigen Firma Altkleider spenden.</p>
+<ol>
+<li>Welche Internetplattform würde gebrauchte Smartphones und Tablets kaufen?</li>
+</ol>
+<p>a. <em>Vinted.</em></p>
+<p>b. <em>Momox.</em></p>
+<p>c. <em>ZOXS.</em></p>
+<ol>
+<li>Wenn man Elektrogeräte wegwerfen will, _______________________.</li>
+</ol>
+<p>a. sollte man sie im Hausmüll entsorgen</p>
+<p>b. ist der Recyclinghof die richtige Wahl</p>
+<p>c. sollte man sie an Bund für Umwelt und Naturschutz schicken</p>
+<ol>
+<li>Zum Wegwerfen von Büchern _______________________.</li>
+</ol>
+<p>a. ist es verboten, sie im Papiermüll zu entsorgen</p>
+<p>b. kann man sie bei öffentlichen Bücherschränken austauschen</p>
+<p>c. kann man sie einer Bibliothek schenken</p>
+<hr>
+<h3>IV. Grammatik und Wortschatz (45%) (45 Minuten)</h3>
+<h4>A. Markieren Sie die Lösungen nach entsprechenden grammatischen Regeln auf dem Antwortbogen. (5P)</h4>
+<ol>
+<li>Ich habe __________ den Fuß verletzt und kann nicht gehen.</li>
+</ol>
+<p>a. mir</p>
+<p>b. sich</p>
+<p>c. mich</p>
+<ol>
+<li>Das Gespräch ist nicht allein __________ wirtschaftliche Aspekte beschränkt.</li>
+</ol>
+<p>a. über</p>
+<p>b. auf</p>
+<p>c. um</p>
+<ol>
+<li>Der Betrieb braucht dringend Geld, __________ moderne Maschinen zu kaufen.</li>
+</ol>
+<p>a. für</p>
+<p>b. damit</p>
+<p>c. um</p>
+<ol>
+<li>Mir kommt es so vor, __________ ich ihn schon einmal gesehen hätte.</li>
+</ol>
+<p>a. als ob</p>
+<p>b. ob</p>
+<p>c. als</p>
+<ol>
+<li>Der Baum, __________ Wurzeln krank waren, musste ersetzt werden.</li>
+</ol>
+<p>a. deren</p>
+<p>b. dessen</p>
+<p>c. der</p>
+<ol>
+<li>Mit diesen __________ arbeiten wir gern zusammen.</li>
+</ol>
+<p>a. Herr</p>
+<p>b. Herrn</p>
+<p>c. Herren</p>
+<p>7</p>
+<div class="pagemark">📄 第 8 页</div>
+<h3>©版权归考试中心所有</h3>
+<ol>
+<li>Der Dieb sprang aus dem ______ Zug.</li>
+</ol>
+<p>a. fahrend</p>
+<p>b. gefahrenen</p>
+<p>c. fahrenden</p>
+<ol>
+<li>Nachdem wir Bonn ______, fuhren wir weiter nach Köln.</li>
+</ol>
+<p>a. besichtigten</p>
+<p>b. besichtigt haben</p>
+<p>c. besichtigt hatten</p>
+<ol>
+<li>Ich muss diesen Brief noch schreiben, ______ ich nach Hause gehe.</li>
+</ol>
+<p>a. bevor</p>
+<p>b. bis</p>
+<p>c. nachdem</p>
+<ol>
+<li>Das hätte ich doch tun ______.</li>
+</ol>
+<p>a. gekonnt</p>
+<p>b. könnte</p>
+<p>c. können</p>
+<hr>
+<p>B. Bitte markieren Sie die Lösungen im Text A) auf dem Antwortbogen und schreiben die Lösungen vom Text B) auch auf dem Antwortbogen. (10P)</p>
+<hr>
+<h4>Text A</h4>
+<p><strong>Warmherzigkeit ist wichtig</strong></p>
+<p>Hilfsangebote müssen nicht besonders nützlich sein – (51) am meisten zählt, ist echte Anteilnahme. Ein paar mitfühlende Worte können daher mehr bewirken (52) gedacht.</p>
+<p>Wenn jemand in einer Krise (53), wissen Freunde und Bekannte oft nicht, ob sie das Thema (54) sollen, und sagen schließlich lieber gar (55). Doch die Zurückhaltung ist unbegründet: Die (56) nehmen verbale Anteilnahme positiver auf als erwartet. Das ist das Ergebnis einer Untersuchung mit mehr als 600 Probandinnen und Probanden. Dabei werden die Versuchspersonen darum (57), ein paar freundliche Worte (58) eine befreundete oder verwandte Person zu schreiben, (59) gerade mit besonderen Schwierigkeiten zu kämpfen hatte. Je positiver die vermutete Wirkung der Nachricht war, (60) eher waren die Versuchspersonen bereit, sie tatsächlich zu versenden.</p>
+<ol>
+<li>a) was</li>
+</ol>
+<p>b) es</p>
+<p>c) das</p>
+<ol>
+<li>a) zu</li>
+</ol>
+<p>b) als</p>
+<p>c) wie</p>
+<ol>
+<li>a) befindet</li>
+</ol>
+<p>b) liegt</p>
+<p>c) steckt</p>
+<ol>
+<li>a) sprechen</li>
+</ol>
+<p>b) besprechen</p>
+<p>c) aussprechen</p>
+<ol>
+<li>a) nichts</li>
+</ol>
+<p>b) keins</p>
+<p>c) nicht</p>
+<ol>
+<li>a) Betroffenden</li>
+</ol>
+<p>b) Betreffenden</p>
+<p>c) Betroffenen</p>
+<ol>
+<li>a) gebeten</li>
+</ol>
+<p>b) gebittet</p>
+<p>c) gebitten</p>
+<ol>
+<li>a) über</li>
+</ol>
+<p>b) an</p>
+<p>c) auf</p>
+<ol>
+<li>a) den</li>
+</ol>
+<p>b) die</p>
+<p>c) denen</p>
+<ol>
+<li>a) desto</li>
+</ol>
+<p>b) so</p>
+<p>c) je</p>
+<hr>
+<h4>Text B</h4>
+<p><strong>Glück</strong></p>
+<p>Es gibt verschiedene Dinge, (61) mit Glück gemeint sein können: Ihr könnt euch glücklich fühlen, (62) ihr einen schönen Urlaub mit eurer Familie habt oder ihr eine gute (63) in einer Prüfung bekommen habt. Glück könnt ihr aber auch haben. Das (64), euch ist etwas Gutes passiert. Wenn ihr zum (65) euer Handy verloren habt, es aber jemand findet und euch (66). „Glück gehabt“, sagt ihr dann vielleicht.</p>
+<p>In manchen Schulen gibt es Glück (67) eigenes Fach. Da wird dann darüber gesprochen, was einen (68) macht. So kann man lernen, sich solche Glücks-Momente bewusst zu machen. Es kann auch helfen, aufzuschreiben, (69) man gut machen kann: Denn auch das Wissen um die eigenen Stärken kann einen zufriedener und glücklicher machen. Man kann kleine Dinge trainieren: etwa abends aufschreiben, was tagsüber schön war und (70) man dankbar ist.</p>
+<hr>
+<p>C. Bitte ergänzen Sie die passenden Wörter! Schreiben Sie sie dann auf den Antwortbogen. (10P)</p>
+<hr>
+<p>8</p>
+<div class="pagemark">📄 第 9 页</div>
+<h3>©版权归考试中心所有</h3>
+<ol>
+<li>Das Fußballspiel der Frauen China ______ Deutschland endete 5 zu 3.</li>
+<li>Ich habe ihn für seinen Bruder gehalten. Sie sehen ______ aus.</li>
+<li>Könnten Sie bitte so nett sein und mir einen Moment die Tür ______? Ich muss nämlich das Fahrrad ins Haus tragen.</li>
+<li>Mein altes Auto ist so gut ______ Schrott und ich muss ein neues kaufen.</li>
+<li>Bei uns zahlt man die Miete normalerweise 15 Tage ______ Voraus.</li>
+<li>Pass auf! Umso dunkler wird es, ______ tiefer man runter geht.</li>
+<li>Ich war beim Arzt und habe mir einen Zahn ziehen ______.</li>
+<li>Man kann gar nicht mehr durchs Fenster sehen. Kannst du es mal bitte ______?</li>
+<li>In seiner Mail gibt es viele Tippfehler. Sicher hat er diese abgeschickt, ______ sie korrigiert zu haben.</li>
+<li>Alles dauert seine ______. Sei doch geduldig!</li>
+<li>Da viele Ausländer anwesend waren, sprach der Professor absichtlich langsamer ______ sonst.</li>
+<li>Es sind keine Tische mehr frei. – Tja, wer zu spät kommt, ______ bestraft das Leben.</li>
+<li>Was wollte der Unbekannte von dir? – Er hat mich ______ dem Weg gefragt.</li>
+<li>Der Grund für den Klimawandel liegt hauptsächlich ______ falschen Verhalten der Menschen.</li>
+<li>Boss, darf ich Sie an den nächsten Termin ______? Die Vorstandssitzung beginnt in 15 Minuten.</li>
+<li>Wenn Onkel Max zu uns zu ______ kam, brachte er mir jedes Mal viele Spielzeuge mit.</li>
+<li>Peter, was hast du denn schon wieder? Konzentriere ______ bitte, wir haben doch Unterricht.</li>
+<li>Da der Täter eine dunkle Brille ______, konnte ich seine Augenfarbe nicht sehen.</li>
+<li>Gleich nach der Arbeit machte er sich ______ den Weg zum Flughafen.</li>
+<li>Tut mir Leid. Das ist schon alles, ______ ich dir sagen darf.</li>
+</ol>
+<p>D. Formen Sie die unterstrichenen Ausdrücke so um, dass sie zu den vorgegebenen Satzteilen passen. Sinn und Zeit sollen nicht verändert werden. Schreiben Sie die Sätze auf den Antwortbogen. (5P)</p>
+<p><em>Beispiel:</em> Die Uhr ist nicht mehr zu reparieren. → Die Uhr kann/muss nicht mehr repariert werden.</p>
+<ol>
+<li>Der Mensch braucht ein Erinnerungsvermögen, um möglichst viele Informationen zu bewahren.</li>
+</ol>
+<p>→ Der Mensch braucht für ______ ein Erinnerungsvermögen.</p>
+<ol>
+<li>Nach der Verbesserung der wirtschaftlichen Lage in den armen Ländern durch den Welthandel erwartet man einen Rückgang der Migration.</li>
+</ol>
+<p>→ ______, erwartet man einen Rückgang der Migration.</p>
+<ol>
+<li>Mäuse vergessen weniger, wenn man die Bildung neuer Gehirnzellen unterdrückt.</li>
+</ol>
+<p>→ Mäuse vergessen weniger, wenn ______ wird.</p>
+<ol>
+<li>Indem es vergisst, schützt uns das Gehirn vor einem allzu kritischen Blick aufs Leben.</li>
+</ol>
+<p>→ Indem es vergisst, schützt uns das Gehirn davor, ______.</p>
+<ol>
+<li>Wenn jede dumme Bemerkung für immer im Gedächtnis haften bliebe, würden wir in die Verzweiflung getrieben.</li>
+</ol>
+<p>→ Aber weil ______, werden wir nicht in die Verzweiflung getrieben.</p>
+<p>9</p>
+<div class="pagemark">📄 第 10 页</div>
+<h3>E. Finden Sie die Fehler (an zwei Stellen in jeder Aufgabe) in den folgenden Sätzen heraus und schreiben Sie die richtigen Sätze auf den Antwortbogen. (5P)</h3>
+<ol>
+<li>Ich möchte nach Deutschland mein Studium fortzusetzen.</li>
+<li>Ich habe drei Katze zu Hause und wisse viel über dieses Tier.</li>
+<li>Europa muss endlich anerkennen, dass sie ein Einwanderungkontinent ist.</li>
+<li>Welche politische Maßnahmen könnten zur Bekämpfung der Ursachen für Flucht ergreifen werden?</li>
+<li>Unter „Schleppern“ man versteht unseriöse Fluchthelfer, der gegen Bezahlung den Weg in die reichen Länder versprechen.</li>
+</ol>
+<h3>V. Schriftlicher Ausdruck (15%) (40 Minuten)</h3>
+<h4>Corona öffnet die Tür zum Homeoffice</h4>
+<p>Anteil der Berufstätigen, die von zu Hause aus arbeiten</p>
+<p>■ Ausschließlich ■ Teilweise</p>
+<ul>
+<li>3% Vor der Pandemie</li>
+<li>15% Vor der Pandemie</li>
+<li>25% Während der Pandemie</li>
+<li>20% Während der Pandemie</li>
+<li>8% Nach der Pandemie*</li>
+<li>27% Nach der Pandemie*</li>
+</ul>
+<ul>
+<li>voraussichtlich</li>
+</ul>
+<p>Basis: 1.503 Erwerbstätige (ab 16 Jahren) in Deutschland; Okt./Nov. 2020</p>
+<p>Quelle: Bitkom</p>
+<p>CC BY ND</p>
+<p>statista</p>
+<p>Quelle: de.statista.com</p>
+<h4>Aufgabe</h4>
+<p>Sie sehen in einem Internetforum das obige Schaubild. Schreiben Sie bitte in dem Forum einen Text zum Thema „Homeoffice“. Gehen Sie dabei auf folgende Punkte ein:</p>
+<ol>
+<li>Beschreiben Sie, was Sie in dem Schaubild erfahren haben.</li>
+<li>Welche Erfahrungen haben Sie mit dem Arbeiten oder Lernen im Homeoffice gemacht?</li>
+<li>Welche Tipps können Sie zum Lernen im Homeoffice machen?</li>
+</ol>
+<p>Ihr Text sollte 150-180 Wörter haben.</p>
+<p>10</p>
+<p style="margin:36px 0 8px;color:var(--text2);font-size:.8em;text-align:center">
+原文由考生提供的扫描件逐页 OCR 转录，仅作教学参考 · © 版权归考试中心所有
+</p>
+</div>
+</body>
+</html>

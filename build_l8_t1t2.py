@@ -78,6 +78,21 @@ def gloss_text(raw, pairs):
         out = out.replace('\u0000G%d\u0000' % i, s)
     return out
 
+DE_TOKEN = r"[A-Za-zÄÖÜäöüß][A-Za-zÄÖÜäöüß\-']*|\d+[.,]?\d*"
+
+
+def de_metrics(texts):
+    """德文文本的机械指标：词数 / 句数 / 平均句长 / 最长句词数。
+    2026-09-18 Sky 要求「课文 vs 作文」的难度对照，数字必须可复现——一律本函数现算，不手写。"""
+    joined = ' '.join(texts)
+    words = re.findall(DE_TOKEN, joined)
+    sents = [s for s in re.split(r'(?<=[.!?])\s+(?=[A-ZÄÖÜ„])', joined) if s.strip()]
+    lens = [len(re.findall(DE_TOKEN, s)) for s in sents]
+    return {'words': len(words), 'sents': len(sents),
+            'avg': round(len(words) / max(len(sents), 1), 1),
+            'max': max(lens) if lens else 0}
+
+
 CSS_EXTRA = '''
   /* ===== Schaubild / Text 1 & 2 专用件 ===== */
   .chart-card { background: #fff; border: 1px solid #e3e6eb; border-radius: 14px; padding: 16px; margin: 12px 0; }
@@ -141,6 +156,7 @@ CSS_EXTRA = '''
   @media (max-width: 620px) {
     .chart-lbl { flex: 0 0 46%; }
     .chart-bar { min-width: 56px; }
+    .ms-tag { flex: 0 0 36px; font-size: 11px; }
   }
   .vc-mini { background: #fff; border: 1px solid #e3e6eb; border-radius: 8px; padding: 8px 10px;
     font-size: var(--fs-sm); }
@@ -148,6 +164,21 @@ CSS_EXTRA = '''
   .anat svg { width: 100%; height: auto; display: block; }
   .anat-lbl { font: 700 13px system-ui, sans-serif; fill: #17427f; }
   .anat-cap { font: 12px system-ui, sans-serif; fill: #5f6672; }
+  /* ===== 范文两篇 + 难度对照（2026-09-18 新增） ===== */
+  .ms-card { background: #fff; border: 1px solid #e3e6eb; border-radius: 12px; padding: 12px 14px; margin: 12px 0; }
+  .ms-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; margin-bottom: 8px; }
+  .ms-badge { font-weight: 700; font-size: var(--fs-word); }
+  .ms-label { font-size: var(--fs-cap); color: #3c4450; }
+  .ms-para { display: flex; gap: 10px; margin: 10px 0; }
+  .ms-tag { flex: 0 0 44px; font-size: var(--fs-cap); font-weight: 700; color: #123a72;
+    background: #e8f0fe; border-radius: 6px; text-align: center; padding: 2px 0; height: fit-content; }
+  .ms-de { flex: 1; font-size: var(--fs-body); line-height: 1.6; }
+  .ms-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: var(--fs-cap); color: #3c4450;
+    border-top: 1px dashed #d7dbe2; padding-top: 8px; margin-top: 8px; }
+  .ms-meta b { color: #123a72; }
+  .ms-why { margin: 6px 0 0; padding-left: 18px; font-size: var(--fs-cap); color: #3c4450; }
+  .lv-note { font-size: var(--fs-sm); color: #3c4450; }
+  .lv-points li { margin: 4px 0; }
 '''
 
 JS_EXTRA = '''
@@ -329,16 +360,14 @@ def sec_home(d):
     flow = ''.join('<tr><td class="fl-t">%s</td></tr>' % h(f) for f in m['flow'])
     cards = [
         ('chart', '📊 Schaubild', '真实图表：Top-5 职业培训，男女各五'),
-        ('redemittel', '🧭 句型库', '四类 Redemittel：排名 / 比例 / 比较 / 结论'),
-        ('satzbau', '🔧 变形金刚', '同一组数据，四种说法（语序拼装）'),
-        ('ladder', '🪜 四层阶梯', '读数字 → 排序 → 比较 → 评论'),
+        ('t1', '📖 Text 1', '统计文：13 个填空词印在横线上 + 点词查义'),
         ('vocab', '🃏 词汇卡', '26 张图表描述词卡（点卡翻面）'),
-        ('t1', '📖 Text 1', '统计文：挖空 + 段落功能 + 句型标注'),
+        ('satzbau', '🔧 变形', '同一组数据，四种说法（语序拼装）'),
         ('t2a', '👤 Text 2a', 'Erika：人物文结构与转折点'),
         ('t2b', '👤 Text 2b', 'Simon：人物文与强项自述'),
         ('traum', '📈 调查改写', '把 Traumberufe 调查改写成图表语言'),
         ('detect', '🕵️ 找错侦探', '三段描述，找出数字错 / 比较错 / 句型错'),
-        ('essay', '🎯 作文卡', '专四图表作文四段式骨架 + 填空'),
+        ('essay', '🎯 作文卡', '四段式骨架 + 两篇范文 + 课文难度对照'),
     ]
     grid = ''.join('<div class="text-card home-card" onclick="switchSection(\'%s\')"><h3>%s</h3><p>%s</p></div>'
                    % (sid, h(t), h(p)) for sid, t, p in cards)
@@ -348,7 +377,7 @@ def sec_home(d):
         <p class="sub">{h(m['subtitle'])}</p>
         <p class="meta">{h(m['source'])}</p>
       </div>
-      <div class="highlight-box">🎬 怎么用：先看图说数（不写句子），再上句型库，最后拼句子。顶部导航切节，右下 A± 放大。习题右上角标来源：教材原句 / 图表数据 / 句型示例。</div>
+      <div class="highlight-box">🎬 怎么用：先看图说数（不写句子），再读 Text 1 看数据怎么写进段落，然后用「变形」把同一组数据翻成四种说法；最后到作文卡，照四段式骨架和两篇范文动笔。顶部导航切节，右下 A± 放大。习题右上角标来源：教材原句 / 图表数据 / 句型示例。</div>
       <div class="home-grid">{grid}</div>
       <div class="obj-box"><strong>学习目标 Lernziele：</strong><ul>{objs}</ul></div>
       <div class="text-card" style="margin-top:12px">
@@ -441,6 +470,7 @@ def sec_chart(d):
 
 
 # ---------------------------------------------------------------- 3 redemittel
+# 【未渲染】2026-09-18 Sky 指令：句型库标签已从导航与页面移除，保留函数以便恢复。
 def sec_redemittel(d):
     tabs, panels = [], []
     for i, g in enumerate(d['redemittel']):
@@ -486,7 +516,7 @@ def sec_satzbau(d):
         <div class="um-src">📖 {h(it['src'])}</div>
       </div>''')
     return f'''    <section id="satzbau">
-      <h2 class="section-title"><span class="num">3</span> 🔧 Satzbau · 同一组数据的四种说法</h2>
+      <h2 class="section-title"><span class="num">4</span> 🔧 Satzbau · 同一组数据的四种说法</h2>
       <p class="zh-hint">{h(s['note'])}</p>
       {''.join(cards)}
     </section>
@@ -494,6 +524,7 @@ def sec_satzbau(d):
 
 
 # ---------------------------------------------------------------- 5 ladder
+# 【未渲染】2026-09-18 Sky 指令：四层阶梯标签已从导航与页面移除，保留函数以便恢复。
 def sec_ladder(d):
     lv = d['ladder']['levels']
     # L1 配对（复用连线引擎）
@@ -563,7 +594,7 @@ def sec_vocab(d):
                     '<div class="vc-back">%s</div></div></div>' % (h(t['de']), h(t['cn']))
                     for t in v['items'])
     return f'''    <section id="vocab">
-      <h2 class="section-title"><span class="num">5</span> 🃏 {h(v['title'])}</h2>
+      <h2 class="section-title"><span class="num">3</span> 🃏 {h(v['title'])}</h2>
       <p class="zh-hint">{h(v['instruction'])}</p>
       <div class="vocab-grid">{cards}</div>
       <p class="zh-hint note">来源：{h(v['src'])}</p>
@@ -593,7 +624,7 @@ def sec_t1(d):
         % (h(p['de']), h(p['cat']), h(p['src'])) for p in t['patterns'])
     links = ''.join('<tr><td lang="de">%s</td><td>%s</td></tr>' % (h(c['sent']), h(c['map'])) for c in t['chartLinks'])
     return f'''    <section id="t1">
-      <h2 class="section-title"><span class="num">6</span> 📖 {h(t['title'])} <span class="src src-lg">{h(t['kind'])}</span></h2>
+      <h2 class="section-title"><span class="num">2</span> 📖 {h(t['title'])} <span class="src src-lg">{h(t['kind'])}</span></h2>
       <p class="zh-hint">{h(t['lead'])}</p>
       <p class="zh-hint">✏️ 画了横线的词是原题的填空词，已直接印在横线上；<b>点正文里任何一个德文词</b>，右侧弹出中文释义与一则实用例句。</p>
       <div class="text-card read-card">
@@ -689,7 +720,7 @@ def sec_traum(d):
         <div class="um-src" lang="de">参考：{h(x['ans'])}</div>
       </div>''' for i, x in enumerate(t['tasks']))
     return f'''    <section id="traum">
-      <h2 class="section-title"><span class="num">9</span> 📈 {h(t['title'])}</h2>
+      <h2 class="section-title"><span class="num">7</span> 📈 {h(t['title'])}</h2>
       <p class="zh-hint">{h(t['lead'])}</p>
       <div class="text-card">
         <h3>📄 调查原文（教材照抄）</h3>
@@ -756,7 +787,7 @@ def sec_detect(d):
         <div id="dtWhy-{did}" style="display:none"><ul class="lk-zh">{why}<li><b>[改法]</b> <span lang="de">{h(it['fix'])}</span></li></ul></div>
       </div>''')
     return f'''    <section id="detect">
-      <h2 class="section-title"><span class="num">10</span> 🕵️ Fehlerjagd · 找错侦探</h2>
+      <h2 class="section-title"><span class="num">8</span> 🕵️ Fehlerjagd · 找错侦探</h2>
       <p class="zh-hint">{h(dt['note'])}</p>
       {''.join(blocks)}
     </section>
@@ -764,6 +795,12 @@ def sec_detect(d):
 
 
 # ---------------------------------------------------------------- 11 essay
+def _ms_metrics_html(m):
+    return ('<span><b>词数</b> %d</span><span><b>句数</b> %d</span>'
+            '<span><b>平均句长</b> %s 词</span><span><b>最长句</b> %d 词</span>'
+            % (m['words'], m['sents'], m['avg'], m['max']))
+
+
 def sec_essay(d):
     e = d['essay']
     parts = ''.join(
@@ -773,6 +810,49 @@ def sec_essay(d):
         % (h(p['part']), h(p['fn']),
            ''.join('<li lang="de">%s</li>' % h(r) for r in p['rm']), h(p['example']))
         for p in e['parts'])
+
+    # ---- 范文两篇（2026-09-18 Sky 指令）----
+    ms = e['samples']
+    metrics = {}
+    blocks = []
+    for it in ms['items']:
+        m = de_metrics([p['de'] for p in it['paras']])
+        metrics[it['key']] = m
+        paras = ''.join(
+            '<div class="ms-para"><div class="ms-tag">%s</div>'
+            '<div class="ms-de" lang="de">%s</div></div>' % (h(p['tag']), h(p['de']))
+            for p in it['paras'])
+        why = ''.join('<li>%s</li>' % h(w) for w in it.get('why', []))
+        blocks.append(f'''      <div class="ms-card">
+        <div class="ms-head"><span class="ms-badge">{h(it['badge'])}</span>
+          <span class="ms-label">{h(it['label'])}</span></div>
+        {paras}
+        <div class="ms-meta">{_ms_metrics_html(m)}</div>
+        <ul class="ms-why">{why}</ul>
+      </div>''')
+    diff_rows = [('词数', metrics['pass']['words'], metrics['good']['words']),
+                 ('句子数', metrics['pass']['sents'], metrics['good']['sents']),
+                 ('平均句长', '%s 词' % metrics['pass']['avg'], '%s 词' % metrics['good']['avg']),
+                 ('最长句', '%d 词' % metrics['pass']['max'], '%d 词' % metrics['good']['max'])]
+    diff_rows += [(x['k'], x['pass'], x['good']) for x in ms['diff']]
+    diff = ''.join('<tr><td><b>%s</b></td><td>%s</td><td>%s</td></tr>' % (h(a), h(str(b)), h(str(c)))
+                   for a, b, c in diff_rows)
+
+    # ---- 课文 vs 专四作文：难度对照（数据由 de_metrics 现算，不手写）----
+    lv = e['level']
+    t1m = de_metrics([blk['p'] for blk in d['t1']['cloze']])
+    fill_map = {'{t1_words}': t1m['words'], '{t1_sents}': t1m['sents'],
+                '{t1_max}': t1m['max'], '{pass_max}': metrics['pass']['max']}
+
+    def _fill(s):
+        for k, v in fill_map.items():
+            s = s.replace(k, str(v))
+        return s
+
+    lv_rows = ''.join('<tr><td><b>%s</b></td><td>%s</td><td>%s</td></tr>'
+                      % (h(r['k']), h(_fill(r['cw'])), h(_fill(r['ex']))) for r in lv['rows'])
+    lv_points = ''.join('<li>%s</li>' % h(_fill(p)) for p in lv['points'])
+
     fill = ''.join(
         f'''      <div class="fill-item">
         <div class="fill-zh">{i + 1}. {h(x['zh'])}</div>
@@ -785,22 +865,29 @@ def sec_essay(d):
         <div class="um-tip">💡 {h(x['hint'])}</div>
       </div>''' for i, x in enumerate(e['fill']))
     return f'''    <section id="essay">
-      <h2 class="section-title"><span class="num">11</span> 🎯 Prüfungskarte · 专四图表作文卡</h2>
+      <h2 class="section-title"><span class="num">9</span> 🎯 Prüfungskarte · 专四图表作文卡</h2>
       <p class="zh-hint">{h(e['note'])}</p>
       <div class="text-card">
         <h3>🧱 四段式骨架</h3>
         {parts}
       </div>
       <div class="text-card">
-        <h3>✍️ 八个句子（写完点 ✓，按参考答案判）</h3>
-        {fill}
+        <h3>{h(ms['title'])}</h3>
+        <p class="zh-hint">{h(ms['note'])}</p>
+        {''.join(blocks)}
+        <h3 style="margin-top:16px">🔍 两篇的差别在哪</h3>
+        <table class="tb"><tr><th>对比项</th><th>🟢 合格版</th><th>🔵 优秀版</th></tr>{diff}</table>
+      </div>
+      <div class="text-card lv-card">
+        <h3>{h(lv['title'])}</h3>
+        <p class="lv-note">{h(lv['note'])}</p>
+        <table class="tb"><tr><th>对比项</th><th>📖 Text 1 课文（你读的）</th><th>🎯 专四作文（你写的）</th></tr>{lv_rows}</table>
+        <ul class="lv-points zh-hint">{lv_points}</ul>
+        <p class="zh-hint note">{h(lv['trust'])}</p>
       </div>
       <div class="text-card">
-        <h3>⏱️ 计时播报员（30 秒挑战）</h3>
-        <p class="zh-hint">30 秒内用 ≥4 个不同类别的 Redemittel 描述本图（至少一个 Rangordnung + 一个 Prozentanteile/Vergleich + 一个 Fazit）。说给同伴听，让对方数用了几个句型。</p>
-        <div class="kw-tools"><button class="btn" onclick="startTimer('tm-bc', 30)">▶ 30 秒计时</button>
-          <button class="btn ghost" onclick="resetTimer('tm-bc', 30)">↺ 重置</button>
-          <span class="kw-result" id="tm-bc">30</span></div>
+        <h3>✍️ 八个句子（写完点 ✓，按参考答案判）</h3>
+        {fill}
       </div>
     </section>
 '''
@@ -814,9 +901,9 @@ def main():
     with open(TEXTS_FILE, encoding='utf-8') as f:
         d.update(json.load(f))
 
-    secs = [('home', '首页'), ('chart', '📊 图表'), ('redemittel', '🧭 句型库'), ('satzbau', '🔧 变形'),
-            ('ladder', '🪜 阶梯'), ('vocab', '🃏 词汇卡'), ('t1', '📖 T1'), ('t2a', '👤 Erika'),
-            ('t2b', '👤 Simon'), ('traum', '📈 调查改写'), ('detect', '🕵️ 找错'), ('essay', '🎯 作文卡')]
+    secs = [('home', '首页'), ('chart', '📊 图表'), ('t1', '📖 T1'), ('vocab', '🃏 词汇卡'),
+            ('satzbau', '🔧 变形'), ('t2a', '👤 Erika'), ('t2b', '👤 Simon'),
+            ('traum', '📈 调查改写'), ('detect', '🕵️ 找错'), ('essay', '🎯 作文卡')]
 
     css = open(os.path.join(DIR, 'template_css.css'), encoding='utf-8').read()
     css = css.replace('</style>', base.EXTRA_CSS + CSS_EXTRA + '</style>')
@@ -829,8 +916,10 @@ def main():
     nav += ('</div><button class="hamburger" onclick="toggleNav()">☰</button></div>'
             '<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div></nav>')
 
-    body = (sec_home(d) + sec_chart(d) + sec_redemittel(d) + sec_satzbau(d) + sec_ladder(d) +
-            sec_vocab(d) + sec_t1(d) + sec_t2(d, 't2a', 7) + sec_t2(d, 't2b', 8) +
+    # 句型库（redemittel）与四层阶梯（ladder）两节按 Sky 2026-09-18 指令从导航与页面移除；
+    # 生成函数 sec_redemittel / sec_ladder 保留在下方，需要时可一行加回。
+    body = (sec_home(d) + sec_chart(d) + sec_t1(d) + sec_vocab(d) + sec_satzbau(d) +
+            sec_t2(d, 't2a', 5) + sec_t2(d, 't2b', 6) +
             sec_traum(d) + sec_detect(d) + sec_essay(d))
 
     sb = [[c for c in it['chunks']] for it in d['satzbau']['items']]
@@ -884,11 +973,17 @@ def main():
         assert 'id="%s"' % sid in html, 'missing section ' + sid
     print('all %d section ids present' % len(secs))
     print('nav items = %d' % len(secs))
-    print('chart bars = %d | quiz = %d | redemittel = %d | satzbau = %d | detect = %d | essay fill = %d'
+    print('chart bars = %d | quiz = %d | satzbau = %d | detect = %d | essay fill = %d | essay samples = %d'
           % (html.count('class="chart-bar'), html.count('class="qz-item'),
-             sum(len(g['items']) for g in d['redemittel']), html.count('sb-card'),
-             html.count('dt-text'), html.count('fill-input')))
+             html.count('sb-card'), html.count('dt-text'), html.count('fill-input'),
+             html.count('ms-card')))
     print('cloze blanks = %d | bank chips = %d | css %d bytes' % (html.count('cloze-blank'), html.count('bank-chip'), len(css)))
+    print('sample metrics: pass=%s good=%s | t1=%s' % (
+        de_metrics([p['de'] for p in d['essay']['samples']['items'][0]['paras']]),
+        de_metrics([p['de'] for p in d['essay']['samples']['items'][1]['paras']]),
+        de_metrics([blk['p'] for blk in d['t1']['cloze']])))
+    assert 'tm-bc' not in html and '计时播报' not in html, '计时播报未移除'
+    assert 'id="redemittel"' not in html and 'id="ladder"' not in html, '句型库/阶梯未移除'
 
 
 if __name__ == '__main__':

@@ -13,15 +13,12 @@
     ],
     "flow": [
       "① 热身：先看图，不看字（读数字）",
-      "② 句型库：四类 Redemittel 过一遍",
-      "③ 变形金刚：同一组数据四种说法",
-      "④ 阶梯四关：读→排→比→评",
-      "⑤ Text 1 精读：挖空 + 段落功能 + 句型标注",
-      "⑥ Text 2 精读：Erika / Simon 人物文",
-      "⑦ 从人物文到统计文：Traumberufe 调查",
-      "⑧ 找错侦探：三段有问题的描述",
-      "⑨ 计时播报员：30 秒 ≥4 个句型",
-      "⑩ 作文卡：四段式骨架，考场直接套"
+      "② Text 1 精读：看数据怎么写进段落（点正文里的词可查义）",
+      "③ 词汇卡 + 变形：26 张图表词卡，同一组数据练四种说法",
+      "④ Text 2 精读：Erika / Simon 人物文",
+      "⑤ 从人物文到统计文：Traumberufe 调查改写",
+      "⑥ 找错侦探：三段有问题的描述",
+      "⑦ 作文卡：四段式骨架 + 两篇范文 + 课文难度对照"
     ]
   },
   "chart": {
@@ -101,8 +98,8 @@
         "cn": "榜单的性别分界：男=技术类，女=商务与医疗类"
       },
       {
-        "de": "Das Schlusslicht beider Listen liegen dicht zusammen: 10.878 bzw. 9.663.",
-        "cn": "两榜末位都在一万上下，说明 Top-5 内部差距不大"
+        "de": "Die Schlusslichter beider Listen liegen dicht zusammen: 10.878 bzw. 9.663.",
+        "cn": "两榜末位都在一万上下（10.878 / 9.663），说明 Top-5 内部差距不大"
       }
     ],
     "quiz": [
@@ -380,7 +377,7 @@
       {
         "id": 2,
         "cat": "Rangordnung",
-        "zh": "在女性榜上，紧随其后的是医疗助理，共有 15.138 人。",
+        "zh": "接着（女性榜第 2 位）是医疗助理，共有 15.138 人。",
         "chunks": [
           "Danach",
           "folgt",
@@ -389,7 +386,7 @@
           "mit 15.138"
         ],
         "ans": "Danach folgt bei den Frauen die medizinische Fachangestellte mit 15.138.",
-        "src": "句型：Danach folgt ...（数据取自图表）"
+        "src": "句型：Danach folgt ...（承接上一句排名；数据取自图表 Frauen 第 2 位）"
       },
       {
         "id": 3,
@@ -745,7 +742,136 @@
         "ans": "Zusammenfassend lässt sich sagen, dass sich Frauen und Männer in ihrer Berufswahl noch immer deutlich unterscheiden.",
         "hint": "Zusammenfassend lässt sich sagen, dass ..."
       }
-    ]
+    ],
+    "samples": {
+      "title": "📝 范文两篇（都写本页这张图）",
+      "note": "先读合格版，再读优秀版，最后看两张表的对照。两篇都能过关：差别不在「有多难」，而在句子接得顺不顺、数据组织得清不清楚。",
+      "items": [
+        {
+          "key": "pass",
+          "badge": "🟢 合格版范文",
+          "label": "考场这样写就够：四段齐、数字准、句子短而不出错。",
+          "paras": [
+            {
+              "tag": "① 起",
+              "de": "Die Grafik zeigt die Top-5-Ausbildungsberufe von Männern und Frauen in Deutschland."
+            },
+            {
+              "tag": "② 述",
+              "de": "Auf Platz eins der Männer steht der Kraftfahrzeugmechatroniker mit 19.170 Ausbildungsanfängern. Danach folgen der Fachinformatiker mit 13.836 und der Elektroniker mit 13.698. Auf den Plätzen vier und fünf stehen der Anlagenmechaniker und der Verkäufer. Bei den Frauen liegt die Kauffrau für Büromanagement mit 16.692 an der Spitze. Auf Platz zwei und drei folgen die medizinische Fachangestellte mit 15.138 und die zahnmedizinische Fachangestellte mit 12.411."
+            },
+            {
+              "tag": "③ 比",
+              "de": "Ein Vergleich der beiden Listen zeigt: Nur die Verkäuferin steht in beiden Top-5-Listen. Männer wählen vor allem technische Berufe, Frauen wählen kaufmännische und medizinische Berufe."
+            },
+            {
+              "tag": "④ 结",
+              "de": "Zusammenfassend lässt sich sagen, dass sich Frauen und Männer in ihrer Berufswahl noch immer deutlich unterscheiden."
+            }
+          ],
+          "why": [
+            "四个段各干一件事，每段一到三个句子",
+            "只写 6 个数字：两个榜首 + 第 2、3 位 + 两榜唯一重合",
+            "没有长句、没有从句套从句，基本不会出语法错"
+          ]
+        },
+        {
+          "key": "good",
+          "badge": "🔵 优秀版范文",
+          "label": "想拿 13–15 分：多三处，数据来源、数字范围、Fazit 的解释。",
+          "paras": [
+            {
+              "tag": "① 起",
+              "de": "Das vorliegende Balkendiagramm zeigt die Top-5-Ausbildungsberufe von Männern und Frauen in Deutschland. Die Zahlen stammen vom Bundesinstitut für Berufsbildung und geben die Anzahl der Ausbildungsanfänger an."
+            },
+            {
+              "tag": "② 述",
+              "de": "An der Spitze der Männer steht der Kraftfahrzeugmechatroniker mit 19.170 Ausbildungsanfängern, gefolgt vom Fachinformatiker (13.836) und vom Elektroniker (13.698). Die Plätze vier und fünf belegen der Anlagenmechaniker für Sanitär-, Heizungs- und Klimatechnik sowie der Verkäufer mit 10.878 Ausbildungsanfängern. Bei den Frauen führt die Kauffrau für Büromanagement die Rangliste mit 16.692 an; danach folgen die medizinische Fachangestellte (15.138) und die zahnmedizinische Fachangestellte (12.411)."
+            },
+            {
+              "tag": "③ 比",
+              "de": "Vergleicht man die beiden Ranglisten, fällt auf, dass nur die Verkäuferin bei Frauen und Männern vertreten ist. Während bei den Männern technische Berufe dominieren, entscheiden sich Frauen vor allem für kaufmännische und medizinische Ausbildungen. Auffällig ist außerdem, dass die Abstände innerhalb der Top-5 relativ gering sind: Die Werte liegen zwischen rund 9.700 und 19.200."
+            },
+            {
+              "tag": "④ 结",
+              "de": "Zusammenfassend lässt sich feststellen, dass die Berufswahl von Frauen und Männern nach wie vor stark vom Geschlecht geprägt ist. Die Statistik zeigt damit eine geschlechtsspezifische Arbeitsteilung, die sich nur langsam verändert."
+            }
+          ],
+          "why": [
+            "第一段交代数据来源（Bundesinstitut für Berufsbildung），阅卷看得出你读懂的是哪张图",
+            "第二段用 gefolgt von / belegen / anführen 把九个数串成有主次的层级，而不是一句一个数",
+            "第三段给出数字范围（9.700 到 19.200），把「差距不大」这个判断落在数据上",
+            "第四段 fazit 给的是解释（geschlechtsspezifische Arbeitsteilung），不是套话"
+          ]
+        }
+      ],
+      "diff": [
+        {
+          "k": "句子怎么接",
+          "pass": "一句一个意思，靠 Danach / Auf Platz zwei 往前推",
+          "good": "用 gefolgt von、分号、逗号从句把两句并成一句，读起来有节奏"
+        },
+        {
+          "k": "数字怎么给",
+          "pass": "6 个数字，全部直接跟在职业名后",
+          "good": "9 个数字，按层级给：榜首 → 并列 → 唯一重合 → 区间"
+        },
+        {
+          "k": "Redemittel 类别",
+          "pass": "3 类（Rangordnung / Vergleich / Fazit）",
+          "good": "4 类（加 Einleitung 的 zeigt / stammen von）"
+        },
+        {
+          "k": "风险",
+          "pass": "几乎没有语法风险，是考场上最稳的写法",
+          "good": "长句多，写之前要想清楚动词位置和第三格，属加分项不是必需项"
+        }
+      ]
+    },
+    "level": {
+      "title": "🆚 课文 vs 专四作文：难度对照（看完会安心）",
+      "note": "课文难，是因为它是给你「读」的材料；作文是你自己「写」，用你已经会的句型就够了。左边这一列，你只要读懂；右边这一列，你只要写清楚。",
+      "rows": [
+        {
+          "k": "谁写的 / 写给谁",
+          "cw": "iwd 编辑部写给德语母语读者的报刊科普文",
+          "ex": "大二考生写给阅卷人的一篇考试短文"
+        },
+        {
+          "k": "任务",
+          "cw": "听懂 / 读懂，再把 13 个空逐词写对",
+          "ex": "按提纲写一篇约 120–150 词的短文，说清图上主要数据"
+        },
+        {
+          "k": "篇幅",
+          "cw": "{t1_words} 词 / {t1_sents} 句 / 3 段",
+          "ex": "约 120 词 / 9 句 / 4 段（合格版范文）"
+        },
+        {
+          "k": "最长的句子",
+          "cw": "{t1_max} 词，一句话里塞两组数据加一处对比",
+          "ex": "{pass_max} 词，一句一个意思"
+        },
+        {
+          "k": "要掌握的词汇",
+          "cw": "Berufswahlverhalten、Rollenmuster、geschlechtsspezifisch、akademische Laufbahn 这类抽象词与复合名词",
+          "ex": "Schaubild、Anteil、an der Spitze stehen、im Vergleich zu（本页词汇卡 26 张里全有）"
+        },
+        {
+          "k": "怎么判分",
+          "cw": "逐词对错，一个空一个词，写错就是错",
+          "ex": "内容切题、结构清楚、语法正确，不需要文采"
+        }
+      ],
+      "points": [
+        "课文里那些 30 词以上的长句是给你读的，不是要你写的；考场上「一句一个意思」更安全。",
+        "作文的数字不用抄全：写 4–5 个关键数（两个榜首、两榜唯一重合、最大最小）就够。",
+        "合格版范文 120 词、9 句，用的全是你已经学过的句型，把图换成另一张，骨架照样能用。",
+        "考试要求（15 分 / 40 分钟 / 四段短文 / 内容与结构优先）来自《全国高等学校德语专业四级考试大纲》的公开转述与考试中心公开说明；各版大纲对词数的表述不完全一致（「不少于 120 词左右」与「150–180 词」两种说法都出现过），以你所在院校的最新要求为准。",
+        "本页两篇范文是本课件按专四图表作文要求写的，不是考场原文；真实考场范文收录在考试中心授权出版的《全国高校德语专业四级考试真题与解析》里，里面有带分数的考场原文。"
+      ],
+      "trust": "课文难度指标（词数 / 句数 / 最长句）由本页脚本按教材原文统计，不是估的。"
+    }
   },
   "vocab": {
     "title": "Wortschatz · 图表描述必备词（26 张）",

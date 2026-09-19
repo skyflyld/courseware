@@ -3,315 +3,411 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PGG 2026 A卷 · 完整真题原文</title>
+<title>PGG 2026 A · 完整真题原文</title>
 <style>
-
-:root {
-  --bg: #f8f6f0;
-  --card: #ffffff;
-  --accent: #1a5276;
-  --accent2: #2e86c1;
-  --gold: #d4a017;
-  --text: #1a1a2e;
-  --text2: #4a4a5a;
-  --border: #e0ddd5;
-  --tag-g: #e8f4f8;
-  --tag-v: #f0e6f6;
-  --tag-r: #e8f5e9;
-  --tag-w: #fff3e0;
-  --tag-l: #fce4ec;
+:root{
+  --bg:#f8f6f0; --card:#ffffff; --accent:#1a5276; --accent2:#2e86c1; --gold:#d4a017;
+  --text:#1a1a2e; --text2:#4a4a5a; --border:#e0ddd5; --soft:#faf9f4;
+  --de-bg:#f3f2ea; --opt:#5a5a6a;
 }
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
-.container { max-width: 960px; margin: 0 auto; padding: 20px; }
-.header { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; padding: 40px 20px; text-align: center; border-radius: 16px; margin-bottom: 30px; }
-.header h1 { font-size: 2em; margin-bottom: 8px; }
-.header p { opacity: .85; }
-.header .badge { display: inline-block; background: rgba(255,255,255,.15); padding: 4px 14px; border-radius: 20px; font-size: .8em; margin-top: 12px; }
-.tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px; }
-.tab-btn { padding: 10px 20px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; cursor: pointer; font-size: .9em; transition: .2s; }
-.tab-btn:hover { background: #eef0eb; }
-.tab-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
-.section { display: none; }
-.section.active { display: block; }
-.section-title { font-size: 1.5em; color: var(--accent); margin-bottom: 16px; padding-bottom: 8px; border-bottom: 3px solid var(--accent); }
-.card { background: var(--card); border-radius: 12px; padding: 20px; margin-bottom: 16px; border: 1px solid var(--border); }
-.card h3 { font-size: 1.1em; margin-bottom: 10px; color: var(--accent2); }
-.tag { display: inline-block; padding: 2px 10px; border-radius: 10px; font-size: .75em; margin: 2px; }
-.tag-g { background: var(--tag-g); color: #1a5276; }
-.tag-v { background: var(--tag-v); color: #6a1b9a; }
-.tag-r { background: var(--tag-r); color: #2e7d32; }
-.tag-w { background: var(--tag-w); color: #e65100; }
-.tag-l { background: var(--tag-l); color: #c62828; }
-table { width: 100%; border-collapse: collapse; margin: 12px 0; }
-th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
-th { background: var(--accent); color: #fff; font-size: .85em; }
-tr:hover { background: #f5f5f0; }
-.de { background: #f0f0e8; padding: 2px 6px; border-radius: 4px; font-size: .9em; }
-.zh { color: var(--text2); font-size: .85em; }
-.beispiel { background: #fafaf5; border-left: 4px solid var(--accent2); padding: 12px 16px; margin: 8px 0; border-radius: 0 8px 8px 0; font-size: .9em; }
-.cloud { display: flex; flex-wrap: wrap; gap: 8px; }
-.cloud span { padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border); background: var(--card); font-size: .85em; }
-.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 16px 0; }
-.stat-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; text-align: center; }
-.stat-card .num { font-size: 1.8em; font-weight: 700; color: var(--accent2); }
-.stat-card .label { font-size: .8em; color: var(--text2); }
-.bar-chart { margin: 12px 0; }
-.bar-item { display: flex; align-items: center; margin: 6px 0; gap: 10px; }
-.bar-label { width: 120px; font-size: .85em; flex-shrink: 0; }
-.bar-fill { height: 24px; border-radius: 12px; min-width: 4px; }
-.collapse-header { cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 10px 0; user-select: none; }
-.collapse-header:hover { color: var(--accent2); }
-.collapse-body { overflow: hidden; max-height: 0; transition: max-height .3s ease; }
-.collapse-body.open { max-height: 2000px; }
-.collapse-icon { transition: transform .3s; }
-.collapse-icon.open { transform: rotate(180deg); }
-.filter-bar { margin: 12px 0; }
-.filter-btn { padding: 6px 14px; border: 1px solid var(--border); border-radius: 16px; background: var(--card); cursor: pointer; font-size: .82em; margin: 3px; }
-.filter-btn.active { background: var(--accent2); color: #fff; border-color: var(--accent2); }
-.year23, .year24, .year25, .year26 { display: none; }
-.theme-toggle { position: fixed; bottom: 20px; right: 20px; width: 44px; height: 44px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 1.2em; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,.15); z-index: 100; border: none; }
-@media (max-width: 640px) {
-  .header h1 { font-size: 1.5em; }
-  .tab-btn { padding: 8px 12px; font-size: .8em; }
-  .bar-label { width: 80px; font-size: .75em; }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans SC',sans-serif;background:var(--bg);color:var(--text);line-height:1.75}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.hero{position:relative;background:linear-gradient(135deg,#1a5276,#2e86c1);color:#fff;padding:36px 20px 28px;text-align:center}
+.hero .eyebrow{font-size:.72em;letter-spacing:.16em;opacity:.85;text-transform:uppercase}
+.hero h1{font-size:1.9em;margin:6px 0;animation:fadeUp .6s ease both}
+.hero .sub{opacity:.9;font-size:.9em;animation:fadeUp .6s .08s ease both}
+.hero .meta{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px;animation:fadeUp .6s .16s ease both}
+.hero .big-num{background:rgba(255,255,255,.20);border:1px solid rgba(255,255,255,.34);border-radius:10px;padding:8px 15px;font-size:1.35em;font-weight:700;line-height:1.15}
+.hero .big-num span{display:block;font-size:.58em;font-weight:500;color:#eaf2f8;letter-spacing:.05em;margin-top:3px}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+.toc{position:sticky;top:0;z-index:20;background:var(--card);border-bottom:1px solid var(--border);box-shadow:0 2px 10px rgba(26,82,118,.06)}
+.toc .wrap{display:flex;flex-wrap:wrap;gap:4px;align-items:center;padding-top:8px;padding-bottom:8px}
+.toc a{color:var(--accent);text-decoration:none;font-size:.85em;padding:6px 10px;border-radius:8px;transition:background .2s ease,color .2s ease}
+.toc a:hover{background:#eef3f7}
+.toc .sep{color:var(--border);padding:0 2px}
+.toc .back{margin-left:auto;color:var(--text2)}
+main{padding-top:30px;padding-bottom:60px}
+h2.sec{font-size:1.35em;color:var(--accent);margin:38px 0 14px;padding-bottom:8px;border-bottom:3px solid var(--accent)}
+h2.sec:first-child{margin-top:0}
+h3.sub{font-size:1.05em;color:var(--accent2);margin:26px 0 10px}
+p{margin:8px 0}
+p.de{font-size:.97em}
+p.q{margin:12px 0 0;font-weight:600}
+p.opt{padding-left:18px;color:var(--opt);font-size:.94em;margin:2px 0}
+.note{background:#fff9e8;border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 14px;margin:12px 0;font-size:.9em}
+.zh{color:var(--text2);font-size:.9em}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;margin:14px 0}
+.card h3{margin-top:0}
+.tw{overflow-x:auto;margin:12px 0;border:1px solid var(--border);border-radius:10px;background:var(--card)}
+table{width:100%;border-collapse:collapse;font-size:.88em}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+th{background:var(--accent);color:#fff;font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:none}
+.pgdiv{border-top:1px dashed var(--border);margin:24px 0 6px;padding-top:6px;font-size:.75em;color:var(--text2);letter-spacing:.08em}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.var-chip{background:var(--de-bg);border:1px solid var(--border);border-radius:20px;padding:4px 12px;font-size:.82em;color:var(--accent)}
+.hr{border:none;border-top:1px solid var(--border);margin:26px 0}
+footer{border-top:1px solid var(--border);padding:20px;text-align:center;color:var(--text2);font-size:.82em}
+footer a{color:var(--accent)}
+@media(max-width:640px){
+  .hero h1{font-size:1.45em}
+  .hero .big-num{font-size:1.15em;padding:7px 11px}
+  .toc .back{margin-left:0}
+  table{font-size:.82em}
 }
-
-.yearnav { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:18px; font-size:.9em; }
-.yearnav a { padding:6px 14px; border:1px solid var(--border); border-radius:16px; background:var(--card); color:var(--accent); text-decoration:none; }
-.yearnav a.cur { background:var(--accent); color:#fff; border-color:var(--accent); }
-.container { max-width: 900px; }
-.pagemark { margin:26px 0 8px; padding:6px 12px; background:var(--tag-g); color:var(--accent);
-  border-radius:8px; font-size:.78em; letter-spacing:.5px; }
-h1 { font-size:1.7em; color:var(--accent); margin:6px 0 14px; }
-h2 { font-size:1.35em; color:var(--accent); margin:26px 0 10px; padding-bottom:6px; border-bottom:2px solid var(--border); }
-h3 { font-size:1.12em; color:var(--accent2); margin:20px 0 8px; }
-h4 { font-size:1em; color:var(--text); margin:14px 0 6px; }
-p, li { line-height:1.75; }
-ol, ul { margin:8px 0 8px 22px; }
-blockquote { border-left:3px solid var(--accent2); background:#fafaf5; padding:10px 14px; border-radius:0 8px 8px 0;
-  color:var(--text2); font-size:.88em; margin:10px 0; }
-code { background:#f0f0e8; padding:1px 5px; border-radius:4px; font-size:.9em; }
-hr { border:none; border-top:1px dashed var(--border); margin:20px 0; }
-.qitem { background:var(--card); border:1px solid var(--border); border-radius:10px;
-  padding:12px 16px; margin:8px 0; line-height:1.9; }
-.qitem strong { color:var(--accent); }
 </style>
 </head>
 <body>
-<div class="container">
-<nav class="yearnav">
-<a href="index.html">← 返回考点知识库</a>
-<a href="2023.html">PGG 2023</a><a href="2024.html">PGG 2024</a><a href="2025.html">PGG 2025</a><a href="2026.html" class="cur">PGG 2026</a>
-</nav>
-<h2>PGG 2026 年 A 卷 · 完整真题（原文逐字转录）</h2>
-<blockquote>来源：考生提供的扫描件 <code>skyflyld/pgg-raw/PGG_2026_A.pdf</code>（10 页）</blockquote>
-<blockquote>转录：逐页德文 OCR（DeepSeek V4.1 Flash 原生视觉，dpi=200）</blockquote>
-<blockquote>纪律：逐字原文，未翻译、未改写；无法辨认处标 <code>[?]</code>；不确定处不补全</blockquote>
-<blockquote>生成：2026-09-18 23:42 UTC</blockquote>
-<div class="pagemark">📄 第 1 页</div>
-<h3>PRÜFUNG FÜR DAS GERMANISTIK-GRUNDSTUDIUM</h3>
-<h4>(PGG 2026 A)</h4>
-<p><strong>I. Diktat (10%)</strong> <strong>\(15 Minuten\)</strong></p>
-<p><strong>A) Füllen Sie die Lücken aus.</strong></p>
-<p><em>Sie hören den folgenden Text dreimal in normalem Tempo und dann füllen Sie die Lücken aus.</em></p>
-<p>„Man ist so alt, wie man sich fühlt“ ist mehr als ein Spruch. Wenn Sie sich jung 1) ______, haben Sie ein geringeres Risiko für Krankheiten und leben sogar länger. Ihr Körper folgt Ihrem 2) ______. Studien zeigen: Menschen mit einem negativen Bild vom Älterwerden leiden häufiger 3) ______ Depressionen, Stürzen und Krankheiten. Die Einstellung zum Leben beeinflusst, 4) ______ stark Stress Ihrem Körper schadet. Menschen, die sich 5) ______ fühlen, reagieren gelassener. Wenn Sie glauben, dass Sie noch viel können, tun Sie 6) ______ mehr: Sie bewegen sich mehr, essen gesünder und bleiben offen für 7) ______. Das stärkt nicht nur Ihre 8) ______, sondern auch Ihre soziale, emotionale und geistige Fitness.</p>
-<p><strong>B) Schreiben Sie den Text Satz für Satz auf den Antwortbogen.</strong></p>
-<p><em>Sie hören den folgenden Text dreimal. Zuerst hören Sie sich den ganzen Text einmal an. Dann hören Sie sich den Text mit Satzzeichen noch einmal an. Die längeren Sätze werden in Teilen vorgelesen. Zuletzt hören Sie den ganzen Text noch einmal.</em></p>
-<p><strong>II. Hörverstehen (20%)</strong> <strong>\(20 Minuten\)</strong></p>
-<h4>Teil 1 Alltagssituationen</h4>
-<p><em>Sie hören im Folgenden 6 Minidialoge nur einmal. Markieren Sie die Lösungen auf dem Antwortbogen. (6P)</em></p>
-<p class="qitem">1. a. Spazieren gehen. b. Ins Kino gehen. c. Ins Restaurant gehen.<br>2. a. Mit der U-Bahn. b. Mit dem Bus. c. Mit dem Fahrrad.<br>3. a. Um 9 Uhr. b. Um 10 Uhr. c. Um 11 Uhr.<br>4. a. Zum Bio-Markt. b. Zur Straßenbahn. c. Zur Post.<br>5. a. Vom Sportplatz. b. Vom Supermarkt. c. Vom Bahnhof.<br>6. a. 20 bis 30. b. 30 bis 40. c. 40 bis 50.</p>
-<h4>Teil 2 Kurztexte</h4>
-<p><em>Nun hören Sie vier Texte. Jeden Text hören Sie zuerst einmal, dann lesen Sie die Aufgaben und danach hören Sie ihn noch einmal. Markieren Sie die richtigen Lösungen auf dem Antwortbogen. (14P)</em></p>
-<p><strong>Text A Eine Radiosendung über gesunde Ernährung (a=richtig, b=falsch)</strong></p>
-<p class="qitem">7. Viele Menschen haben Zeit zum Kochen, essen aber trotzdem Fast Food.<br>8. Für eine schnelle und gesunde Mahlzeit muss man das Essen gut planen.<br>9. Zum Frühstück empfiehlt Frau Dr. Becker ein Joghurt mit Haferflocken und Obst.<br>10. Dunkle Schokolade wird im Gespräch als Beispiel für einen ungesunden Snack genannt.</p>
-<div class="pagemark">📄 第 2 页</div>
-<h3>Text B Das blaue Sofa</h3>
-<p class="qitem">11. Die Erzählerin möchte das Sofa weggeben, weil es __________.<br>a. kaputt ist<br>b. nicht mehr bequem ist<br>c. nicht in die neue Wohnung passt<br>12. Die ältere Dame nimmt das Sofa nicht, weil __________.<br>a. ihre Katzen die Farbe nicht mögen<br>b. es viel Geld kostet<br>c. es zu schwer ist<br>13. Der Hund des jungen Mannes __________.<br>a. bellte das Sofa an<br>b. schlief auf dem Sofa ein<br>c. spielte unter dem Sofa<br>14. Am Ende hat __________ das Geld bekommen.<br>a. der junge Mann<br>b. die Erzählerin<br>c. das Tierheim</p>
-<h3>Text C Smart Home: Das intelligente Zuhause</h3>
-<p class="qitem">15. Heizungen in einem Smart Home können __________.<br>a. automatisch Milch nachbestellen<br>b. den Staubsaugerroboter starten<br>c. sich automatisch ausschalten, um Energie zu sparen<br>16. __________ ist ein Kritikpunkt an der Smart Home-Technik.<br>a. Die totale Netzabhängigkeit<br>b. Das Risiko bei der Datensicherheit<br>c. Die komplizierte Bedienung<br>17. Viele Firmen glauben, dass Smart Homes in zehn Jahren __________.<br>a. intelligenter und hauptsächlich von jungen Menschen genutzt werden<br>b. technisch einfacher, aber auch viel teurer als heute sein werden<br>c. fast in jedem Haushalt normal und verbreitet sein werden</p>
-<h3>Text D Die Neue Seidenstraße: Brücke für Handel und Kultur</h3>
-<p class="qitem">18. Die Neue Seidenstraße ist auch als __________ bekannt.<br>a. Handelsweg-Initiative<br>b. Wissenstransfer-Programm<br>c. „Gürtel und Straße“-Initiative<br>19. Ein wichtiges Ziel der Neuen Seidenstraße ist es, __________.<br>a. Europa mit Afrika zu verbinden<br>b. Porzellan herzustellen<br>c. den Handel einfacher und schneller zu machen<br>20. Ein zentraler Punkt der Initiative neben wirtschaftlicher Zusammenarbeit ist __________.<br>a. Dialog und Verständnis zwischen Kulturen zu fördern<br>b. Militärkooperationen mit anderen Ländern zu haben<br>c. Sportwettbewerbe zu organisieren</p>
-<div class="pagemark">📄 第 3 页</div>
-<h3>III. Leseverstehen (20%) (50 Minuten)</h3>
-<h4>Teil 1</h4>
-<p>A. Lesen Sie die folgenden Überschriften und Texte. Ordnen Sie dann den Texten (21–22) die passende Überschrift (a–d) zu. (2P)</p>
-<p>Überschriften</p>
-<p class="qitem">a. Mit Wohnungsangeboten gegen den Fachkräftemangel<br>b. Ahaus – eine digitale Stadt<br>c. Mehr Wohnungen bauen und an die Fachkräfte verkaufen<br>d. Ahaus – eine Stadt ohne Menschen</p>
-<p class="qitem">21. Wer in die Stadt Ahaus reist, dem fallen sofort die blau-weißen Sticker mit QR-Codes auf. Man findet sie überall. Über die Codes sind Einkäufe, Buchungen und Ausleihen digital und bargeldlos möglich. Auch ins Hotel kommt man ganz ohne menschlichen Kontakt: Das Smartphone dient als Schlüssel, Fernbedienung, Zahlungsmittel und sogar Lichtschalter.</p>
-<p class="qitem">22. Die Mieten sind teuer geworden. Auch Fachkräfte können sich viele Wohnungen in deutschen Großstädten nicht mehr leisten. Dabei suchen Unternehmen dringend Mitarbeitende. Einige Firmen bieten nun selbst Wohnungen an. Die Stadtwerke München kaufen und bauen nun selbst Wohnraum für ihre Mitarbeitenden. 1500 Wohnungen haben sie schon, bis 2030 sollen es 3000 sein.</p>
-<p>B. Lesen Sie die folgenden Überschriften und Texte. Ordnen Sie dann den Texten (23–24) die passende Überschrift (a–d) zu. (2P)</p>
-<p>Überschriften</p>
-<p class="qitem">a. Kultur: Die goldene Zeit ist da.<br>b. Klimaschutz: kein Thema vor der Wahl 2025<br>c. Kultur: Die goldenen Zeiten sind vorbei.<br>d. Klimaschutz: immer wichtiger für die Wahl</p>
-<p class="qitem">23. Deutschland im Februar 2025: Tausende Menschen demonstrieren für mehr Klimaschutz. Doch verglichen mit 2019, als etwa 1,4 Millionen Menschen auf die Straße gingen, ist die Bewegung viel schwächer geworden. „Es sind definitiv harte Zeiten für den Klima-Aktivismus im Moment“, sagt Demonstrant Pit Terjung. Er kritisiert, dass das Thema vor der Bundestagswahl am 23. Februar kaum vorkommt, obwohl „[wir] ... gerade das heißeste Jahr der Menschheit hinter uns [haben]“. Zwischen 2021 und 2023 ist die Unterstützung für die Klimabewegung in Deutschland laut Umfragen um die Hälfte gesunken. In der Öffentlichkeit wurden Klimaaktivistinnen und -aktivisten von Helden im Jahr 2019 zu Schurken heute.</p>
-<p class="qitem">24. Kultur ist wichtig. Und in Deutschland spielt staatliche Kulturförderung eine bedeutende Rolle. Bis vor Kurzem schien die Welt noch in Ordnung zu sein: Zwischen 2010 und 2020 sind die öffentlichen Kulturausgaben stetig gestiegen. Doch damit ist nun Schluss. Denn Gemeinden, Landkreise und Bundesländer müssen sparen. Berlin hat seinen Haushalt um drei Milliarden Euro gekürzt, 130 Millionen davon bei den Kulturausgaben. Die Folgen sind gravierend: Die Berliner „Schaubühne“ rechnet noch 2025 mit ihrer Insolvenz. Das „Berliner Ensemble“ muss Produktionen streichen. Die „Volksbühne“ fürchtet um ihre Spielfähigkeit. Betroffen ist neben den großen, traditionsreichen Häusern auch die Freie Szene.</p>
-<div class="pagemark">📄 第 4 页</div>
-<h3>Teil 2</h3>
-<p><strong>Lesen Sie die folgenden Texte und markieren Sie die richtigen Lösungen auf dem Antwortbogen. (16P)</strong></p>
-<h4>Text A</h4>
-<p><strong>Immanuel Kant</strong></p>
-<p>In Königsberg wurde Immanuel Kant am 22. April 1724 geboren. Seine Vorfahren, so hat der Philosoph später gern betont, stammten aus Schottland, doch ist diese Auffassung heute als falsch nachgewiesen. Neun Jahre, von 1732 bis 1740, besuchte Immanuel Kant das Collegium Fridericianum. Hier lernte er, was zur Allgemeinbildung der Zeit und zur Vorbereitung für die Universität nötig war. Dazu gehörte vor allem eine gründliche Kenntnis der alten Sprachen, besonders von Latein.</p>
-<p>Im selben Jahr, 1740, besuchte der 16-jährige Kant die Königsberger Universität. Mit dem Beginn der Studienzeit legte der junge Kant entschieden die Richtung fest, in der sein späteres Leben verlaufen sollte: Philosophie, Mathematik und Naturwissenschaft. Schon im Alter von 21 Jahren war er außerordentlicher Professor für Logik und Metaphysik an der Uni Königsberg. Danach, von 1746 bis 1755, war Kant als Hauslehrer bei drei verschiedenen Familien tätig.</p>
-<p>Das Jahr 1770 war in zweifacher Hinsicht ein Wendepunkt im Leben Kants. Als akademischer Lehrer hatte er mit der ordentlichen Professur die höchste Stufe erreicht. Zur gleichen Zeit stand er an der Schwelle eigener denkerischer Leistung, die ihn nach zehn Jahren intensiver Arbeit zur <em>Kritik der reinen Vernunft</em> führen sollte.</p>
-<p>Kants ganzes Leben hatte einen genauen Tagesrhythmus, der keinerlei Abwandlung zuließ. Es wird erzählt, dass sein Spaziergang um 7 Uhr mit einer solchen Pünktlichkeit erfolgte, dass verschiedene Königsberger ihre Uhren nach dem „Umlauf“ des Philosophen gestellt hätten. Nur ein einziges Mal hat Kant diesen Spaziergang verpasst, weil er an diesem Tag Rousseaus <em>Emile</em> gelesen habe und von der Lektüre so ergriffen worden sei, dass er das Buch ohne Unterbrechung bis zu Ende las.</p>
-<p><strong>Aufgaben. Markieren Sie die richtigen Lösungen auf dem Antwortbogen.</strong></p>
-<p class="qitem">25. Immanuel Kant ist ________.<br>a. Vorjahre<br>b. König<br>c. Philosoph</p>
-<p class="qitem">26. Am Collegium Fridericianum lernte Kant ________.<br>a. vor allem moderne Fremdsprachen<br>b. besonders die alten Sprachen wie Latein<br>c. alles zur Vorbereitung für die Mittelschule</p>
-<p class="qitem">27. Als Kant 16 Jahre alt war, ________.<br>a. besuchte er die Königsberger Universität<br>b. wurde er außerordentlicher Professor für Logik und Metaphysik<br>c. studierte er Philosophie, Mathematik und Sozialwissenschaft</p>
-<p class="qitem">28. Warum war das Jahr 1770 ein wichtiger Wendepunkt für Kant?<br>a. Er beendete seine Tätigkeit als Hauslehrer.<br>b. Er wurde ordentlicher Professor und begann seine wichtigste Denkphase.<br>c. Er veröffentlichte sofort die <em>Kritik der reinen Vernunft</em>.</p>
-<p class="qitem">29. Warum machte Kant nur einmal keinen Spaziergang um 7 Uhr?<br>a. Weil er krank war.<br>b. Weil er Besuch hatte.<br>c. Weil er Rousseaus <em>Emile</em> ohne Unterbrechung las.</p>
-<div class="pagemark">📄 第 5 页</div>
-<h3>Text B</h3>
-<h4>Vom Kaiserpalast zum digitalen Welterbe</h4>
-<p>2025 feiert das chinesische Palastmuseum sein 100-jähriges Bestehen. Es befindet sich in der ehemaligen Verbotenen Stadt in Beijing, dem früheren Machtzentrum der Ming- und Qing-Dynastien. Mit über 600 Jahren Geschichte, einer Fläche von 72 Hektar und fast zwei Millionen Sammlungsobjekten gehört es heute zu den bedeutendsten Kulturerbestätten der Welt. Der Wandel vom abgeschlossenen Kaiserpalast zu einem modernen Museum zeigt, wie sich der Umgang mit kulturellem Erbe verändert hat.</p>
-<p>Am 10. Oktober 1925 wurde die Verbotene Stadt erstmals als Museum für die Öffentlichkeit geöffnet. In den folgenden Jahrzehnten stand das Palastmuseum vor großen Herausforderungen. Während des Krieges in den 1930er und 1940er Jahren wurden zehntausende Kunstwerke in andere Regionen Chinas gebracht, um sie zu schützen. Nach 1949 investierte der Staat stark in die Restaurierung der Gebäude und in den Aufbau moderner Lagerräume.</p>
-<p>In den letzten Jahren hat das Museum besonders auf die Digitalisierung gesetzt. Bereits vor etwa zwanzig Jahren begann die systematische digitale Erfassung der Bestände. Heute sind über eine Million Objekte digitalisiert, viele davon online zugänglich. Besucher können Gemälde, Porzellan oder kunstvolle Metallarbeiten am Bildschirm betrachten. Moderne Technologien wie intelligente Suchfunktionen erleichtern den Zugang zu diesen Schätzen.</p>
-<p>Das Palastmuseum versteht sich inzwischen nicht nur als Ausstellungsort, sondern auch als Ort des internationalen Austauschs. Durch gemeinsame Ausstellungen mit ausländischen Museen bringt es unterschiedliche Kulturen miteinander ins Gespräch. So ist aus der einst verbotenen Stadt ein offenes, digitales Museum geworden, das Vergangenheit und Gegenwart miteinander verbindet und das kulturelle Erbe für kommende Generationen bewahrt.</p>
-<hr>
-<p><strong>Aufgaben: Markieren Sie die richtigen Lösungen auf dem Antwortbogen.</strong></p>
-<p class="qitem">30. Im Text wird das Jahr 2025 als bedeutend beschrieben, weil das Palastmuseum __________.<br>a. seit hundert Jahren als öffentliches Museum existiert<br>b. nach über sechshundert Jahren Geschichte erstmals internationale Anerkennung erhalten hat<br>c. im digitalen Zeitalter erstmals restauriert und der Öffentlichkeit zugänglich gemacht wurde</p>
-<p class="qitem">31. Während der Kriegsjahre in der ersten Hälfte des 20. Jahrhunderts bestand eine zentrale Aufgabe des Palastmuseums darin, __________.<br>a. neue Ausstellungsräume für Besucher zu eröffnen<br>b. wertvolle Kunstschätze in sichere Regionen zu verlagern<br>c. internationale Ausstellungen im Ausland zu organisieren</p>
-<p class="qitem">32. Nach 1949 lag ein Schwerpunkt der Arbeit des Palastmuseums darin, __________.<br>a. historische Gebäude zu restaurieren und moderne Räume zur Aufbewahrung aufzubauen<br>b. die Sammlungsobjekte vollständig ins Ausland zu verlagern<br>c. den Museumsbetrieb für mehrere Jahrzehnte einzustellen</p>
-<p class="qitem">33. Die Digitalisierung der Sammlungen hat dazu geführt, dass Besucher heute __________.<br>a. alle Kunstwerke vor Ort kennenlernen<br>b. ausschließlich mit digitaler Führung durch das Museum gehen dürfen<br>c. viele Kunstwerke online betrachten können</p>
-<p class="qitem">34. Als Ort des internationalen kulturellen Austauschs zeichnet sich das Palastmuseum besonders dadurch aus, dass es __________.<br>a. gemeinsame Ausstellungen mit ausländischen Museen organisiert<br>b. sich auf nationale Traditionen ohne äußere Einflüsse beschränkt<br>c. internationale Kontakte hauptsächlich zur Sicherung historischer Bestände pflegt</p>
-<hr>
-<div class="pagemark">📄 第 6 页</div>
-<h3>Text C</h3>
-<h4>Warum singt der Mensch?</h4>
-<p>Menschen singen seit Jahrtausenden, und bis heute ist nicht eindeutig geklärt, warum der Gesang überhaupt entstanden ist. Schon in der Antike versuchten Philosophen wie Platon, den Ursprung zu erklären. Sie vermuteten, dass starke Gefühle wie Aggression oder das Bedürfnis nach Harmonie den Menschen zum Singen brachten. In frühen Gesellschaften erfüllte Gesang tatsächlich wichtige Aufgaben: Er konnte Feinde oder Raubtiere abschrecken, diente als Ausdruck von Macht innerhalb der Gruppe und stärkte den sozialen Zusammenhalt bei gemeinschaftlichen Aktivitäten wie Arbeit oder Feierlichkeiten. Auch heute erfüllt Gesang eine soziale Funktion, was man etwa in Chören beobachten kann.</p>
-<p>Der amerikanische Musikforscher David Huron vertritt die Ansicht, dass Gesang vor allem aus sozialen Gründen entstand. Menschen seien auf stabile Beziehungen angewiesen und nutzten Musik, um Vertrauen und Zugehörigkeit zu schaffen. Als Beispiel nennt Huron die brasilianischen Mekranoti, ein indigenes Volk, bei dem gemeinsamer Gesang den Alltag prägt und die Gruppenidentität festigt.</p>
-<p>Eine andere Theorie stammt von Charles Darwin. Er verglich Gesang mit dem Verhalten von Tieren, besonders von Vögeln. Demnach hätten gute Sänger größere Chancen bei der Partnerwahl. Darwin glaubte sogar, dass Menschen schon sangen, bevor sie eine richtige Sprache entwickelten.</p>
-<p>Der Philosoph Carl Stumpf widersprach dieser Sicht. Er war überzeugt, dass Gesang aus der Sprache hervorging. Melodische, emotionale Sprachformen hätten sich Schritt für Schritt zu Gesang weiterentwickelt. Auch Denker wie Rousseau und Herder betonten den sprachlichen Ursprung. Bis heute ist die Frage offen, ob zuerst Sprache oder Gesang existierte. Die Forschung bleibt gespalten – ähnlich wie beim berühmten „Ei oder Huhn“-Problem.</p>
-<p><em>Aufgaben: Markieren Sie die richtigen Lösungen auf dem Antwortbogen.</em></p>
-<p><strong>35. Philosophen wie Platon vermuteten, dass der Mensch singt, weil __________.</strong></p>
-<ul>
-<li>a. Gesang in erster Linie zur reinen Unterhaltung verwendet wurde</li>
-<li>b. Gefühle wie Aggression oder der Wunsch nach Harmonie eine Rolle spielten</li>
-<li>c. Menschen damit Raubtiere absichtlich anlocken wollten</li>
-</ul>
-<p><strong>36. Der Text macht deutlich, dass Gesang schon in frühen Gesellschaften mehrere wichtige Funktionen erfüllte und auch heute noch eine soziale Rolle spielt, weil er __________.</strong></p>
-<ul>
-<li>a. sowohl der Machtdemonstration diente als auch den Zusammenhalt in der Gruppe stärkte</li>
-<li>b. damals fast ausschließlich zur individuellen Entspannung genutzt wurde</li>
-<li>c. weder für Schutz noch für soziale Bindungen eingesetzt wurde und nur selten in Gruppen vorkam</li>
-</ul>
-<p><strong>37. Nach David Huron entstand Gesang vor allem, um __________.</strong></p>
-<ul>
-<li>a. wissenschaftliche Theorien zu beweisen</li>
-<li>b. Tiere zu beruhigen</li>
-<li>c. den sozialen Zusammenhalt in Gruppen zu stärken</li>
-</ul>
-<p><strong>38. Die Mekranoti nutzen den täglichen Gesang, um __________.</strong></p>
-<ul>
-<li>a. ihre Identität als Gruppe auszudrücken</li>
-<li>b. sich mit anderen Stämmen zu verbinden</li>
-<li>c. Rituale ohne Gemeinschaft durchzuführen</li>
-</ul>
-<p><strong>39. Charles Darwin glaubte, dass Gesang zuerst entstand, weil __________.</strong></p>
-<ul>
-<li>a. Menschen damit schneller sprechen lernten</li>
-<li>b. gutes Singen Vorteile bei der Partnerwahl brachte</li>
-<li>c. die Kirche Gesang als Pflicht einführte</li>
-</ul>
-<p><strong>40. Carl Stumpf behauptete, dass Gesang aus __________ entstand.</strong></p>
-<ul>
-<li>a. der Entwicklung melodischer Sprache</li>
-</ul>
-<div class="pagemark">📄 第 7 页</div>
-<p class="qitem">b. religiösen Ritalen der frühen Menschen<br>c. Nachahmung der Laute von Vögeln</p>
-<h3>IV. Grammatik und Wortschatz (35%) (45 Minuten)</h3>
-<h4>A. Markieren Sie die Lösungen nach entsprechenden grammatischen Regeln auf dem Antwortbogen. (5P)</h4>
-<p class="qitem">41. Es ist üblich, __________ man bei einer Essenseinladung ein Geschenk mitbringt.<br>a. dass<br>b. ob<br>c. wie</p>
-<p class="qitem">42. Nach der Geburt __________ Tochter fühle ich mich immer glücklicher.<br>a. meine<br>b. meinen<br>c. meiner</p>
-<p class="qitem">43. Du siehst aber müde aus. __________ ich dir einen Kaffee machen?<br>a. Möchte<br>b. Muss<br>c. Soll</p>
-<p class="qitem">44. __________ einen Spielplatz baut und betreibt, muss dafür sorgen, dass er sicher ist.<br>a. Wie<br>b. Wer<br>c. Wo</p>
-<p class="qitem">45. König Ludwig II. von Bayern hat das Schloss Neuschwanstein bauen __________.<br>a. lässt<br>b. lassen<br>c. gelassen</p>
-<p class="qitem">46. __________ ich früher mehr Sport gemacht, wäre ich nicht so dick geworden.<br>a. Hätte<br>b. Wäre<br>c. Würde</p>
-<p class="qitem">47. Wir bitten Sie, die Rechnung innerhalb der __________ zehn Tage zu bezahlen.<br>a. gekommenen<br>b. kommenden<br>c. zu kommenden</p>
-<p class="qitem">48. Wenn man Julia __________ ihrem Traumberuf fragt, ist die Antwort fast immer „Malerin“.<br>a. nach<br>b. von<br>c. zu</p>
-<p class="qitem">49. __________ ich koche schnell Spaghetti, oder wir bestellen eine Pizza.<br>a. Sowohl<br>b. Weder<br>c. Entweder</p>
-<p class="qitem">50. Manche Auszubildenden müssen die Ausbildung abbrechen, __________ ihnen die finanziellen Mittel fehlen.<br>a. denn<br>b. weil<br>c. wegen</p>
-<h4>B. Bitte markieren Sie die Lösungen im Text A auf dem Antwortbogen und schreiben Sie die Lösungen vom Text B auch auf dem Antwortbogen. (10P)</h4>
-<h5>Text A</h5>
-<p><strong>Mehr Besucher in Büchereien</strong></p>
-<p>Die Menschen gehen häufiger in Büchereien. Im letzten Jahr gab (51) 110 Millionen Besuche in Büchereien. Das sind 8 Millionen mehr (52) im Jahr davor. Das hat der Deutsche Bibliotheksverband (53).</p>
-<p>„Öffentliche Bibliothek“ ist ein anderes (54) für Bücherei. Eine Sprecherin von dem Verband sagt: In öffentlichen Bibliotheken (55) sich vor allem viele Jugendliche. Viele (56) Menschen und Familien mit Kindern kommen auch gerne.</p>
-<p>In Büchereien kann man sich Bücher, E-Books, Hör-Bücher und Zeitschriften ausleihen und (57) sie nach einer bestimmten Zeit wieder zurückbringen. Man zahlt dafür nur einmal im Jahr einen (58). Mittlerweile kann man sich in einigen Bibliotheken auch (59) Sachen ausleihen. (60) Beispiel Werkzeuge, Musik-Instrumente oder Sport-Geräte.</p>
-<p class="qitem">51. a) es<br>b) da<br>c) das</p>
-<p class="qitem">52. a) so<br>b) wie<br>c) als</p>
-<p class="qitem">53. a) ausgenommen<br>b) ausgerechnet<br>c) ausgesucht</p>
-<p class="qitem">54. a) Werk<br>b) Wort<br>c) Begriff</p>
-<p class="qitem">55. a) treffen<br>b) trennen<br>c) treten</p>
-<p class="qitem">56. a) größere<br>b) kleinere<br>c) ältere</p>
-<div class="pagemark">📄 第 8 页</div>
-<h3>57. a) mag b) will c) muss</h3>
-<h3>58. a) Auftrag b) Beitrag c) Vertrag</h3>
-<h3>59. a) ungewöhnliche b) unmögliche c) unnötige</h3>
-<h3>60. a) Als b) Für c) Zum</h3>
-<h4>Text B</h4>
-<h4>Kann der Mensch Vitamine selbst produzieren?</h4>
-<p>Sowohl Tiere als (61) Pflanzen brauchen Vitamine, damit lebenswichtige Prozesse in den Zellen richtig ablaufen können. Pflanzen haben dabei einen Vorteil: Sie können die Vitamine, die sie (62), selbst herstellen. Der Mensch kann das nicht und (63) Vitamine über die Nahrung aufnehmen. Nur ein einziges Vitamin kann im menschlichen Körper gebildet (64): Vitamin D.</p>
-<p>Vitamin D ist wichtig (65) den Knochenstoffwechsel. Es wird in unserer Haut gebildet, unter dem Einfluss von Sonnenlicht. (66) wir selbst ausreichend Vitamin D produzieren wollen, genügt pro Tag eine halbe (67) Sonnenlicht auf das Gesicht und die unbedeckten Unterarme. (68) sich allerdings viel in geschlossenen Räumen aufhält oder selten das Haus verlässt, könnte zu (69) Vitamin D produzieren. Warum dem Menschen die Fähigkeit (70), sich seine Vitamine selbst zu produzieren, ist noch nicht endgültig geklärt.</p>
-<hr>
-<p><strong>Bitte ergänzen Sie die passenden Wörter! Schreiben Sie sie dann auf den Antwortbogen. (10P)</strong></p>
-<p class="qitem">71. In Deutschland sind fast zehn Millionen Hauskatzen angemeldet. Ich hoffe, dass alle diese Tiere ein glückliches ______ führen.</p>
-<p class="qitem">72. Ich habe schon seit Jahren davon ______, als Diplomat beim Auswärtigen Amt zu arbeiten.</p>
-<p class="qitem">73. Wenn Lena gestresst ist, ______ sie gerne Sport. Danach fühlt sie sich immer besser.</p>
-<p class="qitem">74. Manche Medikamente bekommt man in der Apotheke nur ______ Rezept.</p>
-<p class="qitem">75. Die Gäste der Jugendherberge werden getrennt nach männlichen und ______ Personen untergebracht.</p>
-<p class="qitem">76. Ich habe an meiner Universität mit Basketball angefangen. Dieses Spiel hat mir von ______ an Spaß gemacht.</p>
-<p class="qitem">77. Mein Bruder hat sich dafür ______, eine Ausbildung als Techniker zu beginnen.</p>
-<p class="qitem">78. Mein Vater surft jeden Tag im ______ und liest online Zeitungsartikel.</p>
-<p class="qitem">79. Auf der ______ nach neuen beruflichen Möglichkeiten haben viele Stellenanzeigen mein Interesse geweckt.</p>
-<p class="qitem">80. Es ist ungesund, wenn man immer nur am Schreibtisch sitzt. Natürlich sollte man sich ein bisschen ______.</p>
-<p class="qitem">81. Ich bin in einer Theatergruppe aktiv und habe schon in verschiedenen Rollen auf der ______ gestanden.</p>
-<p class="qitem">82. Ich habe mich mit meinem Vater gestritten. Jetzt habe ich ein ______ Gewissen.</p>
-<p class="qitem">83. Tägliche Bewegung ist gesund. Wenn ich pro Tag 800 Meter laufe, ist mein Ziel ______.</p>
-<p class="qitem">84. Für meine Karriere brauche ich professionelle Vorschläge. Deshalb habe ich Kontakt zu einem Berater ______.</p>
-<div class="pagemark">📄 第 9 页</div>
-<p class="qitem">85. Jedes Kind hat seine eigenen _______ und Schwächen und braucht daher individuelle Anerkennung.</p>
-<p class="qitem">86. Als Unternehmer ist Herr Wang daran _______, in jeder Situation ökonomisch zu denken.</p>
-<p class="qitem">87. Frau Kittmann ist die Leiterin und muss für das ganze Projekt _______ sein.</p>
-<p class="qitem">88. Ich kaufe mir abends das Frühstück für den _______ Tag. So kann ich 15 Minuten länger schlafen.</p>
-<p class="qitem">89. Aus gesundheitlichen _______ dürfen die Betten im Studentenwohnheim nur mit Bettwäsche benutzt werden.</p>
-<p class="qitem">90. Die Eltern möchten immer für ihre Kinder da sein und ihnen helfen, wenn sie ihre _______ brauchen.</p>
-<p><strong>D. Formen Sie die unterstrichenen Ausdrücke so um, dass sie zu den vorgegebenen Satzteilen passen. Sinn und Zeit sollen nicht verändert werden. Schreiben Sie die Sätze auf den Antwortbogen. (5P)</strong></p>
-<p><em>Beispiel: Die Uhr ist nicht mehr zu reparieren.</em> → <em>Die Uhr kann/muss nicht mehr repariert werden.</em></p>
-<p class="qitem">91. Durch den Ausbau erneuerbarer Energien wurde der CO₂-Ausstoß in China gesenkt.</p>
-<p>→ Dadurch, _______, wurde der CO₂-Ausstoß in China gesenkt.</p>
-<p class="qitem">92. Die Technologie, die in diesem Start-up entwickelt wurde, hat bereits mehrere Preise gewonnen.</p>
-<p>→ Die _______ Technologie hat bereits mehrere Preise gewonnen.</p>
-<p class="qitem">93. Die Senkung der Kosten um 15% ist uns gelungen, indem wir effizientere Prozesse eingeführt haben.</p>
-<p>→ Die Senkung der Kosten um 15% ist uns durch _______ gelungen.</p>
-<p class="qitem">94. Die Bäume müssen dann per LKW in die Stadt transportiert werden.</p>
-<p>→ Die Bäume _______ dann per LKW in die Stadt _______.</p>
-<p class="qitem">95. Weil die Bäume Schatten werfen, wird der Boden nicht durch die Sonneneinstrahlung ausgetrocknet.</p>
-<p>→ Wenn _______, würde der Boden durch die Sonneneinstrahlung ausgetrocknet.</p>
-<p><strong>E. Suchen Sie die Fehler (an zwei Stellen in jeder Aufgabe) in den folgenden Sätzen heraus und schreiben Sie die richtigen Sätze auf den Antwortbogen. (5P)</strong></p>
-<p class="qitem">96. Ich habe gestern eines Buch gekauft und es mein Freund geliehen.</p>
-<p class="qitem">97. Die Entscheidung, ins Ausland zu studieren, eröffnet neue akademische Perspektiven, die die persönliche Entwicklung fördern kann.</p>
-<p class="qitem">98. Beim Deutschlernen muss man regelmäßig üben und sich mit Muttersprachler unterhalten, auch wenn man macht viele Fehler.</p>
-<p class="qitem">99. Die modernen Technologien ermöglicht es uns, mit Menschen auf die ganzen Welt in Kontakt zu bleiben.</p>
-<p class="qitem">100. Künstliche Intelligenz, der in vielen Bereichen bereits eingesetzt wird, könnte in Zukunft noch mehr Aufgaben übernommen.</p>
-<div class="pagemark">📄 第 10 页</div>
-<h3>V. Schriftlicher Ausdruck (15%) (40 Minuten)</h3>
-<h2>Tägliche Zeit am Smartphone</h2>
-<p>Durchschnittliche Nutzungsdauer* (in Minuten)</p>
-<table><thead><tr><th>Altersgruppe</th><th>Minuten</th></tr></thead><tbody>
-<tr><td>16 bis 29 Jahre</td><td>212</td></tr>
-<tr><td>39 bis 49 Jahre</td><td>158</td></tr>
-<tr><td>50 bis 64 Jahre</td><td>148</td></tr>
-<tr><td>Ab 65 Jahre</td><td>103</td></tr>
-</tbody></table>
-<p>*In Deutschland; Quelle: Bitkom 2025 aktiv</p>
-<h4>Aufgabe</h4>
-<p>Sie sehen in einem Internetforum das obige Schaubild. Schreiben Sie bitte im Forum einen Text zum Thema „Tägliche Zeit am Smartphone“. Gehen Sie dabei auf folgende Punkte ein:</p>
-<p class="qitem">1. Beschreiben Sie, was Sie in dem Schaubild erfahren haben.<br>2. Wie nutzen Sie Ihr Smartphone?<br>3. Wie kann man die Nutzungszeit von Smartphones einschränken?</p>
-<p>Ihr Text sollte 150 – 180 Wörter haben.</p>
-<p style="margin:36px 0 8px;color:var(--text2);font-size:.8em;text-align:center">
-原文由考生提供的扫描件逐页 OCR 转录，仅作教学参考 · © 版权归考试中心所有
-</p>
-</div>
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Prüfung für das Germanistik-Grundstudium</p>
+    <h1>PGG 2026 A · 完整真题原文</h1>
+    <p class="sub">心态与健康 / 康德与故宫 / 手机时长图表作文</p>
+    <div class="meta"><div class="big-num">170<span>分钟总时长</span></div><div class="big-num">5<span>板块</span></div><div class="big-num">100<span>题号</span></div><div class="big-num">10<span>页扫描件</span></div></div>
+  </div>
+</header>
+<nav class="toc"><div class="wrap">
+  <span class="sep">/</span><a href="#diktat">Ⅰ 听写</a><span class="sep">/</span><a href="#hoerverstehen">Ⅱ 听力</a><span class="sep">/</span><a href="#leseverstehen">Ⅲ 阅读</a><span class="sep">/</span><a href="#grammatik">Ⅳ 语法词汇</a><span class="sep">/</span><a href="#schreiben">Ⅴ 写作</a><span class="sep">/</span><a href="#kollation">校勘记录</a>
+  <span class="back"><a href="2023.html">2023</a>, <a href="2024.html">2024</a>, <a href="2025.html">2025</a>, <a href="2026.html" style="background:#eef3f7;font-weight:700">2026</a></span>
+  <a class="back" href="./">← 回总库</a>
+</div></nav>
+<main class="wrap">
+<p class="de"><strong>PRÜFUNG FÜR DAS GERMANISTIK-GRUNDSTUDIUM (PGG 2026 A)</strong></p>
+<div class="note">本文档由扫描件 <code>PGG_2026_A.pdf</code>（共 10 页，纯图像无文字层）逐页 OCR 还原：德语原文逐字照录，不改写、不翻译、不补全。</div>
+<div class="note">OCR 管线：视觉逐字转录模型双遍独立识别（1500px / 2000px 两档），行级交叉核对；疑点做局部放大定向复读。</div>
+<div class="note">标注约定：<code>⚠️</code> = OCR 存疑处（附另一读法）；<code>〔整理者注：…〕</code> = 整理者补注；卷面印刷特征（含印误）一律照录。</div>
+<div class="note">试卷本身不含答案，答案见配套分析文档 <code>2026_a_analysis.md</code>。</div>
+<h2 class="sec" id="overview">试卷总览</h2>
+<div class="tw"><table>
+<tr><th>项目</th><th>内容</th></tr>
+<tr><td>试卷</td><td>PRÜFUNG FÜR DAS GERMANISTIK-GRUNDSTUDIUM（PGG 2026 A）</td></tr>
+<tr><td>来源</td><td>PGG_2026_A.pdf（10 页扫描件）</td></tr>
+<tr><td>板块分值</td><td>Ⅰ 10% ｜ Ⅱ 20% ｜ Ⅲ 20% ｜ Ⅳ 35% ｜ Ⅴ 15%</td></tr>
+<tr><td>考试时长</td><td>15 + 20 + 50 + 45 + 40 = 170 分钟</td></tr>
+<tr><td>作文题目</td><td>Tägliche Zeit am Smartphone（图表作文）</td></tr>
+</table></div>
+<div class="tw"><table>
+<tr><th>板块</th><th>内容</th><th>分值</th><th>题量</th><th>时间</th></tr>
+<tr><td>Ⅰ Diktat</td><td>A) 填空听写（8 空）／ B) 全文逐句听写</td><td>10%</td><td>8 + 1 篇</td><td>15 min</td></tr>
+<tr><td>Ⅱ Hörverstehen</td><td>Teil 1 Alltagssituationen（1-6）／ Teil 2 Kurztexte（7-20，4 篇）</td><td>20%</td><td>6 + 14</td><td>20 min</td></tr>
+<tr><td>Ⅲ Leseverstehen</td><td>Teil 1 标题匹配（21-24）／ Teil 2 长文 3 篇（25-40）</td><td>20%</td><td>4 + 16</td><td>50 min</td></tr>
+<tr><td>Ⅳ Grammatik und Wortschatz</td><td>A 语法选择（41-50）／ B 完形填空（51-70）／ C 词汇填空（71-90）／ D 句子改写（91-95）／ E 改错（96-100）</td><td>35%</td><td>60</td><td>45 min</td></tr>
+<tr><td>Ⅴ Schriftlicher Ausdruck</td><td>图表作文 150-180 Wörter</td><td>15%</td><td>1 篇</td><td>40 min</td></tr>
+</table></div>
+<hr class="hr">
+<div class="pgdiv">｜第 1 页｜</div>
+<p class="de">PRÜFUNG FÜR DAS GERMANISTIK-GRUNDSTUDIUM</p>
+<p class="de">(PGG 2026 A)</p>
+<div class="card"><h3>分值结构</h3><svg viewBox="0 0 880 80" width="100%" height="86" role="img" aria-label="五大板块分值结构"><rect x="0.0" y="0" width="88.0" height="54" fill="#1a5276"/><text x="44.0" y="32.0" font-size="17" fill="#ffffff" text-anchor="middle">10%</text><text x="44.0" y="72" font-size="12" fill="#4a4a5a" text-anchor="middle">Ⅰ 听写</text><rect x="88.0" y="0" width="176.0" height="54" fill="#2e86c1"/><text x="176.0" y="32.0" font-size="17" fill="#ffffff" text-anchor="middle">20%</text><text x="176.0" y="72" font-size="12" fill="#4a4a5a" text-anchor="middle">Ⅱ 听力</text><rect x="264.0" y="0" width="176.0" height="54" fill="#d4a017"/><text x="352.0" y="32.0" font-size="17" fill="#ffffff" text-anchor="middle">20%</text><text x="352.0" y="72" font-size="12" fill="#4a4a5a" text-anchor="middle">Ⅲ 阅读</text><rect x="440.0" y="0" width="308.0" height="54" fill="#7d6b4f"/><text x="594.0" y="32.0" font-size="17" fill="#ffffff" text-anchor="middle">35%</text><text x="594.0" y="72" font-size="12" fill="#4a4a5a" text-anchor="middle">Ⅳ 语法词汇</text><rect x="748.0" y="0" width="132.0" height="54" fill="#a9c0d2"/><text x="814.0" y="32.0" font-size="17" fill="#ffffff" text-anchor="middle">15%</text><text x="814.0" y="72" font-size="12" fill="#4a4a5a" text-anchor="middle">Ⅴ 写作</text></svg></div><div class="card"><h3>板块与扫描页对应</h3><svg viewBox="0 0 340 62" width="100%" height="62" role="img" aria-label="十页扫描件的板块分布"><rect x="2" y="0" width="30" height="46" rx="4" fill="#2e86c1"/><text x="17.0" y="27.0" font-size="13" fill="#ffffff" text-anchor="middle">Ⅱ</text><text x="17.0" y="59" font-size="10" fill="#4a4a5a" text-anchor="middle">1</text><rect x="36" y="0" width="30" height="46" rx="4" fill="#2e86c1"/><text x="51.0" y="27.0" font-size="13" fill="#ffffff" text-anchor="middle">Ⅱ</text><text x="51.0" y="59" font-size="10" fill="#4a4a5a" text-anchor="middle">2</text><rect x="70" y="0" width="30" height="46" rx="4" fill="#d4a017"/><text x="85.0" y="27.0" font-size="13" fill="#ffffff" text-anchor="middle">Ⅲ</text><text x="85.0" y="59" font-size="10" fill="#4a4a5a" text-anchor="middle">3</text><rect x="104" y="0" width="30" height="46" rx="4" fill="#d4a017"/><text x="119.0" y="27.0" font-size="13" fill="#ffffff" text-anchor="middle">Ⅲ</text><text x="119.0" y="59" font-size="10" fill="#4a4a5a" text-anchor="middle">4</text><rect x="138" y="0" width="30" height="46" rx="4" fill="#d4a017"/><text x="153.0" y="27.0" font-size="13" fill="#ffffff" text-anchor="middle">Ⅲ</text><text x="153.0" y="59" font-size="10" fill="#4a4a5a" text-anchor="middle">5</text><rect x="172" y="0" width="30" height="46" rx="4" fill="#d4a017"/><text x="187.0" y="27.0" font-size="13" fill="#ffffff" text-anchor="middle">Ⅲ</text><text x="187.0" y="59" font-size="10" fill="#4a4a5a" text-anchor="middle">6</text><rect x="206" y="0" width="30" height="46" rx="4" fill="#7d6b4f"/><text x="221.0" y="27.0" font-size="13" fill="#ffffff" text-anchor="middle">Ⅳ</text><text x="221.0" y="59" font-size="10" fill="#4a4a5a" text-anchor="middle">7</text><rect x="240" y="0" width="30" height="46" rx="4" fill="#7d6b4f"/><text x="255.0" y="27.0" font-size="13" fill="#ffffff" text-anchor="middle">Ⅳ</text><text x="255.0" y="59" font-size="10" fill="#4a4a5a" text-anchor="middle">8</text><rect x="274" y="0" width="30" height="46" rx="4" fill="#7d6b4f"/><text x="289.0" y="27.0" font-size="13" fill="#ffffff" text-anchor="middle">Ⅳ</text><text x="289.0" y="59" font-size="10" fill="#4a4a5a" text-anchor="middle">9</text><rect x="308" y="0" width="30" height="46" rx="4" fill="#a9c0d2"/><text x="323.0" y="27.0" font-size="13" fill="#ffffff" text-anchor="middle">Ⅴ</text><text x="323.0" y="59" font-size="10" fill="#4a4a5a" text-anchor="middle">10</text></svg></div>
+<h2 class="sec" id="diktat">Ⅰ Diktat (10%) · 15 Minuten</h2>
+<h3 class="sub">A) 填空听写 · Lückendiktat</h3>
+<p class="de">A) Füllen Sie die Lücken aus!</p>
+<p class="de">Sie hören den folgenden Text dreimal in normalem Tempo und dann füllen Sie die Lücken aus.</p>
+<p class="de">„Man ist so alt, wie man sich fühlt“ ist mehr als ein Spruch. Wenn Sie sich jung 1)________, haben</p>
+<p class="de">Sie ein geringeres Risiko für Krankheiten und leben sogar länger. Ihr Körper folgt Ihrem</p>
+<p class="de">2)________. Studien zeigen: Menschen mit einem negativen Bild vom Älterwerden leiden häufiger</p>
+<p class="de">3)________ Depressionen, Stürzen und Krankheiten. Die Einstellung zum Leben beeinflusst,</p>
+<p class="de">4)________ stark Stress Ihrem Körper schadet. Menschen, die sich 5)________ fühlen,</p>
+<p class="de">reagieren gelassener. Wenn Sie glauben, dass Sie noch viel können, tun Sie 6)________ mehr: Sie</p>
+<p class="de">bewegen sich mehr, essen gesünder und bleiben offen für 7)________. Das stärkt nicht nur Ihre</p>
+<p class="de">8)________, sondern auch Ihre soziale, emotionale und geistige Fitness.</p>
+<h3 class="sub">B) 全文听写 · Satzdiktat</h3>
+<p class="de">B) Schreiben Sie den Text Satz für Satz auf den Antwortbogen!</p>
+<p class="de">*Sie hören den folgenden Text dreimal. Zuerst hören Sie sich den ganzen Text einmal an. Dann hören Sie</p>
+<p class="de">sich den Text mit Satzzeichen noch einmal an. Die längeren Sätze werden in Teilen vorgelesen. Zuletzt</p>
+<p class="de">hören Sie den ganzen Text noch einmal.*</p>
+<h2 class="sec" id="hoerverstehen">Ⅱ Hörverstehen (20%) · 20 Minuten</h2>
+<h3 class="sub">Teil 1 Alltagssituationen · 日常生活场景（1-6，6P）</h3>
+<p class="de">Sie hören im Folgenden 6 Minidialoge nur einmal. Markieren Sie die Lösungen auf dem Antwortbogen. (6P)</p>
+<p class="q">1. a. Spazieren gehen. b. Ins Kino gehen. c. Ins Restaurant gehen.</p>
+<p class="q">2. a. Mit der U-Bahn. b. Mit dem Bus. c. Mit dem Fahrrad.</p>
+<p class="q">3. a. Um 9 Uhr. b. Um 10 Uhr. c. Um 11 Uhr.</p>
+<p class="q">4. a. Zum Bio-Markt. b. Zur Straßenbahn. c. Zur Post.</p>
+<p class="q">5. a. Vom Sportplatz. b. Vom Supermarkt. c. Vom Bahnhof.</p>
+<p class="q">6. a. 20 bis 30. b. 30 bis 40. c. 40 bis 50.</p>
+<h3 class="sub">Teil 2 Kurztexte · 短篇听力（7-20，14P）</h3>
+<p class="de">Nun hören Sie vier Texte. Jeden Text hören Sie zuerst einmal, dann lesen Sie die Aufgaben und danach hören Sie ihn noch einmal. Markieren Sie die richtigen Lösungen auf dem Antwortbogen. (14P)</p>
+<p class="de"><strong>Text A</strong> · Eine Radiosendung über gesunde Ernährung (a=richtig, b=falsch)</p>
+<p class="q">7. Viele Menschen haben Zeit zum Kochen, essen aber trotzdem Fast Food.</p>
+<p class="q">8. Für eine schnelle und gesunde Mahlzeit muss man das Essen gut planen.</p>
+<p class="q">9. Zum Frühstück empfiehlt Frau Dr. Becker ein Joghurt mit Haferflocken und Obst.</p>
+<p class="q">10. Dunkle Schokolade wird im Gespräch als Beispiel für einen ungesunden Snack genannt.</p>
+<div class="pgdiv">｜第 2 页｜</div>
+<p class="de"><strong>Text B</strong> · Das blaue Sofa</p>
+<p class="q">11. Die Erzählerin möchte das Sofa weggeben, weil es ________.</p>
+<p class="opt">a. kaputt ist</p>
+<p class="opt">b. nicht mehr bequem ist</p>
+<p class="opt">c. nicht in die neue Wohnung passt</p>
+<p class="q">12. Die ältere Dame nimmt das Sofa nicht, weil ________.</p>
+<p class="opt">a. ihre Katzen die Farbe nicht mögen</p>
+<p class="opt">b. es viel Geld kostet</p>
+<p class="opt">c. es zu schwer ist</p>
+<p class="q">13. Der Hund des jungen Mannes ________.</p>
+<p class="opt">a. bellte das Sofa an</p>
+<p class="opt">b. schlief auf dem Sofa ein</p>
+<p class="opt">c. spielte unter dem Sofa</p>
+<p class="q">14. Am Ende hat ________ das Geld bekommen.</p>
+<p class="opt">a. der junge Mann</p>
+<p class="opt">b. die Erzählerin</p>
+<p class="opt">c. das Tierheim</p>
+<p class="de"><strong>Text C</strong> · Smart Home: Das intelligente Zuhause</p>
+<p class="q">15. Heizungen in einem Smart Home können ________.</p>
+<p class="opt">a. automatisch Milch nachbestellen</p>
+<p class="opt">b. den Staubsaugerroboter starten</p>
+<p class="opt">c. sich automatisch ausschalten, um Energie zu sparen</p>
+<p class="q">16. ________ ist ein Kritikpunkt an der Smart Home-Technik.</p>
+<p class="opt">a. Die totale Netzabhängigkeit</p>
+<p class="opt">b. Das Risiko bei der Datensicherheit</p>
+<p class="opt">c. Die komplizierte Bedienung</p>
+<p class="q">17. Viele Firmen glauben, dass Smart Homes in zehn Jahren ________.</p>
+<p class="opt">a. intelligenter und hauptsächlich von jungen Menschen genutzt werden</p>
+<p class="opt">b. technisch einfacher, aber auch viel teurer als heute sein werden</p>
+<p class="opt">c. fast in jedem Haushalt normal und verbreitet sein werden</p>
+<p class="de"><strong>Text D</strong> · Die Neue Seidenstraße: Brücke für Handel und Kultur</p>
+<p class="q">18. Die Neue Seidenstraße ist auch als ________ bekannt.</p>
+<p class="opt">a. Handelsweg-Initiative</p>
+<p class="opt">b. Wissenstransfer-Programm</p>
+<p class="opt">c. „Gürtel und Straße“-Initiative</p>
+<p class="q">19. Ein wichtiges Ziel der Neuen Seidenstraße ist es, ________.</p>
+<p class="opt">a. Europa mit Afrika zu verbinden</p>
+<p class="opt">b. Porzellan herzustellen</p>
+<p class="opt">c. den Handel einfacher und schneller zu machen</p>
+<p class="q">20. Ein zentraler Punkt der Initiative neben wirtschaftlicher Zusammenarbeit ist ________.</p>
+<p class="opt">a. Dialog und Verständnis zwischen Kulturen zu fördern</p>
+<p class="opt">b. Militärkooperationen mit anderen Ländern zu haben</p>
+<p class="opt">c. Sportwettbewerbe zu organisieren</p>
+<div class="pgdiv">｜第 3 页｜</div>
+<h2 class="sec" id="leseverstehen">Ⅲ Leseverstehen (20%) · 50 Minuten</h2>
+<h3 class="sub">Teil 1 Überschriften zuordnen · 标题匹配（21-24，4P）</h3>
+<p class="de">A. Lesen Sie die folgenden Überschriften und Texte. Ordnen Sie dann den Texten (21-22) die passende Überschrift (a-d) zu. (2P)</p>
+<p class="de">Überschriften</p>
+<p class="opt">a. Mit Wohnungsangeboten gegen den Fachkräftemangel</p>
+<p class="opt">b. Ahaus – eine digitale Stadt</p>
+<p class="opt">c. Mehr Wohnungen bauen und an die Fachkräfte verkaufen</p>
+<p class="opt">d. Ahaus – eine Stadt ohne Menschen</p>
+<p class="q">21. Wer in die Stadt Ahaus reist, dem fallen sofort die blau-weißen Sticker mit QR-Codes auf. Man findet sie überall. Über die Codes sind Einkäufe, Buchungen und Ausleihen digital und bargeldlos möglich. Auch ins Hotel kommt man ganz ohne menschlichen Kontakt: Das Smartphone dient als Schlüssel, Fernbedienung, Zahlungsmittel und sogar Lichtschalter.</p>
+<p class="q">22. Die Mieten sind teuer geworden. Auch Fachkräfte können sich viele Wohnungen in deutschen Großstädten nicht mehr leisten. Dabei suchen Unternehmen dringend Mitarbeitende. Einige Firmen bieten nun selbst Wohnungen an. Die Stadtwerke München kaufen und bauen nun selbst Wohnraum für ihre Mitarbeitenden. 1500 Wohnungen haben sie schon, bis 2030 sollen es 3000 sein.</p>
+<p class="de">B. Lesen Sie die folgenden Überschriften und Texte. Ordnen Sie dann den Texten (23-24) die passende Überschrift (a-d) zu. (2P)</p>
+<p class="de">Überschriften</p>
+<p class="opt">a. Kultur: Die goldene Zeit ist da.</p>
+<p class="opt">b. Klimaschutz: kein Thema vor der Wahl 2025</p>
+<p class="opt">c. Kultur: Die goldenen Zeiten sind vorbei.</p>
+<p class="opt">d. Klimaschutz: immer wichtiger für die Wahl</p>
+<p class="q">23. Deutschland im Februar 2025: Tausende Menschen demonstrieren für mehr Klimaschutz. Doch verglichen mit 2019, als etwa 1,4 Millionen Menschen auf die Straße gingen, ist die Bewegung viel schwächer geworden. „Es sind definitiv harte Zeiten für den Klima-Aktivismus im Moment“, sagt Demonstrant Pit Terjung. Er kritisiert, dass das Thema vor der Bundestagswahl am 23. Februar kaum vorkommt, obwohl „[wir] … gerade das heißeste Jahr der Menschheit hinter uns [haben]“. Zwischen 2021 und 2023 ist die Unterstützung für die Klimabewegung in Deutschland laut Umfragen um die Hälfte gesunken. In der Öffentlichkeit wurden Klimaaktivistinnen und -aktivisten von Helden im Jahr 2019 zu Schurken heute.</p>
+<p class="q">24. Kultur ist wichtig. Und in Deutschland spielt staatliche Kulturförderung eine bedeutende Rolle. Bis vor Kurzem schien die Welt noch in Ordnung zu sein: Zwischen 2010 und 2020 sind die öffentlichen Kulturausgaben stetig gestiegen. Doch damit ist nun Schluss. Denn Gemeinden, Landkreise und Bundesländer müssen sparen. Berlin hat seinen Haushalt um drei Milliarden Euro gekürzt, 130 Millionen davon bei den Kulturausgaben. Die Folgen sind gravierend: Die Berliner „Schaubühne“ rechnet noch 2025 mit ihrer Insolvenz. Das „Berliner Ensemble“ muss Produktionen streichen. Die „Volksbühne“ fürchtet um ihre Spielfähigkeit. Betroffen ist neben den großen, traditionsreichen Häusern auch die Freie Szene.</p>
+<div class="pgdiv">｜第 4 页｜</div>
+<h3 class="sub">Teil 2 Lesetexte · 长文阅读（25-40，16P）</h3>
+<p class="de">Lesen Sie die folgenden Texte und markieren Sie die richtigen Lösungen auf dem Antwortbogen. (16P)</p>
+<p class="de"><strong>Text A</strong> · **Immanuel Kant</p>
+<p class="de">In Königsberg wurde Immanuel Kant am 22. April 1724 geboren. Seine Vorfahren, so hat der Philosoph später gern betont, stammten aus Schottland, doch ist diese Auffassung heute als falsch nachgewiesen. Neun Jahre, von 1732 bis 1740, besuchte Immanuel Kant das Collegium Fridericianum. Hier lernte er, was zur Allgemeinbildung der Zeit und zur Vorbereitung für die Universität nötig war. Dazu gehörte vor allem eine gründliche Kenntnis der alten Sprachen, besonders von Latein.</p>
+<p class="de">Im selben Jahr, 1740, besuchte der 16-jährige Kant die Königsberger Universität. Mit dem Beginn der Studienzeit legte der junge Kant entschieden die Richtung fest, in der sein späteres Leben verlaufen sollte: Philosophie, Mathematik und Naturwissenschaft. Schon im Alter von 21 Jahren war er außerordentlicher Professor für Logik und Metaphysik an der Uni Königsberg. Danach, von 1746 bis 1755, war Kant als Hauslehrer bei drei verschiedenen Familien tätig.</p>
+<p class="de">Das Jahr 1770 war in zweifacher Hinsicht ein Wendepunkt im Leben Kants. Als akademischer Lehrer hatte er mit der ordentlichen Professur die höchste Stufe erreicht. Zur gleichen Zeit stand er an der Schwelle eigener denkerischer Leistung, die ihn nach zehn Jahren intensiver Arbeit zur <em>Kritik der reinen Vernunft</em> führen sollte.</p>
+<p class="de">Kants ganzes Leben hatte einen genauen Tagesrhythmus, der keinerlei Abwandlung zuließ. Es wird erzählt, dass sein Spaziergang um 7 Uhr mit einer solchen Pünktlichkeit erfolgte, dass verschiedene Königsberger ihre Uhren nach dem „Umlauf“ des Philosophen gestellt hätten. Nur ein einziges Mal hat Kant diesen Spaziergang verpasst, weil er an diesem Tag Rousseaus <em>Emile</em> gelesen habe und von der Lektüre so ergriffen worden sei, dass er das Buch ohne Unterbrechung bis zu Ende las.</p>
+<p class="de">Aufgaben: Markieren Sie die richtigen Lösungen auf dem Antwortbogen.</p>
+<p class="q">25. Immanuel Kant ist ________.</p>
+<p class="opt">a. Vorfahre</p>
+<p class="opt">b. König</p>
+<p class="opt">c. Philosoph</p>
+<p class="q">26. Am Collegium Fridericianum lernte Kant ________.</p>
+<p class="opt">a. vor allem moderne Fremdsprachen</p>
+<p class="opt">b. besonders die alten Sprachen wie Latein</p>
+<p class="opt">c. alles zur Vorbereitung für die Mittelschule</p>
+<p class="q">27. Als Kant 16 Jahre alt war, ________.</p>
+<p class="opt">a. besuchte er die Königsberger Universität</p>
+<p class="opt">b. wurde er außerordentlicher Professor für Logik und Metaphysik</p>
+<p class="opt">c. studierte er Philosophie, Mathematik und Sozialwissenschaft</p>
+<p class="q">28. Warum war das Jahr 1770 ein wichtiger Wendepunkt für Kant?</p>
+<p class="opt">a. Er beendete seine Tätigkeit als Hauslehrer.</p>
+<p class="opt">b. Er wurde ordentlicher Professor und begann seine wichtigste Denkphase.</p>
+<p class="opt">c. Er veröffentlichte sofort die <em>Kritik der reinen Vernunft</em>.</p>
+<p class="q">29. Warum machte Kant nur einmal keinen Spaziergang um 7 Uhr?</p>
+<p class="opt">a. Weil er krank war.</p>
+<p class="opt">b. Weil er Besuch hatte.</p>
+<p class="opt">c. Weil er Rousseaus <em>Emile</em> ohne Unterbrechung las.</p>
+<div class="pgdiv">｜第 5 页｜</div>
+<p class="de"><strong>Text B</strong> · **Vom Kaiserpalast zum digitalen Welterbe</p>
+<p class="de">2025 feiert das chinesische Palastmuseum sein 100-jähriges Bestehen. Es befindet sich in der ehemaligen Verbotenen Stadt in Beijing, dem früheren Machtzentrum der Ming- und Qing-Dynastien. Mit über 600 Jahren Geschichte, einer Fläche von 72 Hektar und fast zwei Millionen Sammlungsobjekten gehört es heute zu den bedeutendsten Kulturerbestätten der Welt. Der Wandel vom abgeschlossenen Kaiserpalast zu einem modernen Museum zeigt, wie sich der Umgang mit kulturellem Erbe verändert hat.</p>
+<p class="de">Am 10. Oktober 1925 wurde die Verbotene Stadt erstmals als Museum für die Öffentlichkeit geöffnet. In den folgenden Jahrzehnten stand das Palastmuseum vor großen Herausforderungen. Während des Krieges in den 1930er und 1940er Jahren wurden zehntausende Kunstwerke in andere Regionen Chinas gebracht, um sie zu schützen. Nach 1949 investierte der Staat stark in die Restaurierung der Gebäude und in den Aufbau moderner Lagerräume.</p>
+<p class="de">In den letzten Jahren hat das Museum besonders auf die Digitalisierung gesetzt. Bereits vor etwa zwanzig Jahren begann die systematische digitale Erfassung der Bestände. Heute sind über eine Million Objekte digitalisiert, viele davon online zugänglich. Besucher können Gemälde, Porzellan oder kunstvolle Metallarbeiten am Bildschirm betrachten. Moderne Technologien wie intelligente Suchfunktionen erleichtern den Zugang zu diesen Schätzen.</p>
+<p class="de">Das Palastmuseum versteht sich inzwischen nicht nur als Ausstellungsort, sondern auch als Ort des internationalen Austauschs. Durch gemeinsame Ausstellungen mit ausländischen Museen bringt es unterschiedliche Kulturen miteinander ins Gespräch. So ist aus der einst verbotenen Stadt ein offenes, digitales Museum geworden, das Vergangenheit und Gegenwart miteinander verbindet und das kulturelle Erbe für kommende Generationen bewahrt.</p>
+<p class="de">Aufgaben: Markieren Sie die richtigen Lösungen auf dem Antwortbogen.</p>
+<p class="q">30. Im Text wird das Jahr 2025 als bedeutend beschrieben, weil das Palastmuseum ________.</p>
+<p class="opt">a. seit hundert Jahren als öffentliches Museum existiert</p>
+<p class="opt">b. nach über sechshundert Jahren Geschichte erstmals internationale Anerkennung erhalten hat</p>
+<p class="opt">c. im digitalen Zeitalter erstmals restauriert und der Öffentlichkeit zugänglich gemacht wurde</p>
+<p class="q">31. Während der Kriegsjahre in der ersten Hälfte des 20. Jahrhunderts bestand eine zentrale Aufgabe des Palastmuseums darin, ________.</p>
+<p class="opt">a. neue Ausstellungsräume für Besucher zu eröffnen</p>
+<p class="opt">b. wertvolle Kunstschätze in sichere Regionen zu verlagern</p>
+<p class="opt">c. internationale Ausstellungen im Ausland zu organisieren</p>
+<p class="q">32. Nach 1949 lag ein Schwerpunkt der Arbeit des Palastmuseums darin, ________.</p>
+<p class="opt">a. historische Gebäude zu restaurieren und moderne Räume zur Aufbewahrung aufzubauen</p>
+<p class="opt">b. die Sammlungsobjekte vollständig ins Ausland zu verlagern</p>
+<p class="opt">c. den Museumsbetrieb für mehrere Jahrzehnte einzustellen</p>
+<p class="q">33. Die Digitalisierung der Sammlungen hat dazu geführt, dass Besucher heute ________.</p>
+<p class="opt">a. alle Kunstwerke vor Ort kennenlernen</p>
+<p class="opt">b. ausschließlich mit digitaler Führung durch das Museum gehen dürfen</p>
+<p class="opt">c. viele Kunstwerke online betrachten können</p>
+<p class="q">34. Als Ort des internationalen kulturellen Austauschs zeichnet sich das Palastmuseum besonders dadurch aus, dass es ________.</p>
+<p class="opt">a. gemeinsame Ausstellungen mit ausländischen Museen organisiert</p>
+<p class="opt">b. sich auf nationale Traditionen ohne äußere Einflüsse beschränkt</p>
+<p class="opt">c. internationale Kontakte hauptsächlich zur Sicherung historischer Bestände pflegt</p>
+<div class="pgdiv">｜第 6 页｜</div>
+<p class="de"><strong>Text C</strong></p>
+<p class="de">Warum singt der Mensch?</p>
+<p class="de">Menschen singen seit Jahrtausenden, und bis heute ist nicht eindeutig geklärt, warum der Gesang überhaupt entstanden ist. Schon in der Antike versuchten Philosophen wie Platon, den Ursprung zu erklären. Sie vermuteten, dass starke Gefühle wie Aggression oder das Bedürfnis nach Harmonie den Menschen zum Singen brachten. In frühen Gesellschaften erfüllte Gesang tatsächlich wichtige Aufgaben: Er konnte Feinde oder Raubtiere abschrecken, diente als Ausdruck von Macht innerhalb der Gruppe und stärkte den sozialen Zusammenhalt bei gemeinschaftlichen Aktivitäten wie Arbeit oder Feierlichkeiten. Auch heute erfüllt Gesang eine soziale Funktion, was man etwa in Chören beobachten kann.</p>
+<p class="de">Der amerikanische Musikforscher David Huron vertritt die Ansicht, dass Gesang vor allem aus sozialen Gründen entstand. Menschen seien auf stabile Beziehungen angewiesen und nutzten Musik, um Vertrauen und Zugehörigkeit zu schaffen. Als Beispiel nennt Huron die brasilianischen Mekranoti, ein indigenes Volk, bei dem gemeinsamer Gesang den Alltag prägt und die Gruppenidentität festigt.</p>
+<p class="de">Eine andere Theorie stammt von Charles Darwin. Er verglich Gesang mit dem Verhalten von Tieren, besonders von Vögeln. Demnach hätten gute Sänger größere Chancen bei der Partnerwahl. Darwin glaubte sogar, dass Menschen schon sangen, bevor sie eine richtige Sprache entwickelten.</p>
+<p class="de">Der Philosoph Carl Stumpf widersprach dieser Sicht. Er war überzeugt, dass Gesang aus der Sprache hervorging. Melodische, emotionale Sprachformen hätten sich Schritt für Schritt zu Gesang weiterentwickelt. Auch Denker wie Rousseau und Herder betonten den sprachlichen Ursprung. Bis heute ist die Frage offen, ob zuerst Sprache oder Gesang existierte. Die Forschung bleibt gespalten – ähnlich wie beim berühmten „Ei oder Huhn“-Problem.</p>
+<p class="de">Aufgaben: Markieren Sie die richtigen Lösungen auf dem Antwortbogen.</p>
+<p class="q">35. Philosophen wie Platon vermuteten, dass der Mensch singt, weil ________.</p>
+<p class="opt">a. Gesang in erster Linie zur reinen Unterhaltung verwendet wurde</p>
+<p class="opt">b. Gefühle wie Aggression oder der Wunsch nach Harmonie eine Rolle spielten</p>
+<p class="opt">c. Menschen damit Raubtiere absichtlich anlocken wollten</p>
+<p class="q">36. Der Text macht deutlich, dass Gesang schon in frühen Gesellschaften mehrere wichtige Funktionen erfüllte und auch heute noch eine soziale Rolle spielt, weil er ________.</p>
+<p class="opt">a. sowohl der Machtdemonstration diente als auch den Zusammenhalt in der Gruppe stärkte</p>
+<p class="opt">b. damals fast ausschließlich zur individuellen Entspannung genutzt wurde</p>
+<p class="opt">c. weder für Schutz noch für soziale Bindungen eingesetzt wurde und nur selten in Gruppen vorkam</p>
+<p class="q">37. Nach David Huron entstand Gesang vor allem, um ________.</p>
+<p class="opt">a. wissenschaftliche Theorien zu beweisen</p>
+<p class="opt">b. Tiere zu beruhigen</p>
+<p class="opt">c. den sozialen Zusammenhalt in Gruppen zu stärken</p>
+<p class="q">38. Die Mekranoti nutzen den täglichen Gesang, um ________.</p>
+<p class="opt">a. ihre Identität als Gruppe auszudrücken</p>
+<p class="opt">b. sich mit anderen Stämmen zu verbinden</p>
+<p class="opt">c. Rituale ohne Gemeinschaft durchzuführen</p>
+<p class="q">39. Charles Darwin glaubte, dass Gesang zuerst entstand, weil ________.</p>
+<p class="opt">a. Menschen damit schneller sprechen lernten</p>
+<p class="opt">b. gutes Singen Vorteile bei der Partnerwahl brachte</p>
+<p class="opt">c. die Kirche Gesang als Pflicht einführte</p>
+<p class="q">40. Carl Stumpf behauptete, dass Gesang aus ________ entstand.</p>
+<p class="opt">a. der Entwicklung melodischer Sprache</p>
+<div class="pgdiv">｜第 7 页｜</div>
+<p class="opt">b. religiösen Ritualen der frühen Menschen</p>
+<p class="opt">c. Nachahmung der Laute von Vögeln</p>
+<h2 class="sec" id="grammatik">Ⅳ Grammatik und Wortschatz (35%) · 45 Minuten</h2>
+<h3 class="sub">A) Grammatik-Auswahl · 语法选择（41-50，5P）</h3>
+<p class="de">A. Markieren Sie die Lösungen nach entsprechenden grammatischen Regeln auf dem Antwortbogen. (5P)</p>
+<p class="q">41. Es ist üblich, ________ man bei einer Essenseinladung ein Geschenk mitbringt.</p>
+<p class="opt">a. dass b. ob c. wie</p>
+<p class="q">42. Nach der Geburt ________ Tochter fühle ich mich immer glücklicher.</p>
+<p class="opt">a. meine b. meinen c. meiner</p>
+<p class="q">43. Du siehst aber müde aus. ________ ich dir einen Kaffee machen?</p>
+<p class="opt">a. Möchte b. Muss c. Soll</p>
+<p class="q">44. ________ einen Spielplatz baut und betreibt, muss dafür sorgen, dass er sicher ist.</p>
+<p class="opt">a. Wie b. Wer c. Wo</p>
+<p class="q">45. König Ludwig II. von Bayern hat das Schloss Neuschwanstein bauen ________.</p>
+<p class="opt">a. lässt b. lassen c. gelassen</p>
+<p class="q">46. ________ ich früher mehr Sport gemacht, wäre ich nicht so dick geworden.</p>
+<p class="opt">a. Hätte b. Wäre c. Würde</p>
+<p class="q">47. Wir bitten Sie, die Rechnung innerhalb der ________ zehn Tage zu bezahlen.</p>
+<p class="opt">a. gekommenen b. kommenden c. zu kommenden</p>
+<p class="q">48. Wenn man Julia ________ ihrem Traumberuf fragt, ist die Antwort fast immer „Malerin“.</p>
+<p class="opt">a. nach b. von c. zu</p>
+<p class="q">49. ________ ich koche schnell Spaghetti, oder wir bestellen eine Pizza.</p>
+<p class="opt">a. Sowohl b. Weder c. Entweder</p>
+<p class="q">50. Manche Auszubildenden müssen die Ausbildung abbrechen, ________ ihnen die finanziellen Mittel fehlen.</p>
+<p class="opt">a. denn b. weil c. wegen</p>
+<h3 class="sub">B) Lückentexte · 完形填空（51-70，10P）</h3>
+<p class="de">B. Bitte markieren Sie die Lösungen im Text A auf dem Antwortbogen und schreiben Sie die Lösungen vom Text B auch auf dem Antwortbogen. (10P)</p>
+<p class="de"><strong>Text A</strong></p>
+<p class="de">Mehr Besucher in Büchereien</p>
+<p class="de">Die Menschen gehen häufiger in Büchereien. Im letzten Jahr gab (51) 110 Millionen Besuche in Büchereien. Das sind 8 Millionen mehr (52) im Jahr davor. Das hat der Deutsche Bibliotheksverband (53).</p>
+<p class="de">„Öffentliche Bibliothek“ ist ein anderes (54) für Bücherei. Eine Sprecherin von dem Verband sagt: In öffentlichen Bibliotheken (55) sich vor allem viele Jugendliche. Viele (56) Menschen und Familien mit Kindern kommen auch gerne.</p>
+<p class="de">In Büchereien kann man sich Bücher, E-Books, Hör-Bücher und Zeitschriften ausleihen und (57) sie nach einer bestimmten Zeit wieder zurückbringen. Man zahlt dafür nur einmal im Jahr einen (58). Mittlerweile kann man sich in einigen Bibliotheken auch (59) Sachen ausleihen. (60) Beispiel Werkzeuge, Musik-Instrumente oder Sport-Geräte.</p>
+<p class="q">51. a) es b) da c) das</p>
+<p class="q">52. a) so b) wie c) als</p>
+<p class="q">53. a) ausgenommen b) ausgerechnet c) ausgesucht</p>
+<p class="q">54. a) Werk b) Wort c) Begriff</p>
+<p class="q">55. a) treffen b) trennen c) treten</p>
+<p class="q">56. a) größere b) kleinere c) ältere</p>
+<div class="pgdiv">｜第 8 页｜</div>
+<p class="q">57. a) mag b) will c) muss</p>
+<p class="q">58. a) Auftrag b) Beitrag c) Vertrag</p>
+<p class="q">59. a) ungewöhnliche  b) unmögliche  c) unnötige</p>
+<p class="q">60. a) Als b) Für c) Zum</p>
+<p class="de"><strong>Text B</strong></p>
+<p class="de">Kann der Mensch Vitamine selbst produzieren?</p>
+<p class="de">Sowohl Tiere als (61) Pflanzen brauchen Vitamine, damit lebenswichtige Prozesse in den Zellen richtig ablaufen können. Pflanzen haben dabei einen Vorteil: Sie können die Vitamine, die sie (62), selbst herstellen. Der Mensch kann das nicht und (63) Vitamine über die Nahrung aufnehmen. Nur ein einziges Vitamin kann im menschlichen Körper gebildet (64): Vitamin D.</p>
+<p class="de">Vitamin D ist wichtig (65) den Knochenstoffwechsel. Es wird in unserer Haut gebildet, unter dem Einfluss von Sonnenlicht. (66) wir selbst ausreichend Vitamin D produzieren wollen, genügt pro Tag eine halbe (67) Sonnenlicht auf das Gesicht und die unbedeckten Unterarme. (68) sich allerdings viel in geschlossenen Räumen aufhält oder selten das Haus verlässt, könnte zu (69) Vitamin D produzieren. Warum dem Menschen die Fähigkeit (70), sich seine Vitamine selbst zu produzieren, ist noch nicht endgültig geklärt.</p>
+<h3 class="sub">C) Wortschatz-Ergänzung · 词汇填空（71-90，10P）</h3>
+<div class="note">〔整理者注：卷面此处印作 „B. Bitte ergänzen Sie…“，与上一部分编号重复，按体例归为 C 部分。〕</div>
+<p class="de">B. Bitte ergänzen Sie die passenden Wörter! Schreiben Sie sie dann auf den Antwortbogen. (10P)</p>
+<p class="q">71. In Deutschland sind fast zehn Millionen Hauskatzen angemeldet. Ich hoffe, dass alle diese Tiere ein glückliches ________ führen.</p>
+<p class="q">72. Ich habe schon seit Jahren davon ________, als Diplomat beim Auswärtigen Amt zu arbeiten.</p>
+<p class="q">73. Wenn Lena gestresst ist, ________ sie gerne Sport. Danach fühlt sie sich immer besser.</p>
+<p class="q">74. Manche Medikamente bekommt man in der Apotheke nur ________ Rezept.</p>
+<p class="q">75. Die Gäste der Jugendherberge werden getrennt nach männlichen und ________ Personen untergebracht.</p>
+<p class="q">76. Ich habe an meiner Universität mit Basketball angefangen. Dieses Spiel hat mir von ________ an Spaß gemacht.</p>
+<p class="q">77. Mein Bruder hat sich dafür ________, eine Ausbildung als Techniker zu beginnen.</p>
+<p class="q">78. Mein Vater surft jeden Tag im ________ und liest online Zeitungsartikel.</p>
+<p class="q">79. Auf der ________ nach neuen beruflichen Möglichkeiten haben viele Stellenanzeigen mein Interesse geweckt.</p>
+<p class="q">80. Es ist ungesund, wenn man immer nur am Schreibtisch sitzt. Natürlich sollte man sich ein bisschen ________.</p>
+<p class="q">81. Ich bin in einer Theatergruppe aktiv und habe schon in verschiedenen Rollen auf der ________ gestanden.</p>
+<p class="q">82. Ich habe mich mit meinem Vater gestritten. Jetzt habe ich ein ________ Gewissen.</p>
+<p class="q">83. Tägliche Bewegung ist gesund. Wenn ich pro Tag 800 Meter laufe, ist mein Ziel ________.</p>
+<p class="q">84. Für meine Karriere brauche ich professionelle Vorschläge. Deshalb habe ich Kontakt zu einem Berater ________.</p>
+<div class="pgdiv">｜第 9 页｜</div>
+<p class="q">85. Jedes Kind hat seine eigenen ________ und Schwächen und braucht daher individuelle Anerkennung.</p>
+<p class="q">86. Als Unternehmer ist Herr Wang daran ________, in jeder Situation ökonomisch zu denken.</p>
+<p class="q">87. Frau Kittmann ist die Leiterin und muss für das ganze Projekt ________ sein.</p>
+<p class="q">88. Ich kaufe mir abends das Frühstück für den ________ Tag. So kann ich 15 Minuten länger schlafen.</p>
+<p class="q">89. Aus gesundheitlichen ________ dürfen die Betten im Studentenwohnheim nur mit Bettwäsche benutzt werden.</p>
+<p class="q">90. Die Eltern möchten immer für ihre Kinder da sein und ihnen helfen, wenn sie ihre ________ brauchen.</p>
+<h3 class="sub">D) Satzumformung · 句子改写（91-95，5P）</h3>
+<p class="de">D. Formen Sie die unterstrichenen Ausdrücke so um, dass sie zu den vorgegebenen Satzteilen passen. Sinn und Zeit sollen nicht verändert werden. Schreiben Sie die Sätze auf den Antwortbogen. (5P)</p>
+<p class="de">Beispiel: Die Uhr ist nicht mehr zu reparieren. → Die Uhr kann/muss nicht mehr repariert werden.</p>
+<p class="q">91. Durch den Ausbau erneuerbarer Energien wurde der CO₂-Ausstoß in China gesenkt.</p>
+<p class="de">→ Dadurch, ________, wurde der CO₂-Ausstoß in China gesenkt.</p>
+<p class="q">92. Die Technologie, die in diesem Start-up entwickelt wurde, hat bereits mehrere Preise gewonnen.</p>
+<p class="de">→ Die ________ Technologie hat bereits mehrere Preise gewonnen.</p>
+<p class="q">93. Die Senkung der Kosten um 15% ist uns gelungen, indem wir effizientere Prozesse eingeführt haben.</p>
+<p class="de">→ Die Senkung der Kosten um 15% ist uns durch ________ gelungen.</p>
+<p class="q">94. Die Bäume müssen dann per LKW in die Stadt transportiert werden.</p>
+<p class="de">→ Die Bäume ________ dann per LKW in die Stadt ________.</p>
+<p class="q">95. Weil die Bäume Schatten werfen, wird der Boden nicht durch die Sonneneinstrahlung ausgetrocknet.</p>
+<p class="de">→ Wenn ________, würde der Boden durch die Sonneneinstrahlung ausgetrocknet.</p>
+<h3 class="sub">E) Fehlerkorrektur · 改错（96-100，5P）</h3>
+<p class="de">E. Suchen Sie die Fehler (an zwei Stellen in jeder Aufgabe) in den folgenden Sätzen heraus und schreiben Sie die richtigen Sätze auf den Antwortbogen. (5P)</p>
+<p class="q">96. Ich habe gestern eines Buch gekauft und es mein Freund geliehen.</p>
+<p class="q">97. Die Entscheidung, ins Ausland zu studieren, eröffnet neue akademische Perspektiven, die die persönliche Entwicklung fördern kann.</p>
+<p class="q">98. Beim Deutschlernen muss man regelmäßig üben und sich mit Muttersprachler unterhalten, auch wenn man macht viele Fehler.</p>
+<p class="q">99. Die modernen Technologien ermöglicht es uns, mit Menschen auf die ganzen Welt in Kontakt zu bleiben.</p>
+<p class="q">100. Künstliche Intelligenz, der in vielen Bereichen bereits eingesetzt wird, könnte in Zukunft noch mehr Aufgaben übernommen.</p>
+<div class="pgdiv">｜第 10 页｜</div>
+<h2 class="sec" id="schreiben">Ⅴ Schriftlicher Ausdruck (15%) · 40 Minuten</h2>
+<p class="de">________</p>
+<p class="de">Tägliche Zeit</p>
+<p class="de">am Smartphone</p>
+<p class="de">Durchschnittliche Nutzungsdauer* (in Minuten)</p>
+<p class="de">16 bis 29 Jahre 212</p>
+<p class="de">39 bis 49 Jahre 158</p>
+<p class="de">50 bis 64 Jahre 148</p>
+<p class="de">Ab 65 Jahre 103</p>
+<p class="de">*In Deutschland; Quelle: Bitkom 2025 aktiv</p>
+<p class="de">________</p>
+<p class="de">Aufgabe</p>
+<p class="de">Sie sehen in einem Internetforum das obige Schaubild. Schreiben Sie bitte im Forum einen Text zum Thema „Tägliche Zeit am Smartphone“. Gehen Sie dabei auf folgende Punkte ein:</p>
+<p class="q">1. Beschreiben Sie, was Sie in dem Schaubild erfahren haben.</p>
+<p class="q">2. Wie nutzen Sie Ihr Smartphone?</p>
+<p class="q">3. Wie kann man die Nutzungszeit von Smartphones einschränken?</p>
+<p class="de">Ihr Text sollte 150 – 180 Wörter haben.</p>
+<hr class="hr">
+<h2 class="sec" id="kollation">校勘记录</h2>
+<p class="de">本文档相对 OCR 原始输出的改动（均为逐字符校对结果，不含任何改写）：</p>
+<p class="q">1. „A) Füllen Sie die Lücken aus.“ → „…aus!“；„…auf den Antwortbogen.“ → „…auf den Antwortbogen!“（p01，定向中性复读确认行末为感叹号）</p>
+<p class="q">2. „Ritalen“ → „Ritualen“（p07 第 40 题选项 b，以第一遍为准）</p>
+<p class="q">3. Ⅳ-C 部分卷面印作 „B. Bitte ergänzen Sie…“（与 Ⅳ-B 编号重复），本文按体例归为 C 部分并就地加注。</p>
+<p class="q">4. 第一遍 OCR 在 p05 末尾出现的「页码：5」、第二遍在 p06 出现的「右侧内容：」均为模型自注，非卷面文字，已剔除。</p>
+<div class="note">核对方式：同一页两次独立 OCR（分辨率不同）逐行比对；凡两遍读法不一致处，取局部放大后的定向复读结果；仍不能定论者就地标注 ⚠️ 并给出两种读法，不作猜测。</div>
+</main>
+<footer>
+  <div class="wrap">
+    <p>逐页 OCR 还原，德语原文逐字照录，不改写、不翻译。<code>⚠️</code> 为存疑标注，<code>〔整理者注：…〕</code> 为整理者补注。</p>
+    <p>四年真题原文：<a href="2023.html">2023</a> ｜ <a href="2024.html">2024</a> ｜ <a href="2025.html">2025</a> ｜ <a href="2026.html">2026</a>
+     ｜ <a href="./">回考点知识库</a></p>
+    <p class="zh">仅供教学参考，版权归考试中心所有。</p>
+  </div>
+</footer>
 </body>
 </html>

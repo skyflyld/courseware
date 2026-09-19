@@ -3,303 +3,438 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PGG 2024 A卷 · 完整真题原文</title>
+<title>PGG 2024 A · 完整真题原文</title>
 <style>
-
-:root {
-  --bg: #f8f6f0;
-  --card: #ffffff;
-  --accent: #1a5276;
-  --accent2: #2e86c1;
-  --gold: #d4a017;
-  --text: #1a1a2e;
-  --text2: #4a4a5a;
-  --border: #e0ddd5;
-  --tag-g: #e8f4f8;
-  --tag-v: #f0e6f6;
-  --tag-r: #e8f5e9;
-  --tag-w: #fff3e0;
-  --tag-l: #fce4ec;
+:root{
+  --bg:#f8f6f0; --card:#ffffff; --accent:#1a5276; --accent2:#2e86c1; --gold:#d4a017;
+  --text:#1a1a2e; --text2:#4a4a5a; --border:#e0ddd5; --soft:#faf9f4;
+  --de-bg:#f3f2ea; --opt:#5a5a6a;
 }
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
-.container { max-width: 960px; margin: 0 auto; padding: 20px; }
-.header { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; padding: 40px 20px; text-align: center; border-radius: 16px; margin-bottom: 30px; }
-.header h1 { font-size: 2em; margin-bottom: 8px; }
-.header p { opacity: .85; }
-.header .badge { display: inline-block; background: rgba(255,255,255,.15); padding: 4px 14px; border-radius: 20px; font-size: .8em; margin-top: 12px; }
-.tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px; }
-.tab-btn { padding: 10px 20px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; cursor: pointer; font-size: .9em; transition: .2s; }
-.tab-btn:hover { background: #eef0eb; }
-.tab-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
-.section { display: none; }
-.section.active { display: block; }
-.section-title { font-size: 1.5em; color: var(--accent); margin-bottom: 16px; padding-bottom: 8px; border-bottom: 3px solid var(--accent); }
-.card { background: var(--card); border-radius: 12px; padding: 20px; margin-bottom: 16px; border: 1px solid var(--border); }
-.card h3 { font-size: 1.1em; margin-bottom: 10px; color: var(--accent2); }
-.tag { display: inline-block; padding: 2px 10px; border-radius: 10px; font-size: .75em; margin: 2px; }
-.tag-g { background: var(--tag-g); color: #1a5276; }
-.tag-v { background: var(--tag-v); color: #6a1b9a; }
-.tag-r { background: var(--tag-r); color: #2e7d32; }
-.tag-w { background: var(--tag-w); color: #e65100; }
-.tag-l { background: var(--tag-l); color: #c62828; }
-table { width: 100%; border-collapse: collapse; margin: 12px 0; }
-th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
-th { background: var(--accent); color: #fff; font-size: .85em; }
-tr:hover { background: #f5f5f0; }
-.de { background: #f0f0e8; padding: 2px 6px; border-radius: 4px; font-size: .9em; }
-.zh { color: var(--text2); font-size: .85em; }
-.beispiel { background: #fafaf5; border-left: 4px solid var(--accent2); padding: 12px 16px; margin: 8px 0; border-radius: 0 8px 8px 0; font-size: .9em; }
-.cloud { display: flex; flex-wrap: wrap; gap: 8px; }
-.cloud span { padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border); background: var(--card); font-size: .85em; }
-.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 16px 0; }
-.stat-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; text-align: center; }
-.stat-card .num { font-size: 1.8em; font-weight: 700; color: var(--accent2); }
-.stat-card .label { font-size: .8em; color: var(--text2); }
-.bar-chart { margin: 12px 0; }
-.bar-item { display: flex; align-items: center; margin: 6px 0; gap: 10px; }
-.bar-label { width: 120px; font-size: .85em; flex-shrink: 0; }
-.bar-fill { height: 24px; border-radius: 12px; min-width: 4px; }
-.collapse-header { cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 10px 0; user-select: none; }
-.collapse-header:hover { color: var(--accent2); }
-.collapse-body { overflow: hidden; max-height: 0; transition: max-height .3s ease; }
-.collapse-body.open { max-height: 2000px; }
-.collapse-icon { transition: transform .3s; }
-.collapse-icon.open { transform: rotate(180deg); }
-.filter-bar { margin: 12px 0; }
-.filter-btn { padding: 6px 14px; border: 1px solid var(--border); border-radius: 16px; background: var(--card); cursor: pointer; font-size: .82em; margin: 3px; }
-.filter-btn.active { background: var(--accent2); color: #fff; border-color: var(--accent2); }
-.year23, .year24, .year25, .year26 { display: none; }
-.theme-toggle { position: fixed; bottom: 20px; right: 20px; width: 44px; height: 44px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 1.2em; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,.15); z-index: 100; border: none; }
-@media (max-width: 640px) {
-  .header h1 { font-size: 1.5em; }
-  .tab-btn { padding: 8px 12px; font-size: .8em; }
-  .bar-label { width: 80px; font-size: .75em; }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans SC',sans-serif;background:var(--bg);color:var(--text);line-height:1.75}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.hero{position:relative;background:linear-gradient(135deg,#1a5276,#2e86c1);color:#fff;padding:36px 20px 28px;text-align:center}
+.hero .eyebrow{font-size:.72em;letter-spacing:.16em;opacity:.85;text-transform:uppercase}
+.hero h1{font-size:1.9em;margin:6px 0;animation:fadeUp .6s ease both}
+.hero .sub{opacity:.9;font-size:.9em;animation:fadeUp .6s .08s ease both}
+.hero .meta{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px;animation:fadeUp .6s .16s ease both}
+.hero .big-num{background:rgba(255,255,255,.20);border:1px solid rgba(255,255,255,.34);border-radius:10px;padding:8px 15px;font-size:1.35em;font-weight:700;line-height:1.15}
+.hero .big-num span{display:block;font-size:.58em;font-weight:500;color:#eaf2f8;letter-spacing:.05em;margin-top:3px}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+.toc{position:sticky;top:0;z-index:20;background:var(--card);border-bottom:1px solid var(--border);box-shadow:0 2px 10px rgba(26,82,118,.06)}
+.toc .wrap{display:flex;flex-wrap:wrap;gap:4px;align-items:center;padding-top:8px;padding-bottom:8px}
+.toc a{color:var(--accent);text-decoration:none;font-size:.85em;padding:6px 10px;border-radius:8px;transition:background .2s ease,color .2s ease}
+.toc a:hover{background:#eef3f7}
+.toc .sep{color:var(--border);padding:0 2px}
+.toc .back{margin-left:auto;color:var(--text2)}
+main{padding-top:30px;padding-bottom:60px}
+h2.sec{font-size:1.35em;color:var(--accent);margin:38px 0 14px;padding-bottom:8px;border-bottom:3px solid var(--accent)}
+h2.sec:first-child{margin-top:0}
+h3.sub{font-size:1.05em;color:var(--accent2);margin:26px 0 10px}
+p{margin:8px 0}
+p.de{font-size:.97em}
+p.q{margin:12px 0 0;font-weight:600}
+p.opt{padding-left:18px;color:var(--opt);font-size:.94em;margin:2px 0}
+.note{background:#fff9e8;border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 14px;margin:12px 0;font-size:.9em}
+.zh{color:var(--text2);font-size:.9em}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;margin:14px 0}
+.card h3{margin-top:0}
+.tw{overflow-x:auto;margin:12px 0;border:1px solid var(--border);border-radius:10px;background:var(--card)}
+table{width:100%;border-collapse:collapse;font-size:.88em}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+th{background:var(--accent);color:#fff;font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:none}
+.pgdiv{border-top:1px dashed var(--border);margin:24px 0 6px;padding-top:6px;font-size:.75em;color:var(--text2);letter-spacing:.08em}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.var-chip{background:var(--de-bg);border:1px solid var(--border);border-radius:20px;padding:4px 12px;font-size:.82em;color:var(--accent)}
+.hr{border:none;border-top:1px solid var(--border);margin:26px 0}
+footer{border-top:1px solid var(--border);padding:20px;text-align:center;color:var(--text2);font-size:.82em}
+footer a{color:var(--accent)}
+@media(max-width:640px){
+  .hero h1{font-size:1.45em}
+  .hero .big-num{font-size:1.15em;padding:7px 11px}
+  .toc .back{margin-left:0}
+  table{font-size:.82em}
 }
-
-.yearnav { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:18px; font-size:.9em; }
-.yearnav a { padding:6px 14px; border:1px solid var(--border); border-radius:16px; background:var(--card); color:var(--accent); text-decoration:none; }
-.yearnav a.cur { background:var(--accent); color:#fff; border-color:var(--accent); }
-.container { max-width: 900px; }
-.pagemark { margin:26px 0 8px; padding:6px 12px; background:var(--tag-g); color:var(--accent);
-  border-radius:8px; font-size:.78em; letter-spacing:.5px; }
-h1 { font-size:1.7em; color:var(--accent); margin:6px 0 14px; }
-h2 { font-size:1.35em; color:var(--accent); margin:26px 0 10px; padding-bottom:6px; border-bottom:2px solid var(--border); }
-h3 { font-size:1.12em; color:var(--accent2); margin:20px 0 8px; }
-h4 { font-size:1em; color:var(--text); margin:14px 0 6px; }
-p, li { line-height:1.75; }
-ol, ul { margin:8px 0 8px 22px; }
-blockquote { border-left:3px solid var(--accent2); background:#fafaf5; padding:10px 14px; border-radius:0 8px 8px 0;
-  color:var(--text2); font-size:.88em; margin:10px 0; }
-code { background:#f0f0e8; padding:1px 5px; border-radius:4px; font-size:.9em; }
-hr { border:none; border-top:1px dashed var(--border); margin:20px 0; }
-.qitem { background:var(--card); border:1px solid var(--border); border-radius:10px;
-  padding:12px 16px; margin:8px 0; line-height:1.9; }
-.qitem strong { color:var(--accent); }
 </style>
 </head>
 <body>
-<div class="container">
-<nav class="yearnav">
-<a href="index.html">← 返回考点知识库</a>
-<a href="2023.html">PGG 2023</a><a href="2024.html" class="cur">PGG 2024</a><a href="2025.html">PGG 2025</a><a href="2026.html">PGG 2026</a>
-</nav>
-<h2>PGG 2024 年 A 卷 · 完整真题（原文逐字转录）</h2>
-<blockquote>来源：考生提供的扫描件 <code>skyflyld/pgg-raw/PGG_2024_A.pdf</code>（10 页）</blockquote>
-<blockquote>转录：逐页德文 OCR（DeepSeek V4.1 Flash 原生视觉，dpi=200）</blockquote>
-<blockquote>纪律：逐字原文，未翻译、未改写；无法辨认处标 <code>[?]</code>；不确定处不补全</blockquote>
-<blockquote>生成：2026-09-18 23:42 UTC</blockquote>
-<div class="pagemark">📄 第 1 页</div>
-<h3>©版权归考试中心所有</h3>
-<h2>PRÜFUNG FÜR DAS GERMANISTIK-GRUNDSTUDIUM</h2>
-<h3>(PGG 2024 A)</h3>
-<h4>I. Diktat (10%) (15 Minuten)</h4>
-<h5>A) Füllen Sie die Lücken aus. (4P)</h5>
-<p><em>Sie hören den folgenden Text dreimal und dann füllen Sie die Lücken aus.</em></p>
-<p>Laut Statistischem Bundesamt studierten derzeit rund 223.300 1) __________ in Deutschland in Teilzeit. Das seien 7.560 Personen weniger als 2) __________ Vorjahr, wie aus einem Bericht des 3) __________ „Centrums für Hochschulentwicklung“ (CHE) hervorgeht. Damit wäre der 4) __________ von Studierenden in Teilzeit leicht gesunken, 5) __________ von 7,8 auf 7,6 Prozent. Dem CHE-Bericht zufolge befinden sich die meisten Teilzeitstudierenden in Hamburg, 6) __________ von Nordrhein-Westfalen und Mecklenburg-Vorpommern. Die meisten Teilzeitstudierenden unter allen Hochschulen bundesweit seien nach dem Bericht an der FernUniversität in Hagen 7) __________. Rund die Hälfte aller Teilzeitstudierenden studiert an privaten Hochschulen, obwohl diese insgesamt nur 12,6 Prozent aller Studierenden in Deutschland 8) __________.</p>
-<h5>B) Schreiben Sie den Text Satz für Satz auf den Antwortbogen. (6P)</h5>
-<p><em>Sie hören den folgenden Text dreimal. Zuerst hören Sie sich den ganzen Text einmal an. Dann hören Sie sich den Text mit Satzzeichen noch einmal an. Die längeren Sätze werden in Teilen vorgelesen. Zuletzt hören Sie den ganzen Text noch einmal.</em></p>
-<hr>
-<h4>II. Hörverstehen (20%) (20 Minuten)</h4>
-<h5>Teil 1 Alltagssituationen</h5>
-<p><em>Sie hören im Folgenden 6 Minidialoge nur einmal. Markieren Sie die Lösungen auf dem Antwortbogen. (6P)</em></p>
-<p class="qitem">1. a. Um vier.<br>b. Um halb vier.<br>c. Um halb fünf.<br>2. a. In der Kommode.<br>b. In der Tasche.<br>c. In der Schublade.<br>3. a. Es regnet.<br>b. Es schneit.<br>c. Das Wetter ist schön.<br>4. a. 6 Euro.<br>b. 10 Euro.<br>c. 20 Euro.<br>5. a. Er hat keinen Fernseher bestellt.<br>b. Er hat eine Bestätigung bekommen.<br>c. Er hat keinen Fernseher bekommen.<br>6. a. Über die Nachlässigkeit der neuen Sekretärin.<br>b. Über die Unpünktlichkeit der neuen Sekretärin.<br>c. Über die Unhöflichkeit der neuen Sekretärin.</p>
-<div class="pagemark">📄 第 2 页</div>
-<h3>Teil 2 Kurztexte</h3>
-<p>Nun hören Sie vier Texte. Jeden Text hören Sie zuerst einmal, dann lesen Sie die Aufgaben und danach hören Sie ihn noch einmal. Markieren Sie die richtigen Lösungen auf dem Antwortbogen. (14P)</p>
-<h4>Text A WG mit Opa oder Oma (a=richtig, b=falsch)</h4>
-<p class="qitem">7. In Uni-Städten können die Studierenden leicht ein Zimmer finden.<br>8. Frau Fischer ist 79 Jahre alt.<br>9. Der Student, der bei Frau Fischer wohnt, kommt aus Südafrika.<br>10. Die Studierenden und die alten Menschen kommen zumeist gut miteinander aus.</p>
-<h4>Text B Beim Arzt</h4>
-<p class="qitem">11. Frau Marburg fühlt sich nicht wohl seit ________.<br>a. zwei Tagen<br>b. einem Monat<br>c. einer Woche<br>12. Frau Marburg leidet unter ________.<br>a. Appetitlosigkeit<br>b. Bauchweh<br>c. Schlaflosigkeit<br>13. Der Arzt stellt fest, dass Frau Marburg ________ hat.<br>a. eine Lungenentzündung<br>b. eine Erkältung<br>c. einen Herzinfarkt<br>14. Der Arzt rät Frau Marburg, ________.<br>a. weniger zu rauchen<br>b. sich das Rauchen abzugewöhnen<br>c. mit dem Alkohol aufzuhören</p>
-<h4>Text C Ein Gespräch</h4>
-<p class="qitem">15. Die Frau hat ________.<br>a. eine Weltreise in elf Tagen gemacht<br>b. am Freitagnachmittag eine Weltreise begonnen<br>c. während des ganzen Fluges von Frankfurt nach Bangkok geschlafen<br>16. Am Samstagmorgen ________.<br>a. sind die Frau und ihr Mann in Bangkok angekommen<br>b. mussten die Frau und ihr Mann ein super Hotel suchen<br>c. ist die Frau im Hotel geblieben<br>17. Am Samstagabend haben die Frau und ihr Mann ________.<br>a. eine Bootsfahrt gemacht<br>b. im Restaurant gegessen<br>c. schließlich im Hotel gegessen</p>
-<h4>Text D Ein Erbe des Xuan-Papiers in Anhui</h4>
-<p class="qitem">18. Das Xuan-Papier stammt aus der ________.<br>a. Han-Zeit und hat eine lange Geschichte<br>b. Tang-Zeit und hat eine über 1000-jährige Geschichte<br>c. Jin-Zeit und hat eine über 1500-jährige Geschichte<br>19. Wann wurde die Herstellung vom Xuan-Papier zum immateriellen Weltkulturerbe erklärt?<br>a. 2006.<br>b. 2009.<br>c. 2010.<br>20. Li Ming ________.<br>a. lässt sein Unternehmen jedes Jahr etwa 700 Tonnen Xuan-Papier produzieren<br>b. hat sich um eine Stelle bei einer Internetfirma beworben<br>c. hat zwei Jahre nach seinem Studienabschluss eine Firma gegründet</p>
-<div class="pagemark">📄 第 3 页</div>
-<h3>III. Leseverstehen (20%) (50 Minuten)</h3>
-<h4>Teil 1</h4>
-<h5>A. Lesen Sie die folgenden Überschriften und Texte. Ordnen Sie zu. (2P)</h5>
-<p>Überschriften</p>
-<p class="qitem">a. Zahl der Familien mit vielen Kindern sinkt<br>b. Die Familie verliert in Deutschland an Bedeutung<br>c. Kinder leiden unter der Trennung ihrer Eltern<br>d. Verheiratete Eltern trennen sich seltener</p>
-<p class="qitem">21. Ein Blick auf die Statistik bestätigt, dass die Familie als Lebensform noch immer aktuell ist. So gibt es in Deutschland rund 22,4 Millionen Familien. Fast 80 Prozent der Gesamtbevölkerung sind Teil einer Familie. Jedoch zeigt sich eine starke Tendenz zur Kinderlosigkeit oder zur Ein-Kind-Ehe. Aber auch die Anzahl alleinerziehender Frauen mit Kindern hat in den letzten Jahren erheblich zugenommen. So fallen derzeit schon 15 Prozent aller Familien in diese Kategorie.</p>
-<p class="qitem">22. Verheiratete Eltern bleiben nach Aussage von Familienministerin Nolte wesentlich länger zusammen. „Kinder von Paaren, die nicht verheiratet sind, tragen ein viermal so hohes Risiko, von der Trennung ihrer Eltern betroffen zu werden“, sagte Nolte. Die Ministerin stützte sich dabei auf eine Studie: 80% aller Kinder, die in Ehen aufwachsen, erleben ihren 18. Geburtstag mit ihren Eltern. 80% der Kinder, deren Eltern keinen Trauschein besitzen, haben in diesem Alter bereits getrennte Eltern.</p>
-<h5>B. Lesen Sie die folgenden Überschriften und Texte. Ordnen Sie zu. (2P)</h5>
-<p>Überschriften</p>
-<p class="qitem">a. Gorilla verletzte dreijähriges Kind<br>b. Umweltverschmutzung sogar auf dem Mount Everest<br>c. Bergsteiger berichten über ihren anstrengenden Weg zum Mount Everest<br>d. Unfall im Zoo</p>
-<p class="qitem">23. Eine Gorilla-Mutter hat im Zoo von Brookfield einen dreijährigen Jungen gerettet, der sechs Meter tief in das Gehege der Affen gefallen war. Sie schützte das schwer am Kopf verletzte Kind vor sechs anderen Gorillas und trug es zu einer Eingangstür, wo die Zoowärter es erreichen konnten. Wie der Zoodirektor mitteilte, kam das siebenjährige Gorillaweibchen Binti Jua mit drei Monaten in den Zoo und wurde bis zum sechsten Lebensmonat rund um die Uhr von Menschen betreut.</p>
-<p class="qitem">24. Das Besteigen des Mount Everest macht durstig. Bergsteiger haben inzwischen 67.000 Flaschen auf ihrem Weg zum höchsten Berg der Welt zurückgelassen, wie die nepalesische Nachrichtenagentur RSS berichtet. Nun will eine Gruppe erfahrener Bergsteiger aufräumen. Sie haben jedoch eine anstrengende Arbeit vor sich: Zunächst müssen sie den Müll auf dem Rücken bis zum Basislager tragen. Von dort wird alles auf Ochsen verladen und weiter transportiert.</p>
-<div class="pagemark">📄 第 4 页</div>
-<h3>Teil 2</h3>
-<p><em>Lesen Sie die folgenden Texte und markieren Sie die richtigen Lösungen auf dem Antwortbogen. (16P)</em></p>
-<h4>Text A</h4>
-<p><strong>Füchse in der Stadt</strong></p>
-<p>Plötzlich steht es da: ein Tier, das ein bisschen wie ein Hund aussieht, mit rotem Fell. Wenn es dunkel wird, sind in manchen Städten Füchse unterwegs. Man sieht die Tiere aber immer öfter auch am Tag. Viele Menschen haben schon ihre eigene Fuchs-Geschichte. Manchmal macht es sich ein Fuchs zum Beispiel auf einer Gartenbank gemütlich. Und oft verschwinden Schuhe – sie sind für junge Füchse ein beliebtes Spielzeug.</p>
-<p>Füchse gehören an vielen Orten schon zum Stadtbild. Allein in Berlin leben Tausende von ihnen. Auf dem Land finden Füchse immer weniger Nahrung. Deshalb kommen sie in die Städte, wo es viele Mäuse und auch Essensreste gibt. Außerdem werden die Füchse dort nicht von den Menschen gejagt, aber viele Füchse werden von Autos überfahren. Das Leben in der Stadt ist für sie also trotzdem gefährlich.</p>
-<p>Füchse sehen Hunden ähnlich, können aber klettern wie Katzen. Sie sind scheu, aber auch neugierig. Es gibt sogar Füchse, die in einen Buchladen spazieren. Andere fahren im Bus oder in der Bahn mit. Kein Wunder, denn der Fuchs ist zu einem beliebten Tier geworden. Früher galt er als Hühnerdieb und Krankheitsüberträger. Doch heute mögen viele Menschen diese schlauen Tiere. So sieht man zum Beispiel auf Kissen süße Bilder von Füchsen. Der Fuchs ist gekommen, um zu bleiben. Bald werden wohl immer mehr Menschen ihre eigene Fuchs-Geschichte erzählen können.</p>
-<p><em>Aufgaben: Markieren Sie die richtigen Lösungen auf dem Antwortbogen.</em></p>
-<p class="qitem">25. Man sieht Füchse __________.<br>a. nur am Tag<br>b. nur in der Nacht<br>c. am Tag und in der Nacht</p>
-<p class="qitem">26. Oft verschwinden Schuhe, weil junge Füchse __________.<br>a. die Schuhe tragen wollen<br>b. gern mit Schuhen spielen<br>c. die Schuhe als Nahrung ansehen</p>
-<p class="qitem">27. Füchse kommen in die Städte, um __________.<br>a. Freunde zu besuchen<br>b. Nahrung zu finden<br>c. das langweilige Land zu verlassen</p>
-<p class="qitem">28. Die Stadt ist für Füchse auch gefährlich, weil sie __________.<br>a. manchmal von Autos überfahren werden<br>b. oft dort von Katzen gegessen werden<br>c. einen Spaziergang im Buchladen machen</p>
-<p class="qitem">29. Füchse __________.<br>a. haben ein ähnliches Aussehen wie Hühner<br>b. sind neugierige Tiere wie Katzen<br>c. übertragen Krankheiten nur auf Hunde</p>
-<div class="pagemark">📄 第 5 页</div>
-<h3>Text B</h3>
-<h4>Ein Kulturpass zum Geburtstag</h4>
-<p>Endlich 18 und volljährig! Rund 750.000 Jugendliche feiern in Deutschland 2023 diesen wichtigen Geburtstag. Auch die Bundesregierung gratuliert mit einem besonderen Geschenk: dem Kulturpass. 200 Euro bekommen die 18-Jährigen vom Staat. Anspruch auf das Geld haben alle Geburtstagskinder mit Wohnsitz in Deutschland, sie müssen sich nur registrieren. Insgesamt stehen für das Projekt 100 Millionen Euro zur Verfügung.</p>
-<p>Den Betrag dürfen die jungen Leute allerdings nicht für eine Geburtstagsfeier oder den Urlaub ausgeben, sondern nur für kulturelle Veranstaltungen wie Konzerte, Theater- oder Museumsbesuche. Sie können aber auch Bücher oder Musikinstrumente kaufen. Die einzige Bedingung: Das Geld muss vor Ort und nicht online ausgegeben werden. Ziel ist es, mehr junge Menschen für Kultur zu begeistern und so der Kulturbranche zu helfen.</p>
-<p>„Nach der entbehrungsreichen Corona-Zeit können Kulturanbieterinnen und -anbieter nun durch den Kulturpass ein junges Publikum vor Ort gewinnen und langfristig an sich binden“, erklärt Kulturstaatsministerin Claudia Roth. Denn wer bereits in jungen Jahren zu Kulturveranstaltungen geht, so die Hoffnung der Regierung, wird das wohl auch später im Leben tun.</p>
-<p>Andere europäische Staaten haben diese Art der Kulturförderung schon früher eingeführt: In Frankreich gab es bereits vor zwei Jahren 300 Euro für die 18-Jährigen. Drei Viertel des Geldes wurden dort allerdings für Bücher ausgegeben und nicht für Theater- und Kinokarten. Spanien hat daraus gelernt: Dort müssen die Volljährigen, die sogar 400 Euro geschenkt bekommen, die Hälfte des Geldes für Live-Veranstaltungen verwenden. Wie deutsche 18-Jährige den Kulturpass nutzen werden, wird sich erst noch zeigen.</p>
-<p><strong>Aufgaben: Markieren Sie die richtigen Lösungen auf dem Antwortbogen.</strong></p>
-<p><strong>30. Den Kulturpass ____________.</strong></p>
-<ul>
-<li>a. kaufen die deutschen Jugendlichen für 200 Euro</li>
-<li>b. bekommen die Jugendlichen mit 18 Jahren, die einen Wohnsitz in Deutschland haben</li>
-<li>c. bekommen die Jugendlichen, die kein Geld für Kulturveranstaltungen haben</li>
-</ul>
-<p><strong>31. Die jungen Leute dürfen diese 200 Euro nicht für ____________ zahlen.</strong></p>
-<ul>
-<li>a. eine Geige</li>
-<li>b. eine Gemäldeausstellung</li>
-<li>c. eine Auslandsreise</li>
-</ul>
-<p><strong>32. Die Bundesregierung möchte durch den Kulturpass ____________.</strong></p>
-<ul>
-<li>a. die Online-Kulturveranstaltungen unterstützen</li>
-<li>b. Jugendliche dazu bewegen, sich für Kulturangebote zu interessieren</li>
-<li>c. mehr Geld von der Kulturbranche verdienen</li>
-</ul>
-<p><strong>33. Kulturanbieterinnen und -anbieter ____________.</strong></p>
-<ul>
-<li>a. möchten durch den Kulturpass mehr Jugendliche gewinnen</li>
-<li>b. haben schon in der Corona-Zeit durch den Kulturpass viel Geld verdient</li>
-<li>c. hoffen darauf, dass ihnen die Bundesregierung das Geld direkt bezahlt</li>
-</ul>
-<p><strong>34. Zur Förderung der Kultur ____________.</strong></p>
-<ul>
-<li>a. müssen junge Leute in Frankreich mindestens 175 Euro für Bücher ausgeben</li>
-<li>b. soll das Geld in Spanien vor allem zum Bücherkauf verwendet werden</li>
-<li>c. bekommen junge Leute in Spanien und Frankreich mehr Geld vom Staat</li>
-</ul>
-<h3>Text C</h3>
-<h4>Wie gefährlich ist ChatGPT?</h4>
-<p>Wie erhält man in wenigen Sekunden einen Text, der sich so liest wie der Schulaufsatz eines 14-Jährigen? Oder eine Geschichte im Stil von Goethe? Mit dem Chatbot ChatGPT, den die Firma OpenAI 2022</p>
-<div class="pagemark">📄 第 6 页</div>
-<h3>©版权归考试中心所有</h3>
-<p>veröffentlicht hat, ist das kein Problem mehr. Seine Künstliche Intelligenz (KI) ist so weit entwickelt, dass sie selbstständig Texte aller Art schreibt und auch Bilder und Videos produziert. Die „Werke“, die dabei entstehen, sind denen von Menschen oft überraschend ähnlich.</p>
-<p>In der Fachwelt ist man überzeugt: Die so genannte generative KI von ChatGPT ist in der Lage, unser Leben zu revolutionieren. Die Entwicklung bietet große Chancen, ist aber auch mit Risiken verbunden: So fürchtet man an Universitäten bereits den „Tod der Hausarbeit“. Viele Menschen haben Angst, ihre Jobs zu verlieren, weil eine perfekte KI sie überflüssig machen könnte. Und auch Desinformation ist eine Gefahr – denn ChatGPT weiß nicht, ob seine Quellen stimmen, und erfindet sogar neue.</p>
-<p>Allerdings wird bisher noch oft kritisiert, dass ChatGPT schablonenhaft schreibt. Denn die KI kann zwar sehr gut andere Texte nachahmen, aber nicht selbst kreativ werden. ChatGPT tut eigentlich nichts anderes, als sehr gründlich Informationen aus dem Internet zu analysieren. Und dabei produziert der Chatbot auch Texte, die sich zwar gut lesen, aber bei genauem Hinsehen Unsinn sind.</p>
-<p>Sam Altman, der Chef von OpenAI, hält die Angst vor seinem Chatbot zwar für unberechtigt, trotzdem sind wir aus seiner Sicht „nicht weit entfernt von Anwendungen, die potenziell gefährlich sind“. Viele fordern daher nun Gesetze für den Umgang mit generativer KI. Aber wer soll diese Regeln schreiben und wie sollen sie aussehen? Der Chatbot hat natürlich auch darauf eine Antwort: „Es gibt viele verschiedene Sichtweisen auf das Thema.“</p>
-<h4>Aufgaben: Markieren Sie die richtigen Lösungen auf dem Antwortbogen.</h4>
-<p class="qitem">35. Der Chatbot ChatGPT ________.<br>a. wurde von der Firma OpenAI 2023 veröffentlicht<br>b. muss einem Schüler eine Schreibaufgabe stellen<br>c. ist ein Programm, das selbst Texte aller Arten schreiben kann</p>
-<p class="qitem">36. Die Texte, die ChatGPT produziert, ________.<br>a. lassen sich kaum noch von menschlichen Texten unterscheiden<br>b. sind alle gehoben geschrieben, und zwar im Stil von Goethe<br>c. sind meistens mit Bildern und Videos ausgestattet und deshalb sehr anschaulich</p>
-<p class="qitem">37. Für die Universitäten bedeutet die Nutzung von ChatGPT, dass ________.<br>a. die Lehrkräfte ihre Jobs verlieren würden, weil die Studierenden nicht mehr zum Unterricht zu kommen brauchen<br>b. die Studierenden ChatGPT ihre Hausaufgaben machen lassen könnten<br>c. die Lehrkräfte von der Bewertung der Hausarbeiten befreit werden</p>
-<p class="qitem">38. Welche Risiken sind bei der Verwendung von ChatGPT zu erwarten?<br>a. Universitäten werden überflüssig, weil alle nur noch mit ChatGPT lernen.<br>b. Es könnte die Textproduktion bei der Arbeit schwieriger machen.<br>c. Die KI kann auch Texte schreiben, in denen falsche Informationen stehen.</p>
-<p class="qitem">39. An ChatGPT wird oft kritisiert, dass ________.<br>a. der Chatbot stets schablonenhaft Texte produziert, statt kreativ zu sein<br>b. der Chatbot für die Analyse der Informationen immer noch die menschliche Hilfe braucht<br>c. die Kreativität zu groß ist, als dass man seine Texte verstehen könnte</p>
-<p class="qitem">40. Welche Meinung vertritt Sam Altman, der Chef von OpenAI?<br>a. Er hält es für möglich, dass Chatbots in der Zukunft eine Gefahr für uns darstellen werden.<br>b. Er ist überzeugt von seiner Erfindung, findet aber, dass ChatGPT oft auch Unsinn produziert.<br>c. Er glaubt, dass ChatGPT in der heutigen Form schon für Menschen gefährlich ist.</p>
-<div class="pagemark">📄 第 7 页</div>
-<h3>IV. Grammatik und Wortschatz (35%) (45 Minuten)</h3>
-<p>Markieren Sie die Lösungen nach entsprechenden grammatischen Regeln auf dem Antwortbogen. (5P)</p>
-<p class="qitem">41. Hier lernen Sie Tipps kennen, __________ Ihnen helfen, Ihre Lebensqualität zu steigern.<br>a. die<br>b. was<br>c. wobei</p>
-<p class="qitem">42. Bleiben Sie gesund und __________ Sie gut durch die Woche!<br>a. seien<br>b. kommen<br>c. leben</p>
-<p class="qitem">43. Schreiben Sie uns bitte, welche Themen Ihnen gefallen __________.<br>a. ist<br>b. hat<br>c. haben</p>
-<p class="qitem">44. __________ gut schläft, ist fitter, konzentrierter und leistungsfähiger.<br>a. Wenn<br>b. Wer<br>c. Man</p>
-<p class="qitem">45. Expertinnen und Experten bestätigen, dass Frauen __________ Schlaf als Männer brauchen.<br>a. viel<br>b. kaum<br>c. mehr</p>
-<p class="qitem">46. __________ auf die glatte Straße, damit ihr nicht hinfallt.<br>a. Achte<br>b. Achtet<br>c. Achten Sie</p>
-<p class="qitem">47. Diesen Farbstoff benutzt man heute nicht mehr, weil er viel Blei __________.<br>a. enthaltet<br>b. enthält<br>c. enthältet</p>
-<p class="qitem">48. __________ die Musikerin nicht glaubt, dass Künstliche Intelligenz ihre Kunst wegautomatisieren kann, hält sie KI für gefährlich.<br>a. Weil<br>b. Obwohl<br>c. Indem</p>
-<p class="qitem">49. Es war im Restaurant einfach zu laut, __________ sich unterhalten zu können.<br>a. ohne<br>b. statt<br>c. um</p>
-<p class="qitem">50. Manchmal sollte man sich fragen, was einem guttun __________.<br>a. könnte<br>b. möchte<br>c. hätte</p>
-<hr>
-<p>B. Bitte markieren Sie die Lösungen im Text A) auf dem Antwortbogen und schreiben Sie die Lösungen vom Text B) auch auf dem Antwortbogen. (10P)</p>
-<h4>Text A</h4>
-<p><strong>Integrationskurse</strong></p>
-<p>In Integrationskursen lernen Sie Deutsch und erhalten Informationen über Deutschland. Kinder und (51), die noch die Schule besuchen, können nicht an einem Integrationskurs (52).</p>
-<p>Es gibt Vollzeit- und Teilzeitkurse. Ein Teilzeitkurs bietet (53) beispielsweise an, wenn Sie berufstätig sind oder Kinder betreuen. Ein allgemeiner Integrationskurs umfasst 700 Unterrichtsstunden. Eine Unterrichtsstunde entspricht bei allen Kursen 45 Minuten. Er (54) mit einem Deutschsprachkurs (600 Unterrichtsstunden): Im Sprachkurs (55) Sie wichtige Themen aus dem alltäglichen Leben. Sie üben außerdem, Briefe auf Deutsch zu schreiben, (56) auszufüllen, zu telefonieren oder sich (57) eine Arbeitsstelle zu bewerben.</p>
-<p>Der Sprachkurs schließt mit der Prüfung „Deutsch-Test für Zuwanderer“ ab. Im (58) folgt ein Orientierungskurs (100 Unterrichtsstunden): Darin erfahren Sie zum Beispiel vieles über Ihre (59) und Pflichten und das Zusammenleben in Deutschland. Danach absolvieren Sie den Test „Leben in Deutschland“, in (60) geprüft wird, was Sie im Orientierungskurs gelernt haben.</p>
-<div class="pagemark">📄 第 8 页</div>
-<h3>51. a) Junge b) Jugendliche c) Jugend</h3>
-<h3>52. a) teilnehmen b) besuchen c) beteiligen</h3>
-<h3>53. a) ihm b) es c) sich</h3>
-<h3>54. a) beginnt b) fängt c) endet</h3>
-<h3>55. a) handeln b) behandeln c) verhandeln</h3>
-<h3>56. a) Lücken b) Tabellen c) Formulare</h3>
-<h3>57. a) über b) um c) an</h3>
-<h3>58. a) Einschluss b) Ausschluss c) Anschluss</h3>
-<h3>59. a) Rechte b) Gesetze c) Regeln</h3>
-<h3>60. a) den b) dem c) denen</h3>
-<h4>Text B</h4>
-<h4>Wir brauchen im Winter mehr Schlaf</h4>
-<p>Erwachsene brauchen etwa sieben bis neun Stunden Schlaf. Allerdings kann es im Winter manchmal auch ein bisschen (61) sein. Unser Schlafbedürfnis im Winter kann durchaus etwas höher sein (62) in der hellen Jahreszeit. Wir sollten darauf achten, ausreichend zu schlafen: Entweder früher ins Bett (63) morgens den Wecker eine halbe Stunde später (64) lassen.</p>
-<p>Verschiedene Studien haben bestätigt, (65) Menschen in den Wintermonaten länger schlafen und auch die innere biologische Nacht länger dauert. Das liegt (66), dass die Tage kürzer und die tägliche Dosis Tageslicht geringer sind. Die deutlichsten Unterschiede (67) Sommer und Winter finden sich in Studien, in (68) die Teilnehmenden unter freiem Himmel und ohne künstliches Licht lebten. Zum Beispiel, weil die Forschenden sie für eine Woche zum Campen in die Berge geschickt hatten. Bei solchen Versuchen (69) die Teilnehmenden im Winter fast eine Stunde länger als im Sommer. Das heißt, die Lichtumgebung am Tag und auch am Abend sowie die Tageslänge spielen eine wichtige (70) für unseren Schlaf-Wach-Rhythmus.</p>
-<h4>C. Bitte ergänzen Sie die passenden Wörter! Schreiben Sie sie dann auf den Antwortbogen. (10P)</h4>
-<p class="qitem">71. Das Kind ist schwer krank, es muss sofort ins ________ gebracht werden.<br>72. Sagen Sie bitte die Wahrheit. Ich will keine ________ hören.<br>73. Herr Schmidt möchte in China arbeiten. Er hat sich schon um eine neue Stelle ________.<br>74. Aus organisatorischen ________ bitten wir um eine rechtzeitige Anmeldung bis Freitag.<br>75. Du musst dich ________, sonst wirst du den Zug nicht mehr erreichen.<br>76. Ich kann heute nicht mehr nach Paris fahren, weil der Zug dorthin ________ des Streiks ausfällt.<br>77. Benzin wird immer ________, trotzdem wollen viele Autobesitzer nicht auf ihr Fahrzeug verzichten.<br>78. Du solltest den Regenschirm mitnehmen. Es ________ heute Nachmittag zu regnen.<br>79. Wissenschaftler haben darauf hingewiesen, dass man beim Lesen nur 10 Prozent des Lernstoffs im ________ behält, aber beim Anwenden 70 bis 90 Prozent.<br>80. Unsere Firma befindet sich in einer schwierigen ________, daher müssen wir zusammenhalten.<br>81. Gegen Hitze kann man sich weniger gut schützen als gegen ________.<br>82. ________ des Studiums jobbt Frau Lin schon bei einer Firma, um die Arbeitserfahrungen zu sammeln.</p>
-<div class="pagemark">📄 第 9 页</div>
-<h3>©版权归考试中心所有</h3>
-<p class="qitem">83. Hören Sie auf zu rauchen. Rauchen ist hier im Aufzug ________.<br>84. Du siehst schlecht aus. An deiner Stelle würde ich mich mal vom Arzt ________ lassen.<br>85. Man kann Energie ________, indem man weniger heizt.<br>86. Das Eis auf dem See ist noch nicht fest, trotzdem ________ der Junge darauf Schlittschuh.<br>87. Bitte beachten Sie, dass Kinder unter 12 Jahren das Museum nur in ________ von Erwachsenen besuchen dürfen.<br>88. Zwei Karten für Erwachsene, bitte. Der ________ für Kinder bis einschließlich 5 Jahre ist frei, oder?<br>89. Klare Flüsse und grüne Berge sind so wertvoll ________ Berge aus Gold und Silber.<br>90. Die Verwirklichung des Chinesischen Traums wird anderen Ländern mehr Chancen eröffnen und einen ________ zum Frieden und zur Entwicklung der Welt leisten.</p>
-<h4>D. Formen Sie die unterstrichenen Ausdrücke so um, dass sie zu den vorgegebenen Satzteilen passen. Sinn und Zeit sollen nicht verändert werden. Schreiben Sie die Sätze auf den Antwortbogen. (5P)</h4>
-<p><em>Beispiel: Die Uhr ist nicht mehr zu reparieren.</em> → <em>Die Uhr kann/muss nicht mehr repariert werden.</em></p>
-<p class="qitem">91. Zur Steigerung der Wettbewerbsfähigkeit sollen die Kosten für die Produktion gesenkt werden.</p>
-<p>→ ________, sollen die Kosten für die Produktion gesenkt werden.</p>
-<p class="qitem">92. Mit den nicht unbeschränkt zur Verfügung stehenden natürlichen Ressourcen darf man nicht leichtfertig umgehen.</p>
-<p>→ Mit den natürlichen Ressourcen, ________, darf man nicht leichtfertig umgehen.</p>
-<p class="qitem">93. Die wirtschaftliche Entwicklung lässt sich positiv beeinflussen, wenn die Anreize richtig gesetzt werden.</p>
-<p>→ Die wirtschaftliche Entwicklung ________ werden, wenn die Anreize richtig gesetzt werden.</p>
-<p class="qitem">94. Seit ihrer Gründung im Jahr 1921 hat die Kommunistische Partei Chinas einen hundertjährigen glänzenden Weg zurückgelegt.</p>
-<p>→ ________, hat sie einen hundertjährigen glänzenden Weg zurückgelegt.</p>
-<p class="qitem">95. Weil ich <strong>nicht</strong> wusste, dass die Party so langweilig ist, bin ich hierhergekommen.</p>
-<p>→ Wenn ________, wäre ich <strong>nicht</strong> hierhergekommen.</p>
-<h4>E. Suchen Sie die Fehler (an zwei Stellen in jeder Aufgabe) in den folgenden Sätzen heraus und schreiben Sie die richtigen Sätze auf den Antwortbogen. (5P)</h4>
-<p class="qitem">96. Brauchen Sie noch Hilfe, wenden Sie bitte an den Assistent.<br>97. Herr Schmidt fragt mich daran, wie man unter interkultureller Kompetenz versteht.<br>98. Wenn du mich gestern dafür gebeten, hätte ich dir gern geholfen.<br>99. Frau Li hat den ganzen Tag an die Dissertation gearbeitet, weil sie unbedingt diese Woche dabei fertig werden will.<br>100. Das Jahr des Drachen steht bei der Tür und alle Freunde wünschen mich einen guten Start ins neue Jahr.</p>
-<div class="pagemark">📄 第 10 页</div>
-<h3>©版权归考试中心所有</h3>
-<h2>V. Schriftlicher Ausdruck (15%) (40 Minuten)</h2>
-<h3>Bargeld verliert an Bedeutung</h3>
-<p>Anteil der Befragten, die in den letzten 12 Monaten unterwegs folgende Zahlungsmittel genutzt haben</p>
-<p>■ 2020 ■ 2021 ■ 2022</p>
-<p>（柱状图说明：纵轴为百分比0-100，横轴类别从左到右依次为：</p>
-<p>Bargeld，标注72%</p>
-<p>Debitkarte</p>
-<p>Kreditkarte</p>
-<p>Mobile Payment，标注13%</p>
-<p>Prepaidkarte/Gutschein</p>
-<p>Andere）</p>
-<p>\* Einzelhandel, Restaurants und andere Points of sale</p>
-<p>Basis: 2.100-4.500 Befragte (18-64 Jahre) in Deutschland;</p>
-<p>Mehrfachantworten möglich</p>
-<p>Quelle: Statista Global Consumer Survey</p>
-<p>statista</p>
-<p>Quelle:</p>
-<p>https://winfuture.de/infografik/24951/Zahlungsmittel-Bargeld-verliert-an-Bedeutung-1651669543.html</p>
-<p>Debitkarte：储蓄卡、借记卡</p>
-<p>Kreditkarte：信用卡</p>
-<p>Prepaidkarte/Gutschein: 预付卡/购物卡</p>
-<h4>Aufgaben:</h4>
-<p>Sie sehen in einem Internetforum das obige Schaubild. Schreiben Sie bitte in dem Forum einen Text zum Thema „Zahlungsmittel". Gehen Sie dabei auf folgende Punkte ein:</p>
-<p class="qitem">1. Beschreiben Sie, was Sie in dem Schaubild erfahren haben.<br>2. Welche Erfahrungen haben Sie mit Zahlungsmitteln gemacht?<br>3. Was halten Sie von der Meinung, dass das Bargeld abgeschafft werden soll?</p>
-<p>Ihr Text sollte 150-180 Wörter haben.</p>
-<p style="margin:36px 0 8px;color:var(--text2);font-size:.8em;text-align:center">
-原文由考生提供的扫描件逐页 OCR 转录，仅作教学参考 · © 版权归考试中心所有
-</p>
-</div>
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Prüfung für das Germanistik-Grundstudium</p>
+    <h1>PGG 2024 A · 完整真题原文</h1>
+    <p class="sub">非全日制在读生 / 城市狐狸与 AI 风险 / 现金支付图表作文</p>
+    <div class="meta"><div class="big-num">170<span>分钟总时长</span></div><div class="big-num">5<span>板块</span></div><div class="big-num">100<span>题号</span></div><div class="big-num">10<span>页扫描件</span></div></div>
+  </div>
+</header>
+<nav class="toc"><div class="wrap">
+  <span class="sep">/</span><a href="#diktat">Ⅰ 听写</a><span class="sep">/</span><a href="#hoerverstehen">Ⅱ 听力</a><span class="sep">/</span><a href="#leseverstehen">Ⅲ 阅读</a><span class="sep">/</span><a href="#grammatik">Ⅳ 语法词汇</a><span class="sep">/</span><a href="#schreiben">Ⅴ 写作</a><span class="sep">/</span><a href="#kollation">校勘记录</a>
+  <span class="back"><a href="2023.html">2023</a>, <a href="2024.html" style="background:#eef3f7;font-weight:700">2024</a>, <a href="2025.html">2025</a>, <a href="2026.html">2026</a></span>
+  <a class="back" href="./">← 回总库</a>
+</div></nav>
+<main class="wrap">
+<p class="de"><strong>PRÜFUNG FÜR DAS GERMANISTIK-GRUNDSTUDIUM (PGG 2024 A)</strong></p>
+<div class="note">本文档由扫描件 <code>PGG_2024_A.pdf</code>（共 10 页，纯图像无文字层）逐页 OCR 还原：德语原文逐字照录，不改写、不翻译、不补全。</div>
+<div class="note">OCR 管线：视觉逐字转录模型双遍独立识别（1500px / 2000px 两档），行级交叉核对；疑点做局部放大定向复读。</div>
+<div class="note">标注约定：<code>⚠️</code> = OCR 存疑处（附另一读法）；<code>〔整理者注：…〕</code> = 整理者补注；卷面印刷特征（含印误）一律照录。</div>
+<div class="note">试卷本身不含答案，答案见配套分析文档 <code>2024_a_analysis.md</code>。</div>
+<h2 class="sec" id="overview">试卷总览</h2>
+<div class="tw"><table>
+<tr><th>项目</th><th>内容</th></tr>
+<tr><td>试卷</td><td>PRÜFUNG FÜR DAS GERMANISTIK-GRUNDSTUDIUM（PGG 2024 A）</td></tr>
+<tr><td>来源</td><td>PGG_2024_A.pdf（10 页扫描件）</td></tr>
+<tr><td>板块分值</td><td>Ⅰ 10% ｜ Ⅱ 20% ｜ Ⅲ 20% ｜ Ⅳ 35% ｜ Ⅴ 15%</td></tr>
+<tr><td>考试时长</td><td>15 + 20 + 50 + 45 + 40 = 170 分钟</td></tr>
+<tr><td>作文题目</td><td>Bargeld verliert an Bedeutung（图表作文）</td></tr>
+</table></div>
+<div class="tw"><table>
+<tr><th>板块</th><th>内容</th><th>分值</th><th>题量</th><th>时间</th></tr>
+<tr><td>Ⅰ Diktat</td><td>A) 填空听写（8 空）／ B) 全文逐句听写</td><td>10%</td><td>8 + 1 篇</td><td>15 min</td></tr>
+<tr><td>Ⅱ Hörverstehen</td><td>Teil 1 Alltagssituationen（1-6）／ Teil 2 Kurztexte（7-20，4 篇）</td><td>20%</td><td>6 + 14</td><td>20 min</td></tr>
+<tr><td>Ⅲ Leseverstehen</td><td>Teil 1 标题匹配（21-24）／ Teil 2 长文 3 篇（25-40）</td><td>20%</td><td>4 + 16</td><td>50 min</td></tr>
+<tr><td>Ⅳ Grammatik und Wortschatz</td><td>A 语法选择（41-50）／ B 完形填空（51-70）／ C 词汇填空（71-90）／ D 句子改写（91-95）／ E 改错（96-100）</td><td>35%</td><td>60</td><td>45 min</td></tr>
+<tr><td>Ⅴ Schriftlicher Ausdruck</td><td>图表作文 150-180 Wörter</td><td>15%</td><td>1 篇</td><td>40 min</td></tr>
+</table></div>
+<hr class="hr">
+<div class="pgdiv">｜第 1 页｜</div>
+<p class="de">PRÜFUNG FÜR DAS GERMANISTIK-GRUNDSTUDIUM</p>
+<p class="de">(PGG 2024 A)</p>
+<div class="card"><h3>分值结构</h3><svg viewBox="0 0 880 80" width="100%" height="86" role="img" aria-label="五大板块分值结构"><rect x="0.0" y="0" width="88.0" height="54" fill="#1a5276"/><text x="44.0" y="32.0" font-size="17" fill="#ffffff" text-anchor="middle">10%</text><text x="44.0" y="72" font-size="12" fill="#4a4a5a" text-anchor="middle">Ⅰ 听写</text><rect x="88.0" y="0" width="176.0" height="54" fill="#2e86c1"/><text x="176.0" y="32.0" font-size="17" fill="#ffffff" text-anchor="middle">20%</text><text x="176.0" y="72" font-size="12" fill="#4a4a5a" text-anchor="middle">Ⅱ 听力</text><rect x="264.0" y="0" width="176.0" height="54" fill="#d4a017"/><text x="352.0" y="32.0" font-size="17" fill="#ffffff" text-anchor="middle">20%</text><text x="352.0" y="72" font-size="12" fill="#4a4a5a" text-anchor="middle">Ⅲ 阅读</text><rect x="440.0" y="0" width="308.0" height="54" fill="#7d6b4f"/><text x="594.0" y="32.0" font-size="17" fill="#ffffff" text-anchor="middle">35%</text><text x="594.0" y="72" font-size="12" fill="#4a4a5a" text-anchor="middle">Ⅳ 语法词汇</text><rect x="748.0" y="0" width="132.0" height="54" fill="#a9c0d2"/><text x="814.0" y="32.0" font-size="17" fill="#ffffff" text-anchor="middle">15%</text><text x="814.0" y="72" font-size="12" fill="#4a4a5a" text-anchor="middle">Ⅴ 写作</text></svg></div><div class="card"><h3>板块与扫描页对应</h3><svg viewBox="0 0 340 62" width="100%" height="62" role="img" aria-label="十页扫描件的板块分布"><rect x="2" y="0" width="30" height="46" rx="4" fill="#2e86c1"/><text x="17.0" y="27.0" font-size="13" fill="#ffffff" text-anchor="middle">Ⅱ</text><text x="17.0" y="59" font-size="10" fill="#4a4a5a" text-anchor="middle">1</text><rect x="36" y="0" width="30" height="46" rx="4" fill="#2e86c1"/><text x="51.0" y="27.0" font-size="13" fill="#ffffff" text-anchor="middle">Ⅱ</text><text x="51.0" y="59" font-size="10" fill="#4a4a5a" text-anchor="middle">2</text><rect x="70" y="0" width="30" height="46" rx="4" fill="#d4a017"/><text x="85.0" y="27.0" font-size="13" fill="#ffffff" text-anchor="middle">Ⅲ</text><text x="85.0" y="59" font-size="10" fill="#4a4a5a" text-anchor="middle">3</text><rect x="104" y="0" width="30" height="46" rx="4" fill="#d4a017"/><text x="119.0" y="27.0" font-size="13" fill="#ffffff" text-anchor="middle">Ⅲ</text><text x="119.0" y="59" font-size="10" fill="#4a4a5a" text-anchor="middle">4</text><rect x="138" y="0" width="30" height="46" rx="4" fill="#d4a017"/><text x="153.0" y="27.0" font-size="13" fill="#ffffff" text-anchor="middle">Ⅲ</text><text x="153.0" y="59" font-size="10" fill="#4a4a5a" text-anchor="middle">5</text><rect x="172" y="0" width="30" height="46" rx="4" fill="#d4a017"/><text x="187.0" y="27.0" font-size="13" fill="#ffffff" text-anchor="middle">Ⅲ</text><text x="187.0" y="59" font-size="10" fill="#4a4a5a" text-anchor="middle">6</text><rect x="206" y="0" width="30" height="46" rx="4" fill="#7d6b4f"/><text x="221.0" y="27.0" font-size="13" fill="#ffffff" text-anchor="middle">Ⅳ</text><text x="221.0" y="59" font-size="10" fill="#4a4a5a" text-anchor="middle">7</text><rect x="240" y="0" width="30" height="46" rx="4" fill="#7d6b4f"/><text x="255.0" y="27.0" font-size="13" fill="#ffffff" text-anchor="middle">Ⅳ</text><text x="255.0" y="59" font-size="10" fill="#4a4a5a" text-anchor="middle">8</text><rect x="274" y="0" width="30" height="46" rx="4" fill="#7d6b4f"/><text x="289.0" y="27.0" font-size="13" fill="#ffffff" text-anchor="middle">Ⅳ</text><text x="289.0" y="59" font-size="10" fill="#4a4a5a" text-anchor="middle">9</text><rect x="308" y="0" width="30" height="46" rx="4" fill="#a9c0d2"/><text x="323.0" y="27.0" font-size="13" fill="#ffffff" text-anchor="middle">Ⅴ</text><text x="323.0" y="59" font-size="10" fill="#4a4a5a" text-anchor="middle">10</text></svg></div>
+<h2 class="sec" id="diktat">Ⅰ Diktat (10%) · 15 Minuten</h2>
+<h3 class="sub">A) 填空听写 · Lückendiktat</h3>
+<p class="de">A) Füllen Sie die Lücken aus. (4P)</p>
+<p class="de">Sie hören den folgenden Text dreimal und dann füllen Sie die Lücken aus.</p>
+<p class="de">Laut Statistischem Bundesamt studierten derzeit rund 223.300 1) ________ in Deutschland in Teilzeit. Das seien 7.560 Personen weniger als 2) ________ Vorjahr, wie aus einem Bericht des 3) ________ „Centrums für Hochschulentwicklung“ (CHE) hervorgeht. Damit wäre der 4) ________ von Studierenden in Teilzeit leicht gesunken, 5) ________ von 7,8 auf 7,6 Prozent. Dem CHE-Bericht zufolge befinden sich die meisten Teilzeitstudierenden in Hamburg, 6) ________ von Nordrhein-Westfalen und Mecklenburg-Vorpommern. Die meisten Teilzeitstudierenden unter allen Hochschulen bundesweit seien nach dem Bericht an der FernUniversität in Hagen 7) ________. Rund die Hälfte aller Teilzeitstudierenden studiert an privaten Hochschulen, obwohl diese insgesamt nur 12,6 Prozent aller Studierenden in Deutschland 8) ________.</p>
+<h3 class="sub">B) 全文听写 · Satzdiktat</h3>
+<p class="de">B) Schreiben Sie den Text Satz für Satz auf den Antwortbogen. (6P)</p>
+<p class="de">Sie hören den folgenden Text dreimal. Zuerst hören Sie sich den ganzen Text einmal an. Dann hören Sie sich den Text mit Satzzeichen noch einmal an. Die längeren Sätze werden in Teilen vorgelesen. Zuletzt hören Sie den ganzen Text noch einmal.</p>
+<h2 class="sec" id="hoerverstehen">Ⅱ Hörverstehen (20%) · 20 Minuten</h2>
+<h3 class="sub">Teil 1 Alltagssituationen · 日常生活场景（1-6，6P）</h3>
+<p class="de">Sie hören im Folgenden 6 Minidialoge nur einmal. Markieren Sie die Lösungen auf dem Antwortbogen. (6P)</p>
+<p class="q">1.  a. Um vier. b. Um halb vier. c. Um halb fünf.</p>
+<p class="q">2.  a. In der Kommode. b. In der Tasche. c. In der Schublade.</p>
+<p class="q">3.  a. Es regnet. b. Es schneit. c. Das Wetter ist schön.</p>
+<p class="q">4.  a. 6 Euro. b. 10 Euro. c. 20 Euro.</p>
+<p class="q">5.  a. Er hat keinen Fernseher bestellt.</p>
+<p class="opt">b. Er hat eine Bestätigung bekommen.</p>
+<p class="opt">c. Er hat keinen Fernseher bekommen.</p>
+<p class="q">6.  a. Über die Nachlässigkeit der neuen Sekretärin.</p>
+<p class="opt">b. Über die Unpünktlichkeit der neuen Sekretärin.</p>
+<p class="opt">c. Über die Unhöflichkeit der neuen Sekretärin.</p>
+<div class="pgdiv">｜第 2 页｜</div>
+<h3 class="sub">Teil 2 Kurztexte · 短篇听力（7-20，14P）</h3>
+<p class="de">Nun hören Sie vier Texte. Jeden Text hören Sie zuerst einmal, dann lesen Sie die Aufgaben und danach hören Sie ihn noch einmal. Markieren Sie die richtigen Lösungen auf dem Antwortbogen. (14P)</p>
+<p class="de"><strong>Text A</strong> · WG mit Opa oder Oma (a=richtig, b=falsch)</p>
+<p class="q">7. In Uni-Städten können die Studierenden leicht ein Zimmer finden.</p>
+<p class="q">8. Frau Fischer ist 79 Jahre alt.</p>
+<p class="q">9. Der Student, der bei Frau Fischer wohnt, kommt aus Südafrika.</p>
+<p class="q">10. Die Studierenden und die alten Menschen kommen zumeist gut miteinander aus.</p>
+<p class="de"><strong>Text B</strong> · Beim Arzt</p>
+<p class="q">11. Frau Marburg fühlt sich nicht wohl seit ________.</p>
+<p class="opt">a. zwei Tagen</p>
+<p class="opt">b. einem Monat</p>
+<p class="opt">c. einer Woche</p>
+<p class="q">12. Frau Marburg leidet unter ________.</p>
+<p class="opt">a. Appetitlosigkeit</p>
+<p class="opt">b. Bauchweh</p>
+<p class="opt">c. Schlaflosigkeit</p>
+<p class="q">13. Der Arzt stellt fest, dass Frau Marburg ________ hat.</p>
+<p class="opt">a. eine Lungenentzündung</p>
+<p class="opt">b. eine Erkältung</p>
+<p class="opt">c. einen Herzinfarkt</p>
+<p class="q">14. Der Arzt rät Frau Marburg, ________.</p>
+<p class="opt">a. weniger zu rauchen</p>
+<p class="opt">b. sich das Rauchen abzugewöhnen</p>
+<p class="opt">c. mit dem Alkohol aufzuhören</p>
+<p class="de"><strong>Text C</strong> · Ein Gespräch</p>
+<p class="q">15. Die Frau hat ________.</p>
+<p class="opt">a. eine Weltreise in elf Tagen gemacht</p>
+<p class="opt">b. am Freitagnachmittag eine Weltreise begonnen</p>
+<p class="opt">c. während des ganzen Fluges von Frankfurt nach Bangkok geschlafen</p>
+<p class="q">16. Am Samstagmorgen ________.</p>
+<p class="opt">a. sind die Frau und ihr Mann in Bangkok angekommen</p>
+<p class="opt">b. mussten die Frau und ihr Mann ein super Hotel suchen</p>
+<p class="opt">c. ist die Frau im Hotel geblieben</p>
+<p class="q">17. Am Samstagabend haben die Frau und ihr Mann ________.</p>
+<p class="opt">a. eine Bootsfahrt gemacht</p>
+<p class="opt">b. im Restaurant gegessen</p>
+<p class="opt">c. schließlich im Hotel gegessen</p>
+<p class="de"><strong>Text D</strong> · Ein Erbe des Xuan-Papiers in Anhui</p>
+<p class="q">18. Das Xuan-Papier stammt aus der ________.</p>
+<p class="opt">a. Han-Zeit und hat eine lange Geschichte</p>
+<p class="opt">b. Tang-Zeit und hat eine über 1000-jährige Geschichte</p>
+<p class="opt">c. Jin-Zeit und hat eine über 1500-jährige Geschichte</p>
+<p class="q">19. Wann wurde die Herstellung vom Xuan-Papier zum immateriellen Weltkulturerbe erklärt?</p>
+<p class="opt">a. 2006.</p>
+<p class="opt">b. 2009.</p>
+<p class="opt">c. 2010.</p>
+<p class="q">20. Li Ming ________.</p>
+<p class="opt">a. lässt sein Unternehmen jedes Jahr etwa 700 Tonnen Xuan-Papier produzieren</p>
+<p class="opt">b. hat sich um eine Stelle bei einer Internetfirma beworben</p>
+<p class="opt">c. hat zwei Jahre nach seinem Studienabschluss eine Firma gegründet</p>
+<div class="pgdiv">｜第 3 页｜</div>
+<h2 class="sec" id="leseverstehen">Ⅲ Leseverstehen (20%) · 50 Minuten</h2>
+<h3 class="sub">Teil 1 Überschriften zuordnen · 标题匹配（21-24，4P）</h3>
+<p class="de">A. Lesen Sie die folgenden Überschriften und Texte. Ordnen Sie zu. (2P)</p>
+<p class="de">Überschriften</p>
+<p class="opt">a. Zahl der Familien mit vielen Kindern sinkt</p>
+<p class="opt">b. Die Familie verliert in Deutschland an Bedeutung</p>
+<p class="opt">c. Kinder leiden unter der Trennung ihrer Eltern</p>
+<p class="opt">d. Verheiratete Eltern trennen sich seltener</p>
+<p class="q">21. Ein Blick auf die Statistik bestätigt, dass die Familie als Lebensform noch immer aktuell ist. So gibt es in Deutschland rund 22,4 Millionen Familien. Fast 80 Prozent der Gesamtbevölkerung sind Teil einer Familie. Jedoch zeigt sich eine starke Tendenz zur Kinderlosigkeit oder zur Ein-Kind-Ehe. Aber auch die Anzahl alleinerziehender Frauen mit Kindern hat in den letzten Jahren erheblich zugenommen. So fallen derzeit schon 15 Prozent aller Familien in diese Kategorie.</p>
+<p class="q">22. Verheiratete Eltern bleiben nach Aussage von Familienministerin Nolte wesentlich länger zusammen. „Kinder von Paaren, die nicht verheiratet sind, tragen ein viermal so hohes Risiko, von der Trennung ihrer Eltern betroffen zu werden“, sagte Nolte. Die Ministerin stützte sich dabei auf eine Studie: 80% aller Kinder, die in Ehen aufwachsen, erleben ihren 18. Geburtstag mit ihren Eltern. 80% der Kinder, deren Eltern keinen Trauschein besitzen, haben in diesem Alter bereits getrennte Eltern.</p>
+<p class="de">B. Lesen Sie die folgenden Überschriften und Texte. Ordnen Sie zu. (2P)</p>
+<p class="de">Überschriften</p>
+<p class="opt">a. Gorilla verletzte dreijähriges Kind</p>
+<p class="opt">b. Umweltverschmutzung sogar auf dem Mount Everest</p>
+<p class="opt">c. Bergsteiger berichten über ihren anstrengenden Weg zum Mount Everest</p>
+<p class="opt">d. Unfall im Zoo</p>
+<p class="q">23. Eine Gorilla-Mutter hat im Zoo von Brookfield einen dreijährigen Jungen gerettet, der sechs Meter tief in das Gehege der Affen gefallen war. Sie schützte das schwer am Kopf verletzte Kind vor sechs anderen Gorillas und trug es zu einer Eingangstür, wo die Zoowärter es erreichen konnten. Wie der Zoodirektor mitteilte, kam das siebenjährige Gorillaweibchen Binti Jua mit drei Monaten in den Zoo und wurde bis zum sechsten Lebensmonat rund um die Uhr von Menschen betreut.</p>
+<p class="q">24. Das Besteigen des Mount Everest macht durstig. Bergsteiger haben inzwischen 67.000 Flaschen auf ihrem Weg zum höchsten Berg der Welt zurückgelassen, wie die nepalesische Nachrichtenagentur RSS berichtet. Nun will eine Gruppe erfahrener Bergsteiger aufräumen. Sie haben jedoch eine anstrengende Arbeit vor sich: Zunächst müssen sie den Müll auf dem Rücken bis zum Basislager tragen. Von dort wird alles auf Ochsen verladen und weiter transportiert.</p>
+<div class="pgdiv">｜第 4 页｜</div>
+<h3 class="sub">Teil 2 Lesetexte · 长文阅读（25-40，16P）</h3>
+<p class="de">Lesen Sie die folgenden Texte und markieren Sie die richtigen Lösungen auf dem Antwortbogen. (16P)</p>
+<p class="de"><strong>Text A</strong> · **Füchse in der Stadt</p>
+<p class="de">Plötzlich steht es da: ein Tier, das ein bisschen wie ein Hund aussieht, mit rotem Fell. Wenn es dunkel wird, sind in manchen Städten Füchse unterwegs. Man sieht die Tiere aber immer öfter auch am Tag. Viele Menschen haben schon ihre eigene Fuchs-Geschichte. Manchmal macht es sich ein Fuchs zum Beispiel auf einer Gartenbank gemütlich. Und oft verschwinden Schuhe – sie sind für junge Füchse ein beliebtes Spielzeug.</p>
+<p class="de">Füchse gehören an vielen Orten schon zum Stadtbild. Allein in Berlin leben Tausende von ihnen. Auf dem Land finden Füchse immer weniger Nahrung. Deshalb kommen sie in die Städte, wo es viele Mäuse und auch Essensreste gibt. Außerdem werden die Füchse dort nicht von den Menschen gejagt, aber viele Füchse werden von Autos überfahren. Das Leben in der Stadt ist für sie also trotzdem gefährlich.</p>
+<p class="de">Füchse sehen Hunden ähnlich, können aber klettern wie Katzen. Sie sind scheu, aber auch neugierig. Es gibt sogar Füchse, die in einen Buchladen spazieren. Andere fahren im Bus oder in der Bahn mit. Kein Wunder, denn der Fuchs ist zu einem beliebten Tier geworden. Früher galt er als Hühnerdieb und Krankheitsüberträger. Doch heute mögen viele Menschen diese schlauen Tiere. So sieht man zum Beispiel auf Kissen süße Bilder von Füchsen. Der Fuchs ist gekommen, um zu bleiben. Bald werden wohl immer mehr Menschen ihre eigene Fuchs-Geschichte erzählen können.</p>
+<p class="de">Aufgaben: Markieren Sie die richtigen Lösungen auf dem Antwortbogen.</p>
+<p class="q">25. Man sieht Füchse ________.</p>
+<p class="opt">a. nur am Tag</p>
+<p class="opt">b. nur in der Nacht</p>
+<p class="opt">c. am Tag und in der Nacht</p>
+<p class="q">26. Oft verschwinden Schuhe, weil junge Füchse ________.</p>
+<p class="opt">a. die Schuhe tragen wollen</p>
+<p class="opt">b. gern mit Schuhen spielen</p>
+<p class="opt">c. die Schuhe als Nahrung ansehen</p>
+<p class="q">27. Füchse kommen in die Städte, um ________.</p>
+<p class="opt">a. Freunde zu besuchen</p>
+<p class="opt">b. Nahrung zu finden</p>
+<p class="opt">c. das langweilige Land zu verlassen</p>
+<p class="q">28. Die Stadt ist für Füchse auch gefährlich, weil sie ________.</p>
+<p class="opt">a. manchmal von Autos überfahren werden</p>
+<p class="opt">b. oft dort von Katzen gegessen werden</p>
+<p class="opt">c. einen Spaziergang im Buchladen machen</p>
+<p class="q">29. Füchse ________.</p>
+<p class="opt">a. haben ein ähnliches Aussehen wie Hühner</p>
+<p class="opt">b. sind neugierige Tiere wie Katzen</p>
+<p class="opt">c. übertragen Krankheiten nur auf Hunde</p>
+<div class="pgdiv">｜第 5 页｜</div>
+<p class="de"><strong>Text B</strong> · **Ein Kulturpass zum Geburtstag</p>
+<p class="de">Endlich 18 und volljährig! Rund 750.000 Jugendliche feiern in Deutschland 2023 diesen wichtigen Geburtstag. Auch die Bundesregierung gratuliert mit einem besonderen Geschenk: dem Kulturpass. 200 Euro bekommen die 18-Jährigen vom Staat. Anspruch auf das Geld haben alle Geburtstagskinder mit Wohnsitz in Deutschland, sie müssen sich nur registrieren. Insgesamt stehen für das Projekt 100 Millionen Euro zur Verfügung.</p>
+<p class="de">Den Betrag dürfen die jungen Leute allerdings nicht für eine Geburtstagsfeier oder den Urlaub ausgeben, sondern nur für kulturelle Veranstaltungen wie Konzerte, Theater- oder Museumsbesuche. Sie können aber auch Bücher oder Musikinstrumente kaufen. Die einzige Bedingung: Das Geld muss vor Ort und nicht online ausgegeben werden. Ziel ist es, mehr junge Menschen für Kultur zu begeistern und so der Kulturbranche zu helfen.</p>
+<p class="de">„Nach der entbehrungsreichen Corona-Zeit können Kulturanbieterinnen und -anbieter nun durch den Kulturpass ein junges Publikum vor Ort gewinnen und langfristig an sich binden“, erklärt Kulturstaatsministerin Claudia Roth. Denn wer bereits in jungen Jahren zu Kulturveranstaltungen geht, so die Hoffnung der Regierung, wird das wohl auch später im Leben tun.</p>
+<p class="de">Andere europäische Staaten haben diese Art der Kulturförderung schon früher eingeführt: In Frankreich gab es bereits vor zwei Jahren 300 Euro für die 18-Jährigen. Drei Viertel des Geldes wurden dort allerdings für Bücher ausgegeben und nicht für Theater- und Kinokarten. Spanien hat daraus gelernt: Dort müssen die Volljährigen, die sogar 400 Euro geschenkt bekommen, die Hälfte des Geldes für Live-Veranstaltungen verwenden. Wie deutsche 18-Jährige den Kulturpass nutzen werden, wird sich erst noch zeigen.</p>
+<p class="de">Aufgaben: Markieren Sie die richtigen Lösungen auf dem Antwortbogen.</p>
+<p class="q">30. Den Kulturpass ________.</p>
+<p class="opt">a. kaufen die deutschen Jugendlichen für 200 Euro</p>
+<p class="opt">b. bekommen die Jugendlichen mit 18 Jahren, die einen Wohnsitz in Deutschland haben</p>
+<p class="opt">c. bekommen die Jugendlichen, die kein Geld für Kulturveranstaltungen haben</p>
+<p class="q">31. Die jungen Leute dürfen diese 200 Euro <strong>nicht</strong> für ________ zahlen.</p>
+<p class="opt">a. eine Geige</p>
+<p class="opt">b. eine Gemäldeausstellung</p>
+<p class="opt">c. eine Auslandsreise</p>
+<p class="q">32. Die Bundesregierung möchte durch den Kulturpass ________.</p>
+<p class="opt">a. die Online-Kulturveranstaltungen unterstützen</p>
+<p class="opt">b. Jugendliche dazu bewegen, sich für Kulturangebote zu interessieren</p>
+<p class="opt">c. mehr Geld von der Kulturbranche verdienen</p>
+<p class="q">33. Kulturanbieterinnen und -anbieter ________.</p>
+<p class="opt">a. möchten durch den Kulturpass mehr Jugendliche gewinnen</p>
+<p class="opt">b. haben schon in der Corona-Zeit durch den Kulturpass viel Geld verdient</p>
+<p class="opt">c. hoffen darauf, dass ihnen die Bundesregierung das Geld direkt bezahlt</p>
+<p class="q">34. Zur Förderung der Kultur ________.</p>
+<p class="opt">a. müssen junge Leute in Frankreich mindestens 175 Euro für Bücher ausgeben</p>
+<p class="opt">b. soll das Geld in Spanien vor allem zum Bücherkauf verwendet werden</p>
+<p class="opt">c. bekommen junge Leute in Spanien und Frankreich mehr Geld vom Staat</p>
+<p class="de"><strong>Text C</strong> · **Wie gefährlich ist ChatGPT?</p>
+<p class="de">Wie erhält man in wenigen Sekunden einen Text, der sich so liest wie der Schulaufsatz eines 14-Jährigen? Oder eine Geschichte im Stil von Goethe? Mit dem Chatbot ChatGPT, den die Firma OpenAI 2022</p>
+<div class="pgdiv">｜第 6 页｜</div>
+<p class="de">veröffentlicht hat, ist das kein Problem mehr. Seine Künstliche Intelligenz (KI) ist so weit entwickelt, dass sie selbstständig Texte aller Art schreibt und auch Bilder und Videos produziert. Die „Werke“, die dabei entstehen, sind denen von Menschen oft überraschend ähnlich.</p>
+<p class="de">In der Fachwelt ist man überzeugt: Die so genannte generative KI von ChatGPT ist in der Lage, unser Leben zu revolutionieren. Die Entwicklung bietet große Chancen, ist aber auch mit Risiken verbunden: So fürchtet man an Universitäten bereits den „Tod der Hausarbeit“. Viele Menschen haben Angst, ihre Jobs zu verlieren, weil eine perfekte KI sie überflüssig machen könnte. Und auch Desinformation ist eine Gefahr – denn ChatGPT weiß nicht, ob seine Quellen stimmen, und erfindet sogar neue.</p>
+<p class="de">Allerdings wird bisher noch oft kritisiert, dass ChatGPT schablonenhaft schreibt. Denn die KI kann zwar sehr gut andere Texte nachahmen, aber nicht selbst kreativ werden. ChatGPT tut eigentlich nichts anderes, als sehr gründlich Informationen aus dem Internet zu analysieren. Und dabei produziert der Chatbot auch Texte, die sich zwar gut lesen, aber bei genauem Hinsehen Unsinn sind.</p>
+<p class="de">Sam Altman, der Chef von OpenAI, hält die Angst vor seinem Chatbot zwar für unberechtigt, trotzdem sind wir aus seiner Sicht „nicht weit entfernt von Anwendungen, die potenziell gefährlich sind“. Viele fordern daher nun Gesetze für den Umgang mit generativer KI. Aber wer soll diese Regeln schreiben und wie sollen sie aussehen? Der Chatbot hat natürlich auch darauf eine Antwort: „Es gibt viele verschiedene Sichtweisen auf das Thema.“</p>
+<p class="de">Aufgaben: Markieren Sie die richtigen Lösungen auf dem Antwortbogen.</p>
+<p class="q">35. Der Chatbot ChatGPT ________.</p>
+<p class="opt">a. wurde von der Firma OpenAI 2023 veröffentlicht</p>
+<p class="opt">b. muss einem Schüler eine Schreibaufgabe stellen</p>
+<p class="opt">c. ist ein Programm, das selbst Texte aller Arten schreiben kann</p>
+<p class="q">36. Die Texte, die ChatGPT produziert, ________.</p>
+<p class="opt">a. lassen sich kaum noch von menschlichen Texten unterscheiden</p>
+<p class="opt">b. sind alle gehoben geschrieben, und zwar im Stil von Goethe</p>
+<p class="opt">c. sind meistens mit Bildern und Videos ausgestattet und deshalb sehr anschaulich</p>
+<p class="q">37. Für die Universitäten bedeutet die Nutzung von ChatGPT, dass ________.</p>
+<p class="opt">a. die Lehrkräfte ihre Jobs verlieren würden, weil die Studierenden nicht mehr zum Unterricht zu kommen brauchen</p>
+<p class="opt">b. die Studierenden ChatGPT ihre Hausaufgaben machen lassen könnten</p>
+<p class="opt">c. die Lehrkräfte von der Bewertung der Hausarbeiten befreit werden</p>
+<p class="q">38. Welche Risiken sind bei der Verwendung von ChatGPT zu erwarten?</p>
+<p class="opt">a. Universitäten werden überflüssig, weil alle nur noch mit ChatGPT lernen.</p>
+<p class="opt">b. Es könnte die Textproduktion bei der Arbeit schwieriger machen.</p>
+<p class="opt">c. Die KI kann auch Texte schreiben, in denen falsche Informationen stehen.</p>
+<p class="q">39. An ChatGPT wird oft kritisiert, dass ________.</p>
+<p class="opt">a. der Chatbot stets schablonenhaft Texte produziert, statt kreativ zu sein</p>
+<p class="opt">b. der Chatbot für die Analyse der Informationen immer noch die menschliche Hilfe braucht</p>
+<p class="opt">c. die Kreativität zu groß ist, als dass man seine Texte verstehen könnte</p>
+<p class="q">40. Welche Meinung vertritt Sam Altman, der Chef von OpenAI?</p>
+<p class="opt">a. Er hält es für möglich, dass Chatbots in der Zukunft eine Gefahr für uns darstellen werden.</p>
+<p class="opt">b. Er ist überzeugt von seiner Erfindung, findet aber, dass ChatGPT oft auch Unsinn produziert.</p>
+<p class="opt">c. Er glaubt, dass ChatGPT in der heutigen Form schon für Menschen gefährlich ist.</p>
+<div class="pgdiv">｜第 7 页｜</div>
+<h2 class="sec" id="grammatik">Ⅳ Grammatik und Wortschatz (35%) · 45 Minuten</h2>
+<h3 class="sub">A) Grammatik-Auswahl · 语法选择（41-50，5P）</h3>
+<p class="de">Markieren Sie die Lösungen nach entsprechenden grammatischen Regeln auf dem Antwortbogen. (5P)</p>
+<p class="q">41. Hier lernen Sie Tipps kennen, ________ Ihnen helfen, Ihre Lebensqualität zu steigern.</p>
+<p class="opt">a. die</p>
+<p class="opt">b. was</p>
+<p class="opt">c. wobei</p>
+<p class="q">42. Bleiben Sie gesund und ________ Sie gut durch die Woche!</p>
+<p class="opt">a. seien</p>
+<p class="opt">b. kommen</p>
+<p class="opt">c. leben</p>
+<p class="q">43. Schreiben Sie uns bitte, welche Themen Ihnen gefallen ________.</p>
+<p class="opt">a. ist</p>
+<p class="opt">b. hat</p>
+<p class="opt">c. haben</p>
+<p class="q">44. ________ gut schläft, ist fitter, konzentrierter und leistungsfähiger.</p>
+<p class="opt">a. Wenn</p>
+<p class="opt">b. Wer</p>
+<p class="opt">c. Man</p>
+<p class="q">45. Expertinnen und Experten bestätigen, dass Frauen ________ Schlaf als Männer brauchen.</p>
+<p class="opt">a. viel</p>
+<p class="opt">b. kaum</p>
+<p class="opt">c. mehr</p>
+<p class="q">46. ________ auf die glatte Straße, damit ihr nicht hinfallt.</p>
+<p class="opt">a. Achte</p>
+<p class="opt">b. Achtet</p>
+<p class="opt">c. Achten Sie</p>
+<p class="q">47. Diesen Farbstoff benutzt man heute nicht mehr, weil er viel Blei ________.</p>
+<p class="opt">a. enthaltet</p>
+<p class="opt">b. enthält</p>
+<p class="opt">c. enthältet</p>
+<p class="q">48. ________ die Musikerin nicht glaubt, dass Künstliche Intelligenz ihre Kunst wegautomatisieren kann, hält sie KI für gefährlich.</p>
+<p class="opt">a. Weil</p>
+<p class="opt">b. Obwohl</p>
+<p class="opt">c. Indem</p>
+<p class="q">49. Es war im Restaurant einfach zu laut, ________ sich unterhalten zu können.</p>
+<p class="opt">a. ohne</p>
+<p class="opt">b. statt</p>
+<p class="opt">c. um</p>
+<p class="q">50. Manchmal sollte man sich fragen, was einem guttun ________.</p>
+<p class="opt">a. könnte</p>
+<p class="opt">b. möchte</p>
+<p class="opt">c. hätte</p>
+<h3 class="sub">B) Lückentexte · 完形填空（51-70，10P）</h3>
+<p class="de">B. Bitte markieren Sie die Lösungen im Text A) auf dem Antwortbogen und schreiben Sie die Lösungen vom Text B) auch auf dem Antwortbogen. (10P)</p>
+<p class="de"><strong>Text A</strong></p>
+<p class="de">Integrationskurse</p>
+<p class="de">In Integrationskursen lernen Sie Deutsch und erhalten Informationen über Deutschland. Kinder und (51), die noch die Schule besuchen, können nicht an einem Integrationskurs (52).</p>
+<p class="de">Es gibt Vollzeit- und Teilzeitkurse. Ein Teilzeitkurs bietet (53) beispielsweise an, wenn Sie berufstätig sind oder Kinder betreuen. Ein allgemeiner Integrationskurs umfasst 700 Unterrichtsstunden. Eine Unterrichtsstunde entspricht bei allen Kursen 45 Minuten. Er (54) mit einem Deutschsprachkurs (600 Unterrichtsstunden): Im Sprachkurs (55) Sie wichtige Themen aus dem alltäglichen Leben. Sie üben außerdem, Briefe auf Deutsch zu schreiben, (56) auszufüllen, zu telefonieren oder sich (57) eine Arbeitsstelle zu bewerben.</p>
+<p class="de">Der Sprachkurs schließt mit der Prüfung „Deutsch-Test für Zuwanderer“ ab. Im (58) folgt ein Orientierungskurs (100 Unterrichtsstunden): Darin erfahren Sie zum Beispiel vieles über Ihre (59) und Pflichten und das Zusammenleben in Deutschland. Danach absolvieren Sie den Test „Leben in Deutschland“, in (60) geprüft wird, was Sie im Orientierungskurs gelernt haben.</p>
+<div class="pgdiv">｜第 8 页｜</div>
+<p class="q">51. a) Junge b) Jugendliche c) Jugend</p>
+<p class="q">52. a) teilnehmen b) besuchen c) beteiligen</p>
+<p class="q">53. a) ihm b) es c) sich</p>
+<p class="q">54. a) beginnt b) fängt c) endet</p>
+<p class="q">55. a) handeln b) behandeln c) verhandeln</p>
+<p class="q">56. a) Lücken b) Tabellen c) Formulare</p>
+<p class="q">57. a) über b) um c) an</p>
+<p class="q">58. a) Einschluss b) Ausschluss c) Anschluss</p>
+<p class="q">59. a) Rechte b) Gesetze c) Regeln</p>
+<p class="q">60. a) den b) dem c) denen</p>
+<p class="de"><strong>Text B</strong> · Wir brauchen im Winter mehr Schlaf</p>
+<p class="de">Erwachsene brauchen etwa sieben bis neun Stunden Schlaf. Allerdings kann es im Winter manchmal auch ein bisschen (61) sein. Unser Schlafbedürfnis im Winter kann durchaus etwas höher sein (62) in der hellen Jahreszeit. Wir sollten darauf achten, ausreichend zu schlafen: Entweder früher ins Bett (63) morgens den Wecker eine halbe Stunde später (64) lassen.</p>
+<p class="de">Verschiedene Studien haben bestätigt, (65) Menschen in den Wintermonaten länger schlafen und auch die innere biologische Nacht länger dauert. Das liegt (66), dass die Tage kürzer und die tägliche Dosis Tageslicht geringer sind. Die deutlichsten Unterschiede (67) Sommer und Winter finden sich in Studien, in (68) die Teilnehmenden unter freiem Himmel und ohne künstliches Licht lebten. Zum Beispiel, weil die Forschenden sie für eine Woche zum Campen in die Berge geschickt hatten. Bei solchen Versuchen (69) die Teilnehmenden im Winter fast eine Stunde länger als im Sommer. Das heißt, die Lichtumgebung am Tag und auch am Abend sowie die Tageslänge spielen eine wichtige (70) für unseren Schlaf-Wach-Rhythmus.</p>
+<p class="de">Rhythmus.</p>
+<h3 class="sub">C) Wortschatz-Ergänzung · 词汇填空（71-90，10P）</h3>
+<p class="de">C. Bitte ergänzen Sie die passenden Wörter! Schreiben Sie sie dann auf den Antwortbogen.</p>
+<p class="de">(10P)</p>
+<p class="q">71. Das Kind ist schwer krank, es muss sofort ins ________ gebracht werden.</p>
+<p class="q">72. Sagen Sie bitte die Wahrheit. Ich will keine ________ hören.</p>
+<p class="q">73. Herr Schmidt möchte in China arbeiten. Er hat sich schon um eine neue Stelle ________.</p>
+<p class="q">74. Aus organisatorischen ________ bitten wir um eine rechtzeitige Anmeldung bis Freitag.</p>
+<p class="q">75. Du musst dich ________, sonst wirst du den Zug nicht mehr erreichen.</p>
+<p class="q">76. Ich kann heute nicht mehr nach Paris fahren, weil der Zug dorthin ________ des Streiks ausfällt.</p>
+<p class="q">77. Benzin wird immer ________, trotzdem wollen viele Autobesitzer nicht auf ihr Fahrzeug verzichten.</p>
+<p class="q">78. Du solltest den Regenschirm mitnehmen. Es ________ heute Nachmittag zu regnen.</p>
+<p class="q">79. Wissenschaftler haben darauf hingewiesen, dass man beim Lesen nur 10 Prozent des Lernstoffs im ________ behält, aber beim Anwenden 70 bis 90 Prozent.</p>
+<p class="q">80. Unsere Firma befindet sich in einer schwierigen ________, daher müssen wir zusammenhalten.</p>
+<p class="q">81. Gegen Hitze kann man sich weniger gut schützen als gegen ________.</p>
+<p class="q">82. ________ des Studiums jobbt Frau Lin schon bei einer Firma, um die Arbeitserfahrungen zu sammeln.</p>
+<div class="pgdiv">｜第 9 页｜</div>
+<p class="q">83. Hören Sie auf zu rauchen. Rauchen ist hier im Aufzug ________.</p>
+<p class="q">84. Du siehst schlecht aus. An deiner Stelle würde ich mich mal vom Arzt ________ lassen.</p>
+<p class="q">85. Man kann Energie ________, indem man weniger heizt.</p>
+<p class="q">86. Das Eis auf dem See ist noch nicht fest, trotzdem ________ der Junge darauf Schlittschuh.</p>
+<p class="q">87. Bitte beachten Sie, dass Kinder unter 12 Jahren das Museum nur in ________ von Erwachsenen besuchen dürfen.</p>
+<p class="q">88. Zwei Karten für Erwachsene, bitte. Der ________ für Kinder bis einschließlich 5 Jahre ist frei, oder?</p>
+<p class="q">89. Klare Flüsse und grüne Berge sind so wertvoll ________ Berge aus Gold und Silber.</p>
+<p class="q">90. Die Verwirklichung des Chinesischen Traums wird anderen Ländern mehr Chancen eröffnen und einen ________ zum Frieden und zur Entwicklung der Welt leisten.</p>
+<h3 class="sub">D) Satzumformung · 句子改写（91-95，5P）</h3>
+<p class="de">D. Formen Sie die unterstrichenen Ausdrücke so um, dass sie zu den vorgegebenen Satzteilen passen. Sinn und Zeit sollen nicht verändert werden. Schreiben Sie die Sätze auf den Antwortbogen. (5P)</p>
+<p class="de">Beispiel: Die Uhr ist nicht mehr zu reparieren. → Die Uhr kann/muss nicht mehr repariert werden.</p>
+<p class="q">91. Zur Steigerung der Wettbewerbsfähigkeit sollen die Kosten für die Produktion gesenkt werden.</p>
+<p class="de">→ ________, sollen die Kosten für die Produktion gesenkt werden.</p>
+<p class="q">92. Mit den nicht unbeschränkt zur Verfügung stehenden natürlichen Ressourcen darf man nicht leichtfertig umgehen.</p>
+<p class="de">→ Mit den natürlichen Ressourcen, ________, darf man nicht leichtfertig umgehen.</p>
+<p class="q">93. Die wirtschaftliche Entwicklung lässt sich positiv beeinflussen, wenn die Anreize richtig gesetzt werden.</p>
+<p class="de">→ Die wirtschaftliche Entwicklung ________ werden, wenn die Anreize richtig gesetzt werden.</p>
+<p class="q">94. Seit ihrer Gründung im Jahr 1921 hat die Kommunistische Partei Chinas einen hundertjährigen glänzenden Weg zurückgelegt.</p>
+<p class="de">→ ________, hat sie einen hundertjährigen glänzenden Weg zurückgelegt.</p>
+<p class="q">95. Weil ich nicht wusste, dass die Party so langweilig ist, bin ich hierhergekommen.</p>
+<p class="de">→ Wenn ________, wäre ich nicht hierhergekommen.</p>
+<h3 class="sub">E) Fehlerkorrektur · 改错（96-100，5P）</h3>
+<p class="de">E. Suchen Sie die Fehler (an zwei Stellen in jeder Aufgabe) in den folgenden Sätzen heraus und schreiben Sie die richtigen Sätze auf den Antwortbogen. (5P)</p>
+<p class="q">96. Brauchen Sie noch Hilfe, wenden Sie bitte an den Assistent.</p>
+<p class="q">97. Herr Schmidt fragt mich daran, wie man unter interkultureller Kompetenz versteht.</p>
+<p class="q">98. Wenn du mich gestern dafür gebeten, hätte ich dir gern geholfen.</p>
+<p class="q">99. Frau Li hat den ganzen Tag an die Dissertation gearbeitet, weil sie unbedingt diese Woche dabei fertig werden will.</p>
+<p class="q">100. Das Jahr des Drachen steht bei der Tür und alle Freunde wünschen mich einen guten Start ins neue Jahr.</p>
+<div class="pgdiv">｜第 10 页｜</div>
+<h2 class="sec" id="schreiben">Ⅴ Schriftlicher Ausdruck (15%) · 40 Minuten</h2>
+<p class="de">Bargeld verliert an Bedeutung</p>
+<p class="de">Anteil der Befragten, die in den letzten 12 Monaten unterwegs folgende Zahlungsmittel genutzt haben</p>
+<p class="de">■ 2020 ■ 2021 ■ 2022</p>
+<p class="de">100</p>
+<p class="de">80</p>
+<p class="de">60</p>
+<p class="de">40</p>
+<p class="de">20</p>
+<p class="de">0</p>
+<p class="de">72%</p>
+<p class="de">13%</p>
+<p class="de">Bargeld Debitkarte Kreditkarte Mobile Payment Prepaidkarte/ Gutschein Andere</p>
+<div class="note">⚠️ 图中柱状图数值标注在扫描件上极小，三遍识读仅能确认两处标注「72%」与「13%」（分别对应 Bargeld 与 Mobile Payment，两次读数的年份归属不一致，可能是 2021/2022 的另一组合）；其余类别（Debitkarte / Kreditkarte / Prepaidkarte-Gutschein / Andere）的数值不可读，未作推断。</div>
+<p class="de">* Einzelhandel, Restaurants und andere Points of sale</p>
+<p class="de">Basis: 2.100-4.500 Befragte (18-64 Jahre) in Deutschland;</p>
+<p class="de">Mehrfachantworten möglich</p>
+<p class="de">Quelle: Statista Global Consumer Survey</p>
+<p class="de">statista</p>
+<p class="de">Quelle:</p>
+<p class="de">https://winfuture.de/infografik/24951/Zahlungsmittel-Bargeld-verliert-an-Bedeutung-1651669543.html</p>
+<p class="de">Debitkarte: 储蓄卡、借记卡</p>
+<p class="de">Kreditkarte: 信用卡</p>
+<p class="de">Prepaidkarte/Gutschein: 预付卡/购物卡</p>
+<p class="de">Aufgaben:</p>
+<p class="de">Sie sehen in einem Internetforum das obige Schaubild. Schreiben Sie bitte in dem Forum einen Text zum Thema „Zahlungsmittel“. Gehen Sie dabei auf folgende Punkte ein:</p>
+<p class="q">1. Beschreiben Sie, was Sie in dem Schaubild erfahren haben.</p>
+<p class="q">2. Welche Erfahrungen haben Sie mit Zahlungsmitteln gemacht?</p>
+<p class="q">3. Was halten Sie von der Meinung, dass das Bargeld abgeschafft werden soll?</p>
+<p class="de">Ihr Text sollte 150-180 Wörter haben.</p>
+<hr class="hr">
+<h2 class="sec" id="kollation">校勘记录</h2>
+<p class="de">本文档相对 OCR 原始输出的改动（均为逐字符校对结果，不含任何改写）：</p>
+<p class="q">1. „Krankheitsübertäger“ → „Krankheitsüberträger“（p04 局部放大复读确认）</p>
+<p class="q">2. Diktat 指令行（p01）：第二遍 OCR 读作 „…dreimal. Zuerst hören Sie sich den ganzen Text einmal an…“，定向复读确认为 „Sie hören den folgenden Text dreimal und dann füllen Sie die Lücken aus.“，未采纳第二遍读法。</p>
+<p class="q">3. 卷面 Ⅳ-A 部分未印 „A.“ 序号（指令行直接以 „Markieren Sie die Lösungen…“ 开头），结构标题为整理者所加。</p>
+<p class="q">4. Ⅴ 作文题图表数值大部分不可读，已就地标注 ⚠️。</p>
+<div class="note">核对方式：同一页两次独立 OCR（分辨率不同）逐行比对；凡两遍读法不一致处，取局部放大后的定向复读结果；仍不能定论者就地标注 ⚠️ 并给出两种读法，不作猜测。</div>
+</main>
+<footer>
+  <div class="wrap">
+    <p>逐页 OCR 还原，德语原文逐字照录，不改写、不翻译。<code>⚠️</code> 为存疑标注，<code>〔整理者注：…〕</code> 为整理者补注。</p>
+    <p>四年真题原文：<a href="2023.html">2023</a> ｜ <a href="2024.html">2024</a> ｜ <a href="2025.html">2025</a> ｜ <a href="2026.html">2026</a>
+     ｜ <a href="./">回考点知识库</a></p>
+    <p class="zh">仅供教学参考，版权归考试中心所有。</p>
+  </div>
+</footer>
 </body>
 </html>

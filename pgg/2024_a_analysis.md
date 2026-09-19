@@ -65,7 +65,7 @@
 | 43 | gefallen + D (welche Themen...haben) | haben |
 | 44 | wer-Satz | Wer |
 | 45 | Komparativ (mehr...als) | mehr |
-| 46 | Imperativ (Achten Sie) | Achten Sie |
+| 46 | Imperativ (2. Pers. Pl.: ihr) | Achtet |
 | 47 | enthalten (3.Pers.Sg) | enthält |
 | 48 | obwohl (Konzessivsatz) | Obwohl |
 | 49 | um...zu (Infinitiv) | um |
@@ -77,6 +77,8 @@
 
 **Text B**: Wir brauchen im Winter mehr Schlaf
 答案: mehr, als, gehen, stellen, dass, daran, zwischen, denen, schliefen, Rolle
+
+> 校勘备注（2026-09-19 与扫描件原文逐字核对）：第 46 题原句 „________ auf die glatte Straße, damit ihr nicht hinfallt.“ 选项 a. Achte b. Achtet c. Achten Sie；从句主语为 ihr（非尊称 Sie），故正确答案为 b) **Achtet**。本文件旧版记作 „Achten Sie“，已更正。
 
 ### C) 词汇填空 (10P, 20题)
 **71-90答案**:

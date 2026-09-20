@@ -235,10 +235,10 @@ def sec_grammar(d):
         head = ''.join('<th>%s</th>' % h(c) for c in tb['headers'])
         rows = ''.join('<tr>%s</tr>' % ''.join('<td lang="de">%s</td>' % gh(c) for c in r)
                        for r in tb['rows'])
-        tables.append('<div class="text-card"><h3>%s</h3>'
+        tables.append('<div class="text-card"><h3>%s <span class="src">%s</span></h3>'
                       '<div class="vocab-table-wrap" style="overflow-x:auto">'
                       '<table class="tb"><tr>%s</tr>%s</table></div></div>'
-                      % (h(tb['title']), head, rows))
+                      % (h(tb['title']), h(tb.get('src', '')), head, rows))
     ex = ''.join('<div class="rm-item"><div class="rm-de" lang="de">%s</div><div class="rm-cn">%s</div></div>'
                  % (h(e['de']), h(e['zh'])) for e in g['examples'])
     return '''    <section id="grammar">

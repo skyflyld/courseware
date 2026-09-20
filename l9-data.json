@@ -23,7 +23,7 @@
  "t1": {
   "title": "Text 1 · Anna hat ein Bewerbungsschreiben vorbereitet",
   "sub": "安娜准备了一封求职信",
-  "kind": "Text 1 · Bewerbungsschreiben",
+  "kind": "Text 1 · Bewerbungsschreiben · S.253",
   "lead": "求职信的读法：先看她是谁（学业 → 实践 → 能力），再看信本身怎么写：九个组成 + 开头与结尾两句原话。点正文里带虚线的德文词，看释义和例句。",
   "paras": [
    "Anna ist Studentin. Sie studiert %%Sinologie|Sinologie%% und %%Betriebswirtschaft|Betriebswirtschaft%% an der %%Humboldt-Universität|Humboldt-Universität%% zu Berlin. Seit dem letzten %%Wintersemester|Wintersemester%% besucht sie die %%Fremdsprachenuniversität|Fremdsprachenuniversität%% Sichuan. Während des %%Austauschstudium|Austauschstudium%%s kann sie ihre %%Kenntnisse|Kenntnisse%% der chinesischen Sprache und Kultur verbessern und ihre %%interkulturellen Kompetenzen|interkulturellen Kompetenzen%% ausbauen.",
@@ -368,21 +368,21 @@
     "n": "Einleitung（引言）",
     "de": "Mit großem Interesse habe ich Ihre Anzeige gelesen und möchte mich um diese Stelle bewerben, da sie optimal zu meinen Interessen und Fähigkeiten passt.",
     "zh": "我怀着极大的兴趣读了贵公司的招聘广告，希望申请这一职位，因为它与我的兴趣和能力非常契合。",
-    "src": "教材课文 T1 · 求职信原文"
+    "src": "教材 S.253 · 课文 T1 · 求职信原文"
    },
    {
     "n": "Schluss（结尾）",
     "de": "Ich bin sicher, dass ich meine Kenntnisse und Erfahrungen gewinnbringend in Ihrer Institution einbringen kann. Über eine Einladung zu einem Vorstellungsgespräch würde ich mich sehr freuen.",
     "zh": "我相信，我能把自己的知识和经验富有成效地贡献给贵机构。 如能获邀参加面试，我将非常高兴。",
-    "src": "教材课文 T1 · 求职信原文"
+    "src": "教材 S.253 · 课文 T1 · 求职信原文"
    }
   ],
-  "provenance": "课文内容与教材原文逐句核对：事实与用词均出自教材求职信（Bewerbung um die Praktikumsstelle als Kultur-Assistenz，日期 Chongqing, 12.07.2023），此处为第三人称转述。"
+  "provenance": "课文内容与教材原文逐句核对：事实与用词均出自教材求职信 S.253（Bewerbung um die Praktikumsstelle als Kultur-Assistenz，日期 Chongqing, 12.07.2023），此处为第三人称转述。"
  },
  "t2": {
   "title": "Text 2 · Max kommt nun zum Vorstellungsgespräch",
   "sub": "马克斯来参加面试",
-  "kind": "Text 2 · Vorstellungsgespräch",
+  "kind": "Text 2 · Vorstellungsgespräch · S.263",
   "lead": "面试的读法：按五个阶段走（Begrüßung → Smalltalk → Selbstpräsentation → Rückfragen → Verabschiedung）。注意 Max 怎么说自己的强项与不足，以及他反问的那两个问题。",
   "paras": [
    "Max hat die %%Stellenanzeige|Stellenanzeige%% zur Marketing- und Vertriebsassistenz gelesen und möchte sich um die Stelle %%bewerben|bewerben%%. Er kommt nun zum %%Vorstellungsgespräch|Vorstellungsgespräch%%.",
@@ -686,32 +686,32 @@
     "n": "Selbstpräsentation（说强项）",
     "de": "Ich bin sehr kreativ. Ich habe immer viele tolle Ideen und die können helfen, neue Produkte zu verkaufen. Außerdem habe ich gute Umgangsformen und finde schnell Kontakt zu Menschen. Ich kann gut zuhören und auch überzeugen. Das ist wichtig, wenn es um Geschäftskontakte geht.",
     "zh": "我很有创造力，总有很多好点子。此外我举止得体，能很快与人建立联系，善于倾听，也能说服别人。这对业务往来很重要。我会英语、法语和西班牙语。",
-    "src": "教材课文 T2 · Max 原话"
+    "src": "教材 S.263 · 课文 T2 · Max 原话"
    },
    {
     "n": "Schwächen（说不足）",
     "de": "Ja, ich bin Berufsanfänger und habe noch wenig Erfahrung. Ich bin auch etwas ungeduldig. Ich will Dinge immer schnell voranschreiten sehen. Aber das ist vielleicht gar nicht so schlecht. Ich werde mich ja auch schnell einarbeiten.",
     "zh": "我是职场新人，经验还很少。我有点性急，因为我总希望事情能快点推进。不过这也许并不坏：我能很快融入一家新公司。",
-    "src": "教材课文 T2 · Max 原话"
+    "src": "教材 S.263 · 课文 T2 · Max 原话"
    },
    {
     "n": "Rückfragen（反问）",
     "de": "Ja. Wäre es möglich, dass man als Marketingassistenz auch die Gelegenheit hat, andere Abteilungen kennen zu lernen?",
     "zh": "您觉得，作为一名市场助理，也有机会了解其他部门，这样好吗？",
-    "src": "教材课文 T2 · Max 原话"
+    "src": "教材 S.263 · 课文 T2 · Max 原话"
    }
   ],
-  "provenance": "课文取自教材 Lektion 9 的面试对话：原书该对话留有 8 处空位 1)–8)，此处按教材给出的答案补全，漏句已按原文补齐。"
+  "provenance": "课文取自教材 S.263 的面试对话：原书该对话留有 8 处空位 1)–8)，此处按教材给出的答案补全，漏句已按原文补齐。"
  },
  "vocab": {
   "title": "词汇卡 · Wortschatzkarten（52 词）",
   "instruction": "点卡片翻面看中文。名词请带冠词读（der/die/das），动词请带支配格（+A / +D）。",
-  "src": "教材 Lektion 9 · Text 1 / Text 2 词汇（共 52 条）",
+  "src": "教材 S.253 / S.263 · Text 1 / Text 2 词汇（共 52 条）",
   "groups": [
    {
     "id": "G1",
     "label": "🎓 学业与交换 · Studium & Austausch",
-    "src": "教材 Lektion 9 · Text 1（Bewerbungsschreiben）",
+    "src": "教材 S.253 · Text 1（Bewerbungsschreiben）",
     "words": [
      {
       "w": "Sinologie",
@@ -750,7 +750,7 @@
    {
     "id": "G2",
     "label": "💼 实践与能力 · Praxis & Fähigkeiten",
-    "src": "教材 Lektion 9 · Text 1（Bewerbungsschreiben）",
+    "src": "教材 S.253 · Text 1（Bewerbungsschreiben）",
     "words": [
      {
       "w": "Praktikum",
@@ -813,7 +813,7 @@
    {
     "id": "G3",
     "label": "✉️ 求职信 · Bewerbungsschreiben",
-    "src": "教材 Lektion 9 · Text 1（Bewerbungsschreiben）",
+    "src": "教材 S.253 · Text 1（Bewerbungsschreiben）",
     "words": [
      {
       "w": "Briefkopf",
@@ -860,7 +860,7 @@
    {
     "id": "G4",
     "label": "🤝 面试 · Vorstellungsgespräch",
-    "src": "教材 Lektion 9 · Text 2（Vorstellungsgespräch）",
+    "src": "教材 S.263 · Text 2（Vorstellungsgespräch）",
     "words": [
      {
       "w": "Stellenanzeige",
@@ -982,7 +982,7 @@
       "%%Lass%% es %%sein%%, das ist nicht wichtig."
      ]
     ],
-    "src": "教材 Lektion 9 · 语法（lassen）"
+    "src": "教材 S.258 · 语法（lassen）"
    },
    {
     "title": "时间介词 · Zeitpräpositionen",
@@ -1030,7 +1030,7 @@
       "Durch ihr Praktikum bei der Filiale der Bank of China."
      ]
     ],
-    "src": "教材 Lektion 9 · G1 Präpositionen mit dem Dativ"
+    "src": "教材 S.250 · G1 Präpositionen mit dem Dativ"
    }
   ],
   "examples": [
@@ -1093,7 +1093,7 @@
      "附件（Lebenslauf, Zeugnisse）"
     ]
    ],
-   "src": "教材 Lektion 9 · Text 1（配对为改编）"
+   "src": "教材 S.253 · Text 1（配对为改编）"
   },
   {
    "title": "🤝 面试五阶段 · Fünf Phasen",
@@ -1119,7 +1119,7 @@
      "告别"
     ]
    ],
-   "src": "教材 Lektion 9 · 练习 7（五阶段；配对为改编）"
+   "src": "教材 S.253 · 练习 7（五阶段；配对为改编）"
   },
   {
    "title": "🔤 词汇配对 · Wortpaare",
@@ -1173,13 +1173,13 @@
      "职场新人"
     ]
    ],
-   "src": "教材 Lektion 9 · Text 1 / Text 2 词汇（配对为改编）"
+   "src": "教材 S.253 / S.263 · Text 1 / Text 2 词汇（配对为改编）"
   }
  ],
  "luecken": {
   "title": "介词与连词填空 · Präpositionen ergänzen",
   "instruction": "在空位里填入合适的介词或连词，写完点 ✓ 核对。答案不唯一时，只要格和意义都对就算对（如「an der Universität」也可说「an einer Universität」）。",
-  "src": "教材 Lektion 9 · 课文改编练习（同考点见教材练习 5）",
+  "src": "教材 S.252 · 课文改编练习（同考点见教材练习 5）",
   "items": [
    {
     "n": 1,
@@ -1222,7 +1222,7 @@
  "quiz": {
   "title": "快问快答 · Textverständnis",
   "instruction": "先选一个，再点「检查」；答错的题会标红，正确答案同时标绿。",
-  "src": "教材 Lektion 9 · Text 1 / Text 2（改编）",
+  "src": "教材 S.253 / S.263 · Text 1 / Text 2（改编）",
   "items": [
    {
     "q": "Welche Teile hat ein Bewerbungsschreiben?",
@@ -1295,61 +1295,61 @@
     "de": "Während des Austauschstudiums kann ich meine Kenntnisse verbessern.",
     "zh": "在交换留学期间我可以提高我的知识。",
     "tip": "时间介词与 lassen 的例句（语法部分）",
-    "src": "教材 Lektion 9 · G1 / 语法例句"
+    "src": "教材 S.250 · G1 / 语法例句"
    },
    {
     "de": "Seit dem letzten Wintersemester besucht sie die Fremdsprachenuniversität Sichuan.",
     "zh": "自从上个冬季学期以来她在四川外国语大学学习。",
     "tip": "时间介词与 lassen 的例句（语法部分）",
-    "src": "教材 Lektion 9 · G1 / 语法例句"
+    "src": "教材 S.250 · G1 / 语法例句"
    },
    {
     "de": "Durch ihr Praktikum konnte sie wertvolle Erfahrungen sammeln.",
     "zh": "通过实习她积累了宝贵的经验。",
     "tip": "时间介词与 lassen 的例句（语法部分）",
-    "src": "教材 Lektion 9 · G1 / 语法例句"
+    "src": "教材 S.250 · G1 / 语法例句"
    },
    {
     "de": "Ab dem 1. August stehe ich Ihnen gerne zur Verfügung.",
     "zh": "从8月1日起我很乐意为您效劳。",
     "tip": "时间介词与 lassen 的例句（语法部分）",
-    "src": "教材 Lektion 9 · G1 / 语法例句"
+    "src": "教材 S.250 · G1 / 语法例句"
    },
    {
     "de": "Bei all diesen Tätigkeiten hatte sie die Möglichkeit, ihre Fähigkeiten zu beweisen.",
     "zh": "在所有这些工作中她都有机会证明自己的能力。",
     "tip": "时间介词与 lassen 的例句（语法部分）",
-    "src": "教材 Lektion 9 · G1 / 语法例句"
+    "src": "教材 S.250 · G1 / 语法例句"
    },
    {
     "de": "»Mit großem Interesse habe ich Ihre Anzeige gelesen und möchte mich um diese Stelle bewerben, da sie optimal zu meinen Interessen und Fähigkeiten passt.«",
     "zh": "我怀着极大的兴趣读了贵公司的招聘广告，希望申请这一职位，因为它与我的兴趣和能力非常契合。",
     "tip": "求职信 Einleitung 的套用句：Interesse 表达兴趣 + da 从句说明理由。",
-    "src": "教材课文 T1 原句（引号内为求职信原文）· 中文为参考译文"
+    "src": "教材 S.253 · 课文 T1 原句（引号内为求职信原文）· 中文为参考译文"
    },
    {
     "de": "»Ich bin sicher, dass ich meine Kenntnisse und Erfahrungen gewinnbringend in Ihrer Institution einbringen kann.«",
     "zh": "我相信，我能把自己的知识和经验富有成效地贡献给贵机构。",
     "tip": "求职信 Hauptteil/Schluss 的套用句：dass 从句 + einbringen（贡献、带入）。",
-    "src": "教材课文 T1 原句 · 中文为参考译文"
+    "src": "教材 S.253 · 课文 T1 原句 · 中文为参考译文"
    },
    {
     "de": "»Über eine Einladung zu einem Vorstellungsgespräch würde ich mich sehr freuen.«",
     "zh": "如能获邀参加面试，我将非常高兴。",
     "tip": "求职信 Schluss 的套用句：über + Akk + würde sich freuen（虚拟式客气表达）。",
-    "src": "教材课文 T1 原句 · 中文为参考译文"
+    "src": "教材 S.253 · 课文 T1 原句 · 中文为参考译文"
    },
    {
     "de": "Ja, ich bin Berufsanfänger und habe noch wenig Erfahrung. Ich bin auch etwas ungeduldig. Ich will Dinge immer schnell voranschreiten sehen.",
     "zh": "是的，我是职场新人，经验还很少。我也有点性急，总希望事情能快点推进。",
     "tip": "面试谈「不足」的示范：先说事实，再补一句它带来的好处（下文接着说 einarbeiten）。",
-    "src": "教材课文 T2 原句（已按教材原文校对）· 中文为参考译文"
+    "src": "教材 S.263 · 课文 T2 原句（已按教材原文校对）· 中文为参考译文"
    },
    {
     "de": "Für mich ist es am wichtigsten, dass ich die Stelle bekomme.",
     "zh": "对我来说，最重要的是能得到这个职位。",
     "tip": "面试谈薪水的收尾句：es ist am wichtigsten, dass …（把重点从钱挪回岗位）。",
-    "src": "教材课文 T2 原句 · 中文为参考译文"
+    "src": "教材 S.263 · 课文 T2 原句 · 中文为参考译文"
    }
   ]
  }

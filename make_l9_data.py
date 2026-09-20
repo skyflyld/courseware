@@ -195,6 +195,51 @@ T2_PATCH = {
 }
 
 
+def apply_pages(obj):
+    """页码回填（Sky 2026-09-20 23:13 给出一手数字，逐条对应他给的标签）：
+      T1 → 253 · T2 → 263 · 时间介词 G1 → 250 · 语法 lassen → 258 ·
+      教材练习 7 → 253 · 课文改编练习（同考点见教材练习 5）→ 252
+    写法沿用 L8 家族的「教材 S.xxx · 组件名」；两页出处写「S.253 / S.263」。
+    只有一个整段的标签（语法 lassen 与它的用法区别表）共用 S.258。
+    """
+    EXACT = {
+        '教材 Lektion 9 · Text 1（Bewerbungsschreiben）': '教材 S.253 · Text 1（Bewerbungsschreiben）',
+        '教材 Lektion 9 · Text 2（Vorstellungsgespräch）': '教材 S.263 · Text 2（Vorstellungsgespräch）',
+        '教材 Lektion 9 · Text 1（配对为改编）': '教材 S.253 · Text 1（配对为改编）',
+        '教材 Lektion 9 · 练习 7（五阶段；配对为改编）': '教材 S.253 · 练习 7（五阶段；配对为改编）',
+        '教材 Lektion 9 · Text 1 / Text 2 词汇（配对为改编）': '教材 S.253 / S.263 · Text 1 / Text 2 词汇（配对为改编）',
+        '教材 Lektion 9 · Text 1 / Text 2（改编）': '教材 S.253 / S.263 · Text 1 / Text 2（改编）',
+        '教材 Lektion 9 · Text 1 / Text 2 词汇（共 52 条）': '教材 S.253 / S.263 · Text 1 / Text 2 词汇（共 52 条）',
+        '教材 Lektion 9 · 课文改编练习（同考点见教材练习 5）': '教材 S.252 · 课文改编练习（同考点见教材练习 5）',
+        '教材 Lektion 9 · 语法（lassen）': '教材 S.258 · 语法（lassen）',
+        '教材 Lektion 9 · 语法（用法区别）': '教材 S.258 · 语法（用法区别）',
+        '教材 Lektion 9 · G1 Präpositionen mit dem Dativ': '教材 S.250 · G1 Präpositionen mit dem Dativ',
+        '教材 Lektion 9 · G1 / 语法例句': '教材 S.250 · G1 / 语法例句',
+        'Text 1 · Bewerbungsschreiben': 'Text 1 · Bewerbungsschreiben · S.253',
+        'Text 2 · Vorstellungsgespräch': 'Text 2 · Vorstellungsgespräch · S.263',
+    }
+    PREFIX = [('教材课文 T1', '教材 S.253 · 课文 T1'), ('教材课文 T2', '教材 S.263 · 课文 T2')]
+
+    def fix(s):
+        if s in EXACT:
+            return EXACT[s]
+        for a, b in PREFIX:
+            if s.startswith(a):
+                return b + s[len(a):]
+        return s
+
+    def walk(o):
+        if isinstance(o, str):
+            return fix(o)
+        if isinstance(o, list):
+            return [walk(x) for x in o]
+        if isinstance(o, dict):
+            return {k: walk(v) for k, v in o.items()}
+        return o
+
+    return walk(obj)
+
+
 def apply_t2_patch(t2_raw):
     """教材原文校订：按 T2_PATCH 整段替换压缩段（不改源数据文件）"""
     paras = list(t2_raw['paragraphs'])
@@ -335,7 +380,7 @@ def main():
             'glossar': t1['glossar'],
             'structure': t1_struct,
             'quotes': t1_quotes,
-            'provenance': '课文内容与教材原文逐句核对：事实与用词均出自教材求职信（Bewerbung um die Praktikumsstelle als Kultur-Assistenz，日期 Chongqing, 12.07.2023），此处为第三人称转述。',
+            'provenance': '课文内容与教材原文逐句核对：事实与用词均出自教材求职信 S.253（Bewerbung um die Praktikumsstelle als Kultur-Assistenz，日期 Chongqing, 12.07.2023），此处为第三人称转述。',
         },
         't2': {
             'title': 'Text 2 · Max kommt nun zum Vorstellungsgespräch',
@@ -348,7 +393,7 @@ def main():
             'structure': [{'n': str(i + 1), 'de': a, 'cn': b} for i, (a, b) in
                           enumerate(d['connectGrids'][1]['pairs'])],
             'quotes': t2_quotes,
-            'provenance': '课文取自教材 Lektion 9 的面试对话：原书该对话留有 8 处空位 1)–8)，此处按教材给出的答案补全，漏句已按原文补齐。',
+            'provenance': '课文取自教材 S.263 的面试对话：原书该对话留有 8 处空位 1)–8)，此处按教材给出的答案补全，漏句已按原文补齐。',
         },
         'vocab': {
             'title': '词汇卡 · Wortschatzkarten（52 词）',
@@ -368,10 +413,14 @@ def main():
         },
     }
 
+    data = apply_pages(data)      # 页码回填（Sky 2026-09-20 23:13 给出一手数字）
+
     with open(OUT, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=1)
 
     print('wrote %s (%d bytes)' % (OUT, os.path.getsize(OUT)))
+    print('页码回填后仍无页码的 src: %s'
+          % [s for s in re.findall(r'教材 Lektion 9[^"\\]{0,40}', json.dumps(data, ensure_ascii=False))][:4])
     print('vocab groups: %s (共 %d 词)' % ([len(g['words']) for g in groups], n_grouped))
     print('t1 glossar=%d paras=%d | t2 glossar=%d dialogue=%d'
           % (len(t1['glossar']), len(t1['paras']), len(t2['glossar']), len(t2['dialogue'])))

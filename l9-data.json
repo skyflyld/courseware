@@ -23,7 +23,7 @@
  "t1": {
   "title": "Text 1 · Anna hat ein Bewerbungsschreiben vorbereitet",
   "sub": "安娜准备了一封求职信",
-  "kind": "Entdecken 1",
+  "kind": "Text 1 · Bewerbungsschreiben",
   "lead": "求职信的读法：先看她是谁（学业 → 实践 → 能力），再看信本身怎么写：九个组成 + 开头与结尾两句原话。点正文里带虚线的德文词，看释义和例句。",
   "paras": [
    "Anna ist Studentin. Sie studiert %%Sinologie|Sinologie%% und %%Betriebswirtschaft|Betriebswirtschaft%% an der %%Humboldt-Universität|Humboldt-Universität%% zu Berlin. Seit dem letzten %%Wintersemester|Wintersemester%% besucht sie die %%Fremdsprachenuniversität|Fremdsprachenuniversität%% Sichuan. Während des %%Austauschstudium|Austauschstudium%%s kann sie ihre %%Kenntnisse|Kenntnisse%% der chinesischen Sprache und Kultur verbessern und ihre %%interkulturellen Kompetenzen|interkulturellen Kompetenzen%% ausbauen.",
@@ -377,21 +377,21 @@
     "src": "教材课文 T1 · 求职信原文"
    }
   ],
-  "provenance": "课文取自教材 Lektion 9 Entdecken 1；重点词按教材原文标记，未增删。"
+  "provenance": "课文内容与教材原文逐句核对：事实与用词均出自教材求职信（Bewerbung um die Praktikumsstelle als Kultur-Assistenz，日期 Chongqing, 12.07.2023），此处为第三人称转述。"
  },
  "t2": {
   "title": "Text 2 · Max kommt nun zum Vorstellungsgespräch",
   "sub": "马克斯来参加面试",
-  "kind": "Entdecken 2",
+  "kind": "Text 2 · Vorstellungsgespräch",
   "lead": "面试的读法：按五个阶段走（Begrüßung → Smalltalk → Selbstpräsentation → Rückfragen → Verabschiedung）。注意 Max 怎么说自己的强项与不足，以及他反问的那两个问题。",
   "paras": [
    "Max hat die %%Stellenanzeige|Stellenanzeige%% zur Marketing- und Vertriebsassistenz gelesen und möchte sich um die Stelle %%bewerben|bewerben%%. Er kommt nun zum %%Vorstellungsgespräch|Vorstellungsgespräch%%.",
    "Max: Guten Tag, ich heiße Max Baumann. Personalchefin: Guten Tag, Herr Baumann, mein Name ist Schröder. »Nehmen Sie doch bitte Platz! Haben Sie den Weg zu uns gut gefunden?« Max: Danke. Ich habe vorher in der Nähe gewohnt. Daher kenne ich den Weg gut.",
-   "Personalchefin: Nun Herr Baumann, Ihre Bewerbung ist ja ganz interessant. »Warum haben Sie sich gerade bei uns beworben?« Max: Ich will schon immer %%Geschäftsmann|Geschäftsmann%% werden. Besonders die %%Messebranche|Messebranche%% interessiert mich. Ich habe in meinem %%Bachelorstudium|Bachelorstudium%% genau Medien- und Eventmanagement studiert.",
-   "Personalchefin: Und warum sind Sie die richtige Person für diese Stelle? Max: Ich bin sehr %%kreativ|kreativ%%. Ich habe immer viele tolle Ideen. Außerdem habe ich gute %%Umgangsformen|Umgangsformen%%, finde schnell %%Kontakt|Kontakt%% zu Menschen, kann gut zuhören und auch überzeugen. Das ist wichtig für %%Geschäftskontakte|Geschäftskontakte%%. Ich kann %%Englisch|Englisch%%, %%Französisch|Französisch%% und %%Spanisch|Spanisch%%.",
-   "Personalchefin: »Haben Sie auch %%Schwächen|Schwächen%%?« Max: Ich bin %%Berufsanfänger|Berufsanfänger%% und habe noch wenig %%Erfahrung|Erfahrung%%. Ich bin etwas %%ungeduldig|ungeduldig%%, weil ich Dinge immer schnell voranschreiten sehen will. Aber das ist vielleicht gar nicht so schlecht – ich kann mich schnell in eine neue Firma einarbeiten.",
-   "Max fragt: Finden Sie gut, dass man als Marketingassistenz auch die Gelegenheit hat, andere %%Abteilungen|Abteilungen%% kennen zu lernen? Personalchefin: Ja, wir lassen die Angestellten anfangs immer eine Zeit lang in verschiedenen Projekten arbeiten.",
-   "Personalchefin: »Was möchten Sie denn %%verdienen|verdienen%%?« Max: So zwischen 1800 und 2500 Euro pro Monat. Aber die %%Entscheidung|Entscheidung%% über das Gehalt liegt natürlich bei Ihnen. Für mich ist es am wichtigsten, dass ich die Stelle bekomme.",
+   "Personalchefin: Nun Herr Baumann, Ihre Bewerbung ist ja ganz interessant. »Warum haben Sie sich gerade bei uns beworben?« Max: Ich will schon immer %%Geschäftsmann|Geschäftsmann%% werden. Und besonders die %%Messebranche|Messebranche%% interessiert mich. Ich habe gelesen, dass Ihre Firma eine Assistenz für Messeveranstaltung und Eventmanagement sucht. Ich habe in meinem %%Bachelorstudium|Bachelorstudium%% genau Medien- und Eventmanagement studiert.",
+   "Personalchefin: Hmm. Und warum sind Sie die richtige Person für diese Stelle? Max: Ich bin sehr %%kreativ|kreativ%%. Ich habe immer viele tolle Ideen und die können helfen, neue Produkte zu verkaufen. Außerdem habe ich gute %%Umgangsformen|Umgangsformen%% und finde schnell %%Kontakt|Kontakt%% zu Menschen. Ich kann gut zuhören und auch überzeugen. Das ist wichtig, wenn es um %%Geschäftskontakte|Geschäftskontakte%% geht. Personalchefin: Sehr schön. Sie schreiben in Ihrem Bewerbungsschreiben, Sie sprechen %%Englisch|Englisch%%, %%Französisch|Französisch%% und %%Spanisch|Spanisch%%, richtig? Max: Ja, genau. Ich war während meines Studiums ein Jahr in Spanien, in Barcelona.",
+   "Personalchefin: Sie haben gerade Ihre Stärken genannt. »Haben Sie auch %%Schwächen|Schwächen%%?« Max: Ja, ich bin %%Berufsanfänger|Berufsanfänger%% und habe noch wenig %%Erfahrung|Erfahrung%%. Ich bin auch etwas %%ungeduldig|ungeduldig%%. Ich will Dinge immer schnell voranschreiten sehen. Aber das ist vielleicht gar nicht so schlecht. Ich werde mich ja auch schnell einarbeiten.",
+   "Personalchefin: Haben Sie noch Fragen an uns? Max: Ja. Wäre es möglich, dass man als Marketingassistenz auch die Gelegenheit hat, andere %%Abteilungen|Abteilungen%% kennen zu lernen? Personalchefin: Ja, wir lassen die Angestellten anfangs immer eine Zeit lang in verschiedenen Projekten arbeiten. Da sieht man verschiedene Abteilungen zusammenarbeiten. Personalchefin: »Was möchten Sie denn %%verdienen|verdienen%%, Herr Baumann?«",
+   "Max: So zwischen 1800 und 2500 Euro pro Monat. Aber die %%Entscheidung|Entscheidung%% über das Gehalt liegt natürlich bei Ihnen. Für mich ist es am wichtigsten, dass ich die Stelle bekomme.",
    "Personalchefin: Nun, Herr Baumann, vielen Dank. Es war schön, dass wir uns kennen gelernt haben. »Sie werden bald von uns hören.« Max: Ich möchte mich auch für die Einladung zu dem Vorstellungsgespräch bedanken."
   ],
   "dialogue": [
@@ -417,35 +417,47 @@
    },
    {
     "who": "Max",
-    "de": "Ich will schon immer %%Geschäftsmann|Geschäftsmann%% werden. Besonders die %%Messebranche|Messebranche%% interessiert mich. Ich habe in meinem %%Bachelorstudium|Bachelorstudium%% genau Medien- und Eventmanagement studiert."
+    "de": "Ich will schon immer %%Geschäftsmann|Geschäftsmann%% werden. Und besonders die %%Messebranche|Messebranche%% interessiert mich. Ich habe gelesen, dass Ihre Firma eine Assistenz für Messeveranstaltung und Eventmanagement sucht. Ich habe in meinem %%Bachelorstudium|Bachelorstudium%% genau Medien- und Eventmanagement studiert."
    },
    {
     "who": "Personalchefin",
-    "de": "Und warum sind Sie die richtige Person für diese Stelle?"
+    "de": "Hmm. Und warum sind Sie die richtige Person für diese Stelle?"
    },
    {
     "who": "Max",
-    "de": "Ich bin sehr %%kreativ|kreativ%%. Ich habe immer viele tolle Ideen. Außerdem habe ich gute %%Umgangsformen|Umgangsformen%%, finde schnell %%Kontakt|Kontakt%% zu Menschen, kann gut zuhören und auch überzeugen. Das ist wichtig für %%Geschäftskontakte|Geschäftskontakte%%. Ich kann %%Englisch|Englisch%%, %%Französisch|Französisch%% und %%Spanisch|Spanisch%%."
+    "de": "Ich bin sehr %%kreativ|kreativ%%. Ich habe immer viele tolle Ideen und die können helfen, neue Produkte zu verkaufen. Außerdem habe ich gute %%Umgangsformen|Umgangsformen%% und finde schnell %%Kontakt|Kontakt%% zu Menschen. Ich kann gut zuhören und auch überzeugen. Das ist wichtig, wenn es um %%Geschäftskontakte|Geschäftskontakte%% geht."
    },
    {
     "who": "Personalchefin",
-    "de": "»Haben Sie auch %%Schwächen|Schwächen%%?«"
+    "de": "Sehr schön. Sie schreiben in Ihrem Bewerbungsschreiben, Sie sprechen %%Englisch|Englisch%%, %%Französisch|Französisch%% und %%Spanisch|Spanisch%%, richtig?"
    },
    {
     "who": "Max",
-    "de": "Ich bin %%Berufsanfänger|Berufsanfänger%% und habe noch wenig %%Erfahrung|Erfahrung%%. Ich bin etwas %%ungeduldig|ungeduldig%%, weil ich Dinge immer schnell voranschreiten sehen will. Aber das ist vielleicht gar nicht so schlecht – ich kann mich schnell in eine neue Firma einarbeiten."
-   },
-   {
-    "who": "Max fragt",
-    "de": "Finden Sie gut, dass man als Marketingassistenz auch die Gelegenheit hat, andere %%Abteilungen|Abteilungen%% kennen zu lernen?"
+    "de": "Ja, genau. Ich war während meines Studiums ein Jahr in Spanien, in Barcelona."
    },
    {
     "who": "Personalchefin",
-    "de": "Ja, wir lassen die Angestellten anfangs immer eine Zeit lang in verschiedenen Projekten arbeiten."
+    "de": "Sie haben gerade Ihre Stärken genannt. »Haben Sie auch %%Schwächen|Schwächen%%?«"
+   },
+   {
+    "who": "Max",
+    "de": "Ja, ich bin %%Berufsanfänger|Berufsanfänger%% und habe noch wenig %%Erfahrung|Erfahrung%%. Ich bin auch etwas %%ungeduldig|ungeduldig%%. Ich will Dinge immer schnell voranschreiten sehen. Aber das ist vielleicht gar nicht so schlecht. Ich werde mich ja auch schnell einarbeiten."
    },
    {
     "who": "Personalchefin",
-    "de": "»Was möchten Sie denn %%verdienen|verdienen%%?«"
+    "de": "Haben Sie noch Fragen an uns?"
+   },
+   {
+    "who": "Max",
+    "de": "Ja. Wäre es möglich, dass man als Marketingassistenz auch die Gelegenheit hat, andere %%Abteilungen|Abteilungen%% kennen zu lernen?"
+   },
+   {
+    "who": "Personalchefin",
+    "de": "Ja, wir lassen die Angestellten anfangs immer eine Zeit lang in verschiedenen Projekten arbeiten. Da sieht man verschiedene Abteilungen zusammenarbeiten."
+   },
+   {
+    "who": "Personalchefin",
+    "de": "»Was möchten Sie denn %%verdienen|verdienen%%, Herr Baumann?«"
    },
    {
     "who": "Max",
@@ -503,7 +515,7 @@
     "forms": [
      "Messebranche"
     ],
-    "ex": "Besonders die Messebranche interessiert mich.",
+    "ex": "Und besonders die Messebranche interessiert mich.",
     "def": "die Branche der Messen und Ausstellungen"
    },
    {
@@ -530,7 +542,7 @@
     "forms": [
      "Umgangsformen"
     ],
-    "ex": "Außerdem habe ich gute Umgangsformen, finde schnell Kontakt zu Menschen, kann gut zuhören und auch überzeugen.",
+    "ex": "Außerdem habe ich gute Umgangsformen und finde schnell Kontakt zu Menschen.",
     "def": "das höfliche Verhalten"
    },
    {
@@ -539,7 +551,7 @@
     "forms": [
      "Kontakt"
     ],
-    "ex": "Außerdem habe ich gute Umgangsformen, finde schnell Kontakt zu Menschen, kann gut zuhören und auch überzeugen.",
+    "ex": "Außerdem habe ich gute Umgangsformen und finde schnell Kontakt zu Menschen.",
     "def": "die Verbindung zu Menschen"
    },
    {
@@ -548,7 +560,7 @@
     "forms": [
      "Geschäftskontakte"
     ],
-    "ex": "Das ist wichtig für Geschäftskontakte.",
+    "ex": "Das ist wichtig, wenn es um Geschäftskontakte geht.",
     "def": "die Verbindungen im Geschäftsleben"
    },
    {
@@ -557,7 +569,7 @@
     "forms": [
      "Englisch"
     ],
-    "ex": "Ich kann Englisch, Französisch und Spanisch.",
+    "ex": "Sie schreiben in Ihrem Bewerbungsschreiben, Sie sprechen Englisch, Französisch und Spanisch, richtig?",
     "def": "die englische Sprache"
    },
    {
@@ -566,7 +578,7 @@
     "forms": [
      "Französisch"
     ],
-    "ex": "Ich kann Englisch, Französisch und Spanisch.",
+    "ex": "Sie schreiben in Ihrem Bewerbungsschreiben, Sie sprechen Englisch, Französisch und Spanisch, richtig?",
     "def": "die französische Sprache"
    },
    {
@@ -575,7 +587,7 @@
     "forms": [
      "Spanisch"
     ],
-    "ex": "Ich kann Englisch, Französisch und Spanisch.",
+    "ex": "Sie schreiben in Ihrem Bewerbungsschreiben, Sie sprechen Englisch, Französisch und Spanisch, richtig?",
     "def": "die spanische Sprache"
    },
    {
@@ -584,7 +596,7 @@
     "forms": [
      "Schwächen"
     ],
-    "ex": "Personalchefin: »Haben Sie auch Schwächen?« Max: Ich bin Berufsanfänger und habe noch wenig Erfahrung.",
+    "ex": "»Haben Sie auch Schwächen?« Max: Ja, ich bin Berufsanfänger und habe noch wenig Erfahrung.",
     "def": "die negativen Eigenschaften"
    },
    {
@@ -593,7 +605,7 @@
     "forms": [
      "Berufsanfänger"
     ],
-    "ex": "Personalchefin: »Haben Sie auch Schwächen?« Max: Ich bin Berufsanfänger und habe noch wenig Erfahrung.",
+    "ex": "»Haben Sie auch Schwächen?« Max: Ja, ich bin Berufsanfänger und habe noch wenig Erfahrung.",
     "def": "jemand am Anfang seiner Karriere"
    },
    {
@@ -602,7 +614,7 @@
     "forms": [
      "Erfahrung"
     ],
-    "ex": "Personalchefin: »Haben Sie auch Schwächen?« Max: Ich bin Berufsanfänger und habe noch wenig Erfahrung.",
+    "ex": "»Haben Sie auch Schwächen?« Max: Ja, ich bin Berufsanfänger und habe noch wenig Erfahrung.",
     "def": "die Kenntnisse aus der Praxis"
    },
    {
@@ -611,7 +623,7 @@
     "forms": [
      "ungeduldig"
     ],
-    "ex": "Ich bin etwas ungeduldig, weil ich Dinge immer schnell voranschreiten sehen will.",
+    "ex": "Ich bin auch etwas ungeduldig.",
     "def": "nicht warten können"
    },
    {
@@ -620,7 +632,7 @@
     "forms": [
      "Abteilungen"
     ],
-    "ex": "Max fragt: Finden Sie gut, dass man als Marketingassistenz auch die Gelegenheit hat, andere Abteilungen kennen zu lernen?",
+    "ex": "Wäre es möglich, dass man als Marketingassistenz auch die Gelegenheit hat, andere Abteilungen kennen zu lernen?",
     "def": "die verschiedenen Bereiche einer Firma"
    },
    {
@@ -629,7 +641,7 @@
     "forms": [
      "verdienen"
     ],
-    "ex": "Personalchefin: »Was möchten Sie denn verdienen?« Max: So zwischen 1800 und 2500 Euro pro Monat.",
+    "ex": "Personalchefin: »Was möchten Sie denn verdienen, Herr Baumann?«",
     "def": "Geld durch Arbeit bekommen"
    },
    {
@@ -672,34 +684,34 @@
   "quotes": [
    {
     "n": "Selbstpräsentation（说强项）",
-    "de": "Ich bin sehr kreativ. Ich habe immer viele tolle Ideen. Außerdem habe ich gute Umgangsformen, finde schnell Kontakt zu Menschen, kann gut zuhören und auch überzeugen. Das ist wichtig für Geschäftskontakte. Ich kann Englisch, Französisch und Spanisch.",
+    "de": "Ich bin sehr kreativ. Ich habe immer viele tolle Ideen und die können helfen, neue Produkte zu verkaufen. Außerdem habe ich gute Umgangsformen und finde schnell Kontakt zu Menschen. Ich kann gut zuhören und auch überzeugen. Das ist wichtig, wenn es um Geschäftskontakte geht.",
     "zh": "我很有创造力，总有很多好点子。此外我举止得体，能很快与人建立联系，善于倾听，也能说服别人。这对业务往来很重要。我会英语、法语和西班牙语。",
     "src": "教材课文 T2 · Max 原话"
    },
    {
     "n": "Schwächen（说不足）",
-    "de": "Ich bin Berufsanfänger und habe noch wenig Erfahrung. Ich bin etwas ungeduldig, weil ich Dinge immer schnell voranschreiten sehen will. Aber das ist vielleicht gar nicht so schlecht – ich kann mich schnell in eine neue Firma einarbeiten.",
+    "de": "Ja, ich bin Berufsanfänger und habe noch wenig Erfahrung. Ich bin auch etwas ungeduldig. Ich will Dinge immer schnell voranschreiten sehen. Aber das ist vielleicht gar nicht so schlecht. Ich werde mich ja auch schnell einarbeiten.",
     "zh": "我是职场新人，经验还很少。我有点性急，因为我总希望事情能快点推进。不过这也许并不坏：我能很快融入一家新公司。",
     "src": "教材课文 T2 · Max 原话"
    },
    {
     "n": "Rückfragen（反问）",
-    "de": "Finden Sie gut, dass man als Marketingassistenz auch die Gelegenheit hat, andere Abteilungen kennen zu lernen?",
+    "de": "Ja. Wäre es möglich, dass man als Marketingassistenz auch die Gelegenheit hat, andere Abteilungen kennen zu lernen?",
     "zh": "您觉得，作为一名市场助理，也有机会了解其他部门，这样好吗？",
     "src": "教材课文 T2 · Max 原话"
    }
   ],
-  "provenance": "课文取自教材 Lektion 9 Entdecken 2；对话按说话人分行，原文一字未改。"
+  "provenance": "课文取自教材 Lektion 9 的面试对话：原书该对话留有 8 处空位 1)–8)，此处按教材给出的答案补全，漏句已按原文补齐。"
  },
  "vocab": {
   "title": "词汇卡 · Wortschatzkarten（52 词）",
   "instruction": "点卡片翻面看中文。名词请带冠词读（der/die/das），动词请带支配格（+A / +D）。",
-  "src": "教材 Lektion 9 · Entdecken 1 / Entdecken 2 词汇表（共 52 条）",
+  "src": "教材 Lektion 9 · Text 1 / Text 2 词汇（共 52 条）",
   "groups": [
    {
     "id": "G1",
     "label": "🎓 学业与交换 · Studium & Austausch",
-    "src": "教材 Lektion 9 · Entdecken 1",
+    "src": "教材 Lektion 9 · Text 1（Bewerbungsschreiben）",
     "words": [
      {
       "w": "Sinologie",
@@ -738,7 +750,7 @@
    {
     "id": "G2",
     "label": "💼 实践与能力 · Praxis & Fähigkeiten",
-    "src": "教材 Lektion 9 · Entdecken 1",
+    "src": "教材 Lektion 9 · Text 1（Bewerbungsschreiben）",
     "words": [
      {
       "w": "Praktikum",
@@ -801,7 +813,7 @@
    {
     "id": "G3",
     "label": "✉️ 求职信 · Bewerbungsschreiben",
-    "src": "教材 Lektion 9 · Entdecken 1",
+    "src": "教材 Lektion 9 · Text 1（Bewerbungsschreiben）",
     "words": [
      {
       "w": "Briefkopf",
@@ -848,7 +860,7 @@
    {
     "id": "G4",
     "label": "🤝 面试 · Vorstellungsgespräch",
-    "src": "教材 Lektion 9 · Entdecken 2",
+    "src": "教材 Lektion 9 · Text 2（Vorstellungsgespräch）",
     "words": [
      {
       "w": "Stellenanzeige",
@@ -969,7 +981,8 @@
       "表示停止某个行为",
       "%%Lass%% es %%sein%%, das ist nicht wichtig."
      ]
-    ]
+    ],
+    "src": "教材 Lektion 9 · 语法（lassen）"
    },
    {
     "title": "时间介词 · Zeitpräpositionen",
@@ -1016,7 +1029,8 @@
       "Dativ",
       "Durch ihr Praktikum bei der Filiale der Bank of China."
      ]
-    ]
+    ],
+    "src": "教材 Lektion 9 · G1 Präpositionen mit dem Dativ"
    }
   ],
   "examples": [
@@ -1079,7 +1093,7 @@
      "附件（Lebenslauf, Zeugnisse）"
     ]
    ],
-   "src": "教材 Lektion 9 · Entdecken 1"
+   "src": "教材 Lektion 9 · Text 1（配对为改编）"
   },
   {
    "title": "🤝 面试五阶段 · Fünf Phasen",
@@ -1105,7 +1119,7 @@
      "告别"
     ]
    ],
-   "src": "教材 Lektion 9 · Entdecken 2"
+   "src": "教材 Lektion 9 · 练习 7（五阶段；配对为改编）"
   },
   {
    "title": "🔤 词汇配对 · Wortpaare",
@@ -1159,13 +1173,13 @@
      "职场新人"
     ]
    ],
-   "src": "教材 Lektion 9 词汇表"
+   "src": "教材 Lektion 9 · Text 1 / Text 2 词汇（配对为改编）"
   }
  ],
  "luecken": {
   "title": "介词与连词填空 · Präpositionen ergänzen",
   "instruction": "在空位里填入合适的介词或连词，写完点 ✓ 核对。答案不唯一时，只要格和意义都对就算对（如「an der Universität」也可说「an einer Universität」）。",
-  "src": "教材 Lektion 9 课文改编练习",
+  "src": "教材 Lektion 9 · 课文改编练习（同考点见教材练习 5）",
   "items": [
    {
     "n": 1,
@@ -1208,7 +1222,7 @@
  "quiz": {
   "title": "快问快答 · Textverständnis",
   "instruction": "先选一个，再点「检查」；答错的题会标红，正确答案同时标绿。",
-  "src": "教材 Lektion 9 · Text 1 / Text 2",
+  "src": "教材 Lektion 9 · Text 1 / Text 2（改编）",
   "items": [
    {
     "q": "Welche Teile hat ein Bewerbungsschreiben?",
@@ -1281,31 +1295,31 @@
     "de": "Während des Austauschstudiums kann ich meine Kenntnisse verbessern.",
     "zh": "在交换留学期间我可以提高我的知识。",
     "tip": "时间介词与 lassen 的例句（语法部分）",
-    "src": "教材 Lektion 9 语法例句"
+    "src": "教材 Lektion 9 · G1 / 语法例句"
    },
    {
     "de": "Seit dem letzten Wintersemester besucht sie die Fremdsprachenuniversität Sichuan.",
     "zh": "自从上个冬季学期以来她在四川外国语大学学习。",
     "tip": "时间介词与 lassen 的例句（语法部分）",
-    "src": "教材 Lektion 9 语法例句"
+    "src": "教材 Lektion 9 · G1 / 语法例句"
    },
    {
     "de": "Durch ihr Praktikum konnte sie wertvolle Erfahrungen sammeln.",
     "zh": "通过实习她积累了宝贵的经验。",
     "tip": "时间介词与 lassen 的例句（语法部分）",
-    "src": "教材 Lektion 9 语法例句"
+    "src": "教材 Lektion 9 · G1 / 语法例句"
    },
    {
     "de": "Ab dem 1. August stehe ich Ihnen gerne zur Verfügung.",
     "zh": "从8月1日起我很乐意为您效劳。",
     "tip": "时间介词与 lassen 的例句（语法部分）",
-    "src": "教材 Lektion 9 语法例句"
+    "src": "教材 Lektion 9 · G1 / 语法例句"
    },
    {
     "de": "Bei all diesen Tätigkeiten hatte sie die Möglichkeit, ihre Fähigkeiten zu beweisen.",
     "zh": "在所有这些工作中她都有机会证明自己的能力。",
     "tip": "时间介词与 lassen 的例句（语法部分）",
-    "src": "教材 Lektion 9 语法例句"
+    "src": "教材 Lektion 9 · G1 / 语法例句"
    },
    {
     "de": "»Mit großem Interesse habe ich Ihre Anzeige gelesen und möchte mich um diese Stelle bewerben, da sie optimal zu meinen Interessen und Fähigkeiten passt.«",
@@ -1326,10 +1340,10 @@
     "src": "教材课文 T1 原句 · 中文为参考译文"
    },
    {
-    "de": "Ich bin Berufsanfänger und habe noch wenig Erfahrung. Ich bin etwas ungeduldig, weil ich Dinge immer schnell voranschreiten sehen will.",
-    "zh": "我是职场新人，经验还很少。我有点性急，因为我总希望事情能快点推进。",
+    "de": "Ja, ich bin Berufsanfänger und habe noch wenig Erfahrung. Ich bin auch etwas ungeduldig. Ich will Dinge immer schnell voranschreiten sehen.",
+    "zh": "是的，我是职场新人，经验还很少。我也有点性急，总希望事情能快点推进。",
     "tip": "面试谈「不足」的示范：先说事实，再补一句它带来的好处（下文接着说 einarbeiten）。",
-    "src": "教材课文 T2 原句 · 中文为参考译文"
+    "src": "教材课文 T2 原句（已按教材原文校对）· 中文为参考译文"
    },
    {
     "de": "Für mich ist es am wichtigsten, dass ich die Stelle bekomme.",

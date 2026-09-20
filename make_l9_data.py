@@ -146,11 +146,11 @@ TRANSLATION_EXTRA = [
      'zh': '如能获邀参加面试，我将非常高兴。',
      'tip': '求职信 Schluss 的套用句：über + Akk + würde sich freuen（虚拟式客气表达）。',
      'src': '教材课文 T1 原句 · 中文为参考译文'},
-    {'de': 'Ich bin Berufsanfänger und habe noch wenig Erfahrung. Ich bin etwas ungeduldig, weil '
-           'ich Dinge immer schnell voranschreiten sehen will.',
-     'zh': '我是职场新人，经验还很少。我有点性急，因为我总希望事情能快点推进。',
+    {'de': 'Ja, ich bin Berufsanfänger und habe noch wenig Erfahrung. Ich bin auch etwas ungeduldig. '
+           'Ich will Dinge immer schnell voranschreiten sehen.',
+     'zh': '是的，我是职场新人，经验还很少。我也有点性急，总希望事情能快点推进。',
      'tip': '面试谈「不足」的示范：先说事实，再补一句它带来的好处（下文接着说 einarbeiten）。',
-     'src': '教材课文 T2 原句 · 中文为参考译文'},
+     'src': '教材课文 T2 原句（已按教材原文校对）· 中文为参考译文'},
     {'de': 'Für mich ist es am wichtigsten, dass ich die Stelle bekomme.',
      'zh': '对我来说，最重要的是能得到这个职位。',
      'tip': '面试谈薪水的收尾句：es ist am wichtigsten, dass …（把重点从钱挪回岗位）。',
@@ -160,6 +160,47 @@ TRANSLATION_EXTRA = [
 
 def strip_marks(p):
     return re.sub(r'%%(.+?)%%', lambda m: m.group(1).split('|')[0], p)
+
+
+# ---------------------------------------------------------------- 教材原文校订（T2）
+# 证据：老师 PPT（Lektion_9_2.pptx）内嵌的教材页扫描图 image90 / image91 / image92，
+#       2026-09-20 用 vision_ds.py 逐字转写。教材该对话共 8 处空位 1)–8)，空位答案由 PPT 另页给出
+#       （slide 57/58：“Nehmen Sie doch bitte Platz!” / “Haben Sie den Weg zu uns gut gefunden?” /
+#        “Warum haben Sie sich gerade bei uns beworben?” / “Englisch, Französisch und Spanisch” /
+#        “Haben Sie auch Schwächen?” / “Haben Sie noch Fragen an uns?” / “Was möchten Sie denn verdienen?” /
+#        “Sie werden bald von uns hören.” / Ja, genau . Ich war während meines Studiums ein Jahr in Spanien, in Barcelona.）。
+# 原 JSON 的 T2 是压缩版，漏了四句、并把 Max 的追问改写了；此处按教材原文补齐。
+T2_PATCH = {
+    3: 'Personalchefin: Nun Herr Baumann, Ihre Bewerbung ist ja ganz interessant. »Warum haben Sie sich gerade bei uns beworben?« '
+       'Max: Ich will schon immer %%Geschäftsmann%% werden. Und besonders die %%Messebranche%% interessiert mich. '
+       'Ich habe gelesen, dass Ihre Firma eine Assistenz für Messeveranstaltung und Eventmanagement sucht. '
+       'Ich habe in meinem %%Bachelorstudium%% genau Medien- und Eventmanagement studiert.',
+    4: 'Personalchefin: Hmm. Und warum sind Sie die richtige Person für diese Stelle? '
+       'Max: Ich bin sehr %%kreativ%%. Ich habe immer viele tolle Ideen und die können helfen, neue Produkte zu verkaufen. '
+       'Außerdem habe ich gute %%Umgangsformen%% und finde schnell %%Kontakt%% zu Menschen. Ich kann gut zuhören und auch überzeugen. '
+       'Das ist wichtig, wenn es um %%Geschäftskontakte%% geht. '
+       'Personalchefin: Sehr schön. Sie schreiben in Ihrem Bewerbungsschreiben, Sie sprechen %%Englisch%%, %%Französisch%% und %%Spanisch%%, richtig? '
+       'Max: Ja, genau. Ich war während meines Studiums ein Jahr in Spanien, in Barcelona.',
+    5: 'Personalchefin: Sie haben gerade Ihre Stärken genannt. »Haben Sie auch %%Schwächen%%?« '
+       'Max: Ja, ich bin %%Berufsanfänger%% und habe noch wenig %%Erfahrung%%. Ich bin auch etwas %%ungeduldig%%. '
+       'Ich will Dinge immer schnell voranschreiten sehen. Aber das ist vielleicht gar nicht so schlecht. '
+       'Ich werde mich ja auch schnell einarbeiten.',
+    6: 'Personalchefin: Haben Sie noch Fragen an uns? '
+       'Max: Ja. Wäre es möglich, dass man als Marketingassistenz auch die Gelegenheit hat, andere %%Abteilungen%% kennen zu lernen? '
+       'Personalchefin: Ja, wir lassen die Angestellten anfangs immer eine Zeit lang in verschiedenen Projekten arbeiten. '
+       'Da sieht man verschiedene Abteilungen zusammenarbeiten. '
+       'Personalchefin: »Was möchten Sie denn %%verdienen%%, Herr Baumann?«',
+    7: 'Max: So zwischen 1800 und 2500 Euro pro Monat. Aber die %%Entscheidung%% über das Gehalt liegt natürlich bei Ihnen. '
+       'Für mich ist es am wichtigsten, dass ich die Stelle bekomme.',
+}
+
+
+def apply_t2_patch(t2_raw):
+    """教材原文校订：按 T2_PATCH 整段替换压缩段（不改源数据文件）"""
+    paras = list(t2_raw['paragraphs'])
+    for i, txt in T2_PATCH.items():
+        paras[i - 1] = txt
+    return paras
 
 
 def dialogue_quote(turns, need):
@@ -177,6 +218,7 @@ def main():
 
     t1_raw = [t for t in d['texts'] if t['id'] == 'T1'][0]
     t2_raw = [t for t in d['texts'] if t['id'] == 'T2'][0]
+    t2_raw = dict(t2_raw, paragraphs=apply_t2_patch(t2_raw))
     t1 = build_text(t1_raw, voc_by_key)
     t2 = build_text(t2_raw, voc_by_key)
     t2['dialogue'] = split_dialogue(t2['paras'])
@@ -186,13 +228,13 @@ def main():
     t1_struct = [{'n': str(i + 1), 'de': a, 'cn': b} for i, (a, b) in enumerate(grid)]
 
     groups = [
-        {'id': 'G1', 'label': '🎓 学业与交换 · Studium & Austausch', 'src': '教材 Lektion 9 · Entdecken 1',
+        {'id': 'G1', 'label': '🎓 学业与交换 · Studium & Austausch', 'src': '教材 Lektion 9 · Text 1（Bewerbungsschreiben）',
          'words': [{'w': k, 'cn': by_key[k]['cn']} for k in G1]},
-        {'id': 'G2', 'label': '💼 实践与能力 · Praxis & Fähigkeiten', 'src': '教材 Lektion 9 · Entdecken 1',
+        {'id': 'G2', 'label': '💼 实践与能力 · Praxis & Fähigkeiten', 'src': '教材 Lektion 9 · Text 1（Bewerbungsschreiben）',
          'words': [{'w': k, 'cn': by_key[k]['cn']} for k in G2]},
-        {'id': 'G3', 'label': '✉️ 求职信 · Bewerbungsschreiben', 'src': '教材 Lektion 9 · Entdecken 1',
+        {'id': 'G3', 'label': '✉️ 求职信 · Bewerbungsschreiben', 'src': '教材 Lektion 9 · Text 1（Bewerbungsschreiben）',
          'words': [{'w': k, 'cn': by_key[k]['cn']} for k in G3]},
-        {'id': 'G4', 'label': '🤝 面试 · Vorstellungsgespräch', 'src': '教材 Lektion 9 · Entdecken 2',
+        {'id': 'G4', 'label': '🤝 面试 · Vorstellungsgespräch', 'src': '教材 Lektion 9 · Text 2（Vorstellungsgespräch）',
          'words': [{'w': k, 'cn': by_key[k]['cn']} for k in G4]},
     ]
     n_grouped = sum(len(g['words']) for g in groups)
@@ -202,18 +244,27 @@ def main():
     # 连线：求职信九部分 / 面试五阶段 / 词汇配对（源数据原值）
     grids = [
         {'title': '✉️ 求职信的九个部分 · Teile des Bewerbungsschreibens',
-         'pairs': d['connectGrids'][0]['pairs'], 'src': '教材 Lektion 9 · Entdecken 1'},
+         'pairs': d['connectGrids'][0]['pairs'], 'src': '教材 Lektion 9 · Text 1（配对为改编）'},
         {'title': '🤝 面试五阶段 · Fünf Phasen',
-         'pairs': d['connectGrids'][1]['pairs'], 'src': '教材 Lektion 9 · Entdecken 2'},
+         'pairs': d['connectGrids'][1]['pairs'], 'src': '教材 Lektion 9 · 练习 7（五阶段；配对为改编）'},
         {'title': '🔤 词汇配对 · Wortpaare',
-         'pairs': d['matchingPairs'], 'src': '教材 Lektion 9 词汇表'},
+         'pairs': d['matchingPairs'], 'src': '教材 Lektion 9 · Text 1 / Text 2 词汇（配对为改编）'},
     ]
+
+    # 语法表出处（证据：老师 PPT 内嵌教材页 image30 = 教材 G1 标题；lassen 练习页 image41-45）
+    GRAMMAR_SRC = {
+        'lassen 的四种主要用法': '教材 Lektion 9 · 语法（lassen）',
+        '时间介词 · Zeitpräpositionen': '教材 Lektion 9 · G1 Präpositionen mit dem Dativ',
+    }
+    gram = dict(d['grammar'])
+    gram['tables'] = [dict(tb, src=GRAMMAR_SRC.get(tb['title'], '教材 Lektion 9'))
+                      for tb in d['grammar']['tables']]
 
     fg = d['fillGaps'][0]
     luecken = {
         'title': '介词与连词填空 · Präpositionen ergänzen',
         'instruction': '在空位里填入合适的介词或连词，写完点 ✓ 核对。答案不唯一时，只要格和意义都对就算对（如「an der Universität」也可说「an einer Universität」）。',
-        'src': '教材 Lektion 9 课文改编练习',
+        'src': '教材 Lektion 9 · 课文改编练习（同考点见教材练习 5）',
         'items': [{'n': i + 1, 'de': it['sentence'], 'ans': it['answer'], 'zh': LUECKEN_ZH.get(i + 1, '')}
                   for i, it in enumerate(fg['items'])],
     }
@@ -221,12 +272,12 @@ def main():
     quiz = {
         'title': '快问快答 · Textverständnis',
         'instruction': '先选一个，再点「检查」；答错的题会标红，正确答案同时标绿。',
-        'src': '教材 Lektion 9 · Text 1 / Text 2',
+        'src': '教材 Lektion 9 · Text 1 / Text 2（改编）',
         'items': [{'q': q['q'], 'opts': q['options'], 'a': 'ABCD'.index(q['answer'])} for q in d['quiz']],
     }
 
     trans_cards = [{'de': e['de'], 'zh': e['zh'], 'tip': '时间介词与 lassen 的例句（语法部分）',
-                    'src': '教材 Lektion 9 语法例句'}
+                    'src': '教材 Lektion 9 · G1 / 语法例句'}
                    for e in d['grammar']['examples']] + TRANSLATION_EXTRA
 
     # 课文中可直接套用的原句（德文照抄，中文为参考译文）
@@ -278,18 +329,18 @@ def main():
         't1': {
             'title': 'Text 1 · Anna hat ein Bewerbungsschreiben vorbereitet',
             'sub': '安娜准备了一封求职信',
-            'kind': 'Entdecken 1',
+            'kind': 'Text 1 · Bewerbungsschreiben',
             'lead': '求职信的读法：先看她是谁（学业 → 实践 → 能力），再看信本身怎么写：九个组成 + 开头与结尾两句原话。点正文里带虚线的德文词，看释义和例句。',
             'paras': t1['paras'],
             'glossar': t1['glossar'],
             'structure': t1_struct,
             'quotes': t1_quotes,
-            'provenance': '课文取自教材 Lektion 9 Entdecken 1；重点词按教材原文标记，未增删。',
+            'provenance': '课文内容与教材原文逐句核对：事实与用词均出自教材求职信（Bewerbung um die Praktikumsstelle als Kultur-Assistenz，日期 Chongqing, 12.07.2023），此处为第三人称转述。',
         },
         't2': {
             'title': 'Text 2 · Max kommt nun zum Vorstellungsgespräch',
             'sub': '马克斯来参加面试',
-            'kind': 'Entdecken 2',
+            'kind': 'Text 2 · Vorstellungsgespräch',
             'lead': '面试的读法：按五个阶段走（Begrüßung → Smalltalk → Selbstpräsentation → Rückfragen → Verabschiedung）。注意 Max 怎么说自己的强项与不足，以及他反问的那两个问题。',
             'paras': t2['paras'],
             'dialogue': t2['dialogue'],
@@ -297,15 +348,15 @@ def main():
             'structure': [{'n': str(i + 1), 'de': a, 'cn': b} for i, (a, b) in
                           enumerate(d['connectGrids'][1]['pairs'])],
             'quotes': t2_quotes,
-            'provenance': '课文取自教材 Lektion 9 Entdecken 2；对话按说话人分行，原文一字未改。',
+            'provenance': '课文取自教材 Lektion 9 的面试对话：原书该对话留有 8 处空位 1)–8)，此处按教材给出的答案补全，漏句已按原文补齐。',
         },
         'vocab': {
             'title': '词汇卡 · Wortschatzkarten（52 词）',
             'instruction': '点卡片翻面看中文。名词请带冠词读（der/die/das），动词请带支配格（+A / +D）。',
-            'src': '教材 Lektion 9 · Entdecken 1 / Entdecken 2 词汇表（共 52 条）',
+            'src': '教材 Lektion 9 · Text 1 / Text 2 词汇（共 52 条）',
             'groups': groups,
         },
-        'grammar': d['grammar'],
+        'grammar': gram,
         'connectGrids': grids,
         'luecken': luecken,
         'quiz': quiz,

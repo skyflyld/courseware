@@ -484,6 +484,11 @@ def main():
                    ('（投影时不用弹窗）', '')]:
         html = html.replace(_a, _b)
 
+    # 换行质量：模板字面量里的「 · 」分隔符禁用行首（同 h() 的做法 4）。
+    # 实测 390px：章节标题右侧的「Text 1 · Bewerbungsschreiben · 安娜准备了一封求职信」
+    # 会以「·」起行（wrap_audit forbiddenStart）。粘到前一个词上即可。
+    html = html.replace(' · ', '\u00a0· ')
+
     with open(OUT, 'w', encoding='utf-8') as f:
         f.write(html)
     print('Generated: %s (%d bytes)' % (OUT, len(html)))

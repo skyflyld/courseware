@@ -1,0 +1,1342 @@
+{
+ "meta": {
+  "lektion": "9",
+  "title": "Fit für die Bewerbung!",
+  "subtitle": "Lektion 9 · 求职与应聘 · 求职信 · 面试",
+  "source": "《新经典德语》第二册 Lektion 9 · Fit für die Bewerbung!",
+  "objectives": [
+   "读懂一封求职信：九个组成部分与常用表达",
+   "读懂一场面试：五个阶段的推进与常问的话",
+   "用 lassen 的四种用法表达「让…做」「可以…」「放下」「别做」",
+   "掌握时间介词 seit / während / durch / ab / bei / vorher 的格与用法",
+   "能用德语说出自己的经历、长处与不足（面试自我介绍的素材）"
+  ],
+  "flow": [
+   "📖 课文 T1：先读 Anna 的求职信，点生词看释义与例句",
+   "👤 课文 T2：读 Max 的面试对话，按五个阶段抓脉络",
+   "🃏 词汇卡：52 词分四组，点卡片翻面",
+   "🔤 语法：lassen 四种用法 + 六个时间介词",
+   "🔗 连线：求职信九部分 / 面试五阶段 / 词汇配对",
+   "✍️ 填空 + ✅ 快问快答 + 🎯 翻译卡：检验与巩固"
+  ]
+ },
+ "t1": {
+  "title": "Text 1 · Anna hat ein Bewerbungsschreiben vorbereitet",
+  "sub": "安娜准备了一封求职信",
+  "kind": "Entdecken 1",
+  "lead": "求职信的读法：先看她是谁（学业 → 实践 → 能力），再看信本身怎么写：九个组成 + 开头与结尾两句原话。点正文里带虚线的德文词，看释义和例句。",
+  "paras": [
+   "Anna ist Studentin. Sie studiert %%Sinologie|Sinologie%% und %%Betriebswirtschaft|Betriebswirtschaft%% an der %%Humboldt-Universität|Humboldt-Universität%% zu Berlin. Seit dem letzten %%Wintersemester|Wintersemester%% besucht sie die %%Fremdsprachenuniversität|Fremdsprachenuniversität%% Sichuan. Während des %%Austauschstudium|Austauschstudium%%s kann sie ihre %%Kenntnisse|Kenntnisse%% der chinesischen Sprache und Kultur verbessern und ihre %%interkulturellen Kompetenzen|interkulturellen Kompetenzen%% ausbauen.",
+   "Durch ihr %%Praktikum|Praktikum%% bei der %%Filiale|Filiale%% der Bank of China in Frankfurt im Jahr 2021 konnte sie wertvolle %%Erfahrungen|Erfahrungen%% im Bereich Büromanagement und Marketing %%sammeln|sammeln%%. Sie hat sich – durch die %%Betreuung|Betreuung%% von sozialen Medien – mit den neuen Medien vertraut gemacht.",
+   "Außerdem hat sie zuvor freiwillig als %%Trainerassistentin|Trainerassistentin%% in einem deutschen %%Sportverein|Sportverein%% sowie als Unterrichtsassistentin am Sprachlernzentrum gearbeitet. Bei all diesen %%Tätigkeiten|Tätigkeiten%% hatte sie die Möglichkeit, durch die vielfältigen %%Aufgaben|Aufgaben%% – wie die %%Organisation|Organisation%% von kreativen %%Veranstaltungen|Veranstaltungen%% – ihre %%Organisationsfähigkeiten|Organisationsfähigkeiten%% und %%Kreativität|Kreativität%% sowie ihr %%Verantwortungsbewusstsein|Verantwortungsbewusstsein%% sowohl zu beweisen als auch fortlaufend zu verbessern.",
+   "Ihr Bewerbungsschreiben hat die folgenden Teile: %%Briefkopf|Briefkopf%%, %%Betreff|Betreff%%, %%Anrede|Anrede%%, %%Einleitung|Einleitung%%, %%Hauptteil|Hauptteil%%, %%Schluss|Schluss%%, %%Gruß|Gruß%%, %%Unterschrift|Unterschrift%% und %%Anlagen|Anlagen%%. Sie bewirbt sich um die Praktikumsstelle als %%Kultur-Assistenz|Kultur-Assistenz%% bei der Firma GLOBUS Kulturinstitut. In der Einleitung schreibt sie: »Mit großem Interesse habe ich Ihre Anzeige gelesen und möchte mich um diese Stelle bewerben, da sie optimal zu meinen Interessen und Fähigkeiten passt.« Im Schluss: »Ich bin sicher, dass ich meine Kenntnisse und Erfahrungen gewinnbringend in Ihrer Institution einbringen kann. Über eine Einladung zu einem Vorstellungsgespräch würde ich mich sehr freuen.«"
+  ],
+  "glossar": [
+   {
+    "w": "Sinologie",
+    "zh": "汉学",
+    "forms": [
+     "Sinologie"
+    ],
+    "ex": "Sie studiert Sinologie und Betriebswirtschaft an der Humboldt-Universität zu Berlin.",
+    "def": "die Wissenschaft von der chinesischen Sprache und Kultur"
+   },
+   {
+    "w": "Betriebswirtschaft",
+    "zh": "企业经济学",
+    "forms": [
+     "Betriebswirtschaft"
+    ],
+    "ex": "Sie studiert Sinologie und Betriebswirtschaft an der Humboldt-Universität zu Berlin.",
+    "def": "die Wirtschaftswissenschaft eines Unternehmens"
+   },
+   {
+    "w": "Humboldt-Universität",
+    "zh": "柏林洪堡大学",
+    "forms": [
+     "Humboldt-Universität"
+    ],
+    "ex": "Sie studiert Sinologie und Betriebswirtschaft an der Humboldt-Universität zu Berlin.",
+    "def": "die Universität zu Berlin"
+   },
+   {
+    "w": "Wintersemester",
+    "zh": "冬季学期",
+    "forms": [
+     "Wintersemester"
+    ],
+    "ex": "Seit dem letzten Wintersemester besucht sie die Fremdsprachenuniversität Sichuan.",
+    "def": "das Semester im Winter"
+   },
+   {
+    "w": "Fremdsprachenuniversität",
+    "zh": "外国语大学",
+    "forms": [
+     "Fremdsprachenuniversität"
+    ],
+    "ex": "Seit dem letzten Wintersemester besucht sie die Fremdsprachenuniversität Sichuan.",
+    "def": "die Universität für Fremdsprachen"
+   },
+   {
+    "w": "Austauschstudium",
+    "zh": "交换留学",
+    "forms": [
+     "Austauschstudium"
+    ],
+    "ex": "Während des Austauschstudiums kann sie ihre Kenntnisse der chinesischen Sprache und Kultur verbessern und ihre interkulturellen Kompetenzen ausbauen.",
+    "def": "das Studium im Ausland"
+   },
+   {
+    "w": "Kenntnisse",
+    "zh": "知识（复数）",
+    "forms": [
+     "Kenntnisse"
+    ],
+    "ex": "Während des Austauschstudiums kann sie ihre Kenntnisse der chinesischen Sprache und Kultur verbessern und ihre interkulturellen Kompetenzen ausbauen.",
+    "def": "das Wissen, die Fähigkeiten"
+   },
+   {
+    "w": "interkulturellen Kompetenzen",
+    "zh": "跨文化能力",
+    "forms": [
+     "interkulturellen Kompetenzen"
+    ],
+    "ex": "Während des Austauschstudiums kann sie ihre Kenntnisse der chinesischen Sprache und Kultur verbessern und ihre interkulturellen Kompetenzen ausbauen.",
+    "def": "die Fähigkeit, mit verschiedenen Kulturen umzugehen"
+   },
+   {
+    "w": "Praktikum",
+    "zh": "实习",
+    "forms": [
+     "Praktikum"
+    ],
+    "ex": "Durch ihr Praktikum bei der Filiale der Bank of China in Frankfurt im Jahr 2021 konnte sie wertvolle Erfahrungen im Bereich Büromanagement und Marketing sammeln.",
+    "def": "die praktische Arbeit als Teil des Studiums"
+   },
+   {
+    "w": "Filiale",
+    "zh": "分行、分公司",
+    "forms": [
+     "Filiale"
+    ],
+    "ex": "Durch ihr Praktikum bei der Filiale der Bank of China in Frankfurt im Jahr 2021 konnte sie wertvolle Erfahrungen im Bereich Büromanagement und Marketing sammeln.",
+    "def": "eine Zweigstelle einer Bank oder Firma"
+   },
+   {
+    "w": "Erfahrungen",
+    "zh": "经验（复数）",
+    "forms": [
+     "Erfahrungen"
+    ],
+    "ex": "Durch ihr Praktikum bei der Filiale der Bank of China in Frankfurt im Jahr 2021 konnte sie wertvolle Erfahrungen im Bereich Büromanagement und Marketing sammeln.",
+    "def": "die Kenntnisse aus der Praxis"
+   },
+   {
+    "w": "sammeln",
+    "zh": "收集、积累",
+    "forms": [
+     "sammeln"
+    ],
+    "ex": "Durch ihr Praktikum bei der Filiale der Bank of China in Frankfurt im Jahr 2021 konnte sie wertvolle Erfahrungen im Bereich Büromanagement und Marketing sammeln.",
+    "def": "etwas zusammentragen: Erfahrungen sammeln"
+   },
+   {
+    "w": "Betreuung",
+    "zh": "照管、负责",
+    "forms": [
+     "Betreuung"
+    ],
+    "ex": "Sie hat sich – durch die Betreuung von sozialen Medien – mit den neuen Medien vertraut gemacht.",
+    "def": "die Verantwortung für etwas"
+   },
+   {
+    "w": "Trainerassistentin",
+    "zh": "教练助理",
+    "forms": [
+     "Trainerassistentin"
+    ],
+    "ex": "Außerdem hat sie zuvor freiwillig als Trainerassistentin in einem deutschen Sportverein sowie als Unterrichtsassistentin am Sprachlernzentrum gearbeitet.",
+    "def": "die Assistentin eines Trainers"
+   },
+   {
+    "w": "Sportverein",
+    "zh": "体育协会",
+    "forms": [
+     "Sportverein"
+    ],
+    "ex": "Außerdem hat sie zuvor freiwillig als Trainerassistentin in einem deutschen Sportverein sowie als Unterrichtsassistentin am Sprachlernzentrum gearbeitet.",
+    "def": "ein Verein für sportliche Aktivitäten"
+   },
+   {
+    "w": "Tätigkeiten",
+    "zh": "活动、工作（复数）",
+    "forms": [
+     "Tätigkeiten"
+    ],
+    "ex": "Bei all diesen Tätigkeiten hatte sie die Möglichkeit, durch die vielfältigen Aufgaben – wie die Organisation von kreativen Veranstaltungen – ihre Organisationsfähigkeiten und Kreativität sowie ihr Verantwortungsbewusstsein sowohl zu beweisen als auch fortlaufend zu verbessern.",
+    "def": "die Aufgaben, die man macht"
+   },
+   {
+    "w": "Aufgaben",
+    "zh": "任务（复数）",
+    "forms": [
+     "Aufgaben"
+    ],
+    "ex": "Bei all diesen Tätigkeiten hatte sie die Möglichkeit, durch die vielfältigen Aufgaben – wie die Organisation von kreativen Veranstaltungen – ihre Organisationsfähigkeiten und Kreativität sowie ihr Verantwortungsbewusstsein sowohl zu beweisen als auch fortlaufend zu verbessern.",
+    "def": "die Arbeiten, die zu erledigen sind"
+   },
+   {
+    "w": "Organisation",
+    "zh": "组织、安排",
+    "forms": [
+     "Organisation"
+    ],
+    "ex": "Bei all diesen Tätigkeiten hatte sie die Möglichkeit, durch die vielfältigen Aufgaben – wie die Organisation von kreativen Veranstaltungen – ihre Organisationsfähigkeiten und Kreativität sowie ihr Verantwortungsbewusstsein sowohl zu beweisen als auch fortlaufend zu verbessern.",
+    "def": "die Planung und Durchführung"
+   },
+   {
+    "w": "Veranstaltungen",
+    "zh": "活动、事件（复数）",
+    "forms": [
+     "Veranstaltungen"
+    ],
+    "ex": "Bei all diesen Tätigkeiten hatte sie die Möglichkeit, durch die vielfältigen Aufgaben – wie die Organisation von kreativen Veranstaltungen – ihre Organisationsfähigkeiten und Kreativität sowie ihr Verantwortungsbewusstsein sowohl zu beweisen als auch fortlaufend zu verbessern.",
+    "def": "Events, Feste, Konferenzen"
+   },
+   {
+    "w": "Organisationsfähigkeiten",
+    "zh": "组织能力（复数）",
+    "forms": [
+     "Organisationsfähigkeiten"
+    ],
+    "ex": "Bei all diesen Tätigkeiten hatte sie die Möglichkeit, durch die vielfältigen Aufgaben – wie die Organisation von kreativen Veranstaltungen – ihre Organisationsfähigkeiten und Kreativität sowie ihr Verantwortungsbewusstsein sowohl zu beweisen als auch fortlaufend zu verbessern.",
+    "def": "die Fähigkeit, Dinge zu organisieren"
+   },
+   {
+    "w": "Kreativität",
+    "zh": "创造力",
+    "forms": [
+     "Kreativität"
+    ],
+    "ex": "Bei all diesen Tätigkeiten hatte sie die Möglichkeit, durch die vielfältigen Aufgaben – wie die Organisation von kreativen Veranstaltungen – ihre Organisationsfähigkeiten und Kreativität sowie ihr Verantwortungsbewusstsein sowohl zu beweisen als auch fortlaufend zu verbessern.",
+    "def": "die Fähigkeit, Neues zu schaffen"
+   },
+   {
+    "w": "Verantwortungsbewusstsein",
+    "zh": "责任感",
+    "forms": [
+     "Verantwortungsbewusstsein"
+    ],
+    "ex": "Bei all diesen Tätigkeiten hatte sie die Möglichkeit, durch die vielfältigen Aufgaben – wie die Organisation von kreativen Veranstaltungen – ihre Organisationsfähigkeiten und Kreativität sowie ihr Verantwortungsbewusstsein sowohl zu beweisen als auch fortlaufend zu verbessern.",
+    "def": "das Bewusstsein für Verantwortung"
+   },
+   {
+    "w": "Briefkopf",
+    "zh": "信头",
+    "forms": [
+     "Briefkopf"
+    ],
+    "ex": "Ihr Bewerbungsschreiben hat die folgenden Teile: Briefkopf, Betreff, Anrede, Einleitung, Hauptteil, Schluss, Gruß, Unterschrift und Anlagen.",
+    "def": "der obere Teil eines Briefes mit Absenderangaben"
+   },
+   {
+    "w": "Betreff",
+    "zh": "事由、主题行",
+    "forms": [
+     "Betreff"
+    ],
+    "ex": "Ihr Bewerbungsschreiben hat die folgenden Teile: Briefkopf, Betreff, Anrede, Einleitung, Hauptteil, Schluss, Gruß, Unterschrift und Anlagen.",
+    "def": "der Titel eines Briefes"
+   },
+   {
+    "w": "Anrede",
+    "zh": "称呼",
+    "forms": [
+     "Anrede"
+    ],
+    "ex": "Ihr Bewerbungsschreiben hat die folgenden Teile: Briefkopf, Betreff, Anrede, Einleitung, Hauptteil, Schluss, Gruß, Unterschrift und Anlagen.",
+    "def": "die förmliche Anrede im Brief"
+   },
+   {
+    "w": "Einleitung",
+    "zh": "引言",
+    "forms": [
+     "Einleitung"
+    ],
+    "ex": "Ihr Bewerbungsschreiben hat die folgenden Teile: Briefkopf, Betreff, Anrede, Einleitung, Hauptteil, Schluss, Gruß, Unterschrift und Anlagen.",
+    "def": "der erste Teil eines Textes"
+   },
+   {
+    "w": "Hauptteil",
+    "zh": "主体部分",
+    "forms": [
+     "Hauptteil"
+    ],
+    "ex": "Ihr Bewerbungsschreiben hat die folgenden Teile: Briefkopf, Betreff, Anrede, Einleitung, Hauptteil, Schluss, Gruß, Unterschrift und Anlagen.",
+    "def": "der zentrale Teil eines Textes"
+   },
+   {
+    "w": "Schluss",
+    "zh": "结尾",
+    "forms": [
+     "Schluss"
+    ],
+    "ex": "Ihr Bewerbungsschreiben hat die folgenden Teile: Briefkopf, Betreff, Anrede, Einleitung, Hauptteil, Schluss, Gruß, Unterschrift und Anlagen.",
+    "def": "der letzte Teil eines Textes"
+   },
+   {
+    "w": "Gruß",
+    "zh": "问候",
+    "forms": [
+     "Gruß"
+    ],
+    "ex": "Ihr Bewerbungsschreiben hat die folgenden Teile: Briefkopf, Betreff, Anrede, Einleitung, Hauptteil, Schluss, Gruß, Unterschrift und Anlagen.",
+    "def": "die Grußformel am Ende des Briefes"
+   },
+   {
+    "w": "Unterschrift",
+    "zh": "签名",
+    "forms": [
+     "Unterschrift"
+    ],
+    "ex": "Ihr Bewerbungsschreiben hat die folgenden Teile: Briefkopf, Betreff, Anrede, Einleitung, Hauptteil, Schluss, Gruß, Unterschrift und Anlagen.",
+    "def": "der eigenhändige Name am Ende"
+   },
+   {
+    "w": "Anlagen",
+    "zh": "附件（复数）",
+    "forms": [
+     "Anlagen"
+    ],
+    "ex": "Ihr Bewerbungsschreiben hat die folgenden Teile: Briefkopf, Betreff, Anrede, Einleitung, Hauptteil, Schluss, Gruß, Unterschrift und Anlagen.",
+    "def": "die beigelegten Dokumente"
+   },
+   {
+    "w": "Kultur-Assistenz",
+    "zh": "文化助理",
+    "forms": [
+     "Kultur-Assistenz"
+    ],
+    "ex": "Sie bewirbt sich um die Praktikumsstelle als Kultur-Assistenz bei der Firma GLOBUS Kulturinstitut.",
+    "def": "die Assistentin im Kulturbereich"
+   }
+  ],
+  "structure": [
+   {
+    "n": "1",
+    "de": "Briefkopf",
+    "cn": "信头（地址信息）"
+   },
+   {
+    "n": "2",
+    "de": "Betreff",
+    "cn": "事由（Bewerbung um ...）"
+   },
+   {
+    "n": "3",
+    "de": "Anrede",
+    "cn": "称呼（Sehr geehrte ...）"
+   },
+   {
+    "n": "4",
+    "de": "Einleitung",
+    "cn": "引言（表达兴趣）"
+   },
+   {
+    "n": "5",
+    "de": "Hauptteil",
+    "cn": "主体（展示能力经验）"
+   },
+   {
+    "n": "6",
+    "de": "Schluss",
+    "cn": "结尾（表达期待）"
+   },
+   {
+    "n": "7",
+    "de": "Gruß",
+    "cn": "问候语（Mit freundlichen Grüßen）"
+   },
+   {
+    "n": "8",
+    "de": "Anlagen",
+    "cn": "附件（Lebenslauf, Zeugnisse）"
+   }
+  ],
+  "quotes": [
+   {
+    "n": "Einleitung（引言）",
+    "de": "Mit großem Interesse habe ich Ihre Anzeige gelesen und möchte mich um diese Stelle bewerben, da sie optimal zu meinen Interessen und Fähigkeiten passt.",
+    "zh": "我怀着极大的兴趣读了贵公司的招聘广告，希望申请这一职位，因为它与我的兴趣和能力非常契合。",
+    "src": "教材课文 T1 · 求职信原文"
+   },
+   {
+    "n": "Schluss（结尾）",
+    "de": "Ich bin sicher, dass ich meine Kenntnisse und Erfahrungen gewinnbringend in Ihrer Institution einbringen kann. Über eine Einladung zu einem Vorstellungsgespräch würde ich mich sehr freuen.",
+    "zh": "我相信，我能把自己的知识和经验富有成效地贡献给贵机构。 如能获邀参加面试，我将非常高兴。",
+    "src": "教材课文 T1 · 求职信原文"
+   }
+  ],
+  "provenance": "课文取自教材 Lektion 9 Entdecken 1；重点词按教材原文标记，未增删。"
+ },
+ "t2": {
+  "title": "Text 2 · Max kommt nun zum Vorstellungsgespräch",
+  "sub": "马克斯来参加面试",
+  "kind": "Entdecken 2",
+  "lead": "面试的读法：按五个阶段走（Begrüßung → Smalltalk → Selbstpräsentation → Rückfragen → Verabschiedung）。注意 Max 怎么说自己的强项与不足，以及他反问的那两个问题。",
+  "paras": [
+   "Max hat die %%Stellenanzeige|Stellenanzeige%% zur Marketing- und Vertriebsassistenz gelesen und möchte sich um die Stelle %%bewerben|bewerben%%. Er kommt nun zum %%Vorstellungsgespräch|Vorstellungsgespräch%%.",
+   "Max: Guten Tag, ich heiße Max Baumann. Personalchefin: Guten Tag, Herr Baumann, mein Name ist Schröder. »Nehmen Sie doch bitte Platz! Haben Sie den Weg zu uns gut gefunden?« Max: Danke. Ich habe vorher in der Nähe gewohnt. Daher kenne ich den Weg gut.",
+   "Personalchefin: Nun Herr Baumann, Ihre Bewerbung ist ja ganz interessant. »Warum haben Sie sich gerade bei uns beworben?« Max: Ich will schon immer %%Geschäftsmann|Geschäftsmann%% werden. Besonders die %%Messebranche|Messebranche%% interessiert mich. Ich habe in meinem %%Bachelorstudium|Bachelorstudium%% genau Medien- und Eventmanagement studiert.",
+   "Personalchefin: Und warum sind Sie die richtige Person für diese Stelle? Max: Ich bin sehr %%kreativ|kreativ%%. Ich habe immer viele tolle Ideen. Außerdem habe ich gute %%Umgangsformen|Umgangsformen%%, finde schnell %%Kontakt|Kontakt%% zu Menschen, kann gut zuhören und auch überzeugen. Das ist wichtig für %%Geschäftskontakte|Geschäftskontakte%%. Ich kann %%Englisch|Englisch%%, %%Französisch|Französisch%% und %%Spanisch|Spanisch%%.",
+   "Personalchefin: »Haben Sie auch %%Schwächen|Schwächen%%?« Max: Ich bin %%Berufsanfänger|Berufsanfänger%% und habe noch wenig %%Erfahrung|Erfahrung%%. Ich bin etwas %%ungeduldig|ungeduldig%%, weil ich Dinge immer schnell voranschreiten sehen will. Aber das ist vielleicht gar nicht so schlecht – ich kann mich schnell in eine neue Firma einarbeiten.",
+   "Max fragt: Finden Sie gut, dass man als Marketingassistenz auch die Gelegenheit hat, andere %%Abteilungen|Abteilungen%% kennen zu lernen? Personalchefin: Ja, wir lassen die Angestellten anfangs immer eine Zeit lang in verschiedenen Projekten arbeiten.",
+   "Personalchefin: »Was möchten Sie denn %%verdienen|verdienen%%?« Max: So zwischen 1800 und 2500 Euro pro Monat. Aber die %%Entscheidung|Entscheidung%% über das Gehalt liegt natürlich bei Ihnen. Für mich ist es am wichtigsten, dass ich die Stelle bekomme.",
+   "Personalchefin: Nun, Herr Baumann, vielen Dank. Es war schön, dass wir uns kennen gelernt haben. »Sie werden bald von uns hören.« Max: Ich möchte mich auch für die Einladung zu dem Vorstellungsgespräch bedanken."
+  ],
+  "dialogue": [
+   {
+    "who": "",
+    "de": "Max hat die %%Stellenanzeige|Stellenanzeige%% zur Marketing- und Vertriebsassistenz gelesen und möchte sich um die Stelle %%bewerben|bewerben%%. Er kommt nun zum %%Vorstellungsgespräch|Vorstellungsgespräch%%."
+   },
+   {
+    "who": "Max",
+    "de": "Guten Tag, ich heiße Max Baumann."
+   },
+   {
+    "who": "Personalchefin",
+    "de": "Guten Tag, Herr Baumann, mein Name ist Schröder. »Nehmen Sie doch bitte Platz! Haben Sie den Weg zu uns gut gefunden?«"
+   },
+   {
+    "who": "Max",
+    "de": "Danke. Ich habe vorher in der Nähe gewohnt. Daher kenne ich den Weg gut."
+   },
+   {
+    "who": "Personalchefin",
+    "de": "Nun Herr Baumann, Ihre Bewerbung ist ja ganz interessant. »Warum haben Sie sich gerade bei uns beworben?«"
+   },
+   {
+    "who": "Max",
+    "de": "Ich will schon immer %%Geschäftsmann|Geschäftsmann%% werden. Besonders die %%Messebranche|Messebranche%% interessiert mich. Ich habe in meinem %%Bachelorstudium|Bachelorstudium%% genau Medien- und Eventmanagement studiert."
+   },
+   {
+    "who": "Personalchefin",
+    "de": "Und warum sind Sie die richtige Person für diese Stelle?"
+   },
+   {
+    "who": "Max",
+    "de": "Ich bin sehr %%kreativ|kreativ%%. Ich habe immer viele tolle Ideen. Außerdem habe ich gute %%Umgangsformen|Umgangsformen%%, finde schnell %%Kontakt|Kontakt%% zu Menschen, kann gut zuhören und auch überzeugen. Das ist wichtig für %%Geschäftskontakte|Geschäftskontakte%%. Ich kann %%Englisch|Englisch%%, %%Französisch|Französisch%% und %%Spanisch|Spanisch%%."
+   },
+   {
+    "who": "Personalchefin",
+    "de": "»Haben Sie auch %%Schwächen|Schwächen%%?«"
+   },
+   {
+    "who": "Max",
+    "de": "Ich bin %%Berufsanfänger|Berufsanfänger%% und habe noch wenig %%Erfahrung|Erfahrung%%. Ich bin etwas %%ungeduldig|ungeduldig%%, weil ich Dinge immer schnell voranschreiten sehen will. Aber das ist vielleicht gar nicht so schlecht – ich kann mich schnell in eine neue Firma einarbeiten."
+   },
+   {
+    "who": "Max fragt",
+    "de": "Finden Sie gut, dass man als Marketingassistenz auch die Gelegenheit hat, andere %%Abteilungen|Abteilungen%% kennen zu lernen?"
+   },
+   {
+    "who": "Personalchefin",
+    "de": "Ja, wir lassen die Angestellten anfangs immer eine Zeit lang in verschiedenen Projekten arbeiten."
+   },
+   {
+    "who": "Personalchefin",
+    "de": "»Was möchten Sie denn %%verdienen|verdienen%%?«"
+   },
+   {
+    "who": "Max",
+    "de": "So zwischen 1800 und 2500 Euro pro Monat. Aber die %%Entscheidung|Entscheidung%% über das Gehalt liegt natürlich bei Ihnen. Für mich ist es am wichtigsten, dass ich die Stelle bekomme."
+   },
+   {
+    "who": "Personalchefin",
+    "de": "Nun, Herr Baumann, vielen Dank. Es war schön, dass wir uns kennen gelernt haben. »Sie werden bald von uns hören.«"
+   },
+   {
+    "who": "Max",
+    "de": "Ich möchte mich auch für die Einladung zu dem Vorstellungsgespräch bedanken."
+   }
+  ],
+  "glossar": [
+   {
+    "w": "Stellenanzeige",
+    "zh": "招聘广告",
+    "forms": [
+     "Stellenanzeige"
+    ],
+    "ex": "Max hat die Stellenanzeige zur Marketing- und Vertriebsassistenz gelesen und möchte sich um die Stelle bewerben.",
+    "def": "die Anzeige für eine freie Stelle"
+   },
+   {
+    "w": "bewerben",
+    "zh": "申请、求职",
+    "forms": [
+     "bewerben"
+    ],
+    "ex": "Max hat die Stellenanzeige zur Marketing- und Vertriebsassistenz gelesen und möchte sich um die Stelle bewerben.",
+    "def": "sich um eine Stelle bewerben"
+   },
+   {
+    "w": "Vorstellungsgespräch",
+    "zh": "面试",
+    "forms": [
+     "Vorstellungsgespräch"
+    ],
+    "ex": "Er kommt nun zum Vorstellungsgespräch.",
+    "def": "das Gespräch mit dem Arbeitgeber"
+   },
+   {
+    "w": "Geschäftsmann",
+    "zh": "商人",
+    "forms": [
+     "Geschäftsmann"
+    ],
+    "ex": "»Warum haben Sie sich gerade bei uns beworben?« Max: Ich will schon immer Geschäftsmann werden.",
+    "def": "ein Mann, der im Geschäftsleben arbeitet"
+   },
+   {
+    "w": "Messebranche",
+    "zh": "展会行业",
+    "forms": [
+     "Messebranche"
+    ],
+    "ex": "Besonders die Messebranche interessiert mich.",
+    "def": "die Branche der Messen und Ausstellungen"
+   },
+   {
+    "w": "Bachelorstudium",
+    "zh": "本科学业",
+    "forms": [
+     "Bachelorstudium"
+    ],
+    "ex": "Ich habe in meinem Bachelorstudium genau Medien- und Eventmanagement studiert.",
+    "def": "das Studium zum Bachelor-Abschluss"
+   },
+   {
+    "w": "kreativ",
+    "zh": "有创造力的",
+    "forms": [
+     "kreativ"
+    ],
+    "ex": "Max: Ich bin sehr kreativ.",
+    "def": "fähig, Neues zu schaffen"
+   },
+   {
+    "w": "Umgangsformen",
+    "zh": "礼仪、举止（复数）",
+    "forms": [
+     "Umgangsformen"
+    ],
+    "ex": "Außerdem habe ich gute Umgangsformen, finde schnell Kontakt zu Menschen, kann gut zuhören und auch überzeugen.",
+    "def": "das höfliche Verhalten"
+   },
+   {
+    "w": "Kontakt",
+    "zh": "联系、接触",
+    "forms": [
+     "Kontakt"
+    ],
+    "ex": "Außerdem habe ich gute Umgangsformen, finde schnell Kontakt zu Menschen, kann gut zuhören und auch überzeugen.",
+    "def": "die Verbindung zu Menschen"
+   },
+   {
+    "w": "Geschäftskontakte",
+    "zh": "业务联系（复数）",
+    "forms": [
+     "Geschäftskontakte"
+    ],
+    "ex": "Das ist wichtig für Geschäftskontakte.",
+    "def": "die Verbindungen im Geschäftsleben"
+   },
+   {
+    "w": "Englisch",
+    "zh": "英语",
+    "forms": [
+     "Englisch"
+    ],
+    "ex": "Ich kann Englisch, Französisch und Spanisch.",
+    "def": "die englische Sprache"
+   },
+   {
+    "w": "Französisch",
+    "zh": "法语",
+    "forms": [
+     "Französisch"
+    ],
+    "ex": "Ich kann Englisch, Französisch und Spanisch.",
+    "def": "die französische Sprache"
+   },
+   {
+    "w": "Spanisch",
+    "zh": "西班牙语",
+    "forms": [
+     "Spanisch"
+    ],
+    "ex": "Ich kann Englisch, Französisch und Spanisch.",
+    "def": "die spanische Sprache"
+   },
+   {
+    "w": "Schwächen",
+    "zh": "弱点（复数）",
+    "forms": [
+     "Schwächen"
+    ],
+    "ex": "Personalchefin: »Haben Sie auch Schwächen?« Max: Ich bin Berufsanfänger und habe noch wenig Erfahrung.",
+    "def": "die negativen Eigenschaften"
+   },
+   {
+    "w": "Berufsanfänger",
+    "zh": "职场新人",
+    "forms": [
+     "Berufsanfänger"
+    ],
+    "ex": "Personalchefin: »Haben Sie auch Schwächen?« Max: Ich bin Berufsanfänger und habe noch wenig Erfahrung.",
+    "def": "jemand am Anfang seiner Karriere"
+   },
+   {
+    "w": "Erfahrung",
+    "zh": "经验",
+    "forms": [
+     "Erfahrung"
+    ],
+    "ex": "Personalchefin: »Haben Sie auch Schwächen?« Max: Ich bin Berufsanfänger und habe noch wenig Erfahrung.",
+    "def": "die Kenntnisse aus der Praxis"
+   },
+   {
+    "w": "ungeduldig",
+    "zh": "不耐烦的、急性子的",
+    "forms": [
+     "ungeduldig"
+    ],
+    "ex": "Ich bin etwas ungeduldig, weil ich Dinge immer schnell voranschreiten sehen will.",
+    "def": "nicht warten können"
+   },
+   {
+    "w": "Abteilungen",
+    "zh": "部门（复数）",
+    "forms": [
+     "Abteilungen"
+    ],
+    "ex": "Max fragt: Finden Sie gut, dass man als Marketingassistenz auch die Gelegenheit hat, andere Abteilungen kennen zu lernen?",
+    "def": "die verschiedenen Bereiche einer Firma"
+   },
+   {
+    "w": "verdienen",
+    "zh": "赚钱、挣得",
+    "forms": [
+     "verdienen"
+    ],
+    "ex": "Personalchefin: »Was möchten Sie denn verdienen?« Max: So zwischen 1800 und 2500 Euro pro Monat.",
+    "def": "Geld durch Arbeit bekommen"
+   },
+   {
+    "w": "Entscheidung",
+    "zh": "决定",
+    "forms": [
+     "Entscheidung"
+    ],
+    "ex": "Aber die Entscheidung über das Gehalt liegt natürlich bei Ihnen.",
+    "def": "die Wahl zwischen Möglichkeiten"
+   }
+  ],
+  "structure": [
+   {
+    "n": "1",
+    "de": "Begrüßung",
+    "cn": "问候"
+   },
+   {
+    "n": "2",
+    "de": "Smalltalk",
+    "cn": "寒暄"
+   },
+   {
+    "n": "3",
+    "de": "Selbstpräsentation",
+    "cn": "自我介绍"
+   },
+   {
+    "n": "4",
+    "de": "Rückfragen",
+    "cn": "反问"
+   },
+   {
+    "n": "5",
+    "de": "Verabschiedung",
+    "cn": "告别"
+   }
+  ],
+  "quotes": [
+   {
+    "n": "Selbstpräsentation（说强项）",
+    "de": "Ich bin sehr kreativ. Ich habe immer viele tolle Ideen. Außerdem habe ich gute Umgangsformen, finde schnell Kontakt zu Menschen, kann gut zuhören und auch überzeugen. Das ist wichtig für Geschäftskontakte. Ich kann Englisch, Französisch und Spanisch.",
+    "zh": "我很有创造力，总有很多好点子。此外我举止得体，能很快与人建立联系，善于倾听，也能说服别人。这对业务往来很重要。我会英语、法语和西班牙语。",
+    "src": "教材课文 T2 · Max 原话"
+   },
+   {
+    "n": "Schwächen（说不足）",
+    "de": "Ich bin Berufsanfänger und habe noch wenig Erfahrung. Ich bin etwas ungeduldig, weil ich Dinge immer schnell voranschreiten sehen will. Aber das ist vielleicht gar nicht so schlecht – ich kann mich schnell in eine neue Firma einarbeiten.",
+    "zh": "我是职场新人，经验还很少。我有点性急，因为我总希望事情能快点推进。不过这也许并不坏：我能很快融入一家新公司。",
+    "src": "教材课文 T2 · Max 原话"
+   },
+   {
+    "n": "Rückfragen（反问）",
+    "de": "Finden Sie gut, dass man als Marketingassistenz auch die Gelegenheit hat, andere Abteilungen kennen zu lernen?",
+    "zh": "您觉得，作为一名市场助理，也有机会了解其他部门，这样好吗？",
+    "src": "教材课文 T2 · Max 原话"
+   }
+  ],
+  "provenance": "课文取自教材 Lektion 9 Entdecken 2；对话按说话人分行，原文一字未改。"
+ },
+ "vocab": {
+  "title": "词汇卡 · Wortschatzkarten（52 词）",
+  "instruction": "点卡片翻面看中文。名词请带冠词读（der/die/das），动词请带支配格（+A / +D）。",
+  "src": "教材 Lektion 9 · Entdecken 1 / Entdecken 2 词汇表（共 52 条）",
+  "groups": [
+   {
+    "id": "G1",
+    "label": "🎓 学业与交换 · Studium & Austausch",
+    "src": "教材 Lektion 9 · Entdecken 1",
+    "words": [
+     {
+      "w": "Sinologie",
+      "cn": "汉学"
+     },
+     {
+      "w": "Betriebswirtschaft",
+      "cn": "企业经济学"
+     },
+     {
+      "w": "Humboldt-Universität",
+      "cn": "柏林洪堡大学"
+     },
+     {
+      "w": "Wintersemester",
+      "cn": "冬季学期"
+     },
+     {
+      "w": "Fremdsprachenuniversität",
+      "cn": "外国语大学"
+     },
+     {
+      "w": "Austauschstudium",
+      "cn": "交换留学"
+     },
+     {
+      "w": "Kenntnisse",
+      "cn": "知识（复数）"
+     },
+     {
+      "w": "interkulturellen Kompetenzen",
+      "cn": "跨文化能力"
+     }
+    ]
+   },
+   {
+    "id": "G2",
+    "label": "💼 实践与能力 · Praxis & Fähigkeiten",
+    "src": "教材 Lektion 9 · Entdecken 1",
+    "words": [
+     {
+      "w": "Praktikum",
+      "cn": "实习"
+     },
+     {
+      "w": "Filiale",
+      "cn": "分行、分公司"
+     },
+     {
+      "w": "Erfahrungen",
+      "cn": "经验（复数）"
+     },
+     {
+      "w": "sammeln",
+      "cn": "收集、积累"
+     },
+     {
+      "w": "Betreuung",
+      "cn": "照管、负责"
+     },
+     {
+      "w": "Trainerassistentin",
+      "cn": "教练助理"
+     },
+     {
+      "w": "Sportverein",
+      "cn": "体育协会"
+     },
+     {
+      "w": "Tätigkeiten",
+      "cn": "活动、工作（复数）"
+     },
+     {
+      "w": "Aufgaben",
+      "cn": "任务（复数）"
+     },
+     {
+      "w": "Organisation",
+      "cn": "组织、安排"
+     },
+     {
+      "w": "Veranstaltungen",
+      "cn": "活动、事件（复数）"
+     },
+     {
+      "w": "Organisationsfähigkeiten",
+      "cn": "组织能力（复数）"
+     },
+     {
+      "w": "Kreativität",
+      "cn": "创造力"
+     },
+     {
+      "w": "Verantwortungsbewusstsein",
+      "cn": "责任感"
+     }
+    ]
+   },
+   {
+    "id": "G3",
+    "label": "✉️ 求职信 · Bewerbungsschreiben",
+    "src": "教材 Lektion 9 · Entdecken 1",
+    "words": [
+     {
+      "w": "Briefkopf",
+      "cn": "信头"
+     },
+     {
+      "w": "Betreff",
+      "cn": "事由、主题行"
+     },
+     {
+      "w": "Anrede",
+      "cn": "称呼"
+     },
+     {
+      "w": "Einleitung",
+      "cn": "引言"
+     },
+     {
+      "w": "Hauptteil",
+      "cn": "主体部分"
+     },
+     {
+      "w": "Schluss",
+      "cn": "结尾"
+     },
+     {
+      "w": "Gruß",
+      "cn": "问候"
+     },
+     {
+      "w": "Unterschrift",
+      "cn": "签名"
+     },
+     {
+      "w": "Anlagen",
+      "cn": "附件（复数）"
+     },
+     {
+      "w": "Kultur-Assistenz",
+      "cn": "文化助理"
+     }
+    ]
+   },
+   {
+    "id": "G4",
+    "label": "🤝 面试 · Vorstellungsgespräch",
+    "src": "教材 Lektion 9 · Entdecken 2",
+    "words": [
+     {
+      "w": "Stellenanzeige",
+      "cn": "招聘广告"
+     },
+     {
+      "w": "bewerben",
+      "cn": "申请、求职"
+     },
+     {
+      "w": "Vorstellungsgespräch",
+      "cn": "面试"
+     },
+     {
+      "w": "Geschäftsmann",
+      "cn": "商人"
+     },
+     {
+      "w": "Messebranche",
+      "cn": "展会行业"
+     },
+     {
+      "w": "Bachelorstudium",
+      "cn": "本科学业"
+     },
+     {
+      "w": "kreativ",
+      "cn": "有创造力的"
+     },
+     {
+      "w": "Umgangsformen",
+      "cn": "礼仪、举止（复数）"
+     },
+     {
+      "w": "Kontakt",
+      "cn": "联系、接触"
+     },
+     {
+      "w": "Geschäftskontakte",
+      "cn": "业务联系（复数）"
+     },
+     {
+      "w": "Englisch",
+      "cn": "英语"
+     },
+     {
+      "w": "Französisch",
+      "cn": "法语"
+     },
+     {
+      "w": "Spanisch",
+      "cn": "西班牙语"
+     },
+     {
+      "w": "Schwächen",
+      "cn": "弱点（复数）"
+     },
+     {
+      "w": "Berufsanfänger",
+      "cn": "职场新人"
+     },
+     {
+      "w": "Erfahrung",
+      "cn": "经验"
+     },
+     {
+      "w": "ungeduldig",
+      "cn": "不耐烦的、急性子的"
+     },
+     {
+      "w": "Abteilungen",
+      "cn": "部门（复数）"
+     },
+     {
+      "w": "verdienen",
+      "cn": "赚钱、挣得"
+     },
+     {
+      "w": "Entscheidung",
+      "cn": "决定"
+     }
+    ]
+   }
+  ]
+ },
+ "grammar": {
+  "tables": [
+   {
+    "title": "lassen 的四种主要用法",
+    "headers": [
+     "lassen + ...",
+     "含义",
+     "功能",
+     "例句"
+    ],
+    "rows": [
+     [
+      "lassen + Akk + Infinitiv",
+      "让某人做某事",
+      "主语使另一人执行动作",
+      "Die Personalchefin %%lässt%% Max seine Qualifikationen vorstellen."
+     ],
+     [
+      "sich lassen + Infinitiv",
+      "可以……（被动可能）",
+      "表示可能性（≈ können）",
+      "Das Problem %%lässt%% sich leicht %%lösen%%."
+     ],
+     [
+      "lassen + Akk (Ort)",
+      "留下、放在",
+      "表示不移动某物",
+      "%%Lass%% das Handy in der Tasche."
+     ],
+     [
+      "lassen + es + sein",
+      "停下、别做",
+      "表示停止某个行为",
+      "%%Lass%% es %%sein%%, das ist nicht wichtig."
+     ]
+    ]
+   },
+   {
+    "title": "时间介词 · Zeitpräpositionen",
+    "headers": [
+     "介词",
+     "含义",
+     "要求格",
+     "例句"
+    ],
+    "rows": [
+     [
+      "seit",
+      "自从（持续至今）",
+      "Dativ",
+      "Seit dem letzten Wintersemester besucht sie die Uni."
+     ],
+     [
+      "während",
+      "在…期间",
+      "Genitiv",
+      "Während des Austauschstudiums verbessert sie ihre Kenntnisse."
+     ],
+     [
+      "durch",
+      "通过",
+      "Akkusativ",
+      "Durch ihr Praktikum konnte sie Erfahrungen sammeln."
+     ],
+     [
+      "vorher / zuvor",
+      "事先、之前",
+      "—（副词）",
+      "Sie hat zuvor freiwillig gearbeitet."
+     ],
+     [
+      "ab",
+      "从…起",
+      "Dativ",
+      "Ab dem 1. August stehe ich zur Verfügung."
+     ],
+     [
+      "bei",
+      "在……地方",
+      "Dativ",
+      "Durch ihr Praktikum bei der Filiale der Bank of China."
+     ]
+    ]
+   }
+  ],
+  "examples": [
+   {
+    "de": "Während des Austauschstudiums kann ich meine Kenntnisse verbessern.",
+    "zh": "在交换留学期间我可以提高我的知识。"
+   },
+   {
+    "de": "Seit dem letzten Wintersemester besucht sie die Fremdsprachenuniversität Sichuan.",
+    "zh": "自从上个冬季学期以来她在四川外国语大学学习。"
+   },
+   {
+    "de": "Durch ihr Praktikum konnte sie wertvolle Erfahrungen sammeln.",
+    "zh": "通过实习她积累了宝贵的经验。"
+   },
+   {
+    "de": "Ab dem 1. August stehe ich Ihnen gerne zur Verfügung.",
+    "zh": "从8月1日起我很乐意为您效劳。"
+   },
+   {
+    "de": "Bei all diesen Tätigkeiten hatte sie die Möglichkeit, ihre Fähigkeiten zu beweisen.",
+    "zh": "在所有这些工作中她都有机会证明自己的能力。"
+   }
+  ]
+ },
+ "connectGrids": [
+  {
+   "title": "✉️ 求职信的九个部分 · Teile des Bewerbungsschreibens",
+   "pairs": [
+    [
+     "Briefkopf",
+     "信头（地址信息）"
+    ],
+    [
+     "Betreff",
+     "事由（Bewerbung um ...）"
+    ],
+    [
+     "Anrede",
+     "称呼（Sehr geehrte ...）"
+    ],
+    [
+     "Einleitung",
+     "引言（表达兴趣）"
+    ],
+    [
+     "Hauptteil",
+     "主体（展示能力经验）"
+    ],
+    [
+     "Schluss",
+     "结尾（表达期待）"
+    ],
+    [
+     "Gruß",
+     "问候语（Mit freundlichen Grüßen）"
+    ],
+    [
+     "Anlagen",
+     "附件（Lebenslauf, Zeugnisse）"
+    ]
+   ],
+   "src": "教材 Lektion 9 · Entdecken 1"
+  },
+  {
+   "title": "🤝 面试五阶段 · Fünf Phasen",
+   "pairs": [
+    [
+     "Begrüßung",
+     "问候"
+    ],
+    [
+     "Smalltalk",
+     "寒暄"
+    ],
+    [
+     "Selbstpräsentation",
+     "自我介绍"
+    ],
+    [
+     "Rückfragen",
+     "反问"
+    ],
+    [
+     "Verabschiedung",
+     "告别"
+    ]
+   ],
+   "src": "教材 Lektion 9 · Entdecken 2"
+  },
+  {
+   "title": "🔤 词汇配对 · Wortpaare",
+   "pairs": [
+    [
+     "das Praktikum",
+     "实习"
+    ],
+    [
+     "die Filiale",
+     "分行"
+    ],
+    [
+     "der Betreff",
+     "事由"
+    ],
+    [
+     "die Anrede",
+     "称呼"
+    ],
+    [
+     "die Einleitung",
+     "引言"
+    ],
+    [
+     "der Hauptteil",
+     "主体部分"
+    ],
+    [
+     "der Schluss",
+     "结尾"
+    ],
+    [
+     "die Unterschrift",
+     "签名"
+    ],
+    [
+     "die Anlagen",
+     "附件"
+    ],
+    [
+     "das Vorstellungsgespräch",
+     "面试"
+    ],
+    [
+     "die Stellenanzeige",
+     "招聘广告"
+    ],
+    [
+     "der Berufsanfänger",
+     "职场新人"
+    ]
+   ],
+   "src": "教材 Lektion 9 词汇表"
+  }
+ ],
+ "luecken": {
+  "title": "介词与连词填空 · Präpositionen ergänzen",
+  "instruction": "在空位里填入合适的介词或连词，写完点 ✓ 核对。答案不唯一时，只要格和意义都对就算对（如「an der Universität」也可说「an einer Universität」）。",
+  "src": "教材 Lektion 9 课文改编练习",
+  "items": [
+   {
+    "n": 1,
+    "de": "Sie studiert Sinologie ______ der Humboldt-Universität.",
+    "ans": "an",
+    "zh": "在某所大学学习 → 地点用 an + 第三格"
+   },
+   {
+    "n": 2,
+    "de": "______ dem letzten Wintersemester besucht sie die Fremdsprachenuniversität Sichuan.",
+    "ans": "Seit",
+    "zh": "「自……以来」（持续到现在）→ 时间介词 + 第三格"
+   },
+   {
+    "n": 3,
+    "de": "______ ihres Praktikums konnte sie Erfahrungen sammeln.",
+    "ans": "Durch",
+    "zh": "「通过」实习（手段、途径）→ 介词 + 第二格"
+   },
+   {
+    "n": 4,
+    "de": "______ des Austauschstudiums verbessert sie ihre Kenntnisse.",
+    "ans": "Während",
+    "zh": "「在……期间」→ 介词 + 第二格"
+   },
+   {
+    "n": 5,
+    "de": "Sie hat zuvor freiwillig ______ einem Sportverein gearbeitet.",
+    "ans": "in",
+    "zh": "「在」一个体育协会工作 → 地点介词 + 第三格"
+   },
+   {
+    "n": 6,
+    "de": "______ dem 1. August stehe ich Ihnen zur Verfügung.",
+    "ans": "Ab",
+    "zh": "「从……起」（将来）→ 介词 + 第三格"
+   }
+  ]
+ },
+ "quiz": {
+  "title": "快问快答 · Textverständnis",
+  "instruction": "先选一个，再点「检查」；答错的题会标红，正确答案同时标绿。",
+  "src": "教材 Lektion 9 · Text 1 / Text 2",
+  "items": [
+   {
+    "q": "Welche Teile hat ein Bewerbungsschreiben?",
+    "opts": [
+     "Briefkopf, Betreff, Anrede, Einleitung, Hauptteil, Schluss, Gruß, Unterschrift, Anlagen",
+     "Kopf, Einführung, Körper, Ende",
+     "Titel, Vorspann, Kern, Ausklang",
+     "Präambel, Darstellung, Fazit, Anhang"
+    ],
+    "a": 0
+   },
+   {
+    "q": "Was studiert Anna an der Humboldt-Universität?",
+    "opts": [
+     "Medien- und Eventmanagement",
+     "Sinologie und Betriebswirtschaft",
+     "Marketing und Vertrieb",
+     "Germanistik und Geschichte"
+    ],
+    "a": 1
+   },
+   {
+    "q": "Wo hat Anna ein Praktikum gemacht?",
+    "opts": [
+     "Bei einer Eventagentur in München",
+     "Bei der Filiale der Bank of China in Frankfurt",
+     "In einem Verlagshaus in Darmstadt",
+     "In einem Sportverein in Berlin"
+    ],
+    "a": 1
+   },
+   {
+    "q": "Welche Phase gehört NICHT zu den fünf Phasen eines Vorstellungsgesprächs?",
+    "opts": [
+     "Begrüßung",
+     "Selbstpräsentation",
+     "Rückfragen",
+     "Vertragsunterzeichnung"
+    ],
+    "a": 3
+   },
+   {
+    "q": "Warum ist Max' Ungeduld vielleicht nicht so schlecht?",
+    "opts": [
+     "Weil er schnell Entscheidungen trifft",
+     "Weil er sich schnell in eine neue Firma einarbeiten kann",
+     "Weil er immer pünktlich ist",
+     "Weil er keine Fehler macht"
+    ],
+    "a": 1
+   },
+   {
+    "q": "Was ist Max' Gehaltswunsch?",
+    "opts": [
+     "1500 bis 2000 Euro",
+     "1800 bis 2500 Euro",
+     "2500 bis 3000 Euro",
+     "3000 bis 3500 Euro"
+    ],
+    "a": 1
+   }
+  ]
+ },
+ "translation": {
+  "title": "翻译卡 · Übersetzen",
+  "instruction": "先自己译，再点卡片翻面核对参考译文。译法不唯一，句型正确、意义完整即算对。",
+  "note": "德文句子取自课文与语法例句；中文为参考译文（非教材标准答案）。",
+  "cards": [
+   {
+    "de": "Während des Austauschstudiums kann ich meine Kenntnisse verbessern.",
+    "zh": "在交换留学期间我可以提高我的知识。",
+    "tip": "时间介词与 lassen 的例句（语法部分）",
+    "src": "教材 Lektion 9 语法例句"
+   },
+   {
+    "de": "Seit dem letzten Wintersemester besucht sie die Fremdsprachenuniversität Sichuan.",
+    "zh": "自从上个冬季学期以来她在四川外国语大学学习。",
+    "tip": "时间介词与 lassen 的例句（语法部分）",
+    "src": "教材 Lektion 9 语法例句"
+   },
+   {
+    "de": "Durch ihr Praktikum konnte sie wertvolle Erfahrungen sammeln.",
+    "zh": "通过实习她积累了宝贵的经验。",
+    "tip": "时间介词与 lassen 的例句（语法部分）",
+    "src": "教材 Lektion 9 语法例句"
+   },
+   {
+    "de": "Ab dem 1. August stehe ich Ihnen gerne zur Verfügung.",
+    "zh": "从8月1日起我很乐意为您效劳。",
+    "tip": "时间介词与 lassen 的例句（语法部分）",
+    "src": "教材 Lektion 9 语法例句"
+   },
+   {
+    "de": "Bei all diesen Tätigkeiten hatte sie die Möglichkeit, ihre Fähigkeiten zu beweisen.",
+    "zh": "在所有这些工作中她都有机会证明自己的能力。",
+    "tip": "时间介词与 lassen 的例句（语法部分）",
+    "src": "教材 Lektion 9 语法例句"
+   },
+   {
+    "de": "»Mit großem Interesse habe ich Ihre Anzeige gelesen und möchte mich um diese Stelle bewerben, da sie optimal zu meinen Interessen und Fähigkeiten passt.«",
+    "zh": "我怀着极大的兴趣读了贵公司的招聘广告，希望申请这一职位，因为它与我的兴趣和能力非常契合。",
+    "tip": "求职信 Einleitung 的套用句：Interesse 表达兴趣 + da 从句说明理由。",
+    "src": "教材课文 T1 原句（引号内为求职信原文）· 中文为参考译文"
+   },
+   {
+    "de": "»Ich bin sicher, dass ich meine Kenntnisse und Erfahrungen gewinnbringend in Ihrer Institution einbringen kann.«",
+    "zh": "我相信，我能把自己的知识和经验富有成效地贡献给贵机构。",
+    "tip": "求职信 Hauptteil/Schluss 的套用句：dass 从句 + einbringen（贡献、带入）。",
+    "src": "教材课文 T1 原句 · 中文为参考译文"
+   },
+   {
+    "de": "»Über eine Einladung zu einem Vorstellungsgespräch würde ich mich sehr freuen.«",
+    "zh": "如能获邀参加面试，我将非常高兴。",
+    "tip": "求职信 Schluss 的套用句：über + Akk + würde sich freuen（虚拟式客气表达）。",
+    "src": "教材课文 T1 原句 · 中文为参考译文"
+   },
+   {
+    "de": "Ich bin Berufsanfänger und habe noch wenig Erfahrung. Ich bin etwas ungeduldig, weil ich Dinge immer schnell voranschreiten sehen will.",
+    "zh": "我是职场新人，经验还很少。我有点性急，因为我总希望事情能快点推进。",
+    "tip": "面试谈「不足」的示范：先说事实，再补一句它带来的好处（下文接着说 einarbeiten）。",
+    "src": "教材课文 T2 原句 · 中文为参考译文"
+   },
+   {
+    "de": "Für mich ist es am wichtigsten, dass ich die Stelle bekomme.",
+    "zh": "对我来说，最重要的是能得到这个职位。",
+    "tip": "面试谈薪水的收尾句：es ist am wichtigsten, dass …（把重点从钱挪回岗位）。",
+    "src": "教材课文 T2 原句 · 中文为参考译文"
+   }
+  ]
+ }
+}

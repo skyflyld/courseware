@@ -1,0 +1,40 @@
+{
+  "meta": {
+    "title": "中德配对 · Wortschatz-Paare",
+    "lead": "点左边德语词，再点右边中文释义。配对成功变绿；配错会红闪一下。",
+    "default_time": 60,
+    "default_per_round": 5,
+    "note": "默认词库 29 组，可在页面下方自定义（每行一对，逗号或 Tab 分隔）。"
+  },
+  "pairs": [
+    { "de": "extrem", "zh": "极端的，极度的，极限的" },
+    { "de": "fest", "zh": "固定的，稳定的" },
+    { "de": "fantastisch", "zh": "美妙的，极好的；幻想的，想象的" },
+    { "de": "lassen", "zh": "把……留在" },
+    { "de": "die Südkoreanerin -nen", "zh": "韩国人（女）" },
+    { "de": "treten", "zh": "走向，跨" },
+    { "de": "real", "zh": "真实的，现实的" },
+    { "de": "der Amerikaner -", "zh": "美国人" },
+    { "de": "der Araber -", "zh": "阿拉伯人" },
+    { "de": "teilen +A", "zh": "共有；分担；分享" },
+    { "de": "die Sorge -n", "zh": "惶恐不安，忧虑，担心" },
+    { "de": "das Weltbild -er", "zh": "世界观，世界图景" },
+    { "de": "die Lebensweise -n", "zh": "生活方式" },
+    { "de": "nach/denken (+über Akk)", "zh": "思考，思索" },
+    { "de": "die Erkenntnis -se", "zh": "认识，知识；理解" },
+    { "de": "die Grenze -n", "zh": "限度，极限；边界，界限" },
+    { "de": "stoßen", "zh": "撞着，碰着" },
+    { "de": "die Einsicht -en", "zh": "了解，理解，认识" },
+    { "de": "ab/bauen +A", "zh": "（逐渐）消除" },
+    { "de": "entdecken +A", "zh": "发现，发觉；揭示，揭露" },
+    { "de": "das Vorurteil -e", "zh": "先人之见，成见，偏见" },
+    { "de": "gleichzeitig", "zh": "同时发生的" },
+    { "de": "die Selbstreflexion -en", "zh": "自我反省，反思" },
+    { "de": "absolut", "zh": "绝对的，完全的，纯粹的" },
+    { "de": "der Zusammenhang Zusammenhänge", "zh": "联系，关系，关联" },
+    { "de": "das Zitat -e", "zh": "引文，引语；名句，箴言" },
+    { "de": "heran/kommen (+an Akk)", "zh": "走近；接近" },
+    { "de": "desto", "zh": "更加" },
+    { "de": "tödlich", "zh": "致命的" }
+  ]
+}

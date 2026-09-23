@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-cw-profile="interaction">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>中德配对 · Wortschatz-Paare</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='22' y='0' fill='%23000'/%3E%3Crect width='64' height='21' y='21' fill='%23D00'/%3E%3Crect width='64' height='22' y='42' fill='%23FFCE00'/%3E%3C/svg%3E">
+<style>
+:root{
+  --fs-cap:12px; --fs-nm:14px; --fs-body:16px; --fs-word:20px; --fs-h3:26px; --fs-h1:32px;
+  --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:24px; --sp-6:32px;
+  --r-1:4px; --r-2:8px; --r-3:14px;
+  --ink:#14171a; --ink2:#5f6672; --line:#dfe3e8; --bg:#eef1f5; --paper:#fff;
+  --grn:#58cc02; --grn-bar:#3a8f00; --grn-d:#2f6b12; --grn-l:#d9f2c4; --grn-ring:#3a8f00;
+  --red:#ff4b4b; --red-l:#ffe9e9; --red-d:#b3261e;
+  --sh:0 8px 28px rgba(16,24,40,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  min-height:100vh; background:var(--bg); color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+  font-size:var(--fs-body); line-height:1.55;
+  display:flex; justify-content:center; align-items:flex-start;
+  padding:var(--sp-5) var(--sp-4);
+}
+#stage{width:100%; max-width:900px}
+.app{position:relative; background:var(--paper); border-radius:var(--r-3); box-shadow:var(--sh); padding:var(--sp-5)}
+.top{display:flex; justify-content:space-between; align-items:center; gap:var(--sp-3); flex-wrap:wrap}
+h1{font-size:var(--fs-h3); font-weight:700; letter-spacing:.01em}
+.overview{display:flex; gap:var(--sp-2); flex-wrap:wrap}
+.pill{
+  display:inline-flex; align-items:center; gap:var(--sp-1);
+  background:#f1f3f6; color:var(--ink); border-radius:var(--r-3);
+  padding:var(--sp-1) var(--sp-3); font-size:var(--fs-nm); font-weight:600; font-variant-numeric:tabular-nums;
+}
+.pill-score{background:var(--grn-l); color:var(--grn-d)}
+.lead{color:var(--ink2); font-size:var(--fs-nm); margin-top:var(--sp-2)}
+.settings{display:flex; gap:var(--sp-4); flex-wrap:wrap; align-items:center; margin-top:var(--sp-3); padding-bottom:var(--sp-3); border-bottom:2px solid var(--line)}
+.set{display:inline-flex; align-items:center; gap:var(--sp-1); font-size:var(--fs-nm); color:var(--ink2); font-weight:600}
+.set input[type=number],.set select{
+  font:inherit; font-size:var(--fs-nm); font-weight:600; color:var(--ink);
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--r-1);
+  padding:var(--sp-1) var(--sp-2); min-height:36px;
+}
+.set input[type=number]{width:72px; text-align:center}
+.set select option{color:var(--ink); background:var(--paper)}
+.set input:disabled,.set select:disabled{background:#f1f3f6; color:var(--ink2)}
+.set input[type=checkbox]{width:20px; height:20px; accent-color:var(--grn-ring)}
+.board{display:grid; grid-template-columns:1fr 1fr; column-gap:var(--sp-3); row-gap:var(--sp-2); grid-template-rows:auto; margin-top:var(--sp-4)}
+.col-h{font-size:var(--fs-nm); font-weight:600; color:var(--ink2); text-align:center; padding-bottom:var(--sp-1); border-bottom:2px solid var(--line)}
+.card{
+  font:inherit; font-size:var(--fs-body); font-weight:600; color:var(--ink);
+  background:var(--paper); border:2.5px solid var(--line); border-radius:var(--r-2);
+  min-height:56px; padding:var(--sp-2) var(--sp-3); width:100%; line-height:1.45;
+  display:flex; align-items:center; justify-content:center; text-align:center;
+  overflow-wrap:break-word; word-break:normal; cursor:pointer;
+  transition:transform .12s ease, border-color .12s ease, background-color .12s ease, color .12s ease;
+}
+.card[data-side="de"]{hyphens:auto; -webkit-hyphens:auto}
+.card:hover{border-color:#b9c0c9}
+.card:focus-visible{outline:3px solid var(--grn-ring); outline-offset:2px}
+.card.selected{border-color:var(--grn-ring); background:#f2fbf0; transform:scale(1.02)}
+.card.matched{border-color:var(--grn); background:var(--grn-l); color:var(--grn-d); cursor:default; pointer-events:none}
+.card.matched::after{content:"\2009✓"; font-weight:700}
+.card .ann{font-size:var(--fs-cap); font-weight:600; color:var(--ink2); white-space:nowrap; margin-left:var(--sp-1)}
+.card.wrong{border-color:var(--red); background:var(--red-l); color:var(--red-d); animation:shake .3s ease}
+.card.wrong::after{content:"\2009✗"; font-weight:700}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.feedback{min-height:24px; margin-top:var(--sp-3); font-size:var(--fs-nm); font-weight:600; color:var(--ink2); text-align:center}
+.board.frozen .card{color:var(--ink2); border-color:#eaedf1; background:#fafbfc; pointer-events:none}
+.legend{font-size:var(--fs-cap); color:var(--ink2); margin-top:var(--sp-3); line-height:1.6}
+.bar{display:flex; justify-content:space-between; align-items:center; gap:var(--sp-3); flex-wrap:wrap; margin-top:var(--sp-2); padding-top:var(--sp-3); border-top:2px solid var(--line)}
+#info{font-size:var(--fs-nm); color:var(--ink2); font-weight:600; font-variant-numeric:tabular-nums}
+.btn{
+  font:inherit; font-size:var(--fs-body); font-weight:700; color:#0b3d1c;
+  background:var(--grn); border:none; border-radius:var(--r-3);
+  padding:var(--sp-2) var(--sp-5); min-height:44px; cursor:pointer;
+  box-shadow:0 4px 0 var(--grn-bar); transition:transform .08s linear, box-shadow .08s linear;
+}
+.btn:active{transform:translateY(4px); box-shadow:0 0 0 var(--grn-bar)}
+.btn:disabled{background:#e3e6ea; color:var(--ink); box-shadow:0 4px 0 #c9ced5; cursor:default; pointer-events:none}
+.btn:focus-visible{outline:3px solid var(--grn-ring); outline-offset:2px}
+.btn-sm{font-size:var(--fs-nm); padding:var(--sp-1) var(--sp-3); min-height:38px; box-shadow:0 3px 0 var(--grn-bar)}
+.btn-ghost{background:#eceff3; color:var(--ink); box-shadow:0 3px 0 #c8ced6}
+.custom{margin-top:var(--sp-4); padding-top:var(--sp-3); border-top:2px dashed var(--line)}
+.custom summary{font-size:var(--fs-nm); font-weight:600; color:var(--ink2); cursor:pointer; padding:var(--sp-1) 0}
+.hint{font-size:var(--fs-cap); color:var(--ink2); margin:var(--sp-2) 0}
+.hint code{background:#f1f3f6; border-radius:var(--r-1); padding:0 var(--sp-1); font-size:var(--fs-cap)}
+#wordInput{
+  width:100%; min-height:140px; padding:var(--sp-2); border:1px solid var(--line); border-radius:var(--r-2);
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:var(--fs-nm); line-height:1.6;
+  resize:vertical; color:var(--ink); background:var(--paper);
+}
+#wordInput:focus-visible{outline:3px solid var(--grn-ring); outline-offset:1px; border-color:var(--grn-ring)}
+.custom-bar{display:flex; gap:var(--sp-2); align-items:center; flex-wrap:wrap; margin-top:var(--sp-2)}
+.status{font-size:var(--fs-nm); color:var(--grn-d); font-weight:600}
+.status.warn{color:var(--red-d)}
+.overlay{
+  display:none; position:absolute; inset:0; z-index:20;
+  flex-direction:column; justify-content:center; align-items:center; gap:var(--sp-2);
+  padding:var(--sp-5); text-align:center; border-radius:var(--r-3);
+  background:rgba(255,255,255,.96); backdrop-filter:blur(3px);
+}
+.overlay.show{display:flex}
+.overlay h2{font-size:var(--fs-h3)}
+.ov-score{font-size:var(--fs-h1); font-weight:700; color:var(--grn-d); line-height:1.1}
+.ov-sub,.ov-stats{font-size:var(--fs-nm); color:var(--ink2)}
+.ov-stats{margin-bottom:var(--sp-2)}
+.zoom{
+  display:none; position:fixed; right:var(--sp-4); bottom:var(--sp-4); z-index:50;
+  width:56px; height:56px; border-radius:50%; border:none; cursor:pointer;
+  background:var(--ink); color:#fff; font-size:var(--fs-cap); font-weight:700; box-shadow:var(--sh);
+}
+@media (min-width:1100px){
+  .zoom{display:block}
+  h1{font-size:var(--fs-h1)}
+  .card{font-size:var(--fs-word)}
+}
+@media (max-width:560px){
+  body{padding:var(--sp-3) var(--sp-2)}
+  .app{padding:var(--sp-3); border-radius:var(--r-2)}
+  h1{font-size:var(--fs-h3)}
+  .board{column-gap:var(--sp-2); row-gap:var(--sp-2)}
+  .card{min-height:48px; padding:var(--sp-2) var(--sp-1)}
+  .btn{padding:var(--sp-2) var(--sp-4)}
+  .settings{gap:var(--sp-3)}
+  .overlay{border-radius:var(--r-2)}
+}
+</style>
+</head>
+<body>
+<div id="stage">
+  <main class="app">
+    <header class="top">
+      <h1>🇩🇪🇨🇳 中德配对</h1>
+      <div class="overview">
+        <span class="pill">⏱️ <b id="timeLeft">60</b> 秒</span>
+        <span class="pill pill-score">🏆 <b id="score">0</b></span>
+      </div>
+    </header>
+    <p class="lead">点左边德语词，再点右边中文释义。配对成功变绿；配错会红闪一下。</p>
+
+    <section id="spiel" aria-label="配对区">
+    <div class="settings">
+      <label class="set" for="timeSetting">时间 <input id="timeSetting" type="number" min="15" max="300" step="5" value="60"> 秒</label>
+      <label class="set" for="pairsPerRound">每轮 <select id="pairsPerRound"><option value="3">3</option><option value="4">4</option><option value="5" selected>5</option><option value="6">6</option><option value="8">8</option></select> 对</label>
+      <label class="set" for="soundToggle"><input id="soundToggle" type="checkbox" checked> 音效</label>
+    </div>
+
+    <div class="board" id="board">
+      <div class="col-h">🇩🇪 德语</div>
+      <div class="col-h">🇨🇳 中文</div>
+    </div>
+
+    <p class="legend">词条按教材原样：der / die / das 是冠词，-n / -e 等是复数词尾，单独的 <b>-</b> 表示复数同形，+A 表示支配第四格。</p>
+
+    <p class="feedback" id="feedback" role="status" aria-live="polite">点「开始游戏」，先点德语、再点对应的中文。</p>
+
+    <div class="bar">
+      <span id="info">📚 第 0 轮 · 已配对 0 / 共 0 对</span>
+      <button class="btn" id="startBtn" type="button">▶ 开始游戏</button>
+    </div>
+    </section>
+
+    <section id="worte" aria-label="自定义词库">
+    <details class="custom">
+      <summary>✏️ 自定义词库</summary>
+      <p class="hint">每行一对，用英文逗号或 Tab 分隔。示例：<code>das Vorurteil -e,先人之见，成见，偏见</code>。点「更新词库」立即生效，浏览器会记住这份词库。</p>
+      <textarea id="wordInput" spellcheck="false" aria-label="自定义词库"></textarea>
+      <div class="custom-bar">
+        <button class="btn btn-sm" id="updateWordBtn" type="button">🔄 更新词库</button>
+        <button class="btn btn-sm btn-ghost" id="resetWordBtn" type="button">↩️ 恢复默认</button>
+        <span class="status" id="wordStatus"></span>
+      </div>
+    </details>
+    </section>
+
+    <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="ovTitle">
+      <h2 id="ovTitle">🎉 全部配对完成</h2>
+      <div class="ov-score" id="ovScore">0</div>
+      <p class="ov-sub">配对正确的总对数</p>
+      <p class="ov-stats" id="ovStats"></p>
+      <button class="btn" id="againBtn" type="button">🔄 再来一局</button>
+    </div>
+  </main>
+</div>
+<button class="zoom" id="zoomBtn" type="button" aria-label="投影放大挡位">100%</button>
+
+<script>
+(function(){
+  'use strict';
+
+  var DEFAULTS = [
+    {
+        "de": "extrem",
+        "zh": "极端的，极度的，极限的"
+    },
+    {
+        "de": "fest",
+        "zh": "固定的，稳定的"
+    },
+    {
+        "de": "fantastisch",
+        "zh": "美妙的，极好的；幻想的，想象的"
+    },
+    {
+        "de": "lassen",
+        "zh": "把……留在"
+    },
+    {
+        "de": "die Südkoreanerin -nen",
+        "zh": "韩国人（女）"
+    },
+    {
+        "de": "treten",
+        "zh": "走向，跨"
+    },
+    {
+        "de": "real",
+        "zh": "真实的，现实的"
+    },
+    {
+        "de": "der Amerikaner -",
+        "zh": "美国人"
+    },
+    {
+        "de": "der Araber -",
+        "zh": "阿拉伯人"
+    },
+    {
+        "de": "teilen +A",
+        "zh": "共有；分担；分享"
+    },
+    {
+        "de": "die Sorge -n",
+        "zh": "惶恐不安，忧虑，担心"
+    },
+    {
+        "de": "das Weltbild -er",
+        "zh": "世界观，世界图景"
+    },
+    {
+        "de": "die Lebensweise -n",
+        "zh": "生活方式"
+    },
+    {
+        "de": "nach/denken (+über Akk)",
+        "zh": "思考，思索"
+    },
+    {
+        "de": "die Erkenntnis -se",
+        "zh": "认识，知识；理解"
+    },
+    {
+        "de": "die Grenze -n",
+        "zh": "限度，极限；边界，界限"
+    },
+    {
+        "de": "stoßen",
+        "zh": "撞着，碰着"
+    },
+    {
+        "de": "die Einsicht -en",
+        "zh": "了解，理解，认识"
+    },
+    {
+        "de": "ab/bauen +A",
+        "zh": "（逐渐）消除"
+    },
+    {
+        "de": "entdecken +A",
+        "zh": "发现，发觉；揭示，揭露"
+    },
+    {
+        "de": "das Vorurteil -e",
+        "zh": "先人之见，成见，偏见"
+    },
+    {
+        "de": "gleichzeitig",
+        "zh": "同时发生的"
+    },
+    {
+        "de": "die Selbstreflexion -en",
+        "zh": "自我反省，反思"
+    },
+    {
+        "de": "absolut",
+        "zh": "绝对的，完全的，纯粹的"
+    },
+    {
+        "de": "der Zusammenhang Zusammenhänge",
+        "zh": "联系，关系，关联"
+    },
+    {
+        "de": "das Zitat -e",
+        "zh": "引文，引语；名句，箴言"
+    },
+    {
+        "de": "heran/kommen (+an Akk)",
+        "zh": "走近；接近"
+    },
+    {
+        "de": "desto",
+        "zh": "更加"
+    },
+    {
+        "de": "tödlich",
+        "zh": "致命的"
+    }
+];
+  var DEFAULT_TEXT = "extrem,极端的，极度的，极限的\nfest,固定的，稳定的\nfantastisch,美妙的，极好的；幻想的，想象的\nlassen,把……留在\ndie Südkoreanerin -nen,韩国人（女）\ntreten,走向，跨\nreal,真实的，现实的\nder Amerikaner -,美国人\nder Araber -,阿拉伯人\nteilen +A,共有；分担；分享\ndie Sorge -n,惶恐不安，忧虑，担心\ndas Weltbild -er,世界观，世界图景\ndie Lebensweise -n,生活方式\nnach/denken (+über Akk),思考，思索\ndie Erkenntnis -se,认识，知识；理解\ndie Grenze -n,限度，极限；边界，界限\nstoßen,撞着，碰着\ndie Einsicht -en,了解，理解，认识\nab/bauen +A,（逐渐）消除\nentdecken +A,发现，发觉；揭示，揭露\ndas Vorurteil -e,先人之见，成见，偏见\ngleichzeitig,同时发生的\ndie Selbstreflexion -en,自我反省，反思\nabsolut,绝对的，完全的，纯粹的\nder Zusammenhang Zusammenhänge,联系，关系，关联\ndas Zitat -e,引文，引语；名句，箴言\nheran/kommen (+an Akk),走近；接近\ndesto,更加\ntödlich,致命的";
+  var LS_WORDS = 'wp-words-v1', LS_SOUND = 'wp-sound-v1', LS_ZOOM = 'wp-zoom-v1';
+  var ZOOMS = [1, 1.15, 1.3, 1.5];
+
+  var $ = function(id){ return document.getElementById(id); };
+  var board = $('board');
+  var overlay = $('overlay'), startBtn = $('startBtn'), timeSetting = $('timeSetting'),
+      perRoundSel = $('pairsPerRound'), soundToggle = $('soundToggle'),
+      wordInput = $('wordInput'), wordStatus = $('wordStatus'), feedback = $('feedback');
+
+  var pool = [];        // 当前生效的词对
+  var rest = [];        // 尚未出场的词对
+  var cur = [];         // 当前轮的词对
+  var matchedPids = [];
+  var sel = null;
+  var roundNo = 0, total = 0, score = 0, errors = 0, combo = 0, bestCombo = 0;
+  var timeLeft = 0, limit = 0, timerId = null;
+  var running = false, over = false, lock = false;
+
+  /* ---------- 工具 ---------- */
+  function clampInt(v, lo, hi, dflt){
+    var n = parseInt(v, 10);
+    if (isNaN(n)) n = dflt;
+    return Math.min(hi, Math.max(lo, n));
+  }
+  function shuffle(a){
+    for (var i = a.length - 1; i > 0; i--){
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+  function parsePairs(text){
+    var out = [];
+    text.split(/\r?\n/).forEach(function(line){
+      var s = line.replace(/\uFEFF/g, '').trim();
+      if (!s) return;
+      var parts = (s.indexOf('\t') >= 0) ? s.split('\t') : s.split(',');
+      parts = parts.map(function(p){ return p.trim(); }).filter(function(p){ return p !== ''; });
+      if (parts.length >= 2) out.push({ de: parts[0], zh: parts.slice(1).join('，') });
+    });
+    return out;
+  }
+  function say(msg){ feedback.textContent = msg; }
+  function setStatus(msg, warn){
+    wordStatus.textContent = msg || '';
+    wordStatus.className = warn ? 'status warn' : 'status';
+  }
+  function readLimit(){
+    var v = clampInt(timeSetting.value, 15, 300, 60);
+    timeSetting.value = v;
+    return v;
+  }
+  function readPerRound(){
+    return clampInt(perRoundSel.value, 3, 10, 5);
+  }
+
+  /* ---------- 音效 ---------- */
+  var ac = null;
+  function beep(kind){
+    if (!soundToggle.checked) return;
+    try {
+      var AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return;
+      ac = ac || new AC();
+      var seq = kind === 'ok'    ? [[660, 0, .08], [880, .08, .12]]
+              : kind === 'bad'   ? [[175, 0, .16]]
+              : kind === 'round' ? [[523, 0, .08], [659, .08, .08], [784, .16, .16]]
+              :                    [[784, 0, .12], [523, .12, .14], [392, .26, .22]];
+      seq.forEach(function(n){
+        var f = n[0], t = n[1], d = n[2];
+        var o = ac.createOscillator(), g = ac.createGain();
+        o.type = (kind === 'bad') ? 'square' : 'sine';
+        o.frequency.value = f;
+        g.gain.setValueAtTime(0.0001, ac.currentTime + t);
+        g.gain.exponentialRampToValueAtTime(kind === 'bad' ? .07 : .11, ac.currentTime + t + .012);
+        g.gain.exponentialRampToValueAtTime(0.0001, ac.currentTime + t + d);
+        o.connect(g); g.connect(ac.destination);
+        o.start(ac.currentTime + t); o.stop(ac.currentTime + t + d + .03);
+      });
+    } catch (e) { /* 音效失败不影响游戏 */ }
+  }
+
+  /* ---------- 渲染 ---------- */
+  function makeCard(side, item, pid){
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'card';
+    b.dataset.pid = String(pid);
+    b.dataset.side = side;
+    if (side === 'de'){
+      b.setAttribute('lang', 'de');
+      var sp = splitAnn(item.de);
+      b.appendChild(document.createTextNode(sp.main));
+      if (sp.ann){
+        var s = document.createElement('span');
+        s.className = 'ann';
+        s.textContent = sp.ann;
+        b.appendChild(s);
+      }
+    } else {
+      b.textContent = item.zh;
+    }
+    return b;
+  }
+  // 教材体例标注（复数词尾 / 支配格）与主词分开：主词正常字重，标注降权（§18.8）
+  var ANN = /(?:\s+(?:\([^()]*\)|\+\s*[^()\s]+(?:\s+[^()\s]+)*|-[A-Za-zÄÖÜäöüß]*))+\s*$/;
+  function splitAnn(de){
+    var m = de.match(ANN);
+    if (!m || m.index === 0) return { main: de, ann: '' };
+    return { main: de.slice(0, m.index).trim(), ann: m[0].trim() };
+  }
+  function renderRound(){
+    Array.prototype.slice.call(board.querySelectorAll('.card')).forEach(function(c){ c.remove(); });
+    var de = shuffle(cur.map(function(p, i){ return { i: i, p: p }; }));
+    var zh = shuffle(cur.map(function(p, i){ return { i: i, p: p }; }));
+    for (var k = 0; k < cur.length; k++){
+      board.appendChild(makeCard('de', de[k].p, de[k].i));
+      board.appendChild(makeCard('zh', zh[k].p, zh[k].i));
+    }
+    board.classList.toggle('frozen', !running);
+  }
+  function updateInfo(){
+    $('score').textContent = String(score);
+    $('timeLeft').textContent = String(timeLeft);
+    $('info').textContent = '📚 第 ' + roundNo + ' 轮 · 已配对 ' + score + ' / 共 ' + total + ' 对';
+  }
+
+  /* ---------- 轮次 ---------- */
+  function dealRound(){
+    var n = readPerRound();
+    cur = rest.splice(0, n);
+    matchedPids = [];
+    sel = null;
+    roundNo += 1;
+    renderRound();
+    updateInfo();
+  }
+  function newGame(autoStart){
+    stopTimer();
+    pool = pool.length ? pool : DEFAULTS.slice();
+    rest = shuffle(pool.slice());
+    total = rest.length;
+    cur = [];
+    matchedPids = [];
+    sel = null;
+    roundNo = 0; score = 0; errors = 0; combo = 0; bestCombo = 0;
+    running = false; over = false; lock = false;
+    limit = readLimit();
+    timeLeft = limit;
+    overlay.classList.remove('show');
+    timeSetting.disabled = false;
+    perRoundSel.disabled = false;
+    startBtn.disabled = false;
+    startBtn.textContent = '▶ 开始游戏';
+    board.classList.add('frozen');
+    dealRound();
+    say('准备好了，点「开始游戏」计时。');
+    if (autoStart) startGame();
+  }
+  function startTimer(){
+    stopTimer();
+    timerId = setInterval(function(){
+      timeLeft -= 1;
+      $('timeLeft').textContent = String(timeLeft);
+      if (timeLeft <= 0){ stopTimer(); endGame(false); }
+    }, 1000);
+  }
+  function stopTimer(){
+    if (timerId){ clearInterval(timerId); timerId = null; }
+  }
+  function startGame(){
+    if (running || over) return;
+    if (!rest.length && !cur.length) newGame(false);
+    running = true;
+    lock = false;
+    timeSetting.disabled = true;
+    perRoundSel.disabled = true;
+    startBtn.disabled = true;
+    startBtn.textContent = '⏳ 进行中';
+    board.classList.remove('frozen');
+    say('开始，先点德语词再点中文。');
+    startTimer();
+    updateInfo();
+  }
+  function endGame(done){
+    if (over) return;
+    over = true; running = false; sel = null;
+    stopTimer();
+    board.classList.add('frozen');
+    startBtn.disabled = false;
+    startBtn.textContent = '▶ 再来一局';
+    timeSetting.disabled = false;
+    perRoundSel.disabled = false;
+    var used = Math.max(0, limit - timeLeft);
+    $('ovTitle').textContent = done ? '🎉 全部配对完成' : '⏰ 时间到';
+    $('ovScore').textContent = String(score);
+    $('ovStats').textContent = '共 ' + total + ' 对 · 用时 ' + used + ' 秒 · 配错 ' + errors +
+      ' 次 · 最高连击 ' + bestCombo + (done && errors === 0 ? ' · 零失误' : '');
+    overlay.classList.add('show');
+    beep(done ? 'done' : 'bad');
+    say(done ? '全部配对完成。' : '时间到，再来一局试试。');
+  }
+
+  /* ---------- 配对 ---------- */
+  function select(card){
+    card.classList.add('selected');
+    sel = card;
+  }
+  function clearSel(){
+    if (sel) sel.classList.remove('selected');
+    sel = null;
+  }
+  function onCard(card){
+    if (!running || over || lock) return;
+    if (!card || !card.classList.contains('card')) return;
+    if (card.classList.contains('matched')) return;
+    if (!sel){ select(card); say('已选中，再点另一侧对应的卡片。'); return; }
+    if (sel === card){ clearSel(); say('已取消选择。'); return; }
+    if (sel.dataset.side === card.dataset.side){ clearSel(); select(card); say('同一侧，已换成这张。'); return; }
+
+    var a = sel, b = card;
+    if (a.dataset.pid === b.dataset.pid){
+      a.classList.remove('selected');
+      a.classList.add('matched');
+      b.classList.add('matched');
+      sel = null;
+      matchedPids.push(a.dataset.pid);
+      score += 1;
+      combo += 1;
+      if (combo > bestCombo) bestCombo = combo;
+      beep('ok');
+      say('✅ 配对正确' + (combo >= 3 ? '，连击 ' + combo + ' 次' : ''));
+      updateInfo();
+      if (matchedPids.length === cur.length){
+        lock = true;
+        beep('round');
+        say('🎉 本轮完成');
+        setTimeout(function(){
+          lock = false;
+          if (!rest.length) endGame(true);
+          else { dealRound(); say('下一轮开始了。'); }
+        }, 700);
+      }
+    } else {
+      lock = true;
+      errors += 1; combo = 0;
+      a.classList.remove('selected');
+      a.classList.add('wrong'); b.classList.add('wrong');
+      sel = null;
+      beep('bad');
+      say('❌ 不对，再看看。');
+      updateInfo();
+      setTimeout(function(){
+        a.classList.remove('wrong'); b.classList.remove('wrong');
+        lock = false;
+      }, 420);
+    }
+  }
+  document.addEventListener('click', function(e){
+    var card = e.target && e.target.closest ? e.target.closest('.card') : null;
+    if (card) onCard(card);
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape'){ clearSel(); say('已取消选择。'); }
+  });
+
+  /* ---------- 按钮 ---------- */
+  startBtn.addEventListener('click', function(){ newGame(true); });
+  $('againBtn').addEventListener('click', function(){ newGame(true); });
+  timeSetting.addEventListener('input', function(){
+    if (!running && !over){
+      limit = readLimit();
+      timeLeft = limit;
+      $('timeLeft').textContent = String(timeLeft);
+    }
+  });
+  soundToggle.addEventListener('change', function(){
+    try { localStorage.setItem(LS_SOUND, soundToggle.checked ? '1' : '0'); } catch (e) {}
+  });
+
+  /* ---------- 词库 ---------- */
+  function loadWords(){
+    var saved = null;
+    try { saved = localStorage.getItem(LS_WORDS); } catch (e) {}
+    if (saved && parsePairs(saved).length){
+      wordInput.value = saved;
+      pool = parsePairs(saved);
+      setStatus('已载入自定义词库，' + pool.length + ' 对', false);
+    } else {
+      pool = DEFAULTS.slice();
+      wordInput.value = DEFAULT_TEXT;
+      setStatus('已载入默认词库，' + pool.length + ' 对', false);
+    }
+  }
+  $('updateWordBtn').addEventListener('click', function(){
+    var pairs = parsePairs(wordInput.value);
+    if (!pairs.length){ setStatus('没解析到词对，每行一对、中间用逗号或 Tab 分隔', true); return; }
+    pool = pairs;
+    try { localStorage.setItem(LS_WORDS, wordInput.value); } catch (e) {}
+    setStatus('已更新词库，' + pairs.length + ' 对', false);
+    newGame(false);
+  });
+  $('resetWordBtn').addEventListener('click', function(){
+    try { localStorage.removeItem(LS_WORDS); } catch (e) {}
+    loadWords();
+    newGame(false);
+  });
+
+  /* ---------- 投影放大 ---------- */
+  var zoomIdx = 0;
+  function applyZoom(){
+    var z = ZOOMS[zoomIdx];
+    $('stage').style.zoom = String(z);
+    $('zoomBtn').textContent = Math.round(z * 100) + '%';
+    try { localStorage.setItem(LS_ZOOM, String(zoomIdx)); } catch (e) {}
+  }
+  $('zoomBtn').addEventListener('click', function(){
+    zoomIdx = (zoomIdx + 1) % ZOOMS.length;
+    applyZoom();
+  });
+
+  /* ---------- 初始化 ---------- */
+  try {
+    var z = parseInt(localStorage.getItem(LS_ZOOM), 10);
+    if (!isNaN(z) && z >= 0 && z < ZOOMS.length) zoomIdx = z;
+    var s = localStorage.getItem(LS_SOUND);
+    if (s === '0') soundToggle.checked = false;
+  } catch (e) {}
+  perRoundSel.value = String(5);
+  loadWords();
+  applyZoom();
+  newGame(false);
+})();
+</script>
+</body>
+</html>

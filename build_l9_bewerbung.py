@@ -16,6 +16,7 @@ import os
 import random
 import re
 import subprocess
+import sys
 
 import build_l8_berufe as base
 import build_l8_t1t2 as t12
@@ -23,6 +24,11 @@ import build_l8_t1t2 as t12
 DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_FILE = os.path.join(DIR, 'l9-data.json')
 VOCAB_FILE = os.path.join(DIR, 'l9-vocab.json')          # 词汇/句型强化层（2026-09-26）
+TEXT_ZH_FILE = os.path.join(DIR, 'l9-text-zh.json')      # 课文逐句点译（2026-09-26，键=德文原句）
+VOCAB_ZH_FILE = os.path.join(DIR, 'l9-vocab-zh.json')    # 词场例句译文（2026-09-26，键=教材例句）
+TEXT_ZH = {}                                             # {"t1": {德文句: 中文}, "t2": {...}}
+VOCAB_ZH = {}                                            # {教材例句: 中文}
+MISSING_TR = []                                          # 缺译文的句子（构建时清零才算过）
 SB_DOC = []                                              # 句型工坊参考答案（按语序拼装的词块）
 
 
@@ -33,18 +39,30 @@ def slot_html(s):
 
 
 def wf_rows(rows):
-    """词场表行：词条 / 中文（含易错提示）/ 常用搭配 / 教材例句。"""
+    """词场表行：词条 / 中文（含易错提示）/ 常用搭配 / 教材例句。
+
+    2026-09-26 新增：词条格可点 → 弹出「典型例句 + 中文参考译文 + 搭配 + 易错提示」。
+    数据挂在 td 的 data-* 上（而不是新增一列），点整格都算，手机上好按。
+    """
     out = []
     for r in rows:
+        raw_note = re.sub(r'</?b>', '', r.get('note', ''))
         note = ('<div class="wf-note">⚠ %s</div>'
                 % h(r['note']).replace('&lt;b&gt;', '<b>').replace('&lt;/b&gt;', '</b>')) \
             if r.get('note') else ''
-        ex = ('%s' % h(r['ex'])) if r.get('ex') else '<span class="wf-none">（教材原页无此句）</span>'
-        out.append('<tr><td class="wf-w" data-l="词条" lang="de">%s</td>'
+        ex_de = r.get('ex', '')
+        ex_zh = VOCAB_ZH.get(ex_de, '')
+        ex = ('%s' % h(ex_de)) if ex_de else '<span class="wf-none">（教材原页无此句）</span>'
+        out.append('<tr><td class="wf-w" data-l="词条" lang="de" role="button" tabindex="0"'
+                   ' title="点一下看例句与中文译文" onclick="wfShow(this)"'
+                   ' data-w="%s" data-cn="%s" data-ex="%s" data-zh="%s" data-coll="%s"'
+                   ' data-note="%s">%s<span class="wf-more">例句</span></td>'
                    '<td class="wf-cn" data-l="中文">%s%s</td>'
                    '<td class="wf-coll" data-l="搭配" lang="de">%s</td>'
                    '<td class="wf-ex" data-l="例句" lang="de">%s</td></tr>'
-                   % (word_html(r['w']), h(r['cn']), note, h(r['coll']), ex))
+                   % (esc_attr(r['w']), esc_attr(r['cn']), esc_attr(ex_de), esc_attr(ex_zh),
+                      esc_attr(r['coll']), esc_attr(raw_note), word_html(r['w']),
+                      h(r['cn']), note, h(r['coll']), ex))
     return ''.join(out)
 
 
@@ -138,6 +156,36 @@ def plain(text):
     return re.sub(r'%%(.+?)%%', lambda m: m.group(1).split('|')[0], text)
 
 
+# ------------------------------------------------- 句子级点译（2026-09-26）
+def _split_sentences(text):
+    """课文德文切句（切分规则见 split_sent.py，数据层与渲染层共用同一把尺）。"""
+    if DIR not in sys.path:
+        sys.path.insert(0, DIR)
+    import split_sent
+    return split_sent.split_sentences(text)
+
+
+def tr_render(text, gmap, key):
+    """逐句点译：每句包一层可点 span，点一下就地显示该句中文。
+
+    - 不默认全显（保留「先自己读」的练习价值，§22.7）
+    - 句内的可点词（.gl）已 event.stopPropagation()，点词不会连带翻开整句
+    - 查不到译文的句子原样渲染并记入 MISSING_TR（构建时报警，不静默漏）
+    """
+    zhmap = TEXT_ZH.get(key, {})
+    out = []
+    for sent in _split_sentences(text):
+        body = gloss_render(sent, gmap)
+        zh = zhmap.get(plain(sent))
+        if zh:
+            out.append('<span class="tr-s" title="点一下看这句的中文" onclick="trToggle(this)">'
+                       '%s<span class="tr-zh" lang="zh-CN">%s</span></span> ' % (body, h(zh)))
+        else:
+            MISSING_TR.append('%s · %s' % (key, plain(sent)))
+            out.append('%s ' % body)
+    return ''.join(out).strip()
+
+
 def gh(text):
     """语法例句里的 %%…%% → 加粗强调（德语动词/介词）"""
     return re.sub(r'%%(.+?)%%', r'<b class="gh">\1</b>', h(text))
@@ -177,7 +225,7 @@ def sec_home(d, v9):
         <p class="sub">%s</p>
         <p class="meta">%s</p>
       </div>
-      <div class="highlight-box">🎬 怎么用：点顶部导航切节；课文里带虚线的德语词点一下出释义与例句；词卡点一下翻面；练习写完点「检查」。投影时点右下角 A± 放大。</div>
+      <div class="highlight-box">🎬 怎么用：点顶部导航切节；课文里带虚线的德语词点一下出释义与例句，<b>点句子看中文译文</b>；词场里<b>点词条</b>出典型例句与译文；词卡点一下翻面；练习写完点「检查」。投影时点右下角 A± 放大。</div>
       <div class="home-grid">%s</div>
       <div class="obj-box"><strong>学习目标 Lernziele：</strong><ul>%s</ul></div>
       <div class="text-card" style="margin-top:12px">
@@ -192,7 +240,8 @@ def sec_home(d, v9):
 def sec_t1(d):
     t = d['t1']
     gm = gmap_of(t)
-    paras = ''.join('<p class="cloze-p" lang="de">%s</p>' % gloss_render(p, gm) for p in t['paras'])
+    paras = ''.join('<p class="cloze-p tr-p" lang="de">%s</p>' % tr_render(p, gm, 't1')
+                    for p in t['paras'])
     struct = ''.join(
         '<div class="stp"><span class="stp-n">%s</span><span class="stp-fn" lang="de">%s</span>'
         '<div class="rm-cn">%s</div></div>' % (h(s['n']), h(s['de']), h(s['cn']))
@@ -204,7 +253,7 @@ def sec_t1(d):
     return '''    <section id="t1">
       <h2 class="section-title"><span class="num">1</span> 📖 %s <span class="src src-lg">%s · %s</span></h2>
       <p class="zh-hint">%s</p>
-      <p class="zh-hint">✏️ 带虚线的德文词点一下，弹出中文释义和这词在课文里的原句。</p>
+      <p class="zh-hint">✏️ 带虚线的德文词点一下，弹出中文释义和这词在课文里的原句；<b>点句子</b>看这句的参考译文（先自己读，卡住了再点）。</p>
       <div class="text-card read-card">%s</div>
       <p class="zh-hint note">📌 %s</p>
       <div class="text-card">
@@ -225,7 +274,7 @@ def sec_t2(d):
     gm = gmap_of(t)
     parts = []
     for turn in t['dialogue']:
-        de = gloss_render(turn['de'], gm)
+        de = tr_render(turn['de'], gm, 't2')
         who = turn['who']
         if not who:
             parts.append('<p class="cloze-p dlg-lead" lang="de">%s</p>' % de)
@@ -249,6 +298,7 @@ def sec_t2(d):
     return '''    <section id="t2">
       <h2 class="section-title"><span class="num">2</span> 👤 %s <span class="src src-lg">%s · %s</span></h2>
       <p class="zh-hint">%s</p>
+      <p class="zh-hint">✏️ <b>点句子</b>看这句的参考译文；对话里人事主管/Max 带虚线的词仍可点开看释义。</p>
       <div class="text-card read-card dlg-card">%s</div>
       <p class="zh-hint note">📌 %s</p>
       <div class="text-card">
@@ -299,6 +349,7 @@ def sec_vocab(d, v9):
     return '''    <section id="vocab">
       <h2 class="section-title"><span class="num">3</span> 📚 %s <span class="src src-lg">%s</span></h2>
       <p class="zh-hint">%s</p>
+      <p class="zh-hint note">👉 每个词条点一下：出这个词的<b>典型例句 + 中文译文 + 常用搭配 + 易错提示</b>。</p>
       <p class="zh-hint note">教材标注：<b>( )</b> 词尾 / 复数形式，<b>¨</b> 变音，<b>+A / +D</b> 支配格；标注降权显示，主词为黑体。</p>
       <div class="person-tabs">%s</div>%s
       <h3 class="sub-h">🃏 快速过词 · 课文核心 %d 词</h3>
@@ -596,6 +647,11 @@ CSS_L9 = '''
     .wf-table tr.wf-grp { padding: 0; border: 0; }
     .wf-table tr.wf-grp td { background: #17427f; color: #fff; padding: 8px;
                              border-radius: 6px; }
+    /* 手机：点开的译文另起一行（宽屏才内联，不然一行挤不开）。
+       选择器带 #t1/#t2 是为了提权——基底规则 .tr-s.open .tr-zh 在本文件靠后，同权重会反盖回来。 */
+    .wf-more { display: none; }
+    .tr-zh { margin: 0; }
+    #t1 .tr-s.open .tr-zh, #t2 .tr-s.open .tr-zh { display: block; margin: 4px 0 0; }
   }
   .sub-h { margin: 16px 0 8px; font-size: var(--fs-body); color: #123a72; }
   .sm-item { background: #fff; border: 1px solid #e3e6eb; border-left: 3px solid #17427f;
@@ -613,10 +669,61 @@ CSS_L9 = '''
   #anwenden .fill-zh { font-size: var(--fs-body); }
   #anwenden .um-ta { width: 100%; font-family: inherit; font-size: var(--fs-body); padding: 8px 12px;
                      border: 1px solid #cfd6e0; border-radius: 8px; }
+
+  /* ===== 逐句点译（2026-09-26，课文 T1/T2） ===== */
+  /* 句子的可点提示不能跟词的点虚线混：词用虚线底边，句子用底色悬停提示 */
+  .tr-s { cursor: pointer; border-radius: 4px; }
+  .tr-s:hover { background: #f2f7ff; }
+  .tr-zh { display: none; background: #fff8e6; color: #7a5b12; border-left: 2px solid #d9a300;
+           border-radius: 4px; padding: 0 8px; margin: 0 4px; font-size: .92em; }
+  .tr-s.open { background: #f2f7ff; }
+  .tr-s.open .tr-zh { display: inline; }
+  .tr-p { line-height: 2; }
+
+  /* ===== 词条点开「例句 + 译文」面板（2026-09-26） ===== */
+  .wf-w { cursor: pointer; }
+  .wf-w:hover { background: #f2f7ff; }
+  .wf-more { display: inline-block; margin-left: 4px; font-size: var(--fs-cap); font-weight: 400;
+             color: #17427f; background: #e8f0fe; border-radius: 6px; padding: 0 8px;
+             vertical-align: 1px; white-space: nowrap; }
+  .vp-sec { font-size: var(--fs-cap); font-weight: 700; color: #17427f; margin: 12px 0 4px; }
+  .vp-de { font-size: var(--fs-body); line-height: 1.7; color: #1d1d1f; }
+  .vp-tr { font-size: var(--fs-body); line-height: 1.7; color: #7a5b12; background: #fff8e6;
+           border-radius: 6px; padding: 4px 8px; margin-top: 4px; }
+  .vp-none { font-size: var(--fs-sm); color: #5f6672; }
+  .vp-note { margin-top: 8px; font-size: var(--fs-sm); line-height: 1.7; color: #8a6d1f;
+             background: #fdf7e6; border-radius: 6px; padding: 4px 8px; }
 '''
 
 
 JS_L9 = '''
+/* ===== 逐句点译（2026-09-26）===== */
+function trToggle(el){ el.classList.toggle('open'); }
+
+/* ===== 词条面板：典型例句 + 中文译文 + 搭配 + 易错提示（2026-09-26）===== */
+function wfEsc(s){ return String(s == null ? '' : s).replace(/[&<>]/g, function(c){
+  return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c]; }); }
+function wfShow(cell){
+  const d = cell.dataset;
+  document.getElementById('vpWord').textContent = d.w || '';
+  document.getElementById('vpZh').textContent = d.cn || '';
+  const parts = [];
+  if (d.ex){
+    parts.push('<div class="vp-sec">典型例句 <span class="src">教材原句</span></div>'
+      + '<div class="vp-de" lang="de">' + wfEsc(d.ex) + '</div>');
+    if (d.zh) parts.push('<div class="vp-tr">' + wfEsc(d.zh) + '</div>');
+  } else {
+    parts.push('<div class="vp-sec">典型例句</div>'
+      + '<div class="vp-none">教材此页无例句，看下面的常用搭配。</div>');
+  }
+  if (d.coll) parts.push('<div class="vp-sec">常用搭配</div>'
+    + '<div class="vp-de" lang="de">' + wfEsc(d.coll) + '</div>');
+  if (d.note) parts.push('<div class="vp-note">⚠ ' + wfEsc(d.note) + '</div>');
+  document.getElementById('vpEx').innerHTML = parts.join('');
+  document.getElementById('vocabPanel').classList.add('show');
+  document.getElementById('vocabOverlay').classList.add('show');
+}
+
 /* ===== 介词填空（逐题核对）===== */
 function lkCheck(el){
   const line = el.closest('.fill-input-line');
@@ -663,6 +770,10 @@ def main():
         d = json.load(f)
     with open(VOCAB_FILE, encoding='utf-8') as f:
         v9 = json.load(f)
+    with open(TEXT_ZH_FILE, encoding='utf-8') as f:
+        TEXT_ZH.update(json.load(f))
+    with open(VOCAB_ZH_FILE, encoding='utf-8') as f:
+        VOCAB_ZH.update(json.load(f).get('ex', {}))
 
     # 搭配连线并入连线节（数据结构与 connectGrids 同形）
     d['connectGrids'].append({'title': v9['kollokationen']['title'],
@@ -747,6 +858,23 @@ def main():
         assert 'id="%s"' % sid in html, 'missing section ' + sid
     print('all %d section ids present | nav items = %d' % (len(secs), len(secs)))
     assert '%%' not in html, '标记未替换干净'
+
+    # --- 逐句点译 / 词条例句译文覆盖率（缺一条都不算过）---
+    n_tr = html.count('class="tr-s"')
+    exp_tr = sum(len(_split_sentences(p)) for p in d['t1']['paras']) + \
+        sum(len(_split_sentences(t['de'])) for t in d['t2']['dialogue'])
+    if MISSING_TR:
+        print('❌ 有 %d 句无译文：' % len(MISSING_TR))
+        for s in MISSING_TR[:10]:
+            print('   ', s)
+    n_ex = sum(1 for g in v9['wortfelder']['groups'] for r in g['rows'] if r.get('ex'))
+    n_exzh = sum(1 for g in v9['wortfelder']['groups'] for r in g['rows']
+                 if r.get('ex') and VOCAB_ZH.get(r['ex']))
+    print('逐句点译: %d 个可点句（应 %d / 缺译文 %d） | 词条例句译文: %d/%d 条'
+          % (n_tr, exp_tr, len(MISSING_TR), n_exzh, n_ex))
+    assert not MISSING_TR, '有句子缺译文'
+    assert n_exzh == n_ex, '有词条例句缺译文'
+    assert n_tr == exp_tr, '可点句数 %d ≠ 课文句数 %d' % (n_tr, exp_tr)
 
     # --- 数据量核对 ---
     print('vc-card = %d (词表 %d) | gl = %d (glossar %d) | c-item = %d (pairs %d)'

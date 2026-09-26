@@ -22,6 +22,69 @@ import build_l8_t1t2 as t12
 
 DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_FILE = os.path.join(DIR, 'l9-data.json')
+VOCAB_FILE = os.path.join(DIR, 'l9-vocab.json')          # 词汇/句型强化层（2026-09-26）
+SB_DOC = []                                              # 句型工坊参考答案（按语序拼装的词块）
+
+
+def slot_html(s):
+    """句型骨架里的 [槽] 渲染成可换槽高亮。"""
+    import re as _re
+    return _re.sub(r'\[([^\[\]]+)\]', r'<span class="slot">\1</span>', h(s))
+
+
+def wf_rows(rows):
+    """词场表行：词条 / 中文（含易错提示）/ 常用搭配 / 教材例句。"""
+    out = []
+    for r in rows:
+        note = ('<div class="wf-note">⚠ %s</div>'
+                % h(r['note']).replace('&lt;b&gt;', '<b>').replace('&lt;/b&gt;', '</b>')) \
+            if r.get('note') else ''
+        ex = ('%s' % h(r['ex'])) if r.get('ex') else '<span class="wf-none">（教材原页无此句）</span>'
+        out.append('<tr><td class="wf-w" data-l="词条" lang="de">%s</td>'
+                   '<td class="wf-cn" data-l="中文">%s%s</td>'
+                   '<td class="wf-coll" data-l="搭配" lang="de">%s</td>'
+                   '<td class="wf-ex" data-l="例句" lang="de">%s</td></tr>'
+                   % (word_html(r['w']), h(r['cn']), note, h(r['coll']), ex))
+    return ''.join(out)
+
+
+def wf_table(rows):
+    return ('<div class="vocab-table-wrap" style="overflow-x:auto"><table class="tb wf-table">'
+            '<tr><th>词条</th><th>中文</th><th>常用搭配</th><th>教材例句</th></tr>%s</table></div>'
+            % wf_rows(rows))
+
+
+def sm_items(items):
+    """句型条：功能标签 + 骨架（槽位高亮）+ 中文 + 用法提示 + 出处。"""
+    return ''.join('''      <div class="sm-item">
+        <div class="sm-fn">%s <span class="src">%s</span></div>
+        <div class="sm-de" lang="de">%s</div>
+        <div class="sm-zh">%s</div>
+        <div class="sm-tip">💡 %s</div>
+      </div>''' % (h(it['fn']), h(it['src']), slot_html(it['de']), h(it['zh']), h(it['tip']))
+                    for it in items)
+
+
+def sb_cards(items):
+    """句型工坊：词块点选拼句（复用 L8 的 sb-* 组件与 JS）。"""
+    out = []
+    for i, it in enumerate(items):
+        SB_DOC.append(it['chunks'])
+        chips = ''.join('<span class="sb-chunk" data-i="%d" onclick="sbPick(this,%d)" lang="de">%s</span>'
+                        % (k, i, h(c)) for k, c in enumerate(it['chunks']))
+        out.append('''      <div class="sb-card">
+        <div class="sb-zh"><span class="sm-cat">%s</span> <span class="src">%s</span><br>%s</div>
+        <div class="sb-pool" id="sb-pool-%d">%s</div>
+        <div class="sb-line" id="sb-line-%d"></div>
+        <div class="sb-actions">
+          <button class="btn" onclick="sbCheck(%d)">✓ 检查语序</button>
+          <button class="btn ghost" onclick="sbUndo(%d)">↶ 撤回</button>
+          <button class="btn ghost" onclick="sbReset(%d)">↺ 重排</button>
+          <button class="btn ghost" onclick="sbShow(%d)">👁 参考语序</button>
+          <span class="fill-result" id="sb-res-%d"></span>
+        </div>
+      </div>''' % (h(it['cat']), h(it['src']), h(it['zh']), i, chips, i, i, i, i, i, i))
+    return ''.join(out)
 OUT = os.path.join(DIR, 'lektion9-fit-fuer-die-bewerbung.html')
 
 h = base.h
@@ -81,7 +144,7 @@ def gh(text):
 
 
 # ---------------------------------------------------------------- 1 home
-def sec_home(d):
+def sec_home(d, v9):
     m = d['meta']
     objs = ''.join('<li>%s</li>' % h(x) for x in m['objectives'])
     rows = []
@@ -90,13 +153,19 @@ def sec_home(d):
         rows.append('<tr><td class="fl-t">%s</td><td>%s</td></tr>' % (h(a), h(b)))
     n_vocab = sum(len(g['words']) for g in d['vocab']['groups'])
     n_pairs = sum(len(g['pairs']) for g in d['connectGrids'])
+    wf = v9['wortfelder']
+    n_wf = sum(len(g['rows']) for g in wf['groups'])
+    n_sm = sum(len(g['items']) for g in v9['satzmuster']['groups'])
+    n_sb = len(v9['satzmuster']['werkstatt']['items'])
     cards = [
         ('t1', '📖 Text 1 · 求职信', 'Anna 的求职信：学业 → 实践 → 能力，%d 个重点词可点' % len(d['t1']['glossar'])),
         ('t2', '👤 Text 2 · 面试', 'Max 的面试对话：五个阶段 + %d 个重点词可点' % len(d['t2']['glossar'])),
-        ('vocab', '🃏 词汇卡', '%d 词分 %d 组 · 点卡翻面' % (n_vocab, len(d['vocab']['groups']))),
+        ('vocab', '📚 词汇精讲', '%d 词条分 %d 个词场 · 带搭配与教材例句' % (n_wf, len(wf['groups']))),
+        ('satzmuster', '🧩 句型库', '求职信 + 面试两套句型 · %d 条 + %d 句语序工坊' % (n_sm, n_sb)),
         ('grammar', '🔤 语法', 'lassen 四种用法 + 六个时间介词'),
-        ('connect', '🔗 连线配对', '%d 组 · %d 对' % (len(d['connectGrids']), n_pairs)),
+        ('connect', '🔗 连线配对', '%d 组 · %d 对（含搭配连线）' % (len(d['connectGrids']), n_pairs)),
         ('luecken', '✍️ 介词填空', '%d 空 · 输入后点 ✓ 核对' % len(d['luecken']['items'])),
+        ('anwenden', '✍️ 学以致用', '一封求职信完形 + 换槽造句（开放，不判对错）'),
         ('quiz', '✅ 快问快答', '%d 题 · 课文理解' % len(d['quiz']['items'])),
         ('translation', '🎯 翻译卡', '%d 张 · 先自己译再翻面' % len(d['translation']['cards'])),
     ]
@@ -195,36 +264,139 @@ def sec_t2(d):
        h(t['provenance']), struct, quotes)
 
 
-# ---------------------------------------------------------------- 4 词汇卡
-def sec_vocab(d):
+# ------------------------------------------------- 4 词汇精讲（词场表 + 词卡）
+def sec_vocab(d, v9):
     v = d['vocab']
+    wf = v9['wortfelder']
     groups = v['groups']
+
+    # (a) 词场表（新层：词条带语法标注 + 中文 + 搭配 + 教材例句）
+    #     标签与面板必须是 section 的直接子元素（interaction-contract：verify_interaction 按
+    #     sec.children 数面板；同节第二组标签会与它互踩——故本节只有这一组标签）
     tabs, panels = [], []
-    for i, grp in enumerate(groups):
+    for i, g in enumerate(wf['groups']):
         a = ' active' if i == 0 else ''
-        tabs.append('<button class="person-btn%s" onclick="switchVocabTab(\'vc-%s\',this)">%s</button>'
-                    % (a, grp['id'], h(grp['label'])))
+        tabs.append('<button class="person-btn%s" onclick="switchVocabTab(\'vc2-%s\',this)">%s'
+                    '<span class="wf-cnt">%d</span></button>'
+                    % (a, g['id'], h(g['label']), len(g['rows'])))
+        panels.append('<div class="person-content%s" id="vc2-%s">'
+                      '<p class="zh-hint">%s</p>'
+                      '<p class="zh-hint note">📖 出处：<span class="src">%s</span></p>%s</div>'
+                      % (a, g['id'], h(g['lead']), h(g['src']), wf_table(g['rows'])))
+
+    # (b) 课文词卡（保留：快速过词，点卡翻面；不用标签——同节只能有一组标签）
+    cgroups = []
+    for grp in groups:
         cards = ''.join(vocab_card(wd, grp.get('src', '')) for wd in grp['words'])
-        panels.append('<div class="person-content%s" id="vc-%s">'
-                      '<p class="zh-hint note">📖 出处：<span class="src">%s</span></p>'
-                      '<div class="vocab-grid">%s</div></div>'
-                      % (a, grp['id'], h(grp.get('src', '')), cards))
-    rows = ''.join('<tr><td class="vt-de" lang="de">%s</td><td class="vt-cn">%s</td></tr>'
-                   % (word_html(wd['w']), h(wd['cn']))
-                   for grp in groups for wd in grp['words'])
-    n = sum(len(g['words']) for g in groups)
+        cgroups.append('<h4 class="card-h">%s <span class="wf-cnt">%d</span>'
+                       ' <span class="src">%s</span></h4><div class="vocab-grid">%s</div>'
+                       % (h(grp['label']), len(grp['words']), h(grp.get('src', '')), cards))
+
+    # (c) 全表（词场全量，含搭配——比旧全表多一列信息）
+    full = ''.join('<tr class="wf-grp"><td colspan="4">%s <span class="src">%s</span></td></tr>%s'
+                   % (h(g['label']), h(g['src']), wf_rows(g['rows'])) for g in wf['groups'])
+    n_wf = sum(len(g['rows']) for g in wf['groups'])
     return '''    <section id="vocab">
-      <h2 class="section-title"><span class="num">3</span> 🃏 %s</h2>
+      <h2 class="section-title"><span class="num">3</span> 📚 %s <span class="src src-lg">%s</span></h2>
       <p class="zh-hint">%s</p>
-      <p class="zh-hint note">教材标注：<b>( )</b> 词尾 / 复数形式，<b>¨</b> 变音，<b>...</b> 省略词干，<b>+A / +D</b> 支配格。标注已降权显示，主词为黑体。</p>
+      <p class="zh-hint note">教材标注：<b>( )</b> 词尾 / 复数形式，<b>¨</b> 变音，<b>+A / +D</b> 支配格；标注降权显示，主词为黑体。</p>
       <div class="person-tabs">%s</div>%s
+      <h3 class="sub-h">🃏 快速过词 · 课文核心 %d 词</h3>
+      <p class="zh-hint">上面按词场讲，这里按课文顺序过一遍。点卡翻面看中文；右下 ▶ 看词条与出处。</p>
       %s
-      <div id="l9Table" style="display:none"><div class="vocab-table-wrap" style="overflow-x:auto"><table class="vocab-table">%s</table></div></div>
+      %s
+      <div id="l9Table" style="display:none"><div class="vocab-table-wrap" style="overflow-x:auto"><table class="tb wf-table">%s</table></div></div>
       <p class="zh-hint note">来源：%s</p>
     </section>
-''' % (h(v['title']), h(v['instruction']), ''.join(tabs), ''.join(panels),
-       tools_buttons(['<button class="btn ghost" onclick="toggleBox(\'l9Table\')">📋 展开全表（%d 词）</button>' % n]),
-       rows, h(v['src']))
+''' % (h(wf['title']), h(wf['src']), h(wf['instruction']), ''.join(tabs), ''.join(panels),
+       sum(len(g['words']) for g in groups), ''.join(cgroups),
+       tools_buttons(['<button class="btn ghost" onclick="toggleBox(\'l9Table\')">📋 展开全表（%d 词条 · 含搭配）</button>' % n_wf]),
+       full, h(v['src']))
+
+
+# ------------------------------------------------- 4b 句型库（新增）
+def sec_satzmuster(v9):
+    sm = v9['satzmuster']
+    tabs, panels = [], []
+    for i, g in enumerate(sm['groups']):
+        a = ' active' if i == 0 else ''
+        tabs.append('<button class="person-btn%s" onclick="switchVocabTab(\'vc2-%s\',this)">%s'
+                    '<span class="wf-cnt">%d</span></button>'
+                    % (a, g['id'], h(g['label']), len(g['items'])))
+        panels.append('<div class="person-content%s" id="vc2-%s">'
+                      '<p class="zh-hint">%s</p>'
+                      '<p class="zh-hint note">📖 出处：<span class="src">%s</span></p>%s</div>'
+                      % (a, g['id'], h(g['note']), h(g['src']), sm_items(g['items'])))
+    wk = sm['werkstatt']
+    return '''    <section id="satzmuster">
+      <h2 class="section-title"><span class="num">4</span> 🧩 %s <span class="src src-lg">教材 · Redemittel（求职信） / Text 2（面试）</span></h2>
+      <p class="zh-hint">%s</p>
+      <div class="person-tabs">%s</div>%s
+      <h3 class="sub-h">%s</h3>
+      <p class="zh-hint">%s</p>
+      %s
+    </section>
+''' % (h(sm['title']), h(sm['instruction']), ''.join(tabs), ''.join(panels),
+       h(wk['title']), h(wk['note']), sb_cards(wk['items']))
+
+
+# ------------------------------------------------- 8 学以致用（新增）
+def sec_anwenden(v9):
+    rc = v9['rede_cloze']
+    bank = ''.join('<span class="bank-chip" onclick="clzFill(\'clz-rede\', this)">%s</span>' % h(w)
+                   for w in rc['bank'])
+    n = 0
+    paras = []
+    for blk in rc['blocks']:
+        txt = h(blk['p'])
+        for a in blk['ans']:
+            n += 1
+            txt = txt.replace('[[%d]]' % n,
+                              '<span class="cloze-blank" data-ph="(%d)" data-ans="%s" '
+                              'onclick="clzClick(this)">(%d)</span>' % (n, esc_attr(a), n), 1)
+        paras.append('<p class="cloze-p" lang="de">%s</p>' % txt)
+
+    def sw_block(items):
+        out = []
+        for i, x in enumerate(items):
+            out.append('''      <div class="fill-item sw-item">
+        <div class="fill-zh">%d. <b>%s</b></div>
+        <div class="sm-de sw-pat" lang="de">%s</div>
+        <div class="fill-input-line">
+          <textarea class="um-ta" rows="2" placeholder="%s" lang="de"></textarea>
+        </div>
+        <div class="kw-tools">
+          <button class="btn ghost" onclick="refShow(this)">💬 参考写法</button>
+          <span class="um-tip">%s</span>
+        </div>
+        <div class="ref-box" style="display:none"><span class="ref-lbl">参考写法</span>
+          <span lang="de">%s</span></div>
+      </div>''' % (i + 1, h(x['k']), slot_html(x['pat']), esc_attr(x['ph']), h(x['ph']), h(x['ref'])))
+        return ''.join(out)
+
+    sw = v9['schreibwerkstatt']
+    return '''    <section id="anwenden">
+      <h2 class="section-title"><span class="num">8</span> ✍️ %s</h2>
+      <p class="zh-hint">%s</p>
+      <p class="zh-hint note">📖 出处：<span class="src">%s</span></p>
+      <div class="clz-box" id="clz-rede">
+        <div class="bank-box"><strong>Wortbank：</strong>%s</div>
+        %s
+        %s
+      </div>
+      <h3 class="sub-h">%s</h3>
+      <p class="zh-hint">%s</p>
+      %s
+      <h3 class="sub-h">%s</h3>
+      %s
+    </section>
+''' % (h(rc['title']), h(rc['instruction']), h(rc['src']), bank, '\n'.join(paras),
+       base.tools_buttons(['<button class="btn" onclick="clzCheck(\'clz-rede\')">✓ 检查</button>',
+                           '<button class="btn ghost" onclick="clzReveal(\'clz-rede\')">👁 显示答案</button>',
+                           '<button class="btn ghost" onclick="clzClear(\'clz-rede\')">↺ 清空</button>',
+                           '<span id="clz-rede-res" class="kw-result"></span>']),
+       h(sw['title']), h(sw['instruction']), sw_block(sw['items']),
+       h(sw['interview']['title']), sw_block(sw['interview']['items']))
 
 
 # ---------------------------------------------------------------- 5 语法
@@ -242,7 +414,7 @@ def sec_grammar(d):
     ex = ''.join('<div class="rm-item"><div class="rm-de" lang="de">%s</div><div class="rm-cn">%s</div></div>'
                  % (h(e['de']), h(e['zh'])) for e in g['examples'])
     return '''    <section id="grammar">
-      <h2 class="section-title"><span class="num">4</span> 🔤 语法 · Grammatik</h2>
+      <h2 class="section-title"><span class="num">5</span> 🔤 语法 · Grammatik</h2>
       <p class="zh-hint">两张表各看一遍，再顺着下面五个例句读出声。表里<b class="gh">加粗</b>的就是这一行的语法点。</p>
       %s
       <div class="text-card">
@@ -272,11 +444,11 @@ def sec_connect(d):
         <div class="connect-score">匹配：<span id="cg-cnt-%d">0</span> / %d</div>
       </div>''' % (h(cg['title']), h(cg.get('src', '')), left, right, gi, len(cg['pairs'])))
     return '''    <section id="connect">
-      <h2 class="section-title"><span class="num">5</span> 🔗 连线配对 · Vernetzen</h2>
-      <p class="zh-hint">三组各连一遍。整组连完，可以照着左列把德文读一遍。</p>
+      <h2 class="section-title"><span class="num">6</span> 🔗 连线配对 · Vernetzen</h2>
+      <p class="zh-hint">%d 组各连一遍（最后一组是本课动词搭配）：点左列德语，再点右列中文。整组连完，照着左列把德文读一遍。</p>
 %s
     </section>
-''' % '\n'.join(out)
+''' % (len(d['connectGrids']), '\n'.join(out))
 
 
 # ---------------------------------------------------------------- 7 介词填空
@@ -295,7 +467,7 @@ def sec_luecken(d):
         <div class="um-tip">💡 %s</div>
       </div>''' % (h(it['de']), esc_attr(it['ans']), h(it['zh'])))
     return '''    <section id="luecken">
-      <h2 class="section-title"><span class="num">6</span> ✍️ %s <span class="src src-lg">%s</span></h2>
+      <h2 class="section-title"><span class="num">7</span> ✍️ %s <span class="src src-lg">%s</span></h2>
       <p class="zh-hint">%s</p>
       <p class="zh-hint note">大小写不敏感；答案不唯一时，格与意义正确即算对。</p>
 %s
@@ -318,7 +490,7 @@ def sec_quiz(d):
                    % (chr(65 + k), h(o)) for k, o in enumerate(it['opts'])))
         for i, it in enumerate(q['items']))
     return '''    <section id="quiz">
-      <h2 class="section-title"><span class="num">7</span> ✅ %s <span class="src src-lg">%s</span></h2>
+      <h2 class="section-title"><span class="num">9</span> ✅ %s <span class="src src-lg">%s</span></h2>
       <p class="zh-hint">%s</p>
       <div class="qz-box" id="qz-l9">%s</div>
       %s
@@ -344,7 +516,7 @@ def sec_translation(d):
           </div>
         </div>''' % (i, h(c['de']), h(c['src']), i, h(c['zh']), h(c['tip'])))
     return '''    <section id="translation">
-      <h2 class="section-title"><span class="num">8</span> 🎯 %s</h2>
+      <h2 class="section-title"><span class="num">10</span> 🎯 %s</h2>
       <p class="zh-hint">%s</p>
       <p class="zh-hint note">%s</p>
       <div class="translation-grid">%s</div>
@@ -383,6 +555,64 @@ CSS_L9 = '''
      两面底部留出按钮带（36px + 4px 间隙），文字就再也压不到按钮上。 */
   .vc-card .vc-detail, .vc-detail { width: 36px; height: 36px; font-size: 15px; opacity: .9; }
   .vc-front, .vc-back { padding-bottom: 40px; }
+
+  /* ===== 词场表 / 句型库 / 学以致用（2026-09-26 词汇+句型强化层） ===== */
+  .card-h { margin: 16px 0 8px; font-size: var(--fs-sm); color: #17427f; }
+  .wf-cnt { display: inline-block; font-size: var(--fs-cap); background: #e8f0fe; color: #17427f;
+            border-radius: 8px; padding: 0 8px; margin-left: 4px; vertical-align: 1px; }
+  .wf-table { width: 100%; table-layout: fixed; font-size: var(--fs-sm); }
+  .wf-table th { background: #eef3fa; color: #17427f; font-size: var(--fs-cap); text-align: left; }
+  .wf-table th:nth-child(1), .wf-table td:nth-child(1) { width: 21%; }
+  .wf-table th:nth-child(2), .wf-table td:nth-child(2) { width: 26%; }
+  .wf-table th:nth-child(3), .wf-table td:nth-child(3) { width: 25%; }
+  .wf-w { font-weight: 700; color: #123a72; hyphens: auto; -webkit-hyphens: auto; }
+  /* 词条列窄（21%），长复合词必须断——但要按德语音节断（Bewerbungs-unterlagen），
+     不能用基底的 overflow-wrap:anywhere（会断成「Bewerbungsunterlage|n」孤字） */
+  .wf-table .wf-w, .wf-table .wf-coll, .wf-table .wf-ex { overflow-wrap: break-word; }
+  /* 词条主体是 <span class="vc-w">，基底直接给它 overflow-wrap:anywhere（作用于子元素，
+     td 上的规则靠继承盖不住）——这里直接点名它，改回 break-word + 音节连字符 */
+  .wf-table .vc-w { overflow-wrap: break-word; hyphens: auto; -webkit-hyphens: auto; }
+  /* 词场表的语法标注一律不断行（(Pl.) / (nur Sg) / (in +A)）——
+     基底里 .vc-note 是 overflow-wrap:anywhere（词卡窄列需要），这里列宽足够，钉成不断行 */
+  .wf-w .vc-note { white-space: nowrap; }
+  /* 标注用灰阶令牌 #5f6672（#7d8797 在白/浅灰底只有 3.3:1，未达 WCAG AA） */
+  .wf-w .vc-note { color: #5f6672; font-weight: 400; font-size: var(--fs-cap); white-space: nowrap; }
+  .wf-cn { color: #1d1d1f; }
+  .wf-note { color: #8a6d1f; background: #fdf7e6; border-radius: 6px; padding: 4px 8px;
+             margin-top: 4px; font-size: var(--fs-cap); line-height: 1.6; }
+  .wf-coll { color: #3c4450; }
+  .wf-ex { color: #3c4450; }
+  .wf-none { color: #5f6672; }
+  .wf-grp td { background: #17427f; color: #fff; font-weight: 700; border-radius: 0; }
+  /* 手机：四列表格改成逐词块（词条一行放得下 → 不再在词内断行）
+     640 是本页新断点（不与模板/base 的 480/560/600/620/700/… 重复） */
+  @media (max-width: 640px) {
+    .wf-table, .wf-table tr, .wf-table td { display: block; width: auto !important; }
+    .wf-table th { display: none; }
+    .wf-table tr { border-bottom: 1px solid #e6eaf0; padding: 8px 0; }
+    .wf-table td { border: 0; padding: 0 0 4px; }
+    .wf-table td[data-l]::before { content: attr(data-l) '：'; color: #5f6672;
+                                   font-size: var(--fs-cap); margin-right: 4px; }
+    .wf-table tr.wf-grp { padding: 0; border: 0; }
+    .wf-table tr.wf-grp td { background: #17427f; color: #fff; padding: 8px;
+                             border-radius: 6px; }
+  }
+  .sub-h { margin: 16px 0 8px; font-size: var(--fs-body); color: #123a72; }
+  .sm-item { background: #fff; border: 1px solid #e3e6eb; border-left: 3px solid #17427f;
+             border-radius: 10px; padding: 12px 16px; margin-bottom: 12px; }
+  .sm-fn { font-weight: 700; color: #17427f; font-size: var(--fs-sm); margin-bottom: 8px; }
+  .sm-de { font-size: var(--fs-word); line-height: 1.85; margin: 0 0 8px; color: #111; }
+  .sm-de .slot { background: #fff3cf; border-bottom: 2px solid #d9a300; padding: 0 2px;
+                 border-radius: 3px; }
+  .sm-zh { color: #3c4450; font-size: var(--fs-sm); }
+  .sm-tip { color: #5f6672; font-size: var(--fs-sm); line-height: 1.7; margin-top: 8px; }
+  .sm-cat { font-weight: 700; color: #17427f; }
+  .sw-item { border-left: 3px solid #2e7d32; }
+  .sw-pat { font-size: var(--fs-body); line-height: 1.8; background: #f8fafc;
+            border-radius: 8px; padding: 8px 12px; margin: 8px 0; }
+  #anwenden .fill-zh { font-size: var(--fs-body); }
+  #anwenden .um-ta { width: 100%; font-family: inherit; font-size: var(--fs-body); padding: 8px 12px;
+                     border: 1px solid #cfd6e0; border-radius: 8px; }
 '''
 
 
@@ -431,10 +661,18 @@ function lkClearAll(){
 def main():
     with open(DATA_FILE, encoding='utf-8') as f:
         d = json.load(f)
+    with open(VOCAB_FILE, encoding='utf-8') as f:
+        v9 = json.load(f)
 
-    secs = [('home', '首页'), ('t1', '📖 T1 求职信'), ('t2', '👤 T2 面试'), ('vocab', '🃏 词汇卡'),
+    # 搭配连线并入连线节（数据结构与 connectGrids 同形）
+    d['connectGrids'].append({'title': v9['kollokationen']['title'],
+                              'src': v9['kollokationen']['src'],
+                              'pairs': v9['kollokationen']['pairs']})
+
+    secs = [('home', '首页'), ('t1', '📖 T1 求职信'), ('t2', '👤 T2 面试'), ('vocab', '📚 词汇精讲'),
+            ('satzmuster', '🧩 句型库'),
             ('grammar', '🔤 语法'), ('connect', '🔗 连线'), ('luecken', '✍️ 填空'),
-            ('quiz', '✅ 快问快答'), ('translation', '🎯 翻译卡')]
+            ('anwenden', '✍️ 学以致用'), ('quiz', '✅ 快问快答'), ('translation', '🎯 翻译卡')]
 
     css = open(os.path.join(DIR, 'template_css.css'), encoding='utf-8').read()
     css = css.replace('</style>', base.EXTRA_CSS + t12.CSS_EXTRA + CSS_L9 + '</style>')
@@ -447,10 +685,12 @@ def main():
     nav += ('</div><button class="hamburger" onclick="toggleNav()">☰</button></div>'
             '<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div></nav>')
 
-    body = (sec_home(d) + sec_t1(d) + sec_t2(d) + sec_vocab(d) + sec_grammar(d) +
-            sec_connect(d) + sec_luecken(d) + sec_quiz(d) + sec_translation(d))
+    body = (sec_home(d, v9) + sec_t1(d) + sec_t2(d) + sec_vocab(d, v9) + sec_satzmuster(v9) +
+            sec_grammar(d) + sec_connect(d) + sec_luecken(d) + sec_anwenden(v9) +
+            sec_quiz(d) + sec_translation(d))
 
     core_js = base.CORE_JS.replace('__SECTIONS__', json.dumps([s[0] for s in secs]))
+    data_js = json.dumps({'sb': SB_DOC}, ensure_ascii=False)
 
     html = ('<!DOCTYPE html>\n<html lang="zh-CN" data-cw-profile="interaction">\n<head>\n'
             '<meta charset="UTF-8">\n'
@@ -474,7 +714,7 @@ def main():
             '    <button onclick="projReset()" title="回到标准">↺</button>\n'
             '  </div>\n'
             '</div>\n'
-            '<script>\nconst DOC = {};\n' + core_js + '\n' + base.EXTRA_JS + '\n'
+            '<script>\nconst DOC = ' + data_js + ';\n' + core_js + '\n' + base.EXTRA_JS + '\n'
             + t12.JS_EXTRA + '\n' + JS_L9 + '\n</script>\n</body>\n</html>\n')
 
     # 学生向措辞归一化：共用基底（build_l8_berufe / build_l8_t1t2）里带有教师向旧措辞，

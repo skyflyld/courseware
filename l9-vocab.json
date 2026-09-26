@@ -1,0 +1,1065 @@
+{
+ "meta": {
+  "lektion": "9",
+  "title": "Lektion 9 词汇与句型强化层",
+  "source": "教材 Lektion 9 · Fit für die Bewerbung!（课文 T1/T2、G1、Redemittel 页、招聘广告、Lebenslauf 页）",
+  "provenance": "德语例句优先取教材原句（T1/T2/招聘广告/Redemittel/G1/Ü10），自补的搭配与提示见各行 note 字段；页码读不出的地方留白。OCR 取证：教师 PPT「Lektion 9(2).pptx」教材页裁图，2026-09-26。"
+ },
+ "wortfelder": {
+  "title": "词汇精讲 · Wortschatz im Kontext",
+  "instruction": "按求职流程的六个词场排；每行四栏：词条（带冠词/复数/支配格）→ 中文 → 常用搭配 → 教材例句。背词先背搭配——面试时能说出口的从来不是孤零零一个词。",
+  "src": "教材 Lektion 9 · 六个词场（77 词条，出处逐组标注）",
+  "groups": [
+   {
+    "id": "W1",
+    "label": "🗂️ 招聘广告 · Stellenanzeige",
+    "src": "教材 · Stellenanzeigen（DH Events / Verlagshaus Klein）",
+    "lead": "读招聘广告先分三块：公司介绍 → Deine Aufgaben（任务）→ Deine Qualifikationen（要求）。要求里反复出现的就是下面这批词。",
+    "rows": [
+     {
+      "w": "die Stellenanzeige -n",
+      "cn": "招聘广告",
+      "coll": "eine Anzeige lesen / auf eine Anzeige antworten",
+      "ex": "Mit großem Interesse habe ich Ihre Online-Anzeige gelesen.",
+      "note": "广告里也常把它写成 Anzeige；职位本身是 die Stelle，两个词别混。"
+     },
+     {
+      "w": "sich bewerben (um +A)",
+      "cn": "申请（某职位）",
+      "coll": "sich um eine Stelle / um einen Praktikumsplatz bewerben；sich bei einer Firma bewerben",
+      "ex": "Max hat die Stellenanzeige zur Marketing- und Vertriebsassistenz gelesen und möchte sich um die Stelle bewerben.",
+      "note": "介词分工：<b>um</b> 后面是被申请的职位，<b>bei</b> 后面是公司。"
+     },
+     {
+      "w": "die Anforderung -en",
+      "cn": "要求",
+      "coll": "die Anforderungen eines Berufs erkennen",
+      "ex": "Stellenanzeigen verstehen und die Anforderungen eines Berufs erkennen.",
+      "note": "广告里几乎只以复数出现。"
+     },
+     {
+      "w": "die Qualifikation -en",
+      "cn": "资格、条件",
+      "coll": "Deine Qualifikationen: ...；gute Qualifikationen mitbringen",
+      "ex": "Deine Qualifikationen: Sehr gute Kenntnisse in MS-Office.",
+      "note": "广告的小标题，等价于中文的「任职要求」。"
+     },
+     {
+      "w": "das Aufgabengebiet -e",
+      "cn": "职责范围",
+      "coll": "Deine Aufgaben: / das Aufgabengebiet umfasst ...",
+      "ex": "",
+      "note": "与 die Aufgabe（任务）、die Tätigkeit（具体工作）同族。"
+     },
+     {
+      "w": "die Tätigkeit -en",
+      "cn": "工作、事务",
+      "coll": "Unterstützung bei Tätigkeiten im Vertrieb und Marketing",
+      "ex": "Unterstützung bei Tätigkeiten im Vertrieb und Marketing.",
+      "note": ""
+     },
+     {
+      "w": "wünschenswert",
+      "cn": "期望的（非硬性要求）",
+      "coll": "Berufserfahrung in der Branche wünschenswert",
+      "ex": "Berufserfahrung in der Branche wünschenswert.",
+      "note": "广告专用词：出现它 = 有更好，没有也欢迎申请。"
+     },
+     {
+      "w": "vorausgesetzt",
+      "cn": "以……为前提",
+      "coll": "gute Deutschkenntnisse vorausgesetzt",
+      "ex": "",
+      "note": "出现在要求末尾时，表示前面那几条是硬条件。"
+     },
+     {
+      "w": "die Bewerbungsunterlagen (Pl.)",
+      "cn": "申请材料",
+      "coll": "vollständige Bewerbungsunterlagen senden",
+      "ex": "Sende uns deine aussagekräftigen und vollständigen Bewerbungsunterlagen per E-Mail.",
+      "note": "套餐 = Anschreiben（求职信）+ Lebenslauf（简历）+ Zeugnisse（证书）+ Eintrittstermin。"
+     },
+     {
+      "w": "aussagekräftig",
+      "cn": "有说服力的、能说明问题的",
+      "coll": "aussagekräftige Bewerbungsunterlagen",
+      "ex": "Sende uns deine aussagekräftigen und vollständigen Bewerbungsunterlagen per E-Mail.",
+      "note": ""
+     },
+     {
+      "w": "die Branche -n",
+      "cn": "行业",
+      "coll": "Erfahrung in der Branche / im Verlagswesen",
+      "ex": "Berufserfahrung in der Branche wünschenswert.",
+      "note": ""
+     },
+     {
+      "w": "überdurchschnittlich",
+      "cn": "高于平均水平的",
+      "coll": "eine überdurchschnittliche Bezahlung",
+      "ex": "Eine überdurchschnittliche Bezahlung.",
+      "note": "广告里的「卖点」用词，跟 die Bezahlung（报酬）连用。"
+     }
+    ]
+   },
+   {
+    "id": "W2",
+    "label": "📄 申请材料 · Bewerbung & Unterlagen",
+    "src": "教材 · Redemittel（Bewerbungsschreiben）",
+    "lead": "一封求职信从头到尾要写到的东西：信封皮（Betreff / Anrede）、身体（Einleitung / Hauptteil / Schluss）、收尾（Gruß / Unterschrift / Anlagen）。",
+    "rows": [
+     {
+      "w": "das Bewerbungsschreiben -",
+      "cn": "求职信",
+      "coll": "ein Bewerbungsschreiben schreiben / verfassen",
+      "ex": "Anna hat ein Bewerbungsschreiben vorbereitet.",
+      "note": ""
+     },
+     {
+      "w": "das Anschreiben -",
+      "cn": "求职信（寄材料时那封）",
+      "coll": "das Anschreiben, den Lebenslauf und die Zeugnisse schicken",
+      "ex": "Anschreiben, Lebenslauf, Zeugnisse, Eintrittstermin",
+      "note": ""
+     },
+     {
+      "w": "der Lebenslauf -̈e",
+      "cn": "简历",
+      "coll": "einen tabellarischen Lebenslauf vorbereiten",
+      "ex": "Bereiten Sie einen tabellarischen Lebenslauf vor.",
+      "note": ""
+     },
+     {
+      "w": "tabellarisch",
+      "cn": "表格式的",
+      "coll": "ein tabellarischer Lebenslauf",
+      "ex": "Bereiten Sie einen tabellarischen Lebenslauf vor.",
+      "note": "德国简历讲究「表格化」：时间倒序、不留空档、不写成文章。"
+     },
+     {
+      "w": "das Zeugnis -se",
+      "cn": "证书、成绩单",
+      "coll": "Kopien der Schul- und Arbeitszeugnisse",
+      "ex": "Kopien der Schul- und Arbeitszeugnisse",
+      "note": "只寄复印件，原件面试时带。"
+     },
+     {
+      "w": "der Eintrittstermin -e",
+      "cn": "入职时间",
+      "coll": "den Eintrittstermin nennen",
+      "ex": "Ich kann diese Praktikumsstelle zum 01.08. antreten.",
+      "note": "广告要求里写 Eintrittstermin，就是问你最早什么时候能来。"
+     },
+     {
+      "w": "der Betreff -e",
+      "cn": "事由、主题行",
+      "coll": "Betreff: Bewerbung um ...",
+      "ex": "Betreff: Bewerbung um die Praktikumsstelle als Kultur-Assistenz",
+      "note": "事由里必须出现职位名称，招聘方一眼分类。"
+     },
+     {
+      "w": "die Anlage -n",
+      "cn": "附件",
+      "coll": "Anlagen: Lebenslauf, Zeugnisse",
+      "ex": "",
+      "note": "信末单列一行，用复数 Anlagen。"
+     },
+     {
+      "w": "der Briefkopf -̈e",
+      "cn": "信头（地址信息区）",
+      "coll": "Briefkopf mit Adresse und Datum",
+      "ex": "Bewerbung um die Praktikumsstelle als Kultur-Assistenz, Chongqing, 12.07.2023",
+      "note": "德语正式信里日期写在信头右侧，不放最上面。"
+     },
+     {
+      "w": "die Grußformel -n",
+      "cn": "问候套语",
+      "coll": "Mit freundlichen Grüßen",
+      "ex": "Mit freundlichen Grüßen",
+      "note": "正式信只用这一句，后面不加逗号。"
+     },
+     {
+      "w": "die Unterschrift -en",
+      "cn": "签名",
+      "coll": "mit Unterschrift und Datum",
+      "ex": "",
+      "note": ""
+     },
+     {
+      "w": "die Rückfrage -n",
+      "cn": "追问、咨询",
+      "coll": "Für Rückfragen stehe ich Ihnen gern zur Verfügung.",
+      "ex": "Für Rückfragen stehe ich Ihnen selbstverständlich gern zur Verfügung.",
+      "note": "信末常用句，比「有问题请联系我」礼貌得多。"
+     },
+     {
+      "w": "sich vertraut machen (mit +D)",
+      "cn": "熟悉、掌握",
+      "coll": "sich mit einer Aufgabe / mit einem Programm sehr gut vertraut machen",
+      "ex": "Durch meine Arbeit als Marketing-Assistenz habe ich mich mit ... sehr gut vertraut gemacht.",
+      "note": "谈经验时的高分句：先说做了什么，再说因此熟悉了什么。"
+     }
+    ]
+   },
+   {
+    "id": "W3",
+    "label": "🧾 简历 · Lebenslauf",
+    "src": "教材 · Ü1 Lebenslauf",
+    "lead": "教材 Ü1 里的简历分四块（A 个人信息 / B 学业 / C 实践 / D 能力），表格左侧的九个词块就是简历的小标题——这些词要能不假思索地写出来。",
+    "rows": [
+     {
+      "w": "Persönliche Daten (Pl.)",
+      "cn": "个人信息",
+      "coll": "Persönliche Daten: Name, Anschrift, Telefon ...",
+      "ex": "A. Persönliche Daten",
+      "note": "简历第一块的小标题。"
+     },
+     {
+      "w": "die Anschrift -en",
+      "cn": "地址",
+      "coll": "Anschrift: Zhuangzhi-Road 33, Shapingba, Chongqing",
+      "ex": "Zhuangzhi-Road 33, Haus 4 Zimmer 116, Shapingba, Chongqing 400031",
+      "note": "德语书信不用 die Adresse，用 die Anschrift。"
+     },
+     {
+      "w": "das Geburtsdatum / der Geburtsort",
+      "cn": "出生日期 / 出生地",
+      "coll": "Geburtsdatum und -ort: 18.06.2001 in Hamburg",
+      "ex": "18.06.2001 in Hamburg",
+      "note": "简历里的标准写法是「日期 + in + 城市」。"
+     },
+     {
+      "w": "die Schulbildung (nur Sg)",
+      "cn": "学历（中小学阶段）",
+      "coll": "Schulbildung: Grundschule, Gymnasium, Abitur",
+      "ex": "10.2007–09.2011 Grundschule Rönneburg, Hamburg",
+      "note": "从小学写到高中毕业，时间倒序。"
+     },
+     {
+      "w": "das Studium",
+      "cn": "大学学业",
+      "coll": "Sinologiestudium an der Fremdsprachenuniversität Sichuan",
+      "ex": "Seit 09.2022 Sinologiestudium an der Fremdsprachenuniversität Sichuan",
+      "note": "在读用 seit + 月份，毕业用 von ... bis。"
+     },
+     {
+      "w": "die praktischen Erfahrungen",
+      "cn": "实践经验",
+      "coll": "Praktikum bei ... / Freiwillige beim ...",
+      "ex": "08.2021–09.2021 Praktikum bei der Filiale der „Bank of China“ in Frankfurt am Main",
+      "note": "必须带时间 + 单位 + 做了什么。"
+     },
+     {
+      "w": "die Kenntnisse und Fähigkeiten",
+      "cn": "知识与技能",
+      "coll": "Kenntnisse und Fähigkeiten: Computer, Sprachen",
+      "ex": "C. Kenntnisse und Fähigkeiten",
+      "note": ""
+     },
+     {
+      "w": "die Computerkenntnisse (Pl.)",
+      "cn": "计算机技能",
+      "coll": "gute PC-Kenntnisse sowie MS-Office-Kenntnisse (Power Point, Excel, Word)",
+      "ex": "Gute PC-Kenntnisse sowie MS-Office-Kenntnisse (Power Point, Excel, Word)",
+      "note": ""
+     },
+     {
+      "w": "die Sprachkenntnisse (Pl.)",
+      "cn": "语言能力",
+      "coll": "sehr gute Deutsch- und Englischkenntnisse in Wort und Schrift",
+      "ex": "Sehr gute Deutsch- und Englischkenntnisse in Wort und Schrift",
+      "note": "「in Wort und Schrift」= 口语和书面都好，这句在德语简历里几乎是标配。"
+     },
+     {
+      "w": "die persönlichen Stärken (Pl.)",
+      "cn": "个人强项",
+      "coll": "Persönliche Stärken: Zuverlässigkeit, Teamfähigkeit ...",
+      "ex": "D. Persönliche Stärken",
+      "note": "简历写强项，不写弱项（弱项留给面试问）。"
+     },
+     {
+      "w": "die Hobbys (Pl.)",
+      "cn": "爱好",
+      "coll": "Hobbys: Sport, Musik",
+      "ex": "",
+      "note": "写跟岗位能挂上钩的爱好，泛泛的「看书听音乐」不加分。"
+     },
+     {
+      "w": "das Bewerbungsfoto -s",
+      "cn": "求职照",
+      "coll": "Bewerbungsfoto (keine Pflicht)",
+      "ex": "Bewerbungsfoto (keine Pflicht)",
+      "note": "教材原页标注：keine Pflicht = 非必需（德国近年惯例）。"
+     }
+    ]
+   },
+   {
+    "id": "W4",
+    "label": "💪 能力与性格 · Fähigkeiten & Stärken",
+    "src": "教材 · Stellenanzeigen（DH Events / Verlagshaus Klein）",
+    "lead": "招聘广告的「要求」和面试的「说强项」用的是同一批词。德语把这些能力做成 -keit / -fähigkeit 结尾的名词，背一个词族等于背一串。",
+    "rows": [
+     {
+      "w": "die Kenntnisse (Pl.)",
+      "cn": "知识、技能",
+      "coll": "sehr gute Kenntnisse in +D (in MS-Office)",
+      "ex": "Sehr gute Kenntnisse in MS-Office (Word, Excel, Power-Point)",
+      "note": "注意介词是 in + 第三格。"
+     },
+     {
+      "w": "die Fähigkeit -en",
+      "cn": "能力",
+      "coll": "die Fähigkeit zum selbstständigen Arbeiten",
+      "ex": "Fähigkeit zum verantwortungsbewussten, sorgfältigen und selbstständigen Arbeiten",
+      "note": ""
+     },
+     {
+      "w": "die Teamfähigkeit (nur Sg)",
+      "cn": "团队合作能力",
+      "coll": "Zuverlässigkeit, Teamfähigkeit und Kommunikationsfähigkeit",
+      "ex": "Zuverlässigkeit, Teamfähigkeit und Kommunikationsfähigkeit",
+      "note": ""
+     },
+     {
+      "w": "die Kommunikationsfähigkeit (nur Sg)",
+      "cn": "沟通能力",
+      "coll": "gute Kommunikationsfähigkeit",
+      "ex": "Zuverlässigkeit, Teamfähigkeit und Kommunikationsfähigkeit",
+      "note": ""
+     },
+     {
+      "w": "die Zuverlässigkeit (nur Sg)",
+      "cn": "可靠、守信用",
+      "coll": "Zuverlässigkeit und Sorgfalt",
+      "ex": "Zuverlässigkeit, Teamfähigkeit und Kommunikationsfähigkeit",
+      "note": ""
+     },
+     {
+      "w": "die Belastbarkeit (nur Sg)",
+      "cn": "抗压能力",
+      "coll": "Zuverlässigkeit, Teamfähigkeit, Belastbarkeit und Flexibilität",
+      "ex": "Zuverlässigkeit, Teamfähigkeit, Belastbarkeit und Flexibilität",
+      "note": "德语简历里的高频词，中文没有完全对应的单词。"
+     },
+     {
+      "w": "die Flexibilität (nur Sg)",
+      "cn": "灵活性",
+      "coll": "Flexibilität und Sorgfalt",
+      "ex": "Selbstständiges Arbeiten, Flexibilität und Sorgfalt",
+      "note": ""
+     },
+     {
+      "w": "die Sorgfalt (nur Sg)",
+      "cn": "细致、认真",
+      "coll": "sorgfältiges Arbeiten",
+      "ex": "Selbstständiges Arbeiten, Flexibilität und Sorgfalt",
+      "note": ""
+     },
+     {
+      "w": "die Organisationsfähigkeit (nur Sg)",
+      "cn": "组织能力",
+      "coll": "Hohes Maß an Organisationsfähigkeit",
+      "ex": "Hohes Maß an Organisationsfähigkeit",
+      "note": "「Hohes Maß an + D」= 高度具备某项素质，很地道的广告写法。"
+     },
+     {
+      "w": "selbstständig",
+      "cn": "独立的（能自己干的）",
+      "coll": "selbstständiges Arbeiten",
+      "ex": "Fähigkeit zum verantwortungsbewussten, sorgfältigen und selbstständigen Arbeiten",
+      "note": ""
+     },
+     {
+      "w": "verantwortungsbewusst",
+      "cn": "有责任心的",
+      "coll": "verantwortungsbewusst arbeiten",
+      "ex": "Fähigkeit zum verantwortungsbewussten, sorgfältigen und selbstständigen Arbeiten",
+      "note": ""
+     },
+     {
+      "w": "kreativ",
+      "cn": "有创造力的",
+      "coll": "kreative Ideen haben",
+      "ex": "Er ist sehr kreativ und hat immer viele tolle Ideen.",
+      "note": "出自 T2 面试对话 Max 的自述。"
+     },
+     {
+      "w": "die Umgangsformen (Pl.)",
+      "cn": "礼仪、举止",
+      "coll": "gute Umgangsformen haben",
+      "ex": "Außerdem hat er gute Umgangsformen und findet schnell Kontakt zu Menschen.",
+      "note": "只用复数。面试场景里指待人接物的分寸。"
+     },
+     {
+      "w": "überzeugen (+A)",
+      "cn": "说服、让人信服",
+      "coll": "jemanden überzeugen / überzeugend sein",
+      "ex": "Er kann zuhören und kann auch überzeugen.",
+      "note": ""
+     }
+    ]
+   },
+   {
+    "id": "W5",
+    "label": "🤝 面试 · Vorstellungsgespräch",
+    "src": "教材 S.263 · Text 2（Vorstellungsgespräch）",
+    "lead": "面试的词汇量不大，但每句都在「说经历、说强项、谈钱、收尾」这四件事上。下面这批词出自己录在教材里的那场对话。",
+    "rows": [
+     {
+      "w": "das Vorstellungsgespräch -e",
+      "cn": "面试",
+      "coll": "ein Vorstellungsgespräch führen / bekommen",
+      "ex": "Max kommt nun zum Vorstellungsgespräch.",
+      "note": ""
+     },
+     {
+      "w": "die Einladung -en",
+      "cn": "邀请（函）",
+      "coll": "eine Einladung zum Gespräch erhalten",
+      "ex": "Über eine Einladung zu einem persönlichen Gespräch freue ich mich sehr.",
+      "note": ""
+     },
+     {
+      "w": "der Personalchef -s / die Personalchefin -nen",
+      "cn": "人事主管",
+      "coll": "mit dem Personalchef sprechen",
+      "ex": "Personalchefin: Nehmen Sie doch bitte Platz!",
+      "note": ""
+     },
+     {
+      "w": "die Stärke -n",
+      "cn": "强项",
+      "coll": "Stärken und Schwächen bestimmen",
+      "ex": "Er hat viele Stärken, z. B. er ist sehr kreativ und hat immer viele tolle Ideen.",
+      "note": ""
+     },
+     {
+      "w": "die Schwäche -n",
+      "cn": "弱项、缺点",
+      "coll": "Haben Sie auch Schwächen?",
+      "ex": "Haben Sie auch Schwächen?",
+      "note": "被问到时，先认一个真缺点，再说明你怎么跟它相处。"
+     },
+     {
+      "w": "der Berufsanfänger -",
+      "cn": "职场新人",
+      "coll": "Berufsanfänger sein, wenig Erfahrung haben",
+      "ex": "Ich bin Berufsanfänger und habe noch wenig Erfahrung.",
+      "note": "承认经验少的标准说法，接着必须给补偿（学得快）。"
+     },
+     {
+      "w": "die Erfahrung -en",
+      "cn": "经验",
+      "coll": "Erfahrungen sammeln / wenig Erfahrung haben",
+      "ex": "Ich bin Berufsanfänger und habe noch wenig Erfahrung.",
+      "note": ""
+     },
+     {
+      "w": "ungeduldig",
+      "cn": "不耐烦的、急性子的",
+      "coll": "etwas ungeduldig sein",
+      "ex": "Ich bin auch etwas ungeduldig.",
+      "note": "用 etwas 弱化，是德语面试里给缺点「降温」的常规做法。"
+     },
+     {
+      "w": "voranschreiten (+A)",
+      "cn": "推进、向前发展",
+      "coll": "Dinge schnell voranschreiten sehen wollen",
+      "ex": "Ich will Dinge immer schnell voranschreiten sehen.",
+      "note": ""
+     },
+     {
+      "w": "sich einarbeiten (in +A)",
+      "cn": "熟悉上手（新工作）",
+      "coll": "sich schnell in eine neue Firma einarbeiten",
+      "ex": "Ich werde mich ja auch schnell einarbeiten.",
+      "note": "说完缺点后的补救句，面试必备。"
+     },
+     {
+      "w": "das Gehalt -̈er",
+      "cn": "工资",
+      "coll": "ein monatliches Gehalt von 1800 bis 2500 Euro",
+      "ex": "Er wünscht sich ein monatliches Gehalt von etwa 1800 bis 2500 Euro.",
+      "note": ""
+     },
+     {
+      "w": "verdienen (+A)",
+      "cn": "挣得",
+      "coll": "Was möchten Sie denn verdienen?",
+      "ex": "Was möchten Sie denn verdienen?",
+      "note": "谈薪的标准问句。"
+     },
+     {
+      "w": "zur Verfügung stehen (+D)",
+      "cn": "可供……使用、随时听候",
+      "coll": "jemandem gern zur Verfügung stehen",
+      "ex": "Für Rückfragen stehe ich Ihnen selbstverständlich gern zur Verfügung.",
+      "note": ""
+     },
+     {
+      "w": "antreten (+A)",
+      "cn": "开始（工作）、就职",
+      "coll": "eine Stelle zum 01.08. antreten",
+      "ex": "Ich kann diese Praktikumsstelle zum 01.08. antreten.",
+      "note": ""
+     }
+    ]
+   },
+   {
+    "id": "W6",
+    "label": "⏳ 时间与条件 · Zeitangaben",
+    "src": "教材 S.250 · G1 Präpositionen mit dem Dativ",
+    "lead": "这一课的时间介词全部要求第三格，只有 während 要第二格。背的时候连着例句一起背——介词题考的就是「后面跟什么格」。",
+    "rows": [
+     {
+      "w": "seit (+D)",
+      "cn": "自从……以来",
+      "coll": "seit drei Jahren / seit dem 1. Oktober / seit kurzem",
+      "ex": "Seit drei Jahren ist Anna Studentin.",
+      "note": "起点在过去、延续到现在，动词常用现在时。"
+     },
+     {
+      "w": "ab (+D)",
+      "cn": "从……起（将来）",
+      "coll": "ab morgen / ab Mai / ab nächstem Montag",
+      "ex": "Ab nächstem Monat macht Anna in einer deutschen Firma ein Praktikum.",
+      "note": "起点在将来。ab + 第几格都可以，教材注释：ab dem ersten Mai 或 ab ersten Mai。"
+     },
+     {
+      "w": "außer (+D)",
+      "cn": "除……之外",
+      "coll": "außer Anna / außer Freitag",
+      "ex": "Jeden Tag außer Freitag begann das Praktikum von Anna um 8 Uhr.",
+      "note": "表示「唯一例外」。"
+     },
+     {
+      "w": "von ... an",
+      "cn": "从……起",
+      "coll": "von heute an / von Anfang an",
+      "ex": "Von heute an treibt Anna jeden Morgen Sport.",
+      "note": "与 ab 同义，von 和 an 必须成对出现。"
+     },
+     {
+      "w": "während (+G)",
+      "cn": "在……期间",
+      "coll": "während des Studiums / während der Ferien",
+      "ex": "Während des Austauschstudiums kann ich meine Kenntnisse verbessern.",
+      "note": "唯一要第二格的。auswendig 记：während + 第二格。"
+     },
+     {
+      "w": "vor (+D)",
+      "cn": "……之前",
+      "coll": "vor dem Gespräch / vor einer Woche",
+      "ex": "Thomas war sehr froh, als er vor einer Woche die Prüfung zum Sprachdiplom bestanden hat.",
+      "note": "过去之前的时间点，直接跟第三格。"
+     },
+     {
+      "w": "nach (+D)",
+      "cn": "……之后",
+      "coll": "nach dem Studium / nach der Prüfung",
+      "ex": "",
+      "note": "练习 5 的介词词库里给了它，答案里与 seit 一起出现在「Seit / Nach」这一格。"
+     },
+     {
+      "w": "um (+A)",
+      "cn": "在（某个钟点）",
+      "coll": "um 8 Uhr / um halb neun",
+      "ex": "Jeden Tag außer Freitag begann das Praktikum um 8 Uhr.",
+      "note": "钟点用 um + 第四格，只有这一个介词配钟点。"
+     },
+     {
+      "w": "von ... bis",
+      "cn": "从……到……",
+      "coll": "von halb neun bis halb zehn",
+      "ex": "Wir haben von halb neun bis halb zehn Karten gespielt.",
+      "note": "拿它答「时间段」的问题，一天之内的时段用 von ... bis 最稳。"
+     },
+     {
+      "w": "in (+D)",
+      "cn": "在……之后（将来）",
+      "coll": "in einem Monat / in zwei Wochen",
+      "ex": "Wenn alles gut geht, können wir uns in einem Monat wiedersehen.",
+      "note": "和 ab 的分工：in 是「多久之后」，ab 是「从某刻起」。「一个月后见」用 in einem Monat。"
+     },
+     {
+      "w": "seit kurzem / seit langem",
+      "cn": "最近 / 很久以来",
+      "coll": "seit kurzem ein neues Zimmer haben",
+      "ex": "Anna hat seit kurzem ein neues Zimmer im Studentenwohnheim.",
+      "note": "固定搭配，别改成 seit kurz。"
+     },
+     {
+      "w": "der Umzug -̈e",
+      "cn": "搬家",
+      "coll": "seit ihrem Umzug / umziehen (+ sein)",
+      "ex": "Seit ihrem Umzug hat sie nichts von ihrer Freundin Jasmin gehört.",
+      "note": ""
+     }
+    ]
+   }
+  ]
+ },
+ "satzmuster": {
+  "title": "句型库 · Satzmuster",
+  "instruction": "每条给出「骨架 + 可换的槽 + 教材原句」。方括号里的部分是可以换成你自己信息的；其余部分照抄。练法：先遮住例句，用骨架说一遍自己的版本，再对例句。",
+  "groups": [
+   {
+    "id": "S1",
+    "label": "✉️ 求职信 · Bewerbungsschreiben",
+    "src": "教材 · Redemittel（Bewerbungsschreiben）",
+    "note": "按一封信从上到下的顺序排：称呼 → 引言 → 主体 → 结尾 → 问候语。一封信用到 4–5 条就够，不用全上。",
+    "items": [
+     {
+      "fn": "1 · Anrede 称呼（不知道收信人姓名）",
+      "de": "Sehr geehrte Damen und Herren,",
+      "zh": "尊敬的女士们、先生们：",
+      "tip": "只有真的查不到姓名时才用。称呼后用逗号，下一行正文小写开头。",
+      "src": "教材 · Redemittel（Anrede）"
+     },
+     {
+      "fn": "1 · Anrede 称呼（知道姓）",
+      "de": "Sehr geehrte Frau [Familienname], / Sehr geehrter Herr [Familienname],",
+      "zh": "尊敬的 [姓] 女士／先生：",
+      "tip": "知道姓就一定要写姓——德语求职信里用 Damen und Herren 会被读成「没做功课」。",
+      "src": "教材 · Redemittel（Anrede）"
+     },
+     {
+      "fn": "2 · Einleitung 引言（为什么写这封信）",
+      "de": "Mit großem Interesse habe ich Ihre Online-Anzeige gelesen und bewerbe mich hiermit um [diese Stelle].",
+      "zh": "我怀着极大的兴趣读了贵公司的网上招聘广告，特此申请 [该职位]。",
+      "tip": "bewerbe mich hiermit um ... 是固定套语，「hiermit」不能省；槽里填职位名。",
+      "src": "教材 · Redemittel（Einleitung）"
+     },
+     {
+      "fn": "2 · Einleitung 引言（换个说法）",
+      "de": "Ihre Anzeige hat mich sofort angesprochen, weil die Praktikumsstelle genau [meinen Interessen und Fähigkeiten] passt.",
+      "zh": "您的广告立刻吸引了我，因为这个实习岗位恰好符合 [我的兴趣与能力]。",
+      "tip": "weil 从句的动词 passt 要放句末——这里最容易出语序错误。",
+      "src": "教材 · Redemittel（Einleitung）"
+     },
+     {
+      "fn": "3 · Hauptteil 主体（用经历证明能力）",
+      "de": "Als [Dolmetscherin] konnte ich meine [Sprachkenntnisse] beweisen.",
+      "zh": "作为 [口译员]，我得以证明我的 [语言能力]。",
+      "tip": "结构固定：Als + 身份 + konnte ich + 能力 + beweisen。身份用第四格（Als Dolmetscherin 无冠词时看不出，用冠词才现形）。",
+      "src": "教材 · Redemittel（Hauptteil）"
+     },
+     {
+      "fn": "3 · Hauptteil 主体（用经历说收获）",
+      "de": "Durch meine Arbeit als [Marketing-Assistenz] habe ich mich mit [neuen Aufgaben] sehr gut vertraut gemacht.",
+      "zh": "通过作为 [市场助理] 的工作，我很好地熟悉了 [新任务]。",
+      "tip": "sich mit + D 是固定搭配；这句好在它把「做过」变成「学会了」，说经验时特别顶用。",
+      "src": "教材 · Redemittel（Hauptteil）"
+     },
+     {
+      "fn": "4 · Schluss 结尾（什么时候能来）",
+      "de": "Ich kann diese Praktikumsstelle zum [01.08.] antreten.",
+      "zh": "我可以在 [8 月 1 日] 开始这个实习。",
+      "tip": "zum + 日期；「入职时间」几乎每封求职信都要给。",
+      "src": "教材 · Redemittel（Schluss）"
+     },
+     {
+      "fn": "4 · Schluss 结尾（留联系方式）",
+      "de": "Für Rückfragen stehe ich Ihnen selbstverständlich gern zur Verfügung.",
+      "zh": "如有疑问，我随时愿意为您解答。",
+      "tip": "zur Verfügung stehen 的主语是我，宾语用 Ihnen（第三格）。",
+      "src": "教材 · Redemittel（Schluss）"
+     },
+     {
+      "fn": "4 · Schluss 结尾（表达期待）",
+      "de": "Über eine Einladung zu einem persönlichen Gespräch freue ich mich sehr.",
+      "zh": "非常期待您邀请我面谈。",
+      "tip": "介词是 über + A（对某事感到高兴），不是 auf。",
+      "src": "教材 · Redemittel（Schluss）"
+     },
+     {
+      "fn": "4 · Schluss 结尾（反问式收尾）",
+      "de": "Konnte ich Ihr Interesse wecken?",
+      "zh": "我是否引起了您的兴趣？",
+      "tip": "一句话收尾，语气自信但不过分；Interesse wecken 是固定搭配。",
+      "src": "教材 · Redemittel（Schluss）"
+     },
+     {
+      "fn": "5 · Grußformel 问候语",
+      "de": "Mit freundlichen Grüßen",
+      "zh": "此致敬礼",
+      "tip": "教材明确：正式信只推荐这一句。Mit herzlichen / besten / lieben Grüßen 太私人，Mit freundlichem Gruß 也偏私人；人称代词 ihr 一律不写。",
+      "src": "教材 · Redemittel（Grußformel）"
+     }
+    ]
+   },
+   {
+    "id": "S2",
+    "label": "🤝 面试 · Vorstellungsgespräch",
+    "src": "教材 S.263 · Text 2（Vorstellungsgespräch）",
+    "note": "按面试实际推进顺序排：寒暄 → 自我介绍 → 强项弱项 → 技能 → 薪水 → 反问答疑 → 收尾。问句出自己录在教材里的那场对话；回答骨架用 Max 的原话。",
+    "items": [
+     {
+      "fn": "1 · Begrüßung & Smalltalk 寒暄",
+      "de": "Nehmen Sie doch bitte Platz! ／ Haben Sie den Weg zu uns gut gefunden?",
+      "zh": "请坐！／ 来我们这里的路好找吗？",
+      "tip": "开场问题往往很小，答一句 + 补一句细节就够，别只回 ja。",
+      "src": "教材 S.263 · Text 2 面试对话"
+     },
+     {
+      "fn": "2 · Selbstpräsentation 自我介绍",
+      "de": "Erzählen Sie bitte etwas über sich. ／ Warum haben Sie sich gerade bei uns beworben?",
+      "zh": "请介绍一下您自己。／ 您为什么偏偏申请我们公司？",
+      "tip": "回答结构：学业（Ich studiere ...）→ 经历（Durch meine Arbeit als ...）→ 打算（Ich möchte später ...）。别背简历，说「为什么是这家公司」。",
+      "src": "教材 S.263 · Text 2 面试对话"
+     },
+     {
+      "fn": "3 · Stärken 说强项",
+      "de": "Ich bin sehr kreativ. Ich habe immer viele tolle Ideen und die können helfen, neue Produkte zu verkaufen.",
+      "zh": "我很有创造力，总有很多好点子，它们能帮助推销新产品。",
+      "tip": "说强项要带「所以有什么用」——只报形容词、不给结果，说服力减半。",
+      "src": "教材 S.263 · Text 2（Max 原话）"
+     },
+     {
+      "fn": "3 · Schwächen 说弱项（含补救）",
+      "de": "Ich bin Berufsanfänger und habe noch wenig Erfahrung. Ich bin auch etwas ungeduldig. Aber ich werde mich ja auch schnell einarbeiten.",
+      "zh": "我是职场新人，经验还不多；也有点急性子。不过我会很快上手。",
+      "tip": "三段式：认缺点 → 用 etwas 降温 → 说补救。只认不补，是被扣分的地方。",
+      "src": "教材 S.263 · Text 2（Max 原话）"
+     },
+     {
+      "fn": "4 · Qualifikationen 技能与语言",
+      "de": "Sie sprechen [Englisch, Französisch und Spanisch], richtig? — Ja, genau. Ich war während meines Studiums ein Jahr in [Spanien, in Barcelona].",
+      "zh": "您会 [英语、法语和西班牙语]，对吗？—— 是的。我念书时在 [西班牙巴塞罗那] 待过一年。",
+      "tip": "确认型问句的标准答法：Ja, genau. + 补一条背景，让「会」变成「有出处」。",
+      "src": "教材 S.263 · Text 2 面试对话"
+     },
+     {
+      "fn": "5 · Gehalt 谈薪水",
+      "de": "Was möchten Sie denn verdienen? — Ich wünsche mir ein monatliches Gehalt von [etwa 1800 bis 2500 Euro]. Aber die Entscheidung darüber liegt natürlich bei der Firma.",
+      "zh": "您希望拿多少薪水？—— 我希望月薪 [约 1800 到 2500 欧]。不过决定权当然在公司。",
+      "tip": "给区间 + 把决定权交回公司，是教材给的两个动作，缺一个都显得生硬。",
+      "src": "教材 S.263 面试练习（Max 自述）"
+     },
+     {
+      "fn": "6 · Rückfragen & Verabschiedung 提问与收尾",
+      "de": "Haben Sie noch Fragen an uns? — Sie werden bald von uns hören.",
+      "zh": "您还有问题问我们吗？—— 我们很快会通知您。",
+      "tip": "「您还有问题吗」一定要问回去：准备 1–2 个关于岗位或团队的问题（薪资、假期、下班时间不要问）。",
+      "src": "教材 S.263 · Text 2 面试对话"
+     }
+    ]
+   },
+   {
+    "id": "S3",
+    "label": "🎬 面试六个场景 · 自检问句",
+    "src": "教材 · Ü10 Tipps für das Vorstellungsgespräch",
+    "note": "教材 Ü10 把整场面试拆成六个场景，每个场景配一句自问。对着自己的答案过一遍，就完成了面试准备的闭环。",
+    "items": [
+     {
+      "fn": "1 · Der erste Eindruck 第一印象",
+      "de": "Wie komme ich gut rüber?",
+      "zh": "我怎么才能给人留下好印象？",
+      "tip": "衣着、准时、握手、眼神——第一句话之前就已经在评分。",
+      "src": "教材 · Ü10"
+     },
+     {
+      "fn": "2 · Die Begrüßung 问候",
+      "de": "Wie rede ich mit dem Chef?",
+      "zh": "我该怎么跟主管说话？",
+      "tip": "用 Sie，不用 du；称呼 Herr/Frau + 姓。",
+      "src": "教材 · Ü10"
+     },
+     {
+      "fn": "3 · Der Beruf 职位本身",
+      "de": "Was weiß ich schon darüber?",
+      "zh": "我对这份工作了解多少？",
+      "tip": "带着「这个岗位每天做什么」的答案去面试。",
+      "src": "教材 · Ü10"
+     },
+     {
+      "fn": "4 · Leistungen und Erfahrungen 学历与经历",
+      "de": "Was kann ich gut und was nicht so?",
+      "zh": "我哪方面强、哪方面一般？",
+      "tip": "强项挑与岗位接得上的说，别把简历逐条念一遍。",
+      "src": "教材 · Ü10"
+     },
+     {
+      "fn": "5 · Das Unternehmen 公司",
+      "de": "Wie gut habe ich mich informiert?",
+      "zh": "我对公司了解得够不够？",
+      "tip": "至少要能说出公司做什么、在哪里。",
+      "src": "教材 · Ü10"
+     },
+     {
+      "fn": "6 · Die Verabschiedung 告别",
+      "de": "Wie bleibe ich in guter Erinnerung?",
+      "zh": "我怎样才能让人记住？",
+      "tip": "道谢 + 一句「期待回音」+ 确认联系方式。",
+      "src": "教材 · Ü10"
+     }
+    ]
+   }
+  ],
+  "werkstatt": {
+   "title": "🔧 句型工坊 · 点词块组句",
+   "note": "句子全部取自教材原句。先读中文，再把词块按德语语序点进下面的空行，然后点「检查语序」。德语的两个死规律：变位动词占第二位；从句动词到句末。",
+   "items": [
+    {
+     "cat": "求职信 · Einleitung",
+     "zh": "我怀着极大的兴趣读了贵公司的网上招聘广告。",
+     "chunks": [
+      "Mit großem Interesse",
+      "habe",
+      "ich",
+      "Ihre Online-Anzeige",
+      "gelesen"
+     ],
+     "src": "教材 · Redemittel（Einleitung）"
+    },
+    {
+     "cat": "求职信 · Einleitung",
+     "zh": "您的广告立刻吸引了我。",
+     "chunks": [
+      "Ihre Anzeige",
+      "hat",
+      "mich",
+      "sofort",
+      "angesprochen"
+     ],
+     "src": "教材 · Redemittel（Einleitung）"
+    },
+    {
+     "cat": "求职信 · Hauptteil",
+     "zh": "通过作为市场助理的工作，我很好地熟悉了新任务。",
+     "chunks": [
+      "Durch meine Arbeit als Marketing-Assistenz",
+      "habe",
+      "ich",
+      "mich",
+      "mit neuen Aufgaben",
+      "sehr gut",
+      "vertraut gemacht"
+     ],
+     "src": "教材 · Redemittel（Hauptteil）"
+    },
+    {
+     "cat": "求职信 · Schluss",
+     "zh": "如有疑问，我随时愿意为您解答。",
+     "chunks": [
+      "Für Rückfragen",
+      "stehe",
+      "ich",
+      "Ihnen",
+      "selbstverständlich",
+      "gern",
+      "zur Verfügung"
+     ],
+     "src": "教材 · Redemittel（Schluss）"
+    },
+    {
+     "cat": "G1 · seit + Dativ",
+     "zh": "安娜读大学已经三年了。",
+     "chunks": [
+      "Seit drei Jahren",
+      "ist",
+      "Anna",
+      "Studentin"
+     ],
+     "src": "教材 S.250 · G1"
+    },
+    {
+     "cat": "G1 · ab + Dativ",
+     "zh": "从下个月起安娜在一家德国公司实习。",
+     "chunks": [
+      "Ab nächstem Monat",
+      "macht",
+      "Anna",
+      "in einer deutschen Firma",
+      "ein Praktikum"
+     ],
+     "src": "教材 S.250 · G1"
+    },
+    {
+     "cat": "G1 · von ... an",
+     "zh": "从今天起安娜每天早上锻炼。",
+     "chunks": [
+      "Von heute an",
+      "treibt",
+      "Anna",
+      "jeden Morgen",
+      "Sport"
+     ],
+     "src": "教材 S.250 · G1"
+    },
+    {
+     "cat": "面试 · 说弱项",
+     "zh": "我是职场新人，经验还不多。",
+     "chunks": [
+      "Ich",
+      "bin",
+      "Berufsanfänger",
+      "und",
+      "habe",
+      "noch",
+      "wenig Erfahrung"
+     ],
+     "src": "教材 S.263 · Text 2"
+    }
+   ]
+  }
+ },
+ "kollokationen": {
+  "title": "🔗 搭配连线 · Was passt zusammen?",
+  "instruction": "左边是动词搭配，右边是中文。求职信和面试里真正「能说出口」的，往往不是单词而是这些整块搭配——整块背，用的时候不用现拼。",
+  "pairs": [
+   [
+    "sich um eine Stelle bewerben",
+    "申请一个职位"
+   ],
+   [
+    "Erfahrungen sammeln",
+    "积累经验"
+   ],
+   [
+    "Kontakt zu Menschen finden",
+    "与人建立联系"
+   ],
+   [
+    "sich mit einer Aufgabe vertraut machen",
+    "熟悉一项任务"
+   ],
+   [
+    "jemandem zur Verfügung stehen",
+    "随时为某人效劳"
+   ],
+   [
+    "eine Stelle antreten",
+    "开始上岗"
+   ],
+   [
+    "Interesse wecken",
+    "引起兴趣"
+   ],
+   [
+    "sich in eine Firma einarbeiten",
+    "熟悉新公司的工作"
+   ]
+  ],
+  "src": "教材 S.253 / S.263 · 课文搭配（连线为改编）"
+ },
+ "rede_cloze": {
+  "title": "✍️ 学以致用 · 用句型写出一封求职信",
+  "instruction": "这是用教材 Redemittel 句型拼出来的一封示范信（题目为本页自编，句型出自教材 Redemittel 页）。先点句子里的空位，再点词库里对应的词；填完点「检查」。",
+  "bank": [
+   "habe",
+   "bewerbe",
+   "angesprochen",
+   "Freiwillige",
+   "Kenntnisse",
+   "antreten",
+   "freue"
+  ],
+  "blocks": [
+   {
+    "p": "Betreff: Bewerbung um das Praktikum Eventmanagement",
+    "ans": []
+   },
+   {
+    "p": "Sehr geehrte Damen und Herren,",
+    "ans": []
+   },
+   {
+    "p": "mit großem Interesse [[1]] ich Ihre Online-Anzeige gelesen und [[2]] mich hiermit um diese Stelle. Ihre Anzeige hat mich sofort [[3]], weil die Praktikumsstelle genau zu meinen Interessen und Fähigkeiten passt.",
+    "ans": [
+     "habe",
+     "bewerbe",
+     "angesprochen"
+    ]
+   },
+   {
+    "p": "Zurzeit studiere ich Sinologie an der Fremdsprachenuniversität Sichuan. Durch meine Arbeit als [[4]] beim Sportverein habe ich mich mit der Organisation von Veranstaltungen sehr gut vertraut gemacht. Außerdem habe ich gute [[5]] in sozialen Medien.",
+    "ans": [
+     "Freiwillige",
+     "Kenntnisse"
+    ]
+   },
+   {
+    "p": "Ich kann diese Praktikumsstelle zum 01.03. [[6]]. Über eine Einladung zu einem persönlichen Gespräch [[7]] ich mich sehr.",
+    "ans": [
+     "antreten",
+     "freue"
+    ]
+   },
+   {
+    "p": "Mit freundlichen Grüßen",
+    "ans": []
+   },
+   {
+    "p": "Li Tao",
+    "ans": []
+   }
+  ],
+  "src": "教材 · Redemittel（句型原样取自教材；信件为本页改编）"
+ },
+ "schreibwerkstatt": {
+  "title": "🖊️ 换槽造句 · 写你自己的那封",
+  "instruction": "把方括号里的东西换成你自己的信息，一条条写出来——先写句子，别急着成篇。没有标准答案，写出来读一遍：动词在第二位吗？从句动词在句末吗？",
+  "items": [
+   {
+    "k": "Betreff 事由",
+    "pat": "Bewerbung um [die Stelle / das Praktikum] ...",
+    "ph": "例：Bewerbung um das Praktikum Eventmanagement",
+    "ref": "Bewerbung um das Praktikum Eventmanagement (Pflichtpraktikum, 6 Monate)"
+   },
+   {
+    "k": "Anrede 称呼",
+    "pat": "Sehr geehrte [Frau Klein], / Sehr geehrter [Herr Klein],",
+    "ph": "知道姓就写姓；不知道才用 Damen und Herren",
+    "ref": "Sehr geehrte Frau Klein,"
+   },
+   {
+    "k": "Einleitung 引言",
+    "pat": "Mit großem Interesse habe ich [Ihre Anzeige] gelesen und bewerbe mich hiermit um [diese Stelle].",
+    "ph": "一句话说清：看到什么 + 申请什么",
+    "ref": "Mit großem Interesse habe ich Ihre Online-Anzeige gelesen und bewerbe mich hiermit um das Praktikum Eventmanagement."
+   },
+   {
+    "k": "Hauptteil 主体（用经历说收获）",
+    "pat": "Durch meine Arbeit als [Freiwillige beim Sportverein] habe ich mich mit [der Organisation von Veranstaltungen] sehr gut vertraut gemacht.",
+    "ph": "把「我做过 X」写成「我因此学会了 Y」",
+    "ref": "Durch meine Arbeit als Freiwillige beim Sportverein habe ich mich mit der Organisation von Veranstaltungen sehr gut vertraut gemacht."
+   },
+   {
+    "k": "Schluss 结尾（入职时间 + 期待回音）",
+    "pat": "Ich kann diese Stelle zum [01.03.] antreten. Über eine Einladung zu einem persönlichen Gespräch freue ich mich sehr.",
+    "ph": "入职时间几乎必写",
+    "ref": "Ich kann diese Praktikumsstelle zum 01.03. antreten. Über eine Einladung zu einem persönlichen Gespräch freue ich mich sehr."
+   },
+   {
+    "k": "Gruß 问候语 + 签名",
+    "pat": "Mit freundlichen Grüßen\n[Vorname Familienname]",
+    "ph": "只用这一句问候语",
+    "ref": "Mit freundlichen Grüßen\nLi Tao"
+   }
+  ],
+  "interview": {
+   "title": "🎤 面试自我介绍 · 三句话打底",
+   "items": [
+    {
+     "k": "我是谁",
+     "pat": "Ich studiere [Sinologie] an der [Fremdsprachenuniversität Sichuan].",
+     "ph": "学业 + 学校，一句话",
+     "ref": "Ich studiere Sinologie an der Fremdsprachenuniversität Sichuan."
+    },
+    {
+     "k": "我做过什么",
+     "pat": "Durch meine Arbeit als [Freiwillige] habe ich [Erfahrungen] gesammelt.",
+     "ph": "一段经历，别说成简历朗读",
+     "ref": "Durch meine Arbeit als Freiwillige beim Sportverein habe ich viel Erfahrung mit der Organisation von Veranstaltungen gesammelt."
+    },
+    {
+     "k": "我的强项（带结果）",
+     "pat": "Ich bin [sehr kreativ]. Ich [habe immer viele Ideen], und das hilft [bei neuen Aufgaben].",
+     "ph": "形容词后面必须跟一句「所以有什么用」",
+     "ref": "Ich bin sehr kreativ. Ich habe immer viele Ideen, und das hilft bei neuen Aufgaben."
+    }
+   ]
+  }
+ }
+}

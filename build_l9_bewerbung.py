@@ -38,11 +38,23 @@ def slot_html(s):
     return _re.sub(r'\[([^\[\]]+)\]', r'<span class="slot">\1</span>', h(s))
 
 
+def _same_de(a, b):
+    """两段德文是不是「读者眼里同一句」——只差首尾空白 / 尾句点 / 首字母大小写就算同一句。
+
+    2026-09-26 Sky 指令：词场表里「常用搭配」和「教材例句」内容完全相同＝同一段德文在一行里
+    出现两次，删掉重复。判据必须和渲染层用同一把尺，故统一在这里算，结果写进 data-same，
+    JS 只读标记（不在 JS 里重复实现一遍判据，避免两处规则漂移）。
+    """
+    n = lambda s: re.sub(r'\s+', ' ', str(s or '')).strip().rstrip('.').strip().lower()
+    return bool(a) and bool(b) and n(a) == n(b)
+
+
 def wf_rows(rows):
     """词场表行：词条 / 中文（含易错提示）/ 常用搭配 / 教材例句。
 
     2026-09-26 新增：词条格可点 → 弹出「典型例句 + 中文参考译文 + 搭配 + 易错提示」。
     数据挂在 td 的 data-* 上（而不是新增一列），点整格都算，手机上好按。
+    2026-09-27 去重：搭配与例句是同一句时合并成一格（colspan=2），句子只出现一次。
     """
     out = []
     for r in rows:
@@ -53,16 +65,22 @@ def wf_rows(rows):
         ex_de = r.get('ex', '')
         ex_zh = VOCAB_ZH.get(ex_de, '')
         ex = ('%s' % h(ex_de)) if ex_de else '<span class="wf-none">（教材原页无此句）</span>'
+        same = _same_de(ex_de, r.get('coll', ''))
+        if same:
+            # 搭配句＝教材例句 → 合并一格，不再把同一句德文印两遍
+            tail = ('<td class="wf-both" data-l="常用搭配 ＝ 教材例句" lang="de" colspan="2">%s</td>'
+                    % ex)
+        else:
+            tail = ('<td class="wf-coll" data-l="搭配" lang="de">%s</td>'
+                    '<td class="wf-ex" data-l="例句" lang="de">%s</td>' % (h(r['coll']), ex))
         out.append('<tr><td class="wf-w" data-l="词条" lang="de" role="button" tabindex="0"'
                    ' title="点一下看例句与中文译文" onclick="wfShow(this)"'
                    ' data-w="%s" data-cn="%s" data-ex="%s" data-zh="%s" data-coll="%s"'
-                   ' data-note="%s">%s<span class="wf-more">例句</span></td>'
-                   '<td class="wf-cn" data-l="中文">%s%s</td>'
-                   '<td class="wf-coll" data-l="搭配" lang="de">%s</td>'
-                   '<td class="wf-ex" data-l="例句" lang="de">%s</td></tr>'
+                   ' data-same="%s" data-note="%s">%s<span class="wf-more">例句</span></td>'
+                   '<td class="wf-cn" data-l="中文">%s%s</td>%s</tr>'
                    % (esc_attr(r['w']), esc_attr(r['cn']), esc_attr(ex_de), esc_attr(ex_zh),
-                      esc_attr(r['coll']), esc_attr(raw_note), word_html(r['w']),
-                      h(r['cn']), note, h(r['coll']), ex))
+                      esc_attr(r['coll']), '1' if same else '0', esc_attr(raw_note),
+                      word_html(r['w']), h(r['cn']), note, tail))
     return ''.join(out)
 
 
@@ -118,13 +136,47 @@ def h(s):
 
 
 # ---------------------------------------------------------------- 读词查义
+_SPK = re.compile(r'^[A-ZÄÖÜ][^:：]{0,24}[:：]\s*')   # 对话里的「Personalchefin: 」前缀
+
+
+def ex_zh(ex):
+    """虚线词的例句 → 中文参考译文（2026-09-27 Sky 指令：例句与译文要同时出现）。
+
+    数据只从已有的 l9-text-zh.json 里取（不新增数据层）：
+      ① 整句精确匹配（T1 全部命中）
+      ② 去说话人前缀后再匹配（T2 对话句）
+      ③ 复合例句（含多句）→ 按 split_sentences 拆开逐句取译文再拼
+    取不到就返回空串——构建闸门会把「缺译文」当失败，不允许静默留白。
+    """
+    s = plain(str(ex or '')).strip()
+    if not s:
+        return ''
+
+    def _hit(t):
+        for sec in ('t1', 't2'):
+            m = TEXT_ZH.get(sec) or {}
+            if t and t in m:
+                return m[t]
+        return ''
+
+    z = _hit(s) or _hit(_SPK.sub('', s).strip())
+    if z:
+        return z
+    parts = _split_sentences(s)
+    if len(parts) > 1:
+        zs = [_hit(p) or _hit(_SPK.sub('', p).strip()) for p in parts]
+        if all(zs):
+            return ''.join(zs)
+    return ''
+
+
 def _gloss_span(e, surface):
-    ex = e.get('ex', '')
-    if e.get('def'):
-        ex = ex + '\n释义：' + e['def']
-    return ('<span class="gl" title="点一下看释义与例句" '
+    # 2026-09-27：例句 / 例句译文 / 德文释义 分三个参数传，面板里分块排版（原来是拼成一坨文本）
+    return ('<span class="gl" title="点一下看释义、例句与译文" '
             'onclick="event.stopPropagation();showVocab(%s)">%s</span>'
-            % (','.join(_js(x) for x in (e.get('w', ''), e.get('zh', ''), ex)), h(surface)))
+            % (','.join(_js(x) for x in (e.get('w', ''), e.get('zh', ''),
+                                        e.get('ex', ''), ex_zh(e.get('ex', '')),
+                                        e.get('def', ''))), h(surface)))
 
 
 def gloss_render(text, gmap):
@@ -253,7 +305,7 @@ def sec_t1(d):
     return '''    <section id="t1">
       <h2 class="section-title"><span class="num">1</span> 📖 %s <span class="src src-lg">%s · %s</span></h2>
       <p class="zh-hint">%s</p>
-      <p class="zh-hint">✏️ 带虚线的德文词点一下，弹出中文释义和这词在课文里的原句；<b>点句子</b>看这句的参考译文（先自己读，卡住了再点）。</p>
+      <p class="zh-hint">✏️ 带虚线的德文词点一下，弹出中文释义、这词在课文里的原句，以及原句的<b>参考译文</b>；<b>点句子</b>看整句参考译文（先自己读，卡住了再点）。</p>
       <div class="text-card read-card">%s</div>
       <p class="zh-hint note">📌 %s</p>
       <div class="text-card">
@@ -298,7 +350,7 @@ def sec_t2(d):
     return '''    <section id="t2">
       <h2 class="section-title"><span class="num">2</span> 👤 %s <span class="src src-lg">%s · %s</span></h2>
       <p class="zh-hint">%s</p>
-      <p class="zh-hint">✏️ <b>点句子</b>看这句的参考译文；对话里人事主管/Max 带虚线的词仍可点开看释义。</p>
+      <p class="zh-hint">✏️ <b>点句子</b>看这句的参考译文；对话里人事主管/Max 带虚线的词仍可点开看释义、原句与译文。</p>
       <div class="text-card read-card dlg-card">%s</div>
       <p class="zh-hint note">📌 %s</p>
       <div class="text-card">
@@ -349,7 +401,7 @@ def sec_vocab(d, v9):
     return '''    <section id="vocab">
       <h2 class="section-title"><span class="num">3</span> 📚 %s <span class="src src-lg">%s</span></h2>
       <p class="zh-hint">%s</p>
-      <p class="zh-hint note">👉 每个词条点一下：出这个词的<b>典型例句 + 中文译文 + 常用搭配 + 易错提示</b>。</p>
+      <p class="zh-hint note">👉 每个词条点一下：出这个词的<b>典型例句 + 中文译文 + 常用搭配 + 易错提示</b>；搭配句与教材例句为同一句时只印一次。</p>
       <p class="zh-hint note">教材标注：<b>( )</b> 词尾 / 复数形式，<b>¨</b> 变音，<b>+A / +D</b> 支配格；标注降权显示，主词为黑体。</p>
       <div class="person-tabs">%s</div>%s
       <h3 class="sub-h">🃏 快速过词 · 课文核心 %d 词</h3>
@@ -691,6 +743,13 @@ CSS_L9 = '''
   .vp-tr { font-size: var(--fs-body); line-height: 1.7; color: #7a5b12; background: #fff8e6;
            border-radius: 6px; padding: 4px 8px; margin-top: 4px; }
   .vp-none { font-size: var(--fs-sm); color: #5f6672; }
+  /* 课文点词面板：例句译文 + 德文释义（2026-09-27） */
+  #vpEx .vp-tr { border-left: 2px solid #d9a300; margin-top: 4px; padding: 4px 8px; }
+  .vp-lb { font-weight: 700; color: #8a6d1f; margin-right: 6px; }
+  #vpEx .vp-def { margin-top: 8px; font-size: var(--fs-sm); line-height: 1.7; color: #5f6672; }
+  #vpEx .vp-def .vp-lb { color: #5f6672; }
+  /* 词场表：搭配句＝教材例句时合并的那一格（2026-09-27） */
+  .wf-both { color: #3c4450; }
   .vp-note { margin-top: 8px; font-size: var(--fs-sm); line-height: 1.7; color: #8a6d1f;
              background: #fdf7e6; border-radius: 6px; padding: 4px 8px; }
 '''
@@ -700,6 +759,27 @@ JS_L9 = '''
 /* ===== 逐句点译（2026-09-26）===== */
 function trToggle(el){ el.classList.toggle('open'); }
 
+/* ===== 课文点词面板（2026-09-27 覆盖基底 showVocab）：例句 + **例句译文** + 德文释义 =====
+   同名的函数声明写在后面 → 后定义盖前定义。基底的三参调用（词卡 ▶）走 else 分支（textContent），零回归。 */
+function showVocab(w, cn, ex, tr, def){
+  document.getElementById('vpWord').textContent = w || '';
+  document.getElementById('vpZh').textContent = cn || '';
+  const box = document.getElementById('vpEx');
+  if (tr || def){
+    const parts = [];
+    if (ex) parts.push('<div class="vp-de" lang="de">' + wfEsc(ex) + '</div>');
+    if (tr) parts.push('<div class="vp-tr"><span class="vp-lb">参考译文</span>'
+      + wfEsc(tr) + '</div>');
+    if (def) parts.push('<div class="vp-def"><span class="vp-lb">德文释义</span>'
+      + wfEsc(def) + '</div>');
+    box.innerHTML = parts.join('');
+  } else {
+    box.textContent = ex || '';
+  }
+  document.getElementById('vocabPanel').classList.add('show');
+  document.getElementById('vocabOverlay').classList.add('show');
+}
+
 /* ===== 词条面板：典型例句 + 中文译文 + 搭配 + 易错提示（2026-09-26）===== */
 function wfEsc(s){ return String(s == null ? '' : s).replace(/[&<>]/g, function(c){
   return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c]; }); }
@@ -707,16 +787,19 @@ function wfShow(cell){
   const d = cell.dataset;
   document.getElementById('vpWord').textContent = d.w || '';
   document.getElementById('vpZh').textContent = d.cn || '';
+  const same = d.same === '1';   // 搭配与例句为同一句（构建期判定，这里只读标记）
   const parts = [];
   if (d.ex){
-    parts.push('<div class="vp-sec">典型例句 <span class="src">教材原句</span></div>'
+    parts.push('<div class="vp-sec">' + (same ? '典型例句 · 常用搭配' : '典型例句')
+      + ' <span class="src">教材原句</span></div>'
       + '<div class="vp-de" lang="de">' + wfEsc(d.ex) + '</div>');
     if (d.zh) parts.push('<div class="vp-tr">' + wfEsc(d.zh) + '</div>');
   } else {
     parts.push('<div class="vp-sec">典型例句</div>'
       + '<div class="vp-none">教材此页无例句，看下面的常用搭配。</div>');
   }
-  if (d.coll) parts.push('<div class="vp-sec">常用搭配</div>'
+  // 搭配与例句是同一句时不再重复渲染（同一段德文不印两遍）
+  if (!same && d.coll) parts.push('<div class="vp-sec">常用搭配</div>'
     + '<div class="vp-de" lang="de">' + wfEsc(d.coll) + '</div>');
   if (d.note) parts.push('<div class="vp-note">⚠ ' + wfEsc(d.note) + '</div>');
   document.getElementById('vpEx').innerHTML = parts.join('');
@@ -875,6 +958,33 @@ def main():
     assert not MISSING_TR, '有句子缺译文'
     assert n_exzh == n_ex, '有词条例句缺译文'
     assert n_tr == exp_tr, '可点句数 %d ≠ 课文句数 %d' % (n_tr, exp_tr)
+
+    # --- 虚线词例句译文覆盖率（2026-09-27 Sky 指令：点词要同时出例句与译文）---
+    gl_all = [(k, e) for k in ('t1', 't2') for e in d[k]['glossar']]
+    miss_gl = [(k, e['w'], e.get('ex', '')) for k, e in gl_all
+               if e.get('ex') and not ex_zh(e['ex'])]
+    n_gl = sum(1 for _, e in gl_all if e.get('ex'))
+    print('虚线词例句译文: %d/%d 条（缺 %d）' % (n_gl - len(miss_gl), n_gl, len(miss_gl)))
+    for k, w, ex in miss_gl[:8]:
+        print('   ✗ %s %s | %s' % (k, w, ex[:70]))
+    assert not miss_gl, '有虚线词例句缺中文译文'
+
+    # --- 词场表同行去重（2026-09-27 Sky 指令：搭配＝例句只印一次）---
+    dup_rows = [(g['label'], r['w']) for g in v9['wortfelder']['groups'] for r in g['rows']
+                if _same_de(r.get('ex', ''), r.get('coll', ''))]
+    n_both = html.count('class="wf-both"')
+    print('搭配＝例句（合并为一格）: %d 个词条 → 渲染 %d 格（应 %d）'
+          % (len(dup_rows), n_both, len(dup_rows) * 2))
+    assert n_both == len(dup_rows) * 2, '合并格数 %d ≠ 重复词条数 %d × 2' % (n_both, len(dup_rows))
+    bad_tr = 0
+    for tr in re.findall(r'<tr[^>]*>(.*?)</tr>', html, re.S):
+        cells = re.findall(r'<td[^>]*class="wf-(?:coll|ex|both)"[^>]*>(.*?)</td>', tr, re.S)
+        txt = [re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', '', c)).strip().rstrip('.').lower()
+               for c in cells]
+        if len(txt) > 1 and len(set(txt)) != len(txt):
+            bad_tr += 1
+    print('同行重复终检: 仍重复的行 = %d（应 0）' % bad_tr)
+    assert bad_tr == 0, '词场表仍有同一行内重复的德文'
 
     # --- 数据量核对 ---
     print('vc-card = %d (词表 %d) | gl = %d (glossar %d) | c-item = %d (pairs %d)'

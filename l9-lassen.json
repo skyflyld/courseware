@@ -1,0 +1,407 @@
+{
+ "title": "lassen 用法",
+ "nav": "🔧 lassen 用法",
+ "lead": "lassen 的核心只有一条：主语不亲自动手——动作由别人完成，或者根本不发生。",
+ "map": {
+  "title": "一张表记全：五种用法地图",
+  "no": "1.3",
+  "headers": [
+   "#",
+   "结构",
+   "一句话规则",
+   "中文",
+   "例句"
+  ],
+  "rows": [
+   [
+    "①",
+    "lassen + 四格 + 不定式",
+    "别人动手",
+    "让...做",
+    "Ich lasse mein Auto reparieren."
+   ],
+   [
+    "②",
+    "lassen + 四格 + 不定式",
+    "我不拦",
+    "允许 / 听任",
+    "Lass mich bitte ausreden!"
+   ],
+   [
+    "③",
+    "sich lassen + 不定式",
+    "东西「可被」做",
+    "能被...",
+    "Das Problem lässt sich lösen."
+   ],
+   [
+    "④",
+    "sich（四格）+ 不定式 + lassen",
+    "别人对我做",
+    "让...给我做",
+    "Ich lasse mich untersuchen."
+   ],
+   [
+    "⑤",
+    "lassen 作独立动词 / 固定搭配",
+    "只是状态，没有动作",
+    "留下 / 离开",
+    "Er hat mich stehen lassen."
+   ]
+  ],
+  "rule": [
+   "一句话规则（考试用）：",
+   "① 主语动不动手？　动手 → 不用 lassen；不动手 → 用 lassen。",
+   "② 动作用在谁身上？　别人 → ①②④　东西 → ③　根本没有动作、只有状态 → ⑤。"
+  ]
+ },
+ "cards": [
+  {
+   "title": "五种用法地图",
+   "blocks": [
+    [
+     "p",
+     "lassen 的核心只有一条：**主语不亲自动手**——动作由别人完成，或者根本不发生。中文的「让」把三件事混在一起（我让某人做、我不拦某人做、这事能被做），德语都用 lassen 覆盖，原因就在这里。"
+    ],
+    [
+     "p",
+     "① 与 ② 的结构完全相同，只能靠语义分辨——这是本考点最大的坑。"
+    ]
+   ]
+  },
+  {
+   "title": "2.1 用法① 使役：让别人替我动手",
+   "blocks": [
+    [
+     "p",
+     "结构：**主语 + lassen（变位）+ 第四格宾语 + 动词不定式（句末）**"
+    ],
+    [
+     "b",
+     "宾语是**被做的那一方**，不是主语；主语只出意愿。"
+    ],
+    [
+     "b",
+     "只变 lassen 的人称和时态，**不定式在句末，一个字母都不变**。"
+    ],
+    [
+     "tbl",
+     [
+      "例句",
+      "中文"
+     ],
+     [
+      [
+       "Ich lasse mein Fahrrad reparieren.",
+       "我把自行车送去修了。"
+      ],
+      [
+       "Die Eltern lassen ihre Kinder Klavier lernen.",
+       "父母让孩子学钢琴。"
+      ],
+      [
+       "Ich habe mir die Haare schneiden lassen.",
+       "我让人给我剪了头发。"
+      ]
+     ],
+     [
+      9.0,
+      8.0
+     ],
+     10
+    ],
+    [
+     "tbl",
+     [
+      "谁动手",
+      "句子"
+     ],
+     [
+      [
+       "我",
+       "Ich repariere mein Auto."
+      ],
+      [
+       "修车工",
+       "Ich lasse mein Auto reparieren."
+      ]
+     ],
+     [
+      4.0,
+      13.0
+     ],
+     10
+    ],
+    [
+     "b",
+     "不定式不能跟着变位：✗ Ich lasse mein Auto repariert."
+    ],
+    [
+     "b",
+     "lassen 不能省略：✗ Ich mein Auto reparieren."
+    ]
+   ]
+  },
+  {
+   "title": "2.2 用法② 允许／听任：我不拦",
+   "blocks": [
+    [
+     "p",
+     "结构与用法①完全相同，区别只在语义：① 是「我去促成」，② 是「我不去阻止」。"
+    ],
+    [
+     "p",
+     "判别：改写成 **dürfen / erlauben** 通顺 → 用法②；改写成 **veranlassen / beauftragen** 通顺 → 用法①。"
+    ],
+    [
+     "tbl",
+     [
+      "例句",
+      "中文",
+      "用法"
+     ],
+     [
+      [
+       "Lass mich bitte ausreden!",
+       "请让我把话说完！",
+       "②"
+      ],
+      [
+       "Sie lässt ihren Sohn nicht allein ausgehen.",
+       "她不让儿子一个人出门。",
+       "②"
+      ],
+      [
+       "Der Lehrer ließ die Schüler den Text vorlesen.",
+       "老师让学生朗读课文。",
+       "①"
+      ]
+     ],
+     [
+      8.6,
+      6.4,
+      2.0
+     ],
+     10
+    ],
+    [
+     "b",
+     "**nicht + lassen** 多数是「不允许」。"
+    ],
+    [
+     "b",
+     "可分动词 **zulassen**（容许）属同一义项：der keinerlei Abwandlung zuließ（不容许任何改变，2026 · Ⅲ 阅读原文）。"
+    ]
+   ]
+  },
+  {
+   "title": "2.3 用法③ sich lassen + 不定式：被动替代（最高频）",
+   "blocks": [
+    [
+     "p",
+     "结构：**主语（受事） + lassen sich + 不定式（句末）**"
+    ],
+    [
+     "p",
+     "等价式：**lässt sich + 不定式 = kann + 过去分词 + werden**"
+    ],
+    [
+     "box",
+     [
+      "Das Problem lässt sich leicht lösen.",
+      "= Das Problem kann leicht gelöst werden.　这个问题很容易被解决。"
+     ]
+    ],
+    [
+     "b",
+     "主语必须是**受事**——被处理的那件东西，不能是动手的人。"
+    ],
+    [
+     "b",
+     "只用第三人称。`Ich lasse mich lösen.` 不是「我被解决」，而是「我让人来解救我」，已经跳到用法④。"
+    ],
+    [
+     "b",
+     "反身代词**永远是 sich**，不随主语变形：Das lässt sich machen. / Die Aufgaben lassen sich lösen."
+    ],
+    [
+     "tbl",
+     [
+      "转换方向",
+      "三步"
+     ],
+     [
+      [
+       "lässt sich → 被动态",
+       "① 找出实义动词　② 变成过去分词，句末补 werden　③「可以」用 kann / können 承接"
+      ],
+      [
+       "被动态 → lässt sich",
+       "① 去掉 werden　② 过去分词还原成不定式　③ 主语后插入 lassen sich"
+      ]
+     ],
+     [
+      4.6,
+      12.4
+     ],
+     10
+    ],
+    [
+     "p",
+     "【注意】情态的处理：2026 年第 94 题原句是 müssen … transportiert werden（必须被运），官方答案册接受的改写是 lassen sich transportieren（可以被运）——本题考**结构对应**，不考情态保真。同类题先保结构。"
+    ],
+    [
+     "b",
+     "主语写成施事：✗ Die Regierung lässt sich beeinflussen.（这是「政府让人影响自己」）"
+    ],
+    [
+     "b",
+     "忘了把过去分词还原：✗ Die Bäume lassen sich transportiert."
+    ],
+    [
+     "b",
+     "语序写反：✗ Das sich lässt nicht reparieren."
+    ]
+   ]
+  },
+  {
+   "title": "2.4 用法④ sich（四格）+ 不定式 + lassen：我自己被牵进去",
+   "blocks": [
+    [
+     "p",
+     "结构与用法①相同，但主语同时是**动作的承受者**，所以宾语位置出现反身代词。"
+    ],
+    [
+     "tbl",
+     [
+      "句子",
+      "主语",
+      "反身代词",
+      "意思"
+     ],
+     [
+      [
+       "Das Auto lässt sich reparieren.",
+       "物",
+       "sich（③）",
+       "这车能被修"
+      ],
+      [
+       "Ich lasse mir das Auto reparieren.",
+       "人",
+       "mir（三格）",
+       "我让人给我修车"
+      ],
+      [
+       "Ich lasse mich untersuchen.",
+       "人",
+       "mich（四格）",
+       "我让人给我做检查"
+      ]
+     ],
+     [
+      6.6,
+      1.8,
+      3.0,
+      5.6
+     ],
+     10
+    ],
+    [
+     "p",
+     "判别：自己／身体是**被动手的东西** → mich（四格）；自己是**受益者**（另有一个第四格宾语）→ mir（三格）。"
+    ],
+    [
+     "b",
+     "Ich lasse mich morgens von meinem Mann wecken."
+    ],
+    [
+     "b",
+     "Er hat sich gestern die Zähne untersuchen lassen."
+    ]
+   ]
+  },
+  {
+   "title": "2.5 用法⑤ 独立动词与固定搭配（词汇层）",
+   "blocks": [
+    [
+     "p",
+     "这一层是**词条**，不是语法结构。阅读和完形里 lassen 出现最频繁的正是这一层。"
+    ],
+    [
+     "tbl",
+     [
+      "词条",
+      "意思",
+      "例句",
+      "真题出处"
+     ],
+     [
+      [
+       "verlassen",
+       "离开",
+       "Er hat das Land verlassen.",
+       "2024 · Ⅲ-A-27；2025 · Ⅳ-B"
+      ],
+      [
+       "zurücklassen",
+       "留下",
+       "67.000 Flaschen zurückgelassen",
+       "2024 · Ⅲ-Teil 1"
+      ],
+      [
+       "hinter sich lassen",
+       "把…抛在身后",
+       "Probleme hinter sich lassen",
+       "2025 · Ⅲ-A-29"
+      ],
+      [
+       "stehen lassen",
+       "放下不管；不开（车）",
+       "das Auto stehen lassen",
+       "2025 · Ⅲ 选项 d"
+      ],
+      [
+       "zulassen",
+       "容许；关着（门窗）",
+       "der keinerlei Abwandlung zuließ",
+       "2026 · Ⅲ"
+      ],
+      [
+       "liegen lassen",
+       "放着不管",
+       "Ich habe das Buch liegen lassen.",
+       "—"
+      ],
+      [
+       "sitzen lassen",
+       "放人鸽子",
+       "Er hat mich sitzen lassen.",
+       "—"
+      ],
+      [
+       "fallen lassen",
+       "掉下；放弃",
+       "Lass die Hoffnung nicht fallen.",
+       "—"
+      ],
+      [
+       "Lass das!",
+       "别这样！（惯用语）",
+       "Lass das, das tut weh!",
+       "—"
+      ]
+     ],
+     [
+      3.4,
+      3.4,
+      5.6,
+      4.6
+     ],
+     9.0
+    ]
+   ]
+  }
+ ],
+ "src": "lassen 专四考点精讲 · 第一章 / 第二章"
+}

@@ -26,6 +26,7 @@ DATA_FILE = os.path.join(DIR, 'l9-data.json')
 VOCAB_FILE = os.path.join(DIR, 'l9-vocab.json')          # 词汇/句型强化层（2026-09-26）
 TEXT_ZH_FILE = os.path.join(DIR, 'l9-text-zh.json')      # 课文逐句点译（2026-09-26，键=德文原句）
 VOCAB_ZH_FILE = os.path.join(DIR, 'l9-vocab-zh.json')    # 词场例句译文（2026-09-26，键=教材例句）
+LASSEN_FILE = os.path.join(DIR, 'l9-lassen.json')        # lassen 用法节（2026-09-29，源=make_l9_lassen.py）
 TEXT_ZH = {}                                             # {"t1": {德文句: 中文}, "t2": {...}}
 VOCAB_ZH = {}                                            # {教材例句: 中文}
 MISSING_TR = []                                          # 缺译文的句子（构建时清零才算过）
@@ -262,7 +263,8 @@ def sec_home(d, v9):
         ('t2', '👤 Text 2 · 面试', 'Max 的面试对话：五个阶段 + %d 个重点词可点' % len(d['t2']['glossar'])),
         ('vocab', '📚 词汇精讲', '%d 词条分 %d 个词场 · 带搭配与教材例句' % (n_wf, len(wf['groups']))),
         ('satzmuster', '🧩 句型库', '求职信 + 面试两套句型 · %d 条 + %d 句语序工坊' % (n_sm, n_sb)),
-        ('grammar', '🔤 语法', 'lassen 四种用法 + 六个时间介词'),
+        ('grammar', '🔤 语法', '六个介词：格与用法（lassen 另见「lassen 用法」节）'),
+        ('lassen', '🔧 lassen 用法', '五种用法地图 + 五种用法精讲（练习见纸质卷）'),
         ('connect', '🔗 连线配对', '%d 组 · %d 对（含搭配连线）' % (len(d['connectGrids']), n_pairs)),
         ('luecken', '✍️ 介词填空', '%d 空 · 输入后点 ✓ 核对' % len(d['luecken']['items'])),
         ('anwenden', '✍️ 学以致用', '一封求职信完形 + 换槽造句（开放，不判对错）'),
@@ -479,7 +481,7 @@ def sec_anwenden(v9):
 
     sw = v9['schreibwerkstatt']
     return '''    <section id="anwenden">
-      <h2 class="section-title"><span class="num">8</span> ✍️ %s</h2>
+      <h2 class="section-title"><span class="num">9</span> ✍️ %s</h2>
       <p class="zh-hint">%s</p>
       <p class="zh-hint note">📖 出处：<span class="src">%s</span></p>
       <div class="clz-box" id="clz-rede">
@@ -507,6 +509,8 @@ def sec_grammar(d):
     g = d['grammar']
     tables = []
     for tb in g['tables']:
+        if 'lassen' in tb['title']:
+            continue          # lassen 已独立成节（sec_lassen），此处不再重复
         head = ''.join('<th>%s</th>' % h(c) for c in tb['headers'])
         rows = ''.join('<tr>%s</tr>' % ''.join('<td lang="de">%s</td>' % gh(c) for c in r)
                        for r in tb['rows'])
@@ -518,7 +522,7 @@ def sec_grammar(d):
                  % (h(e['de']), h(e['zh'])) for e in g['examples'])
     return '''    <section id="grammar">
       <h2 class="section-title"><span class="num">5</span> 🔤 语法 · Grammatik</h2>
-      <p class="zh-hint">两张表各看一遍，再顺着下面五个例句读出声。表里<b class="gh">加粗</b>的就是这一行的语法点。</p>
+      <p class="zh-hint">介词表看一遍，再顺着下面五个例句读出声。表里<b class="gh">加粗</b>的就是这一行的语法点。lassen 的用法已单独成节（见顶部导航「lassen 用法」）。</p>
       %s
       <div class="text-card">
         <h3>🗣️ 例句 · Beispiele（读一遍，注意加粗处）</h3>
@@ -526,6 +530,77 @@ def sec_grammar(d):
       </div>
     </section>
 ''' % (''.join(tables), ex)
+
+
+# ---------------------------------------------------------------- 6 lassen 用法
+LS_BOLD = re.compile(r'\*\*(.+?)\*\*')
+
+
+def _ls(s):
+    """行内渲染：先转义，再把 **…** 变成加粗语法高亮。"""
+    return LS_BOLD.sub(r'<b class="gh">\1</b>', h(s))
+
+
+def _ls_blocks(blocks):
+    """块 DSL → HTML（p / b / tbl / box；连续的 b 合并成一个列表）。"""
+    out, buf = [], []
+
+    def flush():
+        if buf:
+            out.append('<ul class="ls-points">%s</ul>' % ''.join(buf))
+            del buf[:]
+
+    for blk in blocks:
+        k = blk[0]
+        if k == 'p':
+            flush()
+            out.append('<p class="ls-p">%s</p>' % _ls(blk[1]))
+        elif k == 'b':
+            cls = ' class="bad"' if '✗' in blk[1] else ''
+            buf.append('<li%s>%s</li>' % (cls, _ls(blk[1])))
+        elif k == 'tbl':
+            flush()
+            head = ''.join('<th>%s</th>' % h(c) for c in blk[1])
+            rows = ''.join('<tr>%s</tr>' % ''.join('<td lang="de">%s</td>' % _ls(c) for c in r)
+                           for r in blk[2])
+            out.append('<div class="vocab-table-wrap" style="overflow-x:auto">'
+                       '<table class="tb"><tr>%s</tr>%s</table></div>' % (head, rows))
+        elif k == 'box':
+            flush()
+            lines = ['<div class="ls-rule-h">%s</div>' % _ls(x) for x in blk[1][:1]] + \
+                    ['<div>%s</div>' % _ls(x) for x in blk[1][1:]]
+            out.append('<div class="ls-rule">%s</div>' % ''.join(lines))
+        else:
+            raise SystemExit('lassen 节未知块类型：%r' % (k,))
+    flush()
+    return ''.join(out)
+
+
+def sec_lassen(d):
+    ls = d['lassen']
+    mp = ls['map']
+    head = ''.join('<th>%s</th>' % h(c) for c in mp['headers'])
+    rows = ''.join('<tr>%s</tr>' % ''.join('<td lang="de">%s</td>' % h(c) for c in r)
+                   for r in mp['rows'])
+    rule = ('<div class="ls-rule"><div class="ls-rule-h">%s</div>%s</div>'
+            % (h(mp['rule'][0]), ''.join('<div>%s</div>' % h(x) for x in mp['rule'][1:]))) if mp.get('rule') else ''
+    first, rest = ls['cards'][0], ls['cards'][1:]
+    lead_blocks, tail_blocks = first['blocks'][:1], first['blocks'][1:]
+    map_card = ('<div class="text-card ls-map-card">'
+                '<h3>🗺️ %s <span class="src">%s</span></h3>%s'
+                '<div class="vocab-table-wrap" style="overflow-x:auto">'
+                '<table class="tb ls-map"><tr>%s</tr>%s</table></div>%s%s</div>'
+                % (h(mp['title']), h(mp.get('no', '')), _ls_blocks(lead_blocks),
+                   head, rows, rule, _ls_blocks(tail_blocks)))
+    cards = ''.join('<div class="text-card"><h3>%s</h3>%s</div>'
+                    % (h(c['title']), _ls_blocks(c['blocks'])) for c in rest)
+    return '''    <section id="lassen">
+      <h2 class="section-title"><span class="num">6</span> 🔧 %s <span class="src src-lg">%s</span></h2>
+      <p class="zh-hint">%s</p>
+      %s
+      %s
+    </section>
+''' % (h(ls['title']), h(ls.get('src', '')), h(ls['lead']), map_card, cards)
 
 
 # ---------------------------------------------------------------- 6 连线
@@ -547,7 +622,7 @@ def sec_connect(d):
         <div class="connect-score">匹配：<span id="cg-cnt-%d">0</span> / %d</div>
       </div>''' % (h(cg['title']), h(cg.get('src', '')), left, right, gi, len(cg['pairs'])))
     return '''    <section id="connect">
-      <h2 class="section-title"><span class="num">6</span> 🔗 连线配对 · Vernetzen</h2>
+      <h2 class="section-title"><span class="num">7</span> 🔗 连线配对 · Vernetzen</h2>
       <p class="zh-hint">%d 组各连一遍（最后一组是本课动词搭配）：点左列德语，再点右列中文。整组连完，照着左列把德文读一遍。</p>
 %s
     </section>
@@ -570,7 +645,7 @@ def sec_luecken(d):
         <div class="um-tip">💡 %s</div>
       </div>''' % (h(it['de']), esc_attr(it['ans']), h(it['zh'])))
     return '''    <section id="luecken">
-      <h2 class="section-title"><span class="num">7</span> ✍️ %s <span class="src src-lg">%s</span></h2>
+      <h2 class="section-title"><span class="num">8</span> ✍️ %s <span class="src src-lg">%s</span></h2>
       <p class="zh-hint">%s</p>
       <p class="zh-hint note">大小写不敏感；答案不唯一时，格与意义正确即算对。</p>
 %s
@@ -593,7 +668,7 @@ def sec_quiz(d):
                    % (chr(65 + k), h(o)) for k, o in enumerate(it['opts'])))
         for i, it in enumerate(q['items']))
     return '''    <section id="quiz">
-      <h2 class="section-title"><span class="num">9</span> ✅ %s <span class="src src-lg">%s</span></h2>
+      <h2 class="section-title"><span class="num">10</span> ✅ %s <span class="src src-lg">%s</span></h2>
       <p class="zh-hint">%s</p>
       <div class="qz-box" id="qz-l9">%s</div>
       %s
@@ -619,7 +694,7 @@ def sec_translation(d):
           </div>
         </div>''' % (i, h(c['de']), h(c['src']), i, h(c['zh']), h(c['tip'])))
     return '''    <section id="translation">
-      <h2 class="section-title"><span class="num">10</span> 🎯 %s</h2>
+      <h2 class="section-title"><span class="num">11</span> 🎯 %s</h2>
       <p class="zh-hint">%s</p>
       <p class="zh-hint note">%s</p>
       <div class="translation-grid">%s</div>
@@ -752,6 +827,22 @@ CSS_L9 = '''
   .wf-both { color: #3c4450; }
   .vp-note { margin-top: 8px; font-size: var(--fs-sm); line-height: 1.7; color: #8a6d1f;
              background: #fdf7e6; border-radius: 6px; padding: 4px 8px; }
+  /* ===== lassen 用法节（2026-09-29）===== */
+  .ls-p { margin: 8px 0; font-size: var(--fs-body); line-height: 1.7; color: #3c4450; }
+  .ls-points { margin: 8px 0 0 18px; padding: 0; font-size: var(--fs-body); line-height: 1.75;
+               color: #3c4450; }
+  .ls-points li { margin-bottom: 4px; }
+  .ls-points li.bad { color: #b3261e; }
+  .ls-rule { background: #fdf7e6; border-left: 3px solid #d9a300; border-radius: 6px;
+             padding: 8px 12px; margin-top: 10px; font-size: var(--fs-body); line-height: 1.7;
+             color: #3c4450; }
+  .ls-rule div + div { margin-top: 2px; }
+  .ls-rule .ls-rule-h { font-weight: 700; color: #8a6d1f; }
+  .ls-eb { display: inline-block; font-weight: 700; color: #123a72; background: #e8f0fe;
+           border-radius: 6px; padding: 1px 7px; margin-right: 6px; font-size: var(--fs-sm); }
+  .ls-map td:first-child { text-align: center; width: 2.2em; font-weight: 700; color: #123a72; }
+  .ls-map { min-width: 620px; }
+  .ls-map td:nth-child(2), .ls-map td:nth-child(3) { white-space: nowrap; }
 '''
 
 
@@ -857,6 +948,8 @@ def main():
         TEXT_ZH.update(json.load(f))
     with open(VOCAB_ZH_FILE, encoding='utf-8') as f:
         VOCAB_ZH.update(json.load(f).get('ex', {}))
+    with open(LASSEN_FILE, encoding='utf-8') as f:
+        d['lassen'] = json.load(f)
 
     # 搭配连线并入连线节（数据结构与 connectGrids 同形）
     d['connectGrids'].append({'title': v9['kollokationen']['title'],
@@ -865,7 +958,8 @@ def main():
 
     secs = [('home', '首页'), ('t1', '📖 T1 求职信'), ('t2', '👤 T2 面试'), ('vocab', '📚 词汇精讲'),
             ('satzmuster', '🧩 句型库'),
-            ('grammar', '🔤 语法'), ('connect', '🔗 连线'), ('luecken', '✍️ 填空'),
+            ('grammar', '🔤 语法'), ('lassen', '🔧 lassen 用法'), ('connect', '🔗 连线'),
+            ('luecken', '✍️ 填空'),
             ('anwenden', '✍️ 学以致用'), ('quiz', '✅ 快问快答'), ('translation', '🎯 翻译卡')]
 
     css = open(os.path.join(DIR, 'template_css.css'), encoding='utf-8').read()
@@ -880,7 +974,7 @@ def main():
             '<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div></nav>')
 
     body = (sec_home(d, v9) + sec_t1(d) + sec_t2(d) + sec_vocab(d, v9) + sec_satzmuster(v9) +
-            sec_grammar(d) + sec_connect(d) + sec_luecken(d) + sec_anwenden(v9) +
+            sec_grammar(d) + sec_lassen(d) + sec_connect(d) + sec_luecken(d) + sec_anwenden(v9) +
             sec_quiz(d) + sec_translation(d))
 
     core_js = base.CORE_JS.replace('__SECTIONS__', json.dumps([s[0] for s in secs]))

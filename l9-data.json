@@ -359,6 +359,11 @@
    },
    {
     "n": "8",
+    "de": "Unterschrift",
+    "cn": "签名"
+   },
+   {
+    "n": "9",
     "de": "Anlagen",
     "cn": "附件（Lebenslauf, Zeugnisse）"
    }
@@ -1027,7 +1032,7 @@
       "bei",
       "在……地方",
       "Dativ",
-      "Durch ihr Praktikum bei der Filiale der Bank of China."
+      "Bei all diesen Tätigkeiten hatte sie die Möglichkeit, ihre Fähigkeiten zu beweisen."
      ]
     ],
     "src": "教材 S.250 · G1 Präpositionen mit dem Dativ"
@@ -1087,6 +1092,10 @@
     [
      "Gruß",
      "问候语（Mit freundlichen Grüßen）"
+    ],
+    [
+     "Unterschrift",
+     "签名"
     ],
     [
      "Anlagen",
@@ -1195,9 +1204,9 @@
    },
    {
     "n": 3,
-    "de": "______ ihres Praktikums konnte sie Erfahrungen sammeln.",
+    "de": "______ ihr Praktikum konnte sie Erfahrungen sammeln.",
     "ans": "Durch",
-    "zh": "「通过」实习（手段、途径）→ 介词 + 第二格"
+    "zh": "「通过」实习（手段、途径）→ durch + 第四格"
    },
    {
     "n": 4,

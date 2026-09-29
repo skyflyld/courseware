@@ -459,7 +459,7 @@
             "bei",
             "在……地方",
             "Dativ",
-            "Durch ihr Praktikum bei der Filiale der Bank of China."
+            "Bei all diesen Tätigkeiten hatte sie die Möglichkeit, ihre Fähigkeiten zu beweisen."
           ]
         ]
       }
@@ -632,6 +632,10 @@
           "问候语（Mit freundlichen Grüßen）"
         ],
         [
+          "Unterschrift",
+          "签名"
+        ],
+        [
           "Anlagen",
           "附件（Lebenslauf, Zeugnisse）"
         ]
@@ -676,7 +680,7 @@
           "answer": "Seit"
         },
         {
-          "sentence": "______ ihres Praktikums konnte sie Erfahrungen sammeln.",
+          "sentence": "______ ihr Praktikum konnte sie Erfahrungen sammeln.",
           "answer": "Durch"
         },
         {

@@ -53,35 +53,39 @@ MAP = {
         '① 主语动不动手？　动手 → 不用 lassen；不动手 → 用 lassen。',
         '② 动作用在谁身上？　别人 → ①②④　东西 → ③　根本没有动作、只有状态 → ⑤。',
     ],
+    'lead': [
+        ['p', 'lassen 的核心只有一条：**主语不亲自动手**——动作由别人完成，或者根本不发生。'
+              '中文的「让」把三件事混在一起（我让某人做、我不拦某人做、这事能被做），'
+              '德语都用 lassen 覆盖，原因就在这里。'],
+    ],
+    'tail': [
+        ['p', '① 与 ② 的结构完全相同，只能靠语义分辨——这是本考点最大的坑。'],
+    ],
 }
 
 
 def main():
     lean = load_lean(LEAN)
 
-    overview_prose = [blk for blk in lean.OVERVIEW if blk[0] in ('p', 'b', 'box')]
-    # 总览表由 MAP 取代 → 从第一章正文里剔除 tbl 与 h1（h1 章名由节标题承担）
-    chapter1 = [blk for blk in overview_prose]
-    # 第一章末尾那条 box 与 MAP 的 rule 内容重复（同一判据的两种措辞）→ 只保留 MAP 的版本
-    chapter1 = [blk for blk in chapter1 if blk[0] != 'box']
-
-    cards = [{'title': '五种用法地图', 'blocks': chapter1}]
+    # 第二章正文按 h2 切卡；第一章正文进 map.lead / map.tail，第一章总览表由 MAP 取代
+    cards = []
     cur = None
     for blk in lean.USAGE_CHAPTER:
-        kind = blk[0]
-        if kind == 'h1':
+        if blk[0] == 'h1':
             continue
-        if kind == 'h2':
+        if blk[0] == 'h2':
             cur = {'title': blk[1], 'blocks': []}
             cards.append(cur)
             continue
         if cur is None:
-            raise SystemExit('USAGE_CHAPTER 首个块不是 h2：%r' % (blk,))
+            continue
         cur['blocks'].append(list(blk))
 
     data = {
         'title': 'lassen 用法',
         'nav': '🔧 lassen 用法',
+        'icon': '🔧',
+        'num': 6,
         'lead': 'lassen 的核心只有一条：主语不亲自动手——动作由别人完成，或者根本不发生。',
         'map': MAP,
         'cards': cards,

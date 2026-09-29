@@ -27,6 +27,7 @@ VOCAB_FILE = os.path.join(DIR, 'l9-vocab.json')          # 词汇/句型强化�
 TEXT_ZH_FILE = os.path.join(DIR, 'l9-text-zh.json')      # 课文逐句点译（2026-09-26，键=德文原句）
 VOCAB_ZH_FILE = os.path.join(DIR, 'l9-vocab-zh.json')    # 词场例句译文（2026-09-26，键=教材例句）
 LASSEN_FILE = os.path.join(DIR, 'l9-lassen.json')        # lassen 用法节（2026-09-29，源=make_l9_lassen.py）
+INF_FILE = os.path.join(DIR, 'l9-infinitiv.json')        # Infinitiv ohne zu 节（2026-09-29，源=make_l9_infinitiv.py）
 TEXT_ZH = {}                                             # {"t1": {德文句: 中文}, "t2": {...}}
 VOCAB_ZH = {}                                            # {教材例句: 中文}
 MISSING_TR = []                                          # 缺译文的句子（构建时清零才算过）
@@ -265,6 +266,7 @@ def sec_home(d, v9):
         ('satzmuster', '🧩 句型库', '求职信 + 面试两套句型 · %d 条 + %d 句语序工坊' % (n_sm, n_sb)),
         ('grammar', '🔤 语法', '六个介词：格与用法（lassen 另见「lassen 用法」节）'),
         ('lassen', '🔧 lassen 用法', '五种用法地图 + 五种用法精讲（练习见纸质卷）'),
+        ('infinitiv', '📐 不定式 ohne zu', '六类不带 zu 的动词 + 与带 zu 的对照（练习见纸质卷）'),
         ('connect', '🔗 连线配对', '%d 组 · %d 对（含搭配连线）' % (len(d['connectGrids']), n_pairs)),
         ('luecken', '✍️ 介词填空', '%d 空 · 输入后点 ✓ 核对' % len(d['luecken']['items'])),
         ('anwenden', '✍️ 学以致用', '一封求职信完形 + 换槽造句（开放，不判对错）'),
@@ -481,7 +483,7 @@ def sec_anwenden(v9):
 
     sw = v9['schreibwerkstatt']
     return '''    <section id="anwenden">
-      <h2 class="section-title"><span class="num">9</span> ✍️ %s</h2>
+      <h2 class="section-title"><span class="num">10</span> ✍️ %s</h2>
       <p class="zh-hint">%s</p>
       <p class="zh-hint note">📖 出处：<span class="src">%s</span></p>
       <div class="clz-box" id="clz-rede">
@@ -576,31 +578,31 @@ def _ls_blocks(blocks):
     return ''.join(out)
 
 
-def sec_lassen(d):
-    ls = d['lassen']
+def sec_gtab(d, key):
+    """语法专节渲染（lassen 用法 / Infinitiv ohne zu 共用；数据在 l9-<key>.json）。"""
+    ls = d[key]
     mp = ls['map']
     head = ''.join('<th>%s</th>' % h(c) for c in mp['headers'])
     rows = ''.join('<tr>%s</tr>' % ''.join('<td lang="de">%s</td>' % h(c) for c in r)
                    for r in mp['rows'])
     rule = ('<div class="ls-rule"><div class="ls-rule-h">%s</div>%s</div>'
             % (h(mp['rule'][0]), ''.join('<div>%s</div>' % h(x) for x in mp['rule'][1:]))) if mp.get('rule') else ''
-    first, rest = ls['cards'][0], ls['cards'][1:]
-    lead_blocks, tail_blocks = first['blocks'][:1], first['blocks'][1:]
     map_card = ('<div class="text-card ls-map-card">'
                 '<h3>🗺️ %s <span class="src">%s</span></h3>%s'
                 '<div class="vocab-table-wrap" style="overflow-x:auto">'
                 '<table class="tb ls-map"><tr>%s</tr>%s</table></div>%s%s</div>'
-                % (h(mp['title']), h(mp.get('no', '')), _ls_blocks(lead_blocks),
-                   head, rows, rule, _ls_blocks(tail_blocks)))
+                % (h(mp['title']), h(mp.get('no', '')), _ls_blocks(mp.get('lead', [])),
+                   head, rows, rule, _ls_blocks(mp.get('tail', []))))
     cards = ''.join('<div class="text-card"><h3>%s</h3>%s</div>'
-                    % (h(c['title']), _ls_blocks(c['blocks'])) for c in rest)
-    return '''    <section id="lassen">
-      <h2 class="section-title"><span class="num">6</span> 🔧 %s <span class="src src-lg">%s</span></h2>
+                    % (h(c['title']), _ls_blocks(c['blocks'])) for c in ls['cards'])
+    return '''    <section id="%s">
+      <h2 class="section-title"><span class="num">%s</span> %s %s <span class="src src-lg">%s</span></h2>
       <p class="zh-hint">%s</p>
       %s
       %s
     </section>
-''' % (h(ls['title']), h(ls.get('src', '')), h(ls['lead']), map_card, cards)
+''' % (key, ls['num'], ls['icon'], h(ls['title']), h(ls.get('src', '')),
+            h(ls['lead']), map_card, cards)
 
 
 # ---------------------------------------------------------------- 6 连线
@@ -622,7 +624,7 @@ def sec_connect(d):
         <div class="connect-score">匹配：<span id="cg-cnt-%d">0</span> / %d</div>
       </div>''' % (h(cg['title']), h(cg.get('src', '')), left, right, gi, len(cg['pairs'])))
     return '''    <section id="connect">
-      <h2 class="section-title"><span class="num">7</span> 🔗 连线配对 · Vernetzen</h2>
+      <h2 class="section-title"><span class="num">8</span> 🔗 连线配对 · Vernetzen</h2>
       <p class="zh-hint">%d 组各连一遍（最后一组是本课动词搭配）：点左列德语，再点右列中文。整组连完，照着左列把德文读一遍。</p>
 %s
     </section>
@@ -645,7 +647,7 @@ def sec_luecken(d):
         <div class="um-tip">💡 %s</div>
       </div>''' % (h(it['de']), esc_attr(it['ans']), h(it['zh'])))
     return '''    <section id="luecken">
-      <h2 class="section-title"><span class="num">8</span> ✍️ %s <span class="src src-lg">%s</span></h2>
+      <h2 class="section-title"><span class="num">9</span> ✍️ %s <span class="src src-lg">%s</span></h2>
       <p class="zh-hint">%s</p>
       <p class="zh-hint note">大小写不敏感；答案不唯一时，格与意义正确即算对。</p>
 %s
@@ -668,7 +670,7 @@ def sec_quiz(d):
                    % (chr(65 + k), h(o)) for k, o in enumerate(it['opts'])))
         for i, it in enumerate(q['items']))
     return '''    <section id="quiz">
-      <h2 class="section-title"><span class="num">10</span> ✅ %s <span class="src src-lg">%s</span></h2>
+      <h2 class="section-title"><span class="num">11</span> ✅ %s <span class="src src-lg">%s</span></h2>
       <p class="zh-hint">%s</p>
       <div class="qz-box" id="qz-l9">%s</div>
       %s
@@ -694,7 +696,7 @@ def sec_translation(d):
           </div>
         </div>''' % (i, h(c['de']), h(c['src']), i, h(c['zh']), h(c['tip'])))
     return '''    <section id="translation">
-      <h2 class="section-title"><span class="num">11</span> 🎯 %s</h2>
+      <h2 class="section-title"><span class="num">12</span> 🎯 %s</h2>
       <p class="zh-hint">%s</p>
       <p class="zh-hint note">%s</p>
       <div class="translation-grid">%s</div>
@@ -950,6 +952,8 @@ def main():
         VOCAB_ZH.update(json.load(f).get('ex', {}))
     with open(LASSEN_FILE, encoding='utf-8') as f:
         d['lassen'] = json.load(f)
+    with open(INF_FILE, encoding='utf-8') as f:
+        d['infinitiv'] = json.load(f)
 
     # 搭配连线并入连线节（数据结构与 connectGrids 同形）
     d['connectGrids'].append({'title': v9['kollokationen']['title'],
@@ -958,7 +962,8 @@ def main():
 
     secs = [('home', '首页'), ('t1', '📖 T1 求职信'), ('t2', '👤 T2 面试'), ('vocab', '📚 词汇精讲'),
             ('satzmuster', '🧩 句型库'),
-            ('grammar', '🔤 语法'), ('lassen', '🔧 lassen 用法'), ('connect', '🔗 连线'),
+            ('grammar', '🔤 语法'), ('lassen', '🔧 lassen 用法'),
+            ('infinitiv', '📐 不定式 ohne zu'), ('connect', '🔗 连线'),
             ('luecken', '✍️ 填空'),
             ('anwenden', '✍️ 学以致用'), ('quiz', '✅ 快问快答'), ('translation', '🎯 翻译卡')]
 
@@ -974,8 +979,8 @@ def main():
             '<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div></nav>')
 
     body = (sec_home(d, v9) + sec_t1(d) + sec_t2(d) + sec_vocab(d, v9) + sec_satzmuster(v9) +
-            sec_grammar(d) + sec_lassen(d) + sec_connect(d) + sec_luecken(d) + sec_anwenden(v9) +
-            sec_quiz(d) + sec_translation(d))
+            sec_grammar(d) + sec_gtab(d, 'lassen') + sec_gtab(d, 'infinitiv') + sec_connect(d) +
+            sec_luecken(d) + sec_anwenden(v9) + sec_quiz(d) + sec_translation(d))
 
     core_js = base.CORE_JS.replace('__SECTIONS__', json.dumps([s[0] for s in secs]))
     data_js = json.dumps({'sb': SB_DOC}, ensure_ascii=False)

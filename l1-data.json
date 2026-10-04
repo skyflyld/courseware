@@ -1,0 +1,2471 @@
+{
+ "meta": {
+  "lektion": "1",
+  "title": "Rund um das Glück",
+  "subtitle": "Lektion 1 · 童年与幸福 · Text 1 两代人的童年 · Text 2 关于幸福的采访",
+  "source": "《新经典德语》Modul 1 · Lektion 1 „Rund um das Glück“（Text 1 S.13–S.15 · Text 2 S.25–S.26）",
+  "objectives": [
+   "读懂双声部课文：Oma 与 Emilie 就家庭、安全、学校、课余、阅读、幸福六件事各说一段",
+   "读懂一篇采访：核心问题 → 代际 → 文化 → 和谐 → 中国，五步推进",
+   "用 geprägt sein von / sich lassen / sein + zu / 关系从句 / wer-was 从句说自己的事",
+   "掌握本课 16 条介词搭配，写句子时不丢介词",
+   "能用 -heit / -keit / -ung 把一个形容词或动词变成名词（sicher → die Sicherheit）"
+  ],
+  "flow": [
+   "📖 课文 T1：先读两代人的童年，卡住了点句子看译文，点虚线词看释义与例句",
+   "👤 课文 T2：读访谈，按五步抓脉络（练习 9 的五个空已按上下文填入）",
+   "🃏 词汇：八个词场（含搭配与教材例句）+ 教材词表 77 词快速过词",
+   "🧩 句型库：九条句型，每条骨架 + 三句例句 + 换槽练习 + 常见错法",
+   "🔤 语法六讲：每讲四件事（想干什么 → 一句话规则 → 三步 → 三十秒自测）",
+   "🔗 连线 + ✍️ 填空 + ✍️ 学以致用 + ✅ 快问快答 + 🎯 翻译卡：五轮检验与巩固"
+  ]
+ },
+ "t1": {
+  "title": "Kindheit seit den 50er Jahren des 20. Jahrhunderts bis heute",
+  "kind": "Text 1",
+  "sub": "两代人的童年 · 双声部对照",
+  "page_note": "S.13–S.15",
+  "lead": "课文是双声部：Oma（战后一代）与 Emilie（Z 世代）就同一组话题各说一段，教材用 ①–⑥ 切成六格。读的时候盯住一件事：同一件事，两代人是怎么说的。",
+  "provenance": "课文逐字取自教材 S.13–S.15（含 Landeskunde 小框），页码与段落号可翻书核对。",
+  "intro": [
+   {
+    "who": "",
+    "sents": [
+     "Emilie und ihre Oma erzählen über ihre eigene Kindheit."
+    ]
+   },
+   {
+    "who": "Oma",
+    "sents": [
+     "Meine Kindheit war von der Nachkriegszeit geprägt, nur Armut, Trümmer, Gewalterfahrung in Schule und Familie.",
+     "Ja, wir waren froh, den Krieg überlebt zu haben.",
+     "Aber das Wirtschaftswunder hielt nur langsam Einzug."
+    ]
+   },
+   {
+    "who": "Emilie",
+    "sents": [
+     "Ich heiße Emilie.",
+     "Ich bin nach 1995 geboren und gehöre deshalb zur sogenannten Generation Z."
+    ]
+   }
+  ],
+  "blocks": [
+   {
+    "no": "①",
+    "page": "S.14",
+    "topic": "家庭与工作",
+    "oma": [
+     "Vor dem Krieg hatte mein Vater einen eigenen Handwerksbetrieb, aber nach dem Krieg hatte der Betrieb keinen Boden unter den Füßen.",
+     "Wir hatten kein Geld mehr.",
+     "Deshalb arbeitete meine Mutter neben der Versorgung meiner drei Geschwister auch halbtags, als ich in die Schule kam.",
+     "Sie hatte alle Hände voll zu tun."
+    ],
+    "emilie": [
+     "Mein Vater besuchte eine Realschule und arbeitete anfangs in einem Elektrogeschäft.",
+     "Jetzt ist er Manager.",
+     "Meine Mutter arbeitet in einer Zahnarztpraxis.",
+     "Sie sind sehr beschäftigt.",
+     "Neben der Arbeit kümmern sie sich sehr um meinen Bruder und mich, besonders um unsere Schulleistungen.",
+     "Wir wohnen mit unserem Hund in einem selbstgebauten Haus.",
+     "Am Wochenende besuchen wir unsere Großeltern oder machen Ausflüge, wandern usw.",
+     "Ja, für uns ist eine Auslandsreise pro Jahr sehr wichtig, am liebsten ans Meer."
+    ]
+   },
+   {
+    "no": "②",
+    "page": "S.14",
+    "topic": "安全",
+    "oma": [
+     "Die Sicherheit der Kinder wurde früher auf die leichte Schulter genommen.",
+     "In den Autos gab es keine Sicherheitsgurte, die Kindersicherung in Steckdosen fehlte und Medikamentenpackungen ließen sich leicht öffnen.",
+     "Kleine Kinder fuhren auf Fahrrädern durch die Straßen – doch wer trug schon einen Helm?",
+     "Beliebte Fahrzeuge waren außerdem selbstgebaute Seifenkisten, die oftmals keine Bremse hatten."
+    ],
+    "emilie": [
+     "Meine Sicherheit?",
+     "Ich würde sagen, meine Eltern kümmern sich zu sehr um mich, manchmal habe ich gar keine Freiheit.",
+     "Sie wollen immer wissen, was ich gerade mache.",
+     "Mit dem Handy können sie immer feststellen, wo ich gerade bin.",
+     "Sie bringen mich zur Kita, zur Grundschule, zu Kursen und zu Freunden und holen mich wieder ab.",
+     "Sie haben immer Angst, dass mir etwas passiert.",
+     "Wann kann ich endlich auf eigenen Beinen stehen?"
+    ]
+   },
+   {
+    "no": "③",
+    "page": "S.14",
+    "topic": "学校",
+    "oma": [
+     "In der Schule mussten die Kinder still und schweigend sitzen, denn das Wort gehörte einzig und allein den Lehrern.",
+     "Disziplin und Gehorsamkeit waren gefordert.",
+     "Schläge und Ohrfeigen waren sowohl im Unterricht als auch innerhalb der Familie keine Seltenheit."
+    ],
+    "emilie": [
+     "Heute ist im Unterricht eigenes Denken und Handeln gefragt: Die Schüler dürfen und sollen selbstständig nachdenken und lernen.",
+     "Eigene Ideen sind zu entwickeln und zu überprüfen.",
+     "Zum Glück habe ich eine nette junge Lehrerin, die sich durch Offenheit, Freundlichkeit, Aufgeschlossenheit usw. auszeichnet und immer bestrebt ist, uns den Spaß am Lernen zu vermitteln."
+    ]
+   },
+   {
+    "no": "④",
+    "page": "S.15",
+    "topic": "课余与朋友",
+    "oma": [
+     "Unterricht nach der Schule?",
+     "Nein.",
+     "Wir verließen meist nach der Schule die Wohnung und verbrachten den ganzen Tag auf der Straße.",
+     "Alltägliche Streitereien über Kleinigkeiten ließen sich untereinander klären, denn die Erwachsenen hielten sich aus diesen meistens heraus.",
+     "Ebenso erfolgten Verabredungen nicht über die Eltern, sondern wurden untereinander in der Schule vereinbart oder man fand sich an bestimmten Treffpunkten."
+    ],
+    "emilie": [
+     "Ich spiele natürlich viel mit den digitalen Medien, am Handy oder am Rechner.",
+     "Es ist unvorstellbar, wie das Leben ohne solche digitalen Medien aussieht.",
+     "Mit Puppen oder mit einfachen Bausteinen spiele ich auch gern, aber heute nicht mehr so häufig wie in meiner Kindheit.",
+     "Meine Freunde und ich spielen lieber Brettspiele oder gehen ins Freie."
+    ]
+   },
+   {
+    "no": "⑤",
+    "page": "S.15",
+    "topic": "阅读",
+    "oma": [
+     "Ach, ich wollte einfach alle Bücher lesen, die ich bekommen konnte.",
+     "Damals hatten wir aber nur ganz wenige Bücher.",
+     "Mein Schulfreund Hans hatte von seiner Tante immer die neuesten Micky-Maus-Hefte.",
+     "Die waren super!"
+    ],
+    "emilie": [
+     "Ich lese in meiner Freizeit gerne Detektivgeschichten, Ponygeschichten und Harry-Potter-Geschichten über Magie.",
+     "Ich träume oft von einem Leben in einer magischen Welt."
+    ]
+   },
+   {
+    "no": "⑥",
+    "page": "S.15",
+    "topic": "星期天与幸福",
+    "oma": [
+     "Der Sonntag war der einzige freie Tag der Woche und meist mit meiner Familie zu verbringen.",
+     "Ein gemeinsamer Spaziergang oder der Kirchenbesuch am Sonntag, das war für mich eine glückliche Zeit.",
+     "Aber das größte Glück war damals für mich, eine sehr gute Freundin gehabt zu haben."
+    ],
+    "emilie": [
+     "Was bedeutet Glück für mich?",
+     "Ich denke, die Freiheit, selbständige Entscheidungen treffen zu können, trägt viel zu meinem Glück bei.",
+     "Familienausflüge machen mich auch glücklich."
+    ]
+   }
+  ],
+  "landeskunde": [
+   "Die Generation Z, auch als „Digital Natives“ bekannt, bezeichnet junge Menschen, die zwischen den Jahren 1995 und 2010 geboren sind.",
+   "Sie folgt auf die Generation Y (auch „Millennials“ genannt) und ist die erste Generation, die mit dem Smartphone aufwächst."
+  ],
+  "structure": [
+   {
+    "n": "①",
+    "de": "Familie und Arbeit",
+    "cn": "家庭与工作：Oma 讲战前的手工作坊与母亲打工，Emilie 讲父母的职业与周末安排"
+   },
+   {
+    "n": "②",
+    "de": "Sicherheit",
+    "cn": "安全：Oma 讲当年没人管孩子的安全，Emilie 讲父母管得太紧、自己没有自由"
+   },
+   {
+    "n": "③",
+    "de": "Schule",
+    "cn": "学校：过去要求纪律与服从、体罚常见；今天要求独立思考，老师鼓励提问"
+   },
+   {
+    "n": "④",
+    "de": "Freizeit und Freunde",
+    "cn": "课余与朋友：过去放学就在街上、自己约玩；今天大量用数字媒体，也爱桌游和户外"
+   },
+   {
+    "n": "⑤",
+    "de": "Lesen",
+    "cn": "阅读：过去书很少，一本米老鼠小册子就是宝贝；今天读侦探、小马和哈利·波特"
+   },
+   {
+    "n": "⑥",
+    "de": "Sonntag und Glück",
+    "cn": "星期天与幸福：过去一家人散步、去教堂就是幸福；今天能做自己的决定、家庭出游让她幸福"
+   }
+  ],
+  "quotes": [
+   {
+    "n": "段落 ①",
+    "src": "S.14 · Oma",
+    "de": "Sie hatte alle Hände voll zu tun.",
+    "zh": "她忙得不可开交。",
+    "tip": "母亲忙得团团转：alle Hände voll zu tun 是这一课最好用的惯用语之一。"
+   },
+   {
+    "n": "段落 ②",
+    "src": "S.14 · Oma",
+    "de": "Die Sicherheit der Kinder wurde früher auf die leichte Schulter genommen.",
+    "zh": "过去人们没把孩子的安全当回事。",
+    "tip": "「没当回事」：auf die leichte Schulter nehmen，后面常跟第四格宾语。"
+   },
+   {
+    "n": "段落 ②",
+    "src": "S.14 · Emilie",
+    "de": "Sie haben immer Angst, dass mir etwas passiert.",
+    "zh": "他们总担心我出事。",
+    "tip": "wann 开头的反问句，语气是抱怨而不是真在问时间。"
+   },
+   {
+    "n": "段落 ③",
+    "src": "S.14 · Emilie",
+    "de": "Heute ist im Unterricht eigenes Denken und Handeln gefragt: Die Schüler dürfen und sollen selbstständig nachdenken und lernen.",
+    "zh": "今天课堂上要求的是独立思考和行动：学生可以也应该独立思考和自主学习。",
+    "tip": "sein + zu + Infinitiv：不说谁做，把任务挂到「想法」上。"
+   },
+   {
+    "n": "段落 ④",
+    "src": "S.15 · Oma",
+    "de": "Wir verließen meist nach der Schule die Wohnung und verbrachten den ganzen Tag auf der Straße.",
+    "zh": "我们放学后大多离开家，一整天都在街上。",
+    "tip": "sich lassen + Infinitiv：不说谁解决，说「可以自己解决」。"
+   },
+   {
+    "n": "段落 ⑥",
+    "src": "S.15 · Emilie",
+    "de": "Was bedeutet Glück für mich?",
+    "zh": "幸福对我意味着什么？",
+    "tip": "was 引导的主语从句：Was bedeutet Glück für mich?"
+   }
+  ],
+  "glossar": [
+   {
+    "w": "die Kindheit, -en",
+    "zh": "童年",
+    "forms": [
+     "Kindheit"
+    ],
+    "ex": "In meiner Kindheit haben wir jeden Tag draußen gespielt.",
+    "def": "in meiner Kindheit"
+   },
+   {
+    "w": "die Nachkriegszeit",
+    "zh": "战后时期（无复数）",
+    "forms": [
+     "Nachkriegszeit"
+    ],
+    "ex": "Meine Kindheit war von der Nachkriegszeit geprägt.",
+    "def": "in der Nachkriegszeit"
+   },
+   {
+    "w": "der Krieg, -e",
+    "zh": "战争",
+    "forms": [
+     "Krieg"
+    ],
+    "ex": "Wir waren froh, den Krieg überlebt zu haben.",
+    "def": "den Krieg überleben"
+   },
+   {
+    "w": "die Armut",
+    "zh": "贫穷（无复数）",
+    "forms": [
+     "Armut"
+    ],
+    "ex": "Nach dem Krieg lebten viele Familien in Armut.",
+    "def": "in Armut leben"
+   },
+   {
+    "w": "die Trümmer (Pl.)",
+    "zh": "废墟（多用复数）",
+    "forms": [
+     "Trümmer"
+    ],
+    "ex": "Nach dem Krieg lagen überall Trümmer.",
+    "def": "zwischen den Trümmern"
+   },
+   {
+    "w": "das Wirtschaftswunder",
+    "zh": "经济奇迹（无复数）",
+    "forms": [
+     "Wirtschaftswunder"
+    ],
+    "ex": "Aber das Wirtschaftswunder hielt nur langsam Einzug.",
+    "def": "langsam Einzug halten"
+   },
+   {
+    "w": "die Generation, -en",
+    "zh": "一代人",
+    "forms": [
+     "Generation"
+    ],
+    "ex": "Ich bin nach 1995 geboren und gehöre deshalb zur sogenannten Generation Z.",
+    "def": "zur Generation Z gehören"
+   },
+   {
+    "w": "auf|wachsen",
+    "zh": "长大（wächst auf / wuchs auf / ist aufgewachsen）",
+    "forms": [
+     "aufwächst",
+     "aufgewachsen"
+    ],
+    "ex": "… und ist die erste Generation, die mit dem Smartphone aufwächst.",
+    "def": "mit dem Smartphone aufwachsen"
+   },
+   {
+    "w": "geprägt sein von + D",
+    "zh": "由……塑造",
+    "forms": [
+     "geprägt"
+    ],
+    "ex": "Meine Kindheit war von der Nachkriegszeit geprägt.",
+    "def": "von etw. geprägt sein"
+   },
+   {
+    "w": "der Handwerksbetrieb, -e",
+    "zh": "手工作坊，小企业",
+    "forms": [
+     "Handwerksbetrieb"
+    ],
+    "ex": "Vor dem Krieg hatte mein Vater einen eigenen Handwerksbetrieb.",
+    "def": "einen eigenen Handwerksbetrieb haben"
+   },
+   {
+    "w": "keinen Boden unter den Füßen haben",
+    "zh": "没有立足之地",
+    "forms": [
+     "keinen Boden unter den Füßen"
+    ],
+    "ex": "Nach dem Krieg hatte der Betrieb keinen Boden unter den Füßen.",
+    "def": "nach dem Krieg …"
+   },
+   {
+    "w": "die Versorgung",
+    "zh": "照料，供养（无复数）",
+    "forms": [
+     "Versorgung"
+    ],
+    "ex": "Deshalb arbeitete meine Mutter neben der Versorgung meiner drei Geschwister auch halbtags.",
+    "def": "die Versorgung der Kinder"
+   },
+   {
+    "w": "halbtags arbeiten",
+    "zh": "打半天工",
+    "forms": [
+     "halbtags"
+    ],
+    "ex": "Zwei Studenten aus meinem Kurs arbeiten halbtags im Café.",
+    "def": "halbtags im Café arbeiten"
+   },
+   {
+    "w": "alle Hände voll zu tun haben",
+    "zh": "忙得不可开交",
+    "forms": [
+     "alle Hände voll zu tun"
+    ],
+    "ex": "In der Prüfungszeit haben wir alle Hände voll zu tun.",
+    "def": "zur Prüfungszeit …"
+   },
+   {
+    "w": "sich kümmern um + A",
+    "zh": "照顾，操心",
+    "forms": [
+     "kümmern"
+    ],
+    "ex": "Neben der Arbeit kümmern sie sich sehr um meinen Bruder und mich.",
+    "def": "sich um jdn. kümmern"
+   },
+   {
+    "w": "beschäftigt sein",
+    "zh": "忙",
+    "forms": [
+     "beschäftigt"
+    ],
+    "ex": "Sie sind sehr beschäftigt.",
+    "def": "sehr beschäftigt sein"
+   },
+   {
+    "w": "besuchen",
+    "zh": "上（学）；看望",
+    "forms": [
+     "besuchen",
+     "besucht"
+    ],
+    "ex": "Mein Vater besuchte eine Realschule.",
+    "def": "eine Realschule besuchen"
+   },
+   {
+    "w": "die Auslandsreise, -n",
+    "zh": "出国旅行",
+    "forms": [
+     "Auslandsreise"
+    ],
+    "ex": "Für uns ist eine Auslandsreise pro Jahr sehr wichtig, am liebsten ans Meer.",
+    "def": "eine Auslandsreise pro Jahr"
+   },
+   {
+    "w": "der Ausflug, ¨-e",
+    "zh": "出游，短途旅行",
+    "forms": [
+     "Ausflüge"
+    ],
+    "ex": "Am Wochenende besuchen wir unsere Großeltern oder machen Ausflüge.",
+    "def": "einen Ausflug machen"
+   },
+   {
+    "w": "selbstgebaut",
+    "zh": "自己盖的",
+    "forms": [
+     "selbstgebauten",
+     "selbstgebaute"
+    ],
+    "ex": "Wir wohnen mit unserem Hund in einem selbstgebauten Haus.",
+    "def": "ein selbstgebautes Haus"
+   },
+   {
+    "w": "die Sicherheit",
+    "zh": "安全（无复数）",
+    "forms": [
+     "Sicherheit"
+    ],
+    "ex": "Die Sicherheit der Kinder wurde früher auf die leichte Schulter genommen.",
+    "def": "die Sicherheit der Kinder"
+   },
+   {
+    "w": "auf die leichte Schulter nehmen",
+    "zh": "没当回事",
+    "forms": [
+     "auf die leichte Schulter genommen"
+    ],
+    "ex": "Prüfungen sollte man nicht auf die leichte Schulter nehmen.",
+    "def": "etw. auf die leichte Schulter nehmen"
+   },
+   {
+    "w": "der Sicherheitsgurt, -e",
+    "zh": "安全带",
+    "forms": [
+     "Sicherheitsgurte"
+    ],
+    "ex": "Im Auto muss man den Sicherheitsgurt anlegen.",
+    "def": "den Sicherheitsgurt anlegen"
+   },
+   {
+    "w": "die Kindersicherung, -en",
+    "zh": "儿童保护装置",
+    "forms": [
+     "Kindersicherung"
+    ],
+    "ex": "Die Kindersicherung in Steckdosen fehlte.",
+    "def": "die Kindersicherung in Steckdosen"
+   },
+   {
+    "w": "die Steckdose, -n",
+    "zh": "插座",
+    "forms": [
+     "Steckdosen"
+    ],
+    "ex": "Steck das Ladegerät in die Steckdose!",
+    "def": "etw. in die Steckdose stecken"
+   },
+   {
+    "w": "der Helm, -e",
+    "zh": "头盔",
+    "forms": [
+     "Helm"
+    ],
+    "ex": "Kleine Kinder fuhren auf Fahrrädern durch die Straßen – doch wer trug schon einen Helm?",
+    "def": "einen Helm tragen"
+   },
+   {
+    "w": "die Seifenkiste, -n",
+    "zh": "自制滑板车",
+    "forms": [
+     "Seifenkisten"
+    ],
+    "ex": "Beliebte Fahrzeuge waren außerdem selbstgebaute Seifenkisten.",
+    "def": "mit der Seifenkiste fahren"
+   },
+   {
+    "w": "die Bremse, -n",
+    "zh": "刹车",
+    "forms": [
+     "Bremse"
+    ],
+    "ex": "… selbstgebaute Seifenkisten, die oftmals keine Bremse hatten.",
+    "def": "keine Bremse haben"
+   },
+   {
+    "w": "auf eigenen Beinen stehen",
+    "zh": "靠自己站住脚",
+    "forms": [
+     "auf eigenen Beinen stehen"
+    ],
+    "ex": "Wann kann ich endlich auf eigenen Beinen stehen?",
+    "def": "endlich auf eigenen Beinen stehen"
+   },
+   {
+    "w": "die Freiheit",
+    "zh": "自由（无复数）",
+    "forms": [
+     "Freiheit"
+    ],
+    "ex": "Manchmal habe ich gar keine Freiheit.",
+    "def": "keine Freiheit haben"
+   },
+   {
+    "w": "feststellen",
+    "zh": "查明，确定",
+    "forms": [
+     "feststellen"
+    ],
+    "ex": "Mit dem Handy können sie immer feststellen, wo ich gerade bin.",
+    "def": "jds. Standort feststellen"
+   },
+   {
+    "w": "Angst haben, dass …",
+    "zh": "担心（会发生某事）",
+    "forms": [
+     "Angst"
+    ],
+    "ex": "Sie haben immer Angst, dass mir etwas passiert.",
+    "def": "Angst haben, dass etw. passiert"
+   },
+   {
+    "w": "die Disziplin",
+    "zh": "纪律（无复数）",
+    "forms": [
+     "Disziplin"
+    ],
+    "ex": "Disziplin und Gehorsamkeit waren gefordert.",
+    "def": "Disziplin fordern"
+   },
+   {
+    "w": "die Gehorsamkeit",
+    "zh": "服从（无复数）",
+    "forms": [
+     "Gehorsamkeit"
+    ],
+    "ex": "Früher waren Disziplin und Gehorsamkeit wichtiger als eigene Ideen.",
+    "def": "Gehorsamkeit verlangen"
+   },
+   {
+    "w": "fordern",
+    "zh": "要求",
+    "forms": [
+     "gefordert"
+    ],
+    "ex": "Die Lehrerin fordert von uns pünktliche Abgabe.",
+    "def": "etw. fordern"
+   },
+   {
+    "w": "die Ohrfeige, -n",
+    "zh": "耳光",
+    "forms": [
+     "Ohrfeigen"
+    ],
+    "ex": "Schläge und Ohrfeigen waren sowohl im Unterricht als auch innerhalb der Familie keine Seltenheit.",
+    "def": "Ohrfeigen bekommen"
+   },
+   {
+    "w": "keine Seltenheit sein",
+    "zh": "并不少见",
+    "forms": [
+     "Seltenheit"
+    ],
+    "ex": "Blickkontakt statt Handy – das ist heute keine Seltenheit mehr.",
+    "def": "… waren keine Seltenheit"
+   },
+   {
+    "w": "selbstständig",
+    "zh": "独立地",
+    "forms": [
+     "selbstständig"
+    ],
+    "ex": "Die Schüler dürfen und sollen selbstständig nachdenken und lernen.",
+    "def": "selbstständig nachdenken"
+   },
+   {
+    "w": "entwickeln",
+    "zh": "发展，开发",
+    "forms": [
+     "entwickeln"
+    ],
+    "ex": "Eigene Ideen sind zu entwickeln und zu überprüfen.",
+    "def": "eigene Ideen entwickeln"
+   },
+   {
+    "w": "überprüfen",
+    "zh": "检验，复查",
+    "forms": [
+     "überprüfen"
+    ],
+    "ex": "Überprüfe am Ende deine Antworten noch einmal.",
+    "def": "etw. überprüfen"
+   },
+   {
+    "w": "sich auszeichnen durch + A",
+    "zh": "以……著称",
+    "forms": [
+     "auszeichnet"
+    ],
+    "ex": "… eine nette junge Lehrerin, die sich durch Offenheit, Freundlichkeit, Aufgeschlossenheit auszeichnet",
+    "def": "sich durch Offenheit auszeichnen"
+   },
+   {
+    "w": "bestrebt sein, etw. zu tun",
+    "zh": "致力于做某事",
+    "forms": [
+     "bestrebt"
+    ],
+    "ex": "Er ist bestrebt, jeden Tag eine halbe Stunde Deutsch zu sprechen.",
+    "def": "bestrebt sein, etw. zu vermitteln"
+   },
+   {
+    "w": "vermitteln",
+    "zh": "传授，传递",
+    "forms": [
+     "vermitteln"
+    ],
+    "ex": "Der Lehrer vermittelt uns den Spaß am Lesen.",
+    "def": "jdm. etw. vermitteln"
+   },
+   {
+    "w": "die Streiterei, -en",
+    "zh": "争吵",
+    "forms": [
+     "Streitereien"
+    ],
+    "ex": "Alltägliche Streitereien über Kleinigkeiten ließen sich untereinander klären.",
+    "def": "Streitereien über Kleinigkeiten"
+   },
+   {
+    "w": "klären",
+    "zh": "解决，澄清",
+    "forms": [
+     "klären"
+    ],
+    "ex": "Kleinigkeiten lassen sich schnell klären.",
+    "def": "einen Streit klären"
+   },
+   {
+    "w": "die Verabredung, -en",
+    "zh": "约定，约会",
+    "forms": [
+     "Verabredungen"
+    ],
+    "ex": "… sondern wurden untereinander in der Schule vereinbart.",
+    "def": "eine Verabredung treffen"
+   },
+   {
+    "w": "vereinbaren",
+    "zh": "约定",
+    "forms": [
+     "vereinbart"
+    ],
+    "ex": "Wir vereinbaren einen Termin für Samstag.",
+    "def": "einen Termin vereinbaren"
+   },
+   {
+    "w": "der Treffpunkt, -e",
+    "zh": "碰面地点",
+    "forms": [
+     "Treffpunkten"
+    ],
+    "ex": "Man fand sich an bestimmten Treffpunkten.",
+    "def": "sich am Treffpunkt treffen"
+   },
+   {
+    "w": "das Brettspiel, -e",
+    "zh": "桌游",
+    "forms": [
+     "Brettspiele"
+    ],
+    "ex": "Meine Freunde und ich spielen lieber Brettspiele.",
+    "def": "Brettspiele spielen"
+   },
+   {
+    "w": "ins Freie gehen",
+    "zh": "到户外去",
+    "forms": [
+     "ins Freie"
+    ],
+    "ex": "Meine Freunde und ich spielen lieber Brettspiele oder gehen ins Freie.",
+    "def": "lieber ins Freie gehen"
+   },
+   {
+    "w": "unvorstellbar",
+    "zh": "难以想象",
+    "forms": [
+     "unvorstellbar"
+    ],
+    "ex": "Es ist unvorstellbar, wie das Leben ohne solche digitalen Medien aussieht.",
+    "def": "unvorstellbar sein"
+   },
+   {
+    "w": "der Baustein, -e",
+    "zh": "积木",
+    "forms": [
+     "Bausteinen"
+    ],
+    "ex": "Mit Puppen oder mit einfachen Bausteinen spiele ich auch gern.",
+    "def": "mit Bausteinen spielen"
+   },
+   {
+    "w": "die Puppe, -n",
+    "zh": "娃娃",
+    "forms": [
+     "Puppen"
+    ],
+    "ex": "In meiner Kindheit habe ich oft mit Puppen gespielt.",
+    "def": "mit Puppen spielen"
+   },
+   {
+    "w": "die Detektivgeschichte, -n",
+    "zh": "侦探故事",
+    "forms": [
+     "Detektivgeschichten"
+    ],
+    "ex": "Ich lese in meiner Freizeit gerne Detektivgeschichten.",
+    "def": "Detektivgeschichten lesen"
+   },
+   {
+    "w": "das Heft, -e",
+    "zh": "小册子，本子",
+    "forms": [
+     "Hefte"
+    ],
+    "ex": "Mein Schulfreund Hans hatte von seiner Tante immer die neuesten Micky-Maus-Hefte.",
+    "def": "die neuesten Hefte bekommen"
+   },
+   {
+    "w": "die Magie",
+    "zh": "魔法（无复数）",
+    "forms": [
+     "Magie"
+    ],
+    "ex": "Wir sprechen im Unterricht oft über Magie und Fantasie.",
+    "def": "Geschichten über Magie"
+   },
+   {
+    "w": "die magische Welt",
+    "zh": "魔法世界",
+    "forms": [
+     "magischen Welt"
+    ],
+    "ex": "Ich träume oft von einem Leben in einer magischen Welt.",
+    "def": "in einer magischen Welt leben"
+   },
+   {
+    "w": "träumen von + D",
+    "zh": "梦想，做梦",
+    "forms": [
+     "träume"
+    ],
+    "ex": "Ich träume von einem Zimmer mit Blick aufs Meer.",
+    "def": "von etw. träumen"
+   },
+   {
+    "w": "lesen",
+    "zh": "读（liest / las / hat gelesen）",
+    "forms": [
+     "lese",
+     "lesen"
+    ],
+    "ex": "Ach, ich wollte einfach alle Bücher lesen, die ich bekommen konnte.",
+    "def": "alle Bücher lesen, die …"
+   },
+   {
+    "w": "bekommen",
+    "zh": "得到",
+    "forms": [
+     "bekommen"
+    ],
+    "ex": "Zum Geburtstag habe ich ein Buch bekommen.",
+    "def": "etw. geschenkt bekommen"
+   },
+   {
+    "w": "die Freizeit",
+    "zh": "空闲时间（无复数）",
+    "forms": [
+     "Freizeit"
+    ],
+    "ex": "In meiner Freizeit spiele ich Basketball mit Freunden.",
+    "def": "in meiner Freizeit"
+   },
+   {
+    "w": "das Glück",
+    "zh": "幸福；运气",
+    "forms": [
+     "Glück"
+    ],
+    "ex": "Was bedeutet Glück für mich?",
+    "def": "Glück haben"
+   },
+   {
+    "w": "glücklich",
+    "zh": "幸福的",
+    "forms": [
+     "glückliche",
+     "glücklich"
+    ],
+    "ex": "Und Familienausflüge machen mich auch glücklich.",
+    "def": "jdn. glücklich machen"
+   },
+   {
+    "w": "die Entscheidung, -en",
+    "zh": "决定",
+    "forms": [
+     "Entscheidungen"
+    ],
+    "ex": "Ich denke, die Freiheit, selbständige Entscheidungen treffen zu können, trägt viel zu meinem Glück bei.",
+    "def": "eine Entscheidung treffen"
+   },
+   {
+    "w": "die Realschule, -n",
+    "zh": "实科中学",
+    "forms": [
+     "Realschule"
+    ],
+    "ex": "Mein Vater besuchte eine Realschule und arbeitete anfangs in einem Elektrogeschäft.",
+    "def": "eine Realschule besuchen"
+   },
+   {
+    "w": "das Elektrogeschäft, -e",
+    "zh": "电器店",
+    "forms": [
+     "Elektrogeschäft"
+    ],
+    "ex": "Mein Vater besuchte eine Realschule und arbeitete anfangs in einem Elektrogeschäft.",
+    "def": "in einem Elektrogeschäft arbeiten"
+   },
+   {
+    "w": "die Zahnarztpraxis, -praxen",
+    "zh": "牙科诊所",
+    "forms": [
+     "Zahnarztpraxis"
+    ],
+    "ex": "Meine Mutter arbeitet in einer Zahnarztpraxis.",
+    "def": "in einer Zahnarztpraxis arbeiten"
+   },
+   {
+    "w": "die Kita, -s",
+    "zh": "幼儿园（Kindertagesstätte 的简称）",
+    "forms": [
+     "Kita"
+    ],
+    "ex": "Sie bringen mich zur Kita, zur Grundschule, zu Kursen und zu Freunden und holen mich wieder ab.",
+    "def": "zur Kita gebracht werden"
+   }
+  ]
+ },
+ "t2": {
+  "title": "Was macht einen Menschen glücklich?",
+  "kind": "Text 2",
+  "sub": "专访 · 关于幸福的采访",
+  "page_note": "S.25–S.26",
+  "lead": "交换生 Lukas 采访心理学专家刘教授。课文分五步推进：核心问题 → 代际差别 → 文化差别 → 「和谐」到底指什么 → 中国的答案。",
+  "provenance": "课文逐字取自教材 S.25–S.26（练习 9 的五个空已按上下文填入，非教材答案页，见本节末尾说明）。",
+  "lead_sents": [
+   "Der Austauschstudent Lukas schreibt einen Artikel zum Thema „Glück“ für die Zeitschrift „Interkulturelle Kommunikation“.",
+   "Dafür befragt er Frau Prof. Liu, eine chinesische Expertin auf dem Gebiet der Psychologie."
+  ],
+  "dialogue": [
+   {
+    "who": "Lukas",
+    "sents": [
+     "Frau Prof. Liu, vielen Dank für Ihre Zeit.",
+     "Ich möchte gleich mit der zentralen Frage beginnen: Was macht einen Menschen glücklich?"
+    ]
+   },
+   {
+    "who": "Frau Prof. Liu",
+    "sents": [
+     "Das ist eine umfassende Frage.",
+     "Das, was die Menschen in einem Land glücklich macht, ist für die Menschen natürlich unterschiedlich, je nachdem, wer darüber spricht, in welcher Zeit und in welchem Land man lebt."
+    ]
+   },
+   {
+    "who": "Lukas",
+    "sents": [
+     "Könnten Sie das vielleicht etwas näher erläutern, Frau Prof. Liu?"
+    ]
+   },
+   {
+    "who": "Frau Prof. Liu",
+    "sents": [
+     "Für unsere Eltern und Großeltern ist das Glücksempfinden anders als für uns.",
+     "Was sie früher glücklich machte, war ein einfaches Leben.",
+     "Wer genug zu essen und ein sicheres Zuhause hatte, empfand schon Glück.",
+     "Doch heutzutage benötigen wir offensichtlich immer mehr, um glücklich zu sein.",
+     "Es scheint für den modernen Menschen schwerer zu sein, Glück zu empfinden, ständig sind wir auf der Suche nach Glück."
+    ]
+   },
+   {
+    "who": "Lukas",
+    "sents": [
+     "Diesen Eindruck habe ich auch.",
+     "Je mehr wir haben, desto mehr wollen wir.",
+     "Sie sagten gerade, dass es eine Rolle spielt, in welchem Land man lebt.",
+     "Könnten Sie zu diesem Punkt vielleicht noch etwas sagen?"
+    ]
+   },
+   {
+    "who": "Frau Prof. Liu",
+    "sents": [
+     "Ja, gerne.",
+     "Die Ursachen für Glücksgefühle können sich von Kultur zu Kultur unterscheiden.",
+     "Was das Glücksgefühl auslöst, kann in einem anderen Land ganz anders sein.",
+     "Eine Forschungsgruppe hat eine Studie in 63 Ländern durchgeführt.",
+     "Es wurde gezeigt, dass in vielen westlichen Ländern die Einstellung herrscht, dass Glücksgefühle mehr mit persönlichem Erfolg zusammenhängen.",
+     "Für Menschen aus anderen Kulturkreisen muss das keineswegs so gelten.",
+     "In einem ostasiatischen Land wie Japan beispielsweise gilt Harmonie mit anderen und sich selbst als Quelle des Glücks."
+    ]
+   },
+   {
+    "who": "Lukas",
+    "sents": [
+     "Wie Sie wissen, komme ich aus einem westlichen Land.",
+     "Für mich kommt es wohl auch auf die persönliche Entwicklung, auf Karriere und Selbstverwirklichung an.",
+     "Was verstehen Sie übrigens unter „Harmonie mit anderen“?"
+    ]
+   },
+   {
+    "who": "Frau Prof. Liu",
+    "sents": [
+     "Für mich bedeutet Harmonie, starke und positive Beziehungen zu anderen Menschen zu haben, die die Gefühle von Verbundenheit und Zugehörigkeit vermitteln.",
+     "Damit sind nicht nur Paarbeziehungen, sondern auch gute Beziehungen zu Familienmitgliedern wie Eltern und Kindern, zu Freunden, Kollegen oder Nachbarn gemeint.",
+     "Sogar Zufallsbegegnungen können sich günstig auf unser Glücksempfinden auswirken.",
+     "Sehr interessant ist übrigens, dass die Pflege menschlicher Beziehungen in manchen europäischen Ländern wie der Schweiz und Island, aber auch in Lateinamerika ebenso wichtig ist wie in Japan."
+    ]
+   },
+   {
+    "who": "Lukas",
+    "sents": [
+     "Und wie ist es in China?"
+    ]
+   },
+   {
+    "who": "Frau Prof. Liu",
+    "sents": [
+     "Wir streben in China ebenfalls nach Harmonie.",
+     "Harmonie in der Familie, in den Beziehungen zu Freunden, Kollegen und Nachbarn.",
+     "Aber noch wichtiger ist, dass unser Glück mit der Gewissheit verbunden ist, dass man in einem sicheren und prosperierenden Land lebt.",
+     "Wer in solch einem Land lebt, kann sich frei und selbständig entfalten und seinen eigenen Traum verwirklichen."
+    ]
+   },
+   {
+    "who": "Lukas",
+    "sents": [
+     "Ja, jetzt verstehe ich, inwiefern das Glücksempfinden kulturabhängig ist.",
+     "Nun interessiert mich noch, wie man in China persönliches Glück finden kann?"
+    ]
+   },
+   {
+    "who": "Frau Prof. Liu",
+    "sents": [
+     "Glück zu finden ist nicht schwer.",
+     "Musik hören, Sport treiben und gute soziale Beziehungen zu haben – all dies können Wege zum Glück sein.",
+     "Doch können diese Faktoren nur vorübergehend Glück bringen.",
+     "Wie ich zuvor erwähnt habe, ist unser persönliches Glück in China eng mit dem Schicksal unseres Landes verknüpft.",
+     "Wenn man sieht, dass es dem eigenen Land gut geht und die Mitbürger in Frieden und Sicherheit leben, kann diese Wahrnehmung das individuelle Glück positiv beeinflussen."
+    ]
+   },
+   {
+    "who": "Lukas",
+    "sents": [
+     "Was kann man denn als einzelne Person tun, um glücklich zu sein und gleichzeitig sein Land zu unterstützen?"
+    ]
+   }
+  ],
+  "structure": [
+   {
+    "n": "1",
+    "de": "Einstieg",
+    "cn": "开场与核心问题：Was macht einen Menschen glücklich?"
+   },
+   {
+    "n": "2",
+    "de": "Generationen",
+    "cn": "代际对比：过去简单生活就够，今天要得越来越多"
+   },
+   {
+    "n": "3",
+    "de": "Kultur",
+    "cn": "文化差异：63 国研究，西方重个人成就，东亚重和谐"
+   },
+   {
+    "n": "4",
+    "de": "Harmonie",
+    "cn": "什么叫「和谐」：牢固积极的关系带来联结感与归属感"
+   },
+   {
+    "n": "5",
+    "de": "China",
+    "cn": "中国的答案：个人幸福与国家命运相连，个人也能反过来影响幸福"
+   }
+  ],
+  "quotes": [
+   {
+    "n": "第 1 步",
+    "src": "S.25 · Prof. Liu",
+    "de": "Wer genug zu essen und ein sicheres Zuhause hatte, empfand schon Glück.",
+    "zh": "有足够吃的、有安全的家，就已经觉得幸福了。",
+    "tip": "Wer 引导的主语从句 = 「凡是……的人」，与 was 从句形成人/事对照。"
+   },
+   {
+    "n": "第 2 步",
+    "src": "S.25 · Lukas",
+    "de": "Je mehr wir haben, desto mehr wollen wir.",
+    "zh": "我们拥有的越多，想要的也越多。",
+    "tip": "je + 比较级, desto + 比较级：拥有的越多，想要的越多。"
+   },
+   {
+    "n": "第 3 步",
+    "src": "S.25 · Prof. Liu",
+    "de": "In einem ostasiatischen Land wie Japan beispielsweise gilt Harmonie mit anderen und sich selbst als Quelle des Glücks.",
+    "zh": "比如在日本这样的东亚国家，与他人以及与自己和谐被视为幸福的来源。",
+    "tip": "gelten als：被视为……。注意 als 后面的格与主格一致。"
+   },
+   {
+    "n": "第 4 步",
+    "src": "S.26 · Prof. Liu",
+    "de": "Sogar Zufallsbegegnungen können sich günstig auf unser Glücksempfinden auswirken.",
+    "zh": "甚至偶遇也能对我们的幸福感产生好的影响。",
+    "tip": "sich auswirken auf + A：对……产生影响，主语常是某事物。"
+   },
+   {
+    "n": "第 4 步",
+    "src": "S.26 · Prof. Liu",
+    "de": "Sehr interessant ist übrigens, dass die Pflege menschlicher Beziehungen in manchen europäischen Ländern wie der Schweiz und Island, aber auch in Lateinamerika ebenso wichtig ist wie in Japan.",
+    "zh": "很有意思的是，在瑞士、冰岛等一些欧洲国家，以及拉丁美洲，维护人际关系和在日本一样重要。",
+    "tip": "ebenso … wie：和……一样；这里是全课的对比句型总收口。"
+   },
+   {
+    "n": "第 5 步",
+    "src": "S.26 · Prof. Liu",
+    "de": "Wie ich zuvor erwähnt habe, ist unser persönliches Glück in China eng mit dem Schicksal unseres Landes verknüpft.",
+    "zh": "正如我刚才提到的，在中国，个人的幸福与国家的命运紧密相连。",
+    "tip": "verknüpft sein mit + D：与……紧密相连。"
+   }
+  ],
+  "glossar": [
+   {
+    "w": "die Sicherheit",
+    "zh": "安全（无复数）",
+    "forms": [
+     "Sicherheit"
+    ],
+    "ex": "Die Sicherheit der Kinder wurde früher auf die leichte Schulter genommen.",
+    "def": "die Sicherheit der Kinder"
+   },
+   {
+    "w": "vermitteln",
+    "zh": "传授，传递",
+    "forms": [
+     "vermitteln"
+    ],
+    "ex": "Der Lehrer vermittelt uns den Spaß am Lesen.",
+    "def": "jdm. etw. vermitteln"
+   },
+   {
+    "w": "das Glück",
+    "zh": "幸福；运气",
+    "forms": [
+     "Glück"
+    ],
+    "ex": "Was bedeutet Glück für mich?",
+    "def": "Glück haben"
+   },
+   {
+    "w": "glücklich",
+    "zh": "幸福的",
+    "forms": [
+     "glückliche",
+     "glücklich"
+    ],
+    "ex": "Und Familienausflüge machen mich auch glücklich.",
+    "def": "jdn. glücklich machen"
+   },
+   {
+    "w": "das Glücksgefühl, -e",
+    "zh": "幸福感",
+    "forms": [
+     "Glücksgefühl",
+     "Glücksgefühle"
+    ],
+    "ex": "Ein gutes Gespräch löst bei mir ein Glücksgefühl aus.",
+    "def": "ein Glücksgefühl auslösen"
+   },
+   {
+    "w": "die Harmonie",
+    "zh": "和谐（无复数）",
+    "forms": [
+     "Harmonie"
+    ],
+    "ex": "In einem ostasiatischen Land wie Japan beispielsweise gilt Harmonie mit anderen und sich selbst als Quelle des Glücks.",
+    "def": "nach Harmonie streben"
+   },
+   {
+    "w": "streben nach + D",
+    "zh": "追求",
+    "forms": [
+     "streben"
+    ],
+    "ex": "Wir streben in China ebenfalls nach Harmonie.",
+    "def": "nach etw. streben"
+   },
+   {
+    "w": "auslösen",
+    "zh": "引发",
+    "forms": [
+     "auslöst"
+    ],
+    "ex": "Musik kann starke Gefühle auslösen.",
+    "def": "etw. auslösen"
+   },
+   {
+    "w": "vorübergehend",
+    "zh": "暂时的",
+    "forms": [
+     "vorübergehend"
+    ],
+    "ex": "Doch können diese Faktoren nur vorübergehend Glück bringen.",
+    "def": "nur vorübergehend"
+   },
+   {
+    "w": "der Traum, ¨-e",
+    "zh": "梦，梦想",
+    "forms": [
+     "Traum"
+    ],
+    "ex": "Wer in solch einem Land lebt, kann sich frei und selbständig entfalten und seinen eigenen Traum verwirklichen.",
+    "def": "einen Traum verwirklichen"
+   },
+   {
+    "w": "entfalten",
+    "zh": "施展，发展",
+    "forms": [
+     "entfalten"
+    ],
+    "ex": "Wer in solch einem Land lebt, kann sich frei und selbständig entfalten und seinen eigenen Traum verwirklichen.",
+    "def": "sich frei entfalten"
+   },
+   {
+    "w": "die Beziehung, -en",
+    "zh": "关系",
+    "forms": [
+     "Beziehungen",
+     "Beziehung"
+    ],
+    "ex": "Für mich bedeutet Harmonie, starke und positive Beziehungen zu anderen Menschen zu haben.",
+    "def": "gute Beziehungen zu + D haben"
+   },
+   {
+    "w": "der Nachbar, -n",
+    "zh": "邻居",
+    "forms": [
+     "Nachbarn"
+    ],
+    "ex": "Gute Beziehungen zu Nachbarn machen das Wohnen angenehmer.",
+    "def": "Beziehungen zu Nachbarn"
+   },
+   {
+    "w": "der Kollege, -n",
+    "zh": "同事",
+    "forms": [
+     "Kollegen"
+    ],
+    "ex": "Mit meinen Kollegen komme ich gut aus.",
+    "def": "mit Kollegen zusammenarbeiten"
+   },
+   {
+    "w": "die Zufallsbegegnung, -en",
+    "zh": "偶遇",
+    "forms": [
+     "Zufallsbegegnungen"
+    ],
+    "ex": "Sogar Zufallsbegegnungen können sich günstig auf unser Glücksempfinden auswirken.",
+    "def": "eine Zufallsbegegnung im Zug"
+   },
+   {
+    "w": "sich auswirken auf + A",
+    "zh": "对……产生影响",
+    "forms": [
+     "auswirken"
+    ],
+    "ex": "Sport wirkt sich günstig auf die Konzentration aus.",
+    "def": "sich günstig auf etw. auswirken"
+   },
+   {
+    "w": "verknüpft sein mit + D",
+    "zh": "与……紧密相连",
+    "forms": [
+     "verknüpft"
+    ],
+    "ex": "… ist unser persönliches Glück in China eng mit dem Schicksal unseres Landes verknüpft.",
+    "def": "eng mit etw. verknüpft sein"
+   },
+   {
+    "w": "das Schicksal",
+    "zh": "命运（无复数）",
+    "forms": [
+     "Schicksal"
+    ],
+    "ex": "Das Schicksal des Landes und unser eigenes Glück hängen zusammen.",
+    "def": "mit dem Schicksal verknüpft"
+   },
+   {
+    "w": "der Mitbürger, -",
+    "zh": "同胞，同国人",
+    "forms": [
+     "Mitbürger"
+    ],
+    "ex": "Wenn die Mitbürger in Frieden und Sicherheit leben, fühlt man sich selbst sicherer.",
+    "def": "die Mitbürger"
+   },
+   {
+    "w": "der Frieden",
+    "zh": "和平（无复数）",
+    "forms": [
+     "Frieden"
+    ],
+    "ex": "Wir möchten in Frieden leben.",
+    "def": "in Frieden leben"
+   },
+   {
+    "w": "die Einstellung, -en",
+    "zh": "观念，态度",
+    "forms": [
+     "Einstellung"
+    ],
+    "ex": "… dass in vielen westlichen Ländern die Einstellung herrscht, dass Glücksgefühle mehr mit persönlichem Erfolg zusammenhängen.",
+    "def": "die Einstellung zu + D"
+   },
+   {
+    "w": "herrschen",
+    "zh": "盛行，笼罩",
+    "forms": [
+     "herrscht"
+    ],
+    "ex": "In diesem Land herrscht eine andere Einstellung.",
+    "def": "eine Meinung herrscht"
+   },
+   {
+    "w": "die Selbstverwirklichung",
+    "zh": "自我实现（无复数）",
+    "forms": [
+     "Selbstverwirklichung"
+    ],
+    "ex": "Für mich kommt es wohl auch auf die persönliche Entwicklung, auf Karriere und Selbstverwirklichung an.",
+    "def": "nach Selbstverwirklichung streben"
+   },
+   {
+    "w": "zusammen|hängen mit + D",
+    "zh": "与……有关",
+    "forms": [
+     "zusammenhängen"
+    ],
+    "ex": "Ich glaube, Glück hängt mit guten Beziehungen zusammen.",
+    "def": "mit etw. zusammenhängen"
+   },
+   {
+    "w": "die Zugehörigkeit",
+    "zh": "归属感（无复数）",
+    "forms": [
+     "Zugehörigkeit"
+    ],
+    "ex": "… die Gefühle von Verbundenheit und Zugehörigkeit vermitteln.",
+    "def": "Gefühle von Zugehörigkeit vermitteln"
+   },
+   {
+    "w": "das Glücksempfinden",
+    "zh": "幸福感（感受本身）",
+    "forms": [
+     "Glücksempfinden"
+    ],
+    "ex": "Für unsere Eltern und Großeltern ist das Glücksempfinden anders als für uns.",
+    "def": "das Glücksempfinden beeinflussen"
+   },
+   {
+    "w": "erläutern",
+    "zh": "解释，说明",
+    "forms": [
+     "erläutern"
+    ],
+    "ex": "Könnten Sie das vielleicht etwas näher erläutern, Frau Prof. Liu?",
+    "def": "etwas näher erläutern"
+   },
+   {
+    "w": "umfassend",
+    "zh": "全面的，广泛的",
+    "forms": [
+     "umfassende"
+    ],
+    "ex": "Das ist eine umfassende Frage.",
+    "def": "eine umfassende Frage"
+   },
+   {
+    "w": "prosperierend",
+    "zh": "繁荣的",
+    "forms": [
+     "prosperierenden"
+    ],
+    "ex": "Aber noch wichtiger ist, dass unser Glück mit der Gewissheit verbunden ist, dass man in einem sicheren und prosperierenden Land lebt.",
+    "def": "in einem prosperierenden Land"
+   },
+   {
+    "w": "die Wahrnehmung, -en",
+    "zh": "感知；看法",
+    "forms": [
+     "Wahrnehmung"
+    ],
+    "ex": "Wenn man sieht, dass es dem eigenen Land gut geht und die Mitbürger in Frieden und Sicherheit leben, kann diese Wahrnehmung das individuelle Glück positiv beeinflussen.",
+    "def": "eine Wahrnehmung beeinflusst das Glück"
+   },
+   {
+    "w": "die Pflege",
+    "zh": "维护，照料（无复数）",
+    "forms": [
+     "Pflege"
+    ],
+    "ex": "Sehr interessant ist übrigens, dass die Pflege menschlicher Beziehungen in manchen europäischen Ländern wie der Schweiz und Island, aber auch in Lateinamerika ebenso wichtig ist wie in Japan.",
+    "def": "die Pflege menschlicher Beziehungen"
+   },
+   {
+    "w": "die Paarbeziehung, -en",
+    "zh": "伴侣关系",
+    "forms": [
+     "Paarbeziehungen"
+    ],
+    "ex": "Damit sind nicht nur Paarbeziehungen, sondern auch gute Beziehungen zu Familienmitgliedern wie Eltern und Kindern, zu Freunden, Kollegen oder Nachbarn gemeint.",
+    "def": "eine Paarbeziehung"
+   },
+   {
+    "w": "der Kulturkreis, -e",
+    "zh": "文化圈",
+    "forms": [
+     "Kulturkreise",
+     "Kulturkreisen"
+    ],
+    "ex": "Für Menschen aus anderen Kulturkreisen muss das keineswegs so gelten.",
+    "def": "aus anderen Kulturkreisen"
+   }
+  ]
+ },
+ "vocab": {
+  "src": "教材 Lektion 1 · Vokabeln 1-6（S.18）+ Vokabeln 1-9（S.29），共 77 词",
+  "groups": [
+   {
+    "label": "📘 Vokabeln 1-6",
+    "src": "Lektion 1 · 教材 S.18",
+    "words": [
+     {
+      "w": "psychisch",
+      "cn": "心理的，精神的"
+     },
+     {
+      "w": "realisieren +A",
+      "cn": "使实现，实现"
+     },
+     {
+      "w": "sich bewegen",
+      "cn": "运动，活动"
+     },
+     {
+      "w": "das Abenteuer -",
+      "cn": "冒险活动"
+     },
+     {
+      "w": "mythisch",
+      "cn": "神话的，虚构的"
+     },
+     {
+      "w": "verleihen +A",
+      "cn": "赋予，给予"
+     },
+     {
+      "w": "überleben +A",
+      "cn": "在……之后还活着，比……活得更久"
+     },
+     {
+      "w": "die Flucht nur Sg",
+      "cn": "逃跑，逃离"
+     },
+     {
+      "w": "chillen [ˈtʃɪlən]",
+      "cn": "放松"
+     },
+     {
+      "w": "die Hexe -n",
+      "cn": "女巫"
+     },
+     {
+      "w": "der Rabe -n",
+      "cn": "乌鸦"
+     },
+     {
+      "w": "der Zwilling -e",
+      "cn": "双胞胎之一"
+     },
+     {
+      "w": "das Internat -e",
+      "cn": "寄宿学校"
+     },
+     {
+      "w": "informativ",
+      "cn": "提供信息的，有启发的"
+     },
+     {
+      "w": "die Sage -n",
+      "cn": "传说"
+     },
+     {
+      "w": "die Legende -n",
+      "cn": "传说，逸闻"
+     },
+     {
+      "w": "der Schatten -",
+      "cn": "影子，阴影"
+     },
+     {
+      "w": "die Symphonie -n",
+      "cn": "交响曲，交响乐"
+     },
+     {
+      "w": "der Nobelpreisträger -",
+      "cn": "诺贝尔奖获得者"
+     },
+     {
+      "w": "erscheinen",
+      "cn": "（物）出版，显现；（人）露面，出场"
+     },
+     {
+      "w": "die Filmreihe -n",
+      "cn": "系列电影"
+     },
+     {
+      "w": "die Neuigkeit -en",
+      "cn": "新闻，新鲜事"
+     },
+     {
+      "w": "der Zauberstab ¨-e",
+      "cn": "魔杖"
+     },
+     {
+      "w": "das Kuscheltier -e",
+      "cn": "毛绒玩具"
+     },
+     {
+      "w": "die Reihe -n",
+      "cn": "系列，系列丛书"
+     },
+     {
+      "w": "magisch",
+      "cn": "有魔法的，有魔力的"
+     },
+     {
+      "w": "die Fantasie -n",
+      "cn": "幻想，想象力"
+     },
+     {
+      "w": "an/regen +A",
+      "cn": "启发；促进，激励"
+     },
+     {
+      "w": "die Armut nur Sg",
+      "cn": "贫穷"
+     },
+     {
+      "w": "die Trümmer Pl",
+      "cn": "废墟，瓦砾，残骸"
+     },
+     {
+      "w": "die Gewalterfahrung -en",
+      "cn": "暴力经历"
+     },
+     {
+      "w": "Einzug halten",
+      "cn": "开始，出现"
+     },
+     {
+      "w": "alle Hände voll zu tun haben",
+      "cn": "忙得不可开交"
+     },
+     {
+      "w": "auf die leichte Schulter nehmen",
+      "cn": "轻视，掉以轻心"
+     },
+     {
+      "w": "der Sicherheitsgurt -e",
+      "cn": "安全带"
+     },
+     {
+      "w": "der Helm -e",
+      "cn": "头盔，安全帽"
+     },
+     {
+      "w": "die Bremse -n",
+      "cn": "刹车"
+     },
+     {
+      "w": "die Ohrfeige -n",
+      "cn": "耳光"
+     },
+     {
+      "w": "die Streiterei -en",
+      "cn": "无休止的争吵"
+     },
+     {
+      "w": "erfolgen",
+      "cn": "进行，实现"
+     },
+     {
+      "w": "die Seifenkiste -n",
+      "cn": "（可乘坐的）玩具汽车，儿童汽车"
+     },
+     {
+      "w": "heraus/halten +A",
+      "cn": "使摆脱，使脱身"
+     },
+     {
+      "w": "das Elektrohaus ¨-er",
+      "cn": "电器商店"
+     },
+     {
+      "w": "die Magie nur Sg",
+      "cn": "魔术，巫术，魔法"
+     },
+     {
+      "w": "klären +A",
+      "cn": "澄清，把……弄明白"
+     },
+     {
+      "w": "brauchen +A",
+      "cn": "需要"
+     }
+    ]
+   },
+   {
+    "label": "📗 Vokabeln 1-9",
+    "src": "Lektion 1 · 教材 S.29",
+    "words": [
+     {
+      "w": "das Geheimnis -se",
+      "cn": "秘密，神秘"
+     },
+     {
+      "w": "der Besitz nur Sg",
+      "cn": "占有，所有物，财产"
+     },
+     {
+      "w": "die Generalversammlung -en",
+      "cn": "全体大会，全体会议"
+     },
+     {
+      "w": "das Schicksal nur Sg",
+      "cn": "命运，天命"
+     },
+     {
+      "w": "Vereinte Nationen",
+      "cn": "联合国"
+     },
+     {
+      "w": "der Internationale Tag des Glücks",
+      "cn": "国际幸福日 ⚠"
+     },
+     {
+      "w": "das Mitgefühl -e",
+      "cn": "同情（心）"
+     },
+     {
+      "w": "das Gemeinwohl nur Sg",
+      "cn": "公益，公益福利"
+     },
+     {
+      "w": "zählen",
+      "cn": "有……意义，受重视"
+     },
+     {
+      "w": "die Nachkriegszeit -en",
+      "cn": "战后时期"
+     },
+     {
+      "w": "sich (Dat) etw. aus/denken",
+      "cn": "想出，考虑出"
+     },
+     {
+      "w": "wagen +A",
+      "cn": "冒险，鼓起勇气"
+     },
+     {
+      "w": "nimmermehr",
+      "cn": "从不，永不"
+     },
+     {
+      "w": "der Sonnenstrahl -en",
+      "cn": "日光"
+     },
+     {
+      "w": "missfallen +D",
+      "cn": "使不喜欢，讨厌，引起反感"
+     },
+     {
+      "w": "die Stoffkatze -n",
+      "cn": "毛绒玩具猫"
+     },
+     {
+      "w": "die Laune -n",
+      "cn": "情绪，心情，心境"
+     },
+     {
+      "w": "der Verhaltensforscher -",
+      "cn": "行为科学家"
+     },
+     {
+      "w": "ein wenig",
+      "cn": "稍微，有点"
+     },
+     {
+      "w": "abstrakt",
+      "cn": "抽象的，概念化的"
+     },
+     {
+      "w": "schimpfen (+A)",
+      "cn": "谩骂，责备"
+     },
+     {
+      "w": "elementar",
+      "cn": "基本的，初步的"
+     },
+     {
+      "w": "dies oder jenes",
+      "cn": "这个或那个"
+     },
+     {
+      "w": "das Dach über dem Kopf",
+      "cn": "住所"
+     },
+     {
+      "w": "zufrieden/stellen +A",
+      "cn": "使满意，使满足"
+     },
+     {
+      "w": "die Zugehörigkeit -en",
+      "cn": "从属，归属"
+     },
+     {
+      "w": "die Zufallsbegegnung -en",
+      "cn": "偶遇"
+     },
+     {
+      "w": "das Glücksempfinden nur Sg",
+      "cn": "幸福感"
+     },
+     {
+      "w": "das Display -s ['dɪspleɪ]",
+      "cn": "屏幕"
+     },
+     {
+      "w": "sich (Akk) zu etw. zwingen",
+      "cn": "强迫自己做某事"
+     },
+     {
+      "w": "grinsen",
+      "cn": "咧嘴冷笑，嗤笑"
+     }
+    ]
+   }
+  ]
+ },
+ "grammar": {
+  "units": [
+   {
+    "no": "G1",
+    "title": "把形容词变成名词：-heit / -keit / -ung",
+    "want": "想说的是「安全」这件事本身，不是「安全的」。德语的办法是给形容词加个尾巴，让它变成名词。",
+    "rule": "形容词 + heit / keit（阴性 die），动词 + ung（阴性 die）。词尾是 -ig / -lich / -sam / -bar 的形容词，多用 keit。",
+    "steps": [
+     "找到形容词或动词：sicher、freundlich、versorgen",
+     "加后缀：Sicher-heit、Freundlich-keit、Versorg-ung",
+     "当名词用，前面配 die：die Sicherheit、die Freundlichkeit、die Versorgung"
+    ],
+    "ex": [
+     {
+      "de": "Die Sicherheit der Kinder wurde früher auf die leichte Schulter genommen.",
+      "zh": "过去人们没把孩子的安全当回事。",
+      "src": "S.14 ②"
+     },
+     {
+      "de": "Meine Lehrerin zeichnet sich durch Offenheit und Freundlichkeit aus.",
+      "zh": "我的老师以开放和友善著称。",
+      "src": "自编"
+     },
+     {
+      "de": "Neben der Arbeit übernimmt sie die Versorgung der Familie.",
+      "zh": "工作之外她还承担家里的照料。",
+      "src": "自编"
+     }
+    ],
+    "wrong": [
+     {
+      "bad": "das Sicherheit",
+      "good": "die Sicherheit（-heit/-keit/-ung 名词全部是阴性）"
+     },
+     {
+      "bad": "freundlich + heit",
+      "good": "freundlich + keit → die Freundlichkeit（词尾 -lich 用 -keit）"
+     }
+    ],
+    "quiz": [
+     {
+      "q": "sicher → ?",
+      "a": "die Sicherheit"
+     },
+     {
+      "q": "möglich → ?",
+      "a": "die Möglichkeit"
+     },
+     {
+      "q": "entscheiden → ?",
+      "a": "die Entscheidung"
+     }
+    ]
+   },
+   {
+    "no": "G2",
+    "title": "sich lassen + 不定式：不说谁做",
+    "want": "想说「这个药盒一拧就开」，但谁去拧根本不重要。德语这里不用被动句，而用 lassen。",
+    "rule": "主语是「被处理的那个东西」，lassen 跟着主语变位，sich 不动，不定式放句末。意思等于 man kann …，但不能加 von。",
+    "steps": [
+     "把「被处理的东西」放句首：Medikamentenpackungen …",
+     "lassen 按主语变位 + sich：ließ sich（过去）/ lässt sich（现在）",
+     "把动词不定式放句末：… leicht öffnen"
+    ],
+    "ex": [
+     {
+      "de": "Medikamentenpackungen ließen sich leicht öffnen.",
+      "zh": "药盒一拧就开。",
+      "src": "S.14 ②"
+     },
+     {
+      "de": "Alltägliche Streitereien über Kleinigkeiten ließen sich untereinander klären.",
+      "zh": "日常争吵都可以自己解决。",
+      "src": "S.15 ④"
+     },
+     {
+      "de": "Diese Aufgabe lässt sich in zehn Minuten lösen.",
+      "zh": "这个任务十分钟能解决。",
+      "src": "自编"
+     }
+    ],
+    "wrong": [
+     {
+      "bad": "ließ sich 当成「让」",
+      "good": "ließ sich öffnen = man konnte es öffnen（能被打开）"
+     },
+     {
+      "bad": "Die Tür lässt sich nicht von mir schließen.",
+      "good": "Die Tür lässt sich nicht schließen.（不加 von，施事不出现）"
+     }
+    ],
+    "quiz": [
+     {
+      "q": "Man kann den Text leicht lesen. → 换成 sich lassen",
+      "a": "Der Text lässt sich leicht lesen."
+     },
+     {
+      "q": "Das Problem ließ sich schnell ______.（lösen）",
+      "a": "lösen（不定式原形放句末）"
+     },
+     {
+      "q": "sich lassen 的主语是人还是物？",
+      "a": "物（被处理的东西）"
+     }
+    ]
+   },
+   {
+    "no": "G3",
+    "title": "sein + zu + 不定式：把任务挂到东西上",
+    "want": "想说「这些观点要去发展、去检验」，重点是「事」，不是「谁」。主语换成事，动作挂上去。",
+    "rule": "sein 按主语变位，zu + 不定式放句末。意思有两层：多数时候是「必须」，有时是「可以」，由语境决定。",
+    "steps": [
+     "主语是事：Eigene Ideen … / Die Hausaufgaben …",
+     "sein 变位：sind / ist / war",
+     "句末 zu + 不定式；可分动词把 zu 插进中间：aufzuschreiben"
+    ],
+    "ex": [
+     {
+      "de": "Eigene Ideen sind zu entwickeln und zu überprüfen.",
+      "zh": "自己的观点要去发展、去检验。",
+      "src": "S.14 ③"
+     },
+     {
+      "de": "Der Sonntag war der einzige freie Tag der Woche und meist mit meiner Familie zu verbringen.",
+      "zh": "星期天是一周里唯一空闲的一天，通常得用来陪家人。",
+      "src": "S.15 ⑥"
+     },
+     {
+      "de": "Die Hausaufgaben sind bis Freitag zu machen.",
+      "zh": "作业周五前要做完。",
+      "src": "自编"
+     }
+    ],
+    "wrong": [
+     {
+      "bad": "sind zu entwickeln und überprüfen",
+      "good": "sind zu entwickeln und zu überprüfen（并列时 zu 重复）"
+     },
+     {
+      "bad": "Das Formular ist auszufüllen online",
+      "good": "Das Formular ist online auszufüllen（不定式放句末）"
+     }
+    ],
+    "quiz": [
+     {
+      "q": "Man muss die Aufgaben heute machen. → 用 sein + zu",
+      "a": "Die Aufgaben sind heute zu machen."
+     },
+     {
+      "q": "aufschreiben 的 zu 形式？",
+      "a": "aufzuschreiben"
+     },
+     {
+      "q": "Das ist leicht zu verstehen. 是「必须」还是「可以」？",
+      "a": "「容易懂」，这里是「可以／值得」那一层"
+     }
+    ]
+   },
+   {
+    "no": "G4",
+    "title": "关系从句：格由从句里的活决定",
+    "want": "想接着说「是哪一个」。德语把两句合成一句，靠关系代词把前后勾住。",
+    "rule": "关系代词的性和数跟着先行词（前面那个名词），格看它在从句里干什么活。干主语用第一格，干宾语用第四格，前面有介词就跟介词走。",
+    "steps": [
+     "找先行词，定性和数：der Freund → 阳性单数",
+     "看它在从句里干什么活：studiert → 主语 → 第一格",
+     "从句动词放句末：Ich habe einen Freund, der in Berlin studiert."
+    ],
+    "ex": [
+     {
+      "de": "… eine nette junge Lehrerin, die sich durch Offenheit, Freundlichkeit, Aufgeschlossenheit auszeichnet",
+      "zh": "一位和善的年轻女老师，她以开放、友善、乐于接纳著称",
+      "src": "S.14 ③"
+     },
+     {
+      "de": "… Seifenkisten, die oftmals keine Bremse hatten.",
+      "zh": "那些常常没有刹车的自制滑板车",
+      "src": "S.14 ②"
+     },
+     {
+      "de": "Ach, ich wollte einfach alle Bücher lesen, die ich bekommen konnte.",
+      "zh": "我只想把能弄到的书全读了。",
+      "src": "S.15 ⑤"
+     }
+    ],
+    "wrong": [
+     {
+      "bad": "Der Film, der ich gestern gesehen habe, war gut.",
+      "good": "Der Film, den ich gestern gesehen habe, war gut.（从句宾语 → 第四格）"
+     },
+     {
+      "bad": "Die Freundin, die ich mit lerne, wohnt hier.",
+      "good": "Die Freundin, mit der ich lerne, wohnt hier.（介词提到关系代词前）"
+     }
+    ],
+    "quiz": [
+     {
+      "q": "Ich habe einen Freund, ______ in Berlin studiert.",
+      "a": "der（从句主语）"
+     },
+     {
+      "q": "Das Buch, ______ ich gestern gelesen habe, war super.",
+      "a": "das（从句宾语，中性同形）"
+     },
+     {
+      "q": "格位看主句还是从句？",
+      "a": "看从句。它在从句里干什么活，就用什么格"
+     }
+    ]
+   },
+   {
+    "no": "G5",
+    "title": "wer … / was …：人还是事",
+    "want": "想说「凡是……的人」「……的事」，一句话把一整个从句当主语用，不啰嗦。",
+    "rule": "wer 指人，was 指事。整个从句占句子的第一位，主干的动词紧跟其后（第二位）。承接前面一句话时，was 小写。",
+    "steps": [
+     "判断指人还是指事：人用 wer，事用 was",
+     "从句写完整：Wer genug zu essen hatte …",
+     "主干紧跟：… , empfand schon Glück."
+    ],
+    "ex": [
+     {
+      "de": "Doch wer trug schon einen Helm?",
+      "zh": "可当时谁戴头盔呢？",
+      "src": "S.14 ②"
+     },
+     {
+      "de": "Wer genug zu essen und ein sicheres Zuhause hatte, empfand schon Glück.",
+      "zh": "有足够食物和安全住所的人，已经觉得幸福了。",
+      "src": "S.25 练习 9"
+     },
+     {
+      "de": "Was mich glücklich macht, ist Musik.",
+      "zh": "让我幸福的是音乐。",
+      "src": "自编"
+     }
+    ],
+    "wrong": [
+     {
+      "bad": "Was mich glücklich macht, es ist Musik.",
+      "good": "Was mich glücklich macht, ist Musik.（不要补 es）"
+     },
+     {
+      "bad": "承接前句时写 Das, Was …",
+      "good": "Das, was das Glücksgefühl auslöst, …（不是句首就小写）"
+     }
+    ],
+    "quiz": [
+     {
+      "q": "______ viel liest, weiß mehr. 用 wer 还是 was？",
+      "a": "wer（指人）"
+     },
+     {
+      "q": "Was ihn glücklich macht, ______ Musik. 填动词",
+      "a": "ist"
+     },
+     {
+      "q": "Das, ______ das Glücksgefühl auslöst, … 填关系词",
+      "a": "was"
+     }
+    ]
+   },
+   {
+    "no": "G6",
+    "title": "werden + 过去分词：真要说是谁做的时候",
+    "want": "G2、G3 都能不说施事，但如果要说清「是谁做的、在哪儿定的」，就得用真被动。",
+    "rule": "werden + 过去分词。主语还是那个「被处理的东西」，但可以加 von + D 点出谁做的。过去时用 wurde / wurden。",
+    "steps": [
+     "找被处理的东西：Verabredungen / Der Text",
+     "werden 变位 + 过去分词：wurden vereinbart / wurde geschrieben",
+     "需要时补 von + D：wurde von der Lehrerin korrigiert"
+    ],
+    "ex": [
+     {
+      "de": "Ebenso erfolgten Verabredungen nicht über die Eltern, sondern wurden untereinander in der Schule vereinbart.",
+      "zh": "约会也不是通过父母，而是在学校里自己约好。",
+      "src": "S.15 ④"
+     },
+     {
+      "de": "Die Sicherheit der Kinder wurde früher auf die leichte Schulter genommen.",
+      "zh": "过去人们没把孩子的安全当回事。",
+      "src": "S.14 ②"
+     },
+     {
+      "de": "Der Text wurde von einem Studenten geschrieben.",
+      "zh": "这篇文章是一个学生写的。",
+      "src": "自编"
+     }
+    ],
+    "wrong": [
+     {
+      "bad": "von + D 塞进 sich lassen 句",
+      "good": "sich lassen 句不加 von；要说出施事就改用 werden + 过去分词"
+     },
+     {
+      "bad": "Die Tür wurde nicht schließen.",
+      "good": "Die Tür wurde nicht geschlossen.（用过去分词）"
+     }
+    ],
+    "quiz": [
+     {
+      "q": "Verabredungen ______ in der Schule vereinbart.",
+      "a": "wurden"
+     },
+     {
+      "q": "想说出「谁做的」，用哪种形式？",
+      "a": "werden + 过去分词 + von + D"
+     },
+     {
+      "q": "Die Tür wurde gestern ______.（reparieren）",
+      "a": "repariert"
+     }
+    ]
+   }
+  ]
+ },
+ "connectGrids": [
+  {
+   "title": "① Omas童年 · 关键词",
+   "src": "教材 S.13–S.15 · 词场 W1–W2",
+   "pairs": [
+    [
+     "die Nachkriegszeit",
+     "战后时期"
+    ],
+    [
+     "das Wirtschaftswunder",
+     "经济奇迹"
+    ],
+    [
+     "die Trümmer",
+     "废墟"
+    ],
+    [
+     "der Handwerksbetrieb",
+     "手工作坊，小企业"
+    ],
+    [
+     "die Versorgung",
+     "照料，供养"
+    ],
+    [
+     "die Auslandsreise",
+     "出国旅行"
+    ],
+    [
+     "der Ausflug",
+     "出游，短途旅行"
+    ],
+    [
+     "alle Hände voll zu tun haben",
+     "忙得不可开交"
+    ],
+    [
+     "keinen Boden unter den Füßen haben",
+     "没有立足之地"
+    ],
+    [
+     "die Armut",
+     "贫穷"
+    ]
+   ]
+  },
+  {
+   "title": "② 安全与学校 · 关键词",
+   "src": "教材 S.14 · 词场 W3–W4",
+   "pairs": [
+    [
+     "die Sicherheit",
+     "安全"
+    ],
+    [
+     "der Helm",
+     "头盔"
+    ],
+    [
+     "die Seifenkiste",
+     "自制滑板车"
+    ],
+    [
+     "die Bremse",
+     "刹车"
+    ],
+    [
+     "auf eigenen Beinen stehen",
+     "靠自己站住脚"
+    ],
+    [
+     "die Disziplin",
+     "纪律"
+    ],
+    [
+     "die Gehorsamkeit",
+     "服从"
+    ],
+    [
+     "die Ohrfeige",
+     "耳光"
+    ],
+    [
+     "sich auszeichnen durch + A",
+     "以……著称"
+    ],
+    [
+     "auf die leichte Schulter nehmen",
+     "没当回事"
+    ]
+   ]
+  },
+  {
+   "title": "③ 幸福与关系 · 关键词",
+   "src": "教材 S.25–S.26 · 词场 W7–W8",
+   "pairs": [
+    [
+     "das Glücksgefühl",
+     "幸福感"
+    ],
+    [
+     "die Beziehung",
+     "关系"
+    ],
+    [
+     "die Harmonie",
+     "和谐"
+    ],
+    [
+     "die Zufallsbegegnung",
+     "偶遇"
+    ],
+    [
+     "die Zugehörigkeit",
+     "归属感"
+    ],
+    [
+     "die Selbstverwirklichung",
+     "自我实现"
+    ],
+    [
+     "die Einstellung",
+     "观念，态度"
+    ],
+    [
+     "das Schicksal",
+     "命运"
+    ],
+    [
+     "sich auswirken auf + A",
+     "对……产生影响"
+    ],
+    [
+     "zusammen|hängen mit + D",
+     "与……有关"
+    ]
+   ]
+  },
+  {
+   "title": "④ 构词 · 形容词/动词 → 名词",
+   "src": "教材 Lektion 1 · G1（-heit / -keit / -ung）",
+   "pairs": [
+    [
+     "sicher",
+     "die Sicherheit"
+    ],
+    [
+     "kindlich → Kind",
+     "die Kindheit"
+    ],
+    [
+     "möglich",
+     "die Möglichkeit"
+    ],
+    [
+     "freundlich",
+     "die Freundlichkeit"
+    ],
+    [
+     "offen",
+     "die Offenheit"
+    ],
+    [
+     "zufrieden",
+     "die Zufriedenheit"
+    ],
+    [
+     "entscheiden",
+     "die Entscheidung"
+    ],
+    [
+     "versorgen",
+     "die Versorgung"
+    ],
+    [
+     "erleben",
+     "das Erlebnis"
+    ],
+    [
+     "gehören",
+     "die Zugehörigkeit"
+    ]
+   ]
+  }
+ ],
+ "luecken": {
+  "title": "介词与连词填空 · Präpositionen ergänzen",
+  "src": "教材 Lektion 1 · 介词搭配练习（本页自编，答案在附录 C）",
+  "instruction": "每空填一个词。这一课最容易丢分的就是介词：填完把整句读一遍再核对。",
+  "items": [
+   {
+    "de": "Meine Kindheit war ____________ der Nachkriegszeit geprägt.",
+    "ans": "von",
+    "zh": "geprägt sein von + 第三格"
+   },
+   {
+    "de": "Neben der Arbeit kümmern sie sich sehr ____________ meinen Bruder und mich.",
+    "ans": "um",
+    "zh": "sich kümmern um + 第四格"
+   },
+   {
+    "de": "Sie haben immer Angst, ____________ mir etwas passiert.",
+    "ans": "dass",
+    "zh": "Angst haben, dass … 从句连词"
+   },
+   {
+    "de": "Die Erwachsenen hielten sich ____________ diesen Streitereien heraus.",
+    "ans": "aus",
+    "zh": "sich heraushalten aus + 第三格"
+   },
+   {
+    "de": "Meine Lehrerin zeichnet sich ____________ Offenheit und Freundlichkeit aus.",
+    "ans": "durch",
+    "zh": "sich auszeichnen durch + 第四格"
+   },
+   {
+    "de": "Sie ist bestrebt, uns den Spaß ____________ Lernen zu vermitteln.",
+    "ans": "am（an + dem）",
+    "zh": "Spaß an + 第三格（an + dem = am）"
+   },
+   {
+    "de": "Wir streben in China ebenfalls ____________ Harmonie.",
+    "ans": "nach",
+    "zh": "streben nach + 第三格"
+   },
+   {
+    "de": "Sport wirkt sich günstig ____________ die Gesundheit aus.",
+    "ans": "auf",
+    "zh": "sich auswirken auf + 第四格"
+   },
+   {
+    "de": "Unser persönliches Glück ist eng ____________ dem Schicksal unseres Landes verknüpft.",
+    "ans": "mit",
+    "zh": "verknüpft sein mit + 第三格"
+   },
+   {
+    "de": "Ich glaube, Glück hängt ____________ guten Beziehungen zusammen.",
+    "ans": "mit",
+    "zh": "zusammenhängen mit + 第三格"
+   },
+   {
+    "de": "Beim Lernen kommt es ____________ die Methode an.",
+    "ans": "auf",
+    "zh": "es kommt auf + 第四格 an"
+   },
+   {
+    "de": "Diese Aufgabe lässt sich in zehn Minuten ____________.（lösen）",
+    "ans": "lösen",
+    "zh": "lassen 后接不带 zu 的不定式"
+   }
+  ]
+ },
+ "quiz": {
+  "title": "快问快答 · Textverständnis",
+  "src": "教材 S.13–S.15 / S.25–S.26 · Text 1 / Text 2（改编）",
+  "instruction": "读题后先自己答，再点选项。全是课文里的信息，答不出就回去点那一句的译文。",
+  "items": [
+   {
+    "q": "Wovon war Omas Kindheit geprägt?",
+    "opts": [
+     "von der Nachkriegszeit, Armut und Trümmern",
+     "von der Generation Z und dem Smartphone",
+     "von Auslandsreisen und Brettspielen",
+     "von einer modernen Schule mit jungen Lehrern"
+    ],
+    "a": 0
+   },
+   {
+    "q": "Was musste Omas Vater nach dem Krieg aufgeben?",
+    "opts": [
+     "seinen eigenen Handwerksbetrieb",
+     "seine Wohnung",
+     "sein Studium",
+     "seine Stelle als Manager"
+    ],
+    "a": 0
+   },
+   {
+    "q": "Was war laut Oma früher mit der Sicherheit der Kinder?",
+    "opts": [
+     "Sie wurde auf die leichte Schulter genommen.",
+     "Sie stand im Mittelpunkt der Erziehung.",
+     "Sie war gesetzlich genau geregelt.",
+     "Sie kümmerte niemanden, weil es keine Kinder gab."
+    ],
+    "a": 0
+   },
+   {
+    "q": "Worüber ärgert sich Emilie?",
+    "opts": [
+     "Ihre Eltern kümmern sich zu sehr um sie.",
+     "Ihre Eltern interessieren sich nicht für sie.",
+     "Ihre Lehrerin ist zu streng.",
+     "Sie hat zu wenige Bücher."
+    ],
+    "a": 0
+   },
+   {
+    "q": "Wie war der Unterricht laut Oma?",
+    "opts": [
+     "Disziplin und Gehorsamkeit waren gefordert.",
+     "Die Schüler durften selbstständig nachdenken.",
+     "Es gab keine Hausaufgaben.",
+     "Nur Mädchen mussten still sitzen."
+    ],
+    "a": 0
+   },
+   {
+    "q": "Was ist Emilie an ihrer Lehrerin wichtig?",
+    "opts": [
+     "Offenheit, Freundlichkeit und Aufgeschlossenheit",
+     "Strenge und Disziplin",
+     "dass sie keine Fehler korrigiert",
+     "dass sie jeden Tag Prüfungen schreibt"
+    ],
+    "a": 0
+   },
+   {
+    "q": "Wie verabredeten sich Oma und ihre Freunde?",
+    "opts": [
+     "untereinander in der Schule oder an festen Treffpunkten",
+     "über die Eltern per Brief",
+     "nur über das Telefon",
+     "über soziale Netzwerke"
+    ],
+    "a": 0
+   },
+   {
+    "q": "Was bedeutet Glück für Emilie?",
+    "opts": [
+     "die Freiheit, selbständige Entscheidungen treffen zu können",
+     "möglichst viele Auslandsreisen",
+     "der beste Schulabschluss",
+     "jeden Tag bei den Großeltern zu sein"
+    ],
+    "a": 0
+   },
+   {
+    "q": "Was ist laut Frau Prof. Liu in westlichen Ländern die verbreitete Einstellung?",
+    "opts": [
+     "Glücksgefühle hängen mehr mit persönlichem Erfolg zusammen.",
+     "Glück kommt allein von der Familie.",
+     "Glück ist eine Frage des Wetters.",
+     "Nur Harmonie mit anderen macht glücklich."
+    ],
+    "a": 0
+   },
+   {
+    "q": "Was versteht Frau Prof. Liu unter „Harmonie“?",
+    "opts": [
+     "starke und positive Beziehungen, die Verbundenheit und Zugehörigkeit vermitteln",
+     "möglichst wenig Kontakt zu Nachbarn",
+     "Erfolg im Beruf über alles",
+     "die Suche nach dem eigenen Vorteil"
+    ],
+    "a": 0
+   },
+   {
+    "q": "Womit ist das persönliche Glück in China eng verknüpft?",
+    "opts": [
+     "mit dem Schicksal des Landes",
+     "mit dem Wetter",
+     "mit dem Auslandsstudium",
+     "mit der Anzahl der Freunde"
+    ],
+    "a": 0
+   },
+   {
+    "q": "Welche Wege zum Glück nennt Frau Prof. Liu?",
+    "opts": [
+     "Musik hören, Sport treiben und gute soziale Beziehungen",
+     "mehr Geld verdienen und mehr besitzen",
+     "möglichst viele Reisen",
+     "Fernsehen und Computerspiele"
+    ],
+    "a": 0
+   }
+  ]
+ },
+ "translation": {
+  "title": "翻译卡 · Übersetzen",
+  "instruction": "先自己把德文译成中文，再点卡片翻面核对。翻面之前别急着点。",
+  "note": "卡片全部是课文原句，出处写在正面；背面是参考译文，写法不唯一，意思对即可。",
+  "cards": [
+   {
+    "de": "Meine Kindheit war von der Nachkriegszeit geprägt, nur Armut, Trümmer, Gewalterfahrung in Schule und Familie.",
+    "zh": "我的童年是被战后岁月塑造的：只有贫穷、废墟，以及学校和家庭里的暴力经历。",
+    "tip": "geprägt sein von + D：被动里的「被……塑造」",
+    "src": "S.13 · Oma"
+   },
+   {
+    "de": "Sie hatte alle Hände voll zu tun.",
+    "zh": "她忙得不可开交。",
+    "tip": "alle Hände voll zu tun haben：固定搭配，主语是人",
+    "src": "S.14 ① · Oma"
+   },
+   {
+    "de": "Die Sicherheit der Kinder wurde früher auf die leichte Schulter genommen.",
+    "zh": "过去人们没把孩子的安全当回事。",
+    "tip": "wurde … genommen：被动过去时；auf die leichte Schulter nehmen",
+    "src": "S.14 ② · Oma"
+   },
+   {
+    "de": "In den Autos gab es keine Sicherheitsgurte, die Kindersicherung in Steckdosen fehlte und Medikamentenpackungen ließen sich leicht öffnen.",
+    "zh": "车里没有安全带，插座里的儿童保护装置也没有，药盒一拧就开。",
+    "tip": "sich lassen + Infinitiv：不说谁做，只说「可以」",
+    "src": "S.14 ② · Oma"
+   },
+   {
+    "de": "Sie bringen mich zur Kita, zur Grundschule, zu Kursen und zu Freunden und holen mich wieder ab.",
+    "zh": "他们送我去幼儿园、小学、上兴趣班、去朋友家，再接我回来。",
+    "tip": "Angst haben, dass …：dass 从句动词到句末",
+    "src": "S.14 ② · Emilie"
+   },
+   {
+    "de": "Heute ist im Unterricht eigenes Denken und Handeln gefragt: Die Schüler dürfen und sollen selbstständig nachdenken und lernen.",
+    "zh": "今天课堂上要求的是独立思考和行动：学生可以也应该独立思考和自主学习。",
+    "tip": "sein + zu + Infinitiv：把任务挂到「想法」上（必须/可以）",
+    "src": "S.14 ③ · Oma"
+   },
+   {
+    "de": "Eigene Ideen sind zu entwickeln und zu überprüfen.",
+    "zh": "自己的观点要去发展、去检验。",
+    "tip": "einzig und allein：加强语气，说话的权利只属于老师",
+    "src": "S.14 ③ · Oma"
+   },
+   {
+    "de": "Wir verließen meist nach der Schule die Wohnung und verbrachten den ganzen Tag auf der Straße.",
+    "zh": "我们放学后大多离开家，一整天都在街上。",
+    "tip": "sich lassen + Infinitiv 的过去时 ließen sich：可以自己解决",
+    "src": "S.15 ④ · Oma"
+   },
+   {
+    "de": "Ein gemeinsamer Spaziergang oder der Kirchenbesuch am Sonntag, das war für mich eine glückliche Zeit.",
+    "zh": "一起散步，或者星期天去教堂，对我来说就是幸福的时光。",
+    "tip": "großes Glück war … gehabt zu haben：完成不定式",
+    "src": "S.15 ⑥ · Oma"
+   },
+   {
+    "de": "Wer genug zu essen und ein sicheres Zuhause hatte, empfand schon Glück.",
+    "zh": "有足够吃的、有安全的家，就已经觉得幸福了。",
+    "tip": "wer 引导主语从句 = 「凡是……的人」",
+    "src": "S.25 · Prof. Liu"
+   },
+   {
+    "de": "Je mehr wir haben, desto mehr wollen wir.",
+    "zh": "我们拥有的越多，想要的也越多。",
+    "tip": "je + 比较级, desto + 比较级",
+    "src": "S.25 · Lukas"
+   },
+   {
+    "de": "Es wurde gezeigt, dass in vielen westlichen Ländern die Einstellung herrscht, dass Glücksgefühle mehr mit persönlichem Erfolg zusammenhängen.",
+    "zh": "研究显示，在许多西方国家普遍的看法是，幸福感更多与个人成就相关。",
+    "tip": "Es wurde gezeigt, dass …：无人称被动 + dass 从句",
+    "src": "S.25 · Prof. Liu"
+   },
+   {
+    "de": "Sogar Zufallsbegegnungen können sich günstig auf unser Glücksempfinden auswirken.",
+    "zh": "甚至偶遇也能对我们的幸福感产生好的影响。",
+    "tip": "sich auswirken auf + A：对……产生影响",
+    "src": "S.26 · Prof. Liu"
+   },
+   {
+    "de": "Sehr interessant ist übrigens, dass die Pflege menschlicher Beziehungen in manchen europäischen Ländern wie der Schweiz und Island, aber auch in Lateinamerika ebenso wichtig ist wie in Japan.",
+    "zh": "很有意思的是，在瑞士、冰岛等一些欧洲国家，以及拉丁美洲，维护人际关系和在日本一样重要。",
+    "tip": "ebenso … wie：和……一样；全课的对比句型收口",
+    "src": "S.26 · Prof. Liu"
+   },
+   {
+    "de": "Wenn man sieht, dass es dem eigenen Land gut geht und die Mitbürger in Frieden und Sicherheit leben, kann diese Wahrnehmung das individuelle Glück positiv beeinflussen.",
+    "zh": "当一个人看到自己的国家发展得好、同胞们和平安全地生活，这种感受会正面影响个人的幸福。",
+    "tip": "verknüpft sein mit + D：与……紧密相连",
+    "src": "S.26 · Prof. Liu"
+   }
+  ]
+ }
+}

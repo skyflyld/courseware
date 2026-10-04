@@ -1,0 +1,1709 @@
+{
+ "meta": {
+  "lektion": "1",
+  "title": "Rund um das Glück",
+  "source": "教材 Lektion 1 · Vokabeln 1-6（S.18）/ 1-9（S.29）与 Text 1 / Text 2",
+  "provenance": "词场按主题重排自教材词表；每条搭配与例句注明出处，带 S. 的是课文原句。"
+ },
+ "wortfelder": {
+  "title": "词汇精讲 · Wortschatz im Kontext",
+  "instruction": "八个词场：每条给「词条 → 中文 → 常用搭配 → 教材例句」。背词先背搭配——说出口的从来不是孤零零一个词。点词条格可看例句与中文译文。",
+  "src": "教材 Lektion 1 · Text 1（S.13–S.15）/ Text 2（S.25–S.26）八个词场",
+  "groups": [
+   {
+    "id": "W1",
+    "label": "W1 童年与时代",
+    "lead": "说什么年代、被什么塑造",
+    "src": "自编 · S.13",
+    "rows": [
+     {
+      "w": "die Kindheit, -en",
+      "cn": "童年",
+      "coll": "in meiner Kindheit",
+      "ex": "In meiner Kindheit haben wir jeden Tag draußen gespielt.",
+      "exZh": "我小时候我们每天都在外面玩。",
+      "src": "自编"
+     },
+     {
+      "w": "die Nachkriegszeit",
+      "cn": "战后时期（无复数）",
+      "coll": "in der Nachkriegszeit",
+      "ex": "Meine Kindheit war von der Nachkriegszeit geprägt.",
+      "exZh": "我的童年是被战后岁月塑造的。",
+      "src": "S.13"
+     },
+     {
+      "w": "der Krieg, -e",
+      "cn": "战争",
+      "coll": "den Krieg überleben",
+      "ex": "Wir waren froh, den Krieg überlebt zu haben.",
+      "exZh": "我们庆幸活过了那场战争。",
+      "src": "S.13"
+     },
+     {
+      "w": "die Armut",
+      "cn": "贫穷（无复数）",
+      "coll": "in Armut leben",
+      "ex": "Nach dem Krieg lebten viele Familien in Armut.",
+      "exZh": "战后很多家庭生活在贫困中。",
+      "src": "自编"
+     },
+     {
+      "w": "die Trümmer (Pl.)",
+      "cn": "废墟（多用复数）",
+      "coll": "zwischen den Trümmern",
+      "ex": "Nach dem Krieg lagen überall Trümmer.",
+      "exZh": "战后到处是废墟。",
+      "src": "自编"
+     },
+     {
+      "w": "das Wirtschaftswunder",
+      "cn": "经济奇迹（无复数）",
+      "coll": "langsam Einzug halten",
+      "ex": "Aber das Wirtschaftswunder hielt nur langsam Einzug.",
+      "exZh": "但经济奇迹来得很慢。",
+      "src": "S.13"
+     },
+     {
+      "w": "die Generation, -en",
+      "cn": "一代人",
+      "coll": "zur Generation Z gehören",
+      "ex": "Ich bin nach 1995 geboren und gehöre deshalb zur sogenannten Generation Z.",
+      "exZh": "我 1995 年后出生，因此属于所谓的 Z 世代。",
+      "src": "S.13"
+     },
+     {
+      "w": "auf|wachsen",
+      "cn": "长大（wächst auf / wuchs auf / ist aufgewachsen）",
+      "coll": "mit dem Smartphone aufwachsen",
+      "ex": "… und ist die erste Generation, die mit dem Smartphone aufwächst.",
+      "exZh": "也是第一代伴随智能手机长大的人。",
+      "src": "S.13"
+     },
+     {
+      "w": "geprägt sein von + D",
+      "cn": "由……塑造",
+      "coll": "von etw. geprägt sein",
+      "ex": "Meine Kindheit war von der Nachkriegszeit geprägt.",
+      "exZh": "我的童年是被战后岁月塑造的。",
+      "src": "S.13"
+     },
+     {
+      "w": "erleben",
+      "cn": "经历",
+      "coll": "den Krieg erleben",
+      "ex": "Meine Großeltern haben den Krieg erlebt.",
+      "exZh": "我祖父母经历过那场战争。",
+      "src": "自编"
+     },
+     {
+      "w": "die Gewalterfahrung, -en",
+      "cn": "暴力经历",
+      "coll": "Gewalterfahrungen machen",
+      "ex": "Viele Kinder machten damals Gewalterfahrungen.",
+      "exZh": "那时很多孩子有过被暴力对待的经历。",
+      "src": "自编"
+     }
+    ]
+   },
+   {
+    "id": "W2",
+    "label": "W2 家庭与生计",
+    "lead": "挣钱、养家、忙起来",
+    "src": "S.14 ① · 自编",
+    "rows": [
+     {
+      "w": "der Handwerksbetrieb, -e",
+      "cn": "手工作坊，小企业",
+      "coll": "einen eigenen Handwerksbetrieb haben",
+      "ex": "Vor dem Krieg hatte mein Vater einen eigenen Handwerksbetrieb.",
+      "exZh": "战前我父亲有自己的手工作坊。",
+      "src": "S.14 ①"
+     },
+     {
+      "w": "keinen Boden unter den Füßen haben",
+      "cn": "没有立足之地",
+      "coll": "nach dem Krieg …",
+      "ex": "Nach dem Krieg hatte der Betrieb keinen Boden unter den Füßen.",
+      "exZh": "战后这个作坊没有了立足之地。",
+      "src": "S.14 ①"
+     },
+     {
+      "w": "die Versorgung",
+      "cn": "照料，供养（无复数）",
+      "coll": "die Versorgung der Kinder",
+      "ex": "Deshalb arbeitete meine Mutter neben der Versorgung meiner drei Geschwister auch halbtags.",
+      "exZh": "所以我母亲除了照顾我的三个兄弟姐妹，还打了半天工。",
+      "src": "S.14 ①"
+     },
+     {
+      "w": "halbtags arbeiten",
+      "cn": "打半天工",
+      "coll": "halbtags im Café arbeiten",
+      "ex": "Zwei Studenten aus meinem Kurs arbeiten halbtags im Café.",
+      "exZh": "我们班两个学生半天在咖啡馆打工。",
+      "src": "自编"
+     },
+     {
+      "w": "alle Hände voll zu tun haben",
+      "cn": "忙得不可开交",
+      "coll": "zur Prüfungszeit …",
+      "ex": "In der Prüfungszeit haben wir alle Hände voll zu tun.",
+      "exZh": "考试期间我们忙得不可开交。",
+      "src": "自编"
+     },
+     {
+      "w": "sich kümmern um + A",
+      "cn": "照顾，操心",
+      "coll": "sich um jdn. kümmern",
+      "ex": "Neben der Arbeit kümmern sie sich sehr um meinen Bruder und mich.",
+      "exZh": "工作之余他们特别操心我和弟弟。",
+      "src": "S.14 ①"
+     },
+     {
+      "w": "beschäftigt sein",
+      "cn": "忙",
+      "coll": "sehr beschäftigt sein",
+      "ex": "Sie sind sehr beschäftigt.",
+      "exZh": "他们非常忙。",
+      "src": "S.14 ①"
+     },
+     {
+      "w": "besuchen",
+      "cn": "上（学）；看望",
+      "coll": "eine Realschule besuchen",
+      "ex": "Mein Vater besuchte eine Realschule.",
+      "exZh": "我父亲上的是实科中学。",
+      "src": "S.14 ①"
+     },
+     {
+      "w": "die Auslandsreise, -n",
+      "cn": "出国旅行",
+      "coll": "eine Auslandsreise pro Jahr",
+      "ex": "Für uns ist eine Auslandsreise pro Jahr sehr wichtig, am liebsten ans Meer.",
+      "exZh": "对我们来说每年一次出国旅行很重要，最喜欢去海边。",
+      "src": "S.14 ①"
+     },
+     {
+      "w": "der Ausflug, ¨-e",
+      "cn": "出游，短途旅行",
+      "coll": "einen Ausflug machen",
+      "ex": "Am Wochenende besuchen wir unsere Großeltern oder machen Ausflüge.",
+      "exZh": "周末我们去看祖父母，或者出去走走。",
+      "src": "S.14 ①"
+     },
+     {
+      "w": "wandern",
+      "cn": "徒步",
+      "coll": "in den Bergen wandern",
+      "ex": "Am Sonntag wandern wir mit Freunden in den Bergen.",
+      "exZh": "周日我们和朋友去山里徒步。",
+      "src": "自编"
+     },
+     {
+      "w": "selbstgebaut",
+      "cn": "自己盖的",
+      "coll": "ein selbstgebautes Haus",
+      "ex": "Wir wohnen mit unserem Hund in einem selbstgebauten Haus.",
+      "exZh": "我们和狗住在一栋自己盖的房子里。",
+      "src": "S.14 ①"
+     }
+    ]
+   },
+   {
+    "id": "W3",
+    "label": "W3 安全与自由",
+    "lead": "两代人对「安全」的两套理解",
+    "src": "S.14 ② · 自编",
+    "rows": [
+     {
+      "w": "die Sicherheit",
+      "cn": "安全（无复数）",
+      "coll": "die Sicherheit der Kinder",
+      "ex": "Die Sicherheit der Kinder wurde früher auf die leichte Schulter genommen.",
+      "exZh": "过去人们没把孩子的安全当回事。",
+      "src": "S.14 ②"
+     },
+     {
+      "w": "auf die leichte Schulter nehmen",
+      "cn": "没当回事",
+      "coll": "etw. auf die leichte Schulter nehmen",
+      "ex": "Prüfungen sollte man nicht auf die leichte Schulter nehmen.",
+      "exZh": "考试可不能不当回事。",
+      "src": "自编"
+     },
+     {
+      "w": "der Sicherheitsgurt, -e",
+      "cn": "安全带",
+      "coll": "den Sicherheitsgurt anlegen",
+      "ex": "Im Auto muss man den Sicherheitsgurt anlegen.",
+      "exZh": "在车上必须系安全带。",
+      "src": "自编"
+     },
+     {
+      "w": "die Kindersicherung, -en",
+      "cn": "儿童保护装置",
+      "coll": "die Kindersicherung in Steckdosen",
+      "ex": "Die Kindersicherung in Steckdosen fehlte.",
+      "exZh": "插座里的儿童保护装置是没有的。",
+      "src": "S.14 ②"
+     },
+     {
+      "w": "die Steckdose, -n",
+      "cn": "插座",
+      "coll": "etw. in die Steckdose stecken",
+      "ex": "Steck das Ladegerät in die Steckdose!",
+      "exZh": "把充电器插到插座上。",
+      "src": "自编"
+     },
+     {
+      "w": "der Helm, -e",
+      "cn": "头盔",
+      "coll": "einen Helm tragen",
+      "ex": "Kleine Kinder fuhren auf Fahrrädern durch die Straßen – doch wer trug schon einen Helm?",
+      "exZh": "小孩子骑车穿街过巷，可当时谁戴头盔呢？",
+      "src": "S.14 ②"
+     },
+     {
+      "w": "die Seifenkiste, -n",
+      "cn": "自制滑板车",
+      "coll": "mit der Seifenkiste fahren",
+      "ex": "Beliebte Fahrzeuge waren außerdem selbstgebaute Seifenkisten.",
+      "exZh": "当时受欢迎的还有自制滑板车。",
+      "src": "S.14 ②"
+     },
+     {
+      "w": "die Bremse, -n",
+      "cn": "刹车",
+      "coll": "keine Bremse haben",
+      "ex": "… selbstgebaute Seifenkisten, die oftmals keine Bremse hatten.",
+      "exZh": "……那些常常没有刹车的自制滑板车。",
+      "src": "S.14 ②"
+     },
+     {
+      "w": "auf eigenen Beinen stehen",
+      "cn": "靠自己站住脚",
+      "coll": "endlich auf eigenen Beinen stehen",
+      "ex": "Wann kann ich endlich auf eigenen Beinen stehen?",
+      "exZh": "我什么时候才能终于靠自己站住脚？",
+      "src": "S.14 ②"
+     },
+     {
+      "w": "die Freiheit",
+      "cn": "自由（无复数）",
+      "coll": "keine Freiheit haben",
+      "ex": "Manchmal habe ich gar keine Freiheit.",
+      "exZh": "有时我根本没有自由。",
+      "src": "S.14 ②"
+     },
+     {
+      "w": "feststellen",
+      "cn": "查明，确定",
+      "coll": "jds. Standort feststellen",
+      "ex": "Mit dem Handy können sie immer feststellen, wo ich gerade bin.",
+      "exZh": "用手机他们随时能确定我在哪儿。",
+      "src": "S.14 ②"
+     },
+     {
+      "w": "abholen",
+      "cn": "接（人），取（物）",
+      "coll": "jdn. vom Kurs abholen",
+      "ex": "Sie bringen mich zur Kita, zur Grundschule, zu Kursen und zu Freunden und holen mich wieder ab.",
+      "exZh": "他们送我去幼儿园、小学、上兴趣班、去朋友家，再接我回来。",
+      "src": "S.14 ②"
+     },
+     {
+      "w": "Angst haben, dass …",
+      "cn": "担心（会发生某事）",
+      "coll": "Angst haben, dass etw. passiert",
+      "ex": "Sie haben immer Angst, dass mir etwas passiert.",
+      "exZh": "他们总担心我出事。",
+      "src": "S.14 ②"
+     },
+     {
+      "w": "passieren",
+      "cn": "发生",
+      "coll": "Was ist passiert?",
+      "ex": "Was ist dir passiert?",
+      "exZh": "你出什么事了？",
+      "src": "自编"
+     }
+    ]
+   },
+   {
+    "id": "W4",
+    "label": "W4 学校与教育",
+    "lead": "从「听话」到「自己想」",
+    "src": "S.14 ③ · 自编",
+    "rows": [
+     {
+      "w": "die Disziplin",
+      "cn": "纪律（无复数）",
+      "coll": "Disziplin fordern",
+      "ex": "Disziplin und Gehorsamkeit waren gefordert.",
+      "exZh": "当时要求的是纪律和服从。",
+      "src": "S.14 ③"
+     },
+     {
+      "w": "die Gehorsamkeit",
+      "cn": "服从（无复数）",
+      "coll": "Gehorsamkeit verlangen",
+      "ex": "Früher waren Disziplin und Gehorsamkeit wichtiger als eigene Ideen.",
+      "exZh": "从前纪律和服从比自己的想法更重要。",
+      "src": "自编"
+     },
+     {
+      "w": "fordern",
+      "cn": "要求",
+      "coll": "etw. fordern",
+      "ex": "Die Lehrerin fordert von uns pünktliche Abgabe.",
+      "exZh": "老师要求我们按时交作业。",
+      "src": "自编"
+     },
+     {
+      "w": "die Ohrfeige, -n",
+      "cn": "耳光",
+      "coll": "Ohrfeigen bekommen",
+      "ex": "Schläge und Ohrfeigen waren sowohl im Unterricht als auch innerhalb der Familie keine Seltenheit.",
+      "exZh": "体罚和耳光是课堂上和家庭里都不少见的事。",
+      "src": "S.14 ③"
+     },
+     {
+      "w": "keine Seltenheit sein",
+      "cn": "并不少见",
+      "coll": "… waren keine Seltenheit",
+      "ex": "Blickkontakt statt Handy – das ist heute keine Seltenheit mehr.",
+      "exZh": "用眼神交流而不是刷手机，今天已不少见。",
+      "src": "自编"
+     },
+     {
+      "w": "selbstständig",
+      "cn": "独立地",
+      "coll": "selbstständig nachdenken",
+      "ex": "Die Schüler dürfen und sollen selbstständig nachdenken und lernen.",
+      "exZh": "学生可以也应该独立思考和自主学习。",
+      "src": "S.14 ③"
+     },
+     {
+      "w": "entwickeln",
+      "cn": "发展，开发",
+      "coll": "eigene Ideen entwickeln",
+      "ex": "Eigene Ideen sind zu entwickeln und zu überprüfen.",
+      "exZh": "自己的观点要去发展、去检验。",
+      "src": "S.14 ③"
+     },
+     {
+      "w": "überprüfen",
+      "cn": "检验，复查",
+      "coll": "etw. überprüfen",
+      "ex": "Überprüfe am Ende deine Antworten noch einmal.",
+      "exZh": "最后再检查一遍你的答案。",
+      "src": "自编"
+     },
+     {
+      "w": "sich auszeichnen durch + A",
+      "cn": "以……著称",
+      "coll": "sich durch Offenheit auszeichnen",
+      "ex": "… eine nette junge Lehrerin, die sich durch Offenheit, Freundlichkeit, Aufgeschlossenheit auszeichnet",
+      "exZh": "一位和善的年轻女老师，她以开放、友善、乐于接纳著称",
+      "src": "S.14 ③"
+     },
+     {
+      "w": "bestrebt sein, etw. zu tun",
+      "cn": "致力于做某事",
+      "coll": "bestrebt sein, etw. zu vermitteln",
+      "ex": "Er ist bestrebt, jeden Tag eine halbe Stunde Deutsch zu sprechen.",
+      "exZh": "他每天坚持说半小时德语。",
+      "src": "自编"
+     },
+     {
+      "w": "der Spaß an + D",
+      "cn": "对……的乐趣",
+      "coll": "Spaß am Lernen",
+      "ex": "Ich habe wieder Spaß am Lesen gefunden.",
+      "exZh": "我又找回了读书的乐趣。",
+      "src": "自编"
+     },
+     {
+      "w": "vermitteln",
+      "cn": "传授，传递",
+      "coll": "jdm. etw. vermitteln",
+      "ex": "Der Lehrer vermittelt uns den Spaß am Lesen.",
+      "exZh": "老师把读书的乐趣传给我们。",
+      "src": "自编"
+     }
+    ]
+   },
+   {
+    "id": "W5",
+    "label": "W5 课余与朋友",
+    "lead": "放学以后谁做主",
+    "src": "S.15 ④ · 自编",
+    "rows": [
+     {
+      "w": "sich heraus|halten aus + D",
+      "cn": "不插手某事",
+      "coll": "sich aus etw. heraushalten",
+      "ex": "… denn die Erwachsenen hielten sich aus diesen meistens heraus.",
+      "exZh": "因为大人基本不插手这些事。",
+      "src": "S.15 ④"
+     },
+     {
+      "w": "die Streiterei, -en",
+      "cn": "争吵",
+      "coll": "Streitereien über Kleinigkeiten",
+      "ex": "Alltägliche Streitereien über Kleinigkeiten ließen sich untereinander klären.",
+      "exZh": "日常为小事争吵，都可以自己解决。",
+      "src": "S.15 ④"
+     },
+     {
+      "w": "klären",
+      "cn": "解决，澄清",
+      "coll": "einen Streit klären",
+      "ex": "Kleinigkeiten lassen sich schnell klären.",
+      "exZh": "小事很快就能说清。",
+      "src": "自编"
+     },
+     {
+      "w": "die Verabredung, -en",
+      "cn": "约定，约会",
+      "coll": "eine Verabredung treffen",
+      "ex": "… sondern wurden untereinander in der Schule vereinbart.",
+      "exZh": "而是在学校里自己约好的。",
+      "src": "S.15 ④"
+     },
+     {
+      "w": "vereinbaren",
+      "cn": "约定",
+      "coll": "einen Termin vereinbaren",
+      "ex": "Wir vereinbaren einen Termin für Samstag.",
+      "exZh": "我们约周六见。",
+      "src": "自编"
+     },
+     {
+      "w": "der Treffpunkt, -e",
+      "cn": "碰面地点",
+      "coll": "sich am Treffpunkt treffen",
+      "ex": "Man fand sich an bestimmten Treffpunkten.",
+      "exZh": "大家在固定的碰面点见面。",
+      "src": "S.15 ④"
+     },
+     {
+      "w": "das Brettspiel, -e",
+      "cn": "桌游",
+      "coll": "Brettspiele spielen",
+      "ex": "Meine Freunde und ich spielen lieber Brettspiele.",
+      "exZh": "我和朋友们更喜欢玩桌游。",
+      "src": "S.15 ④"
+     },
+     {
+      "w": "ins Freie gehen",
+      "cn": "到户外去",
+      "coll": "lieber ins Freie gehen",
+      "ex": "Meine Freunde und ich spielen lieber Brettspiele oder gehen ins Freie.",
+      "exZh": "我和朋友们更喜欢玩桌游，或者到户外去。",
+      "src": "S.15 ④"
+     },
+     {
+      "w": "die digitalen Medien (Pl.)",
+      "cn": "数字媒体",
+      "coll": "viel mit digitalen Medien spielen",
+      "ex": "Ich spiele natürlich viel mit den digitalen Medien, am Handy oder am Rechner.",
+      "exZh": "我当然大量使用数字媒体，手机或电脑。",
+      "src": "S.15 ④"
+     },
+     {
+      "w": "unvorstellbar",
+      "cn": "难以想象",
+      "coll": "unvorstellbar sein",
+      "ex": "Es ist unvorstellbar, wie das Leben ohne solche digitalen Medien aussieht.",
+      "exZh": "很难想象没有这些数字媒体生活会是什么样。",
+      "src": "S.15 ④"
+     },
+     {
+      "w": "der Baustein, -e",
+      "cn": "积木",
+      "coll": "mit Bausteinen spielen",
+      "ex": "Mit Puppen oder mit einfachen Bausteinen spiele ich auch gern.",
+      "exZh": "我也喜欢玩娃娃或简单积木。",
+      "src": "S.15 ④"
+     },
+     {
+      "w": "die Puppe, -n",
+      "cn": "娃娃",
+      "coll": "mit Puppen spielen",
+      "ex": "In meiner Kindheit habe ich oft mit Puppen gespielt.",
+      "exZh": "我小时候常玩娃娃。",
+      "src": "自编"
+     }
+    ]
+   },
+   {
+    "id": "W6",
+    "label": "W6 阅读与想象",
+    "lead": "读什么、想什么",
+    "src": "S.15 ⑤ · 自编",
+    "rows": [
+     {
+      "w": "die Detektivgeschichte, -n",
+      "cn": "侦探故事",
+      "coll": "Detektivgeschichten lesen",
+      "ex": "Ich lese in meiner Freizeit gerne Detektivgeschichten.",
+      "exZh": "我空闲时喜欢读侦探故事。",
+      "src": "S.15 ⑤"
+     },
+     {
+      "w": "das Heft, -e",
+      "cn": "小册子，本子",
+      "coll": "die neuesten Hefte bekommen",
+      "ex": "Mein Schulfreund Hans hatte von seiner Tante immer die neuesten Micky-Maus-Hefte.",
+      "exZh": "我的同学汉斯总从他姑姑那儿拿到最新的米老鼠小册子。",
+      "src": "S.15 ⑤"
+     },
+     {
+      "w": "die Magie",
+      "cn": "魔法（无复数）",
+      "coll": "Geschichten über Magie",
+      "ex": "Wir sprechen im Unterricht oft über Magie und Fantasie.",
+      "exZh": "我们课上常谈到魔法和想象。",
+      "src": "自编"
+     },
+     {
+      "w": "die magische Welt",
+      "cn": "魔法世界",
+      "coll": "in einer magischen Welt leben",
+      "ex": "Ich träume oft von einem Leben in einer magischen Welt.",
+      "exZh": "我常梦想生活在一个魔法世界里。",
+      "src": "S.15 ⑤"
+     },
+     {
+      "w": "träumen von + D",
+      "cn": "梦想，做梦",
+      "coll": "von etw. träumen",
+      "ex": "Ich träume von einem Zimmer mit Blick aufs Meer.",
+      "exZh": "我梦想有一间能看见海的房间。",
+      "src": "自编"
+     },
+     {
+      "w": "lesen",
+      "cn": "读（liest / las / hat gelesen）",
+      "coll": "alle Bücher lesen, die …",
+      "ex": "Ach, ich wollte einfach alle Bücher lesen, die ich bekommen konnte.",
+      "exZh": "唉，我只想把能弄到的书全读了。",
+      "src": "S.15 ⑤"
+     },
+     {
+      "w": "bekommen",
+      "cn": "得到",
+      "coll": "etw. geschenkt bekommen",
+      "ex": "Zum Geburtstag habe ich ein Buch bekommen.",
+      "exZh": "生日我得到了一本书。",
+      "src": "自编"
+     },
+     {
+      "w": "super",
+      "cn": "很棒（口语，不变格）",
+      "coll": "Das war super!",
+      "ex": "Die waren super!",
+      "exZh": "那些太棒了！",
+      "src": "S.15 ⑤"
+     },
+     {
+      "w": "die Freizeit",
+      "cn": "空闲时间（无复数）",
+      "coll": "in meiner Freizeit",
+      "ex": "In meiner Freizeit spiele ich Basketball mit Freunden.",
+      "exZh": "我空闲时和朋友打篮球。",
+      "src": "自编"
+     }
+    ]
+   },
+   {
+    "id": "W7",
+    "label": "W7 幸福与感受",
+    "lead": "什么让人觉得幸福",
+    "src": "S.15 ⑥ · 自编 · S.25 · S.26",
+    "rows": [
+     {
+      "w": "das Glück",
+      "cn": "幸福；运气",
+      "coll": "Glück haben",
+      "ex": "Was bedeutet Glück für mich?",
+      "exZh": "幸福对我意味着什么？",
+      "src": "S.15 ⑥"
+     },
+     {
+      "w": "glücklich",
+      "cn": "幸福的",
+      "coll": "jdn. glücklich machen",
+      "ex": "Und Familienausflüge machen mich auch glücklich.",
+      "exZh": "家庭出游也让我幸福。",
+      "src": "S.15 ⑥"
+     },
+     {
+      "w": "das Glücksgefühl, -e",
+      "cn": "幸福感",
+      "coll": "ein Glücksgefühl auslösen",
+      "ex": "Ein gutes Gespräch löst bei mir ein Glücksgefühl aus.",
+      "exZh": "一次好的谈话会让我产生幸福感。",
+      "src": "自编"
+     },
+     {
+      "w": "die Entscheidung, -en",
+      "cn": "决定",
+      "coll": "eine Entscheidung treffen",
+      "ex": "Ich denke, die Freiheit, selbständige Entscheidungen treffen zu können, trägt viel zu meinem Glück bei.",
+      "exZh": "我认为，能够自己做决定的自由，对我的幸福贡献很大。",
+      "src": "S.15 ⑥"
+     },
+     {
+      "w": "beitragen zu + D",
+      "cn": "有助于",
+      "coll": "zu etw. beitragen",
+      "ex": "Sport trägt zu meiner Gesundheit bei.",
+      "exZh": "运动有助于我的健康。",
+      "src": "自编"
+     },
+     {
+      "w": "die Harmonie",
+      "cn": "和谐（无复数）",
+      "coll": "nach Harmonie streben",
+      "ex": "In einem ostasiatischen Land wie Japan beispielsweise gilt Harmonie mit anderen und sich selbst als Quelle des Glücks.",
+      "exZh": "比如在日本这样的东亚国家，与他人和自身的和谐被视为幸福之源。",
+      "src": "S.25"
+     },
+     {
+      "w": "streben nach + D",
+      "cn": "追求",
+      "coll": "nach etw. streben",
+      "ex": "Wir streben in China ebenfalls nach Harmonie.",
+      "exZh": "在中国我们也同样追求和谐。",
+      "src": "S.26"
+     },
+     {
+      "w": "auslösen",
+      "cn": "引发",
+      "coll": "etw. auslösen",
+      "ex": "Musik kann starke Gefühle auslösen.",
+      "exZh": "音乐能引发强烈的感受。",
+      "src": "自编"
+     },
+     {
+      "w": "zufrieden",
+      "cn": "满意的",
+      "coll": "mit etw. zufrieden sein",
+      "ex": "Bist du mit deinem Leben zufrieden?",
+      "exZh": "你对你的生活满意吗？",
+      "src": "自编"
+     },
+     {
+      "w": "vorübergehend",
+      "cn": "暂时的",
+      "coll": "nur vorübergehend",
+      "ex": "Doch können diese Faktoren nur vorübergehend Glück bringen.",
+      "exZh": "但这些因素只能带来暂时的幸福。",
+      "src": "S.26"
+     },
+     {
+      "w": "der Traum, ¨-e",
+      "cn": "梦，梦想",
+      "coll": "einen Traum verwirklichen",
+      "ex": "Wer in solch einem Land lebt, kann sich frei und selbständig entfalten und seinen eigenen Traum verwirklichen.",
+      "exZh": "生活在这样国家的人，能够自由而独立地发展自己，实现自己的梦想。",
+      "src": "S.26"
+     },
+     {
+      "w": "entfalten",
+      "cn": "施展，发展",
+      "coll": "sich frei entfalten",
+      "ex": "Wer in solch einem Land lebt, kann sich frei und selbständig entfalten und seinen eigenen Traum verwirklichen.",
+      "exZh": "生活在这样国家的人，能够自由而独立地发展自己，实现自己的梦想。",
+      "src": "S.26"
+     }
+    ]
+   },
+   {
+    "id": "W8",
+    "label": "W8 关系与社会",
+    "lead": "幸福和谁有关",
+    "src": "S.26 · 自编 · S.25",
+    "rows": [
+     {
+      "w": "die Beziehung, -en",
+      "cn": "关系",
+      "coll": "gute Beziehungen zu + D haben",
+      "ex": "Für mich bedeutet Harmonie, starke und positive Beziehungen zu anderen Menschen zu haben.",
+      "exZh": "对我来说和谐就是与他人有牢固而积极的关系。",
+      "src": "S.26"
+     },
+     {
+      "w": "der Nachbar, -n",
+      "cn": "邻居",
+      "coll": "Beziehungen zu Nachbarn",
+      "ex": "Gute Beziehungen zu Nachbarn machen das Wohnen angenehmer.",
+      "exZh": "和邻居关系好，住着也舒服。",
+      "src": "自编"
+     },
+     {
+      "w": "der Kollege, -n",
+      "cn": "同事",
+      "coll": "mit Kollegen zusammenarbeiten",
+      "ex": "Mit meinen Kollegen komme ich gut aus.",
+      "exZh": "我和同事相处得很好。",
+      "src": "自编"
+     },
+     {
+      "w": "die Zufallsbegegnung, -en",
+      "cn": "偶遇",
+      "coll": "eine Zufallsbegegnung im Zug",
+      "ex": "Sogar Zufallsbegegnungen können sich günstig auf unser Glücksempfinden auswirken.",
+      "exZh": "甚至偶遇也可能给我们的幸福感带来好影响。",
+      "src": "S.26"
+     },
+     {
+      "w": "sich auswirken auf + A",
+      "cn": "对……产生影响",
+      "coll": "sich günstig auf etw. auswirken",
+      "ex": "Sport wirkt sich günstig auf die Konzentration aus.",
+      "exZh": "运动对注意力有好的影响。",
+      "src": "自编"
+     },
+     {
+      "w": "verknüpft sein mit + D",
+      "cn": "与……紧密相连",
+      "coll": "eng mit etw. verknüpft sein",
+      "ex": "… ist unser persönliches Glück in China eng mit dem Schicksal unseres Landes verknüpft.",
+      "exZh": "在中国，我们个人的幸福与国家命运紧密相连。",
+      "src": "S.26"
+     },
+     {
+      "w": "das Schicksal",
+      "cn": "命运（无复数）",
+      "coll": "mit dem Schicksal verknüpft",
+      "ex": "Das Schicksal des Landes und unser eigenes Glück hängen zusammen.",
+      "exZh": "国家的命运和我们自己的幸福是连在一起的。",
+      "src": "自编"
+     },
+     {
+      "w": "der Mitbürger, -",
+      "cn": "同胞，同国人",
+      "coll": "die Mitbürger",
+      "ex": "Wenn die Mitbürger in Frieden und Sicherheit leben, fühlt man sich selbst sicherer.",
+      "exZh": "同胞生活在和平与安全中时，自己也会更安心。",
+      "src": "自编"
+     },
+     {
+      "w": "der Frieden",
+      "cn": "和平（无复数）",
+      "coll": "in Frieden leben",
+      "ex": "Wir möchten in Frieden leben.",
+      "exZh": "我们想生活在和平之中。",
+      "src": "自编"
+     },
+     {
+      "w": "die Einstellung, -en",
+      "cn": "观念，态度",
+      "coll": "die Einstellung zu + D",
+      "ex": "… dass in vielen westlichen Ländern die Einstellung herrscht, dass Glücksgefühle mehr mit persönlichem Erfolg zusammenhängen.",
+      "exZh": "……在许多西方国家盛行这样的观念：幸福感与个人成就关系更密切。",
+      "src": "S.25"
+     },
+     {
+      "w": "herrschen",
+      "cn": "盛行，笼罩",
+      "coll": "eine Meinung herrscht",
+      "ex": "In diesem Land herrscht eine andere Einstellung.",
+      "exZh": "这个国家盛行另一种观念。",
+      "src": "自编"
+     },
+     {
+      "w": "die Selbstverwirklichung",
+      "cn": "自我实现（无复数）",
+      "coll": "nach Selbstverwirklichung streben",
+      "ex": "Für mich kommt es wohl auch auf die persönliche Entwicklung, auf Karriere und Selbstverwirklichung an.",
+      "exZh": "对我来说，恐怕也要看个人发展、职业和自我实现。",
+      "src": "S.25"
+     },
+     {
+      "w": "zusammen|hängen mit + D",
+      "cn": "与……有关",
+      "coll": "mit etw. zusammenhängen",
+      "ex": "Ich glaube, Glück hängt mit guten Beziehungen zusammen.",
+      "exZh": "我认为幸福和良好的人际关系有关。",
+      "src": "自编"
+     },
+     {
+      "w": "die Zugehörigkeit",
+      "cn": "归属感（无复数）",
+      "coll": "Gefühle von Zugehörigkeit vermitteln",
+      "ex": "… die Gefühle von Verbundenheit und Zugehörigkeit vermitteln.",
+      "exZh": "……带来联结感和归属感。",
+      "src": "S.26"
+     }
+    ]
+   }
+  ]
+ },
+ "wortbildung": {
+  "title": "构词线索　形容词和动词怎么变成名词",
+  "lead": "课文里光是 -heit/-keit 名词就有七个（Kindheit、Sicherheit、Gehorsamkeit、Offenheit、Freundlichkeit、Aufgeschlossenheit、Zugehörigkeit），这不是巧合，是德语最省力的造词法之一。看清这一条，词表上半页的词会自己长出亲戚来。",
+  "header": [
+   "后缀",
+   "从哪来",
+   "变化示例",
+   "造出来的名词"
+  ],
+  "rows": [
+   [
+    "-heit",
+    "形容词（词干不以 -ig/-lich/-sam/-bar 结尾）",
+    "sicher → die Sicherheit",
+    "die Kindheit、die Sicherheit、die Freiheit、die Zufriedenheit、die Verbundenheit、die Gewissheit、die Aufgeschlossenheit"
+   ],
+   [
+    "-keit",
+    "形容词（词尾 -ig / -lich / -sam / -bar）",
+    "freundlich → die Freundlichkeit；richtig → die Richtigkeit",
+    "die Freundlichkeit、die Möglichkeit、die Schwierigkeit、die Aufgeschlossenheit 之外的 -igkeit 词（selbstständig → die Selbstständigkeit）"
+   ],
+   [
+    "-ung",
+    "动词",
+    "versorgen → die Versorgung；entscheiden → die Entscheidung",
+    "die Versorgung、die Entscheidung、die Einstellung、die Verabredung、die Begegnung、die Sicherung（Kindersicherung）"
+   ]
+  ],
+  "note": "三条一起记：**-heit / -keit 出「性质」，-ung 出「过程或结果」，全部是阴性 die。**顺带一个坑：形容词词尾是 -ig / -lich / -sam / -bar 的，几乎都用 -keit 而不是 -heit。"
+ },
+ "satzmuster": {
+  "title": "句型库 · Satzmuster",
+  "instruction": "九条句型全部从课文里长出来。每条给四样：骨架（方括号可换）、什么时候用、三句例句（带出处）、最常见的错法。练法：先遮住例句，用骨架说一句自己的事，再对例句。",
+  "groups": [
+   {
+    "id": "sm-1",
+    "label": "A · 说「什么塑造了谁」与「和……一样」",
+    "src": "教材 Lektion 1 · Text 1（S.13–S.15）/ Text 2（S.25–S.26）",
+    "note": "每条给四样：骨架（方括号可换）、用法（什么时候说这句）、三句例句（带出处）、以及常错的地方。",
+    "items": [
+     {
+      "no": "S1",
+      "pattern": "geprägt sein von + D",
+      "fn": "说「什么塑造了谁」，讲一个人的成长背景时最好用。",
+      "use": "说自己的事：Meine Kindheit war von meinen Großeltern geprägt.",
+      "ex": [
+       {
+        "de": "Meine Kindheit war von der Nachkriegszeit geprägt.",
+        "zh": "我的童年是被战后岁月塑造的。",
+        "src": "S.13"
+       },
+       {
+        "de": "Mein Alltag ist von einem vollen Stundenplan geprägt.",
+        "zh": "我的日常被排满的课表塑造着。",
+        "src": "自编"
+       },
+       {
+        "de": "Diese Stadt ist von der Industrie geprägt.",
+        "zh": "这座城市是被工业塑造的。",
+        "src": "自编"
+       }
+      ],
+      "slots": [
+       {
+        "de": "Meine Kindheit war von ______ geprägt.",
+        "zh": "填一个名词：Musik / der Schule / meinen Großeltern"
+       },
+       {
+        "de": "Mein Alltag ist von ______ geprägt.",
+        "zh": "填你真实的一项：Handy / Sport / der Prüfungszeit"
+       }
+      ],
+      "wrong": [
+       {
+        "bad": "Meine Kindheit hat von der Nachkriegszeit geprägt.",
+        "good": "Meine Kindheit war von der Nachkriegszeit geprägt."
+       },
+       {
+        "bad": "由……塑造 → geprägt bei",
+        "good": "由……塑造 → geprägt von + D"
+       }
+      ]
+     },
+     {
+      "no": "S9",
+      "pattern": "ebenso … wie / anders als … / im Gegensatz zu + D",
+      "fn": "做比较：一样、不一样、与……相反。写对比段时的三根支柱。",
+      "use": "对比段第一句就靠它：Im Gegensatz zu meinen Eltern habe ich heute mehr Freiheit, aber auch mehr Druck.",
+      "ex": [
+       {
+        "de": "Für unsere Eltern und Großeltern ist das Glücksempfinden anders als für uns.",
+        "zh": "对我们父母和祖父母来说，幸福感与我们不同。",
+        "src": "S.25"
+       },
+       {
+        "de": "Sehr interessant ist übrigens, dass die Pflege menschlicher Beziehungen in manchen europäischen Ländern wie der Schweiz und Island … ebenso wichtig ist wie in Japan.",
+        "zh": "有意思的是，在瑞士、冰岛等一些欧洲国家，人际关系的维系和在日本一样重要。",
+        "src": "S.26"
+       },
+       {
+        "de": "Im Gegensatz zu früher haben wir heute viel mehr Freizeit.",
+        "zh": "与从前相比，我们今天空闲时间多得多。",
+        "src": "自编"
+       }
+      ],
+      "slots": [
+       {
+        "de": "Deutsch ist für mich ebenso schwer ______ Englisch.",
+        "zh": "比较词"
+       },
+       {
+        "de": "______ ______ zu meinen Eltern lerne ich heute mit dem Handy.",
+        "zh": "填「与……相反」"
+       }
+      ],
+      "wrong": [
+       {
+        "bad": "ebenso wichtig als",
+        "good": "ebenso wichtig wie"
+       },
+       {
+        "bad": "anders wie früher",
+        "good": "anders als früher"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "sm-2",
+    "label": "B · 不说谁做：两种被动替代",
+    "src": "教材 Lektion 1 · Text 1（S.13–S.15）/ Text 2（S.25–S.26）",
+    "note": "每条给四样：骨架（方括号可换）、用法（什么时候说这句）、三句例句（带出处）、以及常错的地方。",
+    "items": [
+     {
+      "no": "S2",
+      "pattern": "sich lassen + Infinitiv",
+      "fn": "说「这东西好处理 / 能解决」，但不说是谁做的。德语里最省事的被动替代。",
+      "use": "宿舍里就能用：Die Tür lässt sich nicht abschließen. / Das Problem lässt sich schnell klären.",
+      "ex": [
+       {
+        "de": "Medikamentenpackungen ließen sich leicht öffnen.",
+        "zh": "药盒一拧就开。",
+        "src": "S.14 ②"
+       },
+       {
+        "de": "Alltägliche Streitereien über Kleinigkeiten ließen sich untereinander klären.",
+        "zh": "日常为小事争吵，都可以自己解决。",
+        "src": "S.15 ④"
+       },
+       {
+        "de": "Diese Aufgabe lässt sich in zehn Minuten lösen.",
+        "zh": "这个任务十分钟能解决。",
+        "src": "自编"
+       }
+      ],
+      "slots": [
+       {
+        "de": "Das Fenster lässt sich nicht ______.",
+        "zh": "填 öffnen / schließen"
+       },
+       {
+        "de": "Der Text ______ sich leicht lesen.",
+        "zh": "填 lässt 的变位（主语是 der Text）"
+       }
+      ],
+      "wrong": [
+       {
+        "bad": "Die Tür lässt sich nicht von mir schließen.",
+        "good": "Die Tür lässt sich nicht schließen.（施事不出现，也不加 von）"
+       },
+       {
+        "bad": "ließ sich 当成「让」",
+        "good": "ließ sich öffnen = man konnte es öffnen（能打开），不是「让它打开」"
+       }
+      ]
+     },
+     {
+      "no": "S3",
+      "pattern": "sein + zu + Infinitiv",
+      "fn": "把「该做 / 能做」挂到东西上，主语是「事」不是「人」。写作业、填表格、交材料时最常遇到。",
+      "use": "课堂通知、作业要求里天天见：Die Antworten sind auf Deutsch zu schreiben.",
+      "ex": [
+       {
+        "de": "Eigene Ideen sind zu entwickeln und zu überprüfen.",
+        "zh": "自己的观点要去发展、去检验。",
+        "src": "S.14 ③"
+       },
+       {
+        "de": "Der Sonntag war der einzige freie Tag der Woche und meist mit meiner Familie zu verbringen.",
+        "zh": "星期天是一周里唯一空闲的一天，通常得用来陪家人。",
+        "src": "S.15 ⑥"
+       },
+       {
+        "de": "Die Hausaufgaben sind bis Freitag zu machen.",
+        "zh": "作业周五前要做完。",
+        "src": "自编"
+       }
+      ],
+      "slots": [
+       {
+        "de": "Das Formular ist online ______.",
+        "zh": "填 ausfüllen 的正确形式（可分动词）"
+       },
+       {
+        "de": "Die Aufgaben sind heute ______.",
+        "zh": "填 machen 的正确形式"
+       }
+      ],
+      "wrong": [
+       {
+        "bad": "Die Ideen sind zu entwickeln und überprüfen.",
+        "good": "Die Ideen sind zu entwickeln und zu überprüfen.（并列时 zu 要重复）"
+       },
+       {
+        "bad": "Formular ist auszufüllen online.",
+        "good": "Das Formular ist online auszufüllen.（zu 的不定式放句末）"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "sm-3",
+    "label": "C · 从句与固定搭配",
+    "src": "教材 Lektion 1 · Text 1（S.13–S.15）/ Text 2（S.25–S.26）",
+    "note": "每条给四样：骨架（方括号可换）、用法（什么时候说这句）、三句例句（带出处）、以及常错的地方。",
+    "items": [
+     {
+      "no": "S4",
+      "pattern": "关系从句：名词 + der/die/das …",
+      "fn": "接着刚才那个名词往下说「哪一个」。课文里出现十几次，写作文时全靠它把两句话缝成一句。",
+      "use": "自我介绍：Ich wohne in einem Zimmer, das nur ein Fenster hat.",
+      "ex": [
+       {
+        "de": "Zum Glück habe ich eine nette junge Lehrerin, die sich durch Offenheit, Freundlichkeit, Aufgeschlossenheit usw. auszeichnet.",
+        "zh": "很幸运我有一位和善的年轻女老师，她以开放、友善、乐于接纳等著称。",
+        "src": "S.14 ③"
+       },
+       {
+        "de": "Ach, ich wollte einfach alle Bücher lesen, die ich bekommen konnte.",
+        "zh": "唉，我只想把能弄到的书全读了。",
+        "src": "S.15 ⑤"
+       },
+       {
+        "de": "Ich habe eine Freundin, mit der ich jeden Tag Deutsch übe.",
+        "zh": "我有一位朋友，我每天和她练德语。",
+        "src": "自编"
+       }
+      ],
+      "slots": [
+       {
+        "de": "Ich habe einen Freund, ______ in Berlin studiert.",
+        "zh": "先行词 der Freund 在从句里是主语"
+       },
+       {
+        "de": "Das Buch, ______ ich gestern gelesen habe, war super.",
+        "zh": "先行词 das Buch 在从句里是宾语"
+       }
+      ],
+      "wrong": [
+       {
+        "bad": "Der Film, der ich gestern gesehen habe, war gut.",
+        "good": "Der Film, den ich gestern gesehen habe, war gut.（格看从句里的活，不看主句）"
+       },
+       {
+        "bad": "Die Freundin, mit die ich lerne, wohnt hier.",
+        "good": "Die Freundin, mit der ich lerne, wohnt hier.（介词后也用格）"
+       }
+      ]
+     },
+     {
+      "no": "S5",
+      "pattern": "wer … / was …（主语从句）",
+      "fn": "wer 指人（凡是……的人），was 指事（……的事）。整个从句当主语，放句首。",
+      "use": "回答「什么让你幸福」：Was mich glücklich macht, ist ein Abend mit Freunden.",
+      "ex": [
+       {
+        "de": "Doch wer trug schon einen Helm?",
+        "zh": "可当时谁戴头盔呢？",
+        "src": "S.14 ②"
+       },
+       {
+        "de": "Wer genug zu essen und ein sicheres Zuhause hatte, empfand schon Glück.",
+        "zh": "有足够食物和安全住所的人，已经觉得幸福了。",
+        "src": "S.25 练习 9"
+       },
+       {
+        "de": "Was mich glücklich macht, ist Musik.",
+        "zh": "让我幸福的是音乐。",
+        "src": "自编"
+       }
+      ],
+      "slots": [
+       {
+        "de": "______ mich glücklich macht, ist ein gutes Gespräch.",
+        "zh": "指「事」，句首大写"
+       },
+       {
+        "de": "______ viel lernt, hat später mehr Chancen.",
+        "zh": "指「人」"
+       }
+      ],
+      "wrong": [
+       {
+        "bad": "Was mich glücklich macht, es ist Musik.",
+        "good": "Was mich glücklich macht, ist Musik.（从句占第一位，主干动词紧随其后）"
+       },
+       {
+        "bad": "承接前句时写成大写 Was",
+        "good": "承接前句的小写：Das, was das Glücksgefühl auslöst, …"
+       }
+      ]
+     },
+     {
+      "no": "S6",
+      "pattern": "je + 比较级 …, desto + 比较级 …",
+      "fn": "说「越……越……」。谈变化、谈趋势时一句顶三句。课文采访里 Lukas 的原话。",
+      "use": "谈学习：Je mehr Wörter ich kenne, desto leichter lese ich.",
+      "ex": [
+       {
+        "de": "Je mehr wir haben, desto mehr wollen wir.",
+        "zh": "我们拥有的越多，想要的越多。",
+        "src": "S.25"
+       },
+       {
+        "de": "Je länger ich lerne, desto müder werde ich.",
+        "zh": "我学得越久越累。",
+        "src": "自编"
+       },
+       {
+        "de": "Je früher du anfängst, desto besser.",
+        "zh": "你开始得越早越好。",
+        "src": "自编"
+       }
+      ],
+      "slots": [
+       {
+        "de": "Je mehr ich übe, desto besser ______ ich.",
+        "zh": "主语是 ich，动词 sprechen"
+       },
+       {
+        "de": "Je länger wir warten, desto ______ wird es.",
+        "zh": "填一个比较级：schwierig"
+       }
+      ],
+      "wrong": [
+       {
+        "bad": "Je mehr ich lerne, desto besser ich verstehe.",
+        "good": "Je mehr ich lerne, desto besser verstehe ich.（desto 后面是主句语序，动词第二位）"
+       },
+       {
+        "bad": "desto mehr wir wollen",
+        "good": "desto mehr wollen wir"
+       }
+      ]
+     },
+     {
+      "no": "S7",
+      "pattern": "es kommt auf + A an",
+      "fn": "说「关键在……」。可分动词 an|kommen，an 放句末，别丢。",
+      "use": "组队做报告时：Es kommt darauf an, ob wir die Zeit gut einteilen.",
+      "ex": [
+       {
+        "de": "Für mich kommt es wohl auch auf die persönliche Entwicklung, auf Karriere und Selbstverwirklichung an.",
+        "zh": "对我来说，恐怕也要看个人发展、职业和自我实现。",
+        "src": "S.25"
+       },
+       {
+        "de": "Beim Lernen kommt es auf die Methode an.",
+        "zh": "学习关键在方法。",
+        "src": "自编"
+       },
+       {
+        "de": "Es kommt darauf an, wie viel Zeit du hast.",
+        "zh": "这取决于你有多少时间。",
+        "src": "自编"
+       }
+      ],
+      "slots": [
+       {
+        "de": "Bei der Prüfung kommt es auf die Vorbereitung ______.",
+        "zh": "补上句末那个小词"
+       },
+       {
+        "de": "Es kommt ______ an, ob du mitkommst.",
+        "zh": "指代前面整件事"
+       }
+      ],
+      "wrong": [
+       {
+        "bad": "Es kommt auf die Methode.",
+        "good": "Es kommt auf die Methode an.（an 不能丢）"
+       },
+       {
+        "bad": "Es kommt auf Methode an.",
+        "good": "Es kommt auf die Methode an.（名词要有冠词）"
+       }
+      ]
+     },
+     {
+      "no": "S8",
+      "pattern": "sich auswirken auf + A",
+      "fn": "说「对……有影响」。说效果、说后果，一句到位。",
+      "use": "说自己的经验：Musik wirkt sich gut auf meine Stimmung aus.",
+      "ex": [
+       {
+        "de": "Sogar Zufallsbegegnungen können sich günstig auf unser Glücksempfinden auswirken.",
+        "zh": "甚至偶遇也可能给我们的幸福感带来好影响。",
+        "src": "S.26"
+       },
+       {
+        "de": "Zu wenig Schlaf wirkt sich schlecht auf die Konzentration aus.",
+        "zh": "睡眠不足对注意力有坏影响。",
+        "src": "自编"
+       },
+       {
+        "de": "Sport wirkt sich günstig auf die Gesundheit aus.",
+        "zh": "运动对健康有好的影响。",
+        "src": "自编"
+       }
+      ],
+      "slots": [
+       {
+        "de": "Zu viel Handy wirkt sich schlecht ______ die Augen aus.",
+        "zh": "填介词"
+       },
+       {
+        "de": "Sport ______ sich günstig auf die Gesundheit aus.",
+        "zh": "填 wirken 的变位"
+       }
+      ],
+      "wrong": [
+       {
+        "bad": "Es wirkt sich auf die Gesundheit.",
+        "good": "Es wirkt sich auf die Gesundheit aus.（可分动词 aus 在句末）"
+       },
+       {
+        "bad": "auswirken auf + D",
+        "good": "auswirken auf + A（第四格）"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "werkstatt": {
+   "title": "🔧 语序工坊 · 点词块组句",
+   "note": "句子全部取自课文。先读中文，再把词块按德语语序点进下面的空行，然后点「检查语序」。两条死规律：变位动词占第二位；从句动词到句末。",
+   "items": [
+    {
+     "cat": "课文 · Oma",
+     "zh": "我的童年是被战后岁月塑造的，只有贫穷、废墟，以及学校和家庭里的暴力经历。",
+     "chunks": [
+      "Meine Kindheit",
+      "war",
+      "von der Nachkriegszeit",
+      "geprägt,",
+      "nur Armut, Trümmer, Gewalterfahrung",
+      "in Schule und Familie."
+     ],
+     "src": "教材 S.13–S.15"
+    },
+    {
+     "cat": "课文 · Oma",
+     "zh": "她忙得不可开交。",
+     "chunks": [
+      "Sie",
+      "hatte",
+      "alle Hände voll",
+      "zu tun."
+     ],
+     "src": "教材 S.13–S.15"
+    },
+    {
+     "cat": "课文 · Oma",
+     "zh": "过去人们没把孩子的安全当回事。",
+     "chunks": [
+      "Die Sicherheit der Kinder",
+      "wurde",
+      "früher",
+      "auf die leichte Schulter",
+      "genommen."
+     ],
+     "src": "教材 S.13–S.15"
+    },
+    {
+     "cat": "课文 · Emilie",
+     "zh": "自己的观点要去发展、去检验。",
+     "chunks": [
+      "Eigene Ideen",
+      "sind",
+      "zu entwickeln",
+      "und",
+      "zu überprüfen."
+     ],
+     "src": "教材 S.13–S.15"
+    },
+    {
+     "cat": "课文 · Oma",
+     "zh": "我们放学后大多离开家，一整天待在街上。",
+     "chunks": [
+      "Wir",
+      "verließen",
+      "meist nach der Schule",
+      "die Wohnung",
+      "und",
+      "verbrachten",
+      "den ganzen Tag",
+      "auf der Straße."
+     ],
+     "src": "教材 S.13–S.15"
+    },
+    {
+     "cat": "课文 · Prof. Liu",
+     "zh": "有足够吃的、有安全的家，就已经觉得幸福了。",
+     "chunks": [
+      "Wer genug zu essen und ein sicheres Zuhause hatte,",
+      "empfand",
+      "schon",
+      "Glück."
+     ],
+     "src": "教材 S.25–S.26"
+    },
+    {
+     "cat": "课文 · Lukas",
+     "zh": "我们拥有的越多，想要的也越多。",
+     "chunks": [
+      "Je mehr",
+      "wir",
+      "haben,",
+      "desto mehr",
+      "wollen",
+      "wir."
+     ],
+     "src": "教材 S.25–S.26"
+    },
+    {
+     "cat": "课文 · Prof. Liu",
+     "zh": "甚至偶遇也能对我们的幸福感产生好的影响。",
+     "chunks": [
+      "Sogar Zufallsbegegnungen",
+      "können",
+      "sich",
+      "günstig",
+      "auf unser Glücksempfinden",
+      "auswirken."
+     ],
+     "src": "教材 S.25–S.26"
+    }
+   ]
+  }
+ },
+ "kollokationen": {
+  "title": "🔗 搭配连线 · Was passt zusammen?",
+  "instruction": "左边是搭配，右边是中文。这一课丢分大半丢在介词上——把整块搭配背下来，写句子时不用现拼。",
+  "src": "教材 Lektion 1 · 介词搭配清单（按支配格汇总，见上课版附录 B）",
+  "pairs": [
+   [
+    "sich kümmern um + A",
+    "照顾，操心"
+   ],
+   [
+    "sich auswirken auf + A",
+    "对……产生影响"
+   ],
+   [
+    "es kommt auf + A an",
+    "取决于……（关键在……）"
+   ],
+   [
+    "sich auszeichnen durch + A",
+    "以……著称"
+   ],
+   [
+    "sich heraushalten aus + D",
+    "不插手某事"
+   ],
+   [
+    "geprägt sein von + D",
+    "由……塑造"
+   ],
+   [
+    "träumen von + D",
+    "梦想，做梦"
+   ],
+   [
+    "verknüpft sein mit + D",
+    "与……紧密相连"
+   ],
+   [
+    "zusammenhängen mit + D",
+    "与……有关"
+   ],
+   [
+    "zufrieden sein mit + D",
+    "对……满意"
+   ],
+   [
+    "streben nach + D",
+    "追求"
+   ],
+   [
+    "beitragen zu + D",
+    "有助于"
+   ],
+   [
+    "Beziehung / Einstellung zu + D",
+    "对……的关系／态度"
+   ],
+   [
+    "Angst haben vor + D",
+    "害怕某事"
+   ]
+  ]
+ },
+ "rede_cloze": {
+  "title": "练习 9 · 完形（教材 S.25–S.26）",
+  "instruction": "教材原题是「听录音填空」（Hören Sie und ergänzen Sie den Text mit den angegebenen Satzteilen）。这里没有音频，改用词库：先点句子里的空位，再点上面的词块填进去，最后点「检查」。词块只有五个，空也正好五个。",
+  "src": "教材 S.25–S.26 · 练习 9 原文",
+  "bank": [
+   "Was die Menschen in einem Land glücklich macht",
+   "Was sie früher glücklich machte",
+   "Wer genug zu essen und ein sicheres Zuhause hatte",
+   "was das Glücksgefühl auslöst",
+   "Wer in solch einem Land lebt"
+  ],
+  "blocks": [
+   {
+    "p": "Der Austauschstudent Lukas schreibt einen Artikel zum Thema „Glück“ für die Zeitschrift „Interkulturelle Kommunikation“. Dafür befragt er Frau Prof. Liu, eine chinesische Expertin auf dem Gebiet der Psychologie.",
+    "ans": []
+   },
+   {
+    "p": "Lukas: Frau Prof. Liu, vielen Dank für Ihre Zeit. Ich möchte gleich mit der zentralen Frage beginnen: Was macht einen Menschen glücklich?",
+    "ans": []
+   },
+   {
+    "p": "Frau Prof. Liu: Das ist eine umfassende Frage. Das, [[1]], ist für die Menschen natürlich unterschiedlich, je nachdem, wer darüber spricht, in welcher Zeit und in welchem Land man lebt.",
+    "ans": [
+     "Was die Menschen in einem Land glücklich macht"
+    ]
+   },
+   {
+    "p": "Lukas: Könnten Sie das vielleicht etwas näher erläutern, Frau Prof. Liu?",
+    "ans": []
+   },
+   {
+    "p": "Frau Prof. Liu: Für unsere Eltern und Großeltern ist das Glücksempfinden anders als für uns. [[2]], war ein einfaches Leben. [[3]], empfand schon Glück. Doch heutzutage benötigen wir offensichtlich immer mehr, um glücklich zu sein. Es scheint für den modernen Menschen schwerer zu sein, Glück zu empfinden, ständig sind wir auf der Suche nach Glück.",
+    "ans": [
+     "Was sie früher glücklich machte",
+     "Wer genug zu essen und ein sicheres Zuhause hatte"
+    ]
+   },
+   {
+    "p": "Lukas: Diesen Eindruck habe ich auch. Je mehr wir haben, desto mehr wollen wir. Sie sagten gerade, dass es eine Rolle spielt, in welchem Land man lebt. Könnten Sie zu diesem Punkt vielleicht noch etwas sagen?",
+    "ans": []
+   },
+   {
+    "p": "Frau Prof. Liu: Ja, gerne. Die Ursachen für Glücksgefühle können sich von Kultur zu Kultur unterscheiden.¦ [[4]], kann in einem anderen Land ganz anders sein. Eine Forschungsgruppe hat eine Studie in 63 Ländern durchgeführt. Es wurde gezeigt, dass in vielen westlichen Ländern die Einstellung herrscht, dass Glücksgefühle mehr mit persönlichem Erfolg zusammenhängen. Für Menschen aus anderen Kulturkreisen muss das keineswegs so gelten. In einem ostasiatischen Land wie Japan beispielsweise gilt Harmonie mit anderen und sich selbst als Quelle des Glücks.",
+    "ans": [
+     "was das Glücksgefühl auslöst"
+    ]
+   },
+   {
+    "p": "Lukas: Wie Sie wissen, komme ich aus einem westlichen Land. Für mich kommt es wohl auch auf die persönliche Entwicklung, auf Karriere und Selbstverwirklichung an. Was verstehen Sie übrigens unter „Harmonie mit anderen“?",
+    "ans": []
+   },
+   {
+    "p": "Frau Prof. Liu: Für mich bedeutet Harmonie, starke und positive Beziehungen zu anderen Menschen zu haben, die die Gefühle von Verbundenheit und Zugehörigkeit vermitteln. Damit sind nicht nur Paarbeziehungen, sondern auch gute Beziehungen zu Familienmitgliedern wie Eltern und Kindern, zu Freunden, Kollegen oder Nachbarn gemeint. Sogar Zufallsbegegnungen können sich günstig auf unser Glücksempfinden auswirken. Sehr interessant ist übrigens, dass die Pflege menschlicher Beziehungen in manchen europäischen Ländern wie der Schweiz und Island, aber auch in Lateinamerika ebenso wichtig ist wie in Japan.",
+    "ans": []
+   },
+   {
+    "p": "Lukas: Und wie ist es in China?",
+    "ans": []
+   },
+   {
+    "p": "Frau Prof. Liu: Wir streben in China ebenfalls nach Harmonie. Harmonie in der Familie, in den Beziehungen zu Freunden, Kollegen und Nachbarn. Aber noch wichtiger ist, dass unser Glück mit der Gewissheit verbunden ist, dass man in einem sicheren und prosperierenden Land lebt. [[5]], kann sich frei und selbständig entfalten und seinen eigenen Traum verwirklichen.",
+    "ans": [
+     "Wer in solch einem Land lebt"
+    ]
+   },
+   {
+    "p": "Lukas: Ja, jetzt verstehe ich, inwiefern das Glücksempfinden kulturabhängig ist. Nun interessiert mich noch, wie man in China persönliches Glück finden kann?",
+    "ans": []
+   },
+   {
+    "p": "Frau Prof. Liu: Glück zu finden ist nicht schwer. Musik hören, Sport treiben und gute soziale Beziehungen zu haben – all dies können Wege zum Glück sein. Doch können diese Faktoren nur vorübergehend Glück bringen. Wie ich zuvor erwähnt habe, ist unser persönliches Glück in China eng mit dem Schicksal unseres Landes verknüpft. Wenn man sieht, dass es dem eigenen Land gut geht und die Mitbürger in Frieden und Sicherheit leben, kann diese Wahrnehmung das individuelle Glück positiv beeinflussen.",
+    "ans": []
+   },
+   {
+    "p": "Lukas: Was kann man denn als einzelne Person tun, um glücklich zu sein und gleichzeitig sein Land zu unterstützen?",
+    "ans": []
+   }
+  ]
+ },
+ "schreibwerkstatt": {
+  "title": "✍️ 改写 + 中译德 · 把句型用出去",
+  "instruction": "左边是原句与要求，中间给骨架，右边自己写。写完点「参考写法」对照——写得不一样但语法对，就是对的。",
+  "rewrite": [
+   {
+    "de": "Man kann den Text leicht lesen.",
+    "zh": "改用 sich lassen",
+    "pat": "[Der Text] lässt sich [leicht lesen].",
+    "ph": "sich lassen + 不定式；主语是被处理的东西，不加 von",
+    "ref": "Der Text lässt sich leicht lesen."
+   },
+   {
+    "de": "Man muss die Hausaufgaben bis Freitag machen.",
+    "zh": "改用 sein + zu + Infinitiv",
+    "pat": "[Die Hausaufgaben] sind bis Freitag [zu machen].",
+    "ph": "sein + zu + 不定式 = 必须／可以；被动替代",
+    "ref": "Die Hausaufgaben sind bis Freitag zu machen."
+   },
+   {
+    "de": "Ich habe einen Freund. Er studiert in Berlin.",
+    "zh": "两句合一句，用关系从句",
+    "pat": "Ich habe einen Freund, [der in Berlin studiert].",
+    "ph": "先行词 der Freund（阳性）→ 从句主语用 der",
+    "ref": "Ich habe einen Freund, der in Berlin studiert."
+   },
+   {
+    "de": "Die Lehrerin ist sehr freundlich. Ich habe sie gestern getroffen.",
+    "zh": "两句合一句，用关系从句",
+    "pat": "Die Lehrerin, [die ich gestern getroffen habe], ist sehr freundlich.",
+    "ph": "从句里 sie = die Lehrerin，阴性一/四格同形",
+    "ref": "Die Lehrerin, die ich gestern getroffen habe, ist sehr freundlich."
+   },
+   {
+    "de": "Was mich glücklich macht, es ist Musik.",
+    "zh": "改对语序",
+    "pat": "Was mich glücklich macht, [ist] Musik.",
+    "ph": "was 从句整体作主语 → 主句动词紧跟其后",
+    "ref": "Was mich glücklich macht, ist Musik."
+   },
+   {
+    "de": "Je mehr ich übe, desto besser ich spreche.",
+    "zh": "改对语序",
+    "pat": "Je mehr ich übe, desto besser [spreche ich].",
+    "ph": "desto 后面先动词，再主语",
+    "ref": "Je mehr ich übe, desto besser spreche ich."
+   },
+   {
+    "de": "Beim Lernen kommt es auf die Methode.",
+    "zh": "补全搭配",
+    "pat": "Beim Lernen kommt es auf [die Methode] an.",
+    "ph": "es kommt auf + A an；an 是可分前缀，站句末",
+    "ref": "Beim Lernen kommt es auf die Methode an."
+   },
+   {
+    "de": "Die Ideen sind zu entwickeln und überprüfen.",
+    "zh": "改对",
+    "pat": "Die Ideen sind [zu entwickeln] und [zu überprüfen].",
+    "ph": "两个动词各自都要带 zu",
+    "ref": "Die Ideen sind zu entwickeln und zu überprüfen."
+   }
+  ],
+  "translate": [
+   {
+    "zh": "我的童年是被我的祖父母塑造的。",
+    "pat": "",
+    "ph": "先想这一课哪个句型能用上，再动笔",
+    "ref": "Meine Kindheit war von meinen Großeltern geprägt."
+   },
+   {
+    "zh": "考试期间我们忙得不可开交。",
+    "pat": "",
+    "ph": "先想这一课哪个句型能用上，再动笔",
+    "ref": "In der Prüfungszeit haben wir alle Hände voll zu tun."
+   },
+   {
+    "zh": "我父母总担心我出事。",
+    "pat": "",
+    "ph": "先想这一课哪个句型能用上，再动笔",
+    "ref": "Meine Eltern haben immer Angst, dass mir etwas passiert."
+   },
+   {
+    "zh": "这个任务十分钟就能解决。",
+    "pat": "",
+    "ph": "先想这一课哪个句型能用上，再动笔",
+    "ref": "Diese Aufgabe lässt sich in zehn Minuten lösen."
+   },
+   {
+    "zh": "作业周五前要交。",
+    "pat": "",
+    "ph": "先想这一课哪个句型能用上，再动笔",
+    "ref": "Die Hausaufgaben sind bis Freitag abzugeben."
+   },
+   {
+    "zh": "我有一位同学，她德语说得很好。",
+    "pat": "",
+    "ph": "先想这一课哪个句型能用上，再动笔",
+    "ref": "Ich habe eine Kommilitonin, die sehr gut Deutsch spricht."
+   },
+   {
+    "zh": "让我幸福的是和朋友一起吃饭。",
+    "pat": "",
+    "ph": "先想这一课哪个句型能用上，再动笔",
+    "ref": "Was mich glücklich macht, ist ein Essen mit Freunden."
+   },
+   {
+    "zh": "我读得越多，越喜欢德语。",
+    "pat": "",
+    "ph": "先想这一课哪个句型能用上，再动笔",
+    "ref": "Je mehr ich lese, desto mehr Spaß macht mir Deutsch."
+   },
+   {
+    "zh": "学习关键在方法。",
+    "pat": "",
+    "ph": "先想这一课哪个句型能用上，再动笔",
+    "ref": "Beim Lernen kommt es auf die Methode an."
+   },
+   {
+    "zh": "运动对健康有好的影响。",
+    "pat": "",
+    "ph": "先想这一课哪个句型能用上，再动笔",
+    "ref": "Sport wirkt sich günstig auf die Gesundheit aus."
+   }
+  ],
+  "interview": {
+   "title": "🎤 采访一位同学 · 六个问题（教材 E3）",
+   "instruction": "把六个问题问完记下来，下一次课用德语汇报两三条。回答时尽量用这一课的句型：was 从句、wer 从句、es kommt auf … an、sich auswirken auf、ebenso … wie。",
+   "items": [
+    {
+     "k": "问题 1",
+     "de": "1 Was macht dich glücklich?",
+     "pat": "[Was] mich glücklich macht, ist … / Es kommt auf … an.",
+     "ph": "先答一句，再补一句理由（weil / dass 从句）"
+    },
+    {
+     "k": "问题 2",
+     "de": "2 Wer oder was hat dich geprägt?",
+     "pat": "[Was] mich glücklich macht, ist … / Es kommt auf … an.",
+     "ph": "先答一句，再补一句理由（weil / dass 从句）"
+    },
+    {
+     "k": "问题 3",
+     "de": "3 Was lässt sich in deinem Alltag schwer ändern?",
+     "pat": "[Was] mich glücklich macht, ist … / Es kommt auf … an.",
+     "ph": "先答一句，再补一句理由（weil / dass 从句）"
+    },
+    {
+     "k": "问题 4",
+     "de": "4 Wofür hattest du letzte Woche alle Hände voll zu tun?",
+     "pat": "[Was] mich glücklich macht, ist … / Es kommt auf … an.",
+     "ph": "先答一句，再补一句理由（weil / dass 从句）"
+    },
+    {
+     "k": "问题 5",
+     "de": "5 Worauf kommt es beim Lernen für dich an?",
+     "pat": "[Was] mich glücklich macht, ist … / Es kommt auf … an.",
+     "ph": "先答一句，再补一句理由（weil / dass 从句）"
+    },
+    {
+     "k": "问题 6",
+     "de": "6 Was wirkt sich gut auf deine Stimmung aus?",
+     "pat": "[Was] mich glücklich macht, ist … / Es kommt auf … an.",
+     "ph": "先答一句，再补一句理由（weil / dass 从句）"
+    }
+   ]
+  }
+ }
+}

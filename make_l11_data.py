@@ -1,0 +1,1139 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+make_l11_data.py — Lektion 11《Nie zu alt fürs Internet!》课件数据生成器
+输入: /tmp/l11/ocr/*.txt（教材页 12 张逐字转录）+ /tmp/l11/vok/*.txt（词表双列）
+      + 教师 PPT 答案（/tmp/l11/ppt_text.txt，officecli text 导出）
+输出: l11-data.json
+
+数据纪律：
+  1. 德文一律取教材页逐字转录（不改写、不补造）；词表取教材 Vokabeln 页双列转录。
+  2. 练习答案分三类标注来源：
+     [A] 教材自带词库 + 教师 PPT 第 N 页 → 可信
+     [B] 仅由单元上下文推定 → note 里标「推定」
+     [C] 教材未附 → 只给参考写法，note 里标「非教材标准答案」
+  3. 不确定的绝不写成确定：alt 给可接受变体，note 写清依据。
+"""
+import json
+import os
+import re
+
+DIR = os.path.dirname(os.path.abspath(__file__))
+VOK = '/tmp/l11/vok'
+OUT = os.path.join(DIR, 'l11-data.json')
+
+
+# ------------------------------------------------------------------ 词表解析
+def parse_vok(path):
+    """'德文 | 中文' → [(w, cn), ...]"""
+    out = []
+    for line in open(path, encoding='utf-8'):
+        line = line.strip()
+        if '|' not in line:
+            continue
+        w, cn = line.split('|', 1)
+        w, cn = w.strip(), cn.strip()
+        if not w or not cn:
+            continue
+        out.append((w, cn))
+    return out
+
+
+S317 = parse_vok(os.path.join(VOK, 'p05.txt'))
+S318 = parse_vok(os.path.join(VOK, 'p06.txt'))
+S326 = parse_vok(os.path.join(VOK, 'p12_A_full.txt'))
+D13 = dict(S317 + S318)
+D26 = dict(S326)
+
+SRC13 = '教材 S.317–318 · Lektion 11 词汇表（Entdecken 1 部分）'
+SRC26 = '教材 S.326 · Lektion 11 词汇表（Entdecken 2 部分）'
+
+
+def vg(vid, label, src, heads, pool):
+    words = []
+    for hd in heads:
+        if hd not in pool:
+            raise SystemExit('词表缺失：%s 不在 %s 中' % (hd, src))
+        words.append({'w': hd, 'cn': pool[hd]})
+    return {'id': vid, 'label': label, 'src': src, 'words': words}
+
+
+VOCAB_GROUPS = [
+    vg('V1', '💻 设备与书写 · Geräte & Schreiben', SRC13, [
+        'der Bildschirm -e', 'die Taste -n', 'der Druck ¨e', 'der Kasten ¨', 'die Feder -n',
+        'der Pinsel -', 'der Traum der roten Kammer', 'mobil', "checken +A ['tʃɛkn]", 'löschen +A',
+        'ein/werfen +A (+in Akk)', 'kleben +A', 'fest/legen +A', 'aktivieren +A', 'installieren +A',
+        'ab/schalten +A', 'werfen +A', 'halten', 'echt'], D13),
+    vg('V2', '📡 通信与网络 · Kommunikation', SRC13, [
+        "mailen (+D)+A ['meɪlən]", 'simsen (+D+A)', 'senden (+D)+A', 'weg/schicken +A',
+        'der Kanal ¨e', 'abonnieren +A', 'der Anruf -e', 'erreichbar',
+        'die Erreichbarkeit nur Sg', "offline ['ɔflain]", 'lokal', 'her',
+        'mit/wirken ~bei/an Dat'], D13),
+    vg('V3', '🛡️ 风险与安全 · Risiko & Sicherheit', SRC13, [
+        'naiv', 'leichtsinnig', "potenziell [potɛn'tsjɛl]", 'das Risiko ...ken',
+        'Bescheid wissen +über Akk', 'sichtbar', 'die Bekanntschaft -en', 'die Kamera -s',
+        'merkwürdig', 'ab/brechen +A', 'das Antivirenprogramm -e', 'das Passwort ¨-er',
+        'die Webseite -n'], D13),
+    vg('V4', '🧭 时间·程度·评价 · Zeit & Grad', SRC13, [
+        'gezielt', 'zeitlich', 'räumlich', 'jederzeit', 'hierbei', 'riesengroß',
+        'unverzichtbar', 'der Bestandteil -e', 'das Ende -n', 'die Sekunde -n',
+        'ändern +A', 'verfügbar', 'bedauerlich', 'das Jahrhundert -e'], D13),
+    vg('V5', '💬 观点与论辩 · Meinung & Argument', SRC13, [
+        'das Argument -e', 'das Missverständnis -se', 'auf/bewahren +A', 'die Handschrift -en',
+        'die Kürze -n meist Sg', 'einseitig', 'der Kampf ¨-e', 'verzichten (+auf Akk)',
+        'die Belastung -en', 'der Modus Modi', 'geschehen', 'physisch'], D13),
+    vg('V6', '🎓 学习与社群 · Lernen & Gemeinschaft', SRC13, [
+        'vertiefen +A', 'der Bedarf nur Sg', 'der Stundenplan ¨-e', "das Feedback -s ['fi:dbɛk]",
+        'das Forum ...ren', 'der Chat -s [tʃɛt]', 'auf/bauen +A', 'die Selbstdisziplin nur Sg',
+        'das Gemeinschaftsgefühl -e selten Pl'], D13),
+    vg('V7', '🏛️ 项目与机构 · Projekt & Verein', SRC26, [
+        'das Motto -s', 'werben (+für Akk)', 'der Bund -¨e',
+        "das Coaching -s ['kɔʊtʃɪŋ], [ko:tʃɪŋ]", 'der Coach -(e)s [kɔʊtʃ], [ko:tʃ]',
+        'die Pädagogin -nen', 'die Vermittlung -en', 'die Station -en', 'das Infomobil -e',
+        'der Engel -', 'die Sitzung -en', 'das Postamt -¨er', 'die Nachhilfe -n',
+        'der Senior -en [ze:niɔ:ɐ]', 'der/die Jugendliche (Dekl. wie Adj.)',
+        'die Berührung -en'], D26),
+    vg('V8', '🤝 能力与心理 · Können & Gefühl', SRC26, [
+        'erleichtern +A', 'funktionieren', 'schwer/fallen +D', 'sich aus/kennen (+mit Dat)',
+        'ein/steigen (+in Akk)', 'überhaupt', 'kostenlos', 'selbstsicher',
+        'die Selbstsicherheit -en selten Pl', 'bereiten +A', 'los/werden +A', 'weg/machen +A',
+        'ab/bauen +A', 'mehrmals', 'decken +A', 'die Schnecke -n'], D26),
+    vg('V9', '🔧 数码操作 · Digitales', SRC26, [
+        "der Browser - ['braʊzɐ]", 'das Dokument -e', 'verschicken +A', "das WLAN -s ['ve:la:n]",
+        'herunter/laden +A', 'die Einstellung -en', 'die Bedienung -en', 'aus/probieren +A',
+        'der QR-Code -s', 'passend', 'die/das App -s [ɛp]', "scannen +A ['skɛnən]",
+        'an/klicken', 'der Klingelton -¨e'], D26),
+]
+
+# 覆盖自检：三页词表必须一条不漏
+_used = set()
+for g in VOCAB_GROUPS:
+    for w in g['words']:
+        _used.add(w['w'])
+assert _used == set(D13) | set(D26), \
+    '未覆盖：%s | 多余：%s' % (sorted((set(D13) | set(D26)) - _used), sorted(_used - (set(D13) | set(D26))))
+
+
+# ------------------------------------------------------------------ meta
+META = {
+    'lektion': '11',
+    'title': 'Nie zu alt fürs Internet!',
+    'subtitle': 'Lektion 11 · 从来没有太老这回事 · Text 1 我怎样、为何用媒体 · Text 2 老年计算机辅导',
+    'source': '《新经典德语》第二册 Lektion 11 · Nie zu alt fürs Internet!'
+              '（教材 S.313–318 · S.321–326，12 张教材页 + 课件 59 页）',
+    'objectives': [
+        '读懂 Text 1「Wie und wozu nutze ich die Medien?」：一家人（77 / 52 / 21 岁）各自的媒体习惯与理由',
+        '读懂 Text 2「Computernachhilfe für Senioren」：一个把老人和年轻人配成两人的项目是怎么运作的',
+        '掌握被动语态体系：werden + 过去分词 / 完成时 sein + … + worden / 情态动词 + … + werden',
+        '分清「过程被动 Vorgangspassiv」与「状态被动 Zustandspassiv」（ist gelöscht ≠ ist gelöscht worden）',
+        '会谈数字鸿沟：Kategorien der Medienkompetenz、Offline-Urlaub、digitales Lernen 的利与弊',
+    ],
+    'flow': [
+        '① 🏠 首页：先看学习路线，45 分钟走完',
+        '② 📖 T1 课文：三位说话人，15 个空已在横线上，点词看释义与课文原句',
+        '③ ✍️ T1 练习：Ü8 完形 → Ü3a 完形 → Ü10 填空 → Ü9 归类 → Ü11 正反方 → Ü2 表格 → Ü12 翻译',
+        '④ 📺 T2 课文：采访 + 三个问题插回原位，15 个空',
+        '⑤ ✅ T2 练习：Ü4 完形 → Ü6 词义配对 → Ü7 状态被动问句 → Ü8.2 / Ü8.3 日记填空',
+        '⑥ 🃏 词卡：126 词分 9 组（S.317–318 共 80 条 + S.326 共 46 条），点卡翻面',
+        '⑦ 🔤 语法：六张表读懂被动语态全家（过程 / 状态 / 情态 / 施事 / 句序）',
+        '⑧ 🔗 连线 + 🎯 翻译卡：三组连线各连一遍，12 张翻译卡先自己译再翻面',
+    ],
+}
+
+# ------------------------------------------------------------------ Text 1
+T1_PARAS = [
+    {'p': '„Jeden Tag schalte ich schon früh morgens mein Radio ein und höre die Nachrichten. '
+          'Tagsüber lese ich manchmal die Lokalzeitung, um das Neueste aus meiner Umgebung zu [[1]]. '
+          'Ich sehe nur fern, wenn ein guter Spielfilm oder eine interessante Reportage gezeigt wird. '
+          'Mein altes Handy nutze ich fast nur zum Telefonieren. Zwar können heute mit dem Handy auch '
+          'Kurznachrichten [[2]] werden, aber ich schreibe immer noch gern Briefe. Ein handgeschriebener '
+          'Brief ist persönlicher und [[3]] viel länger als Kurznachrichten. Außerdem ist es ein '
+          'wunderbares Gefühl, wenn die Briefmarke auf den Umschlag geklebt und der Brief in den '
+          'Briefkasten [[4]] worden ist. Zwar muss man ein bisschen länger auf die Antwort warten, '
+          'aber wenn der Brief endlich nach Hause [[5]] worden ist, ist die Freude riesengroß. '
+          'Diese Erfahrung macht man mit dem Handy einfach nicht.“',
+     'ans': ['erfahren', 'verschickt', 'hält', 'geworfen', 'gebracht']},
+    {'p': '„Täglich sitze ich im Büro stundenlang vor dem Bildschirm, um neue E-Mails zu beantworten. '
+          'Nach Feierabend kommen auch Anrufe und Nachrichten von Kollegen und Kunden aus aller Welt '
+          'auf mein Smartphone. Da bin ich immer erreichbar. Für viele Menschen ist ein Leben ohne '
+          'digitale Geräte unvorstellbar. Denn mit dem Smartphone kann nicht nur ferngesehen oder '
+          'telefoniert werden, sondern es [[6]] auch Onlinekäufe, digitales Lernen und das Erledigen '
+          'von Bankgeschäften. Für mich ist jedoch die ständige digitale Erreichbarkeit zur Belastung '
+          'geworden. Deshalb habe ich mich entschieden, diesen Sommer einen Offline-Urlaub zu machen '
+          'und einfach mal von dem digitalen Stress [[7]]. Dabei verzichte ich auf Internet, Handy, '
+          'Laptop und Tablet. Zwar können meine Urlaubsmomente nicht sofort mit Freunden [[8]] werden '
+          'und Urlaubsfotos nicht gleich [[9]] werden, aber ich kann mit meiner Familie die Ruhe genießen.“',
+     'ans': ['ermöglicht', 'abzuschalten', 'geteilt', 'gepostet']},
+    {'p': '„Meine Lieblingsmedien sind Laptop und Tablet. Ich nutze sie nicht nur als '
+          'Kommunikationsmittel, sondern [[10]] sie auch gezielt zum Lernen [[11]]. Im letzten Semester '
+          'sind z. B. zwei Online-Vorlesungen an der Uni [[12]] worden. Dabei sollten die Lerninhalte '
+          'und -videos auf einer Lernplattform angeschaut und die Lernaufgaben online [[13]] werden. '
+          'Auch in sozialen Netzwerken habe ich einige interessante Kanäle [[14]]. Das digitale Lernen '
+          'finde ich sehr gut, weil man zeitlich und räumlich unabhängig ist. Außerdem kann jeder '
+          'Inhalt nach eigenem Bedarf und Tempo [[15]] oder vertieft werden. Die Lerninhalte sind zu '
+          'jeder Uhrzeit verfügbar. Es ist nur ein wenig bedauerlich, dass ich meine Kommilitonen aus '
+          'diesen beiden Kursen nicht persönlich treffen kann.“',
+     'ans': ['setze', 'ein', 'angeboten', 'erledigt', 'abonniert', 'behandelt']},
+]
+
+T1_ALT = {
+    '1': ['erfahren'],
+    '2': ['verschickt', 'gesendet'],
+    '3': ['hält'],
+    '7': ['abzuschalten'],
+    '8': ['geteilt'],
+    '9': ['gepostet'],
+    '10': ['setze', 'setze'],
+    '11': ['ein'],
+    '15': ['behandelt'],
+}
+
+T1 = {
+    'title': 'Wie und wozu nutze ich die Medien?',
+    'sub': 'Entdecken 1 · Ü8 / Ü9 / Ü10 / Ü11',
+    'kind': 'Text 1',
+    'lead': '约纳斯和来自中国的同学们谈了不同代际的媒体使用习惯。为此他问了自己的家人——'
+            '77 岁的退休者、52 岁的商人、21 岁的在读本科生各说了一段。读之前先看词库：'
+            '14 个词里有 13 个各用一次，而 einsetzen 会被拆开（setze … ein），所以横线一共 15 条。',
+    'cloze': T1_PARAS,
+    'alt': T1_ALT,
+    'bank': ['abonnieren', 'abschalten', 'anbieten', 'behandeln', 'bringen', 'einsetzen',
+             'erfahren', 'erledigen', 'ermöglichen', 'halten', 'posten', 'teilen',
+             'verschicken', 'werfen'],
+    'glossar': [
+        {'w': 'die Lokalzeitung', 'zh': '地方报纸',
+         'ex': 'Tagsüber lese ich manchmal die Lokalzeitung, um das Neueste aus meiner Umgebung zu erfahren.',
+         'src': '教材 S.313 · Text 1（Frau Bode）'},
+        {'w': 'ferngesehen', 'zh': '看电视（fernsehen 的过去分词）',
+         'ex': 'Ich sehe nur fern, wenn ein guter Spielfilm oder eine interessante Reportage gezeigt wird.',
+         'src': '教材 S.313 · Text 1'},
+        {'w': 'der Spielfilm', 'zh': '故事片，电影',
+         'ex': 'Ich sehe nur fern, wenn ein guter Spielfilm oder eine interessante Reportage gezeigt wird.',
+         'src': '教材 S.313 · Text 1'},
+        {'w': 'ein/werfen', 'zh': '投入，投进（+A (+in Akk)）',
+         'ex': '… wenn die Briefmarke auf den Umschlag geklebt und der Brief in den Briefkasten '
+               'eingeworfen worden ist.',
+         'src': '教材 S.313 · Text 1 · Ü8 第 4 空'},
+        {'w': 'riesengroß', 'zh': '巨大的，庞大的',
+         'ex': '… aber wenn der Brief endlich nach Hause gebracht worden ist, ist die Freude riesengroß.',
+         'src': '教材 S.313 · Text 1'},
+        {'w': 'die Erreichbarkeit', 'zh': '可及性，可达到性（nur Sg）',
+         'ex': 'Für mich ist jedoch die ständige digitale Erreichbarkeit zur Belastung geworden.',
+         'src': '教材 S.314 · Text 1（Herr Bode）'},
+        {'w': 'der Offline-Urlaub', 'zh': '离线假期（不用网络、手机的假期）',
+         'ex': 'Deshalb habe ich mich entschieden, diesen Sommer einen Offline-Urlaub zu machen …',
+         'src': '教材 S.314 · Text 1'},
+        {'w': 'ab/schalten', 'zh': '关掉，切断；放松（+A）',
+         'ex': '… und einfach mal von dem digitalen Stress abzuschalten.',
+         'src': '教材 S.314 · Text 1 · Ü8 第 7 空'},
+        {'w': 'verzichten', 'zh': '放弃（+auf Akk）',
+         'ex': 'Dabei verzichte ich auf Internet, Handy, Laptop und Tablet.',
+         'src': '教材 S.314 · Text 1'},
+        {'w': 'die Lernplattform', 'zh': '学习平台',
+         'ex': 'Dabei sollten die Lerninhalte und -videos auf einer Lernplattform angeschaut und '
+               'die Lernaufgaben online erledigt werden.',
+         'src': '教材 S.314 · Text 1（Jonas Bode）'},
+        {'w': 'zeitlich und räumlich unabhängig', 'zh': '在时间上和空间上独立（不受限）',
+         'ex': 'Das digitale Lernen finde ich sehr gut, weil man zeitlich und räumlich unabhängig ist.',
+         'src': '教材 S.314 · Text 1'},
+        {'w': 'bedauerlich', 'zh': '令人遗憾的，令人惋惜的',
+         'ex': 'Es ist nur ein wenig bedauerlich, dass ich meine Kommilitonen aus diesen beiden '
+               'Kursen nicht persönlich treffen kann.',
+         'src': '教材 S.314 · Text 1'},
+    ],
+    'structure': [
+        {'n': 'Frau Bode · 77 · Rentnerin', 'de': 'Radio · Lokalzeitung · Briefe',
+         'cn': '每天早上开收音机听新闻，白天有时看地方报——为了了解身边的新鲜事。老手机几乎只用来打电话；'
+               '虽然今天手机也能发短信，她还是爱写信：手写的信更私人、更耐久，贴邮票、投信箱、'
+               '等回信、收到信的那一刻，快乐是巨大的。'},
+        {'n': 'Herr Bode · 52 · Geschäftsmann', 'de': 'Smartphone · Offline-Urlaub',
+         'cn': '每天在办公室对着屏幕几小时回邮件，下班后还有全世界客户和同事的来电——永远在线。'
+               '对他来说「随时可联系」已经成了负担，于是决定今年夏天过一次离线假期：放弃网络、手机、'
+               '笔记本和平板，只为从数字压力里真正松一口气。'},
+        {'n': 'Jonas Bode · 21 · Germanistikstudent', 'de': 'Laptop · Tablet · digitales Lernen',
+         'cn': '最喜欢笔记本和平板：不只是通讯工具，也专门拿来学习。上学期有两门大学网课，'
+               '在平台上听课、在线交作业，还在社交网络订阅了几个感兴趣的频道。数字学习好在时间地点自由、'
+               '内容随时可用、可按需深入——只是可惜见不到同学本人。'},
+    ],
+    'quotes': [
+        {'n': '一句话说清「介质差别」', 'de': 'Ein handgeschriebener Brief ist persönlicher und hält '
+              'viel länger als Kurznachrichten.',
+         'zh': '手写的信比短信更私人，也更耐久。', 'src': '教材 S.313 · Text 1（Ü8 第 3 空）'},
+        {'n': '被动语态：写信那一刻', 'de': 'Außerdem ist es ein wunderbares Gefühl, wenn die Briefmarke '
+              'auf den Umschlag geklebt und der Brief in den Briefkasten eingeworfen worden ist.',
+         'zh': '另外，当邮票贴上信封、信被投进信箱的那一刻，是一种奇妙的感觉。',
+         'src': '教材 S.313 · Text 1（被动完成时：ist … eingeworfen worden）'},
+        {'n': '数字压力的成因', 'de': 'Für mich ist jedoch die ständige digitale Erreichbarkeit zur '
+              'Belastung geworden.',
+         'zh': '但对我来说，「随时可被联系上」已经成了一种负担。',
+         'src': '教材 S.314 · Text 1（Herr Bode）'},
+        {'n': '数字学习的好处', 'de': 'Das digitale Lernen finde ich sehr gut, weil man zeitlich und '
+              'räumlich unabhängig ist.',
+         'zh': '我觉得数字学习很好，因为人在时间和空间上都不受限制。',
+         'src': '教材 S.314 · Text 1（Jonas Bode）'},
+        {'n': '被动语态：手机能做什么', 'de': 'Denn mit dem Smartphone kann nicht nur ferngesehen oder '
+              'telefoniert werden, sondern es ermöglicht auch Onlinekäufe, digitales Lernen und das '
+              'Erledigen von Bankgeschäften.',
+         'zh': '因为用智能手机不仅能看电视、打电话，它还让网购、数字学习和办银行业务成为可能。',
+         'src': '教材 S.314 · Text 1（Ü8 第 6 空）'},
+    ],
+    'provenance': '德文逐字取自教材 S.313–314 照片转录；15 条横线的答案是「教材 Ü8 自带 14 词词库」'
+                  '与「教材配套课件第 24–26 页（按 Frau Bode / Herr Bode / Jonas 分段给答案）」'
+                  '对应后的结果——14 个词对应 15 个空，因为 einsetzen 被拆成 setze … ein 两空。'
+                  '★ 课件答案与原词库一一吻合，故作为可信答案录入。'
+                  '注：教材 S.313 之前的 Ü1–Ü7 页未在本次 12 张照片内，本课件不覆盖。',
+}
+
+
+# ------------------------------------------------------------------ Text 1 练习
+T1EX = {
+    'title': 'Text 1 练习 · Ü8 / Ü3a / Ü10 / Ü9 / Ü11 / Ü2 / Ü12',
+    'instruction': '七组练习按教材顺序做：先用词库把课文填一遍（Ü8），再填 E-Learning 定义（Ü3a）'
+                   '与三段归纳（Ü10），然后做两组归类（Ü9 / Ü11），最后看在线 vs 离线对照表（Ü2）'
+                   '并做翻译（Ü12）。',
+    'src': '教材 S.313–317 · Entdecken 1',
+    'groups': [
+        {
+            'n': 1, 'kind': 'fill', 'ref': 't1',
+            'title': 'Ü8 词库完形：14 个词填 15 个空',
+            'src': '教材 S.313–314 · Ü8',
+            'instruction': '先点词库看一眼（不能拖拽，只能自己敲），再逐空填。注意三处形态变化：'
+                           'verschicken / werfen / bringen 在完成时被动里要用过去分词（verschickt / '
+                           'geworfen / gebracht），abschalten 在 zu 不定式里要写成 abzuschalten，'
+                           'einsetzen 要拆成 setze … ein 两空。填完点「✓ 检查」，卡住点「👁 显示答案」。',
+            'note': '答案依据：教材 Ü8 自带 14 词词库 + 教材配套课件第 24–26 页（PPT 按三位说话人'
+                    '分段给出全部 15 空答案）。词库 14 词 → 课文 15 空，差的一个就是被拆开的 einsetzen。',
+        },
+        {
+            'n': 2, 'kind': 'fill',
+            'title': 'Ü3a 词库完形：E-Learning 是什么',
+            'src': '教材 S.316 · Ü3a',
+            'instruction': '6 个词库词对应 6 个空。词库给的是原形或基本形式，填进去要注意格与搭配'
+                           '（in physischen Klassenräumen / mit Hilfe von Chats）。填完点「✓ 检查」。',
+            'bank': ['anwesend', 'Klassenräumen', 'Chats', 'kommunizieren', 'E-Learning', 'Lernmitteln'],
+            'paras': [['[[1]] ist die Abkürzung für „Electronic Learning“ und heißt auch „digitales Lernen“. '
+                       'Dabei werden elektronische und digitale Medien für alle Formen von [[2]] eingesetzt. '
+                       'Außerdem können Lehrende und Lernende auf bestimmten Plattformen online miteinander '
+                       '[[3]]. Dies geschieht häufig mit Hilfe von [[4]] oder Nachrichtenforen. '
+                       'Traditionelles Lernen findet in physischen [[5]] statt und alle Lernenden sind nach '
+                       'einem strengen Stundenplan [[6]].',
+                       ['E-Learning', 'Lernmitteln', 'kommunizieren', 'Chats', 'Klassenräumen', 'anwesend'],
+                       ['E-Learning', 'Lernmitteln', 'kommunizieren', 'Chats', 'Klassenräumen', 'anwesend']]],
+            'note': '答案依据：教材 Ü3a 自带 6 词词库（与 6 空一一对应）+ 教材配套课件第 33 页'
+                    '（答案顺序：E-Learning / Lernmitteln / kommunizieren / Chats / Klassenräumen / anwesend）。',
+        },
+        {
+            'n': 3, 'kind': 'fill',
+            'title': 'Ü10 三段归纳：Frau Bode / Herr Bode / Jonas Bode',
+            'src': '教材 S.315 · Ü10',
+            'instruction': '教材原题没有词库。三段分别归纳三位说话人的媒体习惯，共 16 个空：'
+                           'a 段 5 空、b 段 6 空、c 段 5 空。先自己按课文填，再点「👁 显示答案」对照。',
+            'bank': [],
+            'paras': [
+                ['a) Frau Bode ist Rentnerin, sie mag lieber traditionelle Medien als moderne. '
+                 'Mit dem Handy [[1]] sie fast nur und [[2]] selten Kurznachrichten. Sie schreibt gern '
+                 'Briefe, denn handgeschriebene Briefe sind ihr [[3]] und [[4]] länger. Beim '
+                 'Briefschreiben ist die [[5]] größer, wenn man die Antwort bekommt.',
+                 ['telefoniert', 'schickt', 'persönlicher', 'halten', 'Freude'],
+                 ['telefoniert', 'schickt', 'persönlicher|persönlich', 'halten', 'Freude']],
+                ['b) Herr Bode ist Geschäftsmann und wünscht sich einen [[6]]. Bei seiner Arbeit ist er '
+                 'durch verschiedene digitale Medien immer [[7]] und diese digitale Erreichbarkeit ist '
+                 'für ihn zur [[8]] geworden. Beim Offline-Urlaub geht es darum, einmal richtig [[9]]. '
+                 'Bewusst [[10]] man hierbei auf Internet, Handy, Smartphone und Tablet. Es geht darum, '
+                 'mehr Zeit mit Familie zu verbringen und die schöne Natur und Ruhe zu [[11]].',
+                 ['Offline-Urlaub', 'erreichbar', 'Belastung', 'abzuschalten', 'verzichtet', 'genießen'],
+                 ['Offline-Urlaub', 'erreichbar', 'Belastung', 'abzuschalten', 'verzichtet', 'genießen']],
+                ['c) Jonas Bode ist Germanistikstudent und nutzt digitale Medien oft für das digitale '
+                 '[[12]]. Die Vorteile von den meisten Online-Kursen liegen darin, dass man unabhängig '
+                 'von Ort und [[13]] lernen kann. Außerdem stehen die Lerninhalte jederzeit zur [[14]] '
+                 'und man kann sie nach eigenem [[15]] und Tempo behandeln oder [[16]].',
+                 ['Lernen', 'Zeit', 'Verfügung', 'Bedarf', 'vertiefen'],
+                 ['Lernen', 'Zeit', 'Verfügung', 'Bedarf', 'vertiefen']],
+            ],
+            'note': '答案依据：教材配套课件第 28 页（16 个答案词按 a/b/c 段顺序给出：telefoniert, '
+                    'schickt, persönlicher, halten, Freude / Offline-Urlaub, erreichbar, Belastung, '
+                    'abzuschalten, verzichtet, genießen / Lernen, Zeit, Verfügung, Bedarf, vertiefen），'
+                    '与课文原句一一对应，故作为可信答案录入。',
+        },
+        {
+            'n': 4, 'kind': 'match',
+            'title': 'Ü9 Stichpunkte 归类：哪条紧语属哪段',
+            'src': '教材 S.314 · Ü9',
+            'instruction': '先点左列德语紧语，再点右列中文；配对成功变绿。连完再看下面的表核对'
+                           '「紧语 → 说话人」的归属。',
+            'pairs': [
+                ['lieber traditionelle Medien', '偏爱传统媒体'],
+                ['Briefe statt Kurznachrichten', '写信而不是发短信'],
+                ['Digitaler Stress im Alltag', '日常里的数字压力'],
+                ['Urlaub ohne digitale Medien und Internet', '没有数字媒体与网络的假期'],
+                ['Lernen mit digitalen Medien', '用数字媒体学习'],
+                ['Vor- und Nachteile von digitalem Lernen', '数字学习的利与弊'],
+            ],
+            'table': {
+                'title': '紧语 → 说话人（教材 S.314 · Ü9 答案）',
+                'src': '答案依据：教材配套课件第 27 页',
+                'headers': ['说话人', '紧语（原文照录）'],
+                'rows': [
+                    ['Frau Bode (77)', 'lieber traditionelle Medien, Briefe statt Kurznachrichten'],
+                    ['Herr Bode (52)', 'Digitaler Stress im Alltag, Urlaub ohne digitale Medien und Internet'],
+                    ['Jonas Bode (21)', 'Lernen mit digitalen Medien, Vor- und Nachteile von digitalem Lernen'],
+                ],
+            },
+            'note': '答案依据：教材配套课件第 27 页（三条紧语分别对应三位说话人）。'
+                    '右列中文为释义，便于先建立意义后再归类。',
+        },
+        {
+            'n': 5, 'kind': 'match',
+            'title': 'Ü11 Pro und Kontra：7 条论据站哪边',
+            'src': '教材 S.315 · Ü11',
+            'instruction': '7 条论据分别支持「写信」还是「发短信」？点左列德语论据，再点右列归属。'
+                           '右边只有两个选项，会出现两两相同——那是对的。',
+            'pairs': [
+                ['Durch die sorgfältige Wortwahl kommt es seltener zu Missverständnissen.',
+                 '→ Briefe 写信（措辞讲究，少误解）'],
+                ['Eine Kurznachricht zu schicken geht schnell.',
+                 '→ Kurznachrichten 发短信（快）'],
+                ['Anders als digitale Nachrichten werden Briefe häufig länger aufbewahrt und sind '
+                 'wertvolle Erinnerungen.',
+                 '→ Briefe 写信（保存更久，是有价值的纪念）'],
+                ['Ein Antwortbrief bringt dem Empfänger große Freude.',
+                 '→ Briefe 写信（收信人快乐）'],
+                ['Die Handschrift des Absenders vermittelt ein Gefühl der Nähe.',
+                 '→ Briefe 写信（笔迹带来亲近感）'],
+                ['Eine nette Kurznachricht zu schreiben ist wegen der Kürze gar nicht so leicht.',
+                 '→ Kurznachrichten 发短信（因为短，写好也不容易）'],
+                ['Kurznachrichten kosten weniger als Briefe.',
+                 '→ Kurznachrichten 发短信（比寄信便宜）'],
+            ],
+            'note': '答案依据：教材配套课件第 29 页——Briefe: a / c / d / e；'
+                    'Kurznachrichten: b / f / g（与原题 a)–g) 编号一一对应）。'
+                    '注：原题要求的是「归属判断」，口语课可直接争辩；本课件按课件答案给归属。',
+        },
+        {
+            'n': 6, 'kind': 'table',
+            'title': 'Ü2 Online-Leben vs. Offline-Urlaub：利与弊',
+            'src': '教材 S.316 · Ü2',
+            'instruction': '原题要求从课文中收集 Herr Bode 对「在线生活」和「离线假期」的观点，再补充其他论据。'
+                           '先自己说一遍，再点「👁 显示参考归纳」对照下表。',
+            'note': '⚠️ 学校教材原题是开放式的（「...」处要自己补），下表是按课文与课件第 31–32 页'
+                    '归纳的参考答案，不是教材标准答案；每格前两条来自课文，其余来自课件补充。',
+            'headers': ['', 'Online-Leben 在线生活', 'Offline-Urlaub 离线假期'],
+            'rows': [
+                ['Vorteile 利',
+                 '• Man ist ständig digital erreichbar. （持续的数字化可联系性由智能手机、平板、'
+                 '笔记本等移动上网设备保障。）\n'
+                 '• Das Smartphone ermöglicht nicht nur das Fernsehen oder Telefonieren, sondern auch '
+                 'Onlinekäufe, digitales Lernen und das Erledigen von Bankgeschäften. Das kann den '
+                 'Alltag erleichtern.\n'
+                 '• Man kann mobil und flexibel arbeiten （unabhängig von Ort und Zeit Ideen '
+                 'austauschen und an Projekten zusammenarbeiten）。',
+                 '• Man kann einmal vom digitalen Stress abschalten.\n'
+                 '• Man kann mit Familie und Freunden mehr Zeit verbringen. (bessere Vereinbarkeit '
+                 'von Beruf und Familie)\n'
+                 '• Man kann die Natur und Ruhe genießen oder Sport treiben, das ist gut für die '
+                 'Gesundheit. (persönliche Work-Life-Balance)'],
+                ['Nachteile 弊',
+                 '• Immer online zu sein bedeutet länger arbeiten und weniger Pausen machen, diese '
+                 'ständige digitale Erreichbarkeit führt zum Stress und schadet der Gesundheit.\n'
+                 '• Die Grenzen zwischen Arbeit und Freizeit verschwimmen.\n'
+                 '• Man kann Beruf und Familie schwer vereinbaren, weil man nach Feierabend noch '
+                 'arbeiten muss.\n'
+                 '• Andere mögliche Nachteile sind z. B. Onlinesucht, Verbreitung von '
+                 'Fehlinformationen, Cyberkriminalität, Bedenken hinsichtlich des Datenschutzes.',
+                 '• Man kann nicht schnell in Kontakt zu den anderen treten und interessante Momente '
+                 'oder Fotos teilen, dadurch fühlt man sich allein.\n'
+                 '• Man könnte vielleicht wichtige Anrufe und E-Mails vom Chef und von Kunden verpassen.\n'
+                 '• Ohne die vielfältigen Internetaktivitäten（课件原拼作 vielvältigen）würden sich '
+                 'manche langweilen.'],
+            ],
+        },
+        {
+            'n': 7, 'kind': 'trans',
+            'title': 'Ü12 Übersetzen：把课文关键句译成中文',
+            'src': '教材 S.317 · Ü12（原题只给了指令「Übersetzen Sie.」）',
+            'instruction': '先自己译，再点「💬 参考译文」核对。译法不唯一，意思完整、句子通顺即可。',
+            'note': '⚠️ 教材 S.317 的 Ü12 照片里只留下指令行「12 Übersetzen Sie.」，'
+                    '待译句未出现在这 12 张照片中——所以下面 5 句是从本单元课文与课件里'
+                    '挑出的关键句（每句标出处），不是教材 Ü12 的原题句。',
+            'items': [
+                ['Ein handgeschriebener Brief ist persönlicher und hält viel länger als Kurznachrichten.',
+                 '手写的信比短信更私人，也更耐久。'],
+                ['Außerdem ist es ein wunderbares Gefühl, wenn die Briefmarke auf den Umschlag geklebt '
+                 'und der Brief in den Briefkasten eingeworfen worden ist.',
+                 '此外，当邮票贴到信封上、信被投进信箱时，那是一种奇妙的感觉。'],
+                ['Deshalb habe ich mich entschieden, diesen Sommer einen Offline-Urlaub zu machen und '
+                 'einfach mal von dem digitalen Stress abzuschalten.',
+                 '所以我决定今年夏天过一次离线假期，就为了从数字压力里真正松一口气。'],
+                ['Das digitale Lernen finde ich sehr gut, weil man zeitlich und räumlich unabhängig ist.',
+                 '我觉得数字学习很好，因为人在时间和空间上都不受限制。'],
+                ['Jugendliche kennen sich mit digitalen Medien aus. Doch möchten auch immer mehr '
+                 'Senioren, die sogenannte Generation 65 plus, das Internet nutzen.',
+                 '年轻人熟悉数字媒体，但有越来越多被称为「65 岁以上一代」的老年人也想用互联网。'],
+                ['Die Kurse waren gut besucht. Jedoch erlebte mein Kursleiterteam oft, dass die '
+                 'Senioren danach noch viele individuelle Fragen zu digitalen Medien hatten.',
+                 '课程来的人不少。但我们的授课团队常常发现，老人们课后还有一大堆个性化的数字媒体问题。'],
+            ],
+        },
+    ],
+}
+
+
+# ------------------------------------------------------------------ Text 2
+T2_PARAS = [
+    {'p': 'Jugendliche [[1]] sich mit digitalen Medien [[2]]. Doch möchten auch immer mehr Senioren, '
+          'die sogenannte Generation 65 plus, das Internet nutzen. Im Verein „Seniorenbund“ in München '
+          'helfen Jugendliche älteren Menschen beim Umgang mit digitalen Medien. Wie [[3]] das Projekt '
+          '„Coaching-Wohnzimmer“? Dazu hat Yang Fang der Medienpädagogin des Vereins, Daniela '
+          'Schuhmacher, einige Fragen gestellt.',
+     'ans': ['kennen', 'aus', 'funktioniert']},
+    {'p': 'Guten Tag, Frau Schuhmacher. Können Sie kurz erzählen, [[4]]?',
+     'ans': ['wie das Projekt entstanden ist']},
+    {'p': 'Ich habe im Jahr 2020 als Kursleiterin bei Internetkursen für Senioren gearbeitet. '
+          'Die Kurse waren gut [[5]]. Jedoch erlebte mein Kursleiterteam oft, dass die Senioren danach '
+          'noch viele individuelle Fragen zu digitalen Medien hatten. Deshalb [[6]] wir im Jahr 2021 '
+          'den Verein „Seniorenbund“. Hier bekommen ältere Menschen in Einzelgesprächen mit freiwilligen '
+          'Jugendlichen [[7]], um in die digitale Welt einzusteigen. Die Senioren [[8]] sowohl das Thema '
+          'als auch das Lerntempo des Gesprächs. Oft geht es einfach nur darum, zu zeigen, was im '
+          'Internet überhaupt alles möglich ist. Die Senioren lernen beispielsweise, wie Lebensmittel '
+          'online bestellt werden können. Dadurch wird ihr Alltag [[9]].',
+     'ans': ['besucht', 'gründeten', 'Unterstützung', 'bestimmen', 'erleichtert']},
+    {'p': '[[10]]?',
+     'ans': ['Wie werden die Jugendlichen auf ihre Aufgabe vorbereitet']},
+    {'p': 'Wir bieten freiwilligen Jugendlichen eine kostenlose Ausbildung zum „Digitalen Coach“. '
+          'Sie werden zum Beispiel durch Rollenspiele in Vermittlungskompetenz und Geduld [[11]]. '
+          'Sie sollen verstehen lernen, wie das Leben ohne Internet war und was den Älteren beim Umgang '
+          'mit Medien [[12]]. Senioren und Jugendliche bilden Zweier-Teams. Es freut mich zu sehen, wie '
+          'Berührungsängste und [[13]] zwischen den Generationen schnell abgebaut werden. Die '
+          'Jugendlichen werden als Experten akzeptiert und bekommen durch ihre neue Rolle viel [[14]].',
+     'ans': ['gefördert', 'schwerfällt', 'Vorurteile', 'Selbstbewusstsein']},
+    {'p': '[[15]]?',
+     'ans': ['Welche Projekte sind in Zukunft geplant']},
+    {'p': 'Es gibt ständig neue kleinere Projekte. Jetzt planen wir eine E-Learning-Plattform für die '
+          'Ausbildung zum „Digitalen Coach“.',
+     'ans': []},
+    {'p': 'Vielen Dank für das Interview, Frau Schuhmacher!',
+     'ans': []},
+]
+
+T2_ALT = {
+    '1': ['kennen'], '2': ['aus'], '3': ['funktioniert'],
+    '4': ['wie das Projekt entstanden ist', 'Wie ist das Projekt entstanden'],
+    '5': ['besucht'],
+    '6': ['gründeten'],
+    '7': ['Unterstützung'],
+    '8': ['bestimmen'],
+    '9': ['erleichtert'],
+    '10': ['Wie werden die Jugendlichen auf ihre Aufgabe vorbereitet'],
+    '11': ['gefördert'],
+    '12': ['schwerfällt'],
+    '13': ['Vorurteile'],
+    '14': ['Selbstbewusstsein'],
+    '15': ['Welche Projekte sind in Zukunft geplant'],
+}
+
+T2 = {
+    'title': 'Computernachhilfe für Senioren – es ist nie zu spät!',
+    'sub': 'Entdecken 2 · Ü4 / Ü5',
+    'kind': 'Text 2',
+    'lead': '第二个板块讲一个真实存在的项目：慕尼黑「老年人协会」让年轻人一对一教老年人用数字媒体。'
+            '课文是一篇采访，但要先把三个问题插回文中相应的位置（①②③），再把词库里的 11 个词填进去。'
+            '注意：kennen … aus 其实是一个可分动词 sich auskennen 被拆开；带 ? 的三个空填的是整句问句。',
+    'cloze': T2_PARAS,
+    'alt': T2_ALT,
+    'bank': ['bestimmen', 'besuchen', 'erleichtern', 'funktionieren', 'auskennen', 'gründen',
+             'schwerfallen', 'Selbstbewusstsein', 'fördern', 'Unterstützung', 'Vorurteile'],
+    'glossar': [
+        {'w': 'der Verein', 'zh': '协会，社团',
+         'ex': 'Deshalb gründeten wir im Jahr 2021 den Verein „Seniorenbund“.',
+         'src': '教材 S.322 · Text 2 · Ü5 第 6 空'},
+        {'w': 'die Medienpädagogin', 'zh': '媒体教育学专家（女）',
+         'ex': 'Dazu hat Yang Fang der Medienpädagogin des Vereins, Daniela Schuhmacher, einige Fragen gestellt.',
+         'src': '教材 S.321 · Text 2 导语'},
+        {'w': 'die Generation 65 plus', 'zh': '65 岁以上一代',
+         'ex': 'Doch möchten auch immer mehr Senioren, die sogenannte Generation 65 plus, das Internet nutzen.',
+         'src': '教材 S.321 · Text 2 导语'},
+        {'w': 'das Coaching-Wohnzimmer', 'zh': '「辅导客厅」（项目名）',
+         'ex': 'Wie funktioniert das Projekt „Coaching-Wohnzimmer“?',
+         'src': '教材 S.321 · Text 2 导语'},
+        {'w': 'sich aus/kennen (+mit Dat)', 'zh': '熟悉，通晓（+mit 三格）',
+         'ex': 'Jugendliche kennen sich mit digitalen Medien aus.',
+         'src': '教材 S.321 · Ü5 第 1–2 空（可分动词被拆开）'},
+        {'w': 'die Vermittlungskompetenz', 'zh': '（知识、技能的）传授能力，讲解能力',
+         'ex': 'Sie werden zum Beispiel durch Rollenspiele in Vermittlungskompetenz und Geduld gefördert.',
+         'src': '教材 S.322 · Text 2'},
+        {'w': 'die Berührungsangst', 'zh': '（对人际接触的）接触恐惧，怕生',
+         'ex': 'Es freut mich zu sehen, wie Berührungsängste und Vorurteile zwischen den Generationen '
+               'schnell abgebaut werden.',
+         'src': '教材 S.322 · Text 2'},
+        {'w': 'das Vorurteil', 'zh': '成见，偏见',
+         'ex': 'Es freut mich zu sehen, wie Berührungsängste und Vorurteile zwischen den Generationen '
+               'schnell abgebaut werden.',
+         'src': '教材 S.322 · Text 2 · Ü5 第 13 空'},
+        {'w': 'das Selbstbewusstsein', 'zh': '自信，自我意识',
+         'ex': 'Die Jugendlichen werden als Experten akzeptiert und bekommen durch ihre neue Rolle '
+               'viel Selbstbewusstsein.',
+         'src': '教材 S.322 · Text 2 · Ü5 第 14 空'},
+        {'w': 'schwer/fallen (+D)', 'zh': '使（某人）感到困难、吃力',
+         'ex': 'Sie sollen verstehen lernen, wie das Leben ohne Internet war und was den Älteren beim '
+               'Umgang mit Medien schwerfällt.',
+         'src': '教材 S.322 · Text 2 · Ü5 第 12 空'},
+        {'w': 'ab/bauen', 'zh': '拆除；消除，减少（+A）',
+         'ex': 'Es freut mich zu sehen, wie Berührungsängste und Vorurteile zwischen den Generationen '
+               'schnell abgebaut werden.',
+         'src': '教材 S.322 · Text 2'},
+        {'w': 'die E-Learning-Plattform', 'zh': '在线学习平台',
+         'ex': 'Jetzt planen wir eine E-Learning-Plattform für die Ausbildung zum „Digitalen Coach“.',
+         'src': '教材 S.323 · Text 2 结尾'},
+        {'w': 'der Digitale Coach', 'zh': '「数字教练」（项目里对青少年志愿者的称呼）',
+         'ex': 'Wir bieten freiwilligen Jugendlichen eine kostenlose Ausbildung zum „Digitalen Coach“.',
+         'src': '教材 S.322 · Text 2'},
+        {'w': 'die Zweier-Teams', 'zh': '两人小组',
+         'ex': 'Senioren und Jugendliche bilden Zweier-Teams.',
+         'src': '教材 S.322 · Text 2'},
+        {'w': 'die freiwilligen Jugendlichen', 'zh': '志愿参加的青少年',
+         'ex': 'Hier bekommen ältere Menschen in Einzelgesprächen mit freiwilligen Jugendlichen '
+               'Unterstützung, um in die digitale Welt einzusteigen.',
+         'src': '教材 S.322 · Text 2'},
+    ],
+    'structure': [
+        {'n': '① 项目是怎么来的', 'de': 'Wie ist das Projekt entstanden?',
+         'cn': 'Daniela 2020 年担任老年网络课的讲师；课程本身不错，但学员课后还有大量个别问题，'
+               '于是 2021 年成立了「老年人协会」：老人和青少年志愿者一对一谈，老人自己决定话题与节奏，'
+               '生活因此变轻松。'},
+        {'n': '② 青少年怎么被培训', 'de': 'Wie werden die Jugendlichen auf ihre Aufgabe vorbereitet?',
+         'cn': '志愿者免费接受「数字教练」培训：通过角色扮演提升传授能力与耐心；要先理解「没有网络的日子」'
+               '是什么样、老人到底哪里吃力。老人和青少年组成两人小组——接触恐惧与成见很快被消除，'
+               '青少年被当作专家接受，也因此更自信。'},
+        {'n': '③ 未来还有什么项目', 'de': 'Welche Projekte sind in Zukunft geplant?',
+         'cn': '总有新的小项目在冒出来；目前正在筹划一个用于「数字教练」培训的在线学习平台。'},
+    ],
+    'quotes': [
+        {'n': '项目的起点', 'de': 'Die Kurse waren gut besucht. Jedoch erlebte mein Kursleiterteam oft, '
+              'dass die Senioren danach noch viele individuelle Fragen zu digitalen Medien hatten.',
+         'zh': '课程来的人不少。但我们的授课团队常常发现，老人们课后还有一大堆个性化的数字媒体问题。',
+         'src': '教材 S.322 · Text 2（Ü5 第 5 空）'},
+        {'n': '把主动权交给老人', 'de': 'Die Senioren bestimmen sowohl das Thema als auch das Lerntempo '
+              'des Gesprächs.',
+         'zh': '话题和谈话节奏，都由老人自己决定。', 'src': '教材 S.322 · Text 2（Ü5 第 8 空）'},
+        {'n': '培训的目标', 'de': 'Sie sollen verstehen lernen, wie das Leben ohne Internet war und was '
+              'den Älteren beim Umgang mit Medien schwerfällt.',
+         'zh': '他们要学着去理解：没有互联网的日子是什么样，以及老人在使用媒体时究竟哪里吃力。',
+         'src': '教材 S.322 · Text 2（Ü5 第 12 空）'},
+        {'n': '双向的收获', 'de': 'Es freut mich zu sehen, wie Berührungsängste und Vorurteile zwischen '
+              'den Generationen schnell abgebaut werden.',
+         'zh': '看到两代人之间的接触恐惧和成见很快被消除，我很高兴。',
+         'src': '教材 S.322 · Text 2（Ü5 第 13 空）'},
+        {'n': '被动语态：生活变轻松', 'de': 'Dadurch wird ihr Alltag erleichtert.',
+         'zh': '他们的日常生活因此变得轻松。', 'src': '教材 S.322 · Text 2（Ü5 第 9 空）'},
+    ],
+    'box': 'Die Senioren fragen:\n'
+           '• Wie mache und verschicke ich mit dem Smartphone schöne Fotos?\n'
+           '…',
+    'qbox': '教材 S.321 · Ü5 提示框：三个问题要插回课文里 ①②③ 三处。'
+            '插入位置看下文在讲什么：① 讲项目怎么来的、② 讲青少年怎么被培训、③ 讲未来的项目。',
+    'qbex': ['Wie werden die Jugendlichen auf ihre Aufgabe vorbereitet?',
+             'Welche Projekte sind in Zukunft geplant?',
+             'Wie ist das Projekt entstanden?'],
+    'provenance': '德文逐字取自教材 S.321–323 照片转录；15 条空（12 个词 / 拆分空 + 3 个整句问句）'
+                  '的答案来自教材 Ü5 自带 11 词词库，与教材配套课件第 46–49 页'
+                  '（PPT 按「问题 ①/②/③ + 答案词对应」给出）对应后确定。'
+                  '★ 课件第 47 页标题即「wie das Projekt entstanden ist?」→ 对应 ①；'
+                  '第 48 页标题「Wie werden die Jugendlichen auf ihre Aufgabe vorbereitet?」→ 对应 ②；'
+                  '第 49 页「Welche Projekte sind in Zukunft geplant?」→ 对应 ③，'
+                  '三处编号可直接互证。'
+                  '注：教材 S.319–320（Entdecken 2 开头的 Ü1–Ü3 与语法页）未在本次 12 张照片内，本课件不覆盖。',
+}
+
+# ------------------------------------------------------------------ Text 2 练习
+T2EX = {
+    'title': 'Text 2 练习 · Ü4 / Ü6 / Ü7 / Ü8',
+    'instruction': '五组练习：先做两句「老人问什么」的完形（Ü4），再做词义配对与造句（Ü6），'
+                   '然后用状态被动给 12 个物品问「做完了没」（Ü7），最后做「数字天使」在线日记的两段填空（Ü8.2 / Ü8.3）。',
+    'src': '教材 S.321–325 · Entdecken 2',
+    'groups': [
+        {
+            'n': 1, 'kind': 'cloze', 'ref': 't2',
+            'title': 'Ü4 词库完形：老人最常问的五句话',
+            'src': '教材 S.321 · Ü4',
+            'instruction': '先点句子里的空位，再点词库里的词；整段填完点「✓ 检查」。5 个词库词对应 5 个空，'
+                           '全部用到，都要用过去分词形式（gepostet / bezahlt / gestört / ausgeschaltet / gelöscht）。',
+            'note': '答案依据：教材 Ü4 自带 5 词词库 + 教材配套课件第 45 页'
+                    '（答案顺序：gelöscht / gepostet / bezahlt / gestört / ausgeschaltet）。',
+        },
+        {
+            'n': 2, 'kind': 'match',
+            'title': 'Ü6.1 词义配对：8 个词 ↔ 8 条德语释义',
+            'src': '教材 S.323 · Ü6.1',
+            'instruction': '左列是课文里的 8 个词，右列是教材给的德语释义（原文照录）。'
+                           '点左边一个、再点右边一个，配对成功变绿。',
+            'pairs': [
+                ['ab/bauen', 'wegmachen, loswerden'],
+                ['sich aus/kennen mit etwas', 'über etw. viel wissen, informiert sein'],
+                ['Berührungsangst', 'Angst vor menschlichen Kontakten'],
+                ['schwer/fallen', 'schwierig sein, Mühe machen, Probleme bereiten'],
+                ['Selbstbewusstsein', 'Selbstsicherheit, Selbstvertrauen'],
+                ['Vermittlungskompetenz', 'Wissen, wie man unterrichtet / lehrt'],
+                ['Vorurteil', 'Stereotyp'],
+                ['erleichtern', 'etwas einfacher und bequemer machen'],
+            ],
+            'note': '依据：教材 Ü6.1 原文给的是「词 + 德语释义」左右两栏配对（释义原文照录）；'
+                    '这里的左列为教材原词、右列为教材原释义，未改写。',
+        },
+        {
+            'n': 3, 'kind': 'open',
+            'title': 'Ü6.2 造句：四个动词 / 搭配各造一句',
+            'src': '教材 S.323 · Ü6.2',
+            'instruction': '教材要求用给定的三组词造句，并找出课文里对应的说法。先自己写，'
+                           '再点「💬 参考写法」对照（参考句全部取课文原句或其最小改写）。',
+            'note': '答案依据：教材给了 Beispiel + 词块。参考写法里第 1、2、4、5、6 条可直接在课文里找到'
+                    '原句，第 3 条为课文句的合并改写。⚠️ 教材未附标准答案，参考写法不唯一。',
+            'beispiel': 'Jugendliche kennen sich mit digitalen Medien aus. （教材 Beispiel，原文照录）',
+            'items': [
+                ['sich auskennen (mit) + digitale Medien',
+                 'Jugendliche kennen sich mit digitalen Medien aus.'],
+                ['abbauen + Berührungsangst / Vorurteile',
+                 'Berührungsängste und Vorurteile zwischen den Generationen werden schnell abgebaut.'],
+                ['erleichtern + die Älteren / Alltag',
+                 'Durch die Nutzung von digitalen Medien kann der Alltag von älteren Menschen erleichtert werden.'],
+                ['schwerfallen + die Älteren',
+                 'Die Jugendlichen sollen verstehen, was den Älteren beim Umgang mit digitalen Medien '
+                 'schwerfällt.'],
+                ['bekommen + Selbstbewusstsein',
+                 'Die Jugendlichen bekommen durch ihre neue Rolle viel Selbstbewusstsein.'],
+                ['fördern + Vermittlungskompetenz',
+                 'Bei der Ausbildung sollen die Vermittlungskompetenz und Geduld der freiwilligen '
+                 'Jugendlichen gefördert werden.'],
+            ],
+        },
+        {
+            'n': 4, 'kind': 'open',
+            'title': 'Ü7 状态被动问句：Frau Bode 问她的数字教练',
+            'src': '教材 S.324 · Ü7',
+            'instruction': '用 Zustandspassiv（sein + 过去分词）把 12 个动词短语变成「…做好了吗？」的问句。'
+                           '教材给了第 1 条的 Beispiel。先自己写，再点「💬 参考写法」。',
+            'note': '答案依据：教材 Beispiel（Ist die E-Mail schon gelöscht?）+ 教材配套课件第 52 页'
+                    '（11 句答案，与其余 11 项一一对应）。注意：这里问的是「状态」——'
+                    'ist gelöscht（已处于删掉的状态）而**不是** ist gelöscht worden（曾被删掉这个动作）。',
+            'beispiel': 'Ist die E-Mail schon gelöscht? （教材 Beispiel，原文照录）',
+            'items': [
+                ['die Dateien speichern', 'Sind die Dateien schon gespeichert?'],
+                ['den Einkauf online erledigen', 'Ist der Einkauf online schon erledigt?'],
+                ['das PDF-Dokument per E-Mail verschicken',
+                 'Ist das PDF-Dokument schon per E-Mail verschickt?'],
+                ['die Tickets im Internet buchen', 'Sind die Tickets schon im Internet gebucht?'],
+                ['das Smartphone mit dem WLAN verbinden',
+                 'Ist das Smartphone schon mit dem WLAN verbunden?'],
+                ['die Kurzvideos aus dem Internet herunterladen',
+                 'Sind die Kurzvideos schon aus dem Internet heruntergeladen?'],
+                ['das Antivirenprogramm im Laptop installieren',
+                 'Ist das Antivirenprogramm schon im Laptop installiert?'],
+                ['die Fotos posten', 'Sind die Fotos schon gepostet?'],
+                ['die Kurznachricht senden', 'Ist die Kurznachricht schon gesendet?'],
+                ['den Browser öffnen', 'Ist der Browser schon geöffnet?'],
+                ['die Bestellung bezahlen', 'Ist die Bestellung schon bezahlt?'],
+            ],
+        },
+        {
+            'n': 5, 'kind': 'fill',
+            'title': 'Ü8.2 在线日记（一）：项目在做什么',
+            'src': '教材 S.324–325 · Ü8.2',
+            'instruction': '9 个词库词对应 9 个空。填完点「✓ 检查」。',
+            'bank': ['abbauen', 'unterstützen', 'erleichtern', 'Veranstaltungen', 'Tour',
+                     'vermitteln', 'fördern', 'vorstellen', 'beschäftigen'],
+            'paras': [['Das Projekt Digitaler Engel [[1]] ältere Menschen dabei, sich mit neuen Medien zu '
+                       '[[2]], um ihren Alltag durch digitale Anwendungen zu [[3]] und ihre '
+                       'Medienkompetenz zu [[4]]. Die Digitalexpertinnen und -experten sind mit zwei '
+                       'Infomobilen in ganz Deutschland auf [[5]]. In persönlichen Gesprächen mit älteren '
+                       'Menschen werden nicht nur Tipps zum sicheren Umgang mit digitalen Medien im Alltag '
+                       '[[6]], sondern es werden auch digitale Angebote [[7]], konkrete Fragen beantwortet '
+                       'und Ängste [[8]]. Neben der Infomobil-Tour bietet das Projekt auch Online-[[9]] an.',
+                       ['unterstützt', 'beschäftigen', 'erleichtern', 'fördern', 'Tour', 'vermittelt',
+                        'vorgestellt', 'abgebaut', 'Veranstaltungen'],
+                       ['unterstützt', 'beschäftigen', 'erleichtern', 'fördern', 'Tour', 'vermittelt',
+                        'vorgestellt|vorgestellt werden', 'abgebaut', 'Veranstaltungen']]],
+            'note': '答案依据：教材 Ü8.2 自带 9 词词库（与 9 空一一对应）+ 教材配套课件第 55 页'
+                    '（答案顺序：unterstützt / beschäftigen / erleichtern / fördern / Tour / vermittelt / '
+                    'vorgestellt / abgebaut / Veranstaltungen）。',
+        },
+        {
+            'n': 6, 'kind': 'fill',
+            'title': 'Ü8.3 在线日记（二）：现场教了什么',
+            'src': '教材 S.325 · Ü8.3',
+            'instruction': '5 个空，没有词库。填进去的都是过去分词（被动语态里用）。'
+                           '先自己按上下文填，再点「✓ 检查」。',
+            'bank': [],
+            'paras': [['Bei der Veranstaltung ging es z. B. darum, wie mit Smartphones schöne Fotos '
+                       'gemacht und [[1]] werden, wie Apps [[2]] werden können, und durch welche '
+                       'Einstellungen die Bedienung des Geräts [[3]] werden kann. Die Senioren '
+                       'probierten vieles direkt aus und übten auch, wie ein QR-Code mit Hilfe der '
+                       'Kamera oder einer passenden App [[4]] werden kann. Außerdem gaben sie auch '
+                       'einander praktische Tipps: Ein Teilnehmer zeigte zum Beispiel, wie die App '
+                       'Kino Center Hall [[5]] wird, damit man sich immer über das aktuelle '
+                       'Kinoprogramm in Schwäbisch Hall informieren kann.',
+                       ['verschickt', 'heruntergeladen', 'erleichtert', 'gescannt', 'verwendet'],
+                       ['verschickt', 'heruntergeladen', 'erleichtert', 'gescannt', 'verwendet']]],
+            'note': '答案依据：教材配套课件第 56 页（答案顺序：verschickt / heruntergeladen / '
+                    'erleichtert / gescannt / verwendet），与教材 Ü8.3 的 5 个空一一对应。'
+                    '另：课件同页把这一段的五个例子整理成「Die Senioren fragen」的问句形式'
+                    '（Wie kann ich Apps sicher herunterladen? 等）。',
+        },
+    ],
+}
+
+
+# ------------------------------------------------------------------ 词汇卡
+VOCAB = {
+    'title': '词汇卡 · Wortschatz Lektion 11（126 词）',
+    'instruction': '点卡片翻面看中文；卡片右下角 ▶ 看词条与出处。词条照教材词表原样录入，'
+                   '标注（复数词尾 / 读音 / 支配格）已降权显示。126 词分 9 组。',
+    'src': '教材 S.317–318（80 条）· 教材 S.326（46 条）· 共 126 条',
+    'groups': VOCAB_GROUPS,
+}
+
+# ------------------------------------------------------------------ 语法
+GRAMMAR = {
+    'tables': [
+        {
+            'title': '被动语态三时态：werden / wurden / ist … worden',
+            'src': '教材 Lektion 11 · 课件第 9 / 11 / 13 页归纳（教材语法页未含在照片内）',
+            'headers': ['时态', '构成', '例句（原文照录）', '中文'],
+            'rows': [
+                ['Präsens 现在时', 'werden + Partizip II',
+                 'Die Jugendlichen %%werden%% als Experten %%akzeptiert%%.',
+                 '青少年被当作专家来对待（被动现在时）。'],
+                ['Präteritum 过去时', 'wurden + Partizip II',
+                 '（构造示范）Das Papier %%wurde%% von Chinesen %%erfunden%%.',
+                 '纸是中国人发明的。（教材与课件里该时态只有完成时原句，此句按规则构造）'],
+                ['Perfekt 完成时', 'sein + Partizip II + %%worden%%',
+                 'Der Brief %%ist%% von Frau Bode in den Briefkasten %%eingeworfen%% %%worden%%.',
+                 '这封信是博德太太投进信箱的。'],
+                ['mit Modalverb 带情态动词', 'Modalverb + Partizip II + werden',
+                 'Vor dem Vorstellungsgespräch %%muss%% das Handy auf jeden Fall %%ausgeschaltet%% '
+                 '%%werden%%.',
+                 '面试前手机一定要关掉。'],
+            ],
+        },
+        {
+            'title': '被动完成时：worden ≠ geworden',
+            'src': '教材 Lektion 11 · 课件第 9 / 12 / 13 页（含一段带 7 个空的故事）',
+            'headers': ['形式', '规则', '例句（原文照录）', '中文'],
+            'rows': [
+                ['%%worden%%', '作被动完成时的助动词，紧跟过去分词后，**不加 ge-**',
+                 'Die Erfindung des Telefons %%ist%% dann eine echte technische Revolution '
+                 '%%gewesen%%. / Ein Tastendruck – und schon %%ist%% die Nachricht %%gesendet%% '
+                 '%%worden%%.',
+                 '电话的发明确实是一场真正的技术革命。/ 按一个键，消息就已经发出去了。'],
+                ['%%geworden%%', '作系动词 werden 的过去分词（表变化结果），要加 ge-',
+                 'Die Kommunikation %%ist%% viel einfacher %%geworden%%. / Die Nachrichten %%sind%% '
+                 'leider nicht immer besser %%geworden%%.',
+                 '沟通变得简单多了。/ 可惜消息并没有总是变得更好。'],
+                ['一句话判据', '句子里有「被动动作」→ worden；只表「变化结果」→ geworden',
+                 'Die Maschinen %%sind%% mit Schiffen %%transportiert%% %%worden%%.（被动）vs. '
+                 'Der Verkehr %%ist%% langsamer %%geworden%%.（变化）',
+                 '机器是被船运的（被动）/ 交通变慢了（变化）。'],
+            ],
+        },
+        {
+            'title': '情态动词的被动：Modalverb + Partizip II + werden',
+            'src': '教材 Lektion 11 · 课件第 15 / 17 / 19–21 页归纳',
+            'headers': ['要点', '规则', '例句（原文照录）', '中文'],
+            'rows': [
+                ['基本构成', '情态动词变位 + 过去分词 + werden（原形，不变）',
+                 'Sichere Passwörter %%müssen%% %%erstellt%% %%werden%%.',
+                 '必须创建安全的密码。'],
+                ['情态动词只管变位', 'werden 永远留在句末、用原形',
+                 'Beim Schlafen %%soll%% der Flugmodus %%aktiviert%% %%werden%%.',
+                 '睡觉时应当打开飞行模式。'],
+                ['过去时也用 werden', '情态动词变过去时，werden 仍是原形',
+                 '（构造示范）Die Gäste %%konnten%% vom Bahnhof %%abgeholt%% %%werden%%.',
+                 '客人本来可以从火车站被接走。（课件第 17 页只给出 eingeladen/abgeholt/gebracht + werden 的填空答案，整句按规则补全）'],
+                ['否定位置', 'nicht 放在过去分词前 / 情态动词后',
+                 'Die Hausaufgaben %%dürfen%% nicht %%vergessen%% %%werden%%.',
+                 '作业不可以被忘记。'],
+            ],
+        },
+        {
+            'title': '状态被动 Zustandspassiv：sein + Partizip II',
+            'src': '教材 Lektion 11 · 课件第 42 / 52 页（Ü7 全题答案）',
+            'headers': ['对比项', '过程被动 Vorgangspassiv', '状态被动 Zustandspassiv', '中文区别'],
+            'rows': [
+                ['构成', 'werden + Partizip II（+ worden）', 'sein + Partizip II',
+                 '「被做」这个动作 vs.「已被做完」这个状态'],
+                ['例句',
+                 'Die E-Mails %%sind%% von der Sekretärin %%gecheckt%% %%worden%%.',
+                 'Ist die E-Mail schon %%gelöscht%%?',
+                 '邮件被秘书查过了（完成时被动＝动作）/ 邮件已经删掉了吗（状态）'],
+                ['Ü7 的用法', '—', 'Ist die E-Mail schon %%gelöscht%%?',
+                 '博德太太问教练：「（这件事）已经做好了吗？」——问结果状态'],
+                ['注意', '句末有 worden / werden = 过程被动', '句末没有 werden / worden = 状态被动',
+                 '先看句末有没有 werden。'],
+            ],
+        },
+        {
+            'title': '被动句里的施事：von + Dativ / durch + Akk / mit + Dativ',
+            'src': '教材 Lektion 11 · 课件第 11 页（9 句改写答案）',
+            'headers': ['介词', '接什么', '什么时候用', '例句（原文照录）'],
+            'rows': [
+                ['%%von%% + Dativ', '人或机构（动作的执行者）',
+                 '施事是「谁」做的',
+                 'Der Brief ist %%von Frau Bode%% in den Briefkasten eingeworfen worden. / '
+                 'Der Fotowettbewerb ist %%von der Stadtverwaltung%% organisiert worden.'],
+                ['%%durch%% + Akk', '手段 / 媒介 / 间接促成者',
+                 '强调「靠什么」促成',
+                 'Die Maschinen sind %%durch Schiffe%% transportiert worden.（课件原句把两个介词并列 '
+                 '作 „mit Schiffen / durch Schiffe“）'],
+                ['%%mit%% + Dativ', '工具 / 交通工具',
+                 '强调用的是什么工具',
+                 'Die Maschinen sind %%mit Schiffen%% transportiert worden.（同上，课件原句并列）'],
+                ['省略施事', '不说明谁做的',
+                 '施事不重要 / 不知道 → 直接省略',
+                 'Das Papier ist von Chinesen erfunden worden. → Das Papier ist erfunden worden.'],
+            ],
+        },
+        {
+            'title': '主动 → 被动：三步换砖',
+            'src': '教材 Lektion 11 · 课件第 11 / 19–21 页（改写示范）',
+            'headers': ['步骤', '做什么', '示范', '中文'],
+            'rows': [
+                ['① 找宾语', '把主动句的四格宾语提为被动句的主语（一格）',
+                 'Man %%reinigt%% die Kanäle. → %%Die Kanäle%% …',
+                 '人们清理渠道 → 渠道…'],
+                ['② 换动词', '动词换成 werden + 过去分词，时态跟着原句走',
+                 '… %%werden%% %%gereinigt%%.',
+                 '…被清理。'],
+                ['③ 处理原主语', '原主语是 man → 直接删掉；是人 → von + Dativ；是手段 → durch + Akk',
+                 'Einige Kanäle in sozialen Netzwerken %%sind%% von dem Studenten zum Deutschlernen '
+                 '%%abonniert%% %%worden%%.',
+                 '（该学员）在社交网络订阅了这些频道。'],
+                ['带情态动词时', '情态动词留原位变位，主动词变「过去分词 + werden」',
+                 'Man %%muss%% die Hausaufgaben machen. → Die Hausaufgaben %%müssen%% %%gemacht%% '
+                 '%%werden%%.',
+                 '必须做作业 → 作业必须被做。'],
+            ],
+        },
+    ],
+    'examples': [
+        {'de': 'Der Brief ist von Frau Bode in den Briefkasten eingeworfen worden.',
+         'zh': '被动完成时：sein + 过去分词 + worden（施事用 von + 三格）。'},
+        {'de': 'Die Kurse waren gut besucht.',
+         'zh': '状态被动作形容词用：sein + 过去分词（＝课来的人不少）。'},
+        {'de': 'Dadurch wird ihr Alltag erleichtert.',
+         'zh': '被动现在时，主语是 ihr Alltag（三格变一格）。'},
+        {'de': 'Die Jugendlichen werden als Experten akzeptiert.',
+         'zh': 'als + 名词作补语，被动句里保留。'},
+        {'de': 'Bei der Veranstaltung ging es z. B. darum, wie mit Smartphones schöne Fotos gemacht und '
+              'verschickt werden.',
+         'zh': 'durch/mit 引导的工具放在被动句前部，werden 留句末。'},
+        {'de': 'Was wird an der Station in Schwäbisch Hall gemacht?',
+         'zh': '疑问词 was 作被动句主语，动作执行者不出现。'},
+        {'de': 'Wie kann ich wissen, ob die Bestellung schon bezahlt ist oder nicht?',
+         'zh': '状态被动放在 ob 从句里：sein 的位置跟着从句语序走。'},
+    ],
+}
+
+# ------------------------------------------------------------------ 连线
+CONNECT = [
+    {'title': '🧩 词 ↔ 德语释义（教材 S.323 · Ü6.1）',
+     'src': '教材 S.323 · Ü6.1（释义原文照录）',
+     'pairs': [
+         ['ab/bauen', 'wegmachen, loswerden'],
+         ['sich aus/kennen mit etwas', 'über etw. viel wissen, informiert sein'],
+         ['Berührungsangst', 'Angst vor menschlichen Kontakten'],
+         ['schwer/fallen', 'schwierig sein, Mühe machen, Probleme bereiten'],
+         ['Selbstbewusstsein', 'Selbstsicherheit, Selbstvertrauen'],
+         ['Vermittlungskompetenz', 'Wissen, wie man unterrichtet / lehrt'],
+         ['Vorurteil', 'Stereotyp'],
+         ['erleichtern', 'etwas einfacher und bequemer machen'],
+     ]},
+    {'title': '🔤 动词原形 ↔ 过去分词（Partizip II）',
+     'src': '教材 S.313 / S.321 Ü8 / Ü5 词库 + 课件第 24–26 / 47–48 页答案',
+     'pairs': [
+         ['verschicken', 'verschickt'],
+         ['werfen (ein/werfen)', 'geworfen (eingeworfen)'],
+         ['bringen', 'gebracht'],
+         ['abschalten', 'abzuschalten（zu 不定式）'],
+         ['teilen', 'geteilt'],
+         ['posten', 'gepostet'],
+         ['anbieten', 'angeboten'],
+         ['erledigen', 'erledigt'],
+         ['abonnieren', 'abonniert'],
+         ['behandeln', 'behandelt'],
+     ]},
+    {'title': '💬 关键句 ↔ 中文（课文与项目的看法）',
+     'src': '教材 S.313–322 · Text 1 / Text 2 课文原句',
+     'pairs': [
+         ['Ein handgeschriebener Brief ist persönlicher und hält viel länger als Kurznachrichten.',
+          '手写的信比短信更私人，也更耐久。'],
+         ['Für mich ist jedoch die ständige digitale Erreichbarkeit zur Belastung geworden.',
+          '但对我来说，「随时可被联系上」已经成了一种负担。'],
+         ['Das digitale Lernen finde ich sehr gut, weil man zeitlich und räumlich unabhängig ist.',
+          '我觉得数字学习很好，因为人在时间和空间上都不受限制。'],
+         ['Die Senioren bestimmen sowohl das Thema als auch das Lerntempo des Gesprächs.',
+          '话题和谈话节奏，都由老人自己决定。'],
+         ['Es freut mich zu sehen, wie Berührungsängste und Vorurteile zwischen den Generationen '
+          'schnell abgebaut werden.',
+          '看到两代人之间的接触恐惧和成见很快被消除，我很高兴。'],
+         ['Jetzt planen wir eine E-Learning-Plattform für die Ausbildung zum „Digitalen Coach“.',
+          '现在我们正在筹划一个用于「数字教练」培训的在线学习平台。'],
+     ]},
+]
+
+# ------------------------------------------------------------------ 翻译卡
+TRANSLATION = {
+    'title': '翻译卡 · Übersetzen Lektion 11',
+    'instruction': '先自己译，再点卡片翻面核对参考译文。译法不唯一，句型正确、意义完整即算对。',
+    'note': '德文句子全部取自教材课文与课件（原句照录）；中文为参考译文（非教材标准答案）。',
+    'cards': [
+        {'de': 'Jeden Tag schalte ich schon früh morgens mein Radio ein und höre die Nachrichten.',
+         'zh': '我每天一大早就会打开收音机听新闻。', 'tip': '可分动词 ein/schalten 在句子里拆开',
+         'src': '教材 S.313 · Text 1（Frau Bode）'},
+        {'de': 'Außerdem ist es ein wunderbares Gefühl, wenn die Briefmarke auf den Umschlag geklebt '
+               'und der Brief in den Briefkasten eingeworfen worden ist.',
+         'zh': '此外，当邮票贴到信封上、信被投进信箱时，那是一种奇妙的感觉。',
+         'tip': '被动完成时：ist … eingeworfen worden', 'src': '教材 S.313 · Text 1（Ü8 第 4 空）'},
+        {'de': 'Deshalb habe ich mich entschieden, diesen Sommer einen Offline-Urlaub zu machen und '
+               'einfach mal von dem digitalen Stress abzuschalten.',
+         'zh': '所以我决定今年夏天过一次离线假期，就为了从数字压力里真正松一口气。',
+         'tip': 'sich entscheiden, … zu + 不定式；abzuschalten 是可分动词的 zu 不定式',
+         'src': '教材 S.314 · Text 1（Herr Bode）'},
+        {'de': 'Für mich ist jedoch die ständige digitale Erreichbarkeit zur Belastung geworden.',
+         'zh': '但对我来说，「随时可被联系上」已经成了一种负担。',
+         'tip': 'werden + zu + Dativ：变成…（此处是 geworden 表变化，不是被动）',
+         'src': '教材 S.314 · Text 1'},
+        {'de': 'Das digitale Lernen finde ich sehr gut, weil man zeitlich und räumlich unabhängig ist.',
+         'zh': '我觉得数字学习很好，因为人在时间和空间上都不受限制。',
+         'tip': 'weil 从句动词放句末', 'src': '教材 S.314 · Text 1（Jonas Bode）'},
+        {'de': 'Die Senioren lernen beispielsweise, wie Lebensmittel online bestellt werden können.',
+         'zh': '比如，老人们学习如何在网上订购食品。',
+         'tip': '情态动词被动的从句语序：… bestellt werden können',
+         'src': '教材 S.322 · Text 2'},
+        {'de': 'Hier bekommen ältere Menschen in Einzelgesprächen mit freiwilligen Jugendlichen '
+               'Unterstützung, um in die digitale Welt einzusteigen.',
+         'zh': '在这里，老年人通过与青少年志愿者一对一谈话获得支持，从而进入数字世界。',
+         'tip': 'um … zu + 不定式表目的', 'src': '教材 S.322 · Text 2（Ü5 第 7 空）'},
+        {'de': 'Sie werden zum Beispiel durch Rollenspiele in Vermittlungskompetenz und Geduld gefördert.',
+         'zh': '比如，他们会通过角色扮演来提升传授能力和耐心。',
+         'tip': '被动现在时 + durch 表手段', 'src': '教材 S.322 · Text 2（Ü5 第 11 空）'},
+        {'de': 'Es freut mich zu sehen, wie Berührungsängste und Vorurteile zwischen den Generationen '
+               'schnell abgebaut werden.',
+         'zh': '看到两代人之间的接触恐惧和成见很快被消除，我很高兴。',
+         'tip': 'es freut mich, … zu + 不定式；werden abgebaut 被动现在时',
+         'src': '教材 S.322 · Text 2（Ü5 第 13 空）'},
+        {'de': 'Das Projekt Digitaler Engel unterstützt ältere Menschen dabei, sich mit neuen Medien '
+               'zu beschäftigen, um ihren Alltag durch digitale Anwendungen zu erleichtern.',
+         'zh': '「数字天使」项目支持老年人接触新媒介，以便借助数字应用让日常生活更轻松。',
+         'tip': 'unterstützen + A dabei, … zu；um … zu 表目的',
+         'src': '教材 S.325 · Ü8.2（第 1–3 空）'},
+        {'de': 'Bei der Veranstaltung ging es z. B. darum, wie mit Smartphones schöne Fotos gemacht '
+               'und verschickt werden.',
+         'zh': '这次活动讲的是：怎么用智能手机拍出好看的照片并把它发出去。',
+         'tip': 'es geht um + A, wie …；被动放在 wie 从句里',
+         'src': '教材 S.325 · Ü8.3（第 1 空）'},
+        {'de': 'Jetzt planen wir eine E-Learning-Plattform für die Ausbildung zum „Digitalen Coach“.',
+         'zh': '现在我们正在筹划一个用于「数字教练」培训的在线学习平台。',
+         'tip': 'für + A 表用途；zum + Dativ 表「作为…」', 'src': '教材 S.323 · Text 2 结尾'},
+    ],
+}
+
+# ------------------------------------------------------------------ 组装输出
+DATA = {
+    'meta': META,
+    't1': T1,
+    't1ex': T1EX,
+    't2': T2,
+    't2ex': T2EX,
+    'vocab': VOCAB,
+    'grammar': GRAMMAR,
+    'connectGrids': CONNECT,
+    'translation': TRANSLATION,
+}
+
+
+# ------------------------------------------------------------------ 读词查义：词形表
+# gloss_text 只在正文里匹配「原形面」，所以每条词条必须给出现于课文里的真实形式。
+GLOSS_FORMS = {
+    # Text 1
+    'die Lokalzeitung': ['Lokalzeitung'],
+    'ferngesehen': ['ferngesehen'],
+    'der Spielfilm': ['Spielfilm'],
+    'ein/werfen': ['geworfen'],
+    'riesengroß': ['riesengroß'],
+    'die Erreichbarkeit': ['Erreichbarkeit', 'erreichbar'],
+    'der Offline-Urlaub': ['Offline-Urlaub'],
+    'ab/schalten': ['abzuschalten', 'abgeschaltet'],
+    'verzichten': ['verzichte'],
+    'die Lernplattform': ['Lernplattform'],
+    'zeitlich und räumlich unabhängig': ['zeitlich und räumlich unabhängig'],
+    'bedauerlich': ['bedauerlich'],
+    'der Germanistikstudent': ['Germanistikstudent'],
+    'der Geschäftsmann': ['Geschäftsmann'],
+    'die Rentnerin': ['Rentnerin'],
+    # Text 2
+    'der Verein': ['Verein'],
+    'die Medienpädagogin': ['Medienpädagogin'],
+    'die Generation 65 plus': ['Generation 65 plus'],
+    'das Coaching-Wohnzimmer': ['Coaching-Wohnzimmer'],
+    'sich aus/kennen (+mit Dat)': ['kennen'],
+    'die Vermittlungskompetenz': ['Vermittlungskompetenz'],
+    'die Berührungsangst': ['Berührungsängste'],
+    'das Vorurteil': ['Vorurteile'],
+    'das Selbstbewusstsein': ['Selbstbewusstsein'],
+    'schwer/fallen (+D)': ['schwerfällt'],
+    'ab/bauen': ['abgebaut'],
+    'die E-Learning-Plattform': ['E-Learning-Plattform'],
+    'der Digitale Coach': ['Digitalen Coach'],
+    'die Zweier-Teams': ['Zweier-Teams'],
+    'die freiwilligen Jugendlichen': ['freiwilligen Jugendlichen'],
+}
+
+for _k in ('t1', 't2'):
+    for _e in DATA[_k]['glossar']:
+        if _e['w'] in GLOSS_FORMS:
+            _e['forms'] = GLOSS_FORMS[_e['w']]
+        else:
+            _e['forms'] = [_e['w']]
+
+
+def main():
+    # ---- 归一化：非 ref 的 fill 组用 <n> 占位（build 层 tag_paras 的接口） ----
+    for ex in ('t1ex', 't2ex'):
+        for g in DATA[ex]['groups']:
+            if g['kind'] == 'fill' and not g.get('ref'):
+                for it in g['paras']:
+                    it[0] = re.sub(r'\[\[(\d+)\]\]', r'<\1>', it[0])
+
+    # ---- 自检 1：课文填空编号连续 ----
+    for key in ('t1', 't2'):
+        n = 0
+        for blk in DATA[key]['cloze']:
+            for a in blk['ans']:
+                n += 1
+                if ('[[%d]]' % n) not in blk['p']:
+                    raise SystemExit('%s 第 %d 空编号不连续：%s' % (key, n, blk['p'][:60]))
+        if '[[' + str(n + 1) + ']]' in ''.join(b['p'] for b in DATA[key]['cloze']):
+            raise SystemExit('%s 空数与 ans 数不一致' % key)
+        print('%s: %d 空 / %d 段' % (key, n, len(DATA[key]['cloze'])))
+
+    # ---- 自检 2：练习组填空数一致 ----
+    for ex in ('t1ex', 't2ex'):
+        for g in DATA[ex]['groups']:
+            if g['kind'] == 'fill' and not g.get('ref'):
+                for it in g['paras']:
+                    p, ans = it[0], it[1]
+                    marks = re.findall(r'\[\[(\d+)\]\]', p) or re.findall(r'<(\d+)>', p)
+                    if len(marks) != len(ans):
+                        raise SystemExit('%s group %s 空数 %d ≠ 答案数 %d'
+                                         % (ex, g['title'], len(marks), len(ans)))
+    # ---- 自检 3：词表总量 ----
+    nv = sum(len(g['words']) for g in VOCAB['groups'])
+    print('vocab: %d 词 / %d 组 | grammar: %d 表 | connect: %d 组 | trans: %d 卡'
+          % (nv, len(VOCAB['groups']), len(GRAMMAR['tables']), len(CONNECT),
+             len(TRANSLATION['cards'])))
+
+    with open(OUT, 'w', encoding='utf-8') as f:
+        json.dump(DATA, f, ensure_ascii=False, indent=1)
+    print('written %s (%d bytes)' % (OUT, os.path.getsize(OUT)))
+
+
+if __name__ == '__main__':
+    main()

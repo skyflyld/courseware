@@ -160,7 +160,7 @@ def sec_t1(d):
     return '''    <section id="t1">
       <h2 class="section-title"><span class="num">1</span> 📖 %s <span class="src src-lg">%s · %s</span></h2>
       <p class="zh-hint">%s</p>
-      <p class="zh-hint">✏️ 带虚线的德文词点一下，弹出中文释义和这词在课文里的原句。带<b>蓝色下划线</b>的词是教材 Ü6 的填空词，已直接印在横线上。</p>
+      <p class="zh-hint">✏️ 带虚线的德文词点一下，弹出中文释义和这词在课文里的原句。带<b>蓝色下划线</b>的词是教材 Ü8 的填空词，已直接印在横线上。</p>
       %s
       <div class="text-card read-card">%s</div>
       <p class="zh-hint note">📌 %s</p>

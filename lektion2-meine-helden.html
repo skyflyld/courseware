@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lektion 2 Meine Helden, deine Helden · 交互式课件</title>
+<meta name="description" content="新经典德语 3 Modul 1 Lektion 2 交互式课件：课文、词汇、语法、练习">
+<style>
+:root{
+  --fs-cap:13px; --fs-sm:14px; --fs-body:16px; --fs-word:19px; --fs-h3:23px; --fs-h1:38px;
+  --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:24px; --sp-6:32px;
+  --r-1:4px; --r-2:8px; --r-3:14px;
+  --ink:#1d1d1f; --sub:#3c4450; --muted:#5f6672; --line:#e3e6eb;
+  --pri:#0b4f9e; --pri-soft:#e8f0fe; --pri-dark:#123a72;
+  --ok:#146c2e; --bad:#b3261e;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+     color:var(--ink);background:#f5f6f8;font-size:var(--fs-body);line-height:1.75;
+     padding:calc(var(--sp-6) + 68px) var(--sp-4) calc(var(--sp-6) + 40px);line-break:strict}
+.wrap,.container{max-width:1080px;margin:0 auto}
+h1{font-size:var(--fs-h1);line-height:1.25;margin:0 0 var(--sp-2);color:var(--pri-dark);text-wrap:balance}
+h2{font-size:var(--fs-h3);margin:var(--sp-6) 0 var(--sp-3);color:var(--pri-dark);text-wrap:balance}
+h3{font-size:var(--fs-word);margin:var(--sp-5) 0 var(--sp-2);color:var(--pri-dark)}
+p{margin:0 0 var(--sp-3);text-wrap:pretty}
+.sub{color:var(--muted);font-size:var(--fs-sm)}
+.src{font-size:var(--fs-cap);color:var(--muted);font-weight:400;white-space:nowrap;
+     background:#fff;border:1px solid var(--line);border-radius:var(--r-1);padding:0 var(--sp-1);margin-left:var(--sp-1)}
+.lead{color:var(--sub)}
+/* ===== 导航 ===== */
+.top-nav{position:fixed;top:0;left:0;right:0;z-index:50;background:#fff;border-bottom:1px solid var(--line);
+         box-shadow:0 1px 3px rgba(16,24,40,.06);padding:var(--sp-2) var(--sp-4)}
+.nav-inner{max-width:1080px;margin:0 auto;display:flex;align-items:center;gap:var(--sp-3);flex-wrap:wrap}
+.nav-brand{font-weight:700;color:var(--pri-dark);font-size:var(--fs-sm);white-space:nowrap}
+.nav-links{display:flex;gap:var(--sp-1);flex-wrap:wrap}
+.nav-links button{border:1px solid transparent;background:transparent;color:var(--sub);font:inherit;font-size:var(--fs-sm);
+                  padding:var(--sp-1) var(--sp-3);border-radius:var(--r-2);cursor:pointer;white-space:nowrap;min-height:34px}
+.nav-links button:hover{background:var(--pri-soft)}
+.nav-links button.active{background:var(--pri);color:#fff;font-weight:600}
+.burger,.hamburger{display:none;border:1px solid var(--line);background:#fff;border-radius:var(--r-2);
+        width:40px;height:40px;font-size:18px;cursor:pointer;margin-left:auto}
+.progress{position:fixed;top:0;left:0;height:3px;background:var(--pri);width:0;z-index:60;transition:width .2s}
+/* ===== section ===== */
+section{display:none}
+section.active{display:block}
+/* ===== 首页 ===== */
+.hero{background:#fff;border:1px solid var(--line);border-left:4px solid var(--pri);border-radius:var(--r-3);
+      padding:var(--sp-4) var(--sp-5);margin:var(--sp-4) 0}
+.hero-q{font-size:var(--fs-word);font-weight:700;color:var(--pri-dark);margin:0 0 var(--sp-2)}
+.hero-p{margin:0;color:var(--sub)}
+.goals{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--sp-3)}
+.goal{background:#fff;border:1px solid var(--line);border-radius:var(--r-2);padding:var(--sp-3);display:flex;gap:var(--sp-3);align-items:flex-start}
+.g-n{flex:0 0 26px;height:26px;border-radius:50%;background:var(--pri);color:#fff;font-size:var(--fs-cap);
+     display:flex;align-items:center;justify-content:center;font-weight:700}
+.g-t{font-size:var(--fs-sm);line-height:1.6}
+.chips{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--sp-2)}
+@media (min-width:900px){ .chips{grid-template-columns:repeat(3,1fr)} }
+.chip{background:#fff;border:1px solid var(--line);border-radius:var(--r-2);padding:var(--sp-2) var(--sp-3);display:flex;gap:var(--sp-2);align-items:baseline}
+.c-id{font-weight:700;color:var(--pri);font-size:var(--fs-sm);white-space:nowrap}
+.c-nm{font-size:var(--fs-sm);color:var(--sub)}
+.route{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:var(--sp-3)}
+.route-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-2);padding:var(--sp-3);
+            text-align:left;cursor:pointer;font:inherit;display:flex;flex-direction:column;gap:var(--sp-1)}
+.route-card:hover{border-color:var(--pri);background:var(--pri-soft)}
+.r-i{font-size:20px}
+.r-n{font-weight:700;color:var(--pri-dark);font-size:var(--fs-sm)}
+.r-d{font-size:var(--fs-cap);color:var(--muted);line-height:1.5}
+.hint{background:#f4f7fb;border:1px solid var(--line);border-left:3px solid var(--pri);border-radius:var(--r-2);
+      padding:var(--sp-3);font-size:var(--fs-sm);color:var(--sub);margin:var(--sp-5) 0;line-height:1.7}
+/* ===== 课文 ===== */
+.intro-card,.blk{background:#fff;border:1px solid var(--line);border-radius:var(--r-3);padding:var(--sp-4);margin:0 0 var(--sp-3)}
+.ic-h,.blk-h{display:flex;gap:var(--sp-2);align-items:center;flex-wrap:wrap;margin-bottom:var(--sp-2)}
+.blk-no{font-weight:700;color:#fff;background:var(--pri);border-radius:var(--r-1);padding:0 var(--sp-2);font-size:var(--fs-cap)}
+.blk-fn{font-size:var(--fs-sm);color:var(--sub)}
+.de{font-size:var(--fs-word);line-height:1.9;color:var(--ink);margin:0}
+.gl{color:var(--pri-dark);border-bottom:1.5px dashed var(--pri);cursor:pointer}
+.gl:hover{background:var(--pri-soft)}
+.gap-note{font-size:var(--fs-cap);color:var(--muted);margin-top:var(--sp-2)}
+.zh-btn{margin-top:var(--sp-2);border:1px solid var(--line);background:#fff;color:var(--pri);font:inherit;
+        font-size:var(--fs-cap);border-radius:var(--r-1);padding:2px var(--sp-2);cursor:pointer}
+.zh-body{display:none;background:#f7f9fc;border-left:2px solid var(--pri);border-radius:var(--r-1);
+         padding:var(--sp-2) var(--sp-3);margin-top:var(--sp-2);font-size:var(--fs-sm);color:var(--sub)}
+.zh-body.open{display:block}
+/* ===== 词卡 ===== */
+.person-tabs{display:flex;gap:var(--sp-2);flex-wrap:wrap;margin:var(--sp-3) 0}
+.person-btn{border:1px solid var(--line);background:#fff;color:var(--sub);font:inherit;font-size:var(--fs-sm);
+            padding:var(--sp-1) var(--sp-3);border-radius:var(--r-2);cursor:pointer;min-height:36px}
+.person-btn.active{background:var(--pri);color:#fff;border-color:var(--pri)}
+.person-content{display:none}
+.person-content.active{display:block}
+.vc-meta{font-size:var(--fs-cap);color:var(--muted);margin:0 0 var(--sp-2)}
+.vc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:var(--sp-3)}
+.vc-card{perspective:900px;height:112px;cursor:pointer;position:relative}
+.card-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .45s}
+.vc-card.flipped .card-inner{transform:rotateY(180deg)}
+.card-front,.card-back{position:absolute;inset:0;backface-visibility:hidden;border:1px solid var(--line);
+  border-radius:var(--r-2);background:#fff;display:flex;align-items:center;justify-content:center;
+  padding:var(--sp-3) var(--sp-3) var(--sp-5);text-align:center;overflow-wrap:break-word;hyphens:auto;word-break:break-word}
+.card-back{transform:rotateY(180deg);background:#f7f9fc;font-size:var(--fs-sm);color:var(--sub);line-height:1.6}
+.vc-w{font-size:var(--fs-body);color:var(--ink)}
+.vc-note{font-size:var(--fs-cap);color:var(--muted);font-weight:400;white-space:nowrap}
+.vc-detail{position:absolute;right:var(--sp-1);bottom:var(--sp-1);width:36px;height:36px;border-radius:50%;
+           border:1px solid var(--line);background:#fff;color:var(--pri);font-size:14px;cursor:pointer;z-index:2}
+/* ===== 词汇面板 ===== */
+.vocab-overlay{position:fixed;inset:0;background:rgba(16,24,40,.35);display:none;z-index:80}
+.vocab-overlay.show{display:block}
+.vocab-panel{position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:min(760px,100%);
+  background:#fff;border-radius:var(--r-3) var(--r-3) 0 0;box-shadow:0 -6px 24px rgba(16,24,40,.18);
+  max-height:45vh;overflow-y:auto;display:none;z-index:90;padding:var(--sp-4)}
+.vocab-panel.show{display:block}
+.vp-h{display:flex;justify-content:space-between;align-items:flex-start;gap:var(--sp-3)}
+.vp-word{font-size:var(--fs-word);font-weight:700;color:var(--pri-dark)}
+.vp-zh{font-size:var(--fs-body);color:var(--sub);margin-top:var(--sp-1)}
+.vp-close{border:0;background:transparent;font-size:20px;cursor:pointer;color:var(--muted);line-height:1}
+.vp-ex{margin-top:var(--sp-3)}
+.vp-de{font-size:var(--fs-body);line-height:1.7}
+.vp-tr{background:#f2f5f9;border-left:2px solid var(--pri);border-radius:var(--r-1);
+       padding:var(--sp-2);margin-top:var(--sp-2);font-size:var(--fs-sm);color:var(--sub)}
+.vp-def{font-size:var(--fs-cap);color:var(--muted);margin-top:var(--sp-2)}
+.vp-lb{font-weight:700;margin-right:var(--sp-1)}
+/* ===== 语法 ===== */
+.gr{background:#fff;border:1px solid var(--line);border-radius:var(--r-3);padding:var(--sp-4);margin-bottom:var(--sp-4)}
+.gr-id{display:inline-block;background:var(--pri);color:#fff;border-radius:var(--r-1);padding:0 var(--sp-2);
+       font-size:var(--fs-sm);margin-right:var(--sp-2);vertical-align:2px}
+.gr-q{color:var(--sub);font-size:var(--fs-sm)}
+.gr-rule{background:var(--pri-soft);border-radius:var(--r-2);padding:var(--sp-3);margin:var(--sp-2) 0;font-size:var(--fs-body)}
+.gr-steps{margin:var(--sp-2) 0 var(--sp-3);padding-left:1.6em}
+.gr-steps li{margin-bottom:var(--sp-1);font-size:var(--fs-sm);color:var(--sub);line-height:1.7}
+.ex-item{border-left:3px solid var(--pri);padding-left:var(--sp-3);margin-bottom:var(--sp-3)}
+.ex-de{font-size:var(--fs-body);line-height:1.8;margin:0 0 var(--sp-1)}
+.ex-note{font-size:var(--fs-cap);color:var(--muted);margin:0}
+.gr-pit{background:#f5f6f8;border-left:3px solid #5f6672;border-radius:var(--r-2);padding:var(--sp-2) var(--sp-3);
+        font-size:var(--fs-sm);color:#3b4250;margin:var(--sp-3) 0}
+.quiz{margin-top:var(--sp-3);border-top:1px dashed var(--line);padding-top:var(--sp-3)}
+.q{margin-bottom:var(--sp-3)}
+.q-stem{font-size:var(--fs-sm);font-weight:600;margin:0 0 var(--sp-2)}
+.quiz-tag{font-size:var(--fs-cap);color:var(--muted);margin:0 0 var(--sp-2)}
+.q-opts{display:flex;gap:var(--sp-2);flex-wrap:wrap}
+.q-opt{border:1px solid var(--line);background:#fff;font:inherit;font-size:var(--fs-sm);
+       padding:var(--sp-1) var(--sp-3);border-radius:var(--r-2);cursor:pointer;min-height:36px}
+.q-opt:hover{border-color:var(--pri)}
+.q-opt.ok{background:#e6f4ea;border-color:var(--ok);color:var(--ok);font-weight:600}
+.q-opt.bad{background:#fdecea;border-color:var(--bad);color:var(--bad)}
+.q-why{font-size:var(--fs-cap);color:var(--muted);margin:var(--sp-2) 0 0;display:none}
+.q-why.show{display:block}
+/* ===== 练习 ===== */
+.btn{border:1px solid var(--pri);background:var(--pri);color:#fff;font:inherit;font-size:var(--fs-sm);
+     padding:var(--sp-1) var(--sp-4);border-radius:var(--r-2);cursor:pointer;min-height:38px;white-space:nowrap}
+.btn:hover{filter:brightness(1.08)}
+.btn-sm{padding:0 var(--sp-3);min-height:32px}
+.btn-row{display:flex;gap:var(--sp-2);align-items:center;flex-wrap:wrap;margin:var(--sp-3) 0}
+.ord-slots{display:grid;grid-template-columns:repeat(7,1fr);gap:var(--sp-2);margin:var(--sp-3) 0}
+.ord-slot{border:2px dashed var(--line);border-radius:var(--r-2);min-height:84px;background:#fff;
+          display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--sp-1);padding:var(--sp-1)}
+.ord-slot.ok{border-color:var(--ok);background:#f1f9f3}
+.ord-slot.bad{border-color:var(--bad);background:#fdf1f0}
+.os-i{font-size:var(--fs-cap);color:var(--muted)}
+.os-v{font-weight:700;font-size:var(--fs-word);color:var(--pri-dark)}
+.ord-pool{display:flex;gap:var(--sp-2);flex-wrap:wrap;margin:var(--sp-3) 0}
+.ord-chip{border:1px solid var(--line);background:#fff;font:inherit;border-radius:var(--r-2);
+          padding:var(--sp-2) var(--sp-3);cursor:pointer;min-height:44px;display:flex;gap:var(--sp-2);align-items:center}
+.ord-chip:hover{border-color:var(--pri)}
+.ord-chip.used{opacity:.35;pointer-events:none}
+.ord-chip .oc-fn{font-size:var(--fs-cap);color:var(--muted)}
+.ord-res,.lk-res,.mt-res-all{font-size:var(--fs-sm);font-weight:600}
+.c-grid-wrap{margin-bottom:var(--sp-4)}
+.c-title{font-size:var(--fs-sm);font-weight:700;color:var(--pri-dark);margin-bottom:var(--sp-2)}
+.c-cnt{background:var(--pri-soft);color:var(--pri-dark);border-radius:var(--r-1);padding:0 var(--sp-1);font-size:var(--fs-cap);font-weight:400}
+.c-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3);background:#fff;border:1px solid var(--line);border-radius:var(--r-3);padding:var(--sp-3)}
+.c-col{display:flex;flex-direction:column;gap:var(--sp-2)}
+.c-item{border:1px solid var(--line);background:#fbfcfe;font:inherit;font-size:var(--fs-sm);
+        padding:var(--sp-2);border-radius:var(--r-2);cursor:pointer;text-align:left;min-height:40px}
+.c-item:hover{border-color:var(--pri)}
+.c-item.sel{border-color:var(--pri);background:var(--pri-soft);font-weight:600}
+.c-item.done{border-color:var(--ok);background:#f1f9f3;color:var(--ok);pointer-events:none}
+.c-item.err{border-color:var(--bad);background:#fdf1f0}
+.lk-item{background:#fff;border:1px solid var(--line);border-radius:var(--r-2);padding:var(--sp-3);margin-bottom:var(--sp-2)}
+.lk-de{font-size:var(--fs-body);line-height:2;margin:0 0 var(--sp-2)}
+.fill-input-line{border:0;border-bottom:2px solid var(--pri);background:#f7f9fc;font:inherit;font-size:var(--fs-body);
+                 padding:0 var(--sp-1);width:130px;text-align:center}
+.fill-input-line.ok{border-color:var(--ok);background:#e6f4ea}
+.fill-input-line.bad{border-color:var(--bad);background:#fdecea}
+.lk-row{display:flex;gap:var(--sp-2);align-items:center}
+.fill-result{font-size:var(--fs-cap)}
+.fill-result.correct{color:var(--ok)}
+.fill-result.wrong{color:var(--bad)}
+.mt-row{display:flex;gap:var(--sp-2);align-items:center;flex-wrap:wrap;background:#fff;border:1px solid var(--line);
+        border-radius:var(--r-2);padding:var(--sp-2) var(--sp-3);margin-bottom:var(--sp-2)}
+.mt-seg{font-weight:700;color:var(--pri-dark);min-width:28px}
+.mt-sel{font:inherit;font-size:var(--fs-sm);padding:var(--sp-1);border:1px solid var(--line);border-radius:var(--r-1);max-width:100%}
+.mt-sel.ok{border-color:var(--ok);background:#e6f4ea}
+.mt-sel.bad{border-color:var(--bad);background:#fdecea}
+.tip{font-size:var(--fs-cap);color:var(--muted)}
+/* ===== 断点 ===== */
+@media (max-width:768px){
+  body{padding-top:calc(var(--sp-6) + 56px)}
+  .nav-links{display:none;width:100%;flex-direction:column;max-height:calc(100vh - 96px);overflow-y:auto}
+  .nav-links.show{display:flex}
+  .nav-links button{text-align:left;width:100%}
+  .burger,.hamburger{display:block}
+  .ord-slots{grid-template-columns:repeat(4,1fr)}
+  .c-grid{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  :root{--fs-h1:27px;--fs-h3:20px;--fs-body:15.5px;--fs-word:17.5px}
+  h1{line-height:1.3}
+  .ord-slots{grid-template-columns:repeat(3,1fr)}
+  .vc-grid{grid-template-columns:1fr;gap:var(--sp-2)}
+  .vc-card{height:auto;min-height:92px}
+  .card-front,.card-back{position:relative;inset:auto;min-height:92px}
+  .vocab-panel{max-height:55vh}
+}
+/* ===== 大屏 / 投影 ===== */
+@media (min-width:1500px){
+  :root{--fs-h1:46px;--fs-h3:27px;--fs-body:18px;--fs-word:21px;--fs-sm:15.5px;--fs-cap:14px}
+  .wrap,.container{max-width:1320px}
+}
+@media (min-width:2200px){
+  :root{--fs-h1:56px;--fs-h3:32px;--fs-body:21px;--fs-word:25px;--fs-sm:18px;--fs-cap:15px}
+  .wrap,.container{max-width:1700px}
+}
+/* 投影控件：默认收起成圆钮，宽屏才显示 */
+.proj-ctl{position:fixed;right:var(--sp-4);bottom:var(--sp-4);z-index:70;display:none}
+.proj-ctl .pc-btn{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:#fff;
+                  color:var(--pri);font-size:16px;cursor:pointer;box-shadow:0 2px 10px rgba(16,24,40,.16)}
+.proj-ctl .pc-panel{display:none;margin-bottom:var(--sp-2);background:#fff;border:1px solid var(--line);
+                    border-radius:var(--r-2);padding:var(--sp-2);box-shadow:0 2px 12px rgba(16,24,40,.16)}
+.proj-ctl.open .pc-panel{display:flex;gap:var(--sp-1)}
+@media (min-width:1100px){ .goals{grid-template-columns:repeat(3,1fr)} .proj-ctl{display:block} }
+</style>
+</head>
+<body>
+<div class="progress" id="progressFill"></div>
+<nav class="top-nav"><div class="nav-inner">
+  <span class="nav-brand">Lektion 2 · Meine Helden, deine Helden</span>
+  <button class="burger hamburger" onclick="toggleNav()" aria-label="菜单">☰</button>
+  <div class="nav-links" id="navLinks">
+<button class="active" onclick="switchSection('home')">首页</button>
+<button onclick="switchSection('text')">📖 课文一</button>
+<button onclick="switchSection('text2')">📗 课文二</button>
+<button onclick="switchSection('vocab')">📇 词汇</button>
+<button onclick="switchSection('grammar')">🧩 语法</button>
+<button onclick="switchSection('exercise')">✏️ 练习</button>
+  </div>
+</div></nav>
+<div class="container wrap">
+<section id="home" class="active">
+<h1>Lektion 2 „Meine Helden, deine Helden“</h1>
+<p class="sub">新经典德语 3 · Modul 1 „Kindheit und Jugend“ · S.33–S.63</p>
+<div class="hero"><p class="hero-q">Wer ist ein Held?</p><p class="hero-p">这一课给四个人物：四只被主人赶走的动物、两个中国科学家、一个德国自然科学家、一个德国作曲家。读完你会发现：教材把「英雄」从「打赢了谁」改成了「改变了什么」。</p></div>
+<h2>Lernziele · 这一课要能做到的六件事</h2>
+<div class="goals">
+<div class="goal"><span class="g-n">1</span><span class="g-t" lang="de">über Helden in der Jugend diskutieren</span></div>
+<div class="goal"><span class="g-n">2</span><span class="g-t" lang="de">Märchen über Helden erzählen</span></div>
+<div class="goal"><span class="g-n">3</span><span class="g-t" lang="de">Helden in der chinesischen und deutschen Geschichte kennen lernen</span></div>
+<div class="goal"><span class="g-n">4</span><span class="g-t" lang="de">über Helden und ihre Errungenschaften erzählen oder schreiben</span></div>
+<div class="goal"><span class="g-n">5</span><span class="g-t" lang="de" data-own="1">Relativsätze mit <b>deren / dessen</b>, mit <b>Präposition</b> und <b>weiterführende Nebensätze</b> bilden</span><span class="src">自编</span></div>
+<div class="goal"><span class="g-n">6</span><span class="g-t" lang="de" data-own="1">einen Helden aus dem eigenen Leben in 120–150 Wörtern beschreiben</span><span class="src">自编</span></div>
+</div>
+<h2>Bausteine · 元件地图</h2>
+<div class="chips">
+<div class="chip"><span class="c-id">W1</span><span class="c-nm" lang="de">Wortfeld Tiere</span></div>
+<div class="chip"><span class="c-id">G1</span><span class="c-nm" lang="de">deren / dessen</span></div>
+<div class="chip"><span class="c-id">G2</span><span class="c-nm" lang="de">介词 + 关系代词</span></div>
+<div class="chip"><span class="c-id">T1</span><span class="c-nm" lang="de">Die Bremer Stadtmusikanten</span></div>
+<div class="chip"><span class="c-id">G3</span><span class="c-nm" lang="de">继续性从句</span></div>
+<div class="chip"><span class="c-id">T2</span><span class="c-nm" lang="de">Helden aus China und Deutschland</span></div>
+</div>
+<h2>Weg · 六个站</h2>
+<div class="route">
+<button class="route-card" onclick="switchSection('text')"><span class="r-i">📖</span><span class="r-n">课文一</span><span class="r-d">七段乱序材料，先读再排</span></button>
+<button class="route-card" onclick="switchSection('text2')"><span class="r-i">📗</span><span class="r-n">课文二</span><span class="r-d">四篇人物小传，两中两德</span></button>
+<button class="route-card" onclick="switchSection('vocab')"><span class="r-i">📇</span><span class="r-n">词汇</span><span class="r-d">120 个词条，点开看例句</span></button>
+<button class="route-card" onclick="switchSection('grammar')"><span class="r-i">🧩</span><span class="r-n">语法</span><span class="r-d">三个结构，每个都是从课文里长出来的</span></button>
+<button class="route-card" onclick="switchSection('exercise')"><span class="r-i">✏️</span><span class="r-n">练习</span><span class="r-d">排序 / 连线 / 填空 / 匹配</span></button>
+</div>
+<div class="hint"><b>怎么用</b>：课文页点红色虚线词 → 看词义与例句；点「参考译文」→ 展开整段中文。语法页每讲三道自测题，做错会告诉你错在哪。练习页的排序题可以先试，再点提示。</div>
+</section>
+<section id="text">
+<h2>课文一 · Die Bremer Stadtmusikanten <span class="src">S.44–S.45</span></h2>
+<p class="lead">教材把这篇童话拆成 <b>七段</b>（A–G）打乱顺序发下来。读的时候注意两样东西：<b>衔接词</b>（Darauf / Nun / Als … vorbei war / Von nun an）和<b>指代</b>（er / sie / die vier）。</p>
+<div class="intro-card"><div class="ic-h">导入 <span class="src">S.44</span></div><p class="de" lang="de">Als Anna klein war, las sie gern Märchen. Sie fand die Figuren im Märchen tapfer. Besonders als Anna auf Schwierigkeiten stieß, erinnerte sie sich immer an ihre Helden, nämlich die tapferen Märchenfiguren, vor allem die Bremer Stadtmusikanten.</p><button class="zh-btn" onclick="this.parentNode.querySelector('.zh-body').classList.toggle('open')">参考译文</button><div class="zh-body">安娜小时候爱读童话。她觉得童话里的人物很勇敢。特别是当安娜遇到困难时，她总会想起她的英雄，也就是那些勇敢的童话人物，尤其是那四只不来梅的音乐家。</div></div>
+<article class="blk">
+<div class="blk-h"><span class="blk-no">段 A</span><span class="blk-fn">吃饱、熄灯、睡下</span><span class="src">S.44</span></div>
+<p class="de" lang="de">Nun setzten sich die vier <span class="gl" data-w="der Räuber -" data-zh="强盗，匪徒，抢劫者" data-ex="Nun setzten sich die vier Räuber an den Tisch, auf dem viele Speisen waren, und jeder aß nach Herzenslust von den Speisen, die ihm am besten schmeckten." data-tr="于是这四位（教材作「强盗」）在摆满饭菜的桌旁坐下，每个人都放开肚子吃自己最爱吃的。吃完了，他们熄了灯，各自按自己的喜好找了个睡觉的地方，很快就睡着了。" data-def="教材 S.44">Räuber</span> an den Tisch, auf dem viele Speisen waren, und jeder aß nach Herzenslust von den Speisen, die ihm am besten schmeckten. Als sie fertig waren, löschten sie das Licht aus, und jeder suchte sich eine Schlafstätte nach seinem Geschmack und schlief bald ein.</p>
+<button class="zh-btn" onclick="this.parentNode.querySelector('.zh-body').classList.toggle('open')">参考译文</button><div class="zh-body">于是这四位（教材作「强盗」）在摆满饭菜的桌旁坐下，每个人都放开肚子吃自己最爱吃的。吃完了，他们熄了灯，各自按自己的喜好找了个睡觉的地方，很快就睡着了。</div>
+</article>
+<article class="blk">
+<div class="blk-h"><span class="blk-no">段 B</span><span class="blk-fn">计划与行动：叠罗汉 + 齐声「演奏」</span><span class="src">S.44</span></div>
+<p class="de" lang="de">Die Tiere überlegten, wie sie die <span class="gl" data-w="der Räuber -" data-zh="强盗，匪徒，抢劫者" data-ex="Nun setzten sich die vier Räuber an den Tisch, auf dem viele Speisen waren, und jeder aß nach Herzenslust von den Speisen, die ihm am besten schmeckten." data-tr="于是这四位（教材作「强盗」）在摆满饭菜的桌旁坐下，每个人都放开肚子吃自己最爱吃的。吃完了，他们熄了灯，各自按自己的喜好找了个睡觉的地方，很快就睡着了。" data-def="教材 S.44">Räuber</span> hinausjagen könnten. Endlich stellte sich der Esel mit den Vorderfüßen auf das Fenster, auf des Esels Rücken sprang der Hund, die Katze kletterte auf den Hund und schließlich flog der Hahn hinauf und setzte sich der Katze auf den Kopf. Gleichzeitig machten sie zusammen Musik: der Esel schrie, der Hund bellte, die Katze miaute und der Hahn krähte. Darauf stürzten sie durch das Fenster in die <span class="gl" data-w="die Stube -n" data-zh="小屋" data-ex="Darauf stürzten sie durch das Fenster in die Stube hinein, deren Scheiben klirrten." data-tr="动物们琢磨着怎么把强盗赶出去。最后驴把前腿搭在窗台上，狗跳到驴背上，猫爬到狗身上，公鸡最后飞上去骑在猫头上。它们同时一起「奏乐」：驴叫、狗吠、猫喵、公鸡打鸣。接着它们从窗户冲进屋里，窗玻璃叮当作响。强盗们以为进来了鬼，吓得逃进了森林。" data-def="教材 S.44">Stube</span> hinein, deren Scheiben klirrten. Die Räuber dachten, ein <span class="gl" data-w="das Gespenst -er" data-zh="鬼怪，精灵" data-ex="Die Räuber dachten, ein Gespenst käme herein, und flohen in größter Furcht in den Wald hinaus." data-tr="动物们琢磨着怎么把强盗赶出去。最后驴把前腿搭在窗台上，狗跳到驴背上，猫爬到狗身上，公鸡最后飞上去骑在猫头上。它们同时一起「奏乐」：驴叫、狗吠、猫喵、公鸡打鸣。接着它们从窗户冲进屋里，窗玻璃叮当作响。强盗们以为进来了鬼，吓得逃进了森林。" data-def="教材 S.44">Gespenst</span> käme herein, und flohen in größter Furcht in den Wald <span class="gl" data-w="hinaus/jagen (+A)" data-zh="把……赶出去" data-ex="Endlich stellte sich der Esel mit den Vorderfüßen auf das Fenster, auf des Esels Rücken sprang der Hund, die Katze kletterte auf den Hund und schließlich flog der Hahn hinauf und setzte sich der Katze auf den Kopf." data-tr="动物们琢磨着怎么把强盗赶出去。最后驴把前腿搭在窗台上，狗跳到驴背上，猫爬到狗身上，公鸡最后飞上去骑在猫头上。它们同时一起「奏乐」：驴叫、狗吠、猫喵、公鸡打鸣。接着它们从窗户冲进屋里，窗玻璃叮当作响。强盗们以为进来了鬼，吓得逃进了森林。" data-def="教材 S.44">hinaus</span>.</p>
+<button class="zh-btn" onclick="this.parentNode.querySelector('.zh-body').classList.toggle('open')">参考译文</button><div class="zh-body">动物们琢磨着怎么把强盗赶出去。最后驴把前腿搭在窗台上，狗跳到驴背上，猫爬到狗身上，公鸡最后飞上去骑在猫头上。它们同时一起「奏乐」：驴叫、狗吠、猫喵、公鸡打鸣。接着它们从窗户冲进屋里，窗玻璃叮当作响。强盗们以为进来了鬼，吓得逃进了森林。</div>
+</article>
+<article class="blk">
+<div class="blk-h"><span class="blk-no">段 C</span><span class="blk-fn">发现：驴看见屋里有吃有喝</span><span class="src">S.44</span></div>
+<p class="de" lang="de">Der Esel näherte sich dem Fenster des Hauses und schaute hinein. „Was siehst du, <span class="gl" data-w="der Grauschimmel -" data-zh="灰马（文中为对驴的昵称）" data-ex="„Was siehst du, Grauschimmel?“ fragte der Hahn." data-tr="驴走近房子的窗户往里看。「你看见什么了，灰马？」公鸡问。驴回答：「一张摆好的桌子，上面有好吃的、好喝的，几个强盗围着它坐着。」" data-def="教材 S.44">Grauschimmel</span>?“ fragte der Hahn. Der Esel antwortete: „Einen gedeckten Tisch mit schönem Essen und Trinken, um den einige <span class="gl" data-w="der Räuber -" data-zh="强盗，匪徒，抢劫者" data-ex="Nun setzten sich die vier Räuber an den Tisch, auf dem viele Speisen waren, und jeder aß nach Herzenslust von den Speisen, die ihm am besten schmeckten." data-tr="于是这四位（教材作「强盗」）在摆满饭菜的桌旁坐下，每个人都放开肚子吃自己最爱吃的。吃完了，他们熄了灯，各自按自己的喜好找了个睡觉的地方，很快就睡着了。" data-def="教材 S.44">Räuber</span> herumsitzen.“</p>
+<button class="zh-btn" onclick="this.parentNode.querySelector('.zh-body').classList.toggle('open')">参考译文</button><div class="zh-body">驴走近房子的窗户往里看。「你看见什么了，灰马？」公鸡问。驴回答：「一张摆好的桌子，上面有好吃的、好喝的，几个强盗围着它坐着。」</div>
+</article>
+<article class="blk">
+<div class="blk-h"><span class="blk-no">段 D</span><span class="blk-fn">时间跳转：午夜，派人回去查看</span><span class="src">S.45</span></div>
+<p class="de" lang="de">Als Mitternacht vorbei war und die <span class="gl" data-w="der Räuber -" data-zh="强盗，匪徒，抢劫者" data-ex="Nun setzten sich die vier Räuber an den Tisch, auf dem viele Speisen waren, und jeder aß nach Herzenslust von den Speisen, die ihm am besten schmeckten." data-tr="于是这四位（教材作「强盗」）在摆满饭菜的桌旁坐下，每个人都放开肚子吃自己最爱吃的。吃完了，他们熄了灯，各自按自己的喜好找了个睡觉的地方，很快就睡着了。" data-def="教材 S.44">Räuber</span> von weitem sahen, dass kein Licht mehr im Haus brannte und alles ruhig schien, schickte der <span class="gl" data-w="der Hauptmann ...leute" data-zh="上尉" data-ex="" data-tr="" data-def="教材 S.">Hauptmann</span> einen Räuber zurück, um nachzusehen, ob noch jemand im Hause wäre.</p>
+<button class="zh-btn" onclick="this.parentNode.querySelector('.zh-body').classList.toggle('open')">参考译文</button><div class="zh-body">午夜过了，强盗们从远处看见屋里不再有灯亮着、一切都很安静，头子就派了一个强盗回去，看看屋里是不是还有人。</div>
+</article>
+<article class="blk">
+<div class="blk-h"><span class="blk-no">段 E</span><span class="blk-fn">收束：强盗不敢再来，四只动物留下</span><span class="src">S.45</span></div>
+<p class="de" lang="de">Von nun an getrauten sich die <span class="gl" data-w="der Räuber -" data-zh="强盗，匪徒，抢劫者" data-ex="Nun setzten sich die vier Räuber an den Tisch, auf dem viele Speisen waren, und jeder aß nach Herzenslust von den Speisen, die ihm am besten schmeckten." data-tr="于是这四位（教材作「强盗」）在摆满饭菜的桌旁坐下，每个人都放开肚子吃自己最爱吃的。吃完了，他们熄了灯，各自按自己的喜好找了个睡觉的地方，很快就睡着了。" data-def="教材 S.44">Räuber</span> nicht mehr in das Haus. Den vier Bremer Stadtmusikanten aber gefiel's darin so gut, dass sie nicht wieder hinauswollten.</p>
+<button class="zh-btn" onclick="this.parentNode.querySelector('.zh-body').classList.toggle('open')">参考译文</button><div class="zh-body">从这以后，强盗们再也不敢进这所房子了。而四位不来梅的音乐家在里面住得太舒服了，再也不想出去。</div>
+</article>
+<article class="blk">
+<div class="blk-h"><span class="blk-no">段 F</span><span class="blk-fn">转述：四次遭遇被讲成女巫、持刀人、怪物、法官</span><span class="src">S.45</span></div>
+<p class="de" lang="de">Da lief der <span class="gl" data-w="der Räuber -" data-zh="强盗，匪徒，抢劫者" data-ex="Nun setzten sich die vier Räuber an den Tisch, auf dem viele Speisen waren, und jeder aß nach Herzenslust von den Speisen, die ihm am besten schmeckten." data-tr="于是这四位（教材作「强盗」）在摆满饭菜的桌旁坐下，每个人都放开肚子吃自己最爱吃的。吃完了，他们熄了灯，各自按自己的喜好找了个睡觉的地方，很快就睡着了。" data-def="教材 S.44">Räuber</span> schnell zu seinem <span class="gl" data-w="der Hauptmann ...leute" data-zh="上尉" data-ex="" data-tr="" data-def="教材 S.">Hauptmann</span> zurück und sprach: „Ach, in dem Hause ist eine Hexe, die mich angehaucht und mir mit ihren langen Fingern das Gesicht zerkratzt hat. An der Tür steht ein Mann mit einem Messer, der mich ins Bein gestochen hat. Auf dem Hof liegt ein schwarzes Monster, das mit einem Holzstock auf mich losgeschlagen hat. Und oben auf dem Dach sitzt der Richter, der rief: ‚Bringt mir den <span class="gl" data-w="der Schelm -e" data-zh="淘气鬼，捣蛋鬼" data-ex="Und oben auf dem Dach sitzt der Richter, der rief: ‚Bringt mir den Schelm her!‘“" data-tr="那个强盗赶紧跑回头子那儿说：「哎呀，屋里有女巫，朝我吹气，还用长指甲抓花了我的脸。门口站着个拿刀的男人，捅了我的腿。院子里趴着个黑怪物，拿木棍打我。屋顶上还坐着法官，喊着『把那个坏蛋给我带上来！』」" data-def="教材 S.45">Schelm</span> her!‘“</p>
+<button class="zh-btn" onclick="this.parentNode.querySelector('.zh-body').classList.toggle('open')">参考译文</button><div class="zh-body">那个强盗赶紧跑回头子那儿说：「哎呀，屋里有女巫，朝我吹气，还用长指甲抓花了我的脸。门口站着个拿刀的男人，捅了我的腿。院子里趴着个黑怪物，拿木棍打我。屋顶上还坐着法官，喊着『把那个坏蛋给我带上来！』」</div>
+</article>
+<article class="blk">
+<div class="blk-h"><span class="blk-no">段 G</span><span class="blk-fn">遭遇：厨房 → 后门 → 院子 → 屋顶</span><span class="src">S.45</span></div>
+<p class="de" lang="de">Der <span class="gl" data-w="der Räuber -" data-zh="强盗，匪徒，抢劫者" data-ex="Nun setzten sich die vier Räuber an den Tisch, auf dem viele Speisen waren, und jeder aß nach Herzenslust von den Speisen, die ihm am besten schmeckten." data-tr="于是这四位（教材作「强盗」）在摆满饭菜的桌旁坐下，每个人都放开肚子吃自己最爱吃的。吃完了，他们熄了灯，各自按自己的喜好找了个睡觉的地方，很快就睡着了。" data-def="教材 S.44">Räuber</span> ging in die Küche und wollte ein Licht anzünden. Da sah er die feurigen Augen der Katze, die er für brennende Kohlen hielt. Er hielt ein <span class="gl" data-w="das Schwefelhölzchen - [旧]" data-zh="火柴" data-ex="Er hielt ein Schwefelhölzchen daran, das Feuer fangen sollte." data-tr="强盗走进厨房，想点个亮。他看见了猫发亮的眼睛，以为是烧着的炭，就把一根火柴凑上去，想让它着火。可猫可不觉得好玩，扑到他脸上，使尽全力抓他。他吓坏了，想从后门跑出去，而狗正睡在后门那儿。狗跳起来咬了他的腿。强盗跑过院子经过粪堆时，驴又用后蹄狠狠踢了他一下。而被喧闹声从睡梦中吵醒的公鸡，在屋顶上叫起来：「喔喔喔——！」" data-def="教材 S.45">Schwefelhölzchen</span> daran, das Feuer <span class="gl" data-w="fangen" data-zh="捕捉，逮住" data-ex="Er hielt ein Schwefelhölzchen daran, das Feuer fangen sollte." data-tr="强盗走进厨房，想点个亮。他看见了猫发亮的眼睛，以为是烧着的炭，就把一根火柴凑上去，想让它着火。可猫可不觉得好玩，扑到他脸上，使尽全力抓他。他吓坏了，想从后门跑出去，而狗正睡在后门那儿。狗跳起来咬了他的腿。强盗跑过院子经过粪堆时，驴又用后蹄狠狠踢了他一下。而被喧闹声从睡梦中吵醒的公鸡，在屋顶上叫起来：「喔喔喔——！」" data-def="教材 S.45">fangen</span> sollte. Aber die Katze verstand keinen Spaß, sprang ihm ins Gesicht und kratzte ihn aus Leibeskräften. Da erschrak er gewaltig und wollte zur Hintertür, an der der Hund schlief, hinauslaufen. Der Hund sprang auf und biss ihn ins Bein. Als der Räuber über den Hof am <span class="gl" data-w="der Misthaufen -s" data-zh="粪堆" data-ex="Als der Räuber über den Hof am Misthaufen vorbeirannte, gab ihm der Esel noch einen kräftigen Tritt mit dem Hinterfuß." data-tr="强盗走进厨房，想点个亮。他看见了猫发亮的眼睛，以为是烧着的炭，就把一根火柴凑上去，想让它着火。可猫可不觉得好玩，扑到他脸上，使尽全力抓他。他吓坏了，想从后门跑出去，而狗正睡在后门那儿。狗跳起来咬了他的腿。强盗跑过院子经过粪堆时，驴又用后蹄狠狠踢了他一下。而被喧闹声从睡梦中吵醒的公鸡，在屋顶上叫起来：「喔喔喔——！」" data-def="教材 S.45">Misthaufen</span> vorbeirannte, gab ihm der Esel noch einen kräftigen Tritt mit dem Hinterfuß. Der Hahn aber, der von dem Lärm aus dem Schlaf geweckt worden war, rief vom Dach herunter: „Kikeriki!“</p>
+<button class="zh-btn" onclick="this.parentNode.querySelector('.zh-body').classList.toggle('open')">参考译文</button><div class="zh-body">强盗走进厨房，想点个亮。他看见了猫发亮的眼睛，以为是烧着的炭，就把一根火柴凑上去，想让它着火。可猫可不觉得好玩，扑到他脸上，使尽全力抓他。他吓坏了，想从后门跑出去，而狗正睡在后门那儿。狗跳起来咬了他的腿。强盗跑过院子经过粪堆时，驴又用后蹄狠狠踢了他一下。而被喧闹声从睡梦中吵醒的公鸡，在屋顶上叫起来：「喔喔喔——！」</div>
+</article>
+<div class="hint"><b>读完再想</b>：七段里哪一段<b>不可能</b>是开头？为什么？（提示：看段 A 最后一句「kein Licht mehr … alles ruhig schien」——灯已经灭了，说明有人先住进去了。）</div>
+</section>
+<section id="text2">
+<h2>课文二 · Helden aus China und Deutschland <span class="src">S.55–S.57</span></h2>
+<p class="lead">四篇小传：两中两德。读的时候分别回答一个问题——<b>他改变了什么？</b></p>
+<article class="blk">
+<div class="blk-h"><span class="blk-no">Text a</span><span class="blk-fn" lang="de">Alexander von Humboldt</span><span class="src">S.55–S.56</span></div>
+<p class="de" lang="de" data-gap="1" data-parts="Sehr früh zeigte der kleine Alexander sein Interesse an Naturgeschichte und Pflanzenkunde (植物学),. 1787 begann Alexander sein Studium. 1792 begann er sein Berufsleben als Beamter im preußischen Bergamt. Mit dem Erbe eines großen Vermögens durch den Tod der Mutter verließ Alexander 1796 den Staatsdienst und begann mit der Vorbereitung einer eigenen Forschungsreise. 1799 verließ er von Spanien aus erstmals Europa,">Sehr früh zeigte der kleine Alexander sein Interesse an Naturgeschichte und Pflanzenkunde (植物学), [weswegen er zu Hause den Spitznamen „der kleine Apotheker“ erhielt]. 1787 begann Alexander sein Studium. 1792 begann er sein Berufsleben als Beamter im preußischen Bergamt. Mit dem Erbe eines großen <span class="gl" data-w="das Vermögen -" data-zh="财产，财富" data-ex="Mit dem Erbe eines großen Vermögens durch den Tod der Mutter verließ Alexander 1796 den Staatsdienst und begann mit der Vorbereitung einer eigenen Forschungsreise." data-tr="小亚历山大很早就表现出对自然史和植物学的兴趣，[因此在家里得了个「小药剂师」的外号]。1787 年他开始上大学，1792 年在普鲁士矿业局做公务员。母亲去世后他继承了一大笔遗产，1796 年辞去公职，开始筹备自己的考察旅行。1799 年他从西班牙第一次离开欧洲，[目标是要探索新世界]。" data-def="教材 S.55–56">Vermögens</span> durch den Tod der Mutter verließ Alexander 1796 den <span class="gl" data-w="der Staatsdienst" data-zh="国家公职" data-ex="Mit dem Erbe eines großen Vermögens durch den Tod der Mutter verließ Alexander 1796 den Staatsdienst und begann mit der Vorbereitung einer eigenen Forschungsreise." data-tr="小亚历山大很早就表现出对自然史和植物学的兴趣，[因此在家里得了个「小药剂师」的外号]。1787 年他开始上大学，1792 年在普鲁士矿业局做公务员。母亲去世后他继承了一大笔遗产，1796 年辞去公职，开始筹备自己的考察旅行。1799 年他从西班牙第一次离开欧洲，[目标是要探索新世界]。" data-def="教材 S.55–56">Staatsdienst</span> und begann mit der Vorbereitung einer eigenen Forschungsreise. 1799 verließ er von Spanien aus erstmals Europa, [wobei er das ehrgeizige Ziel hatte, die neue Welt zu erforschen].</p>
+<div class="gap-note">方括号内为练习 6 的三个待填句（教材以空位给出；填法为推断，见附录 B）。</div>
+<button class="zh-btn" onclick="this.parentNode.querySelector('.zh-body').classList.toggle('open')">参考译文</button><div class="zh-body">小亚历山大很早就表现出对自然史和植物学的兴趣，[因此在家里得了个「小药剂师」的外号]。1787 年他开始上大学，1792 年在普鲁士矿业局做公务员。母亲去世后他继承了一大笔遗产，1796 年辞去公职，开始筹备自己的考察旅行。1799 年他从西班牙第一次离开欧洲，[目标是要探索新世界]。</div>
+</article>
+<article class="blk">
+<div class="blk-h"><span class="blk-no">Text a（续）</span><span class="blk-fn" lang="de">Alexander von Humboldt</span><span class="src">S.56</span></div>
+<p class="de" lang="de" data-gap="1" data-parts="„Der Augenblick, wo man zum ersten Mal von Europa scheidet, hat etwas Ergreifendes“, schrieb Alexander freudig erregt. Sein Schiff nahm Kurs auf die Kanarischen Inseln. Das war gefährlich, denn England und Spanien befanden sich im Seekrieg, englische Schiffe konnten sie jederzeit überfallen. Deswegen durften sie in der Nacht kein Licht machen,. Denn Alexander wollte jederzeit messen, forschen, Wissen schaffen. Von 1799 bis 1804 reiste Alexander von Humboldt durch Süd- und Mittelamerika. Seinen 60. Geburtstag verbrachte er in Russland. Es war seine zweite große Forschungsreise und er konnte sogar bis zur chinesischen Grenze vordringen.">„Der Augenblick, wo man zum ersten Mal von Europa scheidet, hat etwas Ergreifendes“, schrieb Alexander <span class="gl" data-w="freudig" data-zh="高兴的" data-ex="„Der Augenblick, wo man zum ersten Mal von Europa scheidet, hat etwas Ergreifendes“, schrieb Alexander freudig erregt." data-tr="「人第一次离开欧洲的那一刻，总有些令人动容」，亚历山大兴奋地写道。他的船驶向加那利群岛。这很危险，因为英西两国正在海战，英国船只随时可能袭击他们。所以夜里不许点灯，[这让他觉得「无聊得要命」]。因为亚历山大无时无刻不想测量、研究、创造知识。1799 到 1804 年，洪堡穿越南美和中美洲。他的 60 岁生日是在俄国过的。那是他第二次大型考察旅行，他甚至一直推进到了中国边境。" data-def="教材 S.56">freudig</span> erregt. Sein Schiff nahm Kurs auf die Kanarischen Inseln. Das war gefährlich, denn England und Spanien befanden sich im <span class="gl" data-w="der Seekrieg -e" data-zh="海战" data-ex="Das war gefährlich, denn England und Spanien befanden sich im Seekrieg, englische Schiffe konnten sie jederzeit überfallen." data-tr="「人第一次离开欧洲的那一刻，总有些令人动容」，亚历山大兴奋地写道。他的船驶向加那利群岛。这很危险，因为英西两国正在海战，英国船只随时可能袭击他们。所以夜里不许点灯，[这让他觉得「无聊得要命」]。因为亚历山大无时无刻不想测量、研究、创造知识。1799 到 1804 年，洪堡穿越南美和中美洲。他的 60 岁生日是在俄国过的。那是他第二次大型考察旅行，他甚至一直推进到了中国边境。" data-def="教材 S.56">Seekrieg</span>, englische Schiffe konnten sie jederzeit überfallen. Deswegen durften sie in der Nacht kein Licht machen, [was ihm „tödliche Langeweile“ bereitete]. Denn Alexander wollte jederzeit messen, forschen, Wissen schaffen. Von 1799 bis 1804 reiste Alexander von Humboldt durch Süd- und Mittelamerika. Seinen 60. Geburtstag verbrachte er in Russland. Es war seine zweite große Forschungsreise und er konnte sogar bis zur chinesischen Grenze vordringen.</p>
+<button class="zh-btn" onclick="this.parentNode.querySelector('.zh-body').classList.toggle('open')">参考译文</button><div class="zh-body">「人第一次离开欧洲的那一刻，总有些令人动容」，亚历山大兴奋地写道。他的船驶向加那利群岛。这很危险，因为英西两国正在海战，英国船只随时可能袭击他们。所以夜里不许点灯，[这让他觉得「无聊得要命」]。因为亚历山大无时无刻不想测量、研究、创造知识。1799 到 1804 年，洪堡穿越南美和中美洲。他的 60 岁生日是在俄国过的。那是他第二次大型考察旅行，他甚至一直推进到了中国边境。</div>
+</article>
+<article class="blk">
+<div class="blk-h"><span class="blk-no">Text b（乱序六段）</span><span class="blk-fn" lang="de">Qian Xuesen</span><span class="src">S.56</span></div>
+<p class="de" lang="de">a) 1955 durfte er mithilfe der chinesischen Regierung nach China ausreisen. Er stellte sich sogleich in den Dienst des jungen Staates. ／ b) 1935 kam Qian Xuesen, der Anfang 20 war, in die USA. Dort wurde er von Theodore von Kármán, Pionier der <span class="gl" data-w="die Raketentechnik -en" data-zh="火箭技术" data-ex="Dort wurde er von Theodore von Kármán, Pionier der Raketentechnik am Caltech, entdeckt und gefördert." data-tr="a) 1955 年，在中国政府的帮助下，他获准离开美国回中国，随即投身这个年轻国家的工作。／ b) 1935 年，二十出头的钱学森到了美国。在那里他被加州理工学院火箭技术先驱西奥多·冯·卡门发现并培养。／ c) 1956 年起，他担任中华人民共和国国防部「第五研究院」的总工程师。／ d)「三十六岁时他就是一位杰出的天才」，冯·卡门这样评价钱学森。1949 年他当选美国艺术与科学院院士。／ e) 但美国政府逮捕了他。尽管如此，接下来的五年里，三只小箱子一直准备着，他随时可以启程回中国。／ f) 同样在 1949 年，新中国成立了，钱学森为此非常振奋。他立刻就想回中国。" data-def="教材 S.56">Raketentechnik</span> am Caltech, entdeckt und gefördert. ／ c) Ab 1956 war er Chefingenieur an der „Fünften Institution“ des Verteidigungsministeriums der Volksrepublik China. ／ d) „Mit 36 Jahren war er ein <span class="gl" data-w="herausragend" data-zh="突出的，卓越的，超群的，杰出的" data-ex="／ d) „Mit 36 Jahren war er ein herausragendes Genie“, urteilte von Kármán über Qian." data-tr="a) 1955 年，在中国政府的帮助下，他获准离开美国回中国，随即投身这个年轻国家的工作。／ b) 1935 年，二十出头的钱学森到了美国。在那里他被加州理工学院火箭技术先驱西奥多·冯·卡门发现并培养。／ c) 1956 年起，他担任中华人民共和国国防部「第五研究院」的总工程师。／ d)「三十六岁时他就是一位杰出的天才」，冯·卡门这样评价钱学森。1949 年他当选美国艺术与科学院院士。／ e) 但美国政府逮捕了他。尽管如此，接下来的五年里，三只小箱子一直准备着，他随时可以启程回中国。／ f) 同样在 1949 年，新中国成立了，钱学森为此非常振奋。他立刻就想回中国。" data-def="教材 S.56">herausragendes</span> <span class="gl" data-w="das Genie -s [ʒe&#x27;niː]" data-zh="天才" data-ex="／ d) „Mit 36 Jahren war er ein herausragendes Genie“, urteilte von Kármán über Qian." data-tr="a) 1955 年，在中国政府的帮助下，他获准离开美国回中国，随即投身这个年轻国家的工作。／ b) 1935 年，二十出头的钱学森到了美国。在那里他被加州理工学院火箭技术先驱西奥多·冯·卡门发现并培养。／ c) 1956 年起，他担任中华人民共和国国防部「第五研究院」的总工程师。／ d)「三十六岁时他就是一位杰出的天才」，冯·卡门这样评价钱学森。1949 年他当选美国艺术与科学院院士。／ e) 但美国政府逮捕了他。尽管如此，接下来的五年里，三只小箱子一直准备着，他随时可以启程回中国。／ f) 同样在 1949 年，新中国成立了，钱学森为此非常振奋。他立刻就想回中国。" data-def="教材 S.56">Genie</span>“, urteilte von Kármán über Qian. 1949 wurde er in die American Academy of Arts and Sciences gewählt. ／ e) Aber die amerikanische Regierung verhaftete ihn. Trotzdem standen drei kleine Koffer während der nächsten fünf Jahren bereit, mit denen er jederzeit nach China hätte aufbrechen können. ／ f) Ebenfalls im Jahr 1949 wurde das neue China gegründet, wofür sich Qian sehr begeisterte. Er wollte sofort nach China zurückkehren.</p>
+<button class="zh-btn" onclick="this.parentNode.querySelector('.zh-body').classList.toggle('open')">参考译文</button><div class="zh-body">a) 1955 年，在中国政府的帮助下，他获准离开美国回中国，随即投身这个年轻国家的工作。／ b) 1935 年，二十出头的钱学森到了美国。在那里他被加州理工学院火箭技术先驱西奥多·冯·卡门发现并培养。／ c) 1956 年起，他担任中华人民共和国国防部「第五研究院」的总工程师。／ d)「三十六岁时他就是一位杰出的天才」，冯·卡门这样评价钱学森。1949 年他当选美国艺术与科学院院士。／ e) 但美国政府逮捕了他。尽管如此，接下来的五年里，三只小箱子一直准备着，他随时可以启程回中国。／ f) 同样在 1949 年，新中国成立了，钱学森为此非常振奋。他立刻就想回中国。</div>
+</article>
+<article class="blk">
+<div class="blk-h"><span class="blk-no">Text c（四段，带小标题任务）</span><span class="blk-fn" lang="de">Yang Liwei</span><span class="src">S.56–S.57</span></div>
+<p class="de" lang="de">① Auch wer kein Chinesisch spricht, sollte sich den Ausspruch merken: „Ganjue liang hao.“ Es sind die ersten Worte, die ein Chinese im Weltraum sprach. „Das Gefühl ist ganz gut,“ teilte Yang Liwei denjenigen mit, die auf der Erde geblieben waren. Der erfolgreiche Start von Chinas erstem bemannten Raumflug war ein historischer Schritt des chinesischen Volkes auf dem Weg zum Gipfel der Wissenschaft. ／ ② Kurz zuvor war das Raumschiff Shenzhou V mit Chinas erstem <span class="gl" data-w="der Raumfahrer -" data-zh="航天员" data-ex="／ ② Kurz zuvor war das Raumschiff Shenzhou V mit Chinas erstem Raumfahrer Yang an Bord aus dem Sand der Wüste Gobi Richtung Orbit abgehoben." data-tr="① 即使不会中文的人也该记住这句话：「感觉良好。」这是一个中国人在太空中说的第一句话。杨利伟把「感觉挺好」告知了留在地球上的人。中国首次载人航天的成功发射，是中国人民迈向科学高峰的历史性一步。／ ② 就在不久前，神舟五号飞船载着中国第一位航天员杨利伟，从戈壁沙漠的沙地里升空，飞向轨道。十分钟后，杨利伟已经进入预定地球轨道，他还要在那里绕地球飞 14 圈。／ ③ 在一篇文章里，杨利伟回忆起几个惊险的瞬间——他当时以为自己马上就要死了。「当火箭达到大约三四十公里高度时，我感觉到它开始剧烈振动。出现了一次震荡，非常疼，」他说。这个几乎致命的时刻持续了 26 秒。等它终于过去，这位航天员觉得自己像重生了一样。／ ④ 在这篇文章里，杨利伟还描写了飞船外面的声响。他至今不知道那些声音从哪里来。他也描述了地球、他的国家和家乡从太空中看上去什么样。「我飞过北京上空，白天看见了山，夜里看见了闪烁的灯火。那里生活着我的同事和我爱的人。」" data-def="教材 S.56–57">Raumfahrer</span> Yang an Bord aus dem Sand der Wüste Gobi Richtung Orbit abgehoben. Zehn Minuten später befand sich Yang bereits auf der angepeilten <span class="gl" data-w="die Erdumlaufbahn -en" data-zh="地球轨道" data-ex="Zehn Minuten später befand sich Yang bereits auf der angepeilten Erdumlaufbahn, in der er noch 14-mal die Erde umkreisen sollte." data-tr="① 即使不会中文的人也该记住这句话：「感觉良好。」这是一个中国人在太空中说的第一句话。杨利伟把「感觉挺好」告知了留在地球上的人。中国首次载人航天的成功发射，是中国人民迈向科学高峰的历史性一步。／ ② 就在不久前，神舟五号飞船载着中国第一位航天员杨利伟，从戈壁沙漠的沙地里升空，飞向轨道。十分钟后，杨利伟已经进入预定地球轨道，他还要在那里绕地球飞 14 圈。／ ③ 在一篇文章里，杨利伟回忆起几个惊险的瞬间——他当时以为自己马上就要死了。「当火箭达到大约三四十公里高度时，我感觉到它开始剧烈振动。出现了一次震荡，非常疼，」他说。这个几乎致命的时刻持续了 26 秒。等它终于过去，这位航天员觉得自己像重生了一样。／ ④ 在这篇文章里，杨利伟还描写了飞船外面的声响。他至今不知道那些声音从哪里来。他也描述了地球、他的国家和家乡从太空中看上去什么样。「我飞过北京上空，白天看见了山，夜里看见了闪烁的灯火。那里生活着我的同事和我爱的人。」" data-def="教材 S.56–57">Erdumlaufbahn</span>, in der er noch 14-mal die Erde umkreisen sollte. ／ ③ In einem Artikel erinnert sich Yang an mehrere spannende Augenblicke, in denen er dachte, er würde gleich sterben. „Als die Rakete eine Höhe von etwa 30 bis 40 Kilometern erreicht hatte, spürte ich, wie sie heftig zu vibrieren begann. Es gab eine <span class="gl" data-w="die Erschütterung -en (mst Sg)" data-zh="震动，震惊" data-ex="Es gab eine Erschütterung und es war extrem schmerzhaft,“ sagt er." data-tr="① 即使不会中文的人也该记住这句话：「感觉良好。」这是一个中国人在太空中说的第一句话。杨利伟把「感觉挺好」告知了留在地球上的人。中国首次载人航天的成功发射，是中国人民迈向科学高峰的历史性一步。／ ② 就在不久前，神舟五号飞船载着中国第一位航天员杨利伟，从戈壁沙漠的沙地里升空，飞向轨道。十分钟后，杨利伟已经进入预定地球轨道，他还要在那里绕地球飞 14 圈。／ ③ 在一篇文章里，杨利伟回忆起几个惊险的瞬间——他当时以为自己马上就要死了。「当火箭达到大约三四十公里高度时，我感觉到它开始剧烈振动。出现了一次震荡，非常疼，」他说。这个几乎致命的时刻持续了 26 秒。等它终于过去，这位航天员觉得自己像重生了一样。／ ④ 在这篇文章里，杨利伟还描写了飞船外面的声响。他至今不知道那些声音从哪里来。他也描述了地球、他的国家和家乡从太空中看上去什么样。「我飞过北京上空，白天看见了山，夜里看见了闪烁的灯火。那里生活着我的同事和我爱的人。」" data-def="教材 S.56–57">Erschütterung</span> und es war extrem <span class="gl" data-w="schmerzhaft" data-zh="疼痛的，痛苦的" data-ex="Es gab eine Erschütterung und es war extrem schmerzhaft,“ sagt er." data-tr="① 即使不会中文的人也该记住这句话：「感觉良好。」这是一个中国人在太空中说的第一句话。杨利伟把「感觉挺好」告知了留在地球上的人。中国首次载人航天的成功发射，是中国人民迈向科学高峰的历史性一步。／ ② 就在不久前，神舟五号飞船载着中国第一位航天员杨利伟，从戈壁沙漠的沙地里升空，飞向轨道。十分钟后，杨利伟已经进入预定地球轨道，他还要在那里绕地球飞 14 圈。／ ③ 在一篇文章里，杨利伟回忆起几个惊险的瞬间——他当时以为自己马上就要死了。「当火箭达到大约三四十公里高度时，我感觉到它开始剧烈振动。出现了一次震荡，非常疼，」他说。这个几乎致命的时刻持续了 26 秒。等它终于过去，这位航天员觉得自己像重生了一样。／ ④ 在这篇文章里，杨利伟还描写了飞船外面的声响。他至今不知道那些声音从哪里来。他也描述了地球、他的国家和家乡从太空中看上去什么样。「我飞过北京上空，白天看见了山，夜里看见了闪烁的灯火。那里生活着我的同事和我爱的人。」" data-def="教材 S.56–57">schmerzhaft</span>,“ sagt er. Dieser fast tödliche Moment dauerte 26 Sekunden an. Als er endlich vorbei war, fühlte sich der Taikonaut wie neugeboren. ／ ④ In dem Artikel beschrieb Yang auch die Geräusche von außerhalb des Raumschiffs. Er weiß immer noch nicht, woher sie kamen. Er beschrieb auch, wie die Erde, sein Land und seine Heimatstadt aus dem Weltraum aussahen. „Ich bin über Beijing geflogen und habe tagsüber die Berge und nachts funkelnde Lichter gesehen. Und dort leben meine Kollegen und meine Lieben.“</p>
+<button class="zh-btn" onclick="this.parentNode.querySelector('.zh-body').classList.toggle('open')">参考译文</button><div class="zh-body">① 即使不会中文的人也该记住这句话：「感觉良好。」这是一个中国人在太空中说的第一句话。杨利伟把「感觉挺好」告知了留在地球上的人。中国首次载人航天的成功发射，是中国人民迈向科学高峰的历史性一步。／ ② 就在不久前，神舟五号飞船载着中国第一位航天员杨利伟，从戈壁沙漠的沙地里升空，飞向轨道。十分钟后，杨利伟已经进入预定地球轨道，他还要在那里绕地球飞 14 圈。／ ③ 在一篇文章里，杨利伟回忆起几个惊险的瞬间——他当时以为自己马上就要死了。「当火箭达到大约三四十公里高度时，我感觉到它开始剧烈振动。出现了一次震荡，非常疼，」他说。这个几乎致命的时刻持续了 26 秒。等它终于过去，这位航天员觉得自己像重生了一样。／ ④ 在这篇文章里，杨利伟还描写了飞船外面的声响。他至今不知道那些声音从哪里来。他也描述了地球、他的国家和家乡从太空中看上去什么样。「我飞过北京上空，白天看见了山，夜里看见了闪烁的灯火。那里生活着我的同事和我爱的人。」</div>
+</article>
+<article class="blk">
+<div class="blk-h"><span class="blk-no">Text d</span><span class="blk-fn" lang="de">Ludwig van Beethoven</span><span class="src">S.57</span></div>
+<p class="de" lang="de">Zu Beginn seiner musikalischen Laufbahn machte sich Beethoven zunächst als meisterhafter Klavierspieler einen Namen. Zu seinen Stärken gehörte das freie <span class="gl" data-w="das Improvisieren" data-zh="即兴创作" data-ex="Zu seinen Stärken gehörte das freie Improvisieren und Fantasieren auf dem Instrument." data-tr="在音乐生涯之初，贝多芬先是以精湛的钢琴演奏成名。他的强项之一是在乐器上自由即兴与幻想。从波恩搬到维也纳后，他的才华很快把他带进了哈布斯堡都城最上层的社交圈。由于听力疾病随时间不断加重，他的钢琴家生涯几乎提前结束，这让他十分痛苦。随着听力恶化，贝多芬越来越专注于作曲。别的作曲家常常很快把作品写下来，贝多芬却为每一个音符苦苦琢磨，不断修改、改进自己的作品。在大多数音乐体裁中，贝多芬的作品都属于同类中最重要的。贝多芬达到了自己的要求——为后世留下不朽的音乐作品。他的受欢迎程度从未减弱，今天他是世界上演奏最多的作曲家之一。" data-def="教材 S.57">Improvisieren</span> und <span class="gl" data-w="das Fantasieren" data-zh="想象" data-ex="Zu seinen Stärken gehörte das freie Improvisieren und Fantasieren auf dem Instrument." data-tr="在音乐生涯之初，贝多芬先是以精湛的钢琴演奏成名。他的强项之一是在乐器上自由即兴与幻想。从波恩搬到维也纳后，他的才华很快把他带进了哈布斯堡都城最上层的社交圈。由于听力疾病随时间不断加重，他的钢琴家生涯几乎提前结束，这让他十分痛苦。随着听力恶化，贝多芬越来越专注于作曲。别的作曲家常常很快把作品写下来，贝多芬却为每一个音符苦苦琢磨，不断修改、改进自己的作品。在大多数音乐体裁中，贝多芬的作品都属于同类中最重要的。贝多芬达到了自己的要求——为后世留下不朽的音乐作品。他的受欢迎程度从未减弱，今天他是世界上演奏最多的作曲家之一。" data-def="教材 S.57">Fantasieren</span> auf dem Instrument. Nach dem Umzug von Bonn nach Wien führte ihn sein Talent bald in die höchsten gesellschaftlichen Kreise der <span class="gl" data-w="habsburgisch" data-zh="哈布斯堡的" data-ex="Nach dem Umzug von Bonn nach Wien führte ihn sein Talent bald in die höchsten gesellschaftlichen Kreise der habsburgischen Metropole." data-tr="在音乐生涯之初，贝多芬先是以精湛的钢琴演奏成名。他的强项之一是在乐器上自由即兴与幻想。从波恩搬到维也纳后，他的才华很快把他带进了哈布斯堡都城最上层的社交圈。由于听力疾病随时间不断加重，他的钢琴家生涯几乎提前结束，这让他十分痛苦。随着听力恶化，贝多芬越来越专注于作曲。别的作曲家常常很快把作品写下来，贝多芬却为每一个音符苦苦琢磨，不断修改、改进自己的作品。在大多数音乐体裁中，贝多芬的作品都属于同类中最重要的。贝多芬达到了自己的要求——为后世留下不朽的音乐作品。他的受欢迎程度从未减弱，今天他是世界上演奏最多的作曲家之一。" data-def="教材 S.57">habsburgischen</span> Metropole. Wegen seines <span class="gl" data-w="das Gehörleiden -" data-zh="(长期的) 听力疾病" data-ex="Wegen seines Gehörleidens, das sich im Laufe der Zeit verschlimmerte, fand seine Karriere als Pianist fast ein vorzeitiges Ende, was ihn sehr belastete." data-tr="在音乐生涯之初，贝多芬先是以精湛的钢琴演奏成名。他的强项之一是在乐器上自由即兴与幻想。从波恩搬到维也纳后，他的才华很快把他带进了哈布斯堡都城最上层的社交圈。由于听力疾病随时间不断加重，他的钢琴家生涯几乎提前结束，这让他十分痛苦。随着听力恶化，贝多芬越来越专注于作曲。别的作曲家常常很快把作品写下来，贝多芬却为每一个音符苦苦琢磨，不断修改、改进自己的作品。在大多数音乐体裁中，贝多芬的作品都属于同类中最重要的。贝多芬达到了自己的要求——为后世留下不朽的音乐作品。他的受欢迎程度从未减弱，今天他是世界上演奏最多的作曲家之一。" data-def="教材 S.57">Gehörleidens</span>, das sich im Laufe der Zeit verschlimmerte, fand seine Karriere als Pianist fast ein vorzeitiges Ende, was ihn sehr belastete. Mit der Verschlechterung seines Gehörs konzentrierte sich Beethoven mehr und mehr aufs Komponieren. Während andere Komponisten ihre Werke oft schnell zu Papier brachten, rang Beethoven um jede Note, wobei er die Kompositionen immer wieder überarbeitete und verbesserte. In den meisten musikalischen Gattungen gehören Beethovens Werke zu den wichtigsten ihrer Art. Beethoven ist seinem Anspruch, ein bleibendes musikalisches Werk für die Nachwelt zu hinterlassen, gerecht geworden. Seine Beliebtheit ist ungebrochen, und heute gehört er zu den meistgespielten Komponisten der Welt.</p>
+<button class="zh-btn" onclick="this.parentNode.querySelector('.zh-body').classList.toggle('open')">参考译文</button><div class="zh-body">在音乐生涯之初，贝多芬先是以精湛的钢琴演奏成名。他的强项之一是在乐器上自由即兴与幻想。从波恩搬到维也纳后，他的才华很快把他带进了哈布斯堡都城最上层的社交圈。由于听力疾病随时间不断加重，他的钢琴家生涯几乎提前结束，这让他十分痛苦。随着听力恶化，贝多芬越来越专注于作曲。别的作曲家常常很快把作品写下来，贝多芬却为每一个音符苦苦琢磨，不断修改、改进自己的作品。在大多数音乐体裁中，贝多芬的作品都属于同类中最重要的。贝多芬达到了自己的要求——为后世留下不朽的音乐作品。他的受欢迎程度从未减弱，今天他是世界上演奏最多的作曲家之一。</div>
+</article>
+<div class="hint"><b>四个人四种「英雄」</b>：Humboldt（把世界测量了一遍）· Qian Xuesen（把火箭带回国）· Yang Liwei（第一个上太空的中国人）· Beethoven（听不见还继续写）。教材没有给四个人排名，只让你注意到：<b>英雄不一定是赢的人</b>。</div>
+</section>
+<section id="vocab">
+<h2>词汇 · Vokabeln <span class="src">词表 2-6 / 2-9</span></h2>
+<p class="lead">点卡片翻面看中文；卡片右下角 <b>▶</b> 打开例句。词义照教材原样，带 ⚠ 的词条按教材字面收录。</p>
+<div class="person-tabs">
+<button class="person-btn active" onclick="switchVocabTab(0)">Vokabeln 2-6（Entdecken 1）</button>
+<button class="person-btn" onclick="switchVocabTab(1)">Vokabeln 2-9（Entdecken 2）</button>
+</div>
+<div class="person-content active" id="vc-0">
+<p class="vc-meta">Vokabeln 2-6（Entdecken 1）　·　66 条　·　页码未读出</p>
+<div class="vc-grid">
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">fangen</b></div><div class="card-back"><span class="cb-zh">捕捉，逮住</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('fangen','捕捉，逮住','Er hielt ein Schwefelhölzchen daran, das Feuer fangen sollte.','强盗走进厨房，想点个亮。他看见了猫发亮的眼睛，以为是烧着的炭，就把一根火柴凑上去，想让它着火。可猫可不觉得好玩，扑到他脸上，使尽全力抓他。他吓坏了，想从后门跑出去，而狗正睡在后门那儿。狗跳起来咬了他的腿。强盗跑过院子经过粪堆时，驴又用后蹄狠狠踢了他一下。而被喧闹声从睡梦中吵醒的公鸡，在屋顶上叫起来：「喔喔喔——！」','教材 S.45 段 G')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">der Hase</b><span class="vc-note"> -n</span></div><div class="card-back"><span class="cb-zh">兔子</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">der Tiger -</b></div><div class="card-back"><span class="cb-zh">老虎</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">der Hahn</b><span class="vc-note"> -̈e</span></div><div class="card-back"><span class="cb-zh">公鸡</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">nach/ahmen</b><span class="vc-note"> +A</span></div><div class="card-back"><span class="cb-zh">模仿，仿效</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">bellen</b></div><div class="card-back"><span class="cb-zh">吠</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">beißen</b><span class="vc-note"> +A</span></div><div class="card-back"><span class="cb-zh">啃，咬</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">der Mist nur Sg</b></div><div class="card-back"><span class="cb-zh">粪便</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">krähen</b></div><div class="card-back"><span class="cb-zh">雄鸡啼叫</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">der Esel -</b></div><div class="card-back"><span class="cb-zh">驴</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">der Fuchs</b><span class="vc-note"> -̈e</span></div><div class="card-back"><span class="cb-zh">狐狸</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">die Ratte</b><span class="vc-note"> -n</span></div><div class="card-back"><span class="cb-zh">大老鼠</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">der Ochse</b><span class="vc-note"> -n</span></div><div class="card-back"><span class="cb-zh">公牛</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">die Schlange</b><span class="vc-note"> -n</span></div><div class="card-back"><span class="cb-zh">蛇</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">die Ziege</b><span class="vc-note"> -n</span></div><div class="card-back"><span class="cb-zh">山羊</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">der Affe</b><span class="vc-note"> -n</span></div><div class="card-back"><span class="cb-zh">猴</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">die Weisheit nur Sg</b></div><div class="card-back"><span class="cb-zh">聪明，才智，智慧</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">unverdrossen / unverdrossen ⚠</b></div><div class="card-back"><span class="cb-zh">孜孜不倦的，勤勉的</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">begegnen</b><span class="vc-note"> +D</span></div><div class="card-back"><span class="cb-zh">遭遇，遇到</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">die Mühle</b><span class="vc-note"> -n</span></div><div class="card-back"><span class="cb-zh">磨坊</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">taugen</b><span class="vc-note"> +zu Dat</span></div><div class="card-back"><span class="cb-zh">适用于，对……有用</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">der Jagdhund</b><span class="vc-note"> -e</span></div><div class="card-back"><span class="cb-zh">猎犬</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">tot/schießen</b><span class="vc-note"> +A</span></div><div class="card-back"><span class="cb-zh">枪杀</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">ein Gesicht wie drei Tage Regenwetter</b></div><div class="card-back"><span class="cb-zh">哭丧着脸，愁眉苦脸</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">die Besitzerin</b><span class="vc-note"> -nen</span></div><div class="card-back"><span class="cb-zh">（女性）所有者</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">die Leibeskräfte Pl mst in aus Leibeskräften</b></div><div class="card-back"><span class="cb-zh">竭力，使出浑身的力气</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">stumpf</b></div><div class="card-back"><span class="cb-zh">钝的，迟钝的</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">ab/schlagen</b></div><div class="card-back"><span class="cb-zh">砍下</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">auf/brechen (+zu Dat)</b><span class="vc-note"> (+irgendwohin)</span></div><div class="card-back"><span class="cb-zh">启程，动身</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">das Geißlein -</b></div><div class="card-back"><span class="cb-zh">小山羊</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">die Nahrung nur Sg</b></div><div class="card-back"><span class="cb-zh">食物，食粮</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">der Bösewicht</b><span class="vc-note"> -e(r)</span></div><div class="card-back"><span class="cb-zh">[旧]恶棍，坏蛋</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">der Wolf</b><span class="vc-note"> -̈e</span></div><div class="card-back"><span class="cb-zh">狼</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">die Pfote</b><span class="vc-note"> -n</span></div><div class="card-back"><span class="cb-zh">（哺乳动物的）爪子</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">der Uhrkasten</b><span class="vc-note"> -̈</span></div><div class="card-back"><span class="cb-zh">钟表盒</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">rächen</b><span class="vc-note"> +sich (+an jm) (+für Akk)</span></div><div class="card-back"><span class="cb-zh">报复</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">der Brunnen -</b></div><div class="card-back"><span class="cb-zh">水井</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">der Ast</b><span class="vc-note"> -̈e</span></div><div class="card-back"><span class="cb-zh">树枝</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">klettern</b><span class="vc-note"> (+irgendwohin)</span></div><div class="card-back"><span class="cb-zh">爬上，攀登</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('klettern (+irgendwohin)','爬上，攀登','Endlich stellte sich der Esel mit den Vorderfüßen auf das Fenster, auf des Esels Rücken sprang der Hund, die Katze kletterte auf den Hund und schließlich flog der Hahn hinauf und setzte sich der Katze auf den Kopf.','动物们琢磨着怎么把强盗赶出去。最后驴把前腿搭在窗台上，狗跳到驴背上，猫爬到狗身上，公鸡最后飞上去骑在猫头上。它们同时一起「奏乐」：驴叫、狗吠、猫喵、公鸡打鸣。接着它们从窗户冲进屋里，窗玻璃叮当作响。强盗们以为进来了鬼，吓得逃进了森林。','教材 S.44 段 B')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">der Wipfel -</b></div><div class="card-back"><span class="cb-zh">树梢</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">die Gegend</b><span class="vc-note"> -en</span></div><div class="card-back"><span class="cb-zh">地带，地区，地方</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">schimmern</b></div><div class="card-back"><span class="cb-zh">闪烁，闪光</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">hellerleuchtet</b></div><div class="card-back"><span class="cb-zh">灯火通明的</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">infolge</b><span class="vc-note"> +Gen</span></div><div class="card-back"><span class="cb-zh">由于</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">mehr oder weniger</b></div><div class="card-back"><span class="cb-zh">或多或少</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">aus/löschen</b><span class="vc-note"> +A</span></div><div class="card-back"><span class="cb-zh">熄灭</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">das Gespenst</b><span class="vc-note"> -er</span></div><div class="card-back"><span class="cb-zh">鬼怪，精灵</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('das Gespenst -er','鬼怪，精灵','Die Räuber dachten, ein Gespenst käme herein, und flohen in größter Furcht in den Wald hinaus.','动物们琢磨着怎么把强盗赶出去。最后驴把前腿搭在窗台上，狗跳到驴背上，猫爬到狗身上，公鸡最后飞上去骑在猫头上。它们同时一起「奏乐」：驴叫、狗吠、猫喵、公鸡打鸣。接着它们从窗户冲进屋里，窗玻璃叮当作响。强盗们以为进来了鬼，吓得逃进了森林。','教材 S.44 段 B')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">der Räuber -</b></div><div class="card-back"><span class="cb-zh">强盗，匪徒，抢劫者</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('der Räuber -','强盗，匪徒，抢劫者','Nun setzten sich die vier Räuber an den Tisch, auf dem viele Speisen waren, und jeder aß nach Herzenslust von den Speisen, die ihm am besten schmeckten.','于是这四位（教材作「强盗」）在摆满饭菜的桌旁坐下，每个人都放开肚子吃自己最爱吃的。吃完了，他们熄了灯，各自按自己的喜好找了个睡觉的地方，很快就睡着了。','教材 S.44 段 A')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">hinaus/jagen</b><span class="vc-note"> (+A)</span></div><div class="card-back"><span class="cb-zh">把……赶出去</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('hinaus/jagen (+A)','把……赶出去','Endlich stellte sich der Esel mit den Vorderfüßen auf das Fenster, auf des Esels Rücken sprang der Hund, die Katze kletterte auf den Hund und schließlich flog der Hahn hinauf und setzte sich der Katze auf den Kopf.','动物们琢磨着怎么把强盗赶出去。最后驴把前腿搭在窗台上，狗跳到驴背上，猫爬到狗身上，公鸡最后飞上去骑在猫头上。它们同时一起「奏乐」：驴叫、狗吠、猫喵、公鸡打鸣。接着它们从窗户冲进屋里，窗玻璃叮当作响。强盗们以为进来了鬼，吓得逃进了森林。','教材 S.44 段 B')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">der Vorderfuß</b><span class="vc-note"> -̈e</span></div><div class="card-back"><span class="cb-zh">（动物的）前脚</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">die Stube</b><span class="vc-note"> -n</span></div><div class="card-back"><span class="cb-zh">小屋</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('die Stube -n','小屋','Darauf stürzten sie durch das Fenster in die Stube hinein, deren Scheiben klirrten.','动物们琢磨着怎么把强盗赶出去。最后驴把前腿搭在窗台上，狗跳到驴背上，猫爬到狗身上，公鸡最后飞上去骑在猫头上。它们同时一起「奏乐」：驴叫、狗吠、猫喵、公鸡打鸣。接着它们从窗户冲进屋里，窗玻璃叮当作响。强盗们以为进来了鬼，吓得逃进了森林。','教材 S.44 段 B')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">klirren</b></div><div class="card-back"><span class="cb-zh">铿锵响，叮当响</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('klirren','铿锵响，叮当响','Darauf stürzten sie durch das Fenster in die Stube hinein, deren Scheiben klirrten.','动物们琢磨着怎么把强盗赶出去。最后驴把前腿搭在窗台上，狗跳到驴背上，猫爬到狗身上，公鸡最后飞上去骑在猫头上。它们同时一起「奏乐」：驴叫、狗吠、猫喵、公鸡打鸣。接着它们从窗户冲进屋里，窗玻璃叮当作响。强盗们以为进来了鬼，吓得逃进了森林。','教材 S.44 段 B')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">fliehen</b><span class="vc-note"> (+irgendwohin)</span></div><div class="card-back"><span class="cb-zh">逃跑，逃避，躲避</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">die Furcht nur Sg</b></div><div class="card-back"><span class="cb-zh">害怕，惧怕，恐惧，畏惧</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">der Grauschimmel -</b></div><div class="card-back"><span class="cb-zh">灰马（文中为对驴的昵称）</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('der Grauschimmel -','灰马（文中为对驴的昵称）','„Was siehst du, Grauschimmel?“ fragte der Hahn.','驴走近房子的窗户往里看。「你看见什么了，灰马？」公鸡问。驴回答：「一张摆好的桌子，上面有好吃的、好喝的，几个强盗围着它坐着。」','教材 S.44 段 C')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">sich getrauen</b></div><div class="card-back"><span class="cb-zh">敢做某事</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">hinaus/wollen</b></div><div class="card-back"><span class="cb-zh">想出去</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('hinaus/wollen','想出去','Endlich stellte sich der Esel mit den Vorderfüßen auf das Fenster, auf des Esels Rücken sprang der Hund, die Katze kletterte auf den Hund und schließlich flog der Hahn hinauf und setzte sich der Katze auf den Kopf.','动物们琢磨着怎么把强盗赶出去。最后驴把前腿搭在窗台上，狗跳到驴背上，猫爬到狗身上，公鸡最后飞上去骑在猫头上。它们同时一起「奏乐」：驴叫、狗吠、猫喵、公鸡打鸣。接着它们从窗户冲进屋里，窗玻璃叮当作响。强盗们以为进来了鬼，吓得逃进了森林。','教材 S.44 段 B')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">der Hauptmann ...leute</b></div><div class="card-back"><span class="cb-zh">上尉</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">an/hauchten</b><span class="vc-note"> +A</span></div><div class="card-back"><span class="cb-zh">向……呵气，吹（热）气</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">der Schelm</b><span class="vc-note"> -e</span></div><div class="card-back"><span class="cb-zh">淘气鬼，捣蛋鬼</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('der Schelm -e','淘气鬼，捣蛋鬼','Und oben auf dem Dach sitzt der Richter, der rief: ‚Bringt mir den Schelm her!‘“','那个强盗赶紧跑回头子那儿说：「哎呀，屋里有女巫，朝我吹气，还用长指甲抓花了我的脸。门口站着个拿刀的男人，捅了我的腿。院子里趴着个黑怪物，拿木棍打我。屋顶上还坐着法官，喊着『把那个坏蛋给我带上来！』」','教材 S.45 段 F')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">feurig</b></div><div class="card-back"><span class="cb-zh">充满激情的，热情的</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('feurig','充满激情的，热情的','Da sah er die feurigen Augen der Katze, die er für brennende Kohlen hielt.','强盗走进厨房，想点个亮。他看见了猫发亮的眼睛，以为是烧着的炭，就把一根火柴凑上去，想让它着火。可猫可不觉得好玩，扑到他脸上，使尽全力抓他。他吓坏了，想从后门跑出去，而狗正睡在后门那儿。狗跳起来咬了他的腿。强盗跑过院子经过粪堆时，驴又用后蹄狠狠踢了他一下。而被喧闹声从睡梦中吵醒的公鸡，在屋顶上叫起来：「喔喔喔——！」','教材 S.45 段 G')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">das Schwefelhölzchen -</b><span class="vc-note"> [旧]</span></div><div class="card-back"><span class="cb-zh">火柴</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('das Schwefelhölzchen - [旧]','火柴','Er hielt ein Schwefelhölzchen daran, das Feuer fangen sollte.','强盗走进厨房，想点个亮。他看见了猫发亮的眼睛，以为是烧着的炭，就把一根火柴凑上去，想让它着火。可猫可不觉得好玩，扑到他脸上，使尽全力抓他。他吓坏了，想从后门跑出去，而狗正睡在后门那儿。狗跳起来咬了他的腿。强盗跑过院子经过粪堆时，驴又用后蹄狠狠踢了他一下。而被喧闹声从睡梦中吵醒的公鸡，在屋顶上叫起来：「喔喔喔——！」','教材 S.45 段 G')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">erschrecken</b></div><div class="card-back"><span class="cb-zh">害怕</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">hinaus/laufen</b></div><div class="card-back"><span class="cb-zh">跑出去</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('hinaus/laufen','跑出去','Endlich stellte sich der Esel mit den Vorderfüßen auf das Fenster, auf des Esels Rücken sprang der Hund, die Katze kletterte auf den Hund und schließlich flog der Hahn hinauf und setzte sich der Katze auf den Kopf.','动物们琢磨着怎么把强盗赶出去。最后驴把前腿搭在窗台上，狗跳到驴背上，猫爬到狗身上，公鸡最后飞上去骑在猫头上。它们同时一起「奏乐」：驴叫、狗吠、猫喵、公鸡打鸣。接着它们从窗户冲进屋里，窗玻璃叮当作响。强盗们以为进来了鬼，吓得逃进了森林。','教材 S.44 段 B')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">der Misthaufen</b><span class="vc-note"> -s</span></div><div class="card-back"><span class="cb-zh">粪堆</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('der Misthaufen -s','粪堆','Als der Räuber über den Hof am Misthaufen vorbeirannte, gab ihm der Esel noch einen kräftigen Tritt mit dem Hinterfuß.','强盗走进厨房，想点个亮。他看见了猫发亮的眼睛，以为是烧着的炭，就把一根火柴凑上去，想让它着火。可猫可不觉得好玩，扑到他脸上，使尽全力抓他。他吓坏了，想从后门跑出去，而狗正睡在后门那儿。狗跳起来咬了他的腿。强盗跑过院子经过粪堆时，驴又用后蹄狠狠踢了他一下。而被喧闹声从睡梦中吵醒的公鸡，在屋顶上叫起来：「喔喔喔——！」','教材 S.45 段 G')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">die Solidarität nur Sg</b></div><div class="card-back"><span class="cb-zh">团结</span></div></div></div>
+</div></div>
+<div class="person-content" id="vc-1">
+<p class="vc-meta">Vokabeln 2-9（Entdecken 2）　·　54 条　·　页码未读出</p>
+<div class="vc-grid">
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">die Erforschung</b><span class="vc-note"> -en</span></div><div class="card-back"><span class="cb-zh">研究，考察，探索</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">der Begründer -</b></div><div class="card-back"><span class="cb-zh">创始人，奠基者</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">die Überlieferung</b><span class="vc-note"> -en</span></div><div class="card-back"><span class="cb-zh">传说，传统</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">innerhalb</b><span class="vc-note"> +Gen</span></div><div class="card-back"><span class="cb-zh">在……期间，在……时间内</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">bewundernswert</b></div><div class="card-back"><span class="cb-zh">值得钦佩的，令人赞赏的</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">überraschen</b><span class="vc-note"> (+A)</span></div><div class="card-back"><span class="cb-zh">使惊讶，使惊喜</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">revolutionieren</b><span class="vc-note"> +A</span></div><div class="card-back"><span class="cb-zh">使彻底变革，给……带来革命</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">das Idol</b><span class="vc-note"> -e</span></div><div class="card-back"><span class="cb-zh">偶像</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">die Arbeiterbewegung</b><span class="vc-note"> -en</span></div><div class="card-back"><span class="cb-zh">工人运动</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">auf/rufen</b><span class="vc-note"> +A +zu Dat</span></div><div class="card-back"><span class="cb-zh">号召，呼吁</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">das Schneewittchen</b></div><div class="card-back"><span class="cb-zh">白雪公主</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">ehrenamtlich</b></div><div class="card-back"><span class="cb-zh">无报酬的，义务性的</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">das Raumfahrtprogramm</b><span class="vc-note"> -e</span></div><div class="card-back"><span class="cb-zh">太空计划</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">Wiener Klassik</b></div><div class="card-back"><span class="cb-zh">维也纳古典乐派</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">das Vermögen -</b></div><div class="card-back"><span class="cb-zh">财产，财富</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('das Vermögen -','财产，财富','Mit dem Erbe eines großen Vermögens durch den Tod der Mutter verließ Alexander 1796 den Staatsdienst und begann mit der Vorbereitung einer eigenen Forschungsreise.','小亚历山大很早就表现出对自然史和植物学的兴趣，[因此在家里得了个「小药剂师」的外号]。1787 年他开始上大学，1792 年在普鲁士矿业局做公务员。母亲去世后他继承了一大笔遗产，1796 年辞去公职，开始筹备自己的考察旅行。1799 年他从西班牙第一次离开欧洲，[目标是要探索新世界]。','教材 S.55–S.56 Text a')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">preußig ⚠</b></div><div class="card-back"><span class="cb-zh">普鲁士的</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">der Staatsdienst</b></div><div class="card-back"><span class="cb-zh">国家公职</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('der Staatsdienst','国家公职','Mit dem Erbe eines großen Vermögens durch den Tod der Mutter verließ Alexander 1796 den Staatsdienst und begann mit der Vorbereitung einer eigenen Forschungsreise.','小亚历山大很早就表现出对自然史和植物学的兴趣，[因此在家里得了个「小药剂师」的外号]。1787 年他开始上大学，1792 年在普鲁士矿业局做公务员。母亲去世后他继承了一大笔遗产，1796 年辞去公职，开始筹备自己的考察旅行。1799 年他从西班牙第一次离开欧洲，[目标是要探索新世界]。','教材 S.55–S.56 Text a')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">freudig</b></div><div class="card-back"><span class="cb-zh">高兴的</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('freudig','高兴的','„Der Augenblick, wo man zum ersten Mal von Europa scheidet, hat etwas Ergreifendes“, schrieb Alexander freudig erregt.','「人第一次离开欧洲的那一刻，总有些令人动容」，亚历山大兴奋地写道。他的船驶向加那利群岛。这很危险，因为英西两国正在海战，英国船只随时可能袭击他们。所以夜里不许点灯，[这让他觉得「无聊得要命」]。因为亚历山大无时无刻不想测量、研究、创造知识。1799 到 1804 年，洪堡穿越南美和中美洲。他的 60 岁生日是在俄国过的。那是他第二次大型考察旅行，他甚至一直推进到了中国边境。','教材 S.56 Text a（续）')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">Kanarische Inseln Pl</b></div><div class="card-back"><span class="cb-zh">加那利群岛</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">der Seekrieg</b><span class="vc-note"> -e</span></div><div class="card-back"><span class="cb-zh">海战</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('der Seekrieg -e','海战','Das war gefährlich, denn England und Spanien befanden sich im Seekrieg, englische Schiffe konnten sie jederzeit überfallen.','「人第一次离开欧洲的那一刻，总有些令人动容」，亚历山大兴奋地写道。他的船驶向加那利群岛。这很危险，因为英西两国正在海战，英国船只随时可能袭击他们。所以夜里不许点灯，[这让他觉得「无聊得要命」]。因为亚历山大无时无刻不想测量、研究、创造知识。1799 到 1804 年，洪堡穿越南美和中美洲。他的 60 岁生日是在俄国过的。那是他第二次大型考察旅行，他甚至一直推进到了中国边境。','教材 S.56 Text a（续）')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">überfallen</b><span class="vc-note"> +A</span></div><div class="card-back"><span class="cb-zh">袭击</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">vor/dringen</b><span class="vc-note"> +in (Akk)</span></div><div class="card-back"><span class="cb-zh">向前推进</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">verhaften</b></div><div class="card-back"><span class="cb-zh">逮捕，拘捕</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('verhaften','逮捕，拘捕','／ e) Aber die amerikanische Regierung verhaftete ihn.','a) 1955 年，在中国政府的帮助下，他获准离开美国回中国，随即投身这个年轻国家的工作。／ b) 1935 年，二十出头的钱学森到了美国。在那里他被加州理工学院火箭技术先驱西奥多·冯·卡门发现并培养。／ c) 1956 年起，他担任中华人民共和国国防部「第五研究院」的总工程师。／ d)「三十六岁时他就是一位杰出的天才」，冯·卡门这样评价钱学森。1949 年他当选美国艺术与科学院院士。／ e) 但美国政府逮捕了他。尽管如此，接下来的五年里，三只小箱子一直准备着，他随时可以启程回中国。／ f) 同样在 1949 年，新中国成立了，钱学森为此非常振奋。他立刻就想回中国。','教材 S.56 Text b（乱序六段）')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">die Raketentechnik</b><span class="vc-note"> -en</span></div><div class="card-back"><span class="cb-zh">火箭技术</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('die Raketentechnik -en','火箭技术','Dort wurde er von Theodore von Kármán, Pionier der Raketentechnik am Caltech, entdeckt und gefördert.','a) 1955 年，在中国政府的帮助下，他获准离开美国回中国，随即投身这个年轻国家的工作。／ b) 1935 年，二十出头的钱学森到了美国。在那里他被加州理工学院火箭技术先驱西奥多·冯·卡门发现并培养。／ c) 1956 年起，他担任中华人民共和国国防部「第五研究院」的总工程师。／ d)「三十六岁时他就是一位杰出的天才」，冯·卡门这样评价钱学森。1949 年他当选美国艺术与科学院院士。／ e) 但美国政府逮捕了他。尽管如此，接下来的五年里，三只小箱子一直准备着，他随时可以启程回中国。／ f) 同样在 1949 年，新中国成立了，钱学森为此非常振奋。他立刻就想回中国。','教材 S.56 Text b（乱序六段）')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">die Kernwaffe</b><span class="vc-note"> -n</span></div><div class="card-back"><span class="cb-zh">核武器</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">die Rakete</b><span class="vc-note"> -n</span></div><div class="card-back"><span class="cb-zh">火箭</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('die Rakete -n','火箭','„Als die Rakete eine Höhe von etwa 30 bis 40 Kilometern erreicht hatte, spürte ich, wie sie heftig zu vibrieren begann.','① 即使不会中文的人也该记住这句话：「感觉良好。」这是一个中国人在太空中说的第一句话。杨利伟把「感觉挺好」告知了留在地球上的人。中国首次载人航天的成功发射，是中国人民迈向科学高峰的历史性一步。／ ② 就在不久前，神舟五号飞船载着中国第一位航天员杨利伟，从戈壁沙漠的沙地里升空，飞向轨道。十分钟后，杨利伟已经进入预定地球轨道，他还要在那里绕地球飞 14 圈。／ ③ 在一篇文章里，杨利伟回忆起几个惊险的瞬间——他当时以为自己马上就要死了。「当火箭达到大约三四十公里高度时，我感觉到它开始剧烈振动。出现了一次震荡，非常疼，」他说。这个几乎致命的时刻持续了 26 秒。等它终于过去，这位航天员觉得自己像重生了一样。／ ④ 在这篇文章里，杨利伟还描写了飞船外面的声响。他至今不知道那些声音从哪里来。他也描述了地球、他的国家和家乡从太空中看上去什么样。「我飞过北京上空，白天看见了山，夜里看见了闪烁的灯火。那里生活着我的同事和我爱的人。」','教材 S.56–S.57 Text c（四段，带小标题任务）')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">herausragend</b></div><div class="card-back"><span class="cb-zh">突出的，卓越的，超群的，杰出的</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('herausragend','突出的，卓越的，超群的，杰出的','／ d) „Mit 36 Jahren war er ein herausragendes Genie“, urteilte von Kármán über Qian.','a) 1955 年，在中国政府的帮助下，他获准离开美国回中国，随即投身这个年轻国家的工作。／ b) 1935 年，二十出头的钱学森到了美国。在那里他被加州理工学院火箭技术先驱西奥多·冯·卡门发现并培养。／ c) 1956 年起，他担任中华人民共和国国防部「第五研究院」的总工程师。／ d)「三十六岁时他就是一位杰出的天才」，冯·卡门这样评价钱学森。1949 年他当选美国艺术与科学院院士。／ e) 但美国政府逮捕了他。尽管如此，接下来的五年里，三只小箱子一直准备着，他随时可以启程回中国。／ f) 同样在 1949 年，新中国成立了，钱学森为此非常振奋。他立刻就想回中国。','教材 S.56 Text b（乱序六段）')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">das Genie -s</b><span class="vc-note"> [ʒe'niː]</span></div><div class="card-back"><span class="cb-zh">天才</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('das Genie -s [ʒe&#x27;niː]','天才','／ d) „Mit 36 Jahren war er ein herausragendes Genie“, urteilte von Kármán über Qian.','a) 1955 年，在中国政府的帮助下，他获准离开美国回中国，随即投身这个年轻国家的工作。／ b) 1935 年，二十出头的钱学森到了美国。在那里他被加州理工学院火箭技术先驱西奥多·冯·卡门发现并培养。／ c) 1956 年起，他担任中华人民共和国国防部「第五研究院」的总工程师。／ d)「三十六岁时他就是一位杰出的天才」，冯·卡门这样评价钱学森。1949 年他当选美国艺术与科学院院士。／ e) 但美国政府逮捕了他。尽管如此，接下来的五年里，三只小箱子一直准备着，他随时可以启程回中国。／ f) 同样在 1949 年，新中国成立了，钱学森为此非常振奋。他立刻就想回中国。','教材 S.56 Text b（乱序六段）')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">der Ausspruch</b><span class="vc-note"> -e</span></div><div class="card-back"><span class="cb-zh">名言，格言</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('der Ausspruch -e','名言，格言','① Auch wer kein Chinesisch spricht, sollte sich den Ausspruch merken: „Ganjue liang hao.“ Es sind die ersten Worte, die ein Chinese im Weltraum sprach.','① 即使不会中文的人也该记住这句话：「感觉良好。」这是一个中国人在太空中说的第一句话。杨利伟把「感觉挺好」告知了留在地球上的人。中国首次载人航天的成功发射，是中国人民迈向科学高峰的历史性一步。／ ② 就在不久前，神舟五号飞船载着中国第一位航天员杨利伟，从戈壁沙漠的沙地里升空，飞向轨道。十分钟后，杨利伟已经进入预定地球轨道，他还要在那里绕地球飞 14 圈。／ ③ 在一篇文章里，杨利伟回忆起几个惊险的瞬间——他当时以为自己马上就要死了。「当火箭达到大约三四十公里高度时，我感觉到它开始剧烈振动。出现了一次震荡，非常疼，」他说。这个几乎致命的时刻持续了 26 秒。等它终于过去，这位航天员觉得自己像重生了一样。／ ④ 在这篇文章里，杨利伟还描写了飞船外面的声响。他至今不知道那些声音从哪里来。他也描述了地球、他的国家和家乡从太空中看上去什么样。「我飞过北京上空，白天看见了山，夜里看见了闪烁的灯火。那里生活着我的同事和我爱的人。」','教材 S.56–S.57 Text c（四段，带小标题任务）')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">bemannt</b></div><div class="card-back"><span class="cb-zh">载人的，有人驾驶的</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('bemannt','载人的，有人驾驶的','Der erfolgreiche Start von Chinas erstem bemannten Raumflug war ein historischer Schritt des chinesischen Volkes auf dem Weg zum Gipfel der Wissenschaft.','① 即使不会中文的人也该记住这句话：「感觉良好。」这是一个中国人在太空中说的第一句话。杨利伟把「感觉挺好」告知了留在地球上的人。中国首次载人航天的成功发射，是中国人民迈向科学高峰的历史性一步。／ ② 就在不久前，神舟五号飞船载着中国第一位航天员杨利伟，从戈壁沙漠的沙地里升空，飞向轨道。十分钟后，杨利伟已经进入预定地球轨道，他还要在那里绕地球飞 14 圈。／ ③ 在一篇文章里，杨利伟回忆起几个惊险的瞬间——他当时以为自己马上就要死了。「当火箭达到大约三四十公里高度时，我感觉到它开始剧烈振动。出现了一次震荡，非常疼，」他说。这个几乎致命的时刻持续了 26 秒。等它终于过去，这位航天员觉得自己像重生了一样。／ ④ 在这篇文章里，杨利伟还描写了飞船外面的声响。他至今不知道那些声音从哪里来。他也描述了地球、他的国家和家乡从太空中看上去什么样。「我飞过北京上空，白天看见了山，夜里看见了闪烁的灯火。那里生活着我的同事和我爱的人。」','教材 S.56–S.57 Text c（四段，带小标题任务）')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">der Raumflug</b><span class="vc-note"> -"e</span></div><div class="card-back"><span class="cb-zh">太空飞行，航天</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('der Raumflug -&quot;e','太空飞行，航天','Der erfolgreiche Start von Chinas erstem bemannten Raumflug war ein historischer Schritt des chinesischen Volkes auf dem Weg zum Gipfel der Wissenschaft.','① 即使不会中文的人也该记住这句话：「感觉良好。」这是一个中国人在太空中说的第一句话。杨利伟把「感觉挺好」告知了留在地球上的人。中国首次载人航天的成功发射，是中国人民迈向科学高峰的历史性一步。／ ② 就在不久前，神舟五号飞船载着中国第一位航天员杨利伟，从戈壁沙漠的沙地里升空，飞向轨道。十分钟后，杨利伟已经进入预定地球轨道，他还要在那里绕地球飞 14 圈。／ ③ 在一篇文章里，杨利伟回忆起几个惊险的瞬间——他当时以为自己马上就要死了。「当火箭达到大约三四十公里高度时，我感觉到它开始剧烈振动。出现了一次震荡，非常疼，」他说。这个几乎致命的时刻持续了 26 秒。等它终于过去，这位航天员觉得自己像重生了一样。／ ④ 在这篇文章里，杨利伟还描写了飞船外面的声响。他至今不知道那些声音从哪里来。他也描述了地球、他的国家和家乡从太空中看上去什么样。「我飞过北京上空，白天看见了山，夜里看见了闪烁的灯火。那里生活着我的同事和我爱的人。」','教材 S.56–S.57 Text c（四段，带小标题任务）')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">der Gipfel -</b></div><div class="card-back"><span class="cb-zh">顶点，山顶</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('der Gipfel -','顶点，山顶','Der erfolgreiche Start von Chinas erstem bemannten Raumflug war ein historischer Schritt des chinesischen Volkes auf dem Weg zum Gipfel der Wissenschaft.','① 即使不会中文的人也该记住这句话：「感觉良好。」这是一个中国人在太空中说的第一句话。杨利伟把「感觉挺好」告知了留在地球上的人。中国首次载人航天的成功发射，是中国人民迈向科学高峰的历史性一步。／ ② 就在不久前，神舟五号飞船载着中国第一位航天员杨利伟，从戈壁沙漠的沙地里升空，飞向轨道。十分钟后，杨利伟已经进入预定地球轨道，他还要在那里绕地球飞 14 圈。／ ③ 在一篇文章里，杨利伟回忆起几个惊险的瞬间——他当时以为自己马上就要死了。「当火箭达到大约三四十公里高度时，我感觉到它开始剧烈振动。出现了一次震荡，非常疼，」他说。这个几乎致命的时刻持续了 26 秒。等它终于过去，这位航天员觉得自己像重生了一样。／ ④ 在这篇文章里，杨利伟还描写了飞船外面的声响。他至今不知道那些声音从哪里来。他也描述了地球、他的国家和家乡从太空中看上去什么样。「我飞过北京上空，白天看见了山，夜里看见了闪烁的灯火。那里生活着我的同事和我爱的人。」','教材 S.56–S.57 Text c（四段，带小标题任务）')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">der Raumfahrer -</b></div><div class="card-back"><span class="cb-zh">航天员</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('der Raumfahrer -','航天员','／ ② Kurz zuvor war das Raumschiff Shenzhou V mit Chinas erstem Raumfahrer Yang an Bord aus dem Sand der Wüste Gobi Richtung Orbit abgehoben.','① 即使不会中文的人也该记住这句话：「感觉良好。」这是一个中国人在太空中说的第一句话。杨利伟把「感觉挺好」告知了留在地球上的人。中国首次载人航天的成功发射，是中国人民迈向科学高峰的历史性一步。／ ② 就在不久前，神舟五号飞船载着中国第一位航天员杨利伟，从戈壁沙漠的沙地里升空，飞向轨道。十分钟后，杨利伟已经进入预定地球轨道，他还要在那里绕地球飞 14 圈。／ ③ 在一篇文章里，杨利伟回忆起几个惊险的瞬间——他当时以为自己马上就要死了。「当火箭达到大约三四十公里高度时，我感觉到它开始剧烈振动。出现了一次震荡，非常疼，」他说。这个几乎致命的时刻持续了 26 秒。等它终于过去，这位航天员觉得自己像重生了一样。／ ④ 在这篇文章里，杨利伟还描写了飞船外面的声响。他至今不知道那些声音从哪里来。他也描述了地球、他的国家和家乡从太空中看上去什么样。「我飞过北京上空，白天看见了山，夜里看见了闪烁的灯火。那里生活着我的同事和我爱的人。」','教材 S.56–S.57 Text c（四段，带小标题任务）')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">angepeilt</b></div><div class="card-back"><span class="cb-zh">已测定的</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('angepeilt','已测定的','Zehn Minuten später befand sich Yang bereits auf der angepeilten Erdumlaufbahn, in der er noch 14-mal die Erde umkreisen sollte.','① 即使不会中文的人也该记住这句话：「感觉良好。」这是一个中国人在太空中说的第一句话。杨利伟把「感觉挺好」告知了留在地球上的人。中国首次载人航天的成功发射，是中国人民迈向科学高峰的历史性一步。／ ② 就在不久前，神舟五号飞船载着中国第一位航天员杨利伟，从戈壁沙漠的沙地里升空，飞向轨道。十分钟后，杨利伟已经进入预定地球轨道，他还要在那里绕地球飞 14 圈。／ ③ 在一篇文章里，杨利伟回忆起几个惊险的瞬间——他当时以为自己马上就要死了。「当火箭达到大约三四十公里高度时，我感觉到它开始剧烈振动。出现了一次震荡，非常疼，」他说。这个几乎致命的时刻持续了 26 秒。等它终于过去，这位航天员觉得自己像重生了一样。／ ④ 在这篇文章里，杨利伟还描写了飞船外面的声响。他至今不知道那些声音从哪里来。他也描述了地球、他的国家和家乡从太空中看上去什么样。「我飞过北京上空，白天看见了山，夜里看见了闪烁的灯火。那里生活着我的同事和我爱的人。」','教材 S.56–S.57 Text c（四段，带小标题任务）')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">die Erdumlaufbahn</b><span class="vc-note"> -en</span></div><div class="card-back"><span class="cb-zh">地球轨道</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('die Erdumlaufbahn -en','地球轨道','Zehn Minuten später befand sich Yang bereits auf der angepeilten Erdumlaufbahn, in der er noch 14-mal die Erde umkreisen sollte.','① 即使不会中文的人也该记住这句话：「感觉良好。」这是一个中国人在太空中说的第一句话。杨利伟把「感觉挺好」告知了留在地球上的人。中国首次载人航天的成功发射，是中国人民迈向科学高峰的历史性一步。／ ② 就在不久前，神舟五号飞船载着中国第一位航天员杨利伟，从戈壁沙漠的沙地里升空，飞向轨道。十分钟后，杨利伟已经进入预定地球轨道，他还要在那里绕地球飞 14 圈。／ ③ 在一篇文章里，杨利伟回忆起几个惊险的瞬间——他当时以为自己马上就要死了。「当火箭达到大约三四十公里高度时，我感觉到它开始剧烈振动。出现了一次震荡，非常疼，」他说。这个几乎致命的时刻持续了 26 秒。等它终于过去，这位航天员觉得自己像重生了一样。／ ④ 在这篇文章里，杨利伟还描写了飞船外面的声响。他至今不知道那些声音从哪里来。他也描述了地球、他的国家和家乡从太空中看上去什么样。「我飞过北京上空，白天看见了山，夜里看见了闪烁的灯火。那里生活着我的同事和我爱的人。」','教材 S.56–S.57 Text c（四段，带小标题任务）')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">umkreisen</b></div><div class="card-back"><span class="cb-zh">围绕……行驶</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('umkreisen','围绕……行驶','Zehn Minuten später befand sich Yang bereits auf der angepeilten Erdumlaufbahn, in der er noch 14-mal die Erde umkreisen sollte.','① 即使不会中文的人也该记住这句话：「感觉良好。」这是一个中国人在太空中说的第一句话。杨利伟把「感觉挺好」告知了留在地球上的人。中国首次载人航天的成功发射，是中国人民迈向科学高峰的历史性一步。／ ② 就在不久前，神舟五号飞船载着中国第一位航天员杨利伟，从戈壁沙漠的沙地里升空，飞向轨道。十分钟后，杨利伟已经进入预定地球轨道，他还要在那里绕地球飞 14 圈。／ ③ 在一篇文章里，杨利伟回忆起几个惊险的瞬间——他当时以为自己马上就要死了。「当火箭达到大约三四十公里高度时，我感觉到它开始剧烈振动。出现了一次震荡，非常疼，」他说。这个几乎致命的时刻持续了 26 秒。等它终于过去，这位航天员觉得自己像重生了一样。／ ④ 在这篇文章里，杨利伟还描写了飞船外面的声响。他至今不知道那些声音从哪里来。他也描述了地球、他的国家和家乡从太空中看上去什么样。「我飞过北京上空，白天看见了山，夜里看见了闪烁的灯火。那里生活着我的同事和我爱的人。」','教材 S.56–S.57 Text c（四段，带小标题任务）')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">vibrieren</b></div><div class="card-back"><span class="cb-zh">震动，颤动</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('vibrieren','震动，颤动','„Als die Rakete eine Höhe von etwa 30 bis 40 Kilometern erreicht hatte, spürte ich, wie sie heftig zu vibrieren begann.','① 即使不会中文的人也该记住这句话：「感觉良好。」这是一个中国人在太空中说的第一句话。杨利伟把「感觉挺好」告知了留在地球上的人。中国首次载人航天的成功发射，是中国人民迈向科学高峰的历史性一步。／ ② 就在不久前，神舟五号飞船载着中国第一位航天员杨利伟，从戈壁沙漠的沙地里升空，飞向轨道。十分钟后，杨利伟已经进入预定地球轨道，他还要在那里绕地球飞 14 圈。／ ③ 在一篇文章里，杨利伟回忆起几个惊险的瞬间——他当时以为自己马上就要死了。「当火箭达到大约三四十公里高度时，我感觉到它开始剧烈振动。出现了一次震荡，非常疼，」他说。这个几乎致命的时刻持续了 26 秒。等它终于过去，这位航天员觉得自己像重生了一样。／ ④ 在这篇文章里，杨利伟还描写了飞船外面的声响。他至今不知道那些声音从哪里来。他也描述了地球、他的国家和家乡从太空中看上去什么样。「我飞过北京上空，白天看见了山，夜里看见了闪烁的灯火。那里生活着我的同事和我爱的人。」','教材 S.56–S.57 Text c（四段，带小标题任务）')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">die Erschütterung -en</b><span class="vc-note"> (mst Sg)</span></div><div class="card-back"><span class="cb-zh">震动，震惊</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('die Erschütterung -en (mst Sg)','震动，震惊','Es gab eine Erschütterung und es war extrem schmerzhaft,“ sagt er.','① 即使不会中文的人也该记住这句话：「感觉良好。」这是一个中国人在太空中说的第一句话。杨利伟把「感觉挺好」告知了留在地球上的人。中国首次载人航天的成功发射，是中国人民迈向科学高峰的历史性一步。／ ② 就在不久前，神舟五号飞船载着中国第一位航天员杨利伟，从戈壁沙漠的沙地里升空，飞向轨道。十分钟后，杨利伟已经进入预定地球轨道，他还要在那里绕地球飞 14 圈。／ ③ 在一篇文章里，杨利伟回忆起几个惊险的瞬间——他当时以为自己马上就要死了。「当火箭达到大约三四十公里高度时，我感觉到它开始剧烈振动。出现了一次震荡，非常疼，」他说。这个几乎致命的时刻持续了 26 秒。等它终于过去，这位航天员觉得自己像重生了一样。／ ④ 在这篇文章里，杨利伟还描写了飞船外面的声响。他至今不知道那些声音从哪里来。他也描述了地球、他的国家和家乡从太空中看上去什么样。「我飞过北京上空，白天看见了山，夜里看见了闪烁的灯火。那里生活着我的同事和我爱的人。」','教材 S.56–S.57 Text c（四段，带小标题任务）')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">schmerzhaft</b></div><div class="card-back"><span class="cb-zh">疼痛的，痛苦的</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('schmerzhaft','疼痛的，痛苦的','Es gab eine Erschütterung und es war extrem schmerzhaft,“ sagt er.','① 即使不会中文的人也该记住这句话：「感觉良好。」这是一个中国人在太空中说的第一句话。杨利伟把「感觉挺好」告知了留在地球上的人。中国首次载人航天的成功发射，是中国人民迈向科学高峰的历史性一步。／ ② 就在不久前，神舟五号飞船载着中国第一位航天员杨利伟，从戈壁沙漠的沙地里升空，飞向轨道。十分钟后，杨利伟已经进入预定地球轨道，他还要在那里绕地球飞 14 圈。／ ③ 在一篇文章里，杨利伟回忆起几个惊险的瞬间——他当时以为自己马上就要死了。「当火箭达到大约三四十公里高度时，我感觉到它开始剧烈振动。出现了一次震荡，非常疼，」他说。这个几乎致命的时刻持续了 26 秒。等它终于过去，这位航天员觉得自己像重生了一样。／ ④ 在这篇文章里，杨利伟还描写了飞船外面的声响。他至今不知道那些声音从哪里来。他也描述了地球、他的国家和家乡从太空中看上去什么样。「我飞过北京上空，白天看见了山，夜里看见了闪烁的灯火。那里生活着我的同事和我爱的人。」','教材 S.56–S.57 Text c（四段，带小标题任务）')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">der Taikonaut</b><span class="vc-note"> -en</span></div><div class="card-back"><span class="cb-zh">中国航天员</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('der Taikonaut -en','中国航天员','Als er endlich vorbei war, fühlte sich der Taikonaut wie neugeboren.','① 即使不会中文的人也该记住这句话：「感觉良好。」这是一个中国人在太空中说的第一句话。杨利伟把「感觉挺好」告知了留在地球上的人。中国首次载人航天的成功发射，是中国人民迈向科学高峰的历史性一步。／ ② 就在不久前，神舟五号飞船载着中国第一位航天员杨利伟，从戈壁沙漠的沙地里升空，飞向轨道。十分钟后，杨利伟已经进入预定地球轨道，他还要在那里绕地球飞 14 圈。／ ③ 在一篇文章里，杨利伟回忆起几个惊险的瞬间——他当时以为自己马上就要死了。「当火箭达到大约三四十公里高度时，我感觉到它开始剧烈振动。出现了一次震荡，非常疼，」他说。这个几乎致命的时刻持续了 26 秒。等它终于过去，这位航天员觉得自己像重生了一样。／ ④ 在这篇文章里，杨利伟还描写了飞船外面的声响。他至今不知道那些声音从哪里来。他也描述了地球、他的国家和家乡从太空中看上去什么样。「我飞过北京上空，白天看见了山，夜里看见了闪烁的灯火。那里生活着我的同事和我爱的人。」','教材 S.56–S.57 Text c（四段，带小标题任务）')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">funkeln</b></div><div class="card-back"><span class="cb-zh">闪烁，发光</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('funkeln','闪烁，发光','„Ich bin über Beijing geflogen und habe tagsüber die Berge und nachts funkelnde Lichter gesehen.','① 即使不会中文的人也该记住这句话：「感觉良好。」这是一个中国人在太空中说的第一句话。杨利伟把「感觉挺好」告知了留在地球上的人。中国首次载人航天的成功发射，是中国人民迈向科学高峰的历史性一步。／ ② 就在不久前，神舟五号飞船载着中国第一位航天员杨利伟，从戈壁沙漠的沙地里升空，飞向轨道。十分钟后，杨利伟已经进入预定地球轨道，他还要在那里绕地球飞 14 圈。／ ③ 在一篇文章里，杨利伟回忆起几个惊险的瞬间——他当时以为自己马上就要死了。「当火箭达到大约三四十公里高度时，我感觉到它开始剧烈振动。出现了一次震荡，非常疼，」他说。这个几乎致命的时刻持续了 26 秒。等它终于过去，这位航天员觉得自己像重生了一样。／ ④ 在这篇文章里，杨利伟还描写了飞船外面的声响。他至今不知道那些声音从哪里来。他也描述了地球、他的国家和家乡从太空中看上去什么样。「我飞过北京上空，白天看见了山，夜里看见了闪烁的灯火。那里生活着我的同事和我爱的人。」','教材 S.56–S.57 Text c（四段，带小标题任务）')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">das Improvisieren</b></div><div class="card-back"><span class="cb-zh">即兴创作</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('das Improvisieren','即兴创作','Zu seinen Stärken gehörte das freie Improvisieren und Fantasieren auf dem Instrument.','在音乐生涯之初，贝多芬先是以精湛的钢琴演奏成名。他的强项之一是在乐器上自由即兴与幻想。从波恩搬到维也纳后，他的才华很快把他带进了哈布斯堡都城最上层的社交圈。由于听力疾病随时间不断加重，他的钢琴家生涯几乎提前结束，这让他十分痛苦。随着听力恶化，贝多芬越来越专注于作曲。别的作曲家常常很快把作品写下来，贝多芬却为每一个音符苦苦琢磨，不断修改、改进自己的作品。在大多数音乐体裁中，贝多芬的作品都属于同类中最重要的。贝多芬达到了自己的要求——为后世留下不朽的音乐作品。他的受欢迎程度从未减弱，今天他是世界上演奏最多的作曲家之一。','教材 S.57 Text d')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">das Fantasieren</b></div><div class="card-back"><span class="cb-zh">想象</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('das Fantasieren','想象','Zu seinen Stärken gehörte das freie Improvisieren und Fantasieren auf dem Instrument.','在音乐生涯之初，贝多芬先是以精湛的钢琴演奏成名。他的强项之一是在乐器上自由即兴与幻想。从波恩搬到维也纳后，他的才华很快把他带进了哈布斯堡都城最上层的社交圈。由于听力疾病随时间不断加重，他的钢琴家生涯几乎提前结束，这让他十分痛苦。随着听力恶化，贝多芬越来越专注于作曲。别的作曲家常常很快把作品写下来，贝多芬却为每一个音符苦苦琢磨，不断修改、改进自己的作品。在大多数音乐体裁中，贝多芬的作品都属于同类中最重要的。贝多芬达到了自己的要求——为后世留下不朽的音乐作品。他的受欢迎程度从未减弱，今天他是世界上演奏最多的作曲家之一。','教材 S.57 Text d')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">habsburgisch</b></div><div class="card-back"><span class="cb-zh">哈布斯堡的</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('habsburgisch','哈布斯堡的','Nach dem Umzug von Bonn nach Wien führte ihn sein Talent bald in die höchsten gesellschaftlichen Kreise der habsburgischen Metropole.','在音乐生涯之初，贝多芬先是以精湛的钢琴演奏成名。他的强项之一是在乐器上自由即兴与幻想。从波恩搬到维也纳后，他的才华很快把他带进了哈布斯堡都城最上层的社交圈。由于听力疾病随时间不断加重，他的钢琴家生涯几乎提前结束，这让他十分痛苦。随着听力恶化，贝多芬越来越专注于作曲。别的作曲家常常很快把作品写下来，贝多芬却为每一个音符苦苦琢磨，不断修改、改进自己的作品。在大多数音乐体裁中，贝多芬的作品都属于同类中最重要的。贝多芬达到了自己的要求——为后世留下不朽的音乐作品。他的受欢迎程度从未减弱，今天他是世界上演奏最多的作曲家之一。','教材 S.57 Text d')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">die Metropole</b><span class="vc-note"> -n</span></div><div class="card-back"><span class="cb-zh">中心，枢纽，大都会</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('die Metropole -n','中心，枢纽，大都会','Nach dem Umzug von Bonn nach Wien führte ihn sein Talent bald in die höchsten gesellschaftlichen Kreise der habsburgischen Metropole.','在音乐生涯之初，贝多芬先是以精湛的钢琴演奏成名。他的强项之一是在乐器上自由即兴与幻想。从波恩搬到维也纳后，他的才华很快把他带进了哈布斯堡都城最上层的社交圈。由于听力疾病随时间不断加重，他的钢琴家生涯几乎提前结束，这让他十分痛苦。随着听力恶化，贝多芬越来越专注于作曲。别的作曲家常常很快把作品写下来，贝多芬却为每一个音符苦苦琢磨，不断修改、改进自己的作品。在大多数音乐体裁中，贝多芬的作品都属于同类中最重要的。贝多芬达到了自己的要求——为后世留下不朽的音乐作品。他的受欢迎程度从未减弱，今天他是世界上演奏最多的作曲家之一。','教材 S.57 Text d')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">das Gehörleiden -</b></div><div class="card-back"><span class="cb-zh">(长期的) 听力疾病</span></div></div><button class="vc-detail" onclick="event.stopPropagation();showVocab('das Gehörleiden -','(长期的) 听力疾病','Wegen seines Gehörleidens, das sich im Laufe der Zeit verschlimmerte, fand seine Karriere als Pianist fast ein vorzeitiges Ende, was ihn sehr belastete.','在音乐生涯之初，贝多芬先是以精湛的钢琴演奏成名。他的强项之一是在乐器上自由即兴与幻想。从波恩搬到维也纳后，他的才华很快把他带进了哈布斯堡都城最上层的社交圈。由于听力疾病随时间不断加重，他的钢琴家生涯几乎提前结束，这让他十分痛苦。随着听力恶化，贝多芬越来越专注于作曲。别的作曲家常常很快把作品写下来，贝多芬却为每一个音符苦苦琢磨，不断修改、改进自己的作品。在大多数音乐体裁中，贝多芬的作品都属于同类中最重要的。贝多芬达到了自己的要求——为后世留下不朽的音乐作品。他的受欢迎程度从未减弱，今天他是世界上演奏最多的作曲家之一。','教材 S.57 Text d')">▶</button></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">die Note</b><span class="vc-note"> -n</span></div><div class="card-back"><span class="cb-zh">音符</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">die Popularität nur Sg</b></div><div class="card-back"><span class="cb-zh">普及，流行</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">die Hingabe nur Sg</b></div><div class="card-back"><span class="cb-zh">献身精神，专心致志</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">der Athlet</b><span class="vc-note"> -en</span></div><div class="card-back"><span class="cb-zh">(田径、竞技等) 运动员</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">unermüdlich / unermüdlich ⚠</b></div><div class="card-back"><span class="cb-zh">不懈的，不知疲倦的</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">überqueren</b><span class="vc-note"> +A</span></div><div class="card-back"><span class="cb-zh">横穿，横渡</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">knallig</b></div><div class="card-back"><span class="cb-zh">醒目的</span></div></div></div>
+<div class="vc-card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front"><b class="vc-w">die Warnjacke</b><span class="vc-note"> -n</span></div><div class="card-back"><span class="cb-zh">警示服</span></div></div></div>
+</div></div>
+<div class="hint">带 <b>⚠</b> 的四条：⚠ preußig（2-9）：教材字面如此，通行为 preußisch；使用前与教材核对。；⚠ unverdrossen / unverdrossen（2-6）、unermüdlich / unermüdlich（2-9）：教材原样把同一词印了两遍，按字面收录。；⚠ das Schwefelhölzchen - [旧]（2-6）：教材把「[旧]」注在词条内，按原样收录，义为「火柴」。；der Grauschimmel（2-6）：教材释为「灰马（文中为对驴的昵称）」——课文里公鸡用它称呼驴。；词表页码未读出：照片只拍到词表标题行（Vokabeln 2-6 / 2-9），未拍到页脚页码；需要教材 PDF 或人工告知后补。；覆盖范围：本附录只含照片中的两页词表（2-6、2-9），不等于 Lektion 2 全部词汇。</div>
+</section>
+<section id="grammar">
+<h2>语法 · 三个结构，都从课文里长出来 <span class="src">S.44–S.57</span></h2>
+<p class="lead">每一讲四件东西：<b>说话人想干什么</b> → <b>一句话规则</b> → <b>三步用法</b> → <b>课文原句</b>。每讲最后三道自测。</p>
+<article class="gr">
+<h3><span class="gr-id">G1</span>关系代词第二格：deren / dessen</h3>
+<p class="gr-q"><b>说话人想说什么？——「那个东西的零件/主人是谁的」</b></p>
+<div class="gr-rule">deren / dessen = 「……的」。它代替前面的名词，在从句里做<b>定语</b>，后面紧跟被拥有的名词。</div>
+<ol class="gr-steps">
+<li>先行词是阴性/复数 → <b>deren</b>；阳性/中性 → <b>dessen</b></li>
+<li>从句里：deren/dessen + 名词 + … + <b>动词放最后</b></li>
+<li>验算：换成「名词 + 第二格」或「und + 名词 + 第二格」看意思对不对</li>
+</ol>
+<div class="gr-ex">
+<div class="ex-item"><p class="ex-de" lang="de">Darauf stürzten sie durch das Fenster in die Stube hinein, deren Scheiben klirrten.</p><p class="ex-note">deren = die Stube 的（阴）→ die Scheiben der Stube　<span class="src">S.44 段 B</span></p></div>
+<div class="ex-item"><p class="ex-de" lang="de">Darauf stürzten sie durch das Fenster in die Stube hinein und die Scheiben der Stube klirrten.</p><p class="ex-note">同一句的 und 版本：先把第二格还原，再合并　<span class="src">S.46 练习 11 Beispiel</span></p></div>
+</div>
+<div class="gr-pit">⚠ 别把 deren 当关系代词第一格用：<i>*die Stube, deren klirrten</i> 错，因为 deren 后面必须跟名词。</div>
+<div class="quiz"><p class="quiz-tag">自测题（自编，题干用词限于本课课文）</p>
+<div class="q" id="q-G1-0"><p class="q-stem" lang="de" data-own="1">Richtig oder falsch? „die Stube, deren Scheiben klirrten“</p><div class="q-opts">
+<button class="q-opt" onclick="answer('G1-0',0,0)">richtig</button>
+<button class="q-opt" onclick="answer('G1-0',1,0)">falsch</button>
+</div><p class="q-why"></p></div>
+<div class="q" id="q-G1-1"><p class="q-stem" lang="de" data-own="1">Welche Form passt? „der Hund, ___ Bein gebissen wurde“</p><div class="q-opts">
+<button class="q-opt" onclick="answer('G1-1',0,1)">deren</button>
+<button class="q-opt" onclick="answer('G1-1',1,1)">dessen</button>
+<button class="q-opt" onclick="answer('G1-1',2,1)">die</button>
+</div><p class="q-why"></p></div>
+<div class="q" id="q-G1-2"><p class="q-stem" lang="de" data-own="1">Was macht deren/dessen im Nebensatz?</p><div class="q-opts">
+<button class="q-opt" onclick="answer('G1-2',0,1)">Subjekt</button>
+<button class="q-opt" onclick="answer('G1-2',1,1)">Attribut (Genitiv)</button>
+<button class="q-opt" onclick="answer('G1-2',2,1)">Objekt</button>
+</div><p class="q-why"></p></div>
+</div>
+</article>
+<article class="gr">
+<h3><span class="gr-id">G2</span>介词 + 关系代词</h3>
+<p class="gr-q"><b>说话人想说什么？——「在某个具体位置 / 用某个具体东西」</b></p>
+<div class="gr-rule">介词由<b>搭配</b>和<b>处所</b>决定，格由介词决定；关系代词跟着介词走：an + D → <b>an der</b>，in + D → <b>in denen</b>。</div>
+<ol class="gr-steps">
+<li>先找回原句的搭配：<b>an der Tür schlafen</b> / <b>sich für etwas begeistern</b></li>
+<li>介词照抄，格按介词算（an + Dativ → der/dem/denen）</li>
+<li>先行词不是名词而是一件事 → 用 <b>wo-</b> 复合：wofür / worüber / womit</li>
+</ol>
+<div class="gr-ex">
+<div class="ex-item"><p class="ex-de" lang="de">Da erschrak er gewaltig und wollte zur Hintertür, an der der Hund schlief, hinauslaufen.</p><p class="ex-note">an der = an der Hintertür（Dativ，阴性）　<span class="src">S.45 段 G</span></p></div>
+<div class="ex-item"><p class="ex-de" lang="de">Ebenfalls im Jahr 1949 wurde das neue China gegründet, wofür sich Qian sehr begeisterte.</p><p class="ex-note">先行词是整件事「新中国成立」→ wofür　<span class="src">S.56 练习 7 f)</span></p></div>
+</div>
+<div class="gr-pit">⚠ 介词不能凭感觉挑：<i>*die Tür, in der der Hund schlief</i> 语法上也通，但原句的动作是「睡在门边」，所以是 an。</div>
+<div class="quiz"><p class="quiz-tag">自测题（自编，题干用词限于本课课文）</p>
+<div class="q" id="q-G2-0"><p class="q-stem" lang="de" data-own="1">„die Hintertür, ___ der Hund schlief“</p><div class="q-opts">
+<button class="q-opt" onclick="answer('G2-0',0,0)">an der</button>
+<button class="q-opt" onclick="answer('G2-0',1,0)">in der</button>
+<button class="q-opt" onclick="answer('G2-0',2,0)">die</button>
+</div><p class="q-why"></p></div>
+<div class="q" id="q-G2-1"><p class="q-stem" lang="de" data-own="1">先行词是一整件事时，介词 + was 合成：</p><div class="q-opts">
+<button class="q-opt" onclick="answer('G2-1',0,0)">wofür</button>
+<button class="q-opt" onclick="answer('G2-1',1,0)">für was</button>
+<button class="q-opt" onclick="answer('G2-1',2,0)">für das</button>
+</div><p class="q-why"></p></div>
+<div class="q" id="q-G2-2"><p class="q-stem" lang="de" data-own="1">„die Stadt, in ___ er lebte“</p><div class="q-opts">
+<button class="q-opt" onclick="answer('G2-2',0,0)">der</button>
+<button class="q-opt" onclick="answer('G2-2',1,0)">die</button>
+<button class="q-opt" onclick="answer('G2-2',2,0)">denen</button>
+</div><p class="q-why"></p></div>
+</div>
+</article>
+<article class="gr">
+<h3><span class="gr-id">G3</span>继续性从句：was / wobei / weswegen</h3>
+<p class="gr-q"><b>说话人想说什么？——「对刚才整件事发表评论」</b></p>
+<div class="gr-rule">先行词不是某个名词，而是<b>整个主句</b>。was 当主语/宾语，wobei 说伴随，weswegen 说后果。</div>
+<ol class="gr-steps">
+<li>把 was 换回「这件事」（Diese Tatsache / Das）试读</li>
+<li>看从句跟主句是什么关系：并列说明 → was；同时发生 → wobei；导致结果 → weswegen</li>
+<li>从句动词照样放最后</li>
+</ol>
+<div class="gr-ex">
+<div class="ex-item"><p class="ex-de" lang="de">Wegen seines Gehörleidens, das sich im Laufe der Zeit verschlimmerte, fand seine Karriere als Pianist fast ein vorzeitiges Ende, was ihn sehr belastete.</p><p class="ex-note">was = 钢琴生涯几乎提前结束这件事　<span class="src">S.57 Text d</span></p></div>
+<div class="ex-item"><p class="ex-de" lang="de">Während andere Komponisten ihre Werke oft schnell zu Papier brachten, rang Beethoven um jede Note, wobei er die Kompositionen immer wieder überarbeitete und verbesserte.</p><p class="ex-note">wobei = 「在这个过程中」　<span class="src">S.57 Text d</span></p></div>
+<div class="ex-item"><p class="ex-de" lang="de" data-gap="1" data-parts="Sehr früh zeigte der kleine Alexander sein Interesse an Naturgeschichte und Pflanzenkunde,weswegen er zu Hause den Spitznamen „der kleine Apotheker“ erhielt.">Sehr früh zeigte der kleine Alexander sein Interesse an Naturgeschichte und Pflanzenkunde, weswegen er zu Hause den Spitznamen „der kleine Apotheker“ erhielt.</p><p class="ex-note">weswegen = 「因此」，后接后果　<span class="src">S.55 练习 6（空位填法为推断）</span></p></div>
+</div>
+<div class="gr-pit">⚠ wobei 不是 während：während 比两件事，wobei 说的是<b>主句那个动作的伴随动作</b>。</div>
+<div class="quiz"><p class="quiz-tag">自测题（自编，题干用词限于本课课文）</p>
+<div class="q" id="q-G3-0"><p class="q-stem" lang="de" data-own="1">„… , ___ ihn sehr belastete.“</p><div class="q-opts">
+<button class="q-opt" onclick="answer('G3-0',0,0)">was</button>
+<button class="q-opt" onclick="answer('G3-0',1,0)">das</button>
+<button class="q-opt" onclick="answer('G3-0',2,0)">wobei</button>
+</div><p class="q-why"></p></div>
+<div class="q" id="q-G3-1"><p class="q-stem" lang="de" data-own="1">„… , ___ er die Kompositionen immer wieder überarbeitete.“</p><div class="q-opts">
+<button class="q-opt" onclick="answer('G3-1',0,0)">wobei</button>
+<button class="q-opt" onclick="answer('G3-1',1,0)">weswegen</button>
+<button class="q-opt" onclick="answer('G3-1',2,0)">was</button>
+</div><p class="q-why"></p></div>
+<div class="q" id="q-G3-2"><p class="q-stem" lang="de" data-own="1">„… , ___ er den Spitznamen bekam.“</p><div class="q-opts">
+<button class="q-opt" onclick="answer('G3-2',0,0)">weswegen</button>
+<button class="q-opt" onclick="answer('G3-2',1,0)">wobei</button>
+<button class="q-opt" onclick="answer('G3-2',2,0)">was</button>
+</div><p class="q-why"></p></div>
+</div>
+</article>
+</section>
+<section id="exercise">
+<h2>练习 · 四项 <span class="src">S.44–S.57</span></h2>
+<h3>① 七段排序 <span class="src">S.44 练习 9</span></h3>
+<p class="lead">按正确顺序点击段落，填进七个格子。四个「锚点」能定住大部分位置：Darauf · Nun · Als Mitternacht vorbei war · Von nun an。</p>
+<div class="ord-slots" id="ordSlots">
+<div class="ord-slot" data-i="0"><span class="os-i">1</span><span class="os-v"></span></div>
+<div class="ord-slot" data-i="1"><span class="os-i">2</span><span class="os-v"></span></div>
+<div class="ord-slot" data-i="2"><span class="os-i">3</span><span class="os-v"></span></div>
+<div class="ord-slot" data-i="3"><span class="os-i">4</span><span class="os-v"></span></div>
+<div class="ord-slot" data-i="4"><span class="os-i">5</span><span class="os-v"></span></div>
+<div class="ord-slot" data-i="5"><span class="os-i">6</span><span class="os-v"></span></div>
+<div class="ord-slot" data-i="6"><span class="os-i">7</span><span class="os-v"></span></div>
+</div>
+<div class="ord-pool" id="ordPool">
+<button class="ord-chip" data-k="A" onclick="ordPick(this)">A<span class="oc-fn">吃饱、熄灯、睡下</span></button>
+<button class="ord-chip" data-k="B" onclick="ordPick(this)">B<span class="oc-fn">计划与行动：叠罗汉 + 齐声「演奏」</span></button>
+<button class="ord-chip" data-k="C" onclick="ordPick(this)">C<span class="oc-fn">发现：驴看见屋里有吃有喝</span></button>
+<button class="ord-chip" data-k="D" onclick="ordPick(this)">D<span class="oc-fn">时间跳转：午夜，派人回去查看</span></button>
+<button class="ord-chip" data-k="E" onclick="ordPick(this)">E<span class="oc-fn">收束：强盗不敢再来，四只动物留下</span></button>
+<button class="ord-chip" data-k="F" onclick="ordPick(this)">F<span class="oc-fn">转述：四次遭遇被讲成女巫、持刀人、怪物、法官</span></button>
+<button class="ord-chip" data-k="G" onclick="ordPick(this)">G<span class="oc-fn">遭遇：厨房 → 后门 → 院子 → 屋顶</span></button>
+</div>
+<div class="btn-row"><button class="btn" onclick="ordCheck()">检查</button><button class="btn" onclick="ordReveal()">看答案</button><button class="btn" onclick="ordReset()">重置</button><span class="ord-res" id="ordRes"></span></div>
+<p class="tip">教材这一步同时要求配图（七张插图）。配图的线索是<b>动作</b>：谁在桌边吃、谁在窗台上、谁在门口。</p>
+<h3>② 词汇连线 <span class="src">词表 2-6 / 2-9</span></h3>
+<div class="c-grid-wrap"><div class="c-title">🐾 Tiere &amp; Gegner <span class="c-cnt">8 对</span></div>
+<div class="c-grid" data-g="0">
+<div class="c-col">
+<button class="c-item" data-side="de" data-k="0-0" onclick="cClick(this)">der Esel</button>
+<button class="c-item" data-side="de" data-k="0-1" onclick="cClick(this)">der Hund</button>
+<button class="c-item" data-side="de" data-k="0-2" onclick="cClick(this)">die Katze</button>
+<button class="c-item" data-side="de" data-k="0-3" onclick="cClick(this)">der Hahn</button>
+<button class="c-item" data-side="de" data-k="0-4" onclick="cClick(this)">der Räuber</button>
+<button class="c-item" data-side="de" data-k="0-5" onclick="cClick(this)">das Gespenst</button>
+<button class="c-item" data-side="de" data-k="0-6" onclick="cClick(this)">der Hauptmann</button>
+<button class="c-item" data-side="de" data-k="0-7" onclick="cClick(this)">die Mühle</button>
+</div><div class="c-col">
+<button class="c-item" data-side="cn" data-k="0-2" onclick="cClick(this)">猫</button>
+<button class="c-item" data-side="cn" data-k="0-5" onclick="cClick(this)">鬼</button>
+<button class="c-item" data-side="cn" data-k="0-0" onclick="cClick(this)">驴</button>
+<button class="c-item" data-side="cn" data-k="0-7" onclick="cClick(this)">磨坊</button>
+<button class="c-item" data-side="cn" data-k="0-1" onclick="cClick(this)">狗</button>
+<button class="c-item" data-side="cn" data-k="0-6" onclick="cClick(this)">首领</button>
+<button class="c-item" data-side="cn" data-k="0-3" onclick="cClick(this)">公鸡</button>
+<button class="c-item" data-side="cn" data-k="0-4" onclick="cClick(this)">强盗</button>
+</div></div></div>
+<div class="c-grid-wrap"><div class="c-title">🔬 Forscher &amp; Erfinder <span class="c-cnt">8 对</span></div>
+<div class="c-grid" data-g="1">
+<div class="c-col">
+<button class="c-item" data-side="de" data-k="1-0" onclick="cClick(this)">die Pflanzenkunde</button>
+<button class="c-item" data-side="de" data-k="1-1" onclick="cClick(this)">der Spitzname</button>
+<button class="c-item" data-side="de" data-k="1-2" onclick="cClick(this)">der Apotheker</button>
+<button class="c-item" data-side="de" data-k="1-3" onclick="cClick(this)">die Erdumlaufbahn</button>
+<button class="c-item" data-side="de" data-k="1-4" onclick="cClick(this)">das Raumschiff</button>
+<button class="c-item" data-side="de" data-k="1-5" onclick="cClick(this)">der Weltraum</button>
+<button class="c-item" data-side="de" data-k="1-6" onclick="cClick(this)">die Erfindung</button>
+<button class="c-item" data-side="de" data-k="1-7" onclick="cClick(this)">der Ingenieur</button>
+</div><div class="c-col">
+<button class="c-item" data-side="cn" data-k="1-2" onclick="cClick(this)">药剂师</button>
+<button class="c-item" data-side="cn" data-k="1-5" onclick="cClick(this)">太空</button>
+<button class="c-item" data-side="cn" data-k="1-0" onclick="cClick(this)">植物学</button>
+<button class="c-item" data-side="cn" data-k="1-7" onclick="cClick(this)">工程师</button>
+<button class="c-item" data-side="cn" data-k="1-1" onclick="cClick(this)">外号</button>
+<button class="c-item" data-side="cn" data-k="1-6" onclick="cClick(this)">发明</button>
+<button class="c-item" data-side="cn" data-k="1-3" onclick="cClick(this)">地球轨道</button>
+<button class="c-item" data-side="cn" data-k="1-4" onclick="cClick(this)">飞船</button>
+</div></div></div>
+<div class="c-grid-wrap"><div class="c-title">🎼 Musik &amp; Gefühl <span class="c-cnt">8 对</span></div>
+<div class="c-grid" data-g="2">
+<div class="c-col">
+<button class="c-item" data-side="de" data-k="2-0" onclick="cClick(this)">die Komposition</button>
+<button class="c-item" data-side="de" data-k="2-1" onclick="cClick(this)">das Gehörleiden</button>
+<button class="c-item" data-side="de" data-k="2-2" onclick="cClick(this)">improvisieren</button>
+<button class="c-item" data-side="de" data-k="2-3" onclick="cClick(this)">der Komponist</button>
+<button class="c-item" data-side="de" data-k="2-4" onclick="cClick(this)">der Applaus</button>
+<button class="c-item" data-side="de" data-k="2-5" onclick="cClick(this)">die Karriere</button>
+<button class="c-item" data-side="de" data-k="2-6" onclick="cClick(this)">die Note</button>
+<button class="c-item" data-side="de" data-k="2-7" onclick="cClick(this)">der Ruhm</button>
+</div><div class="c-col">
+<button class="c-item" data-side="cn" data-k="2-2" onclick="cClick(this)">即兴演奏</button>
+<button class="c-item" data-side="cn" data-k="2-5" onclick="cClick(this)">职业生涯</button>
+<button class="c-item" data-side="cn" data-k="2-0" onclick="cClick(this)">作曲（作品）</button>
+<button class="c-item" data-side="cn" data-k="2-7" onclick="cClick(this)">名声</button>
+<button class="c-item" data-side="cn" data-k="2-1" onclick="cClick(this)">听力疾病</button>
+<button class="c-item" data-side="cn" data-k="2-6" onclick="cClick(this)">音符</button>
+<button class="c-item" data-side="cn" data-k="2-3" onclick="cClick(this)">作曲家</button>
+<button class="c-item" data-side="cn" data-k="2-4" onclick="cClick(this)">掌声</button>
+</div></div></div>
+<h3>③ 继续性从句：三个空 <span class="src">S.55–S.56 练习 6</span></h3>
+<p class="lead">下面是三段原句，空位处填一个连接词（was / wobei / weswegen）。三个空正好是这三种连接词各一次。</p>
+<div class="lk">
+<div class="lk-item"><p class="lk-de" lang="de" data-gap="1">… sein Interesse an Naturgeschichte und Pflanzenkunde, ____ <input class="fill-input-line" data-ans="weswegen" size="10" spellcheck="false"> weswegen er zu Hause den Spitznamen „der kleine Apotheker“ erhielt.</p><div class="lk-row"><button class="btn btn-sm" onclick="lkCheck(this)">✓</button><span class="fill-result"></span></div></div>
+<div class="lk-item"><p class="lk-de" lang="de" data-gap="1">1799 verließ er von Spanien aus erstmals Europa, ____ <input class="fill-input-line" data-ans="wobei" size="10" spellcheck="false"> wobei er das ehrgeizige Ziel hatte, die neue Welt zu erforschen.</p><div class="lk-row"><button class="btn btn-sm" onclick="lkCheck(this)">✓</button><span class="fill-result"></span></div></div>
+<div class="lk-item"><p class="lk-de" lang="de" data-gap="1">Deswegen durften sie in der Nacht kein Licht machen, ____ <input class="fill-input-line" data-ans="was" size="10" spellcheck="false"> was ihm „tödliche Langeweile“ bereitete.</p><div class="lk-row"><button class="btn btn-sm" onclick="lkCheck(this)">✓</button><span class="fill-result"></span></div></div>
+</div>
+<div class="btn-row"><button class="btn" onclick="lkCheckAll()">检查全部填空</button><button class="btn" onclick="lkRevealAll()">看答案</button><button class="btn" onclick="lkClearAll()">清空</button><span class="lk-res" id="lkRes"></span></div>
+<p class="tip">填法为推断（教材原题是听录音填句，答案页未提供）。三个空的关系：weswegen 后接后果，wobei 说伴随，was 评论整件事。</p>
+<h3>④ 选小标题 <span class="src">S.56–S.57 练习 8</span></h3>
+<p class="lead">四段各选一个小标题。提示：四段的功能依次是「一句话 → 升空 → 危机 → 感官细节」。</p>
+<div class="mt">
+<div class="mt-row"><span class="mt-seg">①</span><select class="mt-sel" data-ans="Erste Worte eines Chinesen im Weltraum" onchange="mtCheck(this)"><option value="">— 选一个 —</option><option value="Erste Worte eines Chinesen im Weltraum">Erste Worte eines Chinesen im Weltraum</option><option value="Start des Raumschiffs Shenzhou V">Start des Raumschiffs Shenzhou V</option><option value="Kritische Momente im Weltraum">Kritische Momente im Weltraum</option><option value="Mysteriöse Geräusche und Ansichten aus dem Weltraum">Mysteriöse Geräusche und Ansichten aus dem Weltraum</option></select><span class="mt-res"></span></div>
+<div class="mt-row"><span class="mt-seg">②</span><select class="mt-sel" data-ans="Start des Raumschiffs Shenzhou V" onchange="mtCheck(this)"><option value="">— 选一个 —</option><option value="Erste Worte eines Chinesen im Weltraum">Erste Worte eines Chinesen im Weltraum</option><option value="Start des Raumschiffs Shenzhou V">Start des Raumschiffs Shenzhou V</option><option value="Kritische Momente im Weltraum">Kritische Momente im Weltraum</option><option value="Mysteriöse Geräusche und Ansichten aus dem Weltraum">Mysteriöse Geräusche und Ansichten aus dem Weltraum</option></select><span class="mt-res"></span></div>
+<div class="mt-row"><span class="mt-seg">③</span><select class="mt-sel" data-ans="Kritische Momente im Weltraum" onchange="mtCheck(this)"><option value="">— 选一个 —</option><option value="Erste Worte eines Chinesen im Weltraum">Erste Worte eines Chinesen im Weltraum</option><option value="Start des Raumschiffs Shenzhou V">Start des Raumschiffs Shenzhou V</option><option value="Kritische Momente im Weltraum">Kritische Momente im Weltraum</option><option value="Mysteriöse Geräusche und Ansichten aus dem Weltraum">Mysteriöse Geräusche und Ansichten aus dem Weltraum</option></select><span class="mt-res"></span></div>
+<div class="mt-row"><span class="mt-seg">④</span><select class="mt-sel" data-ans="Mysteriöse Geräusche und Ansichten aus dem Weltraum" onchange="mtCheck(this)"><option value="">— 选一个 —</option><option value="Erste Worte eines Chinesen im Weltraum">Erste Worte eines Chinesen im Weltraum</option><option value="Start des Raumschiffs Shenzhou V">Start des Raumschiffs Shenzhou V</option><option value="Kritische Momente im Weltraum">Kritische Momente im Weltraum</option><option value="Mysteriöse Geräusche und Ansichten aus dem Weltraum">Mysteriöse Geräusche und Ansichten aus dem Weltraum</option></select><span class="mt-res"></span></div>
+</div>
+<div class="btn-row"><button class="btn" onclick="mtCheckAll()">检查全部匹配</button><span class="mt-res-all" id="mtRes"></span></div>
+</section>
+</div>
+<div class="vocab-overlay" onclick="hideVocab()"></div>
+<div class="vocab-panel" id="vocabPanel" role="dialog" aria-label="词条">
+  <div class="vp-h"><div><div class="vp-word" id="vpWord"></div><div class="vp-zh" id="vpZh"></div></div>
+  <button class="vp-close" onclick="hideVocab()" aria-label="关闭">✕</button></div>
+  <div class="vp-ex" id="vpEx"></div>
+</div>
+<div class="proj-ctl" id="projCtl">
+  <div class="pc-panel">
+    <button class="btn btn-sm" onclick="projStep(-1)">A−</button>
+    <button class="btn btn-sm" onclick="projReset()">标准</button>
+    <button class="btn btn-sm" onclick="projStep(1)">A+</button>
+  </div>
+  <button class="pc-btn" onclick="projToggle(event)" aria-label="投影放大">Aa</button>
+</div>
+<script>
+const SECTIONS = ["home", "text", "text2", "vocab", "grammar", "exercise"];
+function switchSection(id){
+  document.querySelectorAll('section').forEach(function(s){ s.classList.remove('active'); });
+  const el = document.getElementById(id); if (el) el.classList.add('active');
+  document.querySelectorAll('.nav-links button').forEach(function(b){ b.classList.remove('active'); });
+  const idx = SECTIONS.indexOf(id);
+  const btns = document.querySelectorAll('.nav-links button');
+  if (btns[idx]) btns[idx].classList.add('active');
+  const pf = document.getElementById('progressFill');
+  if (pf) pf.style.width = ((idx + 1) / SECTIONS.length * 100) + '%';
+  const nl = document.getElementById('navLinks'); if (nl) nl.classList.remove('show');
+  window.scrollTo(0, 0);
+}
+function toggleNav(){ document.getElementById('navLinks').classList.toggle('show'); }
+function switchVocabTab(i){
+  document.querySelectorAll('.person-content').forEach(function(c){ c.classList.remove('active'); });
+  const el = document.getElementById('vc-' + i); if (el) el.classList.add('active');
+  document.querySelectorAll('.person-btn').forEach(function(b, j){ b.classList.toggle('active', j === i); });
+}
+function esc(s){ return String(s == null ? '' : s).replace(/[&<>]/g, function(c){
+  return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c]; }); }
+function showVocab(w, cn, ex, tr, def){
+  document.getElementById('vpWord').textContent = w || '';
+  document.getElementById('vpZh').textContent = cn || '';
+  const box = document.getElementById('vpEx');
+  const parts = [];
+  if (ex) parts.push('<div class="vp-de" lang="de">' + esc(ex) + '</div>');
+  if (tr) parts.push('<div class="vp-tr"><span class="vp-lb">所在段落参考译文</span>' + esc(tr) + '</div>');
+  if (def) parts.push('<div class="vp-def"><span class="vp-lb">出处</span>' + esc(def) + '</div>');
+  box.innerHTML = parts.length ? parts.join('') : '<div class="vp-def">该词在课文里没有出现。</div>';
+  document.getElementById('vocabPanel').classList.add('show');
+  document.getElementById('vocabOverlay').classList.add('show');
+}
+function hideVocab(){
+  document.getElementById('vocabPanel').classList.remove('show');
+  document.getElementById('vocabOverlay').classList.remove('show');
+}
+document.addEventListener('keydown', function(e){ if (e.key === 'Escape') hideVocab(); });
+document.addEventListener('click', function(e){
+  const gl = e.target.closest('.gl');
+  if (gl) showVocab(gl.dataset.w, gl.dataset.zh, gl.dataset.ex, gl.dataset.tr, gl.dataset.def);
+});
+/* ===== 语法选择题 ===== */
+function answer(qid, oi, ans){
+  const q = document.getElementById('q-' + qid);
+  if (!q) return;
+  const opts = q.querySelectorAll('.q-opt');
+  opts.forEach(function(o){ o.classList.remove('ok', 'bad'); });
+  if (oi === ans){ opts[oi].classList.add('ok'); }
+  else { opts[oi].classList.add('bad'); opts[ans].classList.add('ok'); }
+  const why = q.querySelector('.q-why');
+  if (why) why.classList.add('show');
+}
+/* ===== 排序 ===== */
+const ORD_ANS = ['C','B','A','D','G','F','E'];
+let ordPicked = [];
+function ordPick(btn){
+  if (ordPicked.length >= 7) return;
+  const k = btn.dataset.k;
+  ordPicked.push(k);
+  btn.classList.add('used');
+  const slot = document.querySelectorAll('#ordSlots .ord-slot')[ordPicked.length - 1];
+  if (slot){ slot.querySelector('.os-v').textContent = k; slot.dataset.k = k; }
+}
+function ordCheck(){
+  let ok = 0;
+  document.querySelectorAll('#ordSlots .ord-slot').forEach(function(s, i){
+    s.classList.remove('ok', 'bad');
+    if (!s.dataset.k) return;
+    if (s.dataset.k === ORD_ANS[i]){ s.classList.add('ok'); ok++; } else { s.classList.add('bad'); }
+  });
+  document.getElementById('ordRes').textContent = '正确 ' + ok + ' / 7';
+}
+function ordReset(){
+  ordPicked = [];
+  document.querySelectorAll('#ordSlots .ord-slot').forEach(function(s){
+    s.classList.remove('ok', 'bad'); s.querySelector('.os-v').textContent = ''; delete s.dataset.k;
+  });
+  document.querySelectorAll('.ord-chip').forEach(function(b){ b.classList.remove('used'); });
+  document.getElementById('ordRes').textContent = '';
+}
+function ordReveal(){
+  ordReset();
+  ORD_ANS.forEach(function(k, i){
+    const s = document.querySelectorAll('#ordSlots .ord-slot')[i];
+    s.querySelector('.os-v').textContent = k; s.dataset.k = k; s.classList.add('ok');
+    const chip = document.querySelector('.ord-chip[data-k="' + k + '"]');
+    if (chip) chip.classList.add('used');
+  });
+  ordPicked = ORD_ANS.slice();
+  document.getElementById('ordRes').textContent = '已显示正确顺序';
+}
+/* ===== 连线 ===== */
+let cSel = null;
+function cClick(el){
+  if (el.classList.contains('done')) return;
+  if (!cSel){ cSel = el; el.classList.add('sel'); return; }
+  if (cSel === el){ el.classList.remove('sel'); cSel = null; return; }
+  if (cSel.dataset.side === el.dataset.side){ cSel.classList.remove('sel'); cSel = el; el.classList.add('sel'); return; }
+  if (cSel.dataset.k === el.dataset.k){
+    cSel.classList.remove('sel'); cSel.classList.add('done'); el.classList.add('done');
+  } else {
+    const a = cSel, b = el;
+    a.classList.remove('sel'); a.classList.add('err'); b.classList.add('err');
+    setTimeout(function(){ a.classList.remove('err'); b.classList.remove('err'); }, 700);
+  }
+  cSel = null;
+}
+/* ===== 填空 ===== */
+function norm(s){ return String(s||'').toLowerCase().replace(/\s+/g,' ').trim(); }
+function lkCheck(el){
+  const wrap = el.closest('.lk-item');
+  const inp = wrap.querySelector('.fill-input-line');
+  const res = wrap.querySelector('.fill-result');
+  const ok = !!inp.value.trim() && norm(inp.value) === norm(inp.dataset.ans);
+  inp.classList.remove('ok','bad'); inp.classList.add(ok ? 'ok' : 'bad');
+  if (res){ res.textContent = ok ? '✓ richtig' : (inp.value.trim() ? '✗ 再想想' : ''); res.className = 'fill-result ' + (ok ? 'correct' : 'wrong'); }
+  return ok;
+}
+function lkCheckAll(){
+  let ok = 0, tot = 0;
+  document.querySelectorAll('#exercise .lk-item').forEach(function(item){
+    tot++; if (lkCheck(item.querySelector('.btn-sm'))) ok++;
+  });
+  document.getElementById('lkRes').textContent = '正确 ' + ok + ' / ' + tot;
+}
+function lkRevealAll(){
+  document.querySelectorAll('#exercise .lk-item').forEach(function(item){
+    const inp = item.querySelector('.fill-input-line');
+    inp.value = inp.dataset.ans; inp.classList.remove('bad'); inp.classList.add('ok');
+    const res = item.querySelector('.fill-result'); if (res){ res.textContent=''; res.className='fill-result'; }
+  });
+  document.getElementById('lkRes').textContent = '已显示参考答案';
+}
+function lkClearAll(){
+  document.querySelectorAll('#exercise .lk-item').forEach(function(item){
+    const inp = item.querySelector('.fill-input-line');
+    inp.value=''; inp.classList.remove('ok','bad');
+    const res = item.querySelector('.fill-result'); if (res){ res.textContent=''; res.className='fill-result'; }
+  });
+  document.getElementById('lkRes').textContent = '';
+}
+/* ===== 小标题匹配 ===== */
+function mtCheck(sel){
+  sel.classList.remove('ok','bad');
+  const res = sel.parentNode.querySelector('.mt-res');
+  if (!sel.value) { if (res) res.textContent = ''; return null; }
+  const ok = sel.value === sel.dataset.ans;
+  sel.classList.add(ok ? 'ok' : 'bad');
+  if (res){ res.textContent = ok ? '✓' : '✗'; res.style.color = ok ? 'var(--ok)' : 'var(--bad)'; }
+  return ok;
+}
+function mtCheckAll(){
+  let ok = 0, tot = 0;
+  document.querySelectorAll('#exercise .mt-sel').forEach(function(s){ tot++; if (mtCheck(s)) ok++; });
+  document.getElementById('mtRes').textContent = '正确 ' + ok + ' / ' + tot;
+}
+/* ===== 投影挡位 ===== */
+let projScale = 1;
+try { projScale = parseFloat(localStorage.getItem('l2proj') || '1') || 1; } catch(e){ projScale = 1; }
+const PROJ_STEPS = [1, 1.15, 1.3, 1.5];
+function applyProj(){ document.body.style.zoom = projScale; }
+function armProj(){ clearTimeout(window.__pt); window.__pt = setTimeout(function(){
+  const c = document.getElementById('projCtl'); if (c) c.classList.remove('open'); }, 8000); }
+function projToggle(e){ if (e) e.stopPropagation();
+  const c = document.getElementById('projCtl'); c.classList.toggle('open');
+  if (c.classList.contains('open')) armProj(); }
+function projStep(d){
+  let i = PROJ_STEPS.indexOf(projScale); if (i < 0) i = 0;
+  i = Math.min(PROJ_STEPS.length - 1, Math.max(0, i + d));
+  projScale = PROJ_STEPS[i];
+  try { localStorage.setItem('l2proj', String(projScale)); } catch(e){}
+  applyProj(); armProj();
+}
+function projReset(){ projScale = 1; try { localStorage.setItem('l2proj','1'); } catch(e){} applyProj(); armProj(); }
+window.addEventListener('load', function(){ applyProj(); });
+</script>
+</body>
+</html>

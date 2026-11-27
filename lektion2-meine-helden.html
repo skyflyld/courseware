@@ -109,6 +109,8 @@ section.active{display:block}
   background:#fff;border-radius:var(--r-3) var(--r-3) 0 0;box-shadow:0 -6px 24px rgba(16,24,40,.18);
   max-height:45vh;overflow-y:auto;display:none;z-index:90;padding:var(--sp-4)}
 .vocab-panel.show{display:block}
+.vocab-overlay{position:fixed;inset:0;background:rgba(16,24,40,.28);display:none;z-index:85}
+.vocab-overlay.show{display:block}
 .vp-h{display:flex;justify-content:space-between;align-items:flex-start;gap:var(--sp-3)}
 .vp-word{font-size:var(--fs-word);font-weight:700;color:var(--pri-dark)}
 .vp-zh{font-size:var(--fs-body);color:var(--sub);margin-top:var(--sp-1)}
@@ -695,6 +697,7 @@ section.active{display:block}
 </section>
 </div>
 <div class="vocab-overlay" onclick="hideVocab()"></div>
+<div class="vocab-overlay" id="vocabOverlay" onclick="hideVocab()"></div>
 <div class="vocab-panel" id="vocabPanel" role="dialog" aria-label="词条">
   <div class="vp-h"><div><div class="vp-word" id="vpWord"></div><div class="vp-zh" id="vpZh"></div></div>
   <button class="vp-close" onclick="hideVocab()" aria-label="关闭">✕</button></div>
@@ -739,12 +742,14 @@ function showVocab(w, cn, ex, tr, def){
   if (tr) parts.push('<div class="vp-tr"><span class="vp-lb">所在段落参考译文</span>' + esc(tr) + '</div>');
   if (def) parts.push('<div class="vp-def"><span class="vp-lb">出处</span>' + esc(def) + '</div>');
   box.innerHTML = parts.length ? parts.join('') : '<div class="vp-def">该词在课文里没有出现。</div>';
-  document.getElementById('vocabPanel').classList.add('show');
-  document.getElementById('vocabOverlay').classList.add('show');
+  ['vocabPanel','vocabOverlay'].forEach(function(id){
+    const el = document.getElementById(id); if (el) el.classList.add('show');
+  });
 }
 function hideVocab(){
-  document.getElementById('vocabPanel').classList.remove('show');
-  document.getElementById('vocabOverlay').classList.remove('show');
+  ['vocabPanel','vocabOverlay'].forEach(function(id){
+    const el = document.getElementById(id); if (el) el.classList.remove('show');
+  });
 }
 document.addEventListener('keydown', function(e){ if (e.key === 'Escape') hideVocab(); });
 document.addEventListener('click', function(e){
